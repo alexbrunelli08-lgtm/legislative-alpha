@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legislative Alpha — Live Policy Signals for Thematic Portfolios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0D12;
+    --panel: #10141C;
+    --panel-2: #161B26;
+    --line: #232A38;
+    --line-soft: #1A2029;
+    --text: #E6E9F0;
+    --text-dim: #8A93A6;
+    --text-faint: #565F73;
+    --accent: #4DE8C0;
+    --accent-dim: #1E4A3E;
+    --warn: #E8A94D;
+    --bad: #E85D5D;
+    --good: #4DE87A;
+    --radius: 6px;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .wordmark { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+  .wordmark .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .tagline { font-size: 11.5px; color: var(--text-faint); margin-top: 2px; letter-spacing: 0.02em; }
+  .status-badge { font-size: 11px; letter-spacing: 0.04em; color: var(--text-dim); border: 1px solid var(--line); padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .status-badge b { color: var(--accent); font-weight: 600; }
+  .status-badge.err { color: var(--bad); border-color: #4a2323; }
+
+  /* ---------- Sector strip ---------- */
+  .sector-section { padding: 22px 0 4px; }
+  .section-label { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 10px; }
+  .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .sector-card { background: var(--panel); padding: 14px 16px; cursor: pointer; border: none; text-align: left; color: var(--text); font-family: inherit; display: block; width: 100%; position: relative; transition: background 0.12s ease; }
+  .sector-card:hover { background: var(--panel-2); }
+  .sector-card[aria-pressed="true"] { background: var(--panel-2); }
+  .sector-card[aria-pressed="true"]::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .sector-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .sector-symbol { font-weight: 700; font-size: 13.5px; letter-spacing: 0.02em; }
+  .sector-name { font-size: 11px; color: var(--text-dim); margin-bottom: 8px; min-height: 26px; }
+  .sector-metric-row { display: flex; align-items: baseline; justify-content: space-between; }
+  .sector-momentum { font-weight: 700; font-size: 20px; }
+  .sector-count { font-size: 10.5px; color: var(--text-faint); }
+
+  /* ---------- View tabs (Bills / Trading / Lobbying) ---------- */
+  .view-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 22px 0 14px; }
+  .view-tabs { display: flex; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 3px; }
+  .view-tab { font-family: inherit; font-size: 12px; letter-spacing: 0.02em; background: transparent; border: none; color: var(--text-dim); padding: 7px 14px; border-radius: 4px; cursor: pointer; }
+  .view-tab.active { background: var(--accent); color: #06110D; font-weight: 600; }
+  .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-tab { font-size: 11.5px; background: transparent; border: 1px solid var(--line); color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+  .filter-tab:hover { border-color: var(--accent); color: var(--text); }
+  .filter-tab.active { background: var(--panel-2); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+  /* ---------- Bill cards ---------- */
+  .item-list { display: flex; flex-direction: column; gap: 8px; padding-bottom: 40px; }
+  .bill-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .bill-header-btn { width: 100%; background: none; border: none; text-align: left; padding: 14px 16px; cursor: pointer; font-family: inherit; color: inherit; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; }
+  .bill-id-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+  .bill-number { font-size: 11px; font-weight: 600; color: var(--text-faint); letter-spacing: 0.02em; }
+  .sector-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; letter-spacing: 0.02em; }
+  .status-tag { font-size: 10px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-dim); }
+  .trade-flag { display: inline-flex; align-items: center; gap: 4px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.02em; padding: 2px 7px; border-radius: 999px; background: #3a231a; color: var(--warn); border: 1px solid #4a3020; }
+  .trade-flag .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--warn); }
+  .bill-title { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.35; color: var(--text); }
+  .bill-meta { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; }
+  .momentum-block { text-align: right; min-width: 96px; }
+  .momentum-num { font-size: 21px; font-weight: 700; }
+  .momentum-label { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-top: 1px; }
+  .momentum-bar-track { width: 96px; height: 3px; background: var(--line-soft); border-radius: 2px; margin-top: 5px; overflow: hidden; }
+  .momentum-bar-fill { height: 100%; }
+  .chevron { font-size: 15px; color: var(--text-faint); transition: transform 0.15s ease; width: 18px; text-align: center; }
+  .bill-card.open .chevron { transform: rotate(90deg); }
+  .bill-detail { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; border-top: 1px solid transparent; }
+  .bill-card.open .bill-detail { border-top: 1px solid var(--line); }
+  .bill-detail-inner { padding: 14px 16px 16px; font-size: 12.5px; }
+  .detail-eyebrow { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); display: block; margin-bottom: 8px; }
+  .detail-row { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; color: var(--text-dim); }
+  .detail-row b { color: var(--text); }
+  .amendment-item { padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+  .amendment-item:last-child { border-bottom: none; }
+  .amendment-top { display: flex; gap: 8px; align-items: baseline; margin-bottom: 3px; flex-wrap: wrap; }
+  .amendment-number { font-weight: 600; font-size: 11.5px; color: var(--accent); }
+  .amendment-date { font-size: 10.5px; color: var(--text-faint); }
+  .empty-note { font-size: 12px; color: var(--text-faint); font-style: italic; padding: 4px 0; }
+  .bill-link { font-size: 11px; color: var(--accent); text-decoration: none; }
+  .bill-link:hover { text-decoration: underline; }
+
+  /* ---------- Trading / Lobbying tables ---------- */
+  .data-table-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  table.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.data-table th { text-align: left; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+  table.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--line-soft); color: var(--text-dim); }
+  table.data-table tr:last-child td { border-bottom: none; }
+  .type-buy, .type-purchase { color: var(--good); font-weight: 600; }
+  .type-sale, .type-sell { color: var(--bad); font-weight: 600; }
+  .row-ticker { color: var(--text); font-weight: 600; }
+  .issue-pill { display: inline-block; font-size: 10px; background: var(--panel-2); border: 1px solid var(--line); color: var(--text-dim); padding: 1px 7px; border-radius: 999px; margin: 1px 3px 1px 0; }
+
+  /* ---------- Methodology ---------- */
+  .methodology { border-top: 1px solid var(--line); padding: 30px 0 26px; }
+  .methodology h2 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 0 0 14px; }
+  .methodology-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 16px; }
+  .methodology-item .num { color: var(--accent); font-size: 11px; font-weight: 700; margin-bottom: 5px; }
+  .methodology-item p { font-size: 12.5px; color: var(--text-dim); margin: 0; line-height: 1.55; }
+  .data-note { font-size: 11.5px; color: var(--text-dim); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 13px 15px; line-height: 1.6; }
+  .data-note b { color: var(--text); }
+
+  footer { border-top: 1px solid var(--line); padding: 16px 0 26px; font-size: 11px; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  .loading, .fetch-error { padding: 60px 0; text-align: center; color: var(--text-faint); font-size: 13px; }
+  .fetch-error { color: var(--bad); }
+
+  @media (max-width: 900px) {
+    .sector-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .bill-header-btn { grid-template-columns: 1fr; gap: 8px; }
+    .momentum-block { text-align: left; }
+    .momentum-bar-track { width: 100%; }
+    .methodology-grid { grid-template-columns: 1fr; }
+    .chevron { display: none; }
+    table.data-table { font-size: 11px; }
+    table.data-table th, table.data-table td { padding: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="header-row">
+      <div>
+        <div class="wordmark"><span class="dot"></span>Legislative Alpha</div>
+        <div class="tagline">Live policy signals for thematic sector portfolios</div>
+      </div>
+      <div class="status-badge" id="statusBadge">Loading…</div>
+    </div>
+  </header>
+
+  <section class="sector-section">
+    <div class="section-label">Sector momentum</div>
+    <div class="sector-grid" id="sectorGrid"></div>
+  </section>
+
+  <section class="view-row">
+    <div class="view-tabs" id="viewTabs">
+      <button class="view-tab active" data-view="bills">Bills</button>
+      <button class="view-tab" data-view="trades">Trading</button>
+      <button class="view-tab" data-view="lobbying">Lobbying</button>
+    </div>
+    <div class="filter-tabs" id="filterTabs"></div>
+  </section>
+
+  <section id="content">
+    <div class="loading">Loading data.json…</div>
+  </section>
+
+  <section class="methodology">
+    <h2>How this works</h2>
+    <div class="methodology-grid">
+      <div class="methodology-item">
+        <div class="num">01 — Legislative momentum score</div>
+        <p>A 0–100 score built from real, directly observable signals: the bill's current stage (introduced → committee → passed a chamber → signed), its real cosponsor count, and whether it saw action in the last 14 days. This is a progress signal, not a predictive model — it does not estimate historical passage rates or committee-specific dynamics.</p>
+      </div>
+      <div class="methodology-item">
+        <div class="num">02 — Sector trading &amp; lobbying feeds</div>
+        <p>Trades come from Senators' own Periodic Transaction Reports (STOCK Act disclosures), scraped directly from efdsearch.senate.gov. Lobbying data comes from the Senate's public Lobbying Disclosure Act filings. Both are matched to a sector via a fixed list of that sector's constituent companies — not to a specific bill.</p>
+      </div>
+      <div class="methodology-item">
+        <div class="num">03 — Pre-filing trade flag</div>
+        <p>A bill is flagged if a tracked trade in its sector was disclosed in the 45 days before the bill was introduced. This is a sector-level correlation, not a claim that any specific trade concerned that specific bill.</p>
+      </div>
+    </div>
+    <div class="data-note">
+      <b>About this data.</b> Bills and amendments come from the Congress.gov API. Congressional trades are scraped from Senate financial disclosures only — the House's disclosures are scanned PDF images and are not included. Lobbying data comes from the Senate LDA API. Data refreshes once daily via a scheduled job. Sector definitions (ETF, keyword list, constituent companies) are a fixed, hand-curated starting point — not derived from live ETF holdings data — and should be reviewed periodically.
+    </div>
+  </section>
+
+  <footer>
+    <span>Legislative Alpha — a project by Alessandro Brunelli</span>
+    <span id="footerUpdated">Not investment advice</span>
+  </footer>
+</div>
+
+<script>
+  let DATA = null;
+  let activeSector = "ALL";
+  let activeView = "bills";
+  let openBillId = null;
+
+  function feasColor(v) {
+    if (v >= 65) return "var(--good)";
+    if (v >= 40) return "var(--warn)";
+    return "var(--bad)";
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "—";
+    try {
+      const d = new Date(iso);
+      if (isNaN(d)) return iso;
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+    } catch { return iso; }
+  }
+
+  async function loadData() {
+    try {
+      const res = await fetch("data.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      DATA = await res.json();
+      document.getElementById("statusBadge").innerHTML = `LIVE — updated <b>${fmtDate(DATA.generated_at)}</b>`;
+      document.getElementById("footerUpdated").textContent = `Not investment advice · data as of ${fmtDate(DATA.generated_at)}`;
+      renderAll();
+    } catch (err) {
+      document.getElementById("statusBadge").textContent = "DATA UNAVAILABLE";
+      document.getElementById("statusBadge").classList.add("err");
+      document.getElementById("content").innerHTML =
+        `<div class="fetch-error">Could not load data.json (${err.message}). If you're viewing this locally, data.json is written by the daily fetch script and won't exist until it has run at least once.</div>`;
+    }
+  }
+
+  function renderSectorGrid() {
+    const grid = document.getElementById("sectorGrid");
+    grid.innerHTML = "";
+    Object.entries(DATA.sectors).forEach(([code, s]) => {
+      const btn = document.createElement("button");
+      btn.className = "sector-card";
+      btn.setAttribute("aria-pressed", activeSector === code);
+      btn.style.setProperty("--accent-line", s.color);
+      btn.innerHTML = `
+        <div class="sector-top-row">
+          <span class="sector-symbol" style="color:${s.color}">$${s.etf}</span>
+        </div>
+        <div class="sector-name">${s.name}</div>
+        <div class="sector-metric-row">
+          <span class="sector-momentum" style="color:${feasColor(s.avg_momentum)}">${s.avg_momentum}</span>
+          <span class="sector-count">${s.bill_count} bills</span>
+        </div>
+      `;
+      if (activeSector === code) btn.style.setProperty("--before-bg", s.color);
+      btn.addEventListener("click", () => { activeSector = activeSector === code ? "ALL" : code; renderAll(); });
+      grid.appendChild(btn);
+    });
+    // paint the active accent bar via inline style on ::before is not directly possible; use border-top instead
+    [...grid.children].forEach((btn, i) => {
+      const code = Object.keys(DATA.sectors)[i];
+      if (activeSector === code) {
+        btn.style.boxShadow = `inset 0 2px 0 ${DATA.sectors[code].color}`;
+      }
+    });
+  }
+
+  function renderFilterTabs() {
+    const wrap = document.getElementById("filterTabs");
+    wrap.innerHTML = "";
+    const options = [["ALL", "All sectors"], ...Object.entries(DATA.sectors).map(([c, s]) => [c, `$${s.etf}`])];
+    options.forEach(([code, label]) => {
+      const btn = document.createElement("button");
+      btn.className = "filter-tab" + (activeSector === code ? " active" : "");
+      btn.textContent = label;
+      btn.addEventListener("click", () => { activeSector = code; renderAll(); });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function renderViewTabs() {
+    document.querySelectorAll(".view-tab").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.view === activeView);
+    });
+  }
+
+  function filterBySector(list) {
+    return activeSector === "ALL" ? list : list.filter(x => x.sector === activeSector);
+  }
+
+  function renderBills() {
+    const bills = filterBySector(DATA.bills).slice().sort((a, b) => b.momentum - a.momentum);
+    if (bills.length === 0) return `<div class="empty-note">No matched bills in this sector for the current data window.</div>`;
+    return `<div class="item-list">${bills.map(b => {
+      const sc = DATA.sectors[b.sector];
+      const open = openBillId === b.id;
+      return `
+      <div class="bill-card ${open ? "open" : ""}" data-bill="${b.id}">
+        <button class="bill-header-btn" aria-expanded="${open}">
+          <div>
+            <div class="bill-id-row">
+              <span class="bill-number">${b.number}</span>
+              <span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">$${sc.etf}</span>
+              <span class="status-tag">${b.status}</span>
+              ${b.sector_trade_flag ? `<span class="trade-flag"><span class="dot"></span>Sector trade before filing</span>` : ""}
+            </div>
+            <div class="bill-title">${b.title}</div>
+            <div class="bill-meta">${b.sponsor ? `${b.sponsor.name} (${b.sponsor.party}-${b.sponsor.state})` : "Sponsor unknown"} · Introduced ${fmtDate(b.introduced_date)} · ${b.cosponsor_count || 0} cosponsors</div>
+          </div>
+          <div class="momentum-block">
+            <div class="momentum-num" style="color:${feasColor(b.momentum)}">${b.momentum}</div>
+            <div class="momentum-label">Momentum</div>
+            <div class="momentum-bar-track"><div class="momentum-bar-fill" style="width:${b.momentum}%; background:${feasColor(b.momentum)}"></div></div>
+          </div>
+          <div class="chevron">›</div>
+        </button>
+        <div class="bill-detail">
+          <div class="bill-detail-inner">
+            <span class="detail-eyebrow">Latest action</span>
+            <div class="detail-row"><span>${fmtDate(b.latest_action?.date)} — ${b.latest_action?.text || "—"}</span></div>
+            <span class="detail-eyebrow">Amendments (${(b.amendments || []).length})</span>
+            ${(b.amendments || []).length === 0
+              ? `<div class="empty-note">No amendments filed yet.</div>`
+              : b.amendments.map(a => `
+                <div class="amendment-item">
+                  <div class="amendment-top">
+                    <span class="amendment-number">${a.number}</span>
+                    <span class="amendment-date">${fmtDate(a.submitted_date)}</span>
+                  </div>
+                  <div>${a.purpose || a.latest_action || "No description available."}</div>
+                </div>
+              `).join("")}
+            <div style="margin-top:12px;"><a class="bill-link" href="${b.congress_gov_url}" target="_blank" rel="noopener">View on Congress.gov →</a></div>
+          </div>
+        </div>
+      </div>`;
+    }).join("")}</div>`;
+  }
+
+  function renderTrades() {
+    const trades = filterBySector(DATA.trades).slice().sort((a, b) => new Date(b.filed_date) - new Date(a.filed_date));
+    if (trades.length === 0) return `<div class="empty-note">No tracked-ticker Senate trades disclosed in the current data window.</div>`;
+    return `<div class="data-table-wrap"><table class="data-table">
+      <thead><tr><th>Filed</th><th>Senator</th><th>Ticker</th><th>Company</th><th>Type</th><th>Amount</th><th>Tx Date</th></tr></thead>
+      <tbody>${trades.map(t => `
+        <tr>
+          <td>${t.filed_date}</td>
+          <td>${t.senator}</td>
+          <td class="row-ticker">${t.ticker}</td>
+          <td>${t.company}</td>
+          <td class="type-${t.type.toLowerCase().split(" ")[0]}">${t.type}</td>
+          <td>${t.amount_range}</td>
+          <td>${t.transaction_date}</td>
+        </tr>
+      `).join("")}</tbody>
+    </table></div>`;
+  }
+
+  function renderLobbying() {
+    const filings = filterBySector(DATA.lobbying).slice().sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date));
+    if (filings.length === 0) return `<div class="empty-note">No lobbying filings found in the current data window.</div>`;
+    return `<div class="data-table-wrap"><table class="data-table">
+      <thead><tr><th>Posted</th><th>Client</th><th>Registrant</th><th>Filing</th><th>Income</th><th>Issues</th></tr></thead>
+      <tbody>${filings.map(l => `
+        <tr>
+          <td>${fmtDate(l.posted_date)}</td>
+          <td>${l.client_name || l.company}</td>
+          <td>${l.registrant_name || "—"}</td>
+          <td><a class="bill-link" href="${l.filing_url}" target="_blank" rel="noopener">${l.filing_type}</a></td>
+          <td>${l.income ? "$" + Number(l.income).toLocaleString() : "—"}</td>
+          <td>${(l.issues || []).map(i => `<span class="issue-pill">${i}</span>`).join("")}</td>
+        </tr>
+      `).join("")}</tbody>
+    </table></div>`;
+  }
+
+  function renderContent() {
+    const el = document.getElementById("content");
+    if (activeView === "bills") el.innerHTML = renderBills();
+    else if (activeView === "trades") el.innerHTML = renderTrades();
+    else el.innerHTML = renderLobbying();
+
+    el.querySelectorAll(".bill-header-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.closest(".bill-card").dataset.bill;
+        openBillId = openBillId === id ? null : id;
+        renderContent();
+      });
+    });
+  }
+
+  function renderAll() {
+    renderSectorGrid();
+    renderFilterTabs();
+    renderViewTabs();
+    renderContent();
+  }
+
+  document.getElementById("viewTabs").addEventListener("click", (e) => {
+    const btn = e.target.closest(".view-tab");
+    if (!btn) return;
+    activeView = btn.dataset.view;
+    openBillId = null;
+    renderAll();
+  });
+
+  loadData();
+</script>
+</body>
+</html>

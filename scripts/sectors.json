@@ -1,0 +1,279 @@
+{
+  "PAVE": {
+    "name": "Infrastructure & Materials",
+    "etf": "PAVE",
+    "color": "#C98A3B",
+    "keywords": [
+      "infrastructure", "highway", "bridge", "surface transportation", "transit",
+      "water infrastructure", "wastewater", "public works", "road construction",
+      "transportation reauthorization", "critical minerals", "permitting reform",
+      "aggregate", "cement", "steel", "railroad", "port infrastructure", "dam safety"
+    ],
+    "constituents": {
+      "VMC": { "name": "Vulcan Materials", "lda_search": "vulcan materials" },
+      "MLM": { "name": "Martin Marietta Materials", "lda_search": "martin marietta" },
+      "NUE": { "name": "Nucor", "lda_search": "nucor" },
+      "CAT": { "name": "Caterpillar", "lda_search": "caterpillar" },
+      "URI": { "name": "United Rentals", "lda_search": "united rentals" },
+      "DE": { "name": "Deere & Company", "lda_search": "deere" },
+      "EMR": { "name": "Emerson Electric", "lda_search": "emerson electric" },
+      "PWR": { "name": "Quanta Services", "lda_search": "quanta services" },
+      "J": { "name": "Jacobs Solutions", "lda_search": "jacobs engineering" },
+      "STLD": { "name": "Steel Dynamics", "lda_search": "steel dynamics" },
+      "GVA": { "name": "Granite Construction", "lda_search": "granite construction" },
+      "ACM": { "name": "AECOM", "lda_search": "aecom" },
+      "MAS": { "name": "Masco Corporation", "lda_search": "masco" },
+      "AGCO": { "name": "AGCO Corporation", "lda_search": "agco" },
+      "WMS": { "name": "Advanced Drainage Systems", "lda_search": "advanced drainage" }
+    }
+  },
+  "CIBR": {
+    "name": "Cybersecurity",
+    "etf": "CIBR",
+    "color": "#3F7469",
+    "keywords": [
+      "cybersecurity", "cyber", "ransomware", "data breach", "incident reporting",
+      "zero trust", "critical infrastructure protection", "information security",
+      "network security", "encryption", "post-quantum cryptography"
+    ],
+    "constituents": {
+      "CRWD": { "name": "CrowdStrike", "lda_search": "crowdstrike" },
+      "PANW": { "name": "Palo Alto Networks", "lda_search": "palo alto networks" },
+      "FTNT": { "name": "Fortinet", "lda_search": "fortinet" },
+      "ZS": { "name": "Zscaler", "lda_search": "zscaler" },
+      "CYBR": { "name": "CyberArk", "lda_search": "cyberark" },
+      "OKTA": { "name": "Okta", "lda_search": "okta" },
+      "S": { "name": "SentinelOne", "lda_search": "sentinelone" },
+      "NET": { "name": "Cloudflare", "lda_search": "cloudflare" },
+      "CHKP": { "name": "Check Point Software", "lda_search": "check point" },
+      "GEN": { "name": "Gen Digital", "lda_search": "gen digital" },
+      "QLYS": { "name": "Qualys", "lda_search": "qualys" },
+      "TENB": { "name": "Tenable Holdings", "lda_search": "tenable" },
+      "VRNS": { "name": "Varonis Systems", "lda_search": "varonis" },
+      "RPD": { "name": "Rapid7", "lda_search": "rapid7" },
+      "CACI": { "name": "CACI International", "lda_search": "caci international" }
+    }
+  },
+  "GRID": {
+    "name": "Grid & Electrification",
+    "etf": "GRID",
+    "color": "#9B4638",
+    "keywords": [
+      "grid", "transmission", "electrification", "interconnection", "permitting reform",
+      "smart grid", "distributed energy", "utility resilience", "grid modernization",
+      "battery manufacturing", "ev charging", "electric vehicle charging"
+    ],
+    "constituents": {
+      "ETN": { "name": "Eaton Corporation", "lda_search": "eaton corp" },
+      "HUBB": { "name": "Hubbell", "lda_search": "hubbell" },
+      "AME": { "name": "AMETEK", "lda_search": "ametek" },
+      "POWL": { "name": "Powell Industries", "lda_search": "powell industries" },
+      "NVT": { "name": "nVent Electric", "lda_search": "nvent" },
+      "SO": { "name": "Southern Company", "lda_search": "southern company" },
+      "DUK": { "name": "Duke Energy", "lda_search": "duke energy" },
+      "AEP": { "name": "American Electric Power", "lda_search": "american electric power" },
+      "XEL": { "name": "Xcel Energy", "lda_search": "xcel energy" },
+      "MYRG": { "name": "MYR Group", "lda_search": "myr group" },
+      "BE": { "name": "Bloom Energy", "lda_search": "bloom energy" },
+      "ENPH": { "name": "Enphase Energy", "lda_search": "enphase energy" },
+      "SEDG": { "name": "SolarEdge Technologies", "lda_search": "solaredge" }
+    }
+  },
+  "QTUM": {
+    "name": "Quantum Computing",
+    "etf": "QTUM",
+    "color": "#6B5CA5",
+    "keywords": [
+      "quantum", "quantum computing", "quantum sensing", "quantum encryption",
+      "post-quantum", "national quantum initiative"
+    ],
+    "constituents": {
+      "IONQ": { "name": "IonQ", "lda_search": "ionq" },
+      "RGTI": { "name": "Rigetti Computing", "lda_search": "rigetti" },
+      "QBTS": { "name": "D-Wave Quantum", "lda_search": "d-wave" },
+      "IBM": { "name": "IBM", "lda_search": "international business machines" },
+      "MSFT": { "name": "Microsoft", "lda_search": "microsoft corp" },
+      "HON": { "name": "Honeywell", "lda_search": "honeywell" },
+      "NVDA": { "name": "NVIDIA", "lda_search": "nvidia" },
+      "GOOGL": { "name": "Alphabet", "lda_search": "google" },
+      "AMZN": { "name": "Amazon.com", "lda_search": "amazon.com" },
+      "ARQQ": { "name": "Arqit Quantum", "lda_search": "arqit" }
+    }
+  },
+  "XBI": {
+    "name": "Biotech",
+    "etf": "XBI",
+    "color": "#2C6E8C",
+    "keywords": [
+      "biotech", "biotechnology", "drug pricing", "fda approval", "orphan drug",
+      "biosimilar", "gene therapy", "clinical trial", "pharmaceutical",
+      "biomedical research", "nih funding", "medicare drug negotiation"
+    ],
+    "constituents": {
+      "VRTX": { "name": "Vertex Pharmaceuticals", "lda_search": "vertex pharmaceuticals" },
+      "REGN": { "name": "Regeneron", "lda_search": "regeneron" },
+      "GILD": { "name": "Gilead Sciences", "lda_search": "gilead sciences" },
+      "AMGN": { "name": "Amgen", "lda_search": "amgen" },
+      "MRNA": { "name": "Moderna", "lda_search": "moderna" },
+      "BIIB": { "name": "Biogen", "lda_search": "biogen" },
+      "ALNY": { "name": "Alnylam Pharmaceuticals", "lda_search": "alnylam" },
+      "INCY": { "name": "Incyte", "lda_search": "incyte" },
+      "BMRN": { "name": "BioMarin Pharmaceutical", "lda_search": "biomarin" },
+      "EXEL": { "name": "Exelixis", "lda_search": "exelixis" },
+      "SRPT": { "name": "Sarepta Therapeutics", "lda_search": "sarepta" },
+      "NBIX": { "name": "Neurocrine Biosciences", "lda_search": "neurocrine" },
+      "UTHR": { "name": "United Therapeutics", "lda_search": "united therapeutics" }
+    }
+  },
+  "ITA": {
+    "name": "Defense",
+    "etf": "ITA",
+    "color": "#5B4636",
+    "keywords": [
+      "defense", "national defense authorization", "ndaa", "armed services",
+      "military procurement", "pentagon", "munitions", "missile defense"
+    ],
+    "constituents": {
+      "LMT": { "name": "Lockheed Martin", "lda_search": "lockheed martin" },
+      "RTX": { "name": "RTX Corporation", "lda_search": "raytheon" },
+      "NOC": { "name": "Northrop Grumman", "lda_search": "northrop grumman" },
+      "GD": { "name": "General Dynamics", "lda_search": "general dynamics" },
+      "BA": { "name": "Boeing", "lda_search": "boeing" },
+      "LHX": { "name": "L3Harris Technologies", "lda_search": "l3harris" },
+      "HII": { "name": "Huntington Ingalls Industries", "lda_search": "huntington ingalls" },
+      "TXT": { "name": "Textron", "lda_search": "textron" },
+      "AXON": { "name": "Axon Enterprise", "lda_search": "axon enterprise" },
+      "KTOS": { "name": "Kratos Defense & Security", "lda_search": "kratos defense" },
+      "LDOS": { "name": "Leidos Holdings", "lda_search": "leidos" },
+      "BWXT": { "name": "BWX Technologies", "lda_search": "bwx technologies" }
+    }
+  },
+  "UFO": {
+    "name": "Space",
+    "etf": "UFO",
+    "color": "#4A5A6B",
+    "keywords": [
+      "space", "satellite", "launch vehicle", "nasa", "space force",
+      "commercial space", "orbital", "spectrum allocation"
+    ],
+    "constituents": {
+      "RKLB": { "name": "Rocket Lab", "lda_search": "rocket lab" },
+      "IRDM": { "name": "Iridium Communications", "lda_search": "iridium communications" },
+      "VSAT": { "name": "Viasat", "lda_search": "viasat" },
+      "ASTS": { "name": "AST SpaceMobile", "lda_search": "ast spacemobile" },
+      "GSAT": { "name": "Globalstar", "lda_search": "globalstar" },
+      "LMT": { "name": "Lockheed Martin", "lda_search": "lockheed martin" },
+      "NOC": { "name": "Northrop Grumman", "lda_search": "northrop grumman" },
+      "BA": { "name": "Boeing", "lda_search": "boeing" },
+      "MAXR": { "name": "Maxar Technologies", "lda_search": "maxar technologies" },
+      "RDW": { "name": "Redwire Corporation", "lda_search": "redwire" }
+    }
+  },
+  "URA": {
+    "name": "Uranium & Nuclear",
+    "etf": "URA",
+    "color": "#7A6A00",
+    "keywords": [
+      "nuclear", "uranium", "reactor", "small modular reactor", "smr",
+      "nuclear regulatory commission", "nuclear fuel", "enrichment", "nuclear license"
+    ],
+    "constituents": {
+      "CCJ": { "name": "Cameco", "lda_search": "cameco" },
+      "UEC": { "name": "Uranium Energy Corp", "lda_search": "uranium energy corp" },
+      "DNN": { "name": "Denison Mines", "lda_search": "denison mines" },
+      "SMR": { "name": "NuScale Power", "lda_search": "nuscale" },
+      "OKLO": { "name": "Oklo", "lda_search": "oklo" },
+      "CEG": { "name": "Constellation Energy", "lda_search": "constellation energy" },
+      "VST": { "name": "Vistra", "lda_search": "vistra" },
+      "LEU": { "name": "Centrus Energy", "lda_search": "centrus energy" },
+      "BWXT": { "name": "BWX Technologies", "lda_search": "bwx technologies" },
+      "NNE": { "name": "Nano Nuclear Energy", "lda_search": "nano nuclear" },
+      "UUUU": { "name": "Energy Fuels", "lda_search": "energy fuels" }
+    }
+  },
+  "SMH": {
+    "name": "Semiconductors & AI",
+    "etf": "SMH",
+    "color": "#B5533C",
+    "keywords": [
+      "semiconductor", "chips act", "artificial intelligence", "ai safety",
+      "export controls", "advanced computing", "microchip", "chip manufacturing",
+      "domestic chip production"
+    ],
+    "constituents": {
+      "NVDA": { "name": "NVIDIA", "lda_search": "nvidia" },
+      "TSM": { "name": "Taiwan Semiconductor", "lda_search": "taiwan semiconductor" },
+      "AVGO": { "name": "Broadcom", "lda_search": "broadcom" },
+      "AMD": { "name": "Advanced Micro Devices", "lda_search": "advanced micro devices" },
+      "INTC": { "name": "Intel", "lda_search": "intel corp" },
+      "QCOM": { "name": "Qualcomm", "lda_search": "qualcomm" },
+      "MU": { "name": "Micron Technology", "lda_search": "micron technology" },
+      "TXN": { "name": "Texas Instruments", "lda_search": "texas instruments" },
+      "AMAT": { "name": "Applied Materials", "lda_search": "applied materials" },
+      "LRCX": { "name": "Lam Research", "lda_search": "lam research" },
+      "KLAC": { "name": "KLA Corporation", "lda_search": "kla corp" },
+      "MRVL": { "name": "Marvell Technology", "lda_search": "marvell technology" }
+    }
+  },
+  "ICLN": {
+    "name": "Clean Energy",
+    "etf": "ICLN",
+    "color": "#5A8F4C",
+    "keywords": [
+      "clean energy", "renewable energy", "solar", "wind energy", "inflation reduction act",
+      "clean energy tax credit", "carbon capture", "geothermal", "hydrogen fuel"
+    ],
+    "constituents": {
+      "FSLR": { "name": "First Solar", "lda_search": "first solar" },
+      "ENPH": { "name": "Enphase Energy", "lda_search": "enphase energy" },
+      "SEDG": { "name": "SolarEdge Technologies", "lda_search": "solaredge" },
+      "NEE": { "name": "NextEra Energy", "lda_search": "nextera energy" },
+      "RUN": { "name": "Sunrun", "lda_search": "sunrun" },
+      "BE": { "name": "Bloom Energy", "lda_search": "bloom energy" },
+      "PLUG": { "name": "Plug Power", "lda_search": "plug power" },
+      "ORA": { "name": "Ormat Technologies", "lda_search": "ormat technologies" },
+      "AY": { "name": "Atlantica Sustainable Infrastructure", "lda_search": "atlantica sustainable" }
+    }
+  },
+  "MOO": {
+    "name": "Agriculture",
+    "etf": "MOO",
+    "color": "#8A7A3C",
+    "keywords": [
+      "agriculture", "farm bill", "crop insurance", "farm subsidy", "farm credit",
+      "agricultural trade", "fertilizer", "biofuel", "renewable fuel standard"
+    ],
+    "constituents": {
+      "DE": { "name": "Deere & Company", "lda_search": "deere" },
+      "AGCO": { "name": "AGCO Corporation", "lda_search": "agco" },
+      "ADM": { "name": "Archer-Daniels-Midland", "lda_search": "archer-daniels-midland" },
+      "BG": { "name": "Bunge Global", "lda_search": "bunge" },
+      "CF": { "name": "CF Industries Holdings", "lda_search": "cf industries" },
+      "MOS": { "name": "The Mosaic Company", "lda_search": "mosaic company" },
+      "CTVA": { "name": "Corteva", "lda_search": "corteva" },
+      "FMC": { "name": "FMC Corporation", "lda_search": "fmc corp" },
+      "NTR": { "name": "Nutrien", "lda_search": "nutrien" }
+    }
+  },
+  "FINX": {
+    "name": "Financial Technology",
+    "etf": "FINX",
+    "color": "#3C6E8F",
+    "keywords": [
+      "fintech", "financial technology", "digital payments", "stablecoin",
+      "cryptocurrency regulation", "digital asset", "banking regulation",
+      "consumer financial protection", "payment processing"
+    ],
+    "constituents": {
+      "V": { "name": "Visa", "lda_search": "visa inc" },
+      "MA": { "name": "Mastercard", "lda_search": "mastercard" },
+      "PYPL": { "name": "PayPal Holdings", "lda_search": "paypal" },
+      "SQ": { "name": "Block, Inc.", "lda_search": "block, inc" },
+      "COIN": { "name": "Coinbase Global", "lda_search": "coinbase" },
+      "SOFI": { "name": "SoFi Technologies", "lda_search": "sofi technologies" },
+      "AFRM": { "name": "Affirm Holdings", "lda_search": "affirm holdings" },
+      "FI": { "name": "Fiserv", "lda_search": "fiserv" },
+      "GPN": { "name": "Global Payments", "lda_search": "global payments" }
+    }
+  }
+}

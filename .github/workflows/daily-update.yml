@@ -1,0 +1,38 @@
+name: Daily data update
+
+on:
+  schedule:
+    # 10:00 UTC = 6:00 AM ET (5:00 AM during daylight saving time)
+    - cron: "0 10 * * *"
+  workflow_dispatch: {}  # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run fetch script
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: python scripts/fetch_data.py
+
+      - name: Commit and push data.json if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "Daily data update: $(date -u +'%Y-%m-%d')"
+          git push
