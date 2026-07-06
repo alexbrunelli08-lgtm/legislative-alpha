@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T21:43:46Z",
+  "generated_at": "2026-07-06T18:26:13Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,7 +7,7 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 20,
+      "bill_count": 26,
       "trade_count": 0,
       "lobbying_count": 360,
       "avg_momentum": 35
@@ -17,7 +17,7 @@
       "short": "Cybersecurity",
       "etf": "CIBR",
       "color": "#3F7469",
-      "bill_count": 4,
+      "bill_count": 3,
       "trade_count": 0,
       "lobbying_count": 288,
       "avg_momentum": 36
@@ -47,10 +47,10 @@
       "short": "Biotech",
       "etf": "XBI",
       "color": "#2C6E8C",
-      "bill_count": 2,
+      "bill_count": 1,
       "trade_count": 0,
       "lobbying_count": 314,
-      "avg_momentum": 36
+      "avg_momentum": 38
     },
     "ITA": {
       "name": "Defense",
@@ -60,17 +60,17 @@
       "bill_count": 4,
       "trade_count": 0,
       "lobbying_count": 300,
-      "avg_momentum": 43
+      "avg_momentum": 42
     },
     "UFO": {
       "name": "Space",
       "short": "Space",
       "etf": "UFO",
       "color": "#4A5A6B",
-      "bill_count": 2,
+      "bill_count": 3,
       "trade_count": 0,
       "lobbying_count": 250,
-      "avg_momentum": 35
+      "avg_momentum": 29
     },
     "URA": {
       "name": "Uranium & Nuclear",
@@ -97,30 +97,30 @@
       "short": "Clean Energy",
       "etf": "ICLN",
       "color": "#5A8F4C",
-      "bill_count": 0,
+      "bill_count": 2,
       "trade_count": 0,
       "lobbying_count": 165,
-      "avg_momentum": 0
+      "avg_momentum": 15
     },
     "MOO": {
       "name": "Agriculture",
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 6,
+      "bill_count": 9,
       "trade_count": 0,
       "lobbying_count": 206,
-      "avg_momentum": 33
+      "avg_momentum": 35
     },
     "FINX": {
       "name": "Financial Technology",
       "short": "Fintech",
       "etf": "FINX",
       "color": "#3C6E8F",
-      "bill_count": 16,
+      "bill_count": 5,
       "trade_count": 0,
       "lobbying_count": 190,
-      "avg_momentum": 30
+      "avg_momentum": 27
     },
     "OTHER": {
       "name": "Other / Unclassified",
@@ -134,456 +134,6 @@
     }
   },
   "bills": [
-    {
-      "id": "119-HR-2109",
-      "number": "HR 2109",
-      "title": "Cybersecurity for Rural Water Systems Act",
-      "sector": "CIBR",
-      "introduced_date": "2025-03-14",
-      "latest_action": {
-        "date": "2025-04-04",
-        "text": "Referred to the Subcommittee on Commodity Markets, Digital Assets, and Rural Development."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/2109",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Davis, Donald G. [D-NC-1]",
-        "party": "D",
-        "state": "NC"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 5,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-6599",
-      "number": "HR 6599",
-      "title": "Leasing and Infrastructure Act of 2025",
-      "sector": "PAVE",
-      "introduced_date": "2025-12-10",
-      "latest_action": {
-        "date": "2026-05-20",
-        "text": "Committee Hearings Held"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6599",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Smith, Jason [R-MO-8]",
-        "party": "R",
-        "state": "MO"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-S-4212",
-      "number": "S 4212",
-      "title": "Prioritizing the Warfighter in Defense Contracting Act of 2026",
-      "sector": "ITA",
-      "introduced_date": "2026-03-25",
-      "latest_action": {
-        "date": "2026-03-25",
-        "text": "Read twice and referred to the Committee on Armed Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4212",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Warren, Elizabeth [D-MA]",
-        "party": "D",
-        "state": "MA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-164",
-      "number": "SJRES 164",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2022-04: Insufficient Data Protection or Security for Sensitive Consumer Information\".",
-      "sector": "FINX",
-      "introduced_date": "2026-04-13",
-      "latest_action": {
-        "date": "2026-04-13",
-        "text": "Read twice and referred to the Committee on Banking, Housing, and Urban Affairs."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/164",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Rosen, Jacky [D-NV]",
-        "party": "D",
-        "state": "NV"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-179",
-      "number": "HJRES 179",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2022-04: Insufficient Data Protection or Security for Sensitive Consumer Information\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-07",
-      "latest_action": {
-        "date": "2026-05-07",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/179",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Waters, Maxine [D-CA-43]",
-        "party": "D",
-        "state": "CA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-132",
-      "number": "SJRES 132",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Examinations for Risks to Active-Duty Servicemembers and Their Covered Dependents\".",
-      "sector": "FINX",
-      "introduced_date": "2026-03-18",
-      "latest_action": {
-        "date": "2026-05-13",
-        "text": "Motion to proceed to consideration of measure rejected in Senate by Yea-Nay Vote. 48 - 52. Record Vote Number: 121. (consideration: CR S2264-2265)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/132",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Reed, Jack [D-RI]",
-        "party": "D",
-        "state": "RI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 15,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-178",
-      "number": "HJRES 178",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Examinations for Risks to Active-Duty Servicemembers and Their Covered Dependents\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-07",
-      "latest_action": {
-        "date": "2026-05-07",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/178",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Gonzalez, Vicente [D-TX-34]",
-        "party": "D",
-        "state": "TX"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8708",
-      "number": "HR 8708",
-      "title": "Main Street BRIDGE Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-05-07",
-      "latest_action": {
-        "date": "2026-05-07",
-        "text": "Referred to the Committee on Small Business, and in addition to the Committee on Financial Services, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8708",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Scholten, Hillary J. [D-MI-3]",
-        "party": "D",
-        "state": "MI"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 1,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-147",
-      "number": "SJRES 147",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Statement of Policy Regarding Prohibition on Abusive Acts or Practices\".",
-      "sector": "FINX",
-      "introduced_date": "2026-03-25",
-      "latest_action": {
-        "date": "2026-05-13",
-        "text": "Motion to proceed to consideration of measure rejected in Senate by Voice Vote. (consideration: CR S2271-2272)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/147",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Durbin, Richard J. [D-IL]",
-        "party": "D",
-        "state": "IL"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 15,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-180",
-      "number": "HJRES 180",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Statement of Policy Regarding Prohibition on Abusive Acts or Practices\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-11",
-      "latest_action": {
-        "date": "2026-05-11",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/180",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Garcia, Sylvia R. [D-TX-29]",
-        "party": "D",
-        "state": "TX"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-173",
-      "number": "SJRES 173",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2022-07: Reasonable Investigation of Consumer Reporting Disputes\".",
-      "sector": "FINX",
-      "introduced_date": "2026-04-13",
-      "latest_action": {
-        "date": "2026-04-13",
-        "text": "Read twice and referred to the Committee on Banking, Housing, and Urban Affairs."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/173",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Duckworth, Tammy [D-IL]",
-        "party": "D",
-        "state": "IL"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-181",
-      "number": "HJRES 181",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2022-07: Reasonable Investigation of Consumer Reporting Disputes\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-11",
-      "latest_action": {
-        "date": "2026-05-11",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/181",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Garcia, Sylvia R. [D-TX-29]",
-        "party": "D",
-        "state": "TX"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-3521",
-      "number": "HR 3521",
-      "title": "Clinical Trial Modernization Act",
-      "sector": "XBI",
-      "introduced_date": "2025-05-20",
-      "latest_action": {
-        "date": "2025-05-20",
-        "text": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on Ways and Means, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3521",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Ruiz, Raul [D-CA-25]",
-        "party": "D",
-        "state": "CA"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 5,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-S-4440",
-      "number": "S 4440",
-      "title": "Clinical Trial Modernization Act",
-      "sector": "XBI",
-      "introduced_date": "2026-04-29",
-      "latest_action": {
-        "date": "2026-04-29",
-        "text": "Read twice and referred to the Committee on Finance."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4440",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Scott, Tim [R-SC]",
-        "party": "R",
-        "state": "SC"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 1,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-151",
-      "number": "SJRES 151",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Bulletin 2023-01: Unfair Billing and Collection Practices After Bankruptcy Discharges of Certain Student Loan Debts\".",
-      "sector": "FINX",
-      "introduced_date": "2026-03-26",
-      "latest_action": {
-        "date": "2026-03-26",
-        "text": "Read twice and referred to the Committee on Banking, Housing, and Urban Affairs."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/151",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Hirono, Mazie K. [D-HI]",
-        "party": "D",
-        "state": "HI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-182",
-      "number": "HJRES 182",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Bulletin 2023-01: Unfair Billing and Collection Practices After Bankruptcy Discharges of Certain Student Loan Debts\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-12",
-      "latest_action": {
-        "date": "2026-05-12",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/182",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Bynum, Janelle S. [D-OR-5]",
-        "party": "D",
-        "state": "OR"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-SJRES-160",
-      "number": "SJRES 160",
-      "title": "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2023-01: Unlawful Negative Option Marketing Practices\".",
-      "sector": "FINX",
-      "introduced_date": "2026-04-13",
-      "latest_action": {
-        "date": "2026-04-13",
-        "text": "Read twice and referred to the Committee on Banking, Housing, and Urban Affairs."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/160",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Gillibrand, Kirsten E. [D-NY]",
-        "party": "D",
-        "state": "NY"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-183",
-      "number": "HJRES 183",
-      "title": "Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Consumer Financial Protection relating to the withdrawal of the rule relating to \"Consumer Financial Protection Circular 2023-01: Unlawful Negative Option Marketing Practices\".",
-      "sector": "FINX",
-      "introduced_date": "2026-05-12",
-      "latest_action": {
-        "date": "2026-05-12",
-        "text": "Referred to the House Committee on Financial Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/183",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Bynum, Janelle S. [D-OR-5]",
-        "party": "D",
-        "state": "OR"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
     {
       "id": "119-HR-8699",
       "number": "HR 8699",
@@ -1510,31 +1060,6 @@
       "sector_trade_flag": false
     },
     {
-      "id": "119-HR-8068",
-      "number": "HR 8068",
-      "title": "National Transit Frontline Workforce Training Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-03-24",
-      "latest_action": {
-        "date": "2026-03-25",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8068",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Wilson, Frederica S. [D-FL-24]",
-        "party": "D",
-        "state": "FL"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
       "id": "119-HR-7625",
       "number": "HR 7625",
       "title": "MTS CYBER Act of 2026",
@@ -1555,6 +1080,31 @@
       },
       "committee_count": 2,
       "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-8068",
+      "number": "HR 8068",
+      "title": "National Transit Frontline Workforce Training Act",
+      "sector": "PAVE",
+      "introduced_date": "2026-03-24",
+      "latest_action": {
+        "date": "2026-03-25",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8068",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Wilson, Frederica S. [D-FL-24]",
+        "party": "D",
+        "state": "FL"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
       "amendments": [],
       "momentum": 35,
       "sector_trade_flag": false
@@ -1632,6 +1182,431 @@
       "cosponsor_count": 1,
       "amendments": [],
       "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-7662",
+      "number": "HR 7662",
+      "title": "Railroad Safety Enhancement Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-02-24",
+      "latest_action": {
+        "date": "2026-02-25",
+        "text": "Referred to the Subcommittee on Railroads, Pipelines, and Hazardous Materials."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7662",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Nehls, Troy E. [R-TX-22]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 2,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-7298",
+      "number": "HR 7298",
+      "title": "Connecting Communities Through Transit Planning Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-01-30",
+      "latest_action": {
+        "date": "2026-01-31",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7298",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Simon, Lateefah [D-CA-12]",
+        "party": "D",
+        "state": "CA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-8748",
+      "number": "HR 8748",
+      "title": "Surface Transportation Research and Development Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-05-12",
+      "latest_action": {
+        "date": "2026-05-20",
+        "text": "Ordered to be Reported (Amended) by Voice Vote."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8748",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Introduced",
+      "sponsor": {
+        "name": "Rep. Fong, Vince [R-CA-20]",
+        "party": "R",
+        "state": "CA"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 15,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5633",
+      "number": "HR 5633",
+      "title": "Agriculture Infrastructure Stability Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-09-30",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on General Farm Commodities, Risk Management, and Credit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5633",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Jackson, Ronny [R-TX-13]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5866",
+      "number": "HR 5866",
+      "title": "To require the Secretary of Agriculture to release a reversionary interest in certain land in the Black River State Forest in Millston, Wisconsin, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2025-10-28",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on Forestry and Horticulture."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5866",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Van Orden, Derrick [R-WI-3]",
+        "party": "R",
+        "state": "WI"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HRES-856",
+      "number": "HRES 856",
+      "title": "Expressing the sense of the House of Representatives that the United States Department of Agriculture should use its contingency funds and interchange authority to finance the supplemental nutrition assistance program.",
+      "sector": "MOO",
+      "introduced_date": "2025-11-04",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on Nutrition and Foreign Agriculture."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/856",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Bonamici, Suzanne [D-OR-1]",
+        "party": "D",
+        "state": "OR"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 51,
+      "amendments": [],
+      "momentum": 50,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5710",
+      "number": "HR 5710",
+      "title": "Bridge the Gap for Rural Communities Act",
+      "sector": "PAVE",
+      "introduced_date": "2025-10-08",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on General Farm Commodities, Risk Management, and Credit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5710",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Crawford, Eric A. \"Rick\" [R-AR-1]",
+        "party": "R",
+        "state": "AR"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 31,
+      "amendments": [],
+      "momentum": 47,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5564",
+      "number": "HR 5564",
+      "title": "To amend the Federal Insecticide, Fungicide, and Rodenticide Act to provide for improved coordination between the Administrator of the Environmental Protection Agency and the Secretary of Agriculture, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2025-09-26",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on Conservation, Research, and Biotechnology."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5564",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Arrington, Jodey C. [R-TX-19]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-2355",
+      "number": "HR 2355",
+      "title": "Collegiate Housing and Infrastructure Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-03-26",
+      "latest_action": {
+        "date": "2025-03-26",
+        "text": "Referred to the House Committee on Ways and Means."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/2355",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Moore, Blake D. [R-UT-1]",
+        "party": "R",
+        "state": "UT"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 23,
+      "amendments": [],
+      "momentum": 44,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5617",
+      "number": "HR 5617",
+      "title": "Geothermal Gold Book Development Act",
+      "sector": "ICLN",
+      "introduced_date": "2025-09-30",
+      "latest_action": {
+        "date": "2026-05-20",
+        "text": "Placed on the Union Calendar, Calendar No. 573."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5617",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Introduced",
+      "sponsor": {
+        "name": "Rep. Ansari, Yassamin [D-AZ-3]",
+        "party": "D",
+        "state": "AZ"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 15,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-7273",
+      "number": "HR 7273",
+      "title": "NASA Reauthorization Act of 2026",
+      "sector": "UFO",
+      "introduced_date": "2026-01-30",
+      "latest_action": {
+        "date": "2026-02-04",
+        "text": "Ordered to be Reported (Amended) by the Yeas and Nays: 37 - 0."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7273",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Introduced",
+      "sponsor": {
+        "name": "Rep. Babin, Brian [R-TX-36]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 16,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5638",
+      "number": "HR 5638",
+      "title": "Geothermal Royalty Reform Act",
+      "sector": "ICLN",
+      "introduced_date": "2025-09-30",
+      "latest_action": {
+        "date": "2026-05-20",
+        "text": "Placed on the Union Calendar, Calendar No. 575."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5638",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Introduced",
+      "sponsor": {
+        "name": "Rep. Kennedy, Mike [R-UT-3]",
+        "party": "R",
+        "state": "UT"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 15,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5526",
+      "number": "HR 5526",
+      "title": "Biosimilar Red Tape Elimination Act",
+      "sector": "XBI",
+      "introduced_date": "2025-09-19",
+      "latest_action": {
+        "date": "2025-09-19",
+        "text": "Referred to the House Committee on Energy and Commerce."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5526",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Pfluger, August [R-TX-11]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 8,
+      "amendments": [],
+      "momentum": 38,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-3548",
+      "number": "HR 3548",
+      "title": "Infrastructure Expansion Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-05-21",
+      "latest_action": {
+        "date": "2025-05-21",
+        "text": "Referred to the House Committee on the Judiciary."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3548",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Langworthy, Nicholas A. [R-NY-23]",
+        "party": "R",
+        "state": "NY"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 5,
+      "amendments": [],
+      "momentum": 37,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-4380",
+      "number": "HR 4380",
+      "title": "To rename the portion of United States Highway 75 between President George Bush Turnpike and United States Highway 380 as the \"U.S. Congressman and Prisoner of War Sam Johnson Memorial Highway\".",
+      "sector": "PAVE",
+      "introduced_date": "2025-07-14",
+      "latest_action": {
+        "date": "2025-07-15",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/4380",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Self, Keith [R-TX-3]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-9073",
+      "number": "HR 9073",
+      "title": "To amend section 844 of the William M. (Mac) Thornberry National Defense Authorization Act for Fiscal Year 2021 to change the applicability of the amendments made by such section, and for other purposes.",
+      "sector": "ITA",
+      "introduced_date": "2026-05-29",
+      "latest_action": {
+        "date": "2026-05-29",
+        "text": "Referred to the House Committee on Armed Services."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9073",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Olszewski, Johnny [D-MD-2]",
+        "party": "D",
+        "state": "MD"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-8899",
+      "number": "HR 8899",
+      "title": "Digital Asset PARITY Act",
+      "sector": "FINX",
+      "introduced_date": "2026-05-19",
+      "latest_action": {
+        "date": "2026-05-19",
+        "text": "Referred to the House Committee on Ways and Means."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8899",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Miller, Max L. [R-OH-7]",
+        "party": "R",
+        "state": "OH"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 36,
       "sector_trade_flag": false
     }
   ],
@@ -24912,6 +24887,23 @@
       "sector": "XBI",
       "ticker": "BMRN",
       "company": "BioMarin Pharmaceutical",
+      "client_name": "BIOMARIN PHARMACEUTICAL, INC.",
+      "registrant_name": "VENN STRATEGIES",
+      "filing_type": "2nd Quarter - Amendment",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2017,
+      "income": "30000.00",
+      "posted_date": "2026-07-06T09:24:23-04:00",
+      "issues": [
+        "Health Issues",
+        "Taxation/Internal Revenue Code"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/7bc4486e-c2bd-4f04-a0ea-9b2879aad364/print/"
+    },
+    {
+      "sector": "XBI",
+      "ticker": "BMRN",
+      "company": "BioMarin Pharmaceutical",
       "client_name": "BIOMARIN PHARMACEUTICAL INC.",
       "registrant_name": "BIOMARIN PHARMACEUTICAL INC.",
       "filing_type": "1st Quarter - Report",
@@ -25315,23 +25307,6 @@
         "Health Issues"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/0c8a7234-6725-49d7-b443-77d84323deb0/print/"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "BMRN",
-      "company": "BioMarin Pharmaceutical",
-      "client_name": "BIOMARIN PHARMACEUTICAL INC.",
-      "registrant_name": "BIOMARIN PHARMACEUTICAL INC.",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2024,
-      "income": null,
-      "posted_date": "2024-04-22T17:31:04-04:00",
-      "issues": [
-        "Health Issues",
-        "Medicare/Medicaid"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/0029ce4f-2a6c-499f-9d23-8f0f3c9d8317/print/"
     },
     {
       "sector": "XBI",
@@ -31160,6 +31135,22 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS",
+      "registrant_name": "PARK GOVERNMENT RELATIONS, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "20000.00",
+      "posted_date": "2026-07-06T13:08:26-04:00",
+      "issues": [
+        "Veterans"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/10807c59-a8bb-4859-bcea-b85548abce55/print/"
+    },
+    {
+      "sector": "ITA",
+      "ticker": "LDOS",
+      "company": "Leidos Holdings",
+      "client_name": "LEIDOS",
       "registrant_name": "THE OB-C GROUP, LLC",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -31596,22 +31587,6 @@
         "Defense"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/e254b1ae-7e68-404a-a92d-f3a8c57506b4/print/"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "LDOS",
-      "company": "Leidos Holdings",
-      "client_name": "LEIDOS INC",
-      "registrant_name": "POTOMAC CAPITOL ASSOCIATES, INC.",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": null,
-      "posted_date": "2026-01-08T22:11:17-05:00",
-      "issues": [
-        "Defense"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/a7451688-ede1-4d30-baac-a4b8566f0774/print/"
     },
     {
       "sector": "ITA",
