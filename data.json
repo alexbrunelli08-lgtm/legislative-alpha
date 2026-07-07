@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T18:26:13Z",
+  "generated_at": "2026-07-07T17:41:14Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -17,7 +17,7 @@
       "short": "Cybersecurity",
       "etf": "CIBR",
       "color": "#3F7469",
-      "bill_count": 3,
+      "bill_count": 2,
       "trade_count": 0,
       "lobbying_count": 288,
       "avg_momentum": 36
@@ -87,20 +87,20 @@
       "short": "Semis & AI",
       "etf": "SMH",
       "color": "#B5533C",
-      "bill_count": 3,
+      "bill_count": 1,
       "trade_count": 1,
       "lobbying_count": 300,
-      "avg_momentum": 23
+      "avg_momentum": 15
     },
     "ICLN": {
       "name": "Clean Energy",
       "short": "Clean Energy",
       "etf": "ICLN",
       "color": "#5A8F4C",
-      "bill_count": 2,
+      "bill_count": 3,
       "trade_count": 0,
       "lobbying_count": 165,
-      "avg_momentum": 15
+      "avg_momentum": 22
     },
     "MOO": {
       "name": "Agriculture",
@@ -128,187 +128,12 @@
       "etf": null,
       "color": "#565F73",
       "bill_count": 0,
-      "trade_count": 41,
+      "trade_count": 40,
       "lobbying_count": 0,
       "avg_momentum": 0
     }
   },
   "bills": [
-    {
-      "id": "119-HR-8699",
-      "number": "HR 8699",
-      "title": "Safe Transit for All Act of 2026",
-      "sector": "PAVE",
-      "introduced_date": "2026-05-07",
-      "latest_action": {
-        "date": "2026-05-07",
-        "text": "Referred to the House Committee on Transportation and Infrastructure."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8699",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Min, Dave [D-CA-47]",
-        "party": "D",
-        "state": "CA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8175",
-      "number": "HR 8175",
-      "title": "To amend title 10, United States Code, and the National Defense Authorization Act for Fiscal Year 1994, to codify and clarify gender neutral standards for members of certain Armed Forces, and for other purposes.",
-      "sector": "ITA",
-      "introduced_date": "2026-04-02",
-      "latest_action": {
-        "date": "2026-04-02",
-        "text": "Referred to the House Committee on Armed Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8175",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Houlahan, Chrissy [D-PA-6]",
-        "party": "D",
-        "state": "PA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 37,
-      "amendments": [],
-      "momentum": 50,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-6819",
-      "number": "HR 6819",
-      "title": "Bridge to Summer Nutrition Act of 2025",
-      "sector": "PAVE",
-      "introduced_date": "2025-12-17",
-      "latest_action": {
-        "date": "2026-05-20",
-        "text": "Referred to the Subcommittee on Nutrition and Foreign Agriculture."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6819",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Scott, David [D-GA-13]",
-        "party": "D",
-        "state": "GA"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 12,
-      "amendments": [],
-      "momentum": 40,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7555",
-      "number": "HR 7555",
-      "title": "Audit the Pentagon Act of 2026",
-      "sector": "ITA",
-      "introduced_date": "2026-02-12",
-      "latest_action": {
-        "date": "2026-02-12",
-        "text": "Referred to the House Committee on Armed Services."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7555",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Pocan, Mark [D-WI-2]",
-        "party": "D",
-        "state": "WI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 22,
-      "amendments": [],
-      "momentum": 44,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7658",
-      "number": "HR 7658",
-      "title": "Enhanced Cybersecurity for SNAP Act of 2026",
-      "sector": "CIBR",
-      "introduced_date": "2026-02-24",
-      "latest_action": {
-        "date": "2026-02-24",
-        "text": "Referred to the House Committee on Agriculture."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7658",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Goldman, Daniel S. [D-NY-10]",
-        "party": "D",
-        "state": "NY"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 6,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8288",
-      "number": "HR 8288",
-      "title": "Strengthening Export Controls Compliance Act",
-      "sector": "SMH",
-      "introduced_date": "2026-04-15",
-      "latest_action": {
-        "date": "2026-04-22",
-        "text": "Ordered to be Reported by the Yeas and Nays: 39 - 5."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8288",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Rep. Amo, Gabe [D-RI-1]",
-        "party": "D",
-        "state": "RI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 6,
-      "amendments": [],
-      "momentum": 17,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-3210",
-      "number": "HR 3210",
-      "title": "Artificial Intelligence Literacy and Inclusion Act",
-      "sector": "SMH",
-      "introduced_date": "2025-05-06",
-      "latest_action": {
-        "date": "2025-05-06",
-        "text": "Referred to the Committee on Science, Space, and Technology, and in addition to the Committees on Education and Workforce, Small Business, and Energy and Commerce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3210",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Espaillat, Adriano [D-NY-13]",
-        "party": "D",
-        "state": "NY"
-      },
-      "committee_count": 4,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
     {
       "id": "119-HR-7695",
       "number": "HR 7695",
@@ -1608,6 +1433,131 @@
       "amendments": [],
       "momentum": 36,
       "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5631",
+      "number": "HR 5631",
+      "title": "Geothermal Energy Advancement Act",
+      "sector": "ICLN",
+      "introduced_date": "2025-09-30",
+      "latest_action": {
+        "date": "2026-06-03",
+        "text": "Received in the Senate and Read twice and referred to the Committee on Energy and Natural Resources."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5631",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Hurd, Jeff [R-CO-3]",
+        "party": "R",
+        "state": "CO"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 5,
+      "amendments": [],
+      "momentum": 37,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-3449",
+      "number": "HR 3449",
+      "title": "Stronger Communities through Better Transit Act",
+      "sector": "PAVE",
+      "introduced_date": "2025-05-15",
+      "latest_action": {
+        "date": "2025-05-16",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3449",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Johnson, Henry C. \"Hank\" [D-GA-4]",
+        "party": "D",
+        "state": "GA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 147,
+      "amendments": [],
+      "momentum": 50,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-6138",
+      "number": "HR 6138",
+      "title": "To direct the Secretary of Defense to establish a pilot program for partnerships between covered basic needs banks and military installations to provide diapers and diapering supplies to military families, and for other purposes.",
+      "sector": "ITA",
+      "introduced_date": "2025-11-19",
+      "latest_action": {
+        "date": "2025-11-19",
+        "text": "Referred to the House Committee on Armed Services."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6138",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Foushee, Valerie P. [D-NC-4]",
+        "party": "D",
+        "state": "NC"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 16,
+      "amendments": [],
+      "momentum": 41,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-6056",
+      "number": "HR 6056",
+      "title": "International Human Rights Defense Act of 2025",
+      "sector": "ITA",
+      "introduced_date": "2025-11-17",
+      "latest_action": {
+        "date": "2025-11-17",
+        "text": "Referred to the House Committee on Foreign Affairs."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6056",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Garcia, Robert [D-CA-42]",
+        "party": "D",
+        "state": "CA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 141,
+      "amendments": [],
+      "momentum": 50,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-2145",
+      "number": "HR 2145",
+      "title": "Recycling Infrastructure and Accessibility Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-03-14",
+      "latest_action": {
+        "date": "2026-05-21",
+        "text": "Ordered to be Reported by the Yeas and Nays: 48 - 0."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/2145",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Introduced",
+      "sponsor": {
+        "name": "Rep. Miller-Meeks, Mariannette [R-IA-1]",
+        "party": "R",
+        "state": "IA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 29,
+      "amendments": [],
+      "momentum": 27,
+      "sector_trade_flag": false
     }
   ],
   "trades": [
@@ -2072,17 +2022,6 @@
       "type": "Sale (Partial)",
       "amount_range": "$100,001 - $250,000",
       "report_url": "https://efdsearch.senate.gov/search/view/ptr/4aa0094d-d9da-4a05-aa13-6d9f5d376105/"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ETOR",
-      "company": "eToro Group Ltd. - Class A Common Shares",
-      "senator": "Bernie Moreno",
-      "transaction_date": "05/06/2026",
-      "filed_date": "05/22/2026",
-      "type": "Sale (Full)",
-      "amount_range": "$100,001 - $250,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/86810b3e-3dee-4e8e-9b47-6d3822385b7d/"
     }
   ],
   "lobbying": [
@@ -2155,7 +2094,7 @@
       "ticker": "VMC",
       "company": "Vulcan Materials",
       "client_name": "VULCAN MATERIALS COMPANY",
-      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER,LLP)",
+      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER, LLP)",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -2236,7 +2175,7 @@
       "ticker": "VMC",
       "company": "Vulcan Materials",
       "client_name": "VULCAN MATERIALS COMPANY",
-      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER,LLP)",
+      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER, LLP)",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -2320,7 +2259,7 @@
       "ticker": "VMC",
       "company": "Vulcan Materials",
       "client_name": "VULCAN MATERIALS COMPANY",
-      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER,LLP)",
+      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER, LLP)",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -2405,7 +2344,7 @@
       "ticker": "VMC",
       "company": "Vulcan Materials",
       "client_name": "VULCAN MATERIALS COMPANY",
-      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER,LLP)",
+      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER, LLP)",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -2422,7 +2361,7 @@
       "ticker": "VMC",
       "company": "Vulcan Materials",
       "client_name": "VULCAN MATERIALS COMPANY",
-      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER,LLP)",
+      "registrant_name": "TAFT STETTINIUS & HOLLISTER LLP DBA TAFT ADVISORS LLC FKA (TAFT, STETTINIUS & HOLLISTER, LLP)",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2025,
@@ -6544,7 +6483,7 @@
       "ticker": "ACM",
       "company": "AECOM",
       "client_name": "AECOM",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -6706,7 +6645,7 @@
       "ticker": "ACM",
       "company": "AECOM",
       "client_name": "AECOM",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -8583,7 +8522,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -8647,7 +8586,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -8719,7 +8658,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -8866,7 +8805,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -14479,7 +14418,7 @@
       "ticker": "SO",
       "company": "Southern Company",
       "client_name": "SOUTHERN COMPANY SERVICES, INC.",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -14638,7 +14577,7 @@
       "ticker": "SO",
       "company": "Southern Company",
       "client_name": "SOUTHERN COMPANY SERVICES, INC.",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -15243,7 +15182,7 @@
       "ticker": "AEP",
       "company": "American Electric Power",
       "client_name": "AMERICAN ELECTRIC POWER SERVICE CORPORATION",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -15348,7 +15287,7 @@
       "ticker": "AEP",
       "company": "American Electric Power",
       "client_name": "AMERICAN ELECTRIC POWER SERVICE CORPORATION",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -15483,7 +15422,7 @@
       "ticker": "AEP",
       "company": "American Electric Power",
       "client_name": "AMERICAN ELECTRIC POWER SERVICE CORPORATION",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -19230,6 +19169,26 @@
       "ticker": "MSFT",
       "company": "Microsoft",
       "client_name": "MICROSOFT CORPORATION",
+      "registrant_name": "D&P CREATIVE STRATEGIES, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-07T12:02:01-04:00",
+      "issues": [
+        "Homeland Security",
+        "Immigration",
+        "Intelligence",
+        "Taxation/Internal Revenue Code",
+        "Telecommunications"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/fd01eda1-172c-48c7-ab2c-aee722fc2676/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "MSFT",
+      "company": "Microsoft",
+      "client_name": "MICROSOFT CORPORATION",
       "registrant_name": "MAYNARD NEXSEN PC",
       "filing_type": "Registration",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -19680,22 +19639,6 @@
     },
     {
       "sector": "QTUM",
-      "ticker": "MSFT",
-      "company": "Microsoft",
-      "client_name": "MICROSOFT CORPORATION",
-      "registrant_name": "PENN HILL GROUP",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "80000.00",
-      "posted_date": "2026-01-20T12:01:29-05:00",
-      "issues": [
-        "Labor Issues/Antitrust/Workplace"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/0f1cfb5d-663f-4af2-b8d1-45e8d66eb2ac/print/"
-    },
-    {
-      "sector": "QTUM",
       "ticker": "HON",
       "company": "Honeywell",
       "client_name": "HONEYWELL INTERNATIONAL, INC.",
@@ -19885,7 +19828,7 @@
       "ticker": "HON",
       "company": "Honeywell",
       "client_name": "HONEYWELL INTERNATIONAL INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -24888,7 +24831,7 @@
       "ticker": "BMRN",
       "company": "BioMarin Pharmaceutical",
       "client_name": "BIOMARIN PHARMACEUTICAL, INC.",
-      "registrant_name": "VENN STRATEGIES",
+      "registrant_name": "VENN STRATEGIES, LLC",
       "filing_type": "2nd Quarter - Amendment",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2017,
@@ -27339,7 +27282,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -27404,7 +27347,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -27481,7 +27424,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -27610,7 +27553,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -28314,7 +28257,7 @@
       "ticker": "GD",
       "company": "General Dynamics",
       "client_name": "GENERAL DYNAMICS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -29967,7 +29910,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -30035,7 +29978,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -30121,7 +30064,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -30256,7 +30199,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -30745,7 +30688,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -30794,7 +30737,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -30859,7 +30802,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -30956,7 +30899,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -31005,7 +30948,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2025,
@@ -31054,7 +30997,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2024,
@@ -31119,7 +31062,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2024,
@@ -31282,7 +31225,7 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -31475,7 +31418,7 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -36272,6 +36215,23 @@
       "ticker": "CCJ",
       "company": "Cameco",
       "client_name": "CAMECO CORPORATION",
+      "registrant_name": "DENTONS US LLP",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-07T12:31:08-04:00",
+      "issues": [
+        "Energy/Nuclear",
+        "Foreign Relations"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/a11c3ed9-275f-4c7c-9ace-2c9e4282b2d5/print/"
+    },
+    {
+      "sector": "URA",
+      "ticker": "CCJ",
+      "company": "Cameco",
+      "client_name": "CAMECO CORPORATION",
       "registrant_name": "BRACEWELL LLP",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -36660,19 +36620,25 @@
     },
     {
       "sector": "URA",
-      "ticker": "CCJ",
-      "company": "Cameco",
-      "client_name": "CAMECO CORPORATION",
-      "registrant_name": "DENTONS US LLP",
-      "filing_type": "2nd Quarter - Report",
+      "ticker": "UEC",
+      "company": "Uranium Energy Corp",
+      "client_name": "URANIUM ENERGY CORP",
+      "registrant_name": "URANIUM ENERGY CORP",
+      "filing_type": "Registration",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2024,
-      "income": "80000.00",
-      "posted_date": "2024-07-03T14:25:17-04:00",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-06T16:20:16-04:00",
       "issues": [
-        "Energy/Nuclear"
+        "Defense",
+        "Energy/Nuclear",
+        "Natural Resources",
+        "Tariff (miscellaneous tariff bills)",
+        "Trade (domestic/foreign)",
+        "Utilities",
+        "Waste (hazardous/solid/interstate/nuclear)"
       ],
-      "filing_url": "https://lda.gov/filings/public/filing/bcf70c4c-7b1e-4922-aba4-453cc9c16ad8/print/"
+      "filing_url": "https://lda.gov/filings/public/filing/7a92b07b-9b42-4cc6-bfb0-9b7a97a5fdd8/print/"
     },
     {
       "sector": "URA",
@@ -37078,23 +37044,6 @@
         "Energy/Nuclear"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/d887fb7d-7dac-4526-be83-83a2fad0fb0d/print/"
-    },
-    {
-      "sector": "URA",
-      "ticker": "UEC",
-      "company": "Uranium Energy Corp",
-      "client_name": "URANIUM ENERGY CORPORATION",
-      "registrant_name": "BLANK ROME GOVERNMENT RELATIONS",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2021,
-      "income": "30000.00",
-      "posted_date": "2021-04-19T17:04:58.127000-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Energy/Nuclear"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/45c4110d-7bcd-48bc-a1bc-48f214e7a7cd/print/"
     },
     {
       "sector": "URA",
