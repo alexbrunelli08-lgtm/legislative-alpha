@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T17:41:19Z",
+  "generated_at": "2026-07-14T15:19:07Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,10 +7,10 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 29,
+      "bill_count": 30,
       "trade_count": 0,
       "lobbying_count": 360,
-      "avg_momentum": 35
+      "avg_momentum": 36
     },
     "CIBR": {
       "name": "Cybersecurity",
@@ -107,10 +107,10 @@
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 11,
+      "bill_count": 7,
       "trade_count": 0,
       "lobbying_count": 206,
-      "avg_momentum": 34
+      "avg_momentum": 37
     },
     "FINX": {
       "name": "Financial Technology",
@@ -128,112 +128,12 @@
       "etf": null,
       "color": "#565F73",
       "bill_count": 0,
-      "trade_count": 46,
+      "trade_count": 51,
       "lobbying_count": 0,
       "avg_momentum": 0
     }
   },
   "bills": [
-    {
-      "id": "119-SRES-143",
-      "number": "SRES 143",
-      "title": "A resolution supporting the designation of May 29, 2025, as \"Mental Health Awareness in Agriculture Day\" to raise awareness around mental health in the agricultural industry and workforce and to continue to reduce stigma associated with mental illness.",
-      "sector": "MOO",
-      "introduced_date": "2025-03-26",
-      "latest_action": {
-        "date": "2025-05-19",
-        "text": "Resolution agreed to in Senate without amendment and with a preamble by Unanimous Consent. (consideration: CR S2965-2966; text: 03/26/2025 CR S1877-1878)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/143",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Fischer, Deb [R-NE]",
-        "party": "R",
-        "state": "NE"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 15,
-      "amendments": [],
-      "momentum": 21,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8762",
-      "number": "HR 8762",
-      "title": "To amend the Commodity Credit Corporation Charter Act to exclude crops used to produce biofuel with respect to an agricultural commodity.",
-      "sector": "MOO",
-      "introduced_date": "2026-05-12",
-      "latest_action": {
-        "date": "2026-05-12",
-        "text": "Referred to the House Committee on Agriculture."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8762",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Perry, Scott [R-PA-10]",
-        "party": "R",
-        "state": "PA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HRES-1306",
-      "number": "HRES 1306",
-      "title": "Recognizing \"National Public Works Week\" and the essential contributions of public works professionals.",
-      "sector": "PAVE",
-      "introduced_date": "2026-05-20",
-      "latest_action": {
-        "date": "2026-05-20",
-        "text": "Referred to the House Committee on Transportation and Infrastructure."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1306",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Craig, Angie [D-MN-2]",
-        "party": "D",
-        "state": "MN"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7010",
-      "number": "HR 7010",
-      "title": "To amend the Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2026, to delay the implementation of amendments made by such Act to the hemp production provisions of the Agricultural Marketing Act of 1946.",
-      "sector": "MOO",
-      "introduced_date": "2026-01-12",
-      "latest_action": {
-        "date": "2026-05-20",
-        "text": "Referred to the Subcommittee on Forestry and Horticulture."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7010",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Baird, James R. [R-IN-4]",
-        "party": "R",
-        "state": "IN"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
     {
       "id": "119-HR-6491",
       "number": "HR 6491",
@@ -1335,31 +1235,6 @@
       "sector_trade_flag": false
     },
     {
-      "id": "119-HRES-1224",
-      "number": "HRES 1224",
-      "title": "Providing for consideration of the bill (H.R. 7567) to provide for the reform and continuation of agricultural and other programs of the Department of Agriculture through fiscal year 2031, and for other purposes; providing for consideration of the bill (H.R. 2616) to require public elementary and middle schools that receive funds under the Elementary and Secondary Education Act of 1965 to obtain parental consent before changing a minor\u2019s gender markers, pronouns, or preferred name on any school form or sex-based accommodations, including locker rooms or bathrooms; providing for consideration of the concurrent resolution (S. Con. Res. 33) setting forth the congressional budget for the United States Government for fiscal year 2026 and setting forth the appropriate budgetary levels for fiscal years 2027 through 2035; providing for consideration of the bill (S. 1318) to direct the American Battle Monuments Commission to establish a program to identify American-Jewish servicemembers buried in United States military cemeteries overseas under markers that incorrectly represent their religion and heritage, and for other purposes; providing for consideration of the bill (H.R. 1346) to amend the Clean Air Act with respect to the ethanol waiver for Reid Vapor Pressure under that Act, and for other purposes; and for other purposes.",
-      "sector": "MOO",
-      "introduced_date": "2026-04-29",
-      "latest_action": {
-        "date": "2026-04-29",
-        "text": "Motion to reconsider laid on the table Agreed to without objection."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1224",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Rep. Scott, Austin [R-GA-8]",
-        "party": "R",
-        "state": "GA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 15,
-      "sector_trade_flag": false
-    },
-    {
       "id": "119-HR-3564",
       "number": "HR 3564",
       "title": "The Nuclear First-Strike Security Act of 2025",
@@ -1560,6 +1435,31 @@
       "sector_trade_flag": false
     },
     {
+      "id": "119-HR-178",
+      "number": "HR 178",
+      "title": "To require the Secretary of Agriculture to carry out activities to suppress wildfires, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2025-01-03",
+      "latest_action": {
+        "date": "2026-01-08",
+        "text": "Reported (Amended) by the Committee on Natural Resources. H. Rept. 119-429, Part I."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/178",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. McClintock, Tom [R-CA-5]",
+        "party": "R",
+        "state": "CA"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 9,
+      "amendments": [],
+      "momentum": 39,
+      "sector_trade_flag": false
+    },
+    {
       "id": "119-HR-5236",
       "number": "HR 5236",
       "title": "Critical Infrastructure Security Act",
@@ -1610,32 +1510,112 @@
       "sector_trade_flag": false
     },
     {
-      "id": "119-HR-178",
-      "number": "HR 178",
-      "title": "To require the Secretary of Agriculture to carry out activities to suppress wildfires, and for other purposes.",
-      "sector": "MOO",
-      "introduced_date": "2025-01-03",
+      "id": "119-HR-7710",
+      "number": "HR 7710",
+      "title": "Defense Community Infrastructure Program Tribal Eligibility Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-02-25",
       "latest_action": {
-        "date": "2026-01-08",
-        "text": "Reported (Amended) by the Committee on Natural Resources. H. Rept. 119-429, Part I."
+        "date": "2026-02-25",
+        "text": "Referred to the House Committee on Armed Services."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/178",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7710",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. McClintock, Tom [R-CA-5]",
-        "party": "R",
-        "state": "CA"
+        "name": "Rep. Randall, Emily [D-WA-6]",
+        "party": "D",
+        "state": "WA"
       },
-      "committee_count": 2,
-      "cosponsor_count": 9,
+      "committee_count": 1,
+      "cosponsor_count": 5,
       "amendments": [],
-      "momentum": 39,
+      "momentum": 37,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-S-789",
+      "number": "S 789",
+      "title": "Critical Minerals Security Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-02-27",
+      "latest_action": {
+        "date": "2026-06-10",
+        "text": "Committee on Energy and Natural Resources. Ordered to be reported with an amendment in the nature of a substitute favorably."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/789",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Cornyn, John [R-TX]",
+        "party": "R",
+        "state": "TX"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 6,
+      "amendments": [],
+      "momentum": 37,
       "sector_trade_flag": false
     }
   ],
   "trades": [
+    {
+      "sector": "OTHER",
+      "ticker": "TPYP",
+      "company": "Tortoise North American Pipeline Fund",
+      "senator": "John Boozman",
+      "transaction_date": "06/25/2026",
+      "filed_date": "07/13/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/c52854ed-a778-483a-883c-0ba2bba17877/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "FTGC",
+      "company": "First Trust Global Tactical Commodity Strategy Fund",
+      "senator": "John Boozman",
+      "transaction_date": "06/25/2026",
+      "filed_date": "07/13/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/c52854ed-a778-483a-883c-0ba2bba17877/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "IEF",
+      "company": "iShares 7-10 Year Treasury Bond ETF",
+      "senator": "John Boozman",
+      "transaction_date": "06/17/2026",
+      "filed_date": "07/13/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/c52854ed-a778-483a-883c-0ba2bba17877/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "ATO",
+      "company": "Atmos Energy Corporation Common Stock",
+      "senator": "John Boozman",
+      "transaction_date": "06/12/2026",
+      "filed_date": "07/13/2026",
+      "type": "Sale (Full)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/c52854ed-a778-483a-883c-0ba2bba17877/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "BSX",
+      "company": "Boston Scientific Corporation Common Stock",
+      "senator": "John Boozman",
+      "transaction_date": "06/04/2026",
+      "filed_date": "07/13/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/c52854ed-a778-483a-883c-0ba2bba17877/"
+    },
     {
       "sector": "OTHER",
       "ticker": "IGV",
@@ -6553,7 +6533,7 @@
       "ticker": "ACM",
       "company": "AECOM",
       "client_name": "AECOM",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2026,
@@ -6701,7 +6681,7 @@
       "ticker": "ACM",
       "company": "AECOM",
       "client_name": "AECOM",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -6863,7 +6843,7 @@
       "ticker": "ACM",
       "company": "AECOM",
       "client_name": "AECOM",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -8689,7 +8669,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -8753,7 +8733,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -8825,7 +8805,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -8972,7 +8952,7 @@
       "ticker": "PANW",
       "company": "Palo Alto Networks",
       "client_name": "PALO ALTO NETWORKS, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -13079,6 +13059,29 @@
       "ticker": "ETN",
       "company": "Eaton Corporation",
       "client_name": "EATON CORPORATION",
+      "registrant_name": "EATON CORPORATION",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-13T15:25:35-04:00",
+      "issues": [
+        "Automotive Industry",
+        "Budget/Appropriations",
+        "Defense",
+        "Energy/Nuclear",
+        "Environment/Superfund",
+        "Taxation/Internal Revenue Code",
+        "Trade (domestic/foreign)",
+        "Transportation"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/7e70bb88-6783-4321-8fe9-8acaf04d371a/print/"
+    },
+    {
+      "sector": "GRID",
+      "ticker": "ETN",
+      "company": "Eaton Corporation",
+      "client_name": "EATON CORPORATION",
       "registrant_name": "CASSIDY & ASSOCIATES, INC.",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -13529,29 +13532,6 @@
         "Budget/Appropriations"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/2eab2452-f1f9-4f93-aa73-34c5287a818a/print/"
-    },
-    {
-      "sector": "GRID",
-      "ticker": "ETN",
-      "company": "Eaton Corporation",
-      "client_name": "EATON CORPORATION",
-      "registrant_name": "EATON CORPORATION",
-      "filing_type": "3rd Quarter - Report",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2024,
-      "income": null,
-      "posted_date": "2024-10-21T17:05:22-04:00",
-      "issues": [
-        "Automotive Industry",
-        "Budget/Appropriations",
-        "Defense",
-        "Energy/Nuclear",
-        "Environment/Superfund",
-        "Taxation/Internal Revenue Code",
-        "Trade (domestic/foreign)",
-        "Transportation"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/9f8ee1c2-71aa-41dd-a472-866db345f864/print/"
     },
     {
       "sector": "GRID",
@@ -18369,6 +18349,24 @@
       "sector": "QTUM",
       "ticker": "QBTS",
       "company": "D-Wave Quantum",
+      "client_name": "D-WAVE GOVERNMENT INC.",
+      "registrant_name": "DOGWOOD STRATEGIES",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "18000.00",
+      "posted_date": "2026-07-13T16:04:21-04:00",
+      "issues": [
+        "Computer Industry",
+        "Defense",
+        "Science/Technology"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/e6401a85-f7e3-4eea-ab05-d2adc809eb43/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "QBTS",
+      "company": "D-Wave Quantum",
       "client_name": "D-WAVE GOVERNMENT, INC",
       "registrant_name": "THE MCKEON GROUP, INC.",
       "filing_type": "1st Quarter - Report",
@@ -18807,25 +18805,6 @@
         "Science/Technology"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/05bce3df-ecf5-4fc0-9cba-87eb05bf46aa/print/"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "QBTS",
-      "company": "D-Wave Quantum",
-      "client_name": "D-WAVE GOVERNMENT INC.",
-      "registrant_name": "535 GROUP, LLC",
-      "filing_type": "2nd Quarter - Report",
-      "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2025,
-      "income": "20000.00",
-      "posted_date": "2025-07-16T22:26:11-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Computer Industry",
-        "Defense",
-        "Science/Technology"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/2ff67a02-00e5-402c-a7be-4fe505661a6e/print/"
     },
     {
       "sector": "QTUM",
@@ -19335,6 +19314,22 @@
       "ticker": "MSFT",
       "company": "Microsoft",
       "client_name": "MICROSOFT CORPORATION",
+      "registrant_name": "FORZA DC, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "40000.00",
+      "posted_date": "2026-07-13T22:32:09-04:00",
+      "issues": [
+        "Computer Industry"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/1f0afe96-5bff-43a1-974f-0fa8fd628e9e/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "MSFT",
+      "company": "Microsoft",
+      "client_name": "MICROSOFT CORPORATION",
       "registrant_name": "THE GIBSON GROUP, LLC",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -19794,22 +19789,6 @@
     },
     {
       "sector": "QTUM",
-      "ticker": "MSFT",
-      "company": "Microsoft",
-      "client_name": "MICROSOFT CORP.",
-      "registrant_name": "PLATINUM ADVISORS DC, LLC",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "20000.00",
-      "posted_date": "2026-01-20T16:30:03-05:00",
-      "issues": [
-        "Computer Industry"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/6fdae63a-6a19-4c9e-ace7-2eb1e307b874/print/"
-    },
-    {
-      "sector": "QTUM",
       "ticker": "HON",
       "company": "Honeywell",
       "client_name": "HONEYWELL INTERNATIONAL, INC.",
@@ -19999,7 +19978,7 @@
       "ticker": "HON",
       "company": "Honeywell",
       "client_name": "HONEYWELL INTERNATIONAL INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -27433,7 +27412,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -27498,7 +27477,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -27575,7 +27554,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -27704,7 +27683,7 @@
       "ticker": "RTX",
       "company": "RTX Corporation",
       "client_name": "RAYTHEON TECHNOLOGIES CORPORATION",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -28455,7 +28434,7 @@
       "ticker": "GD",
       "company": "General Dynamics",
       "client_name": "GENERAL DYNAMICS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -30057,7 +30036,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -30125,7 +30104,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -30211,7 +30190,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -30346,7 +30325,7 @@
       "ticker": "TXT",
       "company": "Textron",
       "client_name": "TEXTRON INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -30390,6 +30369,22 @@
         "Budget/Appropriations"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/5f8c3e3f-325c-4ce6-87ca-4d3e90af3a17/print/"
+    },
+    {
+      "sector": "ITA",
+      "ticker": "AXON",
+      "company": "Axon Enterprise",
+      "client_name": "AXON ENTERPRISE",
+      "registrant_name": "METANOIC STRATEGIES",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "20000.00",
+      "posted_date": "2026-07-13T15:43:50-04:00",
+      "issues": [
+        "Homeland Security"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/ecefe9e4-9243-4c51-9548-02189596f75f/print/"
     },
     {
       "sector": "ITA",
@@ -30797,25 +30792,6 @@
     },
     {
       "sector": "ITA",
-      "ticker": "AXON",
-      "company": "Axon Enterprise",
-      "client_name": "AXON ENTERPRISE",
-      "registrant_name": "KLEIN/JOHNSON GROUP",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "60000.00",
-      "posted_date": "2026-01-20T15:15:33-05:00",
-      "issues": [
-        "Computer Industry",
-        "Homeland Security",
-        "Law Enforcement/Crime/Criminal Justice",
-        "Taxation/Internal Revenue Code"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/94836445-c77f-4983-844d-0fdc840b9601/print/"
-    },
-    {
-      "sector": "ITA",
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTIONS",
@@ -30851,7 +30827,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -30900,7 +30876,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -30965,7 +30941,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
       "filing_year": 2025,
@@ -31062,7 +31038,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
       "filing_year": 2025,
@@ -31111,7 +31087,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2025,
@@ -31160,7 +31136,7 @@
       "ticker": "KTOS",
       "company": "Kratos Defense & Security",
       "client_name": "KRATOS DEFENSE & SECURITY SOLUTION, INC.",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2024,
@@ -31389,7 +31365,7 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
       "filing_year": 2026,
@@ -31582,7 +31558,7 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS",
-      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL, INC.",
+      "registrant_name": "AMERICAN DEFENSE INTERNATIONAL",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
       "filing_year": 2025,
@@ -31677,6 +31653,25 @@
         "Health Issues"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/e8242b94-92bc-4778-a55b-46a1da50ae2d/print/"
+    },
+    {
+      "sector": "ITA",
+      "ticker": "BWXT",
+      "company": "BWX Technologies",
+      "client_name": "BWX TECHNOLOGIES INC",
+      "registrant_name": "BWX TECHNOLOGIES, INC.",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-13T17:00:20-04:00",
+      "issues": [
+        "Aerospace",
+        "Budget/Appropriations",
+        "Defense",
+        "Energy/Nuclear"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/ea980be2-c86d-45b3-8cf9-a46618a62e5e/print/"
     },
     {
       "sector": "ITA",
@@ -32117,25 +32112,6 @@
       "filing_url": "https://lda.gov/filings/public/filing/aa5997aa-5b9d-4dcf-838d-686b231cbe99/print/"
     },
     {
-      "sector": "ITA",
-      "ticker": "BWXT",
-      "company": "BWX Technologies",
-      "client_name": "BWX TECHNOLOGIES INC",
-      "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2023,
-      "income": "60000.00",
-      "posted_date": "2024-01-20T12:48:23-05:00",
-      "issues": [
-        "Aerospace",
-        "Budget/Appropriations",
-        "Defense",
-        "Energy/Nuclear"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/434981bf-4572-4c45-ab11-afeac4c7cdbe/print/"
-    },
-    {
       "sector": "UFO",
       "ticker": "RKLB",
       "company": "Rocket Lab",
@@ -32545,6 +32521,23 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
+      "registrant_name": "HOLLAND & KNIGHT LLP",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-12T09:17:58-04:00",
+      "issues": [
+        "Telecommunications",
+        "Transportation"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/75a0a197-faf1-474a-8eae-30bccccb9bf5/print/"
+    },
+    {
+      "sector": "UFO",
+      "ticker": "IRDM",
+      "company": "Iridium Communications",
       "client_name": "IRIDIUM COMMUNICATIONS",
       "registrant_name": "MICHAEL BEST STRATEGIES LLC",
       "filing_type": "1st Quarter - Report",
@@ -32561,7 +32554,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -32594,7 +32587,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
@@ -32627,7 +32620,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
@@ -32660,7 +32653,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Amendment",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -32677,7 +32670,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -32710,7 +32703,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -32743,7 +32736,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
@@ -32760,7 +32753,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
@@ -32777,7 +32770,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -32795,7 +32788,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -32829,7 +32822,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "4th Quarter - Report",
       "filing_period": "4th Quarter (Oct 1 - Dec 31)",
@@ -32879,7 +32872,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "3rd Quarter - Report",
       "filing_period": "3rd Quarter (July 1 - Sep 30)",
@@ -32895,7 +32888,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -32927,7 +32920,7 @@
       "sector": "UFO",
       "ticker": "IRDM",
       "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS INC (FORMERLY SATELLES, INC.)",
+      "client_name": "IRIDIUM COMMUNICATIONS INC.",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -32938,22 +32931,6 @@
         "Transportation"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/e184117f-cd81-441b-be03-02bbfff29f16/print/"
-    },
-    {
-      "sector": "UFO",
-      "ticker": "IRDM",
-      "company": "Iridium Communications",
-      "client_name": "IRIDIUM COMMUNICATIONS",
-      "registrant_name": "PERRY BAYLISS GOVERNMENT RELATIONS, LLC",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2023,
-      "income": "45000.00",
-      "posted_date": "2023-04-19T09:10:43-04:00",
-      "issues": [
-        "Telecommunications"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/754c8859-6826-4d98-b802-7ed4195ed8b5/print/"
     },
     {
       "sector": "UFO",
@@ -39269,6 +39246,25 @@
       "ticker": "BWXT",
       "company": "BWX Technologies",
       "client_name": "BWX TECHNOLOGIES INC",
+      "registrant_name": "BWX TECHNOLOGIES, INC.",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-13T17:00:20-04:00",
+      "issues": [
+        "Aerospace",
+        "Budget/Appropriations",
+        "Defense",
+        "Energy/Nuclear"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/ea980be2-c86d-45b3-8cf9-a46618a62e5e/print/"
+    },
+    {
+      "sector": "URA",
+      "ticker": "BWXT",
+      "company": "BWX Technologies",
+      "client_name": "BWX TECHNOLOGIES INC",
       "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
       "filing_type": "1st Quarter - Report",
       "filing_period": "1st Quarter (Jan 1 - Mar 31)",
@@ -39701,25 +39697,6 @@
         "Energy/Nuclear"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/aa5997aa-5b9d-4dcf-838d-686b231cbe99/print/"
-    },
-    {
-      "sector": "URA",
-      "ticker": "BWXT",
-      "company": "BWX Technologies",
-      "client_name": "BWX TECHNOLOGIES INC",
-      "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2023,
-      "income": "60000.00",
-      "posted_date": "2024-01-20T12:48:23-05:00",
-      "issues": [
-        "Aerospace",
-        "Budget/Appropriations",
-        "Defense",
-        "Energy/Nuclear"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/434981bf-4572-4c45-ab11-afeac4c7cdbe/print/"
     },
     {
       "sector": "URA",
@@ -42153,6 +42130,20 @@
       "sector": "SMH",
       "ticker": "INTC",
       "company": "Intel",
+      "client_name": "INTELSAT GENERAL CORPORATION",
+      "registrant_name": "VELOS",
+      "filing_type": "2nd Quarter - Report (No Activity)",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-14T10:27:46-04:00",
+      "issues": [],
+      "filing_url": "https://lda.gov/filings/public/filing/d6868c40-f8b7-4642-b862-6ff607f5968a/print/"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "INTC",
+      "company": "Intel",
       "client_name": "INTEL CORPORATION",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Termination (No Activity)",
@@ -42572,20 +42563,6 @@
         "Copyright/Patent/Trademark"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/76c89856-875b-4dc7-a983-4fad80168608/print/"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "INTC",
-      "company": "Intel",
-      "client_name": "INTEL CORPORATION",
-      "registrant_name": "WILMER CUTLER PICKERING HALE AND DORR LLP",
-      "filing_type": "3rd Quarter - Report (No Activity)",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2025,
-      "income": null,
-      "posted_date": "2025-10-18T16:37:54-04:00",
-      "issues": [],
-      "filing_url": "https://lda.gov/filings/public/filing/0e37a0c3-2cf8-43eb-8326-e3bbf47c4a19/print/"
     },
     {
       "sector": "SMH",
@@ -51723,6 +51700,22 @@
       "sector": "MOO",
       "ticker": "NTR",
       "company": "Nutrien",
+      "client_name": "AGRICULTURAL NUTRIENT POLICY COUNCIL",
+      "registrant_name": "CROWELL & MORING LLP",
+      "filing_type": "2nd Quarter - Termination",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "10000.00",
+      "posted_date": "2026-07-14T10:47:52-04:00",
+      "issues": [
+        "Clean Air and Water (quality)"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/6c44b289-6a2d-4b4a-885a-4c2d4458308c/print/"
+    },
+    {
+      "sector": "MOO",
+      "ticker": "NTR",
+      "company": "Nutrien",
       "client_name": "NUTRIEN US LLC (FORMERLY KNOWN AS AGRIUM U.S. INC.) (A NUTRIEN LTD SUBSIDIARY)",
       "registrant_name": "NUTRIEN US LLC (FORMERLY KNOWN AS AGRIUM U.S. INC.) (A NUTRIEN LTD SUBSIDIARY).",
       "filing_type": "2nd Quarter - Report",
@@ -52137,22 +52130,6 @@
         "Agriculture"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/472ed95a-b685-4565-a7de-282b979f4264/print/"
-    },
-    {
-      "sector": "MOO",
-      "ticker": "NTR",
-      "company": "Nutrien",
-      "client_name": "AGRICULTURAL NUTRIENT POLICY COUNCIL",
-      "registrant_name": "CROWELL & MORING LLP",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2024,
-      "income": null,
-      "posted_date": "2025-01-21T16:32:06-05:00",
-      "issues": [
-        "Clean Air and Water (quality)"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/bc7f853a-b600-4490-a9f6-3e8a89bd6868/print/"
     },
     {
       "sector": "FINX",
