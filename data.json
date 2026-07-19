@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T14:39:39Z",
+  "generated_at": "2026-07-19T14:42:59Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,7 +7,7 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 22,
+      "bill_count": 14,
       "trade_count": 0,
       "lobbying_count": 360,
       "avg_momentum": 36
@@ -57,7 +57,7 @@
       "short": "Defense",
       "etf": "ITA",
       "color": "#5B4636",
-      "bill_count": 5,
+      "bill_count": 6,
       "trade_count": 1,
       "lobbying_count": 300,
       "avg_momentum": 37
@@ -67,20 +67,20 @@
       "short": "Space",
       "etf": "UFO",
       "color": "#4A5A6B",
-      "bill_count": 2,
+      "bill_count": 1,
       "trade_count": 1,
       "lobbying_count": 250,
-      "avg_momentum": 26
+      "avg_momentum": 16
     },
     "URA": {
       "name": "Uranium & Nuclear",
       "short": "Nuclear",
       "etf": "URA",
       "color": "#7A6A00",
-      "bill_count": 5,
+      "bill_count": 3,
       "trade_count": 0,
       "lobbying_count": 232,
-      "avg_momentum": 37
+      "avg_momentum": 39
     },
     "SMH": {
       "name": "Semiconductors & AI",
@@ -97,27 +97,27 @@
       "short": "Clean Energy",
       "etf": "ICLN",
       "color": "#5A8F4C",
-      "bill_count": 3,
+      "bill_count": 4,
       "trade_count": 1,
       "lobbying_count": 165,
-      "avg_momentum": 15
+      "avg_momentum": 20
     },
     "MOO": {
       "name": "Agriculture",
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 9,
+      "bill_count": 12,
       "trade_count": 0,
       "lobbying_count": 206,
-      "avg_momentum": 36
+      "avg_momentum": 38
     },
     "FINX": {
       "name": "Financial Technology",
       "short": "Fintech",
       "etf": "FINX",
       "color": "#3C6E8F",
-      "bill_count": 1,
+      "bill_count": 2,
       "trade_count": 1,
       "lobbying_count": 191,
       "avg_momentum": 35
@@ -134,356 +134,6 @@
     }
   },
   "bills": [
-    {
-      "id": "119-SRES-727",
-      "number": "SRES 727",
-      "title": "A resolution supporting the designation of May 29, 2026, as \"Mental Health Awareness in Agriculture Day\" to raise awareness around mental health in the agricultural industry and workforce and to continue to reduce stigma associated with mental illness.",
-      "sector": "MOO",
-      "introduced_date": "2026-05-13",
-      "latest_action": {
-        "date": "2026-06-01",
-        "text": "Resolution agreed to in Senate without amendment and with a preamble by Unanimous Consent. (consideration: CR S2480)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/727",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Fischer, Deb [R-NE]",
-        "party": "R",
-        "state": "NE"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 23,
-      "amendments": [],
-      "momentum": 24,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HRES-1138",
-      "number": "HRES 1138",
-      "title": "Recognizing the critical missions of the Federal Emergency Management Agency (FEMA), the Cybersecurity and Infrastructure Security Agency (CISA), and the Transportation Security Administration (TSA) and expressing concern that the systematic reduction of its career workforce has undermined those missions and endangered the safety and security of United States citizens.",
-      "sector": "PAVE",
-      "introduced_date": "2026-03-26",
-      "latest_action": {
-        "date": "2026-03-27",
-        "text": "Referred to the Subcommittee on Economic Development, Public Buildings, and Emergency Management."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1138",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Bell, Wesley [D-MO-1]",
-        "party": "D",
-        "state": "MO"
-      },
-      "committee_count": 4,
-      "cosponsor_count": 1,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7796",
-      "number": "HR 7796",
-      "title": "Economic Recovery for Nuclear-Affected Communities Act",
-      "sector": "URA",
-      "introduced_date": "2026-03-04",
-      "latest_action": {
-        "date": "2026-03-05",
-        "text": "Referred to the Subcommittee on Economic Development, Public Buildings, and Emergency Management."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7796",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Lawler, Michael [R-NY-17]",
-        "party": "R",
-        "state": "NY"
-      },
-      "committee_count": 3,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7440",
-      "number": "HR 7440",
-      "title": "To direct the Secretary of Transportation to convey all right, title, and interest to certain property to the San Mateo County Transit District.",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-09",
-      "latest_action": {
-        "date": "2026-02-10",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7440",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Mullin, Kevin [D-CA-15]",
-        "party": "D",
-        "state": "CA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HJRES-84",
-      "number": "HJRES 84",
-      "title": "Providing for congressional disapproval of the proposed foreign military sale to Israel of certain defense articles and services.",
-      "sector": "ITA",
-      "introduced_date": "2025-03-31",
-      "latest_action": {
-        "date": "2025-03-31",
-        "text": "Referred to the House Committee on Foreign Affairs."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/84",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Jayapal, Pramila [D-WA-7]",
-        "party": "D",
-        "state": "WA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 15,
-      "amendments": [],
-      "momentum": 41,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7379",
-      "number": "HR 7379",
-      "title": "NASA C-UAS Act",
-      "sector": "UFO",
-      "introduced_date": "2026-02-04",
-      "latest_action": {
-        "date": "2026-02-05",
-        "text": "Referred to the Subcommittee on Aviation."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7379",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Stevens, Haley M. [D-MI-11]",
-        "party": "D",
-        "state": "MI"
-      },
-      "committee_count": 4,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-6613",
-      "number": "HR 6613",
-      "title": "Nuclear Plant Decommissioning Act of 2025",
-      "sector": "URA",
-      "introduced_date": "2025-12-11",
-      "latest_action": {
-        "date": "2025-12-12",
-        "text": "Referred to the Subcommittee on Economic Development, Public Buildings, and Emergency Management."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6613",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Balint, Becca [D-VT-At Large]",
-        "party": "D",
-        "state": "VT"
-      },
-      "committee_count": 3,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7442",
-      "number": "HR 7442",
-      "title": "National Bridge Funding Reform Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-09",
-      "latest_action": {
-        "date": "2026-02-10",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7442",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Nehls, Troy E. [R-TX-22]",
-        "party": "R",
-        "state": "TX"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 5,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7338",
-      "number": "HR 7338",
-      "title": "Railroad Safety and Accountability Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-03",
-      "latest_action": {
-        "date": "2026-02-04",
-        "text": "Referred to the Subcommittee on Railroads, Pipelines, and Hazardous Materials."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7338",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Sykes, Emilia Strong [D-OH-13]",
-        "party": "D",
-        "state": "OH"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7776",
-      "number": "HR 7776",
-      "title": "Highway Formula Fairness Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-03-03",
-      "latest_action": {
-        "date": "2026-03-04",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7776",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Roy, Chip [R-TX-21]",
-        "party": "R",
-        "state": "TX"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8068",
-      "number": "HR 8068",
-      "title": "National Transit Frontline Workforce Training Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-03-24",
-      "latest_action": {
-        "date": "2026-03-25",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8068",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Wilson, Frederica S. [D-FL-24]",
-        "party": "D",
-        "state": "FL"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 35,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-8118",
-      "number": "HR 8118",
-      "title": "Election Infrastructure Integrity Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-03-26",
-      "latest_action": {
-        "date": "2026-03-26",
-        "text": "Referred to the House Committee on House Administration."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8118",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Norman, Ralph [R-SC-5]",
-        "party": "R",
-        "state": "SC"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "momentum": 37,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7397",
-      "number": "HR 7397",
-      "title": "Puerto Rico Water Infrastructure Resilience Act",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-05",
-      "latest_action": {
-        "date": "2026-02-06",
-        "text": "Referred to the Subcommittee on Water Resources and Environment."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7397",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rescom. Hern\u00e1ndez, Pablo Jose [D-PR-At Large]",
-        "party": "D",
-        "state": "PR"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
-      "id": "119-HR-7662",
-      "number": "HR 7662",
-      "title": "Railroad Safety Enhancement Act of 2026",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-24",
-      "latest_action": {
-        "date": "2026-02-25",
-        "text": "Referred to the Subcommittee on Railroads, Pipelines, and Hazardous Materials."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/7662",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Nehls, Troy E. [R-TX-22]",
-        "party": "R",
-        "state": "TX"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
     {
       "id": "119-HR-5633",
       "number": "HR 5633",
@@ -910,31 +560,6 @@
       "sector_trade_flag": false
     },
     {
-      "id": "119-HR-3200",
-      "number": "HR 3200",
-      "title": "Critical Minerals and Manufacturing Support Act",
-      "sector": "PAVE",
-      "introduced_date": "2025-05-05",
-      "latest_action": {
-        "date": "2025-05-05",
-        "text": "Referred to the House Committee on Ways and Means."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3200",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Ruiz, Raul [D-CA-25]",
-        "party": "D",
-        "state": "CA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
       "id": "119-HR-2813",
       "number": "HR 2813",
       "title": "Small Modular Reactor Commercialization Act of 2025",
@@ -954,6 +579,31 @@
         "state": "IN"
       },
       "committee_count": 2,
+      "cosponsor_count": 2,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-3200",
+      "number": "HR 3200",
+      "title": "Critical Minerals and Manufacturing Support Act",
+      "sector": "PAVE",
+      "introduced_date": "2025-05-05",
+      "latest_action": {
+        "date": "2025-05-05",
+        "text": "Referred to the House Committee on Ways and Means."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3200",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Ruiz, Raul [D-CA-25]",
+        "party": "D",
+        "state": "CA"
+      },
+      "committee_count": 1,
       "cosponsor_count": 2,
       "amendments": [],
       "momentum": 36,
@@ -1335,31 +985,6 @@
       "sector_trade_flag": false
     },
     {
-      "id": "119-S-651",
-      "number": "S 651",
-      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
-      "sector": "GRID",
-      "introduced_date": "2025-02-20",
-      "latest_action": {
-        "date": "2025-02-20",
-        "text": "Read twice and referred to the Committee on Environment and Public Works."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Ernst, Joni [R-IA]",
-        "party": "R",
-        "state": "IA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "sector_trade_flag": false
-    },
-    {
       "id": "119-HR-3972",
       "number": "HR 3972",
       "title": "Highway Funding Flexibility Act of 2025",
@@ -1379,6 +1004,31 @@
         "state": "SD"
       },
       "committee_count": 2,
+      "cosponsor_count": 2,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-S-651",
+      "number": "S 651",
+      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
+      "sector": "GRID",
+      "introduced_date": "2025-02-20",
+      "latest_action": {
+        "date": "2025-02-20",
+        "text": "Read twice and referred to the Committee on Environment and Public Works."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Ernst, Joni [R-IA]",
+        "party": "R",
+        "state": "IA"
+      },
+      "committee_count": 1,
       "cosponsor_count": 2,
       "amendments": [],
       "momentum": 36,
@@ -1457,6 +1107,231 @@
       "cosponsor_count": 1,
       "amendments": [],
       "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-3656",
+      "number": "HR 3656",
+      "title": "To amend the Agricultural Research, Extension, and Education Reform Act of 1998 to authorize the Secretary of Agriculture to waive the matching funds requirement under the specialty crop research initiative, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2025-05-29",
+      "latest_action": {
+        "date": "2025-05-29",
+        "text": "Referred to the House Committee on Agriculture."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3656",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Schrier, Kim [D-WA-8]",
+        "party": "D",
+        "state": "WA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 14,
+      "amendments": [],
+      "momentum": 41,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-4860",
+      "number": "HR 4860",
+      "title": "U.S.-Taiwan Defense Innovation Partnership Act",
+      "sector": "ITA",
+      "introduced_date": "2025-08-01",
+      "latest_action": {
+        "date": "2025-08-01",
+        "text": "Referred to the Committee on Foreign Affairs, and in addition to the Committee on Armed Services, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/4860",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Nunn, Zachary [R-IA-3]",
+        "party": "R",
+        "state": "IA"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 6,
+      "amendments": [],
+      "momentum": 37,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-8925",
+      "number": "HR 8925",
+      "title": "Job Corps and Skilled Defense Workforce Act",
+      "sector": "ITA",
+      "introduced_date": "2026-05-20",
+      "latest_action": {
+        "date": "2026-05-20",
+        "text": "Referred to the Committee on Armed Services, and in addition to the Committee on Education and Workforce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8925",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Courtney, Joe [D-CT-2]",
+        "party": "D",
+        "state": "CT"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 18,
+      "amendments": [],
+      "momentum": 42,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-S-4721",
+      "number": "S 4721",
+      "title": "Restoring Renewable Energy Parity Act",
+      "sector": "ICLN",
+      "introduced_date": "2026-06-09",
+      "latest_action": {
+        "date": "2026-06-09",
+        "text": "Read twice and referred to the Committee on Finance."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4721",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Merkley, Jeff [D-OR]",
+        "party": "D",
+        "state": "OR"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": true
+    },
+    {
+      "id": "119-S-4628",
+      "number": "S 4628",
+      "title": "A bill to direct the Secretary of Agriculture to establish an initiative to address the availability, quality, and cost of childcare in rural areas, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2026-05-21",
+      "latest_action": {
+        "date": "2026-05-21",
+        "text": "Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4628",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Marshall, Roger [R-KS]",
+        "party": "R",
+        "state": "KS"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 36,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-9153",
+      "number": "HR 9153",
+      "title": "To amend the National Defense Authorization Act for Fiscal Year 2025 to exempt certain military installations from guidance regarding the maintenance of the aggregate square footage of facilities of the Department of Defense.",
+      "sector": "PAVE",
+      "introduced_date": "2026-06-04",
+      "latest_action": {
+        "date": "2026-06-04",
+        "text": "Referred to the House Committee on Armed Services."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9153",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Lucas, Frank D. [R-OK-3]",
+        "party": "R",
+        "state": "OK"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-9178",
+      "number": "HR 9178",
+      "title": "Less Tax Paperwork for Digital Asset Owners Act",
+      "sector": "FINX",
+      "introduced_date": "2026-06-08",
+      "latest_action": {
+        "date": "2026-06-08",
+        "text": "Referred to the House Committee on Ways and Means."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9178",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Yakym, Rudy [R-IN-2]",
+        "party": "R",
+        "state": "IN"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "sector_trade_flag": true
+    },
+    {
+      "id": "119-S-2808",
+      "number": "S 2808",
+      "title": "Fertilizer Research Act of 2025",
+      "sector": "MOO",
+      "introduced_date": "2025-09-16",
+      "latest_action": {
+        "date": "2025-09-16",
+        "text": "Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/2808",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Grassley, Chuck [R-IA]",
+        "party": "R",
+        "state": "IA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 8,
+      "amendments": [],
+      "momentum": 38,
+      "sector_trade_flag": false
+    },
+    {
+      "id": "119-HR-5468",
+      "number": "HR 5468",
+      "title": "Community College Agriculture Advancement Act of 2025",
+      "sector": "MOO",
+      "introduced_date": "2025-09-18",
+      "latest_action": {
+        "date": "2025-12-02",
+        "text": "Referred to the Subcommittee on Conservation, Research, and Biotechnology."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/5468",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Kelly, Trent [R-MS-1]",
+        "party": "R",
+        "state": "MS"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 3,
+      "amendments": [],
+      "momentum": 36,
       "sector_trade_flag": false
     }
   ],
@@ -6946,6 +6821,23 @@
       "ticker": "MAS",
       "company": "Masco Corporation",
       "client_name": "MASCO CORPORATION",
+      "registrant_name": "THE LAURIN BAKER GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "40000.00",
+      "posted_date": "2026-07-18T10:55:14-04:00",
+      "issues": [
+        "Energy/Nuclear",
+        "Manufacturing"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/45cca639-c924-42cb-8a5b-712948edf59e/print/"
+    },
+    {
+      "sector": "PAVE",
+      "ticker": "MAS",
+      "company": "Masco Corporation",
+      "client_name": "MASCO CORPORATION",
       "registrant_name": "MASCO CORPORATION",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -7338,22 +7230,6 @@
         "Manufacturing"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/22d92799-e004-4c66-a1fd-07dad4197415/print/"
-    },
-    {
-      "sector": "PAVE",
-      "ticker": "MAS",
-      "company": "Masco Corporation",
-      "client_name": "MASCO CORPORATION",
-      "registrant_name": "THE LAURIN BAKER GROUP, LLC",
-      "filing_type": "2nd Quarter - Report",
-      "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2023,
-      "income": "40000.00",
-      "posted_date": "2023-07-17T14:19:52-04:00",
-      "issues": [
-        "Manufacturing"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/712cf71e-61d3-4941-bdde-9e877cae779c/print/"
     },
     {
       "sector": "PAVE",
@@ -11619,6 +11495,25 @@
       "sector": "CIBR",
       "ticker": "TENB",
       "company": "Tenable Holdings",
+      "client_name": "TENABLE, INC.",
+      "registrant_name": "ALPINE GROUP PARTNERS, LLC.",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T20:24:29-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Computer Industry",
+        "Defense",
+        "Homeland Security"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/62828b92-e9ae-4073-a41c-9015edfbc9f1/print/"
+    },
+    {
+      "sector": "CIBR",
+      "ticker": "TENB",
+      "company": "Tenable Holdings",
       "client_name": "TENABLE",
       "registrant_name": "METANOIC STRATEGIES",
       "filing_type": "1st Quarter - Report",
@@ -12078,25 +11973,6 @@
         "Homeland Security"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/2dd86fa0-8151-44ab-8a18-76ba88125045/print/"
-    },
-    {
-      "sector": "CIBR",
-      "ticker": "TENB",
-      "company": "Tenable Holdings",
-      "client_name": "TENABLE",
-      "registrant_name": "METANOIC STRATEGIES",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2024,
-      "income": "30000.00",
-      "posted_date": "2024-04-22T21:28:13-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Computer Industry",
-        "Defense",
-        "Homeland Security"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/bf256e83-74c0-44e8-a8f7-64977334dcb9/print/"
     },
     {
       "sector": "CIBR",
@@ -14757,6 +14633,23 @@
       "sector": "GRID",
       "ticker": "DUK",
       "company": "Duke Energy",
+      "client_name": "DUKE ENERGY CORPORATION",
+      "registrant_name": "CGCN GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T21:28:41-04:00",
+      "issues": [
+        "Environment/Superfund",
+        "Fuel/Gas/Oil"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/7998b9aa-59aa-4a36-91a9-ee73801b56d3/print/"
+    },
+    {
+      "sector": "GRID",
+      "ticker": "DUK",
+      "company": "Duke Energy",
       "client_name": "DUKE ENERGY BUSINESS SERVICES LLC",
       "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
       "filing_type": "2nd Quarter - Report",
@@ -15198,25 +15091,6 @@
         "Taxation/Internal Revenue Code"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/c3644697-1b40-4480-8da1-a276758a1eec/print/"
-    },
-    {
-      "sector": "GRID",
-      "ticker": "DUK",
-      "company": "Duke Energy",
-      "client_name": "DUKE ENERGY",
-      "registrant_name": "ALPINE GROUP PARTNERS, LLC.",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "80000.00",
-      "posted_date": "2026-01-17T13:14:36-05:00",
-      "issues": [
-        "Energy/Nuclear",
-        "Environment/Superfund",
-        "Taxation/Internal Revenue Code",
-        "Utilities"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/d1772bbf-b1f4-457c-89ac-a31553de5f90/print/"
     },
     {
       "sector": "GRID",
@@ -18335,6 +18209,25 @@
       "sector": "QTUM",
       "ticker": "QBTS",
       "company": "D-Wave Quantum",
+      "client_name": "D-WAVE GOVERNMENT INC.",
+      "registrant_name": "535 GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "20000.00",
+      "posted_date": "2026-07-18T12:12:35-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Computer Industry",
+        "Defense",
+        "Science/Technology"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/94bee6e1-706b-41a9-b1d7-261c78fe6bfb/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "QBTS",
+      "company": "D-Wave Quantum",
       "client_name": "THE MCKEON GROUP INC. (ON BEHALF OF D-WAVE GOVERNMENT INC.)",
       "registrant_name": "PLURUS STRATEGIES, LLC",
       "filing_type": "2nd Quarter - Report",
@@ -18768,25 +18661,6 @@
         "Science/Technology"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/1b684757-1a06-4570-a52e-82dc8dd5a1c7/print/"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "QBTS",
-      "company": "D-Wave Quantum",
-      "client_name": "D-WAVE GOVERNMENT INC.",
-      "registrant_name": "D-WAVE GOVERNMENT INC.",
-      "filing_type": "2nd Quarter - Report",
-      "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2025,
-      "income": null,
-      "posted_date": "2025-07-21T17:05:36-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Computer Industry",
-        "Defense",
-        "Science/Technology"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/e9bec1f2-bc03-4a6b-8a11-4b6259e468fb/print/"
     },
     {
       "sector": "QTUM",
@@ -20188,6 +20062,26 @@
       "ticker": "NVDA",
       "company": "NVIDIA",
       "client_name": "NVIDIA CORPORATION",
+      "registrant_name": "NVIDIA CORPORATION",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-18T11:27:59-04:00",
+      "issues": [
+        "Computer Industry",
+        "Defense",
+        "Energy/Nuclear",
+        "Labor Issues/Antitrust/Workplace",
+        "Trade (domestic/foreign)"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/4caec807-4163-44a7-9fbb-2001daedab24/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "client_name": "NVIDIA CORPORATION",
       "registrant_name": "BROWNSTEIN HYATT FARBER SCHRECK, LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -20610,21 +20504,35 @@
     },
     {
       "sector": "QTUM",
-      "ticker": "NVDA",
-      "company": "NVIDIA",
-      "client_name": "NVIDIA CORPORATION",
-      "registrant_name": "TIBER CREEK GROUP",
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "client_name": "GOOGLE CLOUD",
+      "registrant_name": "CONTINENTAL STRATEGY, LLC",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2025,
-      "income": "80000.00",
-      "posted_date": "2025-07-20T22:46:34-04:00",
+      "filing_year": 2026,
+      "income": "105000.00",
+      "posted_date": "2026-07-19T10:29:39-04:00",
       "issues": [
-        "Computer Industry",
-        "Defense",
-        "Trade (domestic/foreign)"
+        "Intelligence"
       ],
-      "filing_url": "https://lda.gov/filings/public/filing/efd82774-90be-4740-976b-b6b2094c3244/print/"
+      "filing_url": "https://lda.gov/filings/public/filing/42947206-aa34-49ea-aed6-7534a97dd625/print/"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "client_name": "GOOGLE, INC.",
+      "registrant_name": "RUBIN, TURNBULL & ASSOCIATES",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "40000.00",
+      "posted_date": "2026-07-18T18:56:14-04:00",
+      "issues": [
+        "Science/Technology"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/168ccbfa-9a58-4bb2-9471-0e38dc6f5cd7/print/"
     },
     {
       "sector": "QTUM",
@@ -21036,47 +20944,6 @@
       "posted_date": "2026-04-17T10:54:04-04:00",
       "issues": [],
       "filing_url": "https://lda.gov/filings/public/filing/e6d43594-198f-441a-9c0b-7f633f93836f/print/"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "client_name": "GOOGLE CLIENT SERVICES LLC",
-      "registrant_name": "MARSHALL & POPP, LLC",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2026,
-      "income": "60000.00",
-      "posted_date": "2026-04-17T09:00:30-04:00",
-      "issues": [
-        "Advertising",
-        "Consumer Issues/Safety/Products",
-        "Labor Issues/Antitrust/Workplace",
-        "Science/Technology",
-        "Taxation/Internal Revenue Code",
-        "Trade (domestic/foreign)"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/92fe824b-3bce-4e57-bbd0-dbcc424cb9cb/print/"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "client_name": "GOOGLE CLIENT SERVICES, LLC",
-      "registrant_name": "S-3 GROUP",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2026,
-      "income": "170000.00",
-      "posted_date": "2026-04-17T08:51:30-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Consumer Issues/Safety/Products",
-        "Copyright/Patent/Trademark",
-        "Labor Issues/Antitrust/Workplace",
-        "Law Enforcement/Crime/Criminal Justice"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/7b1bbdbe-e74f-401e-b5d2-9b26d81bf562/print/"
     },
     {
       "sector": "QTUM",
@@ -21569,6 +21436,54 @@
       "ticker": "VRTX",
       "company": "Vertex Pharmaceuticals",
       "client_name": "VERTEX PHARMACEUTICALS INCORPORATED",
+      "registrant_name": "CGCN GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-19T09:54:24-04:00",
+      "issues": [
+        "Health Issues",
+        "Medicare/Medicaid"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/3a80af6b-f283-45ff-90da-11373f2c3a5b/print/"
+    },
+    {
+      "sector": "XBI",
+      "ticker": "VRTX",
+      "company": "Vertex Pharmaceuticals",
+      "client_name": "VERTEX PHARMACEUTICALS",
+      "registrant_name": "TIBER CREEK GROUP",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T15:04:03-04:00",
+      "issues": [
+        "Defense",
+        "Health Issues"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/8f9fc860-2043-4abc-9471-ea681d9eb2de/print/"
+    },
+    {
+      "sector": "XBI",
+      "ticker": "VRTX",
+      "company": "Vertex Pharmaceuticals",
+      "client_name": "TIBER CREEK GROUP (ON BEHALF OF VERTEX PHARMACEUTICALS)",
+      "registrant_name": "TIBER CREEK HEALTH STRATEGIES, INC.",
+      "filing_type": "2nd Quarter - Report (No Activity)",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T14:59:00-04:00",
+      "issues": [],
+      "filing_url": "https://lda.gov/filings/public/filing/8f515d3d-010f-49f6-9843-e98656dcd485/print/"
+    },
+    {
+      "sector": "XBI",
+      "ticker": "VRTX",
+      "company": "Vertex Pharmaceuticals",
+      "client_name": "VERTEX PHARMACEUTICALS INCORPORATED",
       "registrant_name": "CROSSROADS STRATEGIES, LLC",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -21937,56 +21852,6 @@
         "Taxation/Internal Revenue Code"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/0515d2b9-fc16-4126-99b6-533e476b80c3/print/"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "VRTX",
-      "company": "Vertex Pharmaceuticals",
-      "client_name": "VERTEX PHARMACEUTICALS INCORPORATED",
-      "registrant_name": "ALSTON & BIRD LLP",
-      "filing_type": "Registration",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2026,
-      "income": null,
-      "posted_date": "2026-03-20T18:23:55-04:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Health Issues"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/e5f0f1e4-5c5b-4368-9942-7c09072fb2b2/print/"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "VRTX",
-      "company": "Vertex Pharmaceuticals",
-      "client_name": "VERTEX PHARMACEUTICALS",
-      "registrant_name": "ALB SOLUTIONS",
-      "filing_type": "Registration",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2026,
-      "income": null,
-      "posted_date": "2026-03-10T10:10:59-04:00",
-      "issues": [
-        "Pharmacy"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/48cd718d-a4e9-41fa-91e7-e86d91b5e7b1/print/"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "VRTX",
-      "company": "Vertex Pharmaceuticals",
-      "client_name": "VERTEX PHARMACEUTICALS INCORPORATED",
-      "registrant_name": "CGCN GROUP, LLC",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "80000.00",
-      "posted_date": "2026-01-20T22:16:50-05:00",
-      "issues": [
-        "Health Issues",
-        "Medicare/Medicaid"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/f5beca4f-9e32-4951-b980-62be3e234d53/print/"
     },
     {
       "sector": "XBI",
@@ -22404,6 +22269,24 @@
       "ticker": "GILD",
       "company": "Gilead Sciences",
       "client_name": "GILEAD SCIENCES, INC.",
+      "registrant_name": "TIBER CREEK GROUP",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T13:43:46-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Health Issues",
+        "Medicare/Medicaid"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/c80d3a4f-5eba-4c9b-b4ff-c1fd88378435/print/"
+    },
+    {
+      "sector": "XBI",
+      "ticker": "GILD",
+      "company": "Gilead Sciences",
+      "client_name": "GILEAD SCIENCES, INC.",
       "registrant_name": "CAPITOL TAX PARTNERS, LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -22802,22 +22685,6 @@
         "Health Issues"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/5bc20af0-6acc-42c0-b069-a970c1547a51/print/"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "GILD",
-      "company": "Gilead Sciences",
-      "client_name": "GILEAD SCIENCES, INC.",
-      "registrant_name": "CAPITOL TAX PARTNERS, LLP",
-      "filing_type": "4th Quarter - Amendment",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "60000.00",
-      "posted_date": "2026-01-20T15:40:54-05:00",
-      "issues": [
-        "Taxation/Internal Revenue Code"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/6e2ddf37-f8d9-47b8-8a2b-027c50a95706/print/"
     },
     {
       "sector": "XBI",
@@ -27716,6 +27583,23 @@
       "sector": "ITA",
       "ticker": "NOC",
       "company": "Northrop Grumman",
+      "client_name": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "registrant_name": "535 GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-18T12:21:14-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Defense"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/ff99ad21-4ff5-47e6-b819-8a4406baea02/print/"
+    },
+    {
+      "sector": "ITA",
+      "ticker": "NOC",
+      "company": "Northrop Grumman",
       "client_name": "NORTHROP GRUMMAN CORPORATION",
       "registrant_name": "CASSIDY & ASSOCIATES, INC.",
       "filing_type": "2nd Quarter - Report",
@@ -28121,23 +28005,6 @@
         "Intelligence"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/13bd1881-6278-4dbb-9eb3-ac47826b4945/print/"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "NOC",
-      "company": "Northrop Grumman",
-      "client_name": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
-      "registrant_name": "535 GROUP, LLC",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "50000.00",
-      "posted_date": "2026-01-19T22:50:39-05:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Defense"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/2fb2e244-9d06-4c7d-9e1b-5838152a4c3b/print/"
     },
     {
       "sector": "ITA",
@@ -31156,6 +31023,30 @@
       "ticker": "LDOS",
       "company": "Leidos Holdings",
       "client_name": "LEIDOS, INC.",
+      "registrant_name": "CGCN GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "90000.00",
+      "posted_date": "2026-07-18T23:33:59-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Defense",
+        "Energy/Nuclear",
+        "Health Issues",
+        "Homeland Security",
+        "Intelligence",
+        "Science/Technology",
+        "Transportation",
+        "Veterans"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/8925e5ce-ea54-4e19-8a0a-7c0f1e606e69/print/"
+    },
+    {
+      "sector": "ITA",
+      "ticker": "LDOS",
+      "company": "Leidos Holdings",
+      "client_name": "LEIDOS, INC.",
       "registrant_name": "TEAM HALLAHAN LLC",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -31592,22 +31483,6 @@
         "Taxation/Internal Revenue Code"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/75811f78-435f-4eea-bf49-7f1a6b199869/print/"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "LDOS",
-      "company": "Leidos Holdings",
-      "client_name": "TEAM HALLAHAN ON BEHALF OF LEIDOS, INC.",
-      "registrant_name": "AVISE SOLUTIONS",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "20000.00",
-      "posted_date": "2026-01-16T15:54:22-05:00",
-      "issues": [
-        "Budget/Appropriations"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/667a4031-144a-47e3-92cb-aac22bafbfc1/print/"
     },
     {
       "sector": "ITA",
@@ -32070,6 +31945,22 @@
       "sector": "UFO",
       "ticker": "RKLB",
       "company": "Rocket Lab",
+      "client_name": "ROCKET LAB USA, INC.",
+      "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-19T00:54:39-04:00",
+      "issues": [
+        "Budget/Appropriations"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/0034dd13-ce72-4096-b22c-468a39a60229/print/"
+    },
+    {
+      "sector": "UFO",
+      "ticker": "RKLB",
+      "company": "Rocket Lab",
       "client_name": "ROCKET LAB USA",
       "registrant_name": "J.SULLIVAN ADVOCACY",
       "filing_type": "1st Quarter - Report",
@@ -32455,22 +32346,6 @@
         "Aerospace"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/5d81e79a-5b0f-4d49-9932-3cd7d9c22269/print/"
-    },
-    {
-      "sector": "UFO",
-      "ticker": "RKLB",
-      "company": "Rocket Lab",
-      "client_name": "ROCKET LAB USA, INC.",
-      "registrant_name": "VENTURE GOVERNMENT STRATEGIES, LLC (FKA HOBART HALLAWAY & QUAYLE VENTURES, LLC)",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2025,
-      "income": "50000.00",
-      "posted_date": "2025-04-20T03:13:31-04:00",
-      "issues": [
-        "Budget/Appropriations"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/c2a8b3df-0a72-490b-a231-0072675890c3/print/"
     },
     {
       "sector": "UFO",
@@ -34546,6 +34421,23 @@
       "sector": "UFO",
       "ticker": "NOC",
       "company": "Northrop Grumman",
+      "client_name": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
+      "registrant_name": "535 GROUP, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "50000.00",
+      "posted_date": "2026-07-18T12:21:14-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Defense"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/ff99ad21-4ff5-47e6-b819-8a4406baea02/print/"
+    },
+    {
+      "sector": "UFO",
+      "ticker": "NOC",
+      "company": "Northrop Grumman",
       "client_name": "NORTHROP GRUMMAN CORPORATION",
       "registrant_name": "CASSIDY & ASSOCIATES, INC.",
       "filing_type": "2nd Quarter - Report",
@@ -34951,23 +34843,6 @@
         "Intelligence"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/13bd1881-6278-4dbb-9eb3-ac47826b4945/print/"
-    },
-    {
-      "sector": "UFO",
-      "ticker": "NOC",
-      "company": "Northrop Grumman",
-      "client_name": "NORTHROP GRUMMAN SYSTEMS CORPORATION",
-      "registrant_name": "535 GROUP, LLC",
-      "filing_type": "4th Quarter - Report",
-      "filing_period": "4th Quarter (Oct 1 - Dec 31)",
-      "filing_year": 2025,
-      "income": "50000.00",
-      "posted_date": "2026-01-19T22:50:39-05:00",
-      "issues": [
-        "Budget/Appropriations",
-        "Defense"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/2fb2e244-9d06-4c7d-9e1b-5838152a4c3b/print/"
     },
     {
       "sector": "UFO",
@@ -38352,6 +38227,22 @@
       "sector": "URA",
       "ticker": "VST",
       "company": "Vistra",
+      "client_name": "VISTRA CORP.",
+      "registrant_name": "ARENTFOX SCHIFF LLP",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "10000.00",
+      "posted_date": "2026-07-18T14:10:05-04:00",
+      "issues": [
+        "Budget/Appropriations"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/36ee38bb-5806-4de3-b99f-82f67adcaf6e/print/"
+    },
+    {
+      "sector": "URA",
+      "ticker": "VST",
+      "company": "Vistra",
       "client_name": "VISTRA CORPORATE SERVICES COMPANY",
       "registrant_name": "ALPINE GROUP PARTNERS, LLC.",
       "filing_type": "2nd Quarter - Report",
@@ -38753,22 +38644,6 @@
         "Energy/Nuclear"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/51269985-2369-43e6-a0f3-aa7305c85678/print/"
-    },
-    {
-      "sector": "URA",
-      "ticker": "VST",
-      "company": "Vistra",
-      "client_name": "VISTRA CORP.",
-      "registrant_name": "ARENTFOX SCHIFF LLP",
-      "filing_type": "2nd Quarter - Report",
-      "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2025,
-      "income": "40000.00",
-      "posted_date": "2025-07-21T17:06:13-04:00",
-      "issues": [
-        "Budget/Appropriations"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/80da4738-911f-4a80-b838-bcc5e99f347f/print/"
     },
     {
       "sector": "URA",
@@ -40224,6 +40099,26 @@
       "ticker": "NVDA",
       "company": "NVIDIA",
       "client_name": "NVIDIA CORPORATION",
+      "registrant_name": "NVIDIA CORPORATION",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-18T11:27:59-04:00",
+      "issues": [
+        "Computer Industry",
+        "Defense",
+        "Energy/Nuclear",
+        "Labor Issues/Antitrust/Workplace",
+        "Trade (domestic/foreign)"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/4caec807-4163-44a7-9fbb-2001daedab24/print/"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "client_name": "NVIDIA CORPORATION",
       "registrant_name": "BROWNSTEIN HYATT FARBER SCHRECK, LLP",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -40643,24 +40538,6 @@
         "Trade (domestic/foreign)"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/838b7711-7926-4a1d-87b4-cc6b85a39a47/print/"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "NVDA",
-      "company": "NVIDIA",
-      "client_name": "NVIDIA CORPORATION",
-      "registrant_name": "TIBER CREEK GROUP",
-      "filing_type": "2nd Quarter - Report",
-      "filing_period": "2nd Quarter (Apr 1 - June 30)",
-      "filing_year": 2025,
-      "income": "80000.00",
-      "posted_date": "2025-07-20T22:46:34-04:00",
-      "issues": [
-        "Computer Industry",
-        "Defense",
-        "Trade (domestic/foreign)"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/efd82774-90be-4740-976b-b6b2094c3244/print/"
     },
     {
       "sector": "SMH",
@@ -41182,6 +41059,26 @@
       "sector": "SMH",
       "ticker": "AVGO",
       "company": "Broadcom",
+      "client_name": "BROADCOM INC",
+      "registrant_name": "BROADCOM INC.",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-18T11:49:29-04:00",
+      "issues": [
+        "Budget/Appropriations",
+        "Computer Industry",
+        "Taxation/Internal Revenue Code",
+        "Telecommunications",
+        "Trade (domestic/foreign)"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/362cc44f-d745-44f8-84a2-59dcfdc7eda2/print/"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "AVGO",
+      "company": "Broadcom",
       "client_name": "BROADCOM INC.",
       "registrant_name": "CASSIDY & ASSOCIATES, INC.",
       "filing_type": "2nd Quarter - Report",
@@ -41594,23 +41491,6 @@
         "Defense"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/a0fa62bf-d41b-4b9e-9e36-25ef277646d0/print/"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "AVGO",
-      "company": "Broadcom",
-      "client_name": "BROADCOM",
-      "registrant_name": "MONUMENT ADVOCACY",
-      "filing_type": "Registration",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2025,
-      "income": null,
-      "posted_date": "2025-10-03T18:01:25-04:00",
-      "issues": [
-        "Government Issues",
-        "Science/Technology"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/97380884-a14c-4925-9d9b-f1bcdbd286fe/print/"
     },
     {
       "sector": "SMH",
@@ -42064,6 +41944,20 @@
       "ticker": "INTC",
       "company": "Intel",
       "client_name": "INTEL CORPORATION",
+      "registrant_name": "WILMER CUTLER PICKERING HALE AND DORR LLP",
+      "filing_type": "2nd Quarter - Report (No Activity)",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-18T11:27:10-04:00",
+      "issues": [],
+      "filing_url": "https://lda.gov/filings/public/filing/4496f57d-abc0-4f7f-810d-3d22083da95a/print/"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "INTC",
+      "company": "Intel",
+      "client_name": "INTEL CORPORATION",
       "registrant_name": "INTEL CORPORATION",
       "filing_type": "2nd Quarter - Report",
       "filing_period": "2nd Quarter (Apr 1 - June 30)",
@@ -42495,21 +42389,19 @@
     },
     {
       "sector": "SMH",
-      "ticker": "INTC",
-      "company": "Intel",
-      "client_name": "INTEL CORP",
-      "registrant_name": "H&M STRATEGIES LLP",
-      "filing_type": "3rd Quarter - Report",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2025,
-      "income": "50000.00",
-      "posted_date": "2025-10-20T13:35:16-04:00",
+      "ticker": "QCOM",
+      "company": "Qualcomm",
+      "client_name": "QUALCOMM INC.",
+      "registrant_name": "MERCURY PUBLIC AFFAIRS, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "90000.00",
+      "posted_date": "2026-07-18T13:42:28-04:00",
       "issues": [
-        "Manufacturing",
-        "Science/Technology",
-        "Taxation/Internal Revenue Code"
+        "Telecommunications"
       ],
-      "filing_url": "https://lda.gov/filings/public/filing/aedd9e4a-a1a2-42d6-8099-f3d3f1db72fc/print/"
+      "filing_url": "https://lda.gov/filings/public/filing/3a40c448-630a-4f29-bd1e-050ba780561c/print/"
     },
     {
       "sector": "SMH",
@@ -42918,22 +42810,6 @@
         "Trade (domestic/foreign)"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/e1b56138-69e3-4110-9192-9ed3432031df/print/"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "QCOM",
-      "company": "Qualcomm",
-      "client_name": "QUALCOMM INCORPORATED",
-      "registrant_name": "BGR GOVERNMENT AFFAIRS",
-      "filing_type": "3rd Quarter - Report",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2025,
-      "income": "240000.00",
-      "posted_date": "2025-10-20T13:49:38-04:00",
-      "issues": [
-        "Telecommunications"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/28fb825f-5a88-4872-b049-7e15be5e8031/print/"
     },
     {
       "sector": "SMH",
@@ -50812,6 +50688,22 @@
       "sector": "MOO",
       "ticker": "CTVA",
       "company": "Corteva",
+      "client_name": "CORTEVA AGRISCIENCE LLC",
+      "registrant_name": "CROSSROADS STRATEGIES, LLC",
+      "filing_type": "2nd Quarter - Report",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": "60000.00",
+      "posted_date": "2026-07-18T15:28:51-04:00",
+      "issues": [
+        "Agriculture"
+      ],
+      "filing_url": "https://lda.gov/filings/public/filing/adfe78d5-f33b-4edd-89a2-694a1a9d5aa6/print/"
+    },
+    {
+      "sector": "MOO",
+      "ticker": "CTVA",
+      "company": "Corteva",
       "client_name": "CORTEVA AGRISCIENCE",
       "registrant_name": "HOLLAND & KNIGHT LLP",
       "filing_type": "2nd Quarter - Report",
@@ -51226,22 +51118,6 @@
         "Agriculture"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/5f4c124f-f5e1-4174-b8f8-3bba6b3469e2/print/"
-    },
-    {
-      "sector": "MOO",
-      "ticker": "CTVA",
-      "company": "Corteva",
-      "client_name": "CORTEVA AGRISCIENCE",
-      "registrant_name": "HOLLAND & KNIGHT LLP",
-      "filing_type": "1st Quarter - Report",
-      "filing_period": "1st Quarter (Jan 1 - Mar 31)",
-      "filing_year": 2025,
-      "income": "60000.00",
-      "posted_date": "2025-04-15T07:55:07-04:00",
-      "issues": [
-        "Agriculture"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/75ff318f-8190-4c0c-a55f-8627e856763d/print/"
     },
     {
       "sector": "MOO",
@@ -53395,6 +53271,20 @@
       "sector": "FINX",
       "ticker": "SQ",
       "company": "Block, Inc.",
+      "client_name": "BILLMARI INC. / DBA BLACK BLOCKCHAIN SUMMIT",
+      "registrant_name": "CGCN GROUP, LLC",
+      "filing_type": "2nd Quarter - Report (No Activity)",
+      "filing_period": "2nd Quarter (Apr 1 - June 30)",
+      "filing_year": 2026,
+      "income": null,
+      "posted_date": "2026-07-18T15:10:39-04:00",
+      "issues": [],
+      "filing_url": "https://lda.gov/filings/public/filing/50214c03-0501-43ba-ab32-192a108c0cf0/print/"
+    },
+    {
+      "sector": "FINX",
+      "ticker": "SQ",
+      "company": "Block, Inc.",
       "client_name": "BLOCKCHAIN (US), INC.",
       "registrant_name": "BALLARD PARTNERS, LLC",
       "filing_type": "2nd Quarter - Report",
@@ -53794,22 +53684,6 @@
         "Taxation/Internal Revenue Code"
       ],
       "filing_url": "https://lda.gov/filings/public/filing/30007c58-039d-4074-8524-860eb3a91e7d/print/"
-    },
-    {
-      "sector": "FINX",
-      "ticker": "SQ",
-      "company": "Block, Inc.",
-      "client_name": "H&R BLOCK, INC.",
-      "registrant_name": "HARBINGER STRATEGIES, LLC",
-      "filing_type": "3rd Quarter - Report",
-      "filing_period": "3rd Quarter (July 1 - Sep 30)",
-      "filing_year": 2025,
-      "income": "40000.00",
-      "posted_date": "2025-10-20T21:32:12-04:00",
-      "issues": [
-        "Taxation/Internal Revenue Code"
-      ],
-      "filing_url": "https://lda.gov/filings/public/filing/a761e735-86e8-4530-b31d-eab7f541da02/print/"
     },
     {
       "sector": "FINX",
