@@ -4,22 +4,32 @@ Legislative Alpha daily data fetcher.
 
 Pulls three live data sources and writes a single data.json for the site:
   1. Bills + amendments  -- Congress.gov API (requires CONGRESS_API_KEY)
-  2. Congressional stock trades -- scraped directly from the Senate's
-     electronic financial disclosure search (efdsearch.senate.gov), since
-     no free, currently-maintained API exists for this data.
+  2. Congressional stock trades -- scraped from BOTH chambers' primary
+     sources, since no free, currently-maintained API exists for this data:
+       - Senate: the electronic financial disclosure search
+         (efdsearch.senate.gov), structured HTML tables.
+       - House: the Clerk's disclosure site (disclosures-clerk.house.gov),
+         a yearly filing index plus per-filing PDFs. E-filed PDFs carry a
+         text layer and are parsed; paper filings are scanned images and
+         are skipped (counted in the run log).
   3. Lobbying filings -- Senate Lobbying Disclosure Act API (lda.gov), which
      is public and needs no API key.
 
-Everything is matched to 8 thematic sectors defined in sectors.json.
+Everything is matched to the thematic sectors defined in sectors.json;
+trades in companies outside every sector's tracked list land in OTHER.
 """
 
+import io
 import json
 import os
 import re
 import sys
 import time
+import xml.etree.ElementTree as ET
+import zipfile
 from datetime import datetime, timedelta, timezone
 
+import pdfplumber
 import requests
 from bs4 import BeautifulSoup
 
@@ -378,10 +388,9 @@ def fetch_ptr_transactions(session, report_path):
             continue
         _, tx_date, owner, ticker, asset_name, asset_type, tx_type, amount = cells[:8]
         ticker = ticker.strip()
-        if not ticker or ticker == "--":
-            continue
         out.append({
-            "ticker": ticker.upper(),
+            # "--" means a non-ticker asset (bond, fund, etc.) -- still a trade
+            "ticker": ticker.upper() if ticker and ticker != "--" else None,
             "asset_name": asset_name,
             "asset_type": asset_type,
             "owner": owner,
@@ -419,12 +428,13 @@ def fetch_senate_trades(ticker_index):
         for tx in transactions:
             # Every disclosed trade is kept. Trades in a tracked constituent
             # are attributed to that constituent's sector(s); everything else
-            # goes in the OTHER bucket so nothing is silently dropped.
-            matches = ticker_index.get(tx["ticker"]) or [
+            # (including non-ticker assets like bonds and funds) goes in the
+            # OTHER bucket so nothing is silently dropped.
+            matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
                 {"sector": "OTHER", "company": tx["asset_name"]}
             ]
             for info in matches:
-                dedupe_key = (report["senator"], tx["ticker"], tx["transaction_date"], tx["type"], tx["amount_range"], info["sector"])
+                dedupe_key = (report["senator"], tx["ticker"], tx["asset_name"], tx["transaction_date"], tx["type"], tx["amount_range"], info["sector"])
                 if dedupe_key in seen:
                     continue
                 seen.add(dedupe_key)
@@ -432,7 +442,8 @@ def fetch_senate_trades(ticker_index):
                     "sector": info["sector"],
                     "ticker": tx["ticker"],
                     "company": info["company"],
-                    "senator": report["senator"],
+                    "member": f"Sen. {report['senator']}",
+                    "chamber": "Senate",
                     "transaction_date": tx["transaction_date"],
                     "filed_date": report["filed_date"],
                     "type": tx["type"],
@@ -447,10 +458,204 @@ def fetch_senate_trades(ticker_index):
 
 
 # ---------------------------------------------------------------------------
+# 2b. House stock trades -- Clerk of the House disclosure PDFs
+# ---------------------------------------------------------------------------
+
+HOUSE_BASE = "https://disclosures-clerk.house.gov/public_disc"
+
+# A transaction row inside an e-filed House PTR, e.g.
+#   "SP Intel Corporation - Common Stock P 05/29/2026 05/29/2026 $1,000,001 -"
+#   "(INTC) [OP] $5,000,000"
+HOUSE_TX_ANCHOR = re.compile(
+    r"(?P<type>P|S \(partial\)|S|E)\s+"
+    r"(?P<tx_date>\d{2}/\d{2}/\d{4})\s+"
+    r"(?P<notif_date>\d{2}/\d{2}/\d{4})\s+"
+    r"\$(?P<lo>[\d,]+)(?:\s*-\s*\$(?P<hi>[\d,]+))?"
+)
+HOUSE_TICKER = re.compile(r"\(([A-Z0-9.]{1,7})\)")
+HOUSE_DOLLAR = re.compile(r"\$([\d,]+)")
+HOUSE_OWNER = re.compile(r"^(SP|JT|DC)\s+")
+HOUSE_TYPE_MAP = {"P": "Purchase", "S": "Sale", "S (partial)": "Sale (Partial)", "E": "Exchange"}
+
+
+def _clean_house_asset(text):
+    text = HOUSE_TICKER.sub("", text)
+    text = re.sub(r"\[?[A-Z]{2}\]", "", text)   # asset-type codes like [ST]
+    text = re.sub(r"\s+", " ", text).strip(" -[]")
+    return text[:90]
+
+
+def fetch_house_ptr_index(year):
+    """Download the Clerk's yearly filing index and return PTR entries."""
+    resp = requests.get(
+        f"{HOUSE_BASE}/financial-pdfs/{year}FD.zip",
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    resp.raise_for_status()
+    with zipfile.ZipFile(io.BytesIO(resp.content)) as zf:
+        xml_name = next(n for n in zf.namelist() if n.endswith(".xml"))
+        root = ET.fromstring(zf.read(xml_name))
+    entries = []
+    for m in root.findall("Member"):
+        if m.findtext("FilingType") != "P":
+            continue
+        entries.append({
+            "name": f"{m.findtext('First', '')} {m.findtext('Last', '')}".strip(),
+            "state_district": m.findtext("StateDst", ""),
+            "filed_date": m.findtext("FilingDate", ""),
+            "doc_id": m.findtext("DocID", ""),
+            "year": year,
+        })
+    return entries
+
+
+def parse_house_ptr_pdf(pdf_bytes):
+    """Parse an e-filed House PTR's transaction table. Returns None for
+    paper filings (scanned images with no text layer)."""
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            text = "\n".join(p.extract_text() or "" for p in pdf.pages)
+    except Exception:
+        return None
+    if not text.strip():
+        return None
+
+    lines = [l.strip() for l in text.replace("\x00", " ").splitlines()]
+    txs = []
+    for idx, line in enumerate(lines):
+        a = HOUSE_TX_ANCHOR.search(line)
+        if not a:
+            continue
+        pre = line[: a.start()].strip()
+        owner_m = HOUSE_OWNER.match(pre)
+        owner = owner_m.group(1) if owner_m else "Self"
+        asset = HOUSE_OWNER.sub("", pre).strip()
+        pre_tickers = HOUSE_TICKER.findall(pre)
+        ticker = pre_tickers[-1] if pre_tickers else None
+        hi = a.group("hi")
+        # Asset name / ticker / amount-upper-bound can wrap onto the next
+        # line or two. Status/description lines contain ":" -- stop there,
+        # or at the next transaction row.
+        for nxt in lines[idx + 1: idx + 4]:
+            if HOUSE_TX_ANCHOR.search(nxt) or ":" in nxt or nxt.startswith("* For the complete"):
+                break
+            if ticker is None:
+                tk = HOUSE_TICKER.search(nxt)
+                if tk:
+                    ticker = tk.group(1)
+            if hi is None:
+                d = HOUSE_DOLLAR.search(nxt)
+                if d:
+                    hi = d.group(1)
+            remainder = _clean_house_asset(HOUSE_DOLLAR.sub("", nxt))
+            if remainder:
+                asset = f"{asset} {remainder}"
+        txs.append({
+            "ticker": ticker,
+            "asset_name": _clean_house_asset(asset),
+            "owner": owner,
+            "type": HOUSE_TYPE_MAP[a.group("type")],
+            "transaction_date": a.group("tx_date"),
+            "amount_range": f"${a.group('lo')} - ${hi}" if hi else f"${a.group('lo')}",
+        })
+    return txs
+
+
+def fetch_house_trades(ticker_index):
+    print("Fetching House periodic transaction reports (disclosures-clerk.house.gov)...", file=sys.stderr)
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=SENATE_TRADES_LOOKBACK_DAYS)
+    years = sorted({start_date.year, end_date.year})
+
+    reports = []
+    for year in years:
+        try:
+            reports.extend(fetch_house_ptr_index(year))
+        except (requests.RequestException, zipfile.BadZipFile, ET.ParseError, StopIteration) as e:
+            print(f"  WARN: could not fetch House index for {year}: {e}", file=sys.stderr)
+
+    in_window = []
+    for r in reports:
+        try:
+            filed = datetime.strptime(r["filed_date"], "%m/%d/%Y")
+        except ValueError:
+            continue
+        if start_date <= filed <= end_date:
+            in_window.append(r)
+
+    print(f"  found {len(in_window)} House PTR filings in the last {SENATE_TRADES_LOOKBACK_DAYS} days, parsing PDFs...", file=sys.stderr)
+    trades = []
+    seen = set()
+    skipped_paper = 0
+    for report in in_window:
+        pdf_url = f"{HOUSE_BASE}/ptr-pdfs/{report['year']}/{report['doc_id']}.pdf"
+        try:
+            resp = requests.get(pdf_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            print(f"  WARN: could not download House PTR {report['doc_id']}: {e}", file=sys.stderr)
+            continue
+        transactions = parse_house_ptr_pdf(resp.content)
+        if transactions is None:
+            skipped_paper += 1
+            continue
+        member = f"Rep. {report['name']} ({report['state_district']})"
+        for tx in transactions:
+            matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
+                {"sector": "OTHER", "company": tx["asset_name"]}
+            ]
+            for info in matches:
+                dedupe_key = (member, tx["ticker"], tx["asset_name"], tx["transaction_date"], tx["type"], tx["amount_range"], info["sector"])
+                if dedupe_key in seen:
+                    continue
+                seen.add(dedupe_key)
+                trades.append({
+                    "sector": info["sector"],
+                    "ticker": tx["ticker"],
+                    "company": info["company"],
+                    "member": member,
+                    "chamber": "House",
+                    "transaction_date": tx["transaction_date"],
+                    "filed_date": report["filed_date"],
+                    "type": tx["type"],
+                    "amount_range": tx["amount_range"],
+                    "report_url": pdf_url,
+                })
+        time.sleep(0.3)
+
+    matched = sum(1 for t in trades if t["sector"] != "OTHER")
+    print(f"  {len(trades)} House trades captured ({matched} matched a tracked sector; {skipped_paper} paper filings skipped)", file=sys.stderr)
+    return trades
+
+
+# ---------------------------------------------------------------------------
 # 3. Lobbying filings -- Senate LDA API (public, no key needed)
 # ---------------------------------------------------------------------------
 
 LDA_BASE = "https://lda.gov/api/v1"
+
+# Bill references inside lobbying-activity descriptions, e.g. "H.R. 4521",
+# "HR4521", "S. 2214". The (?<!U\.) guard keeps "U.S. 123" from reading as
+# a Senate bill. Normalized to the same "HR 4521" / "S 2214" form used in
+# our bill records so the two datasets can be joined.
+BILL_REF = re.compile(
+    r"(?<!U\.)\b("
+    r"H\.?\s?J\.?\s?RES\.?|S\.?\s?J\.?\s?RES\.?|"
+    r"H\.?\s?CON\.?\s?RES\.?|S\.?\s?CON\.?\s?RES\.?|"
+    r"H\.?\s?RES\.?|S\.?\s?RES\.?|"
+    r"H\.?\s?R\.?|S\.?"
+    r")\s*(\d{1,5})\b",
+    re.IGNORECASE,
+)
+
+
+def extract_bill_mentions(text):
+    mentions = set()
+    for prefix, number in BILL_REF.findall(text or ""):
+        normalized = re.sub(r"[.\s]", "", prefix).upper()
+        mentions.add(f"{normalized} {number}")
+    return sorted(mentions)
 
 
 LDA_MAX_BACKOFF = 8.0  # cap per-retry wait -- this is a daily job, not worth
@@ -510,6 +715,9 @@ def fetch_lobbying(sectors):
             for filing in results:
                 activities = filing.get("lobbying_activities") or []
                 issues = sorted({a.get("general_issue_code_display") for a in activities if a.get("general_issue_code_display")})
+                descriptions = [a.get("description") or "" for a in activities]
+                description = "; ".join(d for d in descriptions if d)[:300]
+                bill_mentions = extract_bill_mentions(" ".join(descriptions))
                 filings.append({
                     "sector": code,
                     "ticker": ticker,
@@ -522,6 +730,8 @@ def fetch_lobbying(sectors):
                     "income": filing.get("income"),
                     "posted_date": filing.get("dt_posted"),
                     "issues": issues,
+                    "description": description,
+                    "bill_mentions": bill_mentions,
                     "filing_url": filing.get("filing_document_url"),
                 })
 
@@ -561,6 +771,40 @@ def flag_pre_filing_trades(bills, trades):
     return bills
 
 
+def link_lobbying_to_bills(bills, lobbying):
+    """The politics-to-stocks join: when a lobbying filing's activity
+    description names a bill we track, attach that filing to the bill.
+    Only filings from the current congress's years are considered, since
+    bill numbers restart every congress."""
+    congress_years = {2025, 2026}
+    by_number = {}
+    for filing in lobbying:
+        if filing.get("filing_year") not in congress_years:
+            continue
+        for mention in filing.get("bill_mentions") or []:
+            by_number.setdefault(mention, []).append(filing)
+
+    for bill in bills:
+        seen = set()
+        lobbied_by = []
+        for filing in by_number.get(bill["number"], []):
+            key = (filing["client_name"], filing["registrant_name"])
+            if key in seen:
+                continue
+            seen.add(key)
+            lobbied_by.append({
+                "client_name": filing["client_name"],
+                "ticker": filing["ticker"],
+                "registrant_name": filing["registrant_name"],
+                "income": filing["income"],
+                "filing_period": filing["filing_period"],
+                "filing_year": filing["filing_year"],
+                "filing_url": filing["filing_url"],
+            })
+        bill["lobbied_by"] = lobbied_by[:15]
+    return bills
+
+
 def build_sector_summaries(sectors, bills, trades=(), lobbying=()):
     summaries = {}
     for code, sector in sectors.items():
@@ -597,9 +841,10 @@ def main():
 
     bills = fetch_bills(sectors)
     bills = enrich_bills(bills)
-    trades = fetch_senate_trades(ticker_index)
+    trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
     lobbying = fetch_lobbying(sectors)
     bills = flag_pre_filing_trades(bills, trades)
+    bills = link_lobbying_to_bills(bills, lobbying)
     sector_summaries = build_sector_summaries(sectors, bills, trades, lobbying)
 
     output = {

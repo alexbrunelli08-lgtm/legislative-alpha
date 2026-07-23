@@ -191,12 +191,12 @@
         <p>A 0–100 score built from real, directly observable signals: the bill's current stage (introduced → committee → passed a chamber → signed), its real cosponsor count, and whether it saw action in the last 14 days. This is a progress signal, not a predictive model.</p>
       </div>
       <div class="methodology-item">
-        <div class="num">02 — Congressional trades</div>
-        <p>Every trade disclosed in Senators' Periodic Transaction Reports (STOCK Act filings) over the data window is included, scraped directly from efdsearch.senate.gov. Trades in a sector's tracked companies are attributed to that sector; everything else appears under "Other / Unclassified." House disclosures are scanned PDFs and are not included.</p>
+        <div class="num">02 — Congressional trades, both chambers</div>
+        <p>Every trade disclosed in Periodic Transaction Reports (STOCK Act filings) over the data window is included: Senate reports are scraped from efdsearch.senate.gov, and House reports are parsed from the Clerk's e-filed disclosure PDFs. House filings submitted on paper are scanned images and cannot be parsed — the daily run logs how many were skipped. Trades in a sector's tracked companies are attributed to that sector; everything else appears under "Other / Unclassified."</p>
       </div>
       <div class="methodology-item">
-        <div class="num">03 — Lobbying &amp; the pre-filing flag</div>
-        <p>Lobbying rows come from the Senate's public Lobbying Disclosure Act filings, matched by each sector's tracked companies. A bill is flagged if a tracked trade in its sector was disclosed in the 45 days before the bill's introduction — a sector-level correlation, not a claim about any specific trade.</p>
+        <div class="num">03 — The lobbying–bill–trade nexus</div>
+        <p>Lobbying rows come from the public Lobbying Disclosure Act database, matched by each sector's tracked companies. When a filing's own activity description names a bill number we track, that filing is linked to the bill — open a bill to see exactly who reported lobbying on it. A bill is also flagged when a tracked trade in its sector was disclosed in the 45 days before introduction. These are disclosed-record joins, not causal claims.</p>
       </div>
     </div>
     <div class="data-note">
@@ -215,7 +215,9 @@
   let activeSector = "ALL";
   let openBillId = null;
   let lobbyingShown = 50;
+  let tradesShown = 100;
   const LOBBYING_PAGE = 50;
+  const TRADES_PAGE = 100;
 
   function feasColor(v) {
     if (v >= 65) return "var(--good)";
@@ -278,6 +280,7 @@
       btn.addEventListener("click", () => {
         activeSector = activeSector === code ? "ALL" : code;
         lobbyingShown = LOBBYING_PAGE;
+        tradesShown = TRADES_PAGE;
         renderAll();
       });
       grid.appendChild(btn);
@@ -295,6 +298,7 @@
       btn.addEventListener("click", () => {
         activeSector = code;
         lobbyingShown = LOBBYING_PAGE;
+        tradesShown = TRADES_PAGE;
         renderAll();
       });
       wrap.appendChild(btn);
@@ -348,6 +352,18 @@
                       <div>${esc(a.purpose || a.latest_action || "No description available.")}</div>
                     </div>
                   `).join("")}
+                <span class="detail-eyebrow" style="margin-top:12px;">Lobbying on this bill (${(b.lobbied_by || []).length})</span>
+                ${(b.lobbied_by || []).length === 0
+                  ? `<div class="empty-note">No tracked-company LDA filings name this bill number.</div>`
+                  : b.lobbied_by.map(l => `
+                    <div class="amendment-item">
+                      <div class="amendment-top">
+                        <span class="amendment-number">${esc(l.client_name)}${l.ticker ? ` (${esc(l.ticker)})` : ""}</span>
+                        <span class="amendment-date">${esc(l.filing_period || "")} ${esc(String(l.filing_year || ""))}</span>
+                      </div>
+                      <div>via ${esc(l.registrant_name || "in-house")}${l.income ? ` · $${Number(l.income).toLocaleString()} reported` : ""} · <a class="bill-link" href="${esc(l.filing_url)}" target="_blank" rel="noopener">filing →</a></div>
+                    </div>
+                  `).join("")}
                 <div style="margin-top:12px;"><a class="bill-link" href="${esc(b.congress_gov_url)}" target="_blank" rel="noopener">View on Congress.gov →</a></div>
               </div>
             </div>
@@ -366,17 +382,19 @@
   function renderTradesSection() {
     const trades = filterBySector(DATA.trades).slice().sort((a, b) => new Date(b.filed_date) - new Date(a.filed_date));
     const showSectorCol = activeSector === "ALL";
+    const visible = trades.slice(0, tradesShown);
     const body = trades.length === 0
-      ? `<div class="empty-note">No Senate trades disclosed in the current data window.</div>`
+      ? `<div class="empty-note">No trades disclosed in the current data window.</div>`
       : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Filed</th><th>Senator</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Amount</th><th>Tx Date</th><th></th></tr></thead>
-          <tbody>${trades.map(t => {
+          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Amount</th><th>Tx Date</th><th></th></tr></thead>
+          <tbody>${visible.map(t => {
             const sc = sectorMeta(t.sector);
             return `
             <tr>
               <td>${esc(t.filed_date)}</td>
-              <td>${esc(t.senator)}</td>
-              <td class="row-ticker">${esc(t.ticker)}</td>
+              <td>${esc(t.member)}</td>
+              <td>${esc(t.chamber)}</td>
+              <td class="row-ticker">${esc(t.ticker || "—")}</td>
               <td>${esc(t.company)}</td>
               ${showSectorCol ? `<td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>` : ""}
               <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td>
@@ -385,9 +403,11 @@
               <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">Filing →</a></td>
             </tr>`;
           }).join("")}</tbody>
-        </table></div>`;
+        </table>
+        ${trades.length > tradesShown ? `<button class="show-more-btn" id="tradesMore">Show ${Math.min(TRADES_PAGE, trades.length - tradesShown)} more (${trades.length - tradesShown} remaining)</button>` : ""}
+        </div>`;
     return `<section class="data-section">
-      <div class="section-head"><span class="section-title">Congressional Trades</span><span class="section-count">${trades.length} in view · Senate PTR filings</span></div>
+      <div class="section-head"><span class="section-title">Congressional Trades</span><span class="section-count">${trades.length} in view · Senate + House PTR filings</span></div>
       ${body}
     </section>`;
   }
@@ -398,7 +418,7 @@
     const body = filings.length === 0
       ? `<div class="empty-note">No lobbying filings found in the current data window.</div>`
       : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Posted</th><th>Client</th><th>Registrant</th><th>Filing</th><th>Income</th><th>Issues</th></tr></thead>
+          <thead><tr><th>Posted</th><th>Client</th><th>Registrant</th><th>Filing</th><th>Income</th><th>Lobbying on</th></tr></thead>
           <tbody>${visible.map(l => `
             <tr>
               <td>${fmtDate(l.posted_date)}</td>
@@ -406,7 +426,11 @@
               <td>${esc(l.registrant_name || "—")}</td>
               <td><a class="bill-link" href="${esc(l.filing_url)}" target="_blank" rel="noopener">${esc(l.filing_type)}</a></td>
               <td>${l.income ? "$" + Number(l.income).toLocaleString() : "—"}</td>
-              <td>${(l.issues || []).map(i => `<span class="issue-pill">${esc(i)}</span>`).join("")}</td>
+              <td>
+                ${(l.bill_mentions || []).map(m => `<span class="issue-pill" style="color:var(--accent); border-color:var(--accent)">${esc(m)}</span>`).join("")}
+                ${(l.issues || []).map(i => `<span class="issue-pill">${esc(i)}</span>`).join("")}
+                ${l.description ? `<div style="font-size:10.5px; color:var(--text-faint); margin-top:3px; max-width:420px;">${esc(l.description.slice(0, 160))}${l.description.length > 160 ? "…" : ""}</div>` : ""}
+              </td>
             </tr>
           `).join("")}</tbody>
         </table>
@@ -431,6 +455,8 @@
     });
     const more = document.getElementById("lobbyingMore");
     if (more) more.addEventListener("click", () => { lobbyingShown += LOBBYING_PAGE; renderContent(); });
+    const moreTrades = document.getElementById("tradesMore");
+    if (moreTrades) moreTrades.addEventListener("click", () => { tradesShown += TRADES_PAGE; renderContent(); });
   }
 
   function renderAll() {

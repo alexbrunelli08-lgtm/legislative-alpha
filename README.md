@@ -7,11 +7,12 @@ A daily-updating tracker for Congressional bills, amendments, Senate stock trade
 ## How it works
 
 1. `.github/workflows/daily-update.yml` runs `scripts/fetch_data.py` once a day (and can be triggered manually from the Actions tab).
-2. The script pulls three live sources and writes `data.json`:
+2. The script pulls four live sources and writes `data.json`:
    - **Bills + amendments** — [Congress.gov API](https://api.congress.gov) (needs a free API key)
-   - **Senate stock trades** — scraped directly from [efdsearch.senate.gov](https://efdsearch.senate.gov) (no key; House disclosures are scanned PDFs and are not included)
-   - **Lobbying filings** — [Senate LDA API](https://lda.gov/api/) (public, no key needed)
-3. Everything is matched to a sector defined in `scripts/sectors.json` — edit that file to add/remove sectors, ETFs, keywords, or tracked companies.
+   - **Senate stock trades** — scraped from [efdsearch.senate.gov](https://efdsearch.senate.gov) (no key)
+   - **House stock trades** — parsed from the [House Clerk's](https://disclosures-clerk.house.gov) e-filed PTR PDFs (no key; paper filings are scanned images and are skipped — the run log reports how many)
+   - **Lobbying filings** — [LDA API](https://lda.gov/api/) (public, no key needed), including each filing's activity descriptions
+3. Everything is matched to a sector defined in `scripts/sectors.json` — edit that file to add/remove sectors, ETFs, keywords, or tracked companies. Every disclosed trade is kept: trades outside all tracked lists land in an "Other / Unclassified" bucket. When a lobbying filing's activity description names a tracked bill number, the filing is linked to that bill (visible in the bill's detail view).
 4. `index.html` is a static page that reads `data.json` and renders it. No API keys are ever exposed to site visitors.
 
 ## One-time setup

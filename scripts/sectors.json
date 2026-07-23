@@ -83,6 +83,46 @@
       "WMS": {
         "name": "Advanced Drainage Systems",
         "lda_search": "advanced drainage"
+      },
+      "X": {
+        "name": "United States Steel",
+        "lda_search": "united states steel"
+      },
+      "CLF": {
+        "name": "Cleveland-Cliffs",
+        "lda_search": "cleveland-cliffs"
+      },
+      "EXP": {
+        "name": "Eagle Materials",
+        "lda_search": "eagle materials"
+      },
+      "CRH": {
+        "name": "CRH plc",
+        "lda_search": "crh"
+      },
+      "MTZ": {
+        "name": "MasTec",
+        "lda_search": "mastec"
+      },
+      "PRIM": {
+        "name": "Primoris Services",
+        "lda_search": "primoris"
+      },
+      "FLR": {
+        "name": "Fluor Corporation",
+        "lda_search": "fluor"
+      },
+      "KBR": {
+        "name": "KBR, Inc.",
+        "lda_search": "kbr"
+      },
+      "TTEK": {
+        "name": "Tetra Tech",
+        "lda_search": "tetra tech"
+      },
+      "VMI": {
+        "name": "Valmont Industries",
+        "lda_search": "valmont"
       }
     },
     "short": "Infrastructure"
@@ -164,6 +204,34 @@
       "CACI": {
         "name": "CACI International",
         "lda_search": "caci international"
+      },
+      "FFIV": {
+        "name": "F5, Inc.",
+        "lda_search": "f5"
+      },
+      "AKAM": {
+        "name": "Akamai Technologies",
+        "lda_search": "akamai"
+      },
+      "CSCO": {
+        "name": "Cisco Systems",
+        "lda_search": "cisco"
+      },
+      "MSI": {
+        "name": "Motorola Solutions",
+        "lda_search": "motorola solutions"
+      },
+      "PLTR": {
+        "name": "Palantir Technologies",
+        "lda_search": "palantir"
+      },
+      "BAH": {
+        "name": "Booz Allen Hamilton",
+        "lda_search": "booz allen"
+      },
+      "SAIC": {
+        "name": "Science Applications International",
+        "lda_search": "science applications international"
       }
     },
     "short": "Cybersecurity"
@@ -238,6 +306,38 @@
       "SEDG": {
         "name": "SolarEdge Technologies",
         "lda_search": "solaredge"
+      },
+      "GEV": {
+        "name": "GE Vernova",
+        "lda_search": "ge vernova"
+      },
+      "VRT": {
+        "name": "Vertiv Holdings",
+        "lda_search": "vertiv"
+      },
+      "FLNC": {
+        "name": "Fluence Energy",
+        "lda_search": "fluence energy"
+      },
+      "ITRI": {
+        "name": "Itron",
+        "lda_search": "itron"
+      },
+      "ROK": {
+        "name": "Rockwell Automation",
+        "lda_search": "rockwell automation"
+      },
+      "ED": {
+        "name": "Consolidated Edison",
+        "lda_search": "consolidated edison"
+      },
+      "SRE": {
+        "name": "Sempra",
+        "lda_search": "sempra"
+      },
+      "PCG": {
+        "name": "PG&E Corporation",
+        "lda_search": "pacific gas and electric"
       }
     },
     "short": "Grid"
@@ -294,6 +394,14 @@
       "ARQQ": {
         "name": "Arqit Quantum",
         "lda_search": "arqit"
+      },
+      "QUBT": {
+        "name": "Quantum Computing Inc.",
+        "lda_search": "quantum computing inc"
+      },
+      "KEYS": {
+        "name": "Keysight Technologies",
+        "lda_search": "keysight"
       }
     },
     "short": "Quantum"
@@ -368,6 +476,46 @@
       "UTHR": {
         "name": "United Therapeutics",
         "lda_search": "united therapeutics"
+      },
+      "ILMN": {
+        "name": "Illumina",
+        "lda_search": "illumina"
+      },
+      "CRSP": {
+        "name": "CRISPR Therapeutics",
+        "lda_search": "crispr therapeutics"
+      },
+      "NTLA": {
+        "name": "Intellia Therapeutics",
+        "lda_search": "intellia"
+      },
+      "BEAM": {
+        "name": "Beam Therapeutics",
+        "lda_search": "beam therapeutics"
+      },
+      "IONS": {
+        "name": "Ionis Pharmaceuticals",
+        "lda_search": "ionis"
+      },
+      "JAZZ": {
+        "name": "Jazz Pharmaceuticals",
+        "lda_search": "jazz pharmaceuticals"
+      },
+      "HALO": {
+        "name": "Halozyme Therapeutics",
+        "lda_search": "halozyme"
+      },
+      "PCVX": {
+        "name": "Vaxcyte",
+        "lda_search": "vaxcyte"
+      },
+      "RVMD": {
+        "name": "Revolution Medicines",
+        "lda_search": "revolution medicines"
+      },
+      "RARE": {
+        "name": "Ultragenyx Pharmaceutical",
+        "lda_search": "ultragenyx"
       }
     },
     "short": "Biotech"
@@ -434,6 +582,34 @@
       "BWXT": {
         "name": "BWX Technologies",
         "lda_search": "bwx technologies"
+      },
+      "AVAV": {
+        "name": "AeroVironment",
+        "lda_search": "aerovironment"
+      },
+      "HEI": {
+        "name": "HEICO Corporation",
+        "lda_search": "heico"
+      },
+      "TDG": {
+        "name": "TransDigm Group",
+        "lda_search": "transdigm"
+      },
+      "CW": {
+        "name": "Curtiss-Wright",
+        "lda_search": "curtiss-wright"
+      },
+      "MRCY": {
+        "name": "Mercury Systems",
+        "lda_search": "mercury systems"
+      },
+      "PLTR": {
+        "name": "Palantir Technologies",
+        "lda_search": "palantir"
+      },
+      "RKLB": {
+        "name": "Rocket Lab",
+        "lda_search": "rocket lab"
       }
     },
     "short": "Defense"
@@ -492,6 +668,26 @@
       "RDW": {
         "name": "Redwire Corporation",
         "lda_search": "redwire"
+      },
+      "PL": {
+        "name": "Planet Labs",
+        "lda_search": "planet labs"
+      },
+      "LUNR": {
+        "name": "Intuitive Machines",
+        "lda_search": "intuitive machines"
+      },
+      "SATS": {
+        "name": "EchoStar",
+        "lda_search": "echostar"
+      },
+      "BKSY": {
+        "name": "BlackSky Technology",
+        "lda_search": "blacksky"
+      },
+      "SPCE": {
+        "name": "Virgin Galactic",
+        "lda_search": "virgin galactic"
       }
     },
     "short": "Space"
@@ -555,6 +751,26 @@
       "UUUU": {
         "name": "Energy Fuels",
         "lda_search": "energy fuels"
+      },
+      "NXE": {
+        "name": "NexGen Energy",
+        "lda_search": "nexgen energy"
+      },
+      "LTBR": {
+        "name": "Lightbridge",
+        "lda_search": "lightbridge"
+      },
+      "TLN": {
+        "name": "Talen Energy",
+        "lda_search": "talen energy"
+      },
+      "URG": {
+        "name": "Ur-Energy",
+        "lda_search": "ur-energy"
+      },
+      "GEV": {
+        "name": "GE Vernova",
+        "lda_search": "ge vernova"
       }
     },
     "short": "Nuclear"
@@ -622,6 +838,46 @@
       "MRVL": {
         "name": "Marvell Technology",
         "lda_search": "marvell technology"
+      },
+      "ARM": {
+        "name": "Arm Holdings",
+        "lda_search": "arm holdings"
+      },
+      "ASML": {
+        "name": "ASML Holding",
+        "lda_search": "asml"
+      },
+      "ADI": {
+        "name": "Analog Devices",
+        "lda_search": "analog devices"
+      },
+      "NXPI": {
+        "name": "NXP Semiconductors",
+        "lda_search": "nxp"
+      },
+      "ON": {
+        "name": "ON Semiconductor",
+        "lda_search": "on semiconductor"
+      },
+      "MCHP": {
+        "name": "Microchip Technology",
+        "lda_search": "microchip technology"
+      },
+      "GFS": {
+        "name": "GlobalFoundries",
+        "lda_search": "globalfoundries"
+      },
+      "SNPS": {
+        "name": "Synopsys",
+        "lda_search": "synopsys"
+      },
+      "CDNS": {
+        "name": "Cadence Design Systems",
+        "lda_search": "cadence design"
+      },
+      "TER": {
+        "name": "Teradyne",
+        "lda_search": "teradyne"
       }
     },
     "short": "Semis & AI"
@@ -677,6 +933,34 @@
       "AY": {
         "name": "Atlantica Sustainable Infrastructure",
         "lda_search": "atlantica sustainable"
+      },
+      "CWEN": {
+        "name": "Clearway Energy",
+        "lda_search": "clearway"
+      },
+      "AES": {
+        "name": "The AES Corporation",
+        "lda_search": "aes corp"
+      },
+      "ARRY": {
+        "name": "Array Technologies",
+        "lda_search": "array technologies"
+      },
+      "SHLS": {
+        "name": "Shoals Technologies",
+        "lda_search": "shoals"
+      },
+      "NXT": {
+        "name": "Nextracker",
+        "lda_search": "nextracker"
+      },
+      "HASI": {
+        "name": "HA Sustainable Infrastructure",
+        "lda_search": "hannon armstrong"
+      },
+      "EOSE": {
+        "name": "Eos Energy Enterprises",
+        "lda_search": "eos energy"
       }
     },
     "short": "Clean Energy"
@@ -732,6 +1016,38 @@
       "NTR": {
         "name": "Nutrien",
         "lda_search": "nutrien"
+      },
+      "TSN": {
+        "name": "Tyson Foods",
+        "lda_search": "tyson foods"
+      },
+      "CNH": {
+        "name": "CNH Industrial",
+        "lda_search": "cnh industrial"
+      },
+      "DAR": {
+        "name": "Darling Ingredients",
+        "lda_search": "darling ingredients"
+      },
+      "LW": {
+        "name": "Lamb Weston",
+        "lda_search": "lamb weston"
+      },
+      "INGR": {
+        "name": "Ingredion",
+        "lda_search": "ingredion"
+      },
+      "LNN": {
+        "name": "Lindsay Corporation",
+        "lda_search": "lindsay corp"
+      },
+      "SMG": {
+        "name": "Scotts Miracle-Gro",
+        "lda_search": "scotts miracle"
+      },
+      "CALM": {
+        "name": "Cal-Maine Foods",
+        "lda_search": "cal-maine"
       }
     },
     "short": "Agriculture"
@@ -764,10 +1080,6 @@
         "name": "PayPal Holdings",
         "lda_search": "paypal"
       },
-      "SQ": {
-        "name": "Block, Inc.",
-        "lda_search": "block, inc"
-      },
       "COIN": {
         "name": "Coinbase Global",
         "lda_search": "coinbase"
@@ -787,6 +1099,38 @@
       "GPN": {
         "name": "Global Payments",
         "lda_search": "global payments"
+      },
+      "XYZ": {
+        "name": "Block, Inc.",
+        "lda_search": "block, inc"
+      },
+      "HOOD": {
+        "name": "Robinhood Markets",
+        "lda_search": "robinhood"
+      },
+      "CRCL": {
+        "name": "Circle Internet Group",
+        "lda_search": "circle internet"
+      },
+      "MARA": {
+        "name": "MARA Holdings",
+        "lda_search": "mara holdings"
+      },
+      "MSTR": {
+        "name": "Strategy (MicroStrategy)",
+        "lda_search": "microstrategy"
+      },
+      "TOST": {
+        "name": "Toast, Inc.",
+        "lda_search": "toast"
+      },
+      "UPST": {
+        "name": "Upstart Holdings",
+        "lda_search": "upstart"
+      },
+      "BILL": {
+        "name": "BILL Holdings",
+        "lda_search": "bill.com"
       }
     },
     "short": "Fintech"
