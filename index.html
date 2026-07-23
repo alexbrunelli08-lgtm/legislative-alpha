@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legislative Alpha — Live Policy Signals by Sector</title>
+<title>Legislative Alpha — Where Congress Meets the Market</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,6 +72,8 @@
   .filter-tab { font-size: 11.5px; font-family: inherit; background: transparent; border: 1px solid var(--line); color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
   .filter-tab:hover { border-color: var(--accent); color: var(--text); }
   .filter-tab.active { background: var(--panel-2); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .appropriation-toggle { font-size: 11px; font-family: inherit; background: transparent; border: 1px solid var(--line); color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .appropriation-toggle.on { border-color: var(--warn); color: var(--warn); }
 
   /* ---------- Stacked sections ---------- */
   .data-section { padding: 18px 0 6px; }
@@ -88,6 +90,7 @@
   .bill-number { font-size: 11px; font-weight: 600; color: var(--text-faint); letter-spacing: 0.02em; }
   .sector-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; letter-spacing: 0.02em; }
   .status-tag { font-size: 10px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-dim); }
+  .approp-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: #3a2f18; color: var(--warn); border: 1px solid #4a3d20; }
   .trade-flag { display: inline-flex; align-items: center; gap: 4px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.02em; padding: 2px 7px; border-radius: 999px; background: #3a231a; color: var(--warn); border: 1px solid #4a3020; }
   .trade-flag .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--warn); }
   .bill-title { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.35; color: var(--text); }
@@ -102,18 +105,28 @@
   .bill-detail { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; border-top: 1px solid transparent; }
   .bill-card.open .bill-detail { border-top: 1px solid var(--line); }
   .bill-detail-inner { padding: 14px 16px 16px; font-size: 12.5px; }
-  .detail-eyebrow { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); display: block; margin-bottom: 8px; }
-  .detail-row { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; color: var(--text-dim); }
+  .detail-eyebrow { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); display: block; margin: 14px 0 8px; }
+  .detail-eyebrow:first-child { margin-top: 0; }
+  .detail-row { color: var(--text-dim); margin-bottom: 6px; }
+  .dollar-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+  .dollar-chip { font-size: 11px; font-weight: 600; color: var(--warn); background: #2e2818; border: 1px solid #45391f; padding: 2px 9px; border-radius: 4px; }
+  .stock-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .stock-chip { font-size: 11px; padding: 3px 9px; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--line); }
+  .stock-chip b { color: var(--text); font-weight: 600; }
+  .stock-chip span { color: var(--text-faint); }
   .amendment-item { padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
   .amendment-item:last-child { border-bottom: none; }
   .amendment-top { display: flex; gap: 8px; align-items: baseline; margin-bottom: 3px; flex-wrap: wrap; }
   .amendment-number { font-weight: 600; font-size: 11.5px; color: var(--accent); }
   .amendment-date { font-size: 10.5px; color: var(--text-faint); }
-  .empty-note { font-size: 12px; color: var(--text-faint); font-style: italic; padding: 6px 0 10px; }
+  .empty-note { font-size: 12px; color: var(--text-faint); font-style: italic; padding: 4px 0 8px; }
   .bill-link { font-size: 11px; color: var(--accent); text-decoration: none; }
   .bill-link:hover { text-decoration: underline; }
+  .mini-trade-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin-top: 2px; }
+  .mini-trade-table td { padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line-soft); color: var(--text-dim); }
+  .mini-trade-table tr:last-child td { border-bottom: none; }
 
-  /* ---------- Tables ---------- */
+  /* ---------- Trades table ---------- */
   .data-table-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
   table.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
   table.data-table th { text-align: left; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--panel-2); white-space: nowrap; }
@@ -122,7 +135,6 @@
   .type-buy, .type-purchase { color: var(--good); font-weight: 600; }
   .type-sale, .type-sell, .type-exchange { color: var(--bad); font-weight: 600; }
   .row-ticker { color: var(--text); font-weight: 600; }
-  .issue-pill { display: inline-block; font-size: 10px; background: var(--panel-2); border: 1px solid var(--line); color: var(--text-dim); padding: 1px 7px; border-radius: 999px; margin: 1px 3px 1px 0; }
   .show-more-btn { display: block; width: 100%; font-family: inherit; font-size: 11.5px; background: var(--panel-2); color: var(--accent); border: none; border-top: 1px solid var(--line); padding: 10px; cursor: pointer; }
   .show-more-btn:hover { background: var(--line-soft); }
 
@@ -164,19 +176,20 @@
     <div class="header-row">
       <div>
         <div class="wordmark"><span class="dot"></span>Legislative Alpha</div>
-        <div class="tagline">Bills, congressional trades &amp; lobbying — organized by sector</div>
+        <div class="tagline">Bills &amp; appropriations → the stocks that benefit → congressional disclosure</div>
       </div>
       <div class="status-badge" id="statusBadge">Loading…</div>
     </div>
   </header>
 
   <section class="sector-section">
-    <div class="section-label">Sectors</div>
+    <div class="section-label">Sectors of the economy</div>
     <div class="sector-grid" id="sectorGrid"></div>
   </section>
 
   <section class="filter-row">
     <div class="filter-tabs" id="filterTabs"></div>
+    <button class="appropriation-toggle" id="appropToggle">Appropriations only</button>
   </section>
 
   <div id="content">
@@ -187,20 +200,20 @@
     <h2>How this works</h2>
     <div class="methodology-grid">
       <div class="methodology-item">
-        <div class="num">01 — Legislative momentum score</div>
-        <p>A 0–100 score built from real, directly observable signals: the bill's current stage (introduced → committee → passed a chamber → signed), its real cosponsor count, and whether it saw action in the last 14 days. This is a progress signal, not a predictive model.</p>
+        <div class="num">01 — Bills &amp; appropriations</div>
+        <p>Recently-active bills from the Congress.gov API, matched to a sector by keyword. Bills are flagged when they appropriate or authorize funding, and any dollar figures visible in the title or latest action are pulled out. A 0–100 momentum score reflects the bill's stage (introduced → committee → passed a chamber → signed), its cosponsor count, and recent activity.</p>
       </div>
       <div class="methodology-item">
-        <div class="num">02 — Congressional trades, both chambers</div>
-        <p>Every trade disclosed in Periodic Transaction Reports (STOCK Act filings) over the data window is included: Senate reports are scraped from efdsearch.senate.gov, and House reports are parsed from the Clerk's e-filed disclosure PDFs. House filings submitted on paper are scanned images and cannot be parsed — the daily run logs how many were skipped. Trades in a sector's tracked companies are attributed to that sector; everything else appears under "Other / Unclassified."</p>
+        <div class="num">02 — The stocks that benefit</div>
+        <p>Each bill lists its sector's constituent companies — the names positioned to benefit if it advances. Open any bill to see the tickers and the congressional trades disclosed in exactly those stocks.</p>
       </div>
       <div class="methodology-item">
-        <div class="num">03 — The lobbying–bill–trade nexus</div>
-        <p>Lobbying rows come from the public Lobbying Disclosure Act database, matched by each sector's tracked companies. When a filing's own activity description names a bill number we track, that filing is linked to the bill — open a bill to see exactly who reported lobbying on it. A bill is also flagged when a tracked trade in its sector was disclosed in the 45 days before introduction. These are disclosed-record joins, not causal claims.</p>
+        <div class="num">03 — Congressional disclosure</div>
+        <p>Every trade disclosed in Senate and House Periodic Transaction Reports (STOCK Act filings) over the data window — scraped from efdsearch.senate.gov and the House Clerk's e-filed PDFs. A bill is flagged when a trade in its sector was disclosed in the 45 days before it was introduced.</p>
       </div>
     </div>
     <div class="data-note">
-      <b>About this data.</b> Bills and amendments come from the Congress.gov API. Trades come from Senate financial disclosures. Lobbying comes from the Senate LDA API. Data refreshes once daily via a scheduled job. Sector definitions (keyword lists and tracked companies) are hand-curated starting points — review and expand them in <b>scripts/sectors.json</b>.
+      <b>About this data.</b> Bills and amendments come from the Congress.gov API; trades from Senate and House financial disclosures (House paper filings are scanned images and are skipped). "Stocks that benefit" is a sector mapping, not a prediction — sector definitions live in <b>scripts/sectors.json</b>. Refreshes once daily. Not investment advice.
     </div>
   </section>
 
@@ -214,9 +227,8 @@
   let DATA = null;
   let activeSector = "ALL";
   let openBillId = null;
-  let lobbyingShown = 50;
+  let appropriationsOnly = false;
   let tradesShown = 100;
-  const LOBBYING_PAGE = 50;
   const TRADES_PAGE = 100;
 
   function feasColor(v) {
@@ -270,16 +282,15 @@
         : `<span class="sector-momentum" style="color:var(--text-faint)">—</span>`;
       btn.innerHTML = `
         <div class="sector-title" style="color:${s.color}">${esc(s.short)}</div>
-        <div class="sector-sub">${esc(s.name)}${s.etf ? ` · ETF: ${esc(s.etf)}` : ""}</div>
+        <div class="sector-sub">${esc(s.name)}${s.stock_count ? ` · ${s.stock_count} stocks` : ""}</div>
         <div class="sector-metric-row">
           ${momentumHtml}
-          <span class="sector-counts">${s.bill_count} bills · ${s.trade_count ?? 0} trades<br>${s.lobbying_count ?? 0} lobbying filings</span>
+          <span class="sector-counts">${s.bill_count} bills · ${s.appropriation_count ?? 0} approp.<br>${s.trade_count ?? 0} trades</span>
         </div>
       `;
       if (activeSector === code) btn.style.boxShadow = `inset 0 2px 0 ${s.color}`;
       btn.addEventListener("click", () => {
         activeSector = activeSector === code ? "ALL" : code;
-        lobbyingShown = LOBBYING_PAGE;
         tradesShown = TRADES_PAGE;
         renderAll();
       });
@@ -297,22 +308,30 @@
       btn.textContent = label;
       btn.addEventListener("click", () => {
         activeSector = code;
-        lobbyingShown = LOBBYING_PAGE;
         tradesShown = TRADES_PAGE;
         renderAll();
       });
       wrap.appendChild(btn);
     });
+    const toggle = document.getElementById("appropToggle");
+    toggle.classList.toggle("on", appropriationsOnly);
+    toggle.textContent = appropriationsOnly ? "✓ Appropriations only" : "Appropriations only";
   }
 
   function filterBySector(list) {
     return activeSector === "ALL" ? list : list.filter(x => x.sector === activeSector);
   }
 
+  function tradeTypeClass(t) {
+    return "type-" + String(t || "").toLowerCase().split(" ")[0].replace(/[^a-z]/g, "");
+  }
+
   function renderBillsSection() {
-    const bills = filterBySector(DATA.bills).slice().sort((a, b) => b.momentum - a.momentum);
+    let bills = filterBySector(DATA.bills);
+    if (appropriationsOnly) bills = bills.filter(b => b.is_appropriation);
+    bills = bills.slice().sort((a, b) => b.momentum - a.momentum);
     const body = bills.length === 0
-      ? `<div class="empty-note">No matched bills in this sector for the current data window.</div>`
+      ? `<div class="empty-note">No ${appropriationsOnly ? "appropriations " : ""}bills in this sector for the current data window.</div>`
       : `<div class="item-list">${bills.map(b => {
           const sc = sectorMeta(b.sector);
           const open = openBillId === b.id;
@@ -324,10 +343,11 @@
                   <span class="bill-number">${esc(b.number)}</span>
                   <span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span>
                   <span class="status-tag">${esc(b.status)}</span>
+                  ${b.is_appropriation ? `<span class="approp-tag">$ Appropriation</span>` : ""}
                   ${b.sector_trade_flag ? `<span class="trade-flag"><span class="dot"></span>Sector trade before filing</span>` : ""}
                 </div>
                 <div class="bill-title">${esc(b.title)}</div>
-                <div class="bill-meta">${b.sponsor ? `${esc(b.sponsor.name)}` : "Sponsor unknown"} · Introduced ${fmtDate(b.introduced_date)} · ${b.cosponsor_count || 0} cosponsors</div>
+                <div class="bill-meta">${b.sponsor ? `${esc(b.sponsor.name)}` : "Sponsor unknown"} · Introduced ${fmtDate(b.introduced_date)} · ${b.cosponsor_count || 0} cosponsors${b.related_trade_count ? ` · ${b.related_trade_count} trades in beneficiary stocks` : ""}</div>
               </div>
               <div class="momentum-block">
                 <div class="momentum-num" style="color:${feasColor(b.momentum)}">${b.momentum}</div>
@@ -339,7 +359,27 @@
             <div class="bill-detail">
               <div class="bill-detail-inner">
                 <span class="detail-eyebrow">Latest action</span>
-                <div class="detail-row"><span>${fmtDate(b.latest_action?.date)} — ${esc(b.latest_action?.text || "—")}</span></div>
+                <div class="detail-row">${fmtDate(b.latest_action?.date)} — ${esc(b.latest_action?.text || "—")}</div>
+                ${b.dollar_figures && b.dollar_figures.length ? `
+                  <span class="detail-eyebrow">Funding figures cited</span>
+                  <div class="dollar-chips">${b.dollar_figures.map(d => `<span class="dollar-chip">${esc(d)}</span>`).join("")}</div>
+                ` : ""}
+                <span class="detail-eyebrow">Stocks positioned to benefit — ${esc(sc.name)}</span>
+                ${(b.beneficiary_stocks || []).length === 0
+                  ? `<div class="empty-note">No tracked companies for this sector.</div>`
+                  : `<div class="stock-chips">${b.beneficiary_stocks.map(s => `<span class="stock-chip"><b>${esc(s.ticker)}</b> <span>${esc(s.name)}</span></span>`).join("")}</div>`}
+                <span class="detail-eyebrow">Congressional trades in these stocks (${b.related_trade_count || 0})</span>
+                ${(b.related_trades || []).length === 0
+                  ? `<div class="empty-note">No disclosed trades in these stocks in the current data window.</div>`
+                  : `<table class="mini-trade-table"><tbody>${b.related_trades.map(t => `
+                      <tr>
+                        <td>${esc(t.filed_date)}</td>
+                        <td>${esc(t.member)}</td>
+                        <td class="row-ticker">${esc(t.ticker || "—")}</td>
+                        <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td>
+                        <td>${esc(t.amount_range)}</td>
+                        <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td>
+                      </tr>`).join("")}</tbody></table>`}
                 <span class="detail-eyebrow">Amendments (${(b.amendments || []).length})</span>
                 ${(b.amendments || []).length === 0
                   ? `<div class="empty-note">No amendments filed yet.</div>`
@@ -352,31 +392,15 @@
                       <div>${esc(a.purpose || a.latest_action || "No description available.")}</div>
                     </div>
                   `).join("")}
-                <span class="detail-eyebrow" style="margin-top:12px;">Lobbying on this bill (${(b.lobbied_by || []).length})</span>
-                ${(b.lobbied_by || []).length === 0
-                  ? `<div class="empty-note">No tracked-company LDA filings name this bill number.</div>`
-                  : b.lobbied_by.map(l => `
-                    <div class="amendment-item">
-                      <div class="amendment-top">
-                        <span class="amendment-number">${esc(l.client_name)}${l.ticker ? ` (${esc(l.ticker)})` : ""}</span>
-                        <span class="amendment-date">${esc(l.filing_period || "")} ${esc(String(l.filing_year || ""))}</span>
-                      </div>
-                      <div>via ${esc(l.registrant_name || "in-house")}${l.income ? ` · $${Number(l.income).toLocaleString()} reported` : ""} · <a class="bill-link" href="${esc(l.filing_url)}" target="_blank" rel="noopener">filing →</a></div>
-                    </div>
-                  `).join("")}
                 <div style="margin-top:12px;"><a class="bill-link" href="${esc(b.congress_gov_url)}" target="_blank" rel="noopener">View on Congress.gov →</a></div>
               </div>
             </div>
           </div>`;
         }).join("")}</div>`;
     return `<section class="data-section">
-      <div class="section-head"><span class="section-title">Bills</span><span class="section-count">${bills.length} in view</span></div>
+      <div class="section-head"><span class="section-title">Bills${appropriationsOnly ? " — appropriations" : ""}</span><span class="section-count">${bills.length} in view</span></div>
       ${body}
     </section>`;
-  }
-
-  function tradeTypeClass(t) {
-    return "type-" + String(t || "").toLowerCase().split(" ")[0].replace(/[^a-z]/g, "");
   }
 
   function renderTradesSection() {
@@ -407,44 +431,14 @@
         ${trades.length > tradesShown ? `<button class="show-more-btn" id="tradesMore">Show ${Math.min(TRADES_PAGE, trades.length - tradesShown)} more (${trades.length - tradesShown} remaining)</button>` : ""}
         </div>`;
     return `<section class="data-section">
-      <div class="section-head"><span class="section-title">Congressional Trades</span><span class="section-count">${trades.length} in view · Senate + House PTR filings</span></div>
-      ${body}
-    </section>`;
-  }
-
-  function renderLobbyingSection() {
-    const filings = filterBySector(DATA.lobbying).slice().sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date));
-    const visible = filings.slice(0, lobbyingShown);
-    const body = filings.length === 0
-      ? `<div class="empty-note">No lobbying filings found in the current data window.</div>`
-      : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Posted</th><th>Client</th><th>Registrant</th><th>Filing</th><th>Income</th><th>Lobbying on</th></tr></thead>
-          <tbody>${visible.map(l => `
-            <tr>
-              <td>${fmtDate(l.posted_date)}</td>
-              <td>${esc(l.client_name || l.company)}</td>
-              <td>${esc(l.registrant_name || "—")}</td>
-              <td><a class="bill-link" href="${esc(l.filing_url)}" target="_blank" rel="noopener">${esc(l.filing_type)}</a></td>
-              <td>${l.income ? "$" + Number(l.income).toLocaleString() : "—"}</td>
-              <td>
-                ${(l.bill_mentions || []).map(m => `<span class="issue-pill" style="color:var(--accent); border-color:var(--accent)">${esc(m)}</span>`).join("")}
-                ${(l.issues || []).map(i => `<span class="issue-pill">${esc(i)}</span>`).join("")}
-                ${l.description ? `<div style="font-size:10.5px; color:var(--text-faint); margin-top:3px; max-width:420px;">${esc(l.description.slice(0, 160))}${l.description.length > 160 ? "…" : ""}</div>` : ""}
-              </td>
-            </tr>
-          `).join("")}</tbody>
-        </table>
-        ${filings.length > lobbyingShown ? `<button class="show-more-btn" id="lobbyingMore">Show ${Math.min(LOBBYING_PAGE, filings.length - lobbyingShown)} more (${filings.length - lobbyingShown} remaining)</button>` : ""}
-        </div>`;
-    return `<section class="data-section">
-      <div class="section-head"><span class="section-title">Lobbying</span><span class="section-count">${filings.length} filings · showing ${Math.min(lobbyingShown, filings.length)}</span></div>
+      <div class="section-head"><span class="section-title">Congressional Disclosure</span><span class="section-count">${trades.length} in view · Senate + House PTR filings</span></div>
       ${body}
     </section>`;
   }
 
   function renderContent() {
     const el = document.getElementById("content");
-    el.innerHTML = renderBillsSection() + renderTradesSection() + renderLobbyingSection();
+    el.innerHTML = renderBillsSection() + renderTradesSection();
 
     el.querySelectorAll(".bill-header-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -453,8 +447,6 @@
         renderContent();
       });
     });
-    const more = document.getElementById("lobbyingMore");
-    if (more) more.addEventListener("click", () => { lobbyingShown += LOBBYING_PAGE; renderContent(); });
     const moreTrades = document.getElementById("tradesMore");
     if (moreTrades) moreTrades.addEventListener("click", () => { tradesShown += TRADES_PAGE; renderContent(); });
   }
@@ -464,6 +456,11 @@
     renderFilterTabs();
     renderContent();
   }
+
+  document.getElementById("appropToggle").addEventListener("click", () => {
+    appropriationsOnly = !appropriationsOnly;
+    renderAll();
+  });
 
   loadData();
 </script>

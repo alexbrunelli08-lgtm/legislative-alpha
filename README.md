@@ -1,18 +1,17 @@
 # Legislative Alpha
 
-A daily-updating tracker for Congressional bills, amendments, Senate stock trades (STOCK Act disclosures), and lobbying spend — organized by thematic investing sector.
+A daily-updating tracker that connects Congressional bills and appropriations to the stocks positioned to benefit — and to the congressional stock trades disclosed in those same companies (House + Senate STOCK Act filings), organized by sector of the economy.
 
 **Live site:** enable GitHub Pages in repo Settings → Pages → set source to the `main` branch, root folder. Your URL will be `https://<your-username>.github.io/legislative-alpha/`.
 
 ## How it works
 
 1. `.github/workflows/daily-update.yml` runs `scripts/fetch_data.py` once a day (and can be triggered manually from the Actions tab).
-2. The script pulls four live sources and writes `data.json`:
-   - **Bills + amendments** — [Congress.gov API](https://api.congress.gov) (needs a free API key)
+2. The script pulls live data and writes `data.json`:
+   - **Bills + amendments** — [Congress.gov API](https://api.congress.gov) (needs a free API key). Each bill is matched to a sector, flagged if it appropriates/authorizes funding (with dollar figures extracted), and linked to the stocks positioned to benefit.
    - **Senate stock trades** — scraped from [efdsearch.senate.gov](https://efdsearch.senate.gov) (no key)
    - **House stock trades** — parsed from the [House Clerk's](https://disclosures-clerk.house.gov) e-filed PTR PDFs (no key; paper filings are scanned images and are skipped — the run log reports how many)
-   - **Lobbying filings** — [LDA API](https://lda.gov/api/) (public, no key needed), including each filing's activity descriptions
-3. Everything is matched to a sector defined in `scripts/sectors.json` — edit that file to add/remove sectors, ETFs, keywords, or tracked companies. Every disclosed trade is kept: trades outside all tracked lists land in an "Other / Unclassified" bucket. When a lobbying filing's activity description names a tracked bill number, the filing is linked to that bill (visible in the bill's detail view).
+3. Everything is matched to a sector defined in `scripts/sectors.json` — edit that file to add/remove sectors, keywords, or tracked companies. Every disclosed trade is kept: trades outside all tracked lists land in an "Other / Unclassified" bucket. Each bill shows its sector's stocks (the beneficiaries) plus the congressional trades disclosed in exactly those tickers.
 4. `index.html` is a static page that reads `data.json` and renders it. No API keys are ever exposed to site visitors.
 
 ## One-time setup

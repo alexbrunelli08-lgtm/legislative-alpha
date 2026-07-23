@@ -2,8 +2,11 @@
 """
 Legislative Alpha daily data fetcher.
 
-Pulls three live data sources and writes a single data.json for the site:
-  1. Bills + amendments  -- Congress.gov API (requires CONGRESS_API_KEY)
+Pulls two live data sources and writes a single data.json for the site:
+  1. Bills + amendments  -- Congress.gov API (requires CONGRESS_API_KEY).
+     Each matched bill is tagged with its sector, flagged if it is an
+     appropriations/funding bill (with any dollar figures extracted), and
+     linked to the constituent stocks positioned to benefit.
   2. Congressional stock trades -- scraped from BOTH chambers' primary
      sources, since no free, currently-maintained API exists for this data:
        - Senate: the electronic financial disclosure search
@@ -12,8 +15,6 @@ Pulls three live data sources and writes a single data.json for the site:
          a yearly filing index plus per-filing PDFs. E-filed PDFs carry a
          text layer and are parsed; paper filings are scanned images and
          are skipped (counted in the run log).
-  3. Lobbying filings -- Senate Lobbying Disclosure Act API (lda.gov), which
-     is public and needs no API key.
 
 Everything is matched to the thematic sectors defined in sectors.json;
 trades in companies outside every sector's tracked list land in OTHER.
@@ -41,8 +42,6 @@ CONGRESS = 119  # 119th Congress: 2025-2027
 BILLS_LOOKBACK_DAYS = 45          # only scan bills updated in this window
 MAX_MATCHED_BILLS = 60            # cap how many matched bills we keep
 SENATE_TRADES_LOOKBACK_DAYS = 45  # PTR filings to scan for tracked tickers
-LOBBYING_FILINGS_PER_COMPANY = 3  # most recent LDA filings per constituent
-LDA_REQUEST_DELAY = 1.2           # seconds between LDA calls -- avoid 429s
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
 
@@ -630,116 +629,6 @@ def fetch_house_trades(ticker_index):
 
 
 # ---------------------------------------------------------------------------
-# 3. Lobbying filings -- Senate LDA API (public, no key needed)
-# ---------------------------------------------------------------------------
-
-LDA_BASE = "https://lda.gov/api/v1"
-
-# Bill references inside lobbying-activity descriptions, e.g. "H.R. 4521",
-# "HR4521", "S. 2214". The (?<!U\.) guard keeps "U.S. 123" from reading as
-# a Senate bill. Normalized to the same "HR 4521" / "S 2214" form used in
-# our bill records so the two datasets can be joined.
-BILL_REF = re.compile(
-    r"(?<!U\.)\b("
-    r"H\.?\s?J\.?\s?RES\.?|S\.?\s?J\.?\s?RES\.?|"
-    r"H\.?\s?CON\.?\s?RES\.?|S\.?\s?CON\.?\s?RES\.?|"
-    r"H\.?\s?RES\.?|S\.?\s?RES\.?|"
-    r"H\.?\s?R\.?|S\.?"
-    r")\s*(\d{1,5})\b",
-    re.IGNORECASE,
-)
-
-
-def extract_bill_mentions(text):
-    mentions = set()
-    for prefix, number in BILL_REF.findall(text or ""):
-        normalized = re.sub(r"[.\s]", "", prefix).upper()
-        mentions.add(f"{normalized} {number}")
-    return sorted(mentions)
-
-
-LDA_MAX_BACKOFF = 8.0  # cap per-retry wait -- this is a daily job, not worth
-                       # honoring a large Retry-After verbatim and stalling
-
-
-def lda_get_with_retry(params, max_retries=3):
-    """LDA rate-limits under sustained load; back off and retry on 429,
-    but cap the wait so one slow company can't stall the whole run."""
-    delay = LDA_REQUEST_DELAY
-    for attempt in range(max_retries):
-        resp = requests.get(
-            f"{LDA_BASE}/filings/", params=params, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT,
-        )
-        if resp.status_code == 429:
-            retry_after = min(float(resp.headers.get("Retry-After", delay * 2)), LDA_MAX_BACKOFF)
-            time.sleep(retry_after)
-            delay = min(delay * 2, LDA_MAX_BACKOFF)
-            continue
-        resp.raise_for_status()
-        return resp
-    resp.raise_for_status()
-    return resp
-
-
-def fetch_lobbying(sectors):
-    print("Fetching lobbying disclosures from the Senate LDA API...", file=sys.stderr)
-    filings = []
-    # Cache by lda_search term: several constituents (e.g. Lockheed Martin,
-    # NVIDIA) legitimately appear under more than one sector, and would
-    # otherwise trigger an identical, wasted API call per extra sector.
-    results_cache = {}
-    total_pairs = sum(len(s["constituents"]) for s in sectors.values())
-    done = 0
-    for code, sector in sectors.items():
-        for ticker, info in sector["constituents"].items():
-            done += 1
-            search_term = info["lda_search"]
-            if search_term in results_cache:
-                results = results_cache[search_term]
-            else:
-                try:
-                    resp = lda_get_with_retry(
-                        {"client_name": search_term, "ordering": "-dt_posted", "limit": LOBBYING_FILINGS_PER_COMPANY}
-                    )
-                    results = resp.json().get("results", [])
-                except requests.RequestException as e:
-                    print(f"  WARN: LDA lookup failed for {search_term}: {e}", file=sys.stderr)
-                    time.sleep(LDA_REQUEST_DELAY)
-                    continue
-                results_cache[search_term] = results
-                time.sleep(LDA_REQUEST_DELAY)
-
-            if done % 10 == 0 or done == total_pairs:
-                print(f"  ...{done}/{total_pairs} companies checked ({len(results_cache)} unique lookups so far)", file=sys.stderr)
-
-            for filing in results:
-                activities = filing.get("lobbying_activities") or []
-                issues = sorted({a.get("general_issue_code_display") for a in activities if a.get("general_issue_code_display")})
-                descriptions = [a.get("description") or "" for a in activities]
-                description = "; ".join(d for d in descriptions if d)[:300]
-                bill_mentions = extract_bill_mentions(" ".join(descriptions))
-                filings.append({
-                    "sector": code,
-                    "ticker": ticker,
-                    "company": info["name"],
-                    "client_name": (filing.get("client") or {}).get("name"),
-                    "registrant_name": (filing.get("registrant") or {}).get("name"),
-                    "filing_type": filing.get("filing_type_display"),
-                    "filing_period": filing.get("filing_period_display"),
-                    "filing_year": filing.get("filing_year"),
-                    "income": filing.get("income"),
-                    "posted_date": filing.get("dt_posted"),
-                    "issues": issues,
-                    "description": description,
-                    "bill_mentions": bill_mentions,
-                    "filing_url": filing.get("filing_document_url"),
-                })
-
-    print(f"  {len(filings)} lobbying filings collected", file=sys.stderr)
-    return filings
-
-
-# ---------------------------------------------------------------------------
 # Assembly
 # ---------------------------------------------------------------------------
 
@@ -771,41 +660,95 @@ def flag_pre_filing_trades(bills, trades):
     return bills
 
 
-def link_lobbying_to_bills(bills, lobbying):
-    """The politics-to-stocks join: when a lobbying filing's activity
-    description names a bill we track, attach that filing to the bill.
-    Only filings from the current congress's years are considered, since
-    bill numbers restart every congress."""
-    congress_years = {2025, 2026}
-    by_number = {}
-    for filing in lobbying:
-        if filing.get("filing_year") not in congress_years:
-            continue
-        for mention in filing.get("bill_mentions") or []:
-            by_number.setdefault(mention, []).append(filing)
+# Appropriations / funding-bill detection and dollar-figure extraction.
+APPROPRIATION_TERMS = re.compile(
+    r"\b(appropriat|making appropriations|authoriz\w* to be appropriated|"
+    r"funding|to fund|supplemental|reauthoriz|budget|grant program|"
+    r"amounts made available|there (is|are) authorized)\b",
+    re.IGNORECASE,
+)
+# Dollar figures like "$1,500,000,000", "$5 billion", "$250 million".
+DOLLAR_FIGURE = re.compile(
+    r"\$\s?[\d,]+(?:\.\d+)?\s?(?:billion|million|trillion|thousand)?",
+    re.IGNORECASE,
+)
 
+
+def analyze_appropriation(bill):
+    """Flag whether a bill is an appropriations/funding measure and pull any
+    dollar figures visible in its title or latest-action text. This works
+    off the fields we already fetch -- no extra API calls."""
+    blob = " ".join(filter(None, [
+        bill.get("title"),
+        (bill.get("latest_action") or {}).get("text"),
+    ]))
+    bill["is_appropriation"] = bool(APPROPRIATION_TERMS.search(blob))
+    figures = []
+    seen = set()
+    for m in DOLLAR_FIGURE.finditer(blob):
+        val = re.sub(r"\s+", " ", m.group(0)).strip()
+        # ignore bare "$" or trivially short catches
+        if len(re.sub(r"[^\d]", "", val)) == 0:
+            continue
+        if val.lower() not in seen:
+            seen.add(val.lower())
+            figures.append(val)
+    bill["dollar_figures"] = figures[:6]
+    return bill
+
+
+def attach_beneficiary_stocks(bills, sectors):
+    """For each bill, list the constituent stocks of its sector -- the names
+    positioned to benefit if the bill advances. This is the sector mapping
+    the user already approved, surfaced per-bill."""
     for bill in bills:
-        seen = set()
-        lobbied_by = []
-        for filing in by_number.get(bill["number"], []):
-            key = (filing["client_name"], filing["registrant_name"])
-            if key in seen:
-                continue
-            seen.add(key)
-            lobbied_by.append({
-                "client_name": filing["client_name"],
-                "ticker": filing["ticker"],
-                "registrant_name": filing["registrant_name"],
-                "income": filing["income"],
-                "filing_period": filing["filing_period"],
-                "filing_year": filing["filing_year"],
-                "filing_url": filing["filing_url"],
-            })
-        bill["lobbied_by"] = lobbied_by[:15]
+        sector = sectors.get(bill["sector"], {})
+        constituents = sector.get("constituents", {})
+        bill["beneficiary_stocks"] = [
+            {"ticker": t, "name": info["name"]} for t, info in constituents.items()
+        ]
     return bills
 
 
-def build_sector_summaries(sectors, bills, trades=(), lobbying=()):
+def attach_bill_trades(bills, trades):
+    """Link each bill to disclosed congressional trades in the stocks that
+    would benefit from it -- i.e. trades whose ticker is one of the bill's
+    sector constituents. This is the bill -> beneficiary-stock -> disclosure
+    nexus, built entirely from disclosed records."""
+    trades_by_sector = {}
+    for t in trades:
+        trades_by_sector.setdefault(t["sector"], []).append(t)
+
+    for bill in bills:
+        related = trades_by_sector.get(bill["sector"], [])
+        # newest disclosures first
+        related = sorted(related, key=lambda t: _parse_mdy(t["filed_date"]), reverse=True)
+        bill["related_trades"] = [
+            {
+                "member": t["member"],
+                "chamber": t["chamber"],
+                "ticker": t["ticker"],
+                "company": t["company"],
+                "type": t["type"],
+                "amount_range": t["amount_range"],
+                "transaction_date": t["transaction_date"],
+                "filed_date": t["filed_date"],
+                "report_url": t["report_url"],
+            }
+            for t in related[:12]
+        ]
+        bill["related_trade_count"] = len(related)
+    return bills
+
+
+def _parse_mdy(s):
+    try:
+        return datetime.strptime(s, "%m/%d/%Y")
+    except (ValueError, TypeError):
+        return datetime.min
+
+
+def build_sector_summaries(sectors, bills, trades=()):
     summaries = {}
     for code, sector in sectors.items():
         sector_bills = [b for b in bills if b["sector"] == code]
@@ -816,8 +759,9 @@ def build_sector_summaries(sectors, bills, trades=(), lobbying=()):
             "etf": sector["etf"],
             "color": sector["color"],
             "bill_count": len(sector_bills),
+            "appropriation_count": sum(1 for b in sector_bills if b.get("is_appropriation")),
             "trade_count": sum(1 for t in trades if t["sector"] == code),
-            "lobbying_count": sum(1 for l in lobbying if l["sector"] == code),
+            "stock_count": len(sector.get("constituents", {})),
             "avg_momentum": avg_momentum,
         }
     other_trades = sum(1 for t in trades if t["sector"] == "OTHER")
@@ -828,8 +772,9 @@ def build_sector_summaries(sectors, bills, trades=(), lobbying=()):
             "etf": None,
             "color": "#565F73",
             "bill_count": 0,
+            "appropriation_count": 0,
             "trade_count": other_trades,
-            "lobbying_count": 0,
+            "stock_count": 0,
             "avg_momentum": 0,
         }
     return summaries
@@ -842,10 +787,12 @@ def main():
     bills = fetch_bills(sectors)
     bills = enrich_bills(bills)
     trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
-    lobbying = fetch_lobbying(sectors)
+
+    bills = [analyze_appropriation(b) for b in bills]
+    bills = attach_beneficiary_stocks(bills, sectors)
     bills = flag_pre_filing_trades(bills, trades)
-    bills = link_lobbying_to_bills(bills, lobbying)
-    sector_summaries = build_sector_summaries(sectors, bills, trades, lobbying)
+    bills = attach_bill_trades(bills, trades)
+    sector_summaries = build_sector_summaries(sectors, bills, trades)
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -853,12 +800,12 @@ def main():
         "sectors": sector_summaries,
         "bills": bills,
         "trades": trades,
-        "lobbying": lobbying,
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
-    print(f"Wrote {OUTPUT_PATH}: {len(bills)} bills, {len(trades)} trades, {len(lobbying)} lobbying filings", file=sys.stderr)
+    appropriations = sum(1 for b in bills if b.get("is_appropriation"))
+    print(f"Wrote {OUTPUT_PATH}: {len(bills)} bills ({appropriations} appropriations), {len(trades)} trades", file=sys.stderr)
 
 
 if __name__ == "__main__":
