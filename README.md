@@ -1,6 +1,10 @@
 # Legislative Alpha
 
-A daily-updating tracker that connects Congressional bills and appropriations to the stocks positioned to benefit — and to the congressional stock trades disclosed in those same companies (House + Senate STOCK Act filings), organized by sector of the economy.
+A daily-updating site where Congress meets the market, organized by sector of the economy. Three views:
+
+- **Bills** — the key bills moving through each sector, each linked to the stocks positioned to benefit and the congressional trades disclosed in those tickers.
+- **Politicians** — every member's disclosed trades aggregated into a portfolio you can open and inspect (Autopilot-style "follow a pilot").
+- **Stocks** — a per-ticker consensus signal: how many members traded each stock and the net buy/sell direction across Congress (Quiver-style alternative data), plus the full disclosure feed.
 
 **Live site:** enable GitHub Pages in repo Settings → Pages → set source to the `main` branch, root folder. Your URL will be `https://<your-username>.github.io/legislative-alpha/`.
 

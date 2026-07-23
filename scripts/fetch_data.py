@@ -352,12 +352,20 @@ def search_ptr_reports(session, csrf_token, start_date, end_date):
         payload = resp.json()
         rows = payload.get("data", [])
         for row in rows:
-            first_name, last_name, _display, link_html, filed_date = row[:5]
+            first_name, last_name, display, link_html, filed_date = row[:5]
             m = LINK_RE.search(link_html)
             if not m:
                 continue
+            # The display column labels the filer, e.g.
+            # "Armstrong, Alan (Senator)" or "Smith, Jane (Candidate)".
+            # Keep only sitting senators -- candidates and other filers file
+            # PTRs too, but the "follow a member of Congress" framing is about
+            # people currently holding office.
+            if "candidate" in (display or "").lower():
+                continue
+            name = re.sub(r"\s+", " ", f"{first_name} {last_name}".strip()).strip(" ,")
             reports.append({
-                "senator": f"{first_name} {last_name}".strip(),
+                "senator": name,
                 "report_path": m.group("path"),
                 "filed_date": filed_date,
             })
@@ -748,6 +756,128 @@ def _parse_mdy(s):
         return datetime.min
 
 
+def _is_buy(trade_type):
+    return trade_type.lower().startswith("purchase")
+
+
+def mark_key_bills(bills, per_sector=3):
+    """Flag the most important bills in each sector -- the "specific bills
+    coming through" surface. Importance = a blend of appropriation status,
+    how far the bill has advanced, and its momentum score."""
+    def key_score(b):
+        score = b["momentum"]
+        if b.get("is_appropriation"):
+            score += 20
+        status = b.get("status", "")
+        if status in ("Passed House", "Passed Senate"):
+            score += 15
+        elif status == "Signed":
+            score += 40
+        return score
+
+    for b in bills:
+        b["key_bill"] = False
+    by_sector = {}
+    for b in bills:
+        by_sector.setdefault(b["sector"], []).append(b)
+    for sector_bills in by_sector.values():
+        for b in sorted(sector_bills, key=key_score, reverse=True)[:per_sector]:
+            b["key_bill"] = True
+    return bills
+
+
+def build_member_profiles(trades):
+    """Autopilot-style 'follow a politician': aggregate every disclosed trade
+    by the member who filed it, so each politician becomes a trackable
+    portfolio. Per-member trade lists are not duplicated here -- the site
+    filters the full trades feed by member name for the detail view."""
+    profiles = {}
+    for t in trades:
+        member = t["member"]
+        p = profiles.setdefault(member, {
+            "member": member,
+            "chamber": t["chamber"],
+            "trade_count": 0,
+            "buy_count": 0,
+            "sell_count": 0,
+            "tickers": {},
+            "sectors": set(),
+            "last_filed": None,
+        })
+        p["trade_count"] += 1
+        if _is_buy(t["type"]):
+            p["buy_count"] += 1
+        else:
+            p["sell_count"] += 1
+        if t["ticker"]:
+            p["tickers"][t["ticker"]] = p["tickers"].get(t["ticker"], 0) + 1
+        if t["sector"] != "OTHER":
+            p["sectors"].add(t["sector"])
+        filed = _parse_mdy(t["filed_date"])
+        if p["last_filed"] is None or filed > _parse_mdy(p["last_filed"]):
+            p["last_filed"] = t["filed_date"]
+
+    out = []
+    for p in profiles.values():
+        top_tickers = sorted(p["tickers"].items(), key=lambda kv: kv[1], reverse=True)[:6]
+        out.append({
+            "member": p["member"],
+            "chamber": p["chamber"],
+            "trade_count": p["trade_count"],
+            "buy_count": p["buy_count"],
+            "sell_count": p["sell_count"],
+            "distinct_tickers": len(p["tickers"]),
+            "top_tickers": [{"ticker": t, "count": c} for t, c in top_tickers],
+            "sectors": sorted(p["sectors"]),
+            "last_filed": p["last_filed"],
+        })
+    out.sort(key=lambda p: p["trade_count"], reverse=True)
+    return out
+
+
+def build_stock_signals(trades):
+    """Quiver-style per-stock consensus: for each ticker, how many distinct
+    members traded it and the net buy/sell direction across Congress."""
+    signals = {}
+    for t in trades:
+        if not t["ticker"]:
+            continue  # skip non-ticker assets (bonds, funds)
+        s = signals.setdefault(t["ticker"], {
+            "ticker": t["ticker"],
+            "company": t["company"],
+            "sector": t["sector"],
+            "buy_count": 0,
+            "sell_count": 0,
+            "members": set(),
+            "last_filed": None,
+        })
+        if _is_buy(t["type"]):
+            s["buy_count"] += 1
+        else:
+            s["sell_count"] += 1
+        s["members"].add(t["member"])
+        filed = _parse_mdy(t["filed_date"])
+        if s["last_filed"] is None or filed > _parse_mdy(s["last_filed"]):
+            s["last_filed"] = t["filed_date"]
+
+    out = []
+    for s in signals.values():
+        out.append({
+            "ticker": s["ticker"],
+            "company": s["company"],
+            "sector": s["sector"],
+            "buy_count": s["buy_count"],
+            "sell_count": s["sell_count"],
+            "net": s["buy_count"] - s["sell_count"],
+            "member_count": len(s["members"]),
+            "total_trades": s["buy_count"] + s["sell_count"],
+            "last_filed": s["last_filed"],
+        })
+    # rank by breadth (distinct members) then volume
+    out.sort(key=lambda s: (s["member_count"], s["total_trades"]), reverse=True)
+    return out
+
+
 def build_sector_summaries(sectors, bills, trades=()):
     summaries = {}
     for code, sector in sectors.items():
@@ -792,7 +922,10 @@ def main():
     bills = attach_beneficiary_stocks(bills, sectors)
     bills = flag_pre_filing_trades(bills, trades)
     bills = attach_bill_trades(bills, trades)
+    bills = mark_key_bills(bills)
     sector_summaries = build_sector_summaries(sectors, bills, trades)
+    members = build_member_profiles(trades)
+    stock_signals = build_stock_signals(trades)
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -800,12 +933,16 @@ def main():
         "sectors": sector_summaries,
         "bills": bills,
         "trades": trades,
+        "members": members,
+        "stock_signals": stock_signals,
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
     appropriations = sum(1 for b in bills if b.get("is_appropriation"))
-    print(f"Wrote {OUTPUT_PATH}: {len(bills)} bills ({appropriations} appropriations), {len(trades)} trades", file=sys.stderr)
+    key = sum(1 for b in bills if b.get("key_bill"))
+    print(f"Wrote {OUTPUT_PATH}: {len(bills)} bills ({key} key, {appropriations} appropriations), "
+          f"{len(trades)} trades, {len(members)} members, {len(stock_signals)} stock signals", file=sys.stderr)
 
 
 if __name__ == "__main__":

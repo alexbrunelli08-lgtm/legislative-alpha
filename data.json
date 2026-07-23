@@ -376,7 +376,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-HR-9073",
@@ -616,7 +617,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     },
     {
       "id": "119-HR-4950",
@@ -847,7 +849,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-HR-3564",
@@ -965,7 +968,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2
+      "related_trade_count": 2,
+      "key_bill": true
     },
     {
       "id": "119-HRES-1339",
@@ -1205,7 +1209,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": true
     },
     {
       "id": "119-S-4648",
@@ -1445,7 +1450,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     },
     {
       "id": "119-HR-9173",
@@ -1662,7 +1668,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 11
+      "related_trade_count": 11,
+      "key_bill": true
     },
     {
       "id": "119-HR-2813",
@@ -1780,7 +1787,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2
+      "related_trade_count": 2,
+      "key_bill": true
     },
     {
       "id": "119-HR-3200",
@@ -2011,7 +2019,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-HR-5236",
@@ -2242,7 +2251,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-S-789",
@@ -2473,7 +2483,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-S-909",
@@ -2602,7 +2613,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 3
+      "related_trade_count": 3,
+      "key_bill": true
     },
     {
       "id": "119-HRES-1007",
@@ -2854,7 +2866,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
         }
       ],
-      "related_trade_count": 44
+      "related_trade_count": 44,
+      "key_bill": true
     },
     {
       "id": "119-HR-4560",
@@ -3085,7 +3098,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-HRES-1042",
@@ -3316,7 +3330,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-S-1733",
@@ -3547,7 +3562,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": true
     },
     {
       "id": "119-HR-4926",
@@ -3778,7 +3794,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": true
     },
     {
       "id": "119-S-4529",
@@ -3896,7 +3913,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2
+      "related_trade_count": 2,
+      "key_bill": false
     },
     {
       "id": "119-S-4652",
@@ -4073,7 +4091,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-S-4655",
@@ -4250,7 +4269,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-HR-6944",
@@ -4427,7 +4447,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-S-3580",
@@ -4604,7 +4625,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-SRES-175",
@@ -4816,7 +4838,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035024.pdf"
         }
       ],
-      "related_trade_count": 33
+      "related_trade_count": 33,
+      "key_bill": true
     },
     {
       "id": "119-S-4564",
@@ -5068,7 +5091,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 19
+      "related_trade_count": 19,
+      "key_bill": true
     },
     {
       "id": "119-S-4565",
@@ -5320,7 +5344,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 19
+      "related_trade_count": 19,
+      "key_bill": true
     },
     {
       "id": "119-HR-3972",
@@ -5551,7 +5576,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": true
     },
     {
       "id": "119-S-651",
@@ -5799,7 +5825,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
         }
       ],
-      "related_trade_count": 16
+      "related_trade_count": 16,
+      "key_bill": true
     },
     {
       "id": "119-HR-1892",
@@ -6047,7 +6074,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
         }
       ],
-      "related_trade_count": 16
+      "related_trade_count": 16,
+      "key_bill": true
     },
     {
       "id": "119-S-4611",
@@ -6287,7 +6315,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     },
     {
       "id": "119-HR-5854",
@@ -6464,7 +6493,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-HR-3656",
@@ -6641,7 +6671,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": true
     },
     {
       "id": "119-HR-4860",
@@ -6881,7 +6912,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     },
     {
       "id": "119-HR-8925",
@@ -7121,7 +7153,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": true
     },
     {
       "id": "119-S-4721",
@@ -7250,7 +7283,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 3
+      "related_trade_count": 3,
+      "key_bill": true
     },
     {
       "id": "119-S-4628",
@@ -7427,7 +7461,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-HR-9153",
@@ -7658,7 +7693,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-HR-9178",
@@ -7875,7 +7911,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 11
+      "related_trade_count": 11,
+      "key_bill": true
     },
     {
       "id": "119-S-2808",
@@ -8052,7 +8089,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": true
     },
     {
       "id": "119-HR-5468",
@@ -8229,7 +8267,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": false
     },
     {
       "id": "119-HR-5176",
@@ -8469,7 +8508,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     },
     {
       "id": "119-S-4730",
@@ -8646,7 +8686,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 7
+      "related_trade_count": 7,
+      "key_bill": true
     },
     {
       "id": "119-HR-8969",
@@ -8764,7 +8805,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2
+      "related_trade_count": 2,
+      "key_bill": true
     },
     {
       "id": "119-S-4772",
@@ -8893,7 +8935,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 3
+      "related_trade_count": 3,
+      "key_bill": true
     },
     {
       "id": "119-HR-912",
@@ -9145,7 +9188,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 19
+      "related_trade_count": 19,
+      "key_bill": true
     },
     {
       "id": "119-S-1007",
@@ -9397,7 +9441,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 19
+      "related_trade_count": 19,
+      "key_bill": false
     },
     {
       "id": "119-HR-8935",
@@ -9637,7 +9682,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": true
     },
     {
       "id": "119-HR-8998",
@@ -9868,7 +9914,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
-      "related_trade_count": 9
+      "related_trade_count": 9,
+      "key_bill": false
     },
     {
       "id": "119-SJRES-41",
@@ -10108,7 +10155,8 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 17
+      "related_trade_count": 17,
+      "key_bill": false
     }
   ],
   "trades": [
@@ -25687,6 +25735,6754 @@
       "type": "Purchase",
       "amount_range": "$15,001 - $50,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034984.pdf"
+    }
+  ],
+  "members": [
+    {
+      "member": "Sen. Alan Armstrong",
+      "chamber": "Senate",
+      "trade_count": 711,
+      "buy_count": 661,
+      "sell_count": 50,
+      "distinct_tickers": 345,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 4
+        },
+        {
+          "ticker": "WMB",
+          "count": 2
+        },
+        {
+          "ticker": "NVS",
+          "count": 2
+        },
+        {
+          "ticker": "SAN",
+          "count": 2
+        },
+        {
+          "ticker": "AZN",
+          "count": 2
+        },
+        {
+          "ticker": "ASML",
+          "count": 2
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "FINX",
+        "GRID",
+        "ICLN",
+        "ITA",
+        "MOO",
+        "PAVE",
+        "QTUM",
+        "SMH",
+        "UFO",
+        "URA",
+        "XBI"
+      ],
+      "last_filed": "07/21/2026"
+    },
+    {
+      "member": "Rep. Gilbert Cisneros (CA31)",
+      "chamber": "House",
+      "trade_count": 171,
+      "buy_count": 101,
+      "sell_count": 70,
+      "distinct_tickers": 112,
+      "top_tickers": [
+        {
+          "ticker": "WRB",
+          "count": 7
+        },
+        {
+          "ticker": "LPLA",
+          "count": 6
+        },
+        {
+          "ticker": "BSX",
+          "count": 5
+        },
+        {
+          "ticker": "FLEX",
+          "count": 4
+        },
+        {
+          "ticker": "PLTR",
+          "count": 4
+        },
+        {
+          "ticker": "AMD",
+          "count": 3
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "FINX",
+        "ITA",
+        "PAVE",
+        "QTUM",
+        "SMH",
+        "XBI"
+      ],
+      "last_filed": "7/2/2026"
+    },
+    {
+      "member": "Sen. John Boozman",
+      "chamber": "Senate",
+      "trade_count": 47,
+      "buy_count": 21,
+      "sell_count": 26,
+      "distinct_tickers": 33,
+      "top_tickers": [
+        {
+          "ticker": "FTGC",
+          "count": 2
+        },
+        {
+          "ticker": "IEF",
+          "count": 2
+        },
+        {
+          "ticker": "SCHP",
+          "count": 2
+        },
+        {
+          "ticker": "JMBS",
+          "count": 2
+        },
+        {
+          "ticker": "CMBS",
+          "count": 2
+        },
+        {
+          "ticker": "MBB",
+          "count": 2
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "ITA"
+      ],
+      "last_filed": "07/13/2026"
+    },
+    {
+      "member": "Rep. Scott H. Peters (CA50)",
+      "chamber": "House",
+      "trade_count": 43,
+      "buy_count": 29,
+      "sell_count": 14,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/10/2026"
+    },
+    {
+      "member": "Rep. Dan Newhouse (WA04)",
+      "chamber": "House",
+      "trade_count": 33,
+      "buy_count": 12,
+      "sell_count": 21,
+      "distinct_tickers": 31,
+      "top_tickers": [
+        {
+          "ticker": "DE",
+          "count": 2
+        },
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "ACN",
+          "count": 1
+        },
+        {
+          "ticker": "ADBE",
+          "count": 1
+        },
+        {
+          "ticker": "AMD",
+          "count": 1
+        },
+        {
+          "ticker": "GOOGL",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "GRID",
+        "MOO",
+        "PAVE",
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "7/17/2026"
+    },
+    {
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "trade_count": 32,
+      "buy_count": 3,
+      "sell_count": 29,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "06/26/2026"
+    },
+    {
+      "member": "Sen. John R Curtis",
+      "chamber": "Senate",
+      "trade_count": 25,
+      "buy_count": 3,
+      "sell_count": 22,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "06/30/2026"
+    },
+    {
+      "member": "Rep. Thomas H. Kean (NJ07)",
+      "chamber": "House",
+      "trade_count": 22,
+      "buy_count": 8,
+      "sell_count": 14,
+      "distinct_tickers": 14,
+      "top_tickers": [
+        {
+          "ticker": "CHKP",
+          "count": 2
+        },
+        {
+          "ticker": "GOOGL",
+          "count": 2
+        },
+        {
+          "ticker": "ESAB",
+          "count": 2
+        },
+        {
+          "ticker": "GIL",
+          "count": 2
+        },
+        {
+          "ticker": "JNJ",
+          "count": 2
+        },
+        {
+          "ticker": "MKL",
+          "count": 2
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "7/15/2026"
+    },
+    {
+      "member": "Rep. April McClain Delaney (MD06)",
+      "chamber": "House",
+      "trade_count": 19,
+      "buy_count": 8,
+      "sell_count": 11,
+      "distinct_tickers": 7,
+      "top_tickers": [
+        {
+          "ticker": "HUBB",
+          "count": 6
+        },
+        {
+          "ticker": "WAB",
+          "count": 4
+        },
+        {
+          "ticker": "LYV",
+          "count": 3
+        },
+        {
+          "ticker": "ENTG",
+          "count": 2
+        },
+        {
+          "ticker": "MIDD",
+          "count": 2
+        },
+        {
+          "ticker": "CNM",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "GRID"
+      ],
+      "last_filed": "7/7/2026"
+    },
+    {
+      "member": "Rep. Maria Elvira Salazar (FL27)",
+      "chamber": "House",
+      "trade_count": 19,
+      "buy_count": 15,
+      "sell_count": 4,
+      "distinct_tickers": 10,
+      "top_tickers": [
+        {
+          "ticker": "BEP",
+          "count": 5
+        },
+        {
+          "ticker": "BIIB",
+          "count": 4
+        },
+        {
+          "ticker": "DDOG",
+          "count": 2
+        },
+        {
+          "ticker": "QCOM",
+          "count": 2
+        },
+        {
+          "ticker": "IBM",
+          "count": 1
+        },
+        {
+          "ticker": "SHW",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH",
+        "XBI"
+      ],
+      "last_filed": "7/7/2026"
+    },
+    {
+      "member": "Rep. Matthew Robert Van Epps (TN07)",
+      "chamber": "House",
+      "trade_count": 15,
+      "buy_count": 0,
+      "sell_count": 15,
+      "distinct_tickers": 13,
+      "top_tickers": [
+        {
+          "ticker": "GEV",
+          "count": 2
+        },
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "GOOGL",
+          "count": 1
+        },
+        {
+          "ticker": "AMZN",
+          "count": 1
+        },
+        {
+          "ticker": "AAPL",
+          "count": 1
+        },
+        {
+          "ticker": "XOM",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "GRID",
+        "QTUM",
+        "SMH",
+        "URA"
+      ],
+      "last_filed": "6/17/2026"
+    },
+    {
+      "member": "Sen. Thomas H Tuberville",
+      "chamber": "Senate",
+      "trade_count": 12,
+      "buy_count": 0,
+      "sell_count": 12,
+      "distinct_tickers": 10,
+      "top_tickers": [
+        {
+          "ticker": "LMT",
+          "count": 2
+        },
+        {
+          "ticker": "WAB",
+          "count": 1
+        },
+        {
+          "ticker": "AWK",
+          "count": 1
+        },
+        {
+          "ticker": "CSX",
+          "count": 1
+        },
+        {
+          "ticker": "DUK",
+          "count": 1
+        },
+        {
+          "ticker": "MA",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "FINX",
+        "GRID",
+        "ICLN",
+        "ITA",
+        "UFO"
+      ],
+      "last_filed": "07/16/2026"
+    },
+    {
+      "member": "Rep. Richard Dean Dr McCormick (GA06)",
+      "chamber": "House",
+      "trade_count": 11,
+      "buy_count": 3,
+      "sell_count": 8,
+      "distinct_tickers": 10,
+      "top_tickers": [
+        {
+          "ticker": "ABT",
+          "count": 1
+        },
+        {
+          "ticker": "ADI",
+          "count": 1
+        },
+        {
+          "ticker": "BLK",
+          "count": 1
+        },
+        {
+          "ticker": "CSCO",
+          "count": 1
+        },
+        {
+          "ticker": "ICE",
+          "count": 1
+        },
+        {
+          "ticker": "IMCB",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "CIBR",
+        "ITA",
+        "SMH"
+      ],
+      "last_filed": "7/9/2026"
+    },
+    {
+      "member": "Rep. David J. Taylor (OH02)",
+      "chamber": "House",
+      "trade_count": 9,
+      "buy_count": 7,
+      "sell_count": 2,
+      "distinct_tickers": 9,
+      "top_tickers": [
+        {
+          "ticker": "GOOGL",
+          "count": 1
+        },
+        {
+          "ticker": "AMZN",
+          "count": 1
+        },
+        {
+          "ticker": "AEP",
+          "count": 1
+        },
+        {
+          "ticker": "AMGN",
+          "count": 1
+        },
+        {
+          "ticker": "T",
+          "count": 1
+        },
+        {
+          "ticker": "KR",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "GRID",
+        "QTUM",
+        "SMH",
+        "XBI"
+      ],
+      "last_filed": "7/1/2026"
+    },
+    {
+      "member": "Rep. Daniel Crenshaw (TX02)",
+      "chamber": "House",
+      "trade_count": 8,
+      "buy_count": 2,
+      "sell_count": 6,
+      "distinct_tickers": 5,
+      "top_tickers": [
+        {
+          "ticker": "META",
+          "count": 3
+        },
+        {
+          "ticker": "GOOG",
+          "count": 1
+        },
+        {
+          "ticker": "AMZN",
+          "count": 1
+        },
+        {
+          "ticker": "AAPL",
+          "count": 1
+        },
+        {
+          "ticker": "USOU",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM"
+      ],
+      "last_filed": "7/16/2026"
+    },
+    {
+      "member": "Rep. Katherine M. Clark (MA05)",
+      "chamber": "House",
+      "trade_count": 7,
+      "buy_count": 7,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/14/2026"
+    },
+    {
+      "member": "Rep. Josh Gottheimer (NJ05)",
+      "chamber": "House",
+      "trade_count": 7,
+      "buy_count": 0,
+      "sell_count": 7,
+      "distinct_tickers": 7,
+      "top_tickers": [
+        {
+          "ticker": "ADC",
+          "count": 1
+        },
+        {
+          "ticker": "BABA",
+          "count": 1
+        },
+        {
+          "ticker": "BKNG",
+          "count": 1
+        },
+        {
+          "ticker": "INSM",
+          "count": 1
+        },
+        {
+          "ticker": "NSRGY",
+          "count": 1
+        },
+        {
+          "ticker": "NTDOY",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/7/2026"
+    },
+    {
+      "member": "Sen. Sheldon Whitehouse",
+      "chamber": "Senate",
+      "trade_count": 6,
+      "buy_count": 2,
+      "sell_count": 4,
+      "distinct_tickers": 5,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "AAPL",
+          "count": 1
+        },
+        {
+          "ticker": "CCI",
+          "count": 1
+        },
+        {
+          "ticker": "COHR",
+          "count": 1
+        },
+        {
+          "ticker": "MU",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "07/08/2026"
+    },
+    {
+      "member": "Rep. Richard W. Allen (GA12)",
+      "chamber": "House",
+      "trade_count": 5,
+      "buy_count": 3,
+      "sell_count": 2,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "ACN",
+          "count": 1
+        },
+        {
+          "ticker": "AXP",
+          "count": 1
+        },
+        {
+          "ticker": "TSM",
+          "count": 1
+        },
+        {
+          "ticker": "INTU",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "SMH"
+      ],
+      "last_filed": "7/15/2026"
+    },
+    {
+      "member": "Rep. Cleo Fields (LA06)",
+      "chamber": "House",
+      "trade_count": 5,
+      "buy_count": 5,
+      "sell_count": 0,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "GOOG",
+          "count": 1
+        },
+        {
+          "ticker": "MSFT",
+          "count": 1
+        },
+        {
+          "ticker": "QNT",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "7/16/2026"
+    },
+    {
+      "member": "Rep. Laurel Lee (FL15)",
+      "chamber": "House",
+      "trade_count": 5,
+      "buy_count": 0,
+      "sell_count": 5,
+      "distinct_tickers": 3,
+      "top_tickers": [
+        {
+          "ticker": "NOK",
+          "count": 3
+        },
+        {
+          "ticker": "BAC",
+          "count": 1
+        },
+        {
+          "ticker": "GE",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/19/2026"
+    },
+    {
+      "member": "Sen. Jerry Moran,",
+      "chamber": "Senate",
+      "trade_count": 4,
+      "buy_count": 3,
+      "sell_count": 1,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "GOOG",
+          "count": 2
+        },
+        {
+          "ticker": "BRK.B",
+          "count": 2
+        }
+      ],
+      "sectors": [],
+      "last_filed": "07/21/2026"
+    },
+    {
+      "member": "Sen. John Fetterman",
+      "chamber": "Senate",
+      "trade_count": 4,
+      "buy_count": 3,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "07/09/2026"
+    },
+    {
+      "member": "Rep. Sheri Biggs (SC03)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 4,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "6/9/2026"
+    },
+    {
+      "member": "Rep. Lloyd Doggett (TX37)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 4,
+      "sell_count": 0,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "HD",
+          "count": 1
+        },
+        {
+          "ticker": "IBM",
+          "count": 1
+        },
+        {
+          "ticker": "JNJ",
+          "count": 1
+        },
+        {
+          "ticker": "PPG",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM"
+      ],
+      "last_filed": "7/6/2026"
+    },
+    {
+      "member": "Rep. Jonathan Jackson (IL01)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 2,
+      "sell_count": 2,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "MSFT",
+          "count": 1
+        },
+        {
+          "ticker": "HLT",
+          "count": 1
+        },
+        {
+          "ticker": "MCK",
+          "count": 1
+        },
+        {
+          "ticker": "SPHR",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM"
+      ],
+      "last_filed": "7/15/2026"
+    },
+    {
+      "member": "Rep. Mike Kelly (PA16)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 1,
+      "sell_count": 3,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "BMY",
+          "count": 1
+        },
+        {
+          "ticker": "CMCSA",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Rick Larsen (WA02)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 2,
+      "sell_count": 2,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "ABT",
+          "count": 1
+        },
+        {
+          "ticker": "APH",
+          "count": 1
+        },
+        {
+          "ticker": "MCK",
+          "count": 1
+        },
+        {
+          "ticker": "SPGI",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/12/2026"
+    },
+    {
+      "member": "Rep. John McGuire (VA05)",
+      "chamber": "House",
+      "trade_count": 4,
+      "buy_count": 2,
+      "sell_count": 2,
+      "distinct_tickers": 4,
+      "top_tickers": [
+        {
+          "ticker": "DELL",
+          "count": 1
+        },
+        {
+          "ticker": "META",
+          "count": 1
+        },
+        {
+          "ticker": "BLK",
+          "count": 1
+        },
+        {
+          "ticker": "SPCX",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Byron Donalds (FL19)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 1,
+      "sell_count": 2,
+      "distinct_tickers": 3,
+      "top_tickers": [
+        {
+          "ticker": "CDNS",
+          "count": 1
+        },
+        {
+          "ticker": "MPWR",
+          "count": 1
+        },
+        {
+          "ticker": "ZTS",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "SMH"
+      ],
+      "last_filed": "7/15/2026"
+    },
+    {
+      "member": "Rep. Neal Patrick MD, Facs Dunn (FL02)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 0,
+      "sell_count": 3,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "6/23/2026"
+    },
+    {
+      "member": "Rep. Virginia Foxx (NC05)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 1,
+      "sell_count": 2,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "ARLP",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/10/2026"
+    },
+    {
+      "member": "Rep. James A. Himes (CT04)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 0,
+      "sell_count": 3,
+      "distinct_tickers": 3,
+      "top_tickers": [
+        {
+          "ticker": "BAC",
+          "count": 1
+        },
+        {
+          "ticker": "XOM",
+          "count": 1
+        },
+        {
+          "ticker": "HD",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/20/2026"
+    },
+    {
+      "member": "Rep. Daniel Meuser (PA09)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 1,
+      "sell_count": 2,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "SPCX",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "7/2/2026"
+    },
+    {
+      "member": "Sen. Gary C Peters",
+      "chamber": "Senate",
+      "trade_count": 2,
+      "buy_count": 2,
+      "sell_count": 0,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "T",
+          "count": 1
+        },
+        {
+          "ticker": "KHC",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "07/02/2026"
+    },
+    {
+      "member": "Rep. Nicholas Begich (AK00)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 1,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/7/2026"
+    },
+    {
+      "member": "Rep. Debbie Dingell (MI06)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "HONAV",
+          "count": 2
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/15/2026"
+    },
+    {
+      "member": "Rep. Dwight Evans (PA03)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "GD",
+          "count": 1
+        },
+        {
+          "ticker": "INTC",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "ITA",
+        "SMH"
+      ],
+      "last_filed": "6/24/2026"
+    },
+    {
+      "member": "Rep. Kevin Hern (OK01)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "XOM",
+          "count": 1
+        },
+        {
+          "ticker": "HONAV",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/16/2026"
+    },
+    {
+      "member": "Rep. Julie Johnson (TX32)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "ABT",
+          "count": 1
+        },
+        {
+          "ticker": "ACN",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "6/12/2026"
+    },
+    {
+      "member": "Rep. Susie Lee (NV03)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "FLL",
+          "count": 2
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 1,
+      "sell_count": 1,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "COR",
+          "count": 1
+        },
+        {
+          "ticker": "GILD",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "XBI"
+      ],
+      "last_filed": "6/19/2026"
+    },
+    {
+      "member": "Rep. Nancy Pelosi (CA11)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 2,
+      "sell_count": 0,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "INTC",
+          "count": 1
+        },
+        {
+          "ticker": "UBER",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "SMH"
+      ],
+      "last_filed": "6/23/2026"
+    },
+    {
+      "member": "Rep. William R. Timmons (SC04)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 2,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "SPCX",
+          "count": 2
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/19/2026"
+    },
+    {
+      "member": "Rep. Ann Wagner (MO02)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 1,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/2/2026"
+    },
+    {
+      "member": "Sen. Shelley M Capito",
+      "chamber": "Senate",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "07/06/2026"
+    },
+    {
+      "member": "Sen. A. Mitchell McConnell, Jr.",
+      "chamber": "Senate",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "WFC",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "06/30/2026"
+    },
+    {
+      "member": "Sen. James Banks",
+      "chamber": "Senate",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "PTON",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "06/07/2026"
+    },
+    {
+      "member": "Rep. Donald Sternoff Beyer (VA08)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/1/2026"
+    },
+    {
+      "member": "Rep. Steve Cohen (TN09)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "6/17/2026"
+    },
+    {
+      "member": "Rep. Suzan K. DelBene (WA01)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "6/11/2026"
+    },
+    {
+      "member": "Rep. John James (MI10)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "SPCX",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/12/2026"
+    },
+    {
+      "member": "Rep. Max Miller (OH07)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/1/2026"
+    },
+    {
+      "member": "Rep. Tim Moore (NC14)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "DASH",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/9/2026"
+    },
+    {
+      "member": "Rep. Kelly Louise Morrison (MN03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/9/2026"
+    },
+    {
+      "member": "Rep. Chip Roy (TX21)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "AESI",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "6/10/2026"
+    },
+    {
+      "member": "Rep. Greg Stanton (AZ04)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "TCNNF",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "6/26/2026"
+    },
+    {
+      "member": "Rep. Thomas Suozzi (NY03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "6/9/2026"
+    },
+    {
+      "member": "Rep. Ritchie John Torres (NY15)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "MCK",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Debbie Wasserman Schultz (FL25)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "ICHR",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/14/2026"
+    },
+    {
+      "member": "Rep. Robert J. Wittman (VA01)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 0,
+      "sell_count": 1,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "CCI",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/10/2026"
+    },
+    {
+      "member": "Rep. Rudy C. Yakym (IN02)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/13/2026"
+    }
+  ],
+  "stock_signals": [
+    {
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "sector": "QTUM",
+      "buy_count": 6,
+      "sell_count": 8,
+      "net": -2,
+      "member_count": 6,
+      "total_trades": 14,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MSFT",
+      "company": "Microsoft",
+      "sector": "QTUM",
+      "buy_count": 4,
+      "sell_count": 4,
+      "net": 0,
+      "member_count": 6,
+      "total_trades": 8,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ACN",
+      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 3,
+      "net": 0,
+      "member_count": 6,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AAPL",
+      "company": "Apple Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 3,
+      "net": 0,
+      "member_count": 5,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ABT",
+      "company": "Abbott Laboratories Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 4,
+      "net": -2,
+      "member_count": 5,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "sector": "QTUM",
+      "buy_count": 1,
+      "sell_count": 5,
+      "net": -4,
+      "member_count": 5,
+      "total_trades": 6,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "SPCX",
+      "company": "Space Exploration Technologies Corp. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 6,
+      "sell_count": 0,
+      "net": 6,
+      "member_count": 5,
+      "total_trades": 6,
+      "last_filed": "7/19/2026"
+    },
+    {
+      "ticker": "UNH",
+      "company": "UnitedHealth Group Incorporated Common Stock (DE)",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 3,
+      "net": -1,
+      "member_count": 5,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "IBM",
+      "company": "IBM",
+      "sector": "QTUM",
+      "buy_count": 3,
+      "sell_count": 2,
+      "net": 1,
+      "member_count": 5,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "META",
+      "company": "Meta Platforms, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 3,
+      "net": 0,
+      "member_count": 4,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GOOG",
+      "company": "Alphabet Inc. - Class C Capital Stock",
+      "sector": "OTHER",
+      "buy_count": 4,
+      "sell_count": 2,
+      "net": 2,
+      "member_count": 4,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MU",
+      "company": "Micron Technology",
+      "sector": "SMH",
+      "buy_count": 3,
+      "sell_count": 2,
+      "net": 1,
+      "member_count": 4,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "UBER",
+      "company": "Uber Technologies, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 1,
+      "net": 2,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MCK",
+      "company": "McKesson Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 1,
+      "net": 2,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "INTC",
+      "company": "Intel",
+      "sector": "SMH",
+      "buy_count": 2,
+      "sell_count": 2,
+      "net": 0,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "XOM",
+      "company": "Exxon Mobil Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 4,
+      "net": -4,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMZN",
+      "company": "Amazon.com",
+      "sector": "QTUM",
+      "buy_count": 1,
+      "sell_count": 3,
+      "net": -2,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PLTR",
+      "company": "Palantir Technologies",
+      "sector": "CIBR",
+      "buy_count": 4,
+      "sell_count": 4,
+      "net": 0,
+      "member_count": 3,
+      "total_trades": 8,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BSX",
+      "company": "Boston Scientific Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 5,
+      "sell_count": 2,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 7,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WAB",
+      "company": "Westinghouse Air Brake Technologies Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 5,
+      "net": -4,
+      "member_count": 3,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BIIB",
+      "company": "Biogen",
+      "sector": "XBI",
+      "buy_count": 5,
+      "sell_count": 1,
+      "net": 4,
+      "member_count": 3,
+      "total_trades": 6,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "JNJ",
+      "company": "Johnson & Johnson Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 2,
+      "net": 1,
+      "member_count": 3,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DASH",
+      "company": "DoorDash, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 2,
+      "net": 1,
+      "member_count": 3,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMD",
+      "company": "Advanced Micro Devices",
+      "sector": "SMH",
+      "buy_count": 4,
+      "sell_count": 1,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 5,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HD",
+      "company": "Home Depot, Inc. (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 3,
+      "net": -2,
+      "member_count": 3,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HONAV",
+      "company": "Honeywell Aerospace Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 4,
+      "net": -4,
+      "member_count": 3,
+      "total_trades": 4,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "SPGI",
+      "company": "S&P Global Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MA",
+      "company": "Mastercard",
+      "sector": "FINX",
+      "buy_count": 0,
+      "sell_count": 3,
+      "net": -3,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LLY",
+      "company": "Eli Lilly and Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "INTU",
+      "company": "Intuit Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GE",
+      "company": "GE Aerospace Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FIS",
+      "company": "Fidelity National Information Services, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DUK",
+      "company": "Duke Energy",
+      "sector": "GRID",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CSX",
+      "company": "CSX Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CCI",
+      "company": "Crown Castle Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CMCSA",
+      "company": "Comcast Corporation - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BKNG",
+      "company": "Booking Holdings Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BAC",
+      "company": "Bank of America Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "T",
+      "company": "AT&T Inc.",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ADI",
+      "company": "Analog Devices",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "APH",
+      "company": "Amphenol Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMCR",
+      "company": "Amcor plc Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ADBE",
+      "company": "Adobe Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HUBB",
+      "company": "Hubbell",
+      "sector": "GRID",
+      "buy_count": 7,
+      "sell_count": 0,
+      "net": 7,
+      "member_count": 2,
+      "total_trades": 7,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NOK",
+      "company": "Nokia Corporation Sponsored American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 3,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EA",
+      "company": "Electronic Arts Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 4,
+      "sell_count": 0,
+      "net": 4,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CIEN",
+      "company": "Ciena Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 4,
+      "sell_count": 0,
+      "net": 4,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LMT",
+      "company": "Lockheed Martin",
+      "sector": "ITA",
+      "buy_count": 2,
+      "sell_count": 2,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LYV",
+      "company": "Live Nation Entertainment, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 3,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GEV",
+      "company": "GE Vernova",
+      "sector": "GRID",
+      "buy_count": 0,
+      "sell_count": 4,
+      "net": -4,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DE",
+      "company": "Deere & Company",
+      "sector": "PAVE",
+      "buy_count": 2,
+      "sell_count": 2,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 4,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DDOG",
+      "company": "Datadog, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SAN",
+      "company": "Banco Santander, S.A. Sponsored ADR (Spain)",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TSLA",
+      "company": "Tesla, Inc.  - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WDAY",
+      "company": "Workday, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VRSK",
+      "company": "Verisk Analytics, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "COO",
+      "company": "The Cooper Companies, Inc.  - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "QCOM",
+      "company": "Qualcomm",
+      "sector": "SMH",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CHKP",
+      "company": "Check Point Software",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 2,
+      "net": -1,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HON",
+      "company": "Honeywell",
+      "sector": "QTUM",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CAG",
+      "company": "ConAgra Brands, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BRK.B",
+      "company": "Berkshire Hathaway Inc. New Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GIL",
+      "company": "Gildan Activewear, Inc. Class A Sub. Vot. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "CDNS",
+      "company": "Cadence Design Systems",
+      "sector": "SMH",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BR",
+      "company": "Broadridge Financial Solutions, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SPOT",
+      "company": "Spotify Technology S.A. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WFC",
+      "company": "Wells Fargo & Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "UPS",
+      "company": "United Parcel Service, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TMO",
+      "company": "Thermo Fisher Scientific Inc Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CPB",
+      "company": "The Campbell's Company - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TPR",
+      "company": "Tapestry, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SYK",
+      "company": "Stryker Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CRM",
+      "company": "Salesforce, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "REGN",
+      "company": "Regeneron",
+      "sector": "XBI",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PGR",
+      "company": "Progressive Corporation (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PG",
+      "company": "Procter & Gamble Company (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PYPL",
+      "company": "PayPal Holdings",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PANW",
+      "company": "Palo Alto Networks",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NEE",
+      "company": "NextEra Energy",
+      "sector": "ICLN",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MS",
+      "company": "Morgan Stanley Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MCHP",
+      "company": "Microchip Technology",
+      "sector": "SMH",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MDT",
+      "company": "Medtronic plc. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LRCX",
+      "company": "Lam Research",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LHX",
+      "company": "L3Harris Technologies",
+      "sector": "ITA",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KHC",
+      "company": "The Kraft Heinz Company - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KVUE",
+      "company": "Kenvue Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ICE",
+      "company": "Intercontinental Exchange Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HLT",
+      "company": "Hilton Worldwide Holdings Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HSY",
+      "company": "The Hershey Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GDDY",
+      "company": "GoDaddy Inc. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GILD",
+      "company": "Gilead Sciences",
+      "sector": "XBI",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GIS",
+      "company": "General Mills, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GD",
+      "company": "General Dynamics",
+      "sector": "ITA",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FTNT",
+      "company": "Fortinet",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DPZ",
+      "company": "Domino's Pizza Inc - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DELL",
+      "company": "Dell Technologies Inc. Class C Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CRWD",
+      "company": "CrowdStrike",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "COST",
+      "company": "Costco Wholesale Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STZ",
+      "company": "Constellation Brands, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "COIN",
+      "company": "Coinbase Global",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CME",
+      "company": "CME Group Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CSCO",
+      "company": "Cisco Systems",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CB",
+      "company": "Chubb Limited  Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CVX",
+      "company": "Chevron Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "COR",
+      "company": "Cencora, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BMY",
+      "company": "Bristol-Myers Squibb Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BDX",
+      "company": "Becton, Dickinson and Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AZO",
+      "company": "AutoZone, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ADP",
+      "company": "Automatic Data Processing, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ANET",
+      "company": "Arista Networks, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "APP",
+      "company": "Applovin Corporation - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMAT",
+      "company": "Applied Materials",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMGN",
+      "company": "Amgen",
+      "sector": "XBI",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AXP",
+      "company": "American Express Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PFE",
+      "company": "Pfizer, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ZTS",
+      "company": "Zoetis Inc. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "BLK",
+      "company": "BlackRock, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "7/9/2026"
+    },
+    {
+      "ticker": "WRB",
+      "company": "W.R. Berkley Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 7,
+      "net": -7,
+      "member_count": 1,
+      "total_trades": 7,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "LPLA",
+      "company": "LPL Financial Holdings Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 6,
+      "sell_count": 0,
+      "net": 6,
+      "member_count": 1,
+      "total_trades": 6,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "BEP",
+      "company": "Brookfield Renewable Partners L.P. Limited Partnership Units",
+      "sector": "OTHER",
+      "buy_count": 5,
+      "sell_count": 0,
+      "net": 5,
+      "member_count": 1,
+      "total_trades": 5,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "FLEX",
+      "company": "Flex Ltd. - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 4,
+      "net": -4,
+      "member_count": 1,
+      "total_trades": 4,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "FSV",
+      "company": "FirstService Corporation - Common Shares",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 1,
+      "total_trades": 3,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "ST",
+      "company": "Sensata Technologies Holding plc Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
+      "member_count": 1,
+      "total_trades": 3,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "WMB",
+      "company": "Williams Companies, Inc. (The) Common StockOption Type: CallStrike price:$75.00Expires:2026-08-21",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NVS",
+      "company": "Novartis AG Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AZN",
+      "company": "AstraZeneca PLC Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ASML",
+      "company": "ASML Holding",
+      "sector": "SMH",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WELL",
+      "company": "Welltower Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SCHW",
+      "company": "Charles Schwab Corporation (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DGX",
+      "company": "Quest Diagnostics Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ORLY",
+      "company": "O'Reilly Automotive, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GS",
+      "company": "Goldman Sachs Group, Inc. (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RACE",
+      "company": "Ferrari N.V. Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NOC",
+      "company": "Northrop Grumman",
+      "sector": "ITA",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FDX",
+      "company": "FedEx Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BA",
+      "company": "Boeing",
+      "sector": "ITA",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FTGC",
+      "company": "First Trust Global Tactical Commodity Strategy Fund",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "IEF",
+      "company": "iShares 7-10 Year Treasury Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "SCHP",
+      "company": "Schwab U.S. TIPS ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "JMBS",
+      "company": "Janus Henderson Mortgage-Backed Securities ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "CMBS",
+      "company": "iShares CMBS ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "MBB",
+      "company": "iShares MBS ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "GIGB",
+      "company": "Goldman Sachs Access Investment Grade Corporate Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "XFIV",
+      "company": "BondBloxx Bloomberg Five Year Target Duration US Treasury ETF",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "BNPQF",
+      "company": "BNP PARIBAS ORD",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "HQY",
+      "company": "HealthEquity, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "MELI",
+      "company": "MercadoLibre, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "SFTBF",
+      "company": "SOFTBANK GROUP CORP",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "STE",
+      "company": "STERIS plc",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "STRL",
+      "company": "Sterling Infrastructure, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TEL",
+      "company": "TE Connectivity plc Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TCBI",
+      "company": "Texas Capital Bancshares, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TTD",
+      "company": "The Trade Desk, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "PCVX",
+      "company": "Vaxcyte",
+      "sector": "XBI",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "VLTO",
+      "company": "Veralto Corp Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "W",
+      "company": "Wayfair Inc. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "ENTG",
+      "company": "Entegris, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "MIDD",
+      "company": "The Middleby Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "ESAB",
+      "company": "ESAB Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "MKL",
+      "company": "Markel Group Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "FLL",
+      "company": "Full House Resorts, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/8/2026"
+    },
+    {
+      "ticker": "UHS",
+      "company": "Universal Health Services, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DVA",
+      "company": "DaVita Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BXP",
+      "company": "BXP, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BG",
+      "company": "Bunge Global",
+      "sector": "MOO",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BRO",
+      "company": "Brown & Brown, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VRSN",
+      "company": "VeriSign, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "UBS",
+      "company": "UBS Group AG Registered Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TM",
+      "company": "Toyota Motor Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TEVA",
+      "company": "Teva Pharmaceutical Industries Limited American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SMFG",
+      "company": "Sumitomo Mitsui Financial Group Inc Unsponsored American Depositary Shares (Japan)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STM",
+      "company": "STMicroelectronics N.V. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STLA",
+      "company": "Stellantis N.V. Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SONY",
+      "company": "Sony Group Corporation American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SNN",
+      "company": "Smith & Nephew SNATS, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SAP",
+      "company": "SAP  SE ADS",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SNY",
+      "company": "Sanofi - American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RIO",
+      "company": "Rio Tinto Plc Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PSO",
+      "company": "Pearson, Plc Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "IX",
+      "company": "ORIX Corporation American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NVO",
+      "company": "Novo Nordisk A/S Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NMR",
+      "company": "Nomura Holdings Inc ADR American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NBIS",
+      "company": "Nebius Group N.V. - Class A Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MNDY",
+      "company": "monday.com Ltd. - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MFG",
+      "company": "Mizuho Financial Group, Inc. Sponosred ADR (Japan)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LOGI",
+      "company": "Logitech International S.A. - Registered Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LYG",
+      "company": "Lloyds Banking Group Plc American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KMB",
+      "company": "Kimberly-Clark Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AER",
+      "company": "AerCap Holdings N.V. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ING",
+      "company": "ING Group, N.V. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ICL",
+      "company": "ICL Group Ltd. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HSBC",
+      "company": "HSBC Holdings, plc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HMC",
+      "company": "Honda Motor Company, Ltd. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ZBH",
+      "company": "Zimmer Biomet Holdings, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "YUM",
+      "company": "Yum! Brands, Inc.",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WYNN",
+      "company": "Wynn Resorts, Limited - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WDC",
+      "company": "Western Digital Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GMAB",
+      "company": "Genmab A/S - American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WBD",
+      "company": "Warner Bros. Discovery, Inc. - Series A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DIS",
+      "company": "Walt Disney Company (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "WMT",
+      "company": "Walmart Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "V",
+      "company": "Visa",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VICI",
+      "company": "VICI Properties Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ESLT",
+      "company": "Elbit Systems Ltd. - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DEO",
+      "company": "Diageo plc Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DB",
+      "company": "Deutsche Bank AG Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VRT",
+      "company": "Vertiv Holdings",
+      "sector": "GRID",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VRTX",
+      "company": "Vertex Pharmaceuticals",
+      "sector": "XBI",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VZ",
+      "company": "Verizon Communications Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VTR",
+      "company": "Ventas, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "URI",
+      "company": "United Rentals",
+      "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "UNP",
+      "company": "Union Pacific Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "UDR",
+      "company": "UDR, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TFC",
+      "company": "Truist Financial Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TRV",
+      "company": "The Travelers Companies, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TDG",
+      "company": "TransDigm Group",
+      "sector": "ITA",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TT",
+      "company": "Trane Technologies plc",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CI",
+      "company": "The Cigna Group Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TXT",
+      "company": "Textron",
+      "sector": "ITA",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TXN",
+      "company": "Texas Instruments",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TER",
+      "company": "Teradyne",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TDY",
+      "company": "Teledyne Technologies Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TTWO",
+      "company": "Take-Two Interactive Software, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TMUS",
+      "company": "T-Mobile US, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SNPS",
+      "company": "Synopsys",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SYF",
+      "company": "Synchrony Financial Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STLD",
+      "company": "Steel Dynamics",
+      "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SBUX",
+      "company": "Starbucks Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SOLV",
+      "company": "Solventum Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SNA",
+      "company": "Snap-On Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SJM",
+      "company": "The J.M. Smucker Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SWKS",
+      "company": "Skyworks Solutions, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SPG",
+      "company": "Simon Property Group, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NOW",
+      "company": "ServiceNow, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STX",
+      "company": "Seagate Technology Holdings PLC - Ordinary Shares (Ireland)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SNDK",
+      "company": "Sandisk Corporation - Common Stock When-Issued",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RTX",
+      "company": "RTX Corporation",
+      "sector": "ITA",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RCL",
+      "company": "Royal Caribbean Cruises Ltd. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HOOD",
+      "company": "Robinhood Markets",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RMD",
+      "company": "ResMed Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "RSG",
+      "company": "Republic Services, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "REG",
+      "company": "Regency Centers Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "O",
+      "company": "Realty Income Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PWR",
+      "company": "Quanta Services",
+      "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "Q",
+      "company": "Qnity Electronics, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PSA",
+      "company": "Public Storage Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PTC",
+      "company": "PTC Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PRU",
+      "company": "Prudential Financial, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PFG",
+      "company": "Principal Financial Group Inc - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "POOL",
+      "company": "Pool Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PNC",
+      "company": "PNC Financial Services Group, Inc. (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PSX",
+      "company": "Phillips 66 Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PM",
+      "company": "Philip Morris International Inc Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PEP",
+      "company": "PepsiCo, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PAYX",
+      "company": "Paychex, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PH",
+      "company": "Parker-Hannifin Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CCEP",
+      "company": "Coca-Cola Europacific Partners plc - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PCAR",
+      "company": "PACCAR Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "OTIS",
+      "company": "Otis Worldwide Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ORCL",
+      "company": "Oracle Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "OMC",
+      "company": "Omnicom Group Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NXPI",
+      "company": "NXP Semiconductors",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NUE",
+      "company": "Nucor",
+      "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NSC",
+      "company": "Norfolk Southern Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NKE",
+      "company": "Nike, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BTI",
+      "company": "British American Tobacco  Industries, p.l.c. Common Stock ADR",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BBVA",
+      "company": "Banco Bilbao Vizcaya Argentaria S.A. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NEM",
+      "company": "Newmont Corporation",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NFLX",
+      "company": "Netflix, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "NDAQ",
+      "company": "Nasdaq, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MSCI",
+      "company": "MSCI Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MSI",
+      "company": "Motorola Solutions",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MOS",
+      "company": "The Mosaic Company",
+      "sector": "MOO",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MDLZ",
+      "company": "Mondelez International, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TAP",
+      "company": "Molson Coors Beverage Company Class B Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MAA",
+      "company": "Mid-America Apartment Communities, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ARGX",
+      "company": "argenx SE - American Depositary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MGM",
+      "company": "MGM Resorts International Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MT",
+      "company": "Arcelor Mittal NY Registry Shares NEW",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MET",
+      "company": "MetLife, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MRK",
+      "company": "Merck & Company, Inc. Common Stock (new)",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BUD",
+      "company": "Anheuser-Busch Inbev SA Sponsored ADR (Belgium)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MCD",
+      "company": "McDonald's Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MRSH",
+      "company": "Marsh Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MAR",
+      "company": "Marriott International - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LYB",
+      "company": "LyondellBasell Industries NV Ordinary Shares Class A (Netherlands)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LITE",
+      "company": "Lumentum Holdings Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LOW",
+      "company": "Lowe's Companies, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ALC",
+      "company": "Alcon Inc. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LIN",
+      "company": "Linde plc - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LEN",
+      "company": "Lennar Corporation Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LDOS",
+      "company": "Leidos Holdings",
+      "sector": "ITA",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "LH",
+      "company": "Labcorp Holdings Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KLAC",
+      "company": "KLA Corporation",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KKR",
+      "company": "KKR & Co. Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KMI",
+      "company": "Kinder Morgan, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KIM",
+      "company": "Kimco Realty Corporation (HC) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KEY",
+      "company": "KeyCorp Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KDP",
+      "company": "Keurig Dr Pepper Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "JPM",
+      "company": "JP Morgan Chase & Co. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "INVH",
+      "company": "Invitation Homes Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ISRG",
+      "company": "Intuitive Surgical, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HBAN",
+      "company": "Huntington Bancshares Incorporated - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HUM",
+      "company": "Humana Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HPQ",
+      "company": "HP Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HWM",
+      "company": "Howmet Aerospace Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HPE",
+      "company": "Hewlett Packard Enterprise Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DOC",
+      "company": "Healthpeak Properties, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HCA",
+      "company": "HCA Healthcare, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HAS",
+      "company": "Hasbro, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HIG",
+      "company": "The Hartford Insurance Group, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GL",
+      "company": "Globe Life Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GPN",
+      "company": "Global Payments",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GPC",
+      "company": "Genuine Parts Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GM",
+      "company": "General Motors Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GEN",
+      "company": "Gen Digital",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GEHC",
+      "company": "GE HealthCare Technologies Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AJG",
+      "company": "Arthur J. Gallagher & Co. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FCX",
+      "company": "Freeport-McMoRan, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BEN",
+      "company": "Franklin Resources, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FOXA",
+      "company": "Fox Corporation - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FTV",
+      "company": "Fortive Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "F",
+      "company": "Ford Motor Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FISV",
+      "company": "Fiserv, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FSLR",
+      "company": "First Solar",
+      "sector": "ICLN",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FRT",
+      "company": "Federal Realty Investment Trust Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FICO",
+      "company": "Fair Isaac Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FFIV",
+      "company": "F5, Inc.",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EXPD",
+      "company": "Expeditors International of Washington, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EXPE",
+      "company": "Expedia Group, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EG",
+      "company": "Everest Group, Ltd. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ESS",
+      "company": "Essex Property Trust, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EMR",
+      "company": "Emerson Electric",
+      "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EME",
+      "company": "EMCOR Group, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ELV",
+      "company": "Elevance Health, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EW",
+      "company": "Edwards Lifesciences Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "EBAY",
+      "company": "eBay Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ETN",
+      "company": "Eaton Corporation",
+      "sector": "GRID",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DOW",
+      "company": "Dow Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DOV",
+      "company": "Dover Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DLR",
+      "company": "Digital Realty Trust, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DRI",
+      "company": "Darden Restaurants, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DHR",
+      "company": "Danaher Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CVS",
+      "company": "CVS Health Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CTVA",
+      "company": "Corteva",
+      "sector": "MOO",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GLW",
+      "company": "Corning Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CPRT",
+      "company": "Copart, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "FIX",
+      "company": "Comfort Systems USA, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CTSH",
+      "company": "Cognizant Technology Solutions Corporation - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KO",
+      "company": "Coca-Cola Company (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "C",
+      "company": "Citigroup, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CHTR",
+      "company": "Charter Communications, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CF",
+      "company": "CF Industries Holdings",
+      "sector": "MOO",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CBOE",
+      "company": "Cboe Global Markets, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CCL",
+      "company": "Carnival Corporation Ltd. Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CAH",
+      "company": "Cardinal Health, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "COF",
+      "company": "Capital One Financial Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CPT",
+      "company": "Camden Property Trust Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AVGO",
+      "company": "Broadcom",
+      "sector": "SMH",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BX",
+      "company": "Blackstone Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BBY",
+      "company": "Best Buy Co., Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AXON",
+      "company": "Axon Enterprise",
+      "sector": "ITA",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AVB",
+      "company": "AvalonBay Communities, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ADSK",
+      "company": "Autodesk, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ACGL",
+      "company": "Arch Capital Group Ltd. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "APO",
+      "company": "Apollo Global Management, Inc. (New) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AON",
+      "company": "Aon plc Class A Ordinary Shares (Ireland)",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AME",
+      "company": "AMETEK",
+      "sector": "GRID",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMP",
+      "company": "Ameriprise Financial, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMT",
+      "company": "American Tower Corporation (REIT) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AIG",
+      "company": "American International Group, Inc. New Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MO",
+      "company": "Altria Group, Inc.",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ALL",
+      "company": "Allstate Corporation (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AKAM",
+      "company": "Akamai Technologies",
+      "sector": "CIBR",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ABNB",
+      "company": "Airbnb, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "APD",
+      "company": "Air Products and Chemicals, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AFL",
+      "company": "AFLAC Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ACM",
+      "company": "AECOM",
+      "sector": "PAVE",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ABBV",
+      "company": "AbbVie Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "MMM",
+      "company": "3M Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "SOLS",
+      "company": "Solstice Advanced Materials Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DVN",
+      "company": "Devon Energy Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AWK",
+      "company": "American Water Works Company, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/16/2026"
+    },
+    {
+      "ticker": "TSCO",
+      "company": "Tractor Supply Company - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/16/2026"
+    },
+    {
+      "ticker": "TPYP",
+      "company": "Tortoise North American Pipeline Fund",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "ATO",
+      "company": "Atmos Energy Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "IGV",
+      "company": "iShares Expanded Tech-Software Sector ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "PALL",
+      "company": "abrdn Physical Palladium Shares ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "COHR",
+      "company": "Coherent Corp. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/08/2026"
+    },
+    {
+      "ticker": "VEA",
+      "company": "Vanguard Developed Markets Index Fund - ETF Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "VNQI",
+      "company": "Vanguard Global ex-U.S. Real Estate Index Fund - ETF Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "LITP",
+      "company": "Sprott Lithium Miners ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "IVV",
+      "company": "iShares Core S&P 500 ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "RNWGX",
+      "company": "NEW WORLD FUND INC - Class R-6",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "SPYM",
+      "company": "Tradr 2X Long SPY Monthly ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "IWM",
+      "company": "iShares Russell 2000 ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "EFA",
+      "company": "iShares MSCI EAFE ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "IEI",
+      "company": "iShares 3-7 Year Treasury Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "GEM",
+      "company": "Goldman Sachs ActiveBeta(R) Emerging Markets Equity ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "EIPI",
+      "company": "FT Energy Income Partners Enhanced Income ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "ECL",
+      "company": "Ecolab Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "TLH",
+      "company": "iShares 10-20 Year Treasury Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "AGZ",
+      "company": "iShares Agency Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "GBIL",
+      "company": "Goldman Sachs Access Treasury 0-1 Year ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "XTWO",
+      "company": "BondBloxx Bloomberg Two Year Target Duration US Treasury ETF",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "ALB",
+      "company": "Albemarle Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/16/2026"
+    },
+    {
+      "ticker": "PTON",
+      "company": "Peloton Interactive, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "06/07/2026"
+    },
+    {
+      "ticker": "TSM",
+      "company": "Taiwan Semiconductor",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/16/2026"
+    },
+    {
+      "ticker": "ARQT",
+      "company": "Arcutis Biotherapeutics, Inc. - Common stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "BBIO",
+      "company": "BridgeBio Pharma, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "CVNA",
+      "company": "Carvana Co. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "CLX",
+      "company": "Clorox Company",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "CTRA",
+      "company": "Coterra Energy Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "CSW",
+      "company": "CSW Industrials, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "DCO",
+      "company": "Ducommun Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "FN",
+      "company": "Fabrinet Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "FDS",
+      "company": "FactSet Research Systems Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "GEHCV",
+      "company": "GE HealthCare Technologies Inc.",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "INDB",
+      "company": "Independent Bank Corp. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "LGND",
+      "company": "Ligand Pharmaceuticals Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "MTSI",
+      "company": "MACOM Technology Solutions Holdings, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "MDB",
+      "company": "MongoDB, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "NOVT",
+      "company": "Novanta Inc. - Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "PSKY",
+      "company": "Paramount Skydance Corporation - Class B Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "PWP",
+      "company": "Perella Weinberg Partners - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "PRIM",
+      "company": "Primoris Services",
+      "sector": "PAVE",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "RVTY",
+      "company": "Revvity, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "RNMBF",
+      "company": "Rheinmetall Ag Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "ROP",
+      "company": "Roper Technologies, Inc.",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "SARO",
+      "company": "StandardAero, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "THLEF",
+      "company": "Thales Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "TOELF",
+      "company": "TOKYO ELECTRON",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "TPH",
+      "company": "Tri Pointe Homes, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "TRMB",
+      "company": "Trimble Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "TYL",
+      "company": "Tyler Technologies, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "VIAV",
+      "company": "Viavi Solutions Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "AJINF",
+      "company": "Ajinomoto Company, Inc. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "AGX",
+      "company": "Argan, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "BOOT",
+      "company": "Boot Barn Holdings, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "BRCM",
+      "company": "Broadcom Corporation - Class A",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "CDRE",
+      "company": "Cadre Holdings, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "CBZ",
+      "company": "CBIZ, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "CECO",
+      "company": "CECO Environmental Corp. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "CRDO",
+      "company": "Credo Technology Group Holding Ltd Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "CYTK",
+      "company": "Cytokinetics, Incorporated - Common Stock ID Owner Asset Transaction Date Notification Amo",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "FOX",
+      "company": "Fox Corporation - Class B Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "JKHY",
+      "company": "Jack Henry & Associates, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "RBC",
+      "company": "RBC Bearings Incorporated Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "SMTC",
+      "company": "Semtech Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "MSTR",
+      "company": "Strategy (MicroStrategy)",
+      "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TXRH",
+      "company": "Texas Roadhouse, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "DSGX",
+      "company": "The Descartes Systems Group Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "MTN",
+      "company": "Vail Resorts, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "USOU",
+      "company": "United States 3x Oil Fund",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/16/2026"
+    },
+    {
+      "ticker": "CNM",
+      "company": "Core & Main, Inc. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "CPAY",
+      "company": "Corpay, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "PPG",
+      "company": "PPG Industries, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/6/2026"
+    },
+    {
+      "ticker": "MPWR",
+      "company": "Monolithic Power Systems, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "QNT",
+      "company": "Quantinuum Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/26/2026"
+    },
+    {
+      "ticker": "ARLP",
+      "company": "Alliance Resource Partners, L.P. - Common Units Representing Limited Partnership Interests",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/10/2026"
+    },
+    {
+      "ticker": "ADC",
+      "company": "Agree Realty Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "BABA",
+      "company": "Alibaba Group Holding Limited American Depositary Shares each representing eight Ordinary ",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "INSM",
+      "company": "Insmed Incorporated - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "NSRGY",
+      "company": "NESTLE S.A S/ADR",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "NTDOY",
+      "company": "Nintendo Co Ltd ADR",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "NVZMY",
+      "company": "NOVONESIS B UNSP/ADR",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "SPHR",
+      "company": "Sphere Entertainment Co. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "EQT",
+      "company": "EQT Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/18/2026"
+    },
+    {
+      "ticker": "WPM",
+      "company": "Wheaton Precious Metals Corp Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "IMCB",
+      "company": "Ishares Morningstar ETF Mid Cap",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/9/2026"
+    },
+    {
+      "ticker": "SPSM",
+      "company": "State Street SPDR ETF Portfolio S&P 600 Small",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/9/2026"
+    },
+    {
+      "ticker": "MGK",
+      "company": "Vanguard Mega Cap Growth ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/9/2026"
+    },
+    {
+      "ticker": "FE",
+      "company": "FirstEnergy Corp. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "FMC",
+      "company": "FMC Corporation",
+      "sector": "MOO",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "MGA",
+      "company": "Magna International, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "MPC",
+      "company": "Marathon Petroleum Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "AESI",
+      "company": "Atlas Energy Solutions Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/10/2026"
+    },
+    {
+      "ticker": "SHW",
+      "company": "Sherwin-Williams Company",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "WHR",
+      "company": "Whirlpool Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/8/2026"
+    },
+    {
+      "ticker": "VOYG",
+      "company": "Voyager Technologies, Inc. Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/7/2026"
+    },
+    {
+      "ticker": "TCNNF",
+      "company": "TRULIEVE CANNABIS CORP",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/26/2026"
+    },
+    {
+      "ticker": "AEP",
+      "company": "American Electric Power",
+      "sector": "GRID",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/12/2026"
+    },
+    {
+      "ticker": "KR",
+      "company": "Kroger Company",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/12/2026"
+    },
+    {
+      "ticker": "IBP",
+      "company": "Installed Building Products, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/1/2026"
+    },
+    {
+      "ticker": "LUV",
+      "company": "Southwest Airlines Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "6/17/2026"
+    },
+    {
+      "ticker": "ICHR",
+      "company": "Ichor Holdings - Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/14/2026"
     }
   ]
 }
