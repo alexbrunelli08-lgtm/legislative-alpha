@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T03:27:46Z",
+  "generated_at": "2026-07-23T16:08:37Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,7 +7,7 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 12,
+      "bill_count": 11,
       "appropriation_count": 3,
       "trade_count": 8,
       "stock_count": 25,
@@ -73,11 +73,11 @@
       "short": "Space",
       "etf": "UFO",
       "color": "#4A5A6B",
-      "bill_count": 0,
+      "bill_count": 1,
       "appropriation_count": 0,
       "trade_count": 4,
       "stock_count": 15,
-      "avg_momentum": 0
+      "avg_momentum": 35
     },
     "URA": {
       "name": "Uranium & Nuclear",
@@ -607,227 +607,6 @@
         }
       ],
       "related_trade_count": 15,
-      "key_bill": false
-    },
-    {
-      "id": "119-HR-4950",
-      "number": "HR 4950",
-      "title": "Data BRIDGE Act",
-      "sector": "PAVE",
-      "introduced_date": "2025-08-12",
-      "latest_action": {
-        "date": "2025-08-12",
-        "text": "Referred to the House Committee on Energy and Commerce."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/4950",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Houchin, Erin [R-IN-9]",
-        "party": "R",
-        "state": "IN"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 12,
-      "amendments": [],
-      "momentum": 40,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "VMC",
-          "name": "Vulcan Materials"
-        },
-        {
-          "ticker": "MLM",
-          "name": "Martin Marietta Materials"
-        },
-        {
-          "ticker": "NUE",
-          "name": "Nucor"
-        },
-        {
-          "ticker": "CAT",
-          "name": "Caterpillar"
-        },
-        {
-          "ticker": "URI",
-          "name": "United Rentals"
-        },
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "EMR",
-          "name": "Emerson Electric"
-        },
-        {
-          "ticker": "PWR",
-          "name": "Quanta Services"
-        },
-        {
-          "ticker": "J",
-          "name": "Jacobs Solutions"
-        },
-        {
-          "ticker": "STLD",
-          "name": "Steel Dynamics"
-        },
-        {
-          "ticker": "GVA",
-          "name": "Granite Construction"
-        },
-        {
-          "ticker": "ACM",
-          "name": "AECOM"
-        },
-        {
-          "ticker": "MAS",
-          "name": "Masco Corporation"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "WMS",
-          "name": "Advanced Drainage Systems"
-        },
-        {
-          "ticker": "X",
-          "name": "United States Steel"
-        },
-        {
-          "ticker": "CLF",
-          "name": "Cleveland-Cliffs"
-        },
-        {
-          "ticker": "EXP",
-          "name": "Eagle Materials"
-        },
-        {
-          "ticker": "CRH",
-          "name": "CRH plc"
-        },
-        {
-          "ticker": "MTZ",
-          "name": "MasTec"
-        },
-        {
-          "ticker": "PRIM",
-          "name": "Primoris Services"
-        },
-        {
-          "ticker": "FLR",
-          "name": "Fluor Corporation"
-        },
-        {
-          "ticker": "KBR",
-          "name": "KBR, Inc."
-        },
-        {
-          "ticker": "TTEK",
-          "name": "Tetra Tech"
-        },
-        {
-          "ticker": "VMI",
-          "name": "Valmont Industries"
-        }
-      ],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "URI",
-          "company": "United Rentals",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "STLD",
-          "company": "Steel Dynamics",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PWR",
-          "company": "Quanta Services",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NUE",
-          "company": "Nucor",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "EMR",
-          "company": "Emerson Electric",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ACM",
-          "company": "AECOM",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 8,
       "key_bill": false
     },
     {
@@ -5238,227 +5017,6 @@
       "key_bill": true
     },
     {
-      "id": "119-HR-3972",
-      "number": "HR 3972",
-      "title": "Highway Funding Flexibility Act of 2025",
-      "sector": "PAVE",
-      "introduced_date": "2025-06-12",
-      "latest_action": {
-        "date": "2025-06-13",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3972",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Johnson, Dusty [R-SD-At Large]",
-        "party": "R",
-        "state": "SD"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "momentum": 36,
-      "is_appropriation": true,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "VMC",
-          "name": "Vulcan Materials"
-        },
-        {
-          "ticker": "MLM",
-          "name": "Martin Marietta Materials"
-        },
-        {
-          "ticker": "NUE",
-          "name": "Nucor"
-        },
-        {
-          "ticker": "CAT",
-          "name": "Caterpillar"
-        },
-        {
-          "ticker": "URI",
-          "name": "United Rentals"
-        },
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "EMR",
-          "name": "Emerson Electric"
-        },
-        {
-          "ticker": "PWR",
-          "name": "Quanta Services"
-        },
-        {
-          "ticker": "J",
-          "name": "Jacobs Solutions"
-        },
-        {
-          "ticker": "STLD",
-          "name": "Steel Dynamics"
-        },
-        {
-          "ticker": "GVA",
-          "name": "Granite Construction"
-        },
-        {
-          "ticker": "ACM",
-          "name": "AECOM"
-        },
-        {
-          "ticker": "MAS",
-          "name": "Masco Corporation"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "WMS",
-          "name": "Advanced Drainage Systems"
-        },
-        {
-          "ticker": "X",
-          "name": "United States Steel"
-        },
-        {
-          "ticker": "CLF",
-          "name": "Cleveland-Cliffs"
-        },
-        {
-          "ticker": "EXP",
-          "name": "Eagle Materials"
-        },
-        {
-          "ticker": "CRH",
-          "name": "CRH plc"
-        },
-        {
-          "ticker": "MTZ",
-          "name": "MasTec"
-        },
-        {
-          "ticker": "PRIM",
-          "name": "Primoris Services"
-        },
-        {
-          "ticker": "FLR",
-          "name": "Fluor Corporation"
-        },
-        {
-          "ticker": "KBR",
-          "name": "KBR, Inc."
-        },
-        {
-          "ticker": "TTEK",
-          "name": "Tetra Tech"
-        },
-        {
-          "ticker": "VMI",
-          "name": "Valmont Industries"
-        }
-      ],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "URI",
-          "company": "United Rentals",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "STLD",
-          "company": "Steel Dynamics",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PWR",
-          "company": "Quanta Services",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NUE",
-          "company": "Nucor",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "EMR",
-          "company": "Emerson Electric",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ACM",
-          "company": "AECOM",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 8,
-      "key_bill": true
-    },
-    {
       "id": "119-S-651",
       "number": "S 651",
       "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
@@ -5954,6 +5512,227 @@
         }
       ],
       "related_trade_count": 16,
+      "key_bill": true
+    },
+    {
+      "id": "119-HR-3972",
+      "number": "HR 3972",
+      "title": "Highway Funding Flexibility Act of 2025",
+      "sector": "PAVE",
+      "introduced_date": "2025-06-12",
+      "latest_action": {
+        "date": "2025-06-13",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/3972",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Johnson, Dusty [R-SD-At Large]",
+        "party": "R",
+        "state": "SD"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 2,
+      "amendments": [],
+      "momentum": 36,
+      "is_appropriation": true,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "VMC",
+          "name": "Vulcan Materials"
+        },
+        {
+          "ticker": "MLM",
+          "name": "Martin Marietta Materials"
+        },
+        {
+          "ticker": "NUE",
+          "name": "Nucor"
+        },
+        {
+          "ticker": "CAT",
+          "name": "Caterpillar"
+        },
+        {
+          "ticker": "URI",
+          "name": "United Rentals"
+        },
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "EMR",
+          "name": "Emerson Electric"
+        },
+        {
+          "ticker": "PWR",
+          "name": "Quanta Services"
+        },
+        {
+          "ticker": "J",
+          "name": "Jacobs Solutions"
+        },
+        {
+          "ticker": "STLD",
+          "name": "Steel Dynamics"
+        },
+        {
+          "ticker": "GVA",
+          "name": "Granite Construction"
+        },
+        {
+          "ticker": "ACM",
+          "name": "AECOM"
+        },
+        {
+          "ticker": "MAS",
+          "name": "Masco Corporation"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "WMS",
+          "name": "Advanced Drainage Systems"
+        },
+        {
+          "ticker": "X",
+          "name": "United States Steel"
+        },
+        {
+          "ticker": "CLF",
+          "name": "Cleveland-Cliffs"
+        },
+        {
+          "ticker": "EXP",
+          "name": "Eagle Materials"
+        },
+        {
+          "ticker": "CRH",
+          "name": "CRH plc"
+        },
+        {
+          "ticker": "MTZ",
+          "name": "MasTec"
+        },
+        {
+          "ticker": "PRIM",
+          "name": "Primoris Services"
+        },
+        {
+          "ticker": "FLR",
+          "name": "Fluor Corporation"
+        },
+        {
+          "ticker": "KBR",
+          "name": "KBR, Inc."
+        },
+        {
+          "ticker": "TTEK",
+          "name": "Tetra Tech"
+        },
+        {
+          "ticker": "VMI",
+          "name": "Valmont Industries"
+        }
+      ],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "URI",
+          "company": "United Rentals",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "STLD",
+          "company": "Steel Dynamics",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "PWR",
+          "company": "Quanta Services",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NUE",
+          "company": "Nucor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "EMR",
+          "company": "Emerson Electric",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "ACM",
+          "company": "AECOM",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        }
+      ],
+      "related_trade_count": 8,
       "key_bill": true
     },
     {
@@ -10003,6 +9782,143 @@
       ],
       "related_trade_count": 15,
       "key_bill": false
+    },
+    {
+      "id": "119-HR-9193",
+      "number": "HR 9193",
+      "title": "Powering the Future of American Space Dominance Act",
+      "sector": "UFO",
+      "introduced_date": "2026-06-08",
+      "latest_action": {
+        "date": "2026-06-08",
+        "text": "Referred to the House Committee on Science, Space, and Technology."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9193",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Kennedy, Mike [R-UT-3]",
+        "party": "R",
+        "state": "UT"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "RKLB",
+          "name": "Rocket Lab"
+        },
+        {
+          "ticker": "IRDM",
+          "name": "Iridium Communications"
+        },
+        {
+          "ticker": "VSAT",
+          "name": "Viasat"
+        },
+        {
+          "ticker": "ASTS",
+          "name": "AST SpaceMobile"
+        },
+        {
+          "ticker": "GSAT",
+          "name": "Globalstar"
+        },
+        {
+          "ticker": "LMT",
+          "name": "Lockheed Martin"
+        },
+        {
+          "ticker": "NOC",
+          "name": "Northrop Grumman"
+        },
+        {
+          "ticker": "BA",
+          "name": "Boeing"
+        },
+        {
+          "ticker": "MAXR",
+          "name": "Maxar Technologies"
+        },
+        {
+          "ticker": "RDW",
+          "name": "Redwire Corporation"
+        },
+        {
+          "ticker": "PL",
+          "name": "Planet Labs"
+        },
+        {
+          "ticker": "LUNR",
+          "name": "Intuitive Machines"
+        },
+        {
+          "ticker": "SATS",
+          "name": "EchoStar"
+        },
+        {
+          "ticker": "BKSY",
+          "name": "BlackSky Technology"
+        },
+        {
+          "ticker": "SPCE",
+          "name": "Virgin Galactic"
+        }
+      ],
+      "sector_trade_flag": true,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NOC",
+          "company": "Northrop Grumman",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "LMT",
+          "company": "Lockheed Martin",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "BA",
+          "company": "Boeing",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "LMT",
+          "company": "Lockheed Martin",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "transaction_date": "06/08/2026",
+          "filed_date": "07/16/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
+        }
+      ],
+      "related_trade_count": 4,
+      "key_bill": true
     }
   ],
   "trades": [
