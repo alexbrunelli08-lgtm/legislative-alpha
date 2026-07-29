@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T16:22:39Z",
+  "generated_at": "2026-07-29T15:59:56Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,11 +7,11 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 13,
+      "bill_count": 12,
       "appropriation_count": 3,
       "trade_count": 8,
       "stock_count": 25,
-      "avg_momentum": 34
+      "avg_momentum": 36
     },
     "CIBR": {
       "name": "Cybersecurity",
@@ -117,7 +117,7 @@
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 12,
+      "bill_count": 13,
       "appropriation_count": 0,
       "trade_count": 7,
       "stock_count": 17,
@@ -141,233 +141,12 @@
       "color": "#565F73",
       "bill_count": 0,
       "appropriation_count": 0,
-      "trade_count": 1016,
+      "trade_count": 1032,
       "stock_count": 0,
       "avg_momentum": 0
     }
   },
   "bills": [
-    {
-      "id": "119-HRES-1042",
-      "number": "HRES 1042",
-      "title": "Providing for consideration of the bill (H.R. 2189) to modernize Federal firearms laws to account for advancements in technology and less-than-lethal weapons, and for other purposes; providing for consideration of the bill (H.R. 261) to amend the National Marine Sanctuaries Act to prohibit requiring an authorization for the installation, continued presence, operation, maintenance, repair, or recovery of undersea fiber optic cables in a national marine sanctuary if such activities have previously been authorized by a Federal or State agency; providing for consideration of the bill (H.R. 3617) to amend the Department of Energy Organization Act to secure the supply of critical energy resources, including critical minerals and other materials, and for other purposes; and for other purposes.",
-      "sector": "PAVE",
-      "introduced_date": "2026-02-09",
-      "latest_action": {
-        "date": "2026-02-10",
-        "text": "Motion to reconsider laid on the table Agreed to without objection."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1042",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Rep. Langworthy, Nicholas A. [R-NY-23]",
-        "party": "R",
-        "state": "NY"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "momentum": 15,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "VMC",
-          "name": "Vulcan Materials"
-        },
-        {
-          "ticker": "MLM",
-          "name": "Martin Marietta Materials"
-        },
-        {
-          "ticker": "NUE",
-          "name": "Nucor"
-        },
-        {
-          "ticker": "CAT",
-          "name": "Caterpillar"
-        },
-        {
-          "ticker": "URI",
-          "name": "United Rentals"
-        },
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "EMR",
-          "name": "Emerson Electric"
-        },
-        {
-          "ticker": "PWR",
-          "name": "Quanta Services"
-        },
-        {
-          "ticker": "J",
-          "name": "Jacobs Solutions"
-        },
-        {
-          "ticker": "STLD",
-          "name": "Steel Dynamics"
-        },
-        {
-          "ticker": "GVA",
-          "name": "Granite Construction"
-        },
-        {
-          "ticker": "ACM",
-          "name": "AECOM"
-        },
-        {
-          "ticker": "MAS",
-          "name": "Masco Corporation"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "WMS",
-          "name": "Advanced Drainage Systems"
-        },
-        {
-          "ticker": "X",
-          "name": "United States Steel"
-        },
-        {
-          "ticker": "CLF",
-          "name": "Cleveland-Cliffs"
-        },
-        {
-          "ticker": "EXP",
-          "name": "Eagle Materials"
-        },
-        {
-          "ticker": "CRH",
-          "name": "CRH plc"
-        },
-        {
-          "ticker": "MTZ",
-          "name": "MasTec"
-        },
-        {
-          "ticker": "PRIM",
-          "name": "Primoris Services"
-        },
-        {
-          "ticker": "FLR",
-          "name": "Fluor Corporation"
-        },
-        {
-          "ticker": "KBR",
-          "name": "KBR, Inc."
-        },
-        {
-          "ticker": "TTEK",
-          "name": "Tetra Tech"
-        },
-        {
-          "ticker": "VMI",
-          "name": "Valmont Industries"
-        }
-      ],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "URI",
-          "company": "United Rentals",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "STLD",
-          "company": "Steel Dynamics",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PWR",
-          "company": "Quanta Services",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NUE",
-          "company": "Nucor",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "EMR",
-          "company": "Emerson Electric",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ACM",
-          "company": "AECOM",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 8,
-      "key_bill": false
-    },
     {
       "id": "119-S-1733",
       "number": "S 1733",
@@ -2183,29 +1962,29 @@
       "key_bill": true
     },
     {
-      "id": "119-S-651",
-      "number": "S 651",
-      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
+      "id": "119-HR-1892",
+      "number": "HR 1892",
+      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
       "sector": "GRID",
-      "introduced_date": "2025-02-20",
+      "introduced_date": "2025-03-05",
       "latest_action": {
-        "date": "2025-02-20",
-        "text": "Read twice and referred to the Committee on Environment and Public Works."
+        "date": "2025-03-05",
+        "text": "Referred to the Subcommittee on Highways and Transit."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Sen. Ernst, Joni [R-IA]",
-        "party": "R",
-        "state": "IA"
+        "name": "Rep. Stevens, Haley M. [D-MI-11]",
+        "party": "D",
+        "state": "MI"
       },
-      "committee_count": 1,
-      "cosponsor_count": 2,
+      "committee_count": 2,
+      "cosponsor_count": 4,
       "amendments": [],
-      "momentum": 36,
-      "is_appropriation": false,
+      "momentum": 37,
+      "is_appropriation": true,
       "dollar_figures": [],
       "beneficiary_stocks": [
         {
@@ -2653,29 +2432,29 @@
       "key_bill": true
     },
     {
-      "id": "119-HR-1892",
-      "number": "HR 1892",
-      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
+      "id": "119-S-651",
+      "number": "S 651",
+      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
       "sector": "GRID",
-      "introduced_date": "2025-03-05",
+      "introduced_date": "2025-02-20",
       "latest_action": {
-        "date": "2025-03-05",
-        "text": "Referred to the Subcommittee on Highways and Transit."
+        "date": "2025-02-20",
+        "text": "Read twice and referred to the Committee on Environment and Public Works."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. Stevens, Haley M. [D-MI-11]",
-        "party": "D",
-        "state": "MI"
+        "name": "Sen. Ernst, Joni [R-IA]",
+        "party": "R",
+        "state": "IA"
       },
-      "committee_count": 2,
-      "cosponsor_count": 4,
+      "committee_count": 1,
+      "cosponsor_count": 2,
       "amendments": [],
-      "momentum": 37,
-      "is_appropriation": true,
+      "momentum": 36,
+      "is_appropriation": false,
       "dollar_figures": [],
       "beneficiary_stocks": [
         {
@@ -12754,9 +12533,355 @@
       ],
       "related_trade_count": 7,
       "key_bill": false
+    },
+    {
+      "id": "119-SRES-289",
+      "number": "SRES 289",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "sector": "MOO",
+      "introduced_date": "2025-06-18",
+      "latest_action": {
+        "date": "2025-06-18",
+        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Merkley, Jeff [D-OR]",
+        "party": "D",
+        "state": "OR"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "ADM",
+          "name": "Archer-Daniels-Midland"
+        },
+        {
+          "ticker": "BG",
+          "name": "Bunge Global"
+        },
+        {
+          "ticker": "CF",
+          "name": "CF Industries Holdings"
+        },
+        {
+          "ticker": "MOS",
+          "name": "The Mosaic Company"
+        },
+        {
+          "ticker": "CTVA",
+          "name": "Corteva"
+        },
+        {
+          "ticker": "FMC",
+          "name": "FMC Corporation"
+        },
+        {
+          "ticker": "NTR",
+          "name": "Nutrien"
+        },
+        {
+          "ticker": "TSN",
+          "name": "Tyson Foods"
+        },
+        {
+          "ticker": "CNH",
+          "name": "CNH Industrial"
+        },
+        {
+          "ticker": "DAR",
+          "name": "Darling Ingredients"
+        },
+        {
+          "ticker": "LW",
+          "name": "Lamb Weston"
+        },
+        {
+          "ticker": "INGR",
+          "name": "Ingredion"
+        },
+        {
+          "ticker": "LNN",
+          "name": "Lindsay Corporation"
+        },
+        {
+          "ticker": "SMG",
+          "name": "Scotts Miracle-Gro"
+        },
+        {
+          "ticker": "CALM",
+          "name": "Cal-Maine Foods"
+        }
+      ],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "BG",
+          "company": "Bunge Global",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "MOS",
+          "company": "The Mosaic Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CTVA",
+          "company": "Corteva",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CF",
+          "company": "CF Industries Holdings",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "FMC",
+          "company": "FMC Corporation",
+          "type": "Sale",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        }
+      ],
+      "related_trade_count": 7,
+      "key_bill": false
     }
   ],
   "trades": [
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/21/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/22/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$500,001 - $1,000,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/14/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$500,001 - $1,000,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "POCONO MTN PA SCH DIST GEN OBLIG BDSRate/Coupon:5%Matures:2051-06-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/08/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$250,001 - $500,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/14/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/08/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$250,001 - $500,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2028-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/30/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST TPK COMMN TPK REVRate/Coupon:5%Matures:2030-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "CORPUS CHRISTI TEX UTIL SYS REVRate/Coupon:5%Matures:2029-07-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST HIGHER EDL REVRate/Coupon:4%Matures:2031-06-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2031-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "WASHINGTON ST GORate/Coupon:5%Matures:2033-02-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST TPK COMMN OIL REVRate/Coupon:5%Matures:2026-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "NORTHAMPTON CNTY PA GEN PURP A REVRate/Coupon:5%Matures:2034-11-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
     {
       "sector": "OTHER",
       "ticker": null,
@@ -22983,6 +23108,18 @@
     },
     {
       "sector": "OTHER",
+      "ticker": null,
+      "company": "Oaktree Strategic Credit Fund Class S",
+      "member": "Rep. Sheri Biggs (SC03)",
+      "chamber": "House",
+      "transaction_date": "06/30/2026",
+      "filed_date": "7/27/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035007.pdf"
+    },
+    {
+      "sector": "OTHER",
       "ticker": "ABT",
       "company": "Abbott Laboratories Common Stock",
       "member": "Rep. Gilbert Cisneros (CA31)",
@@ -26523,6 +26660,18 @@
     },
     {
       "sector": "OTHER",
+      "ticker": null,
+      "company": "CarterBaldwin",
+      "member": "Rep. Adrian Smith (NE03)",
+      "chamber": "House",
+      "transaction_date": "07/31/2026",
+      "filed_date": "7/27/2026",
+      "type": "Purchase",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035067.pdf"
+    },
+    {
+      "sector": "OTHER",
       "ticker": "TCNNF",
       "company": "TRULIEVE CANNABIS CORP",
       "member": "Rep. Greg Stanton (AZ04)",
@@ -26965,6 +27114,17 @@
       "last_filed": "07/13/2026"
     },
     {
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "trade_count": 46,
+      "buy_count": 10,
+      "sell_count": 36,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "07/29/2026"
+    },
+    {
       "member": "Rep. Scott H. Peters (CA50)",
       "chamber": "House",
       "trade_count": 43,
@@ -27017,17 +27177,6 @@
         "SMH"
       ],
       "last_filed": "7/17/2026"
-    },
-    {
-      "member": "Sen. David H McCormick",
-      "chamber": "Senate",
-      "trade_count": 32,
-      "buy_count": 3,
-      "sell_count": 29,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "06/26/2026"
     },
     {
       "member": "Sen. John R Curtis",
@@ -28006,6 +28155,17 @@
       "last_filed": "7/1/2026"
     },
     {
+      "member": "Rep. Sheri Biggs (SC03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/27/2026"
+    },
+    {
       "member": "Rep. Steve Cohen (TN09)",
       "chamber": "House",
       "trade_count": 1,
@@ -28101,6 +28261,17 @@
       ],
       "sectors": [],
       "last_filed": "7/24/2026"
+    },
+    {
+      "member": "Rep. Adrian Smith (NE03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/27/2026"
     },
     {
       "member": "Rep. Greg Stanton (AZ04)",
