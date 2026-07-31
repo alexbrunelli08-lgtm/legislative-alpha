@@ -1,6 +1,292 @@
 {
-  "generated_at": "2026-07-31T02:57:37Z",
+  "generated_at": "2026-07-31T03:15:47Z",
   "congress": 119,
+  "overview": {
+    "total_trades": 1184,
+    "total_value": 59011523,
+    "buy_value": 27424200,
+    "sell_value": 31587323,
+    "active_members": 62,
+    "tracked_tickers_traded": 74,
+    "bill_count": 60,
+    "key_bill_count": 28,
+    "appropriation_count": 2,
+    "most_active_member": "Sen. Alan Armstrong",
+    "top_bought": {
+      "ticker": "INTC",
+      "company": "Intel",
+      "net_value": 2992000
+    },
+    "top_sold": {
+      "ticker": "WMB",
+      "company": "Williams Companies, Inc. (The) Common StockOption Type: CallStrike price:$75.00Expires:2026-08-21",
+      "net_value": -15375000
+    },
+    "biggest_trades": [
+      {
+        "member": "Sen. Alan Armstrong",
+        "chamber": "Senate",
+        "ticker": "WMB",
+        "company": "Williams Companies, Inc. (The) Common Stock",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$5,000,001 - $25,000,000",
+        "est_amount": 15000000,
+        "transaction_date": "06/24/2026",
+        "filed_date": "07/21/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+      },
+      {
+        "member": "Rep. Nancy Pelosi (CA11)",
+        "chamber": "House",
+        "ticker": "INTC",
+        "company": "Intel",
+        "sector": "SMH",
+        "type": "Purchase",
+        "amount_range": "$1,000,001 - $5,000,000",
+        "est_amount": 3000000,
+        "transaction_date": "05/29/2026",
+        "filed_date": "6/23/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034836.pdf"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "07/22/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "07/14/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PENNSYLVANIA ST GORate/Coupon:5%Matures:2027-08-15",
+        "sector": "OTHER",
+        "type": "Sale (Full)",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "05/26/2026",
+        "filed_date": "06/26/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/ff0b0573-2809-40ae-8197-4b26648e9027/"
+      },
+      {
+        "member": "Rep. Gilbert Cisneros (CA31)",
+        "chamber": "House",
+        "ticker": null,
+        "company": "Mount San Jacinto, CA, Cmnty. College Dist. Bonds",
+        "sector": "OTHER",
+        "type": "Sale",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "06/02/2026",
+        "filed_date": "7/2/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034906.pdf"
+      },
+      {
+        "member": "Rep. Steve Cohen (TN09)",
+        "chamber": "House",
+        "ticker": null,
+        "company": "US Treas Bills MAT 11/19/26",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "05/27/2026",
+        "filed_date": "6/17/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034796.pdf"
+      },
+      {
+        "member": "Rep. Nancy Pelosi (CA11)",
+        "chamber": "House",
+        "ticker": "UBER",
+        "company": "Uber Technologies, Inc. Common Stock",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "05/29/2026",
+        "filed_date": "6/23/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034836.pdf"
+      }
+    ],
+    "latest_trades": [
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "07/21/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "07/22/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "07/14/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "POCONO MTN PA SCH DIST GEN OBLIG BDSRate/Coupon:5%Matures:2051-06-15",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$250,001 - $500,000",
+        "est_amount": 375000,
+        "transaction_date": "07/08/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "07/14/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$250,001 - $500,000",
+        "est_amount": 375000,
+        "transaction_date": "07/08/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2028-12-01",
+        "sector": "OTHER",
+        "type": "Purchase",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "06/30/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PENNSYLVANIA ST TPK COMMN TPK REVRate/Coupon:5%Matures:2030-12-01",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "06/29/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "CORPUS CHRISTI TEX UTIL SYS REVRate/Coupon:5%Matures:2029-07-15",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "06/29/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PENNSYLVANIA ST HIGHER EDL REVRate/Coupon:4%Matures:2031-06-15",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "06/29/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2031-12-01",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$100,001 - $250,000",
+        "est_amount": 175000,
+        "transaction_date": "06/29/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      },
+      {
+        "member": "Sen. David H McCormick",
+        "chamber": "Senate",
+        "ticker": null,
+        "company": "WASHINGTON ST GORate/Coupon:5%Matures:2033-02-01",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$15,001 - $50,000",
+        "est_amount": 32500,
+        "transaction_date": "06/29/2026",
+        "filed_date": "07/29/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      }
+    ]
+  },
   "sectors": {
     "PAVE": {
       "name": "Infrastructure & Materials",
@@ -243,6 +529,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "763b7bebb7554de70a2d2ec68cd8cd4a47db6fde5a11cc398a51529c952bc9fd",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -429,6 +720,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "6acf5e60a366f43810d5af1832504d099c6a402f79b1ffb1679c867de808efe6",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -595,6 +891,11 @@
           "name": "Keysight Technologies"
         }
       ],
+      "impact_fingerprint": "2e787280bcfabd24f79dfb6534dcaedca2a1335ff2e002ffce5b0eb67e86eac4",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -861,6 +1162,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "8106c1ea4d9eaddf7b6d654d45d7dff8373a4a387fa32afaf66b940f76c0806f",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -1127,6 +1433,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "c280b74c5298c87d39ad6e410a09324299f535374e4840232ccff7a47415364e",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -1405,6 +1716,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "9d2ca9be23fe987cdb4a151bd7404ddc55ad4cd4a26eeb2c34261ea3b5b44068",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -1619,6 +1935,11 @@
           "name": "PG&E Corporation"
         }
       ],
+      "impact_fingerprint": "af688c487d4ae53a688a9f04a45041c1aae5df8149bfbda69dab3c9c16e8aadc",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -1881,6 +2202,11 @@
           "name": "PG&E Corporation"
         }
       ],
+      "impact_fingerprint": "3818252c20548fb4170731178ac78f54cba13726a2dc7104e925ea894b78d454",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -2135,6 +2461,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "42fa6bc6f4c89f96d4039ba28cb903f9d28f6c989bd9d007c7a8a9d0c77fffeb",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -2381,6 +2712,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "1fa693e45d7c3fcd496d34e35675afabb2aacd867d9bfafe8e1fac471ed1a0b9",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -2567,6 +2903,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "f88faa7d8aca101600262a00303afd52bb4d97e2d10f0e41cc3ed95134fa47ae",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -2761,6 +3102,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "422fc4214ba56a9f62a887461cc9a0d8ca9a813b8e99227c63765ab407b8cba8",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -3003,6 +3349,11 @@
           "name": "Eos Energy Enterprises"
         }
       ],
+      "impact_fingerprint": "e2d2805e2933e7ad8ec3f3bfa989bf4669ebaba6024fc988e22cb9651b5c063e",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -3141,6 +3492,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "49dc5a78d544151ffe6fcf9556133917b0980ae1ed0d7168892f7d99a93d49ea",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -3359,6 +3715,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "a80736efb7ef0cb186442f5c46c427e5cc747ae1f2b46c07fa6649f5bbd6e409",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -3553,6 +3914,11 @@
           "name": "BILL Holdings"
         }
       ],
+      "impact_fingerprint": "b1c3ddc2c959b80af6f8b78a1015850a7cc58c13fc70c26f45b4870941ff85cf",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -3775,6 +4141,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "368e30145c8a8c7f634337d8352e90d9a05f042c6b92334bcc4417769cf0aaab",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -3961,6 +4332,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "6aadc6c31da503a2389f946d24136e15eeff28fc7b0c454a10a52447dbbcff06",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -4155,6 +4531,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "0eeea23c816cff3528ca23ad69a71f4573db5320e3b503a6fd2a3bd4db73e706",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -4401,6 +4782,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "1ffd52b049d499095a509cba8dbee4367f24ed7e92e03d55266d0f9f01533244",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -4583,6 +4969,11 @@
           "name": "GE Vernova"
         }
       ],
+      "impact_fingerprint": "bcb8203336bc6ffdba61a2fa952fbeca0641b72bf3a5d33b07f9148299c45f7c",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -4705,6 +5096,11 @@
           "name": "Eos Energy Enterprises"
         }
       ],
+      "impact_fingerprint": "9071637d4a24d4d1414dc60a5d87f3fddc4e842aeaeeb840b76294be4c9dd349",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -4863,6 +5259,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "5db589ee29fd1ac309912db57cbb70c2b44c53d8561518d784a1ca145fdcbf44",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -5129,6 +5530,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "e467adcf29eb0011ed350370123af2c04ee416a3326cfc6a8e015e1ec6bc0c32",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -5383,6 +5789,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "c80e30f8568770ac6ac542cb684bf4386e072ff18732093172af54c57a8689b2",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -5661,6 +6072,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "a38cf2d854656ecfa0cea600e753a079eb03272395149beeec33dd3b475bdea7",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -5867,6 +6283,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "186a0c597ef147b12b527eda6c85e27733f22607ab00d97d6a4a6e5f1bf51c75",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -6105,6 +6526,11 @@
           "name": "Virgin Galactic"
         }
       ],
+      "impact_fingerprint": "c6cb9826375b8bb67c12732e0f6761dd68f730155579e2f962bfa23341768940",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -6235,6 +6661,11 @@
           "name": "Keysight Technologies"
         }
       ],
+      "impact_fingerprint": "8b8a26e339e3eed2d25b6de1544f49c6ab429303d23fed0ed5f22300cc9f68fe",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -6513,6 +6944,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "ee3329a43cfa29c4e033279a07129308f1b20b2f5b074f8222be8869748a009b",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -6707,6 +7143,11 @@
           "name": "GE Vernova"
         }
       ],
+      "impact_fingerprint": "e3f5189d19e806a80acf1c3e6d1a6312b77f14741d24ac37eecfee4e860acb75",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -6829,6 +7270,11 @@
           "name": "GE Vernova"
         }
       ],
+      "impact_fingerprint": "abad1200fe6c055cddc61fee4cd35d6aa537cb9228d15d58298b756673cbd9aa",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -6975,6 +7421,11 @@
           "name": "Teradyne"
         }
       ],
+      "impact_fingerprint": "01058eaaaec78c36f73f1099f64f6ae354e170a962ff9ec7ba8b484d3c28c79d",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -7245,6 +7696,11 @@
           "name": "Ultragenyx Pharmaceutical"
         }
       ],
+      "impact_fingerprint": "035a481e45a8a7d46d45f976561489db9e91eaf3643543440b21950fb096a77a",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -7451,6 +7907,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "5e39fed8d52586df6c8710b9c38c4d5ef1518d0db2d3e72d2cc2a0e141b42b23",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -7705,6 +8166,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "ca39f877622f2a272d8c2ad3f0cc87a9961bb08a5182dedb2026714618a3507c",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -7971,6 +8437,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "a19034667d02a5d474a4eaec8425a10f19363360ae110acb0acea7948c03f842",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -8249,6 +8720,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "285c26805a172111ee4aaa75f437b6df14db6542ebf423df5a2caf7e17a8011c",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -8467,6 +8943,11 @@
           "name": "Teradyne"
         }
       ],
+      "impact_fingerprint": "e85604f1641051c516d38a14c93168a2c7bd58d53efbb418a195eedcd7424a27",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -8733,6 +9214,11 @@
           "name": "Teradyne"
         }
       ],
+      "impact_fingerprint": "997f8b815f0ad8c639af521ba7dba8eec3dd525953433aeacd8958b72a58bde7",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -8987,6 +9473,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "55c2cd705deaf61a20076f3bceaf6b48c3043b23821865c3e5a1d5b94dad28b9",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -9257,6 +9748,11 @@
           "name": "Ultragenyx Pharmaceutical"
         }
       ],
+      "impact_fingerprint": "9cd50484c5e6f05b8af8b692d1bfc5ff4e347e0bc177c7b7831acea1a970ebf3",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -9487,6 +9983,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "69b0db880e450c4fd3dbdf809e0a6d06176cf1372f326909987e6799a57c4525",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -9693,6 +10194,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "b8ee8f7678c8d430c105e95e7c388f0dfcc3325133d57f214d7d2ceb8b12b50e",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -9947,6 +10453,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "408b0c9012ba1e1f263be681a14256cb8dd8c227a51500b2e9e53b52a2392785",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -10225,6 +10736,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "55250bd4d999a9361c9b0e27fc7966b0efc0c8813ace85185edc8d17608c8d3f",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -10431,6 +10947,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "e73982b5bc4451b32a246d16da5717e09d098f054d573b4146b97f2e9f5cc274",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -10709,6 +11230,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "8b47d0239bf35f1ef5e5b5a6a8c594a0084b24057e48220ee75bcd9852d04457",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -10927,6 +11453,11 @@
           "name": "Teradyne"
         }
       ],
+      "impact_fingerprint": "e1c13c16a1f5ec6c1f4f0a6311309e26ce435f00fcbc35414ee857362961aa71",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -11181,6 +11712,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "144ea9afa174fdaee792f3c79113afd227734ba70eca7fb556bed85488beb38a",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -11459,6 +11995,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "845017f50ce7d9ac88f57fb13f5749eb6b35e414772dc8b97c69447a7c1f4f00",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -11657,6 +12198,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "024e091e7001cc408913c9b557351459d420a5b5bd5dc6ad4fd1003513d06e14",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -11843,6 +12389,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "8b5101a3e0478baac4119be8996d1740b6996added8b13f53e0384ee42684245",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -12061,6 +12612,11 @@
           "name": "Valmont Industries"
         }
       ],
+      "impact_fingerprint": "f73857e213d83c5c428660301033b6ef138326a56ec71f504d18ca8939fed931",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -12259,6 +12815,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -12445,6 +13006,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -12631,6 +13197,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "99eaa565e8d497b245fa7b53d28469413b3016057e585a2d94923146dcde39d4",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -12837,6 +13408,11 @@
           "name": "Science Applications International"
         }
       ],
+      "impact_fingerprint": "52ba33e7b65abbba92d68169f7a02860def48fc519bd1a9f443ab51c0b67a8c1",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
         {
@@ -13083,6 +13659,11 @@
           "name": "Cal-Maine Foods"
         }
       ],
+      "impact_fingerprint": "acb6ea75e94be291a0d5e7c954c33b9dd4b51d237288a14015648c28bd82dc4a",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -13277,6 +13858,11 @@
           "name": "Rocket Lab"
         }
       ],
+      "impact_fingerprint": "605b9d2f4ed54c2dc47db22bb0db19401ffba2181f97642b0f7a29e71a5bb5f1",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
       "sector_trade_flag": false,
       "related_trades": [
         {
@@ -37090,291 +37676,5 @@
       "total_trades": 1,
       "last_filed": "7/14/2026"
     }
-  ],
-  "overview": {
-    "total_trades": 1184,
-    "total_value": 59011523,
-    "buy_value": 27424200,
-    "sell_value": 31587323,
-    "active_members": 62,
-    "tracked_tickers_traded": 74,
-    "bill_count": 60,
-    "key_bill_count": 28,
-    "appropriation_count": 2,
-    "most_active_member": "Sen. Alan Armstrong",
-    "top_bought": {
-      "ticker": "INTC",
-      "company": "Intel",
-      "net_value": 2992000
-    },
-    "top_sold": {
-      "ticker": "WMB",
-      "company": "Williams Companies, Inc. (The) Common StockOption Type: CallStrike price:$75.00Expires:2026-08-21",
-      "net_value": -15375000
-    },
-    "biggest_trades": [
-      {
-        "member": "Sen. Alan Armstrong",
-        "chamber": "Senate",
-        "ticker": "WMB",
-        "company": "Williams Companies, Inc. (The) Common Stock",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$5,000,001 - $25,000,000",
-        "est_amount": 15000000,
-        "transaction_date": "06/24/2026",
-        "filed_date": "07/21/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-      },
-      {
-        "member": "Rep. Nancy Pelosi (CA11)",
-        "chamber": "House",
-        "ticker": "INTC",
-        "company": "Intel",
-        "sector": "SMH",
-        "type": "Purchase",
-        "amount_range": "$1,000,001 - $5,000,000",
-        "est_amount": 3000000,
-        "transaction_date": "05/29/2026",
-        "filed_date": "6/23/2026",
-        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034836.pdf"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "07/22/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "07/14/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PENNSYLVANIA ST GORate/Coupon:5%Matures:2027-08-15",
-        "sector": "OTHER",
-        "type": "Sale (Full)",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "05/26/2026",
-        "filed_date": "06/26/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/ff0b0573-2809-40ae-8197-4b26648e9027/"
-      },
-      {
-        "member": "Rep. Gilbert Cisneros (CA31)",
-        "chamber": "House",
-        "ticker": null,
-        "company": "Mount San Jacinto, CA, Cmnty. College Dist. Bonds",
-        "sector": "OTHER",
-        "type": "Sale",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "06/02/2026",
-        "filed_date": "7/2/2026",
-        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034906.pdf"
-      },
-      {
-        "member": "Rep. Steve Cohen (TN09)",
-        "chamber": "House",
-        "ticker": null,
-        "company": "US Treas Bills MAT 11/19/26",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "05/27/2026",
-        "filed_date": "6/17/2026",
-        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034796.pdf"
-      },
-      {
-        "member": "Rep. Nancy Pelosi (CA11)",
-        "chamber": "House",
-        "ticker": "UBER",
-        "company": "Uber Technologies, Inc. Common Stock",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "05/29/2026",
-        "filed_date": "6/23/2026",
-        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034836.pdf"
-      }
-    ],
-    "latest_trades": [
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "07/21/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "07/22/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "07/14/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "POCONO MTN PA SCH DIST GEN OBLIG BDSRate/Coupon:5%Matures:2051-06-15",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$250,001 - $500,000",
-        "est_amount": 375000,
-        "transaction_date": "07/08/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "07/14/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$250,001 - $500,000",
-        "est_amount": 375000,
-        "transaction_date": "07/08/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2028-12-01",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/30/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PENNSYLVANIA ST TPK COMMN TPK REVRate/Coupon:5%Matures:2030-12-01",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "CORPUS CHRISTI TEX UTIL SYS REVRate/Coupon:5%Matures:2029-07-15",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PENNSYLVANIA ST HIGHER EDL REVRate/Coupon:4%Matures:2031-06-15",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2031-12-01",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "WASHINGTON ST GORate/Coupon:5%Matures:2033-02-01",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$15,001 - $50,000",
-        "est_amount": 32500,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      }
-    ]
-  }
+  ]
 }
