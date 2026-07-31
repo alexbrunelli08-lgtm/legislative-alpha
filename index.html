@@ -146,6 +146,56 @@
   svg text { font-family: var(--mono); }
   .split-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--line-soft); margin-top: 6px; }
   .split-bar i { display: block; height: 100%; border-radius: 3px; }
+
+  /* ---------- Search ---------- */
+  .search-box { font-family: var(--mono); font-size: 12px; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; width: 240px; max-width: 40vw; }
+  .search-box:focus { border-color: var(--accent); outline: none; }
+  .search-results { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 8px; overflow: hidden; }
+  .search-group-label { font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); padding: 8px 14px 4px; }
+  .search-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 14px; cursor: pointer; border-top: 1px solid var(--line-soft); }
+  .search-item:hover { background: var(--panel-2); }
+  .search-item .si-main { color: var(--text); font-weight: 600; font-size: 12px; }
+  .search-item .si-sub { color: var(--text-faint); font-size: 10.5px; }
+
+  /* ---------- Overview dashboard ---------- */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+  .kpi-tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+  .kpi-value { font-family: var(--display); font-weight: 700; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em; }
+  .kpi-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; }
+  .kpi-sub { font-size: 10.5px; color: var(--text-dim); margin-top: 3px; }
+  .over-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .highlight-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+  .highlight-card .hc-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 8px; }
+  .hc-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .hc-ticker { font-family: var(--display); font-weight: 700; font-size: 20px; cursor: pointer; }
+  .hc-ticker:hover { text-decoration: underline; }
+  .hc-company { font-size: 11px; color: var(--text-dim); }
+  .hc-val { font-family: var(--mono); font-weight: 700; font-size: 16px; }
+  .feed-list { display: flex; flex-direction: column; }
+  .feed-row { display: grid; grid-template-columns: auto 1fr auto auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line-soft); font-size: 12px; }
+  .feed-row:first-child { border-top: none; }
+  .feed-date { color: var(--text-faint); font-size: 10.5px; white-space: nowrap; }
+  .feed-member { color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .feed-ticker { color: var(--text); font-weight: 600; cursor: pointer; }
+  .feed-ticker:hover { text-decoration: underline; }
+  .feed-val { color: var(--text-dim); white-space: nowrap; text-align: right; }
+  .clickable-ticker { cursor: pointer; }
+  .clickable-ticker:hover { text-decoration: underline; }
+
+  /* ---------- Stock detail modal ---------- */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(4,7,11,0.72); display: none; align-items: flex-start; justify-content: center; z-index: 50; padding: 40px 16px; overflow-y: auto; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; width: 100%; max-width: 860px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+  .modal-title { font-family: var(--display); font-weight: 700; font-size: 22px; }
+  .modal-sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .modal-close { background: var(--panel-2); border: 1px solid var(--line); color: var(--text-dim); border-radius: 6px; width: 30px; height: 30px; cursor: pointer; font-size: 16px; line-height: 1; flex-shrink: 0; }
+  .modal-close:hover { color: var(--text); }
+  .modal-body { padding: 16px 20px 22px; }
+  .modal-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+  .mstat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+  .mstat-v { font-family: var(--display); font-weight: 700; font-size: 18px; }
+  .mstat-l { font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint); margin-top: 2px; }
   .dollar-chips, .stock-chips { display: flex; gap: 6px; flex-wrap: wrap; }
   .dollar-chip { font-size: 11px; font-weight: 600; color: var(--warn); background: #2e2818; border: 1px solid #45391f; padding: 2px 9px; border-radius: 4px; }
   .stock-chip { font-size: 11px; padding: 3px 9px; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--line); }
@@ -218,6 +268,10 @@
     .momentum-bar-track { width: 100%; }
     .member-grid { grid-template-columns: 1fr; }
     .chart-grid-2 { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .over-grid { grid-template-columns: 1fr; }
+    .modal-stats { grid-template-columns: repeat(2, 1fr); }
+    .search-box { max-width: 100%; width: 100%; order: 3; }
     .methodology-grid { grid-template-columns: 1fr; }
     .chevron { display: none; }
     table.data-table { font-size: 11px; }
@@ -248,10 +302,12 @@
 
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
-      <button class="view-tab active" data-view="bills">Bills</button>
+      <button class="view-tab active" data-view="overview">Overview</button>
+      <button class="view-tab" data-view="bills">Bills</button>
       <button class="view-tab" data-view="politicians">Politicians</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
     </div>
+    <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, or bill…" autocomplete="off">
     <span class="view-hint" id="viewHint"></span>
   </section>
 
@@ -281,7 +337,7 @@
       </div>
     </div>
     <div class="data-note">
-      <b>About this data.</b> Bills from the Congress.gov API; trades from Senate and House STOCK Act disclosures (Senate candidates and House paper filings are excluded). "Stocks that benefit" is a sector mapping, not a prediction, and nothing here estimates returns. Sector and company lists live in <b>scripts/sectors.json</b>. Refreshes daily. Not investment advice.
+      <b>About this data.</b> Bills from the Congress.gov API; trades from Senate and House STOCK Act disclosures (Senate candidates and House paper filings are excluded). Dollar figures are <b>estimates</b> — STOCK Act filings report a value <em>range</em> per trade, and we use the midpoint, so all "$" amounts are approximate. "Stocks that benefit" is a sector mapping, not a prediction, and nothing here estimates returns. Click any ticker to see every disclosed trade in it and the bills that would affect it. Sector and company lists live in <b>scripts/sectors.json</b>. Refreshes every 6 hours. Not investment advice.
     </div>
   </section>
 
@@ -291,10 +347,12 @@
   </footer>
 </div>
 
+<div class="modal-overlay" id="stockModal"><div class="modal" id="stockModalInner"></div></div>
+
 <script>
   let DATA = null;
   let activeSector = "ALL";
-  let activeView = "bills";
+  let activeView = "overview";
   let openId = null;           // open bill or member key
   let keyBillsOnly = false;
   let tradesShown = 100;
@@ -305,10 +363,20 @@
   const MEMBERS_PAGE = 30;
 
   const VIEW_HINTS = {
+    overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
     politicians: "Pick a member to open their disclosed portfolio. Autopilot-style.",
     stocks: "What Congress is buying and selling, aggregated per ticker. Quiver-style consensus.",
   };
+
+  function fmtMoney(v) {
+    v = Number(v) || 0;
+    const a = Math.abs(v), sign = v < 0 ? "-" : "";
+    if (a >= 1e9) return `${sign}$${(a / 1e9).toFixed(1)}B`;
+    if (a >= 1e6) return `${sign}$${(a / 1e6).toFixed(1)}M`;
+    if (a >= 1e3) return `${sign}$${Math.round(a / 1e3)}K`;
+    return `${sign}$${a}`;
+  }
 
   function feasColor(v) {
     if (v >= 65) return "var(--good)";
@@ -567,7 +635,7 @@
         <span class="detail-eyebrow">Businesses positioned to benefit — ${esc(sc.name)}</span>
         ${(b.beneficiary_stocks || []).length === 0
           ? `<div class="empty-note">No tracked companies for this sector.</div>`
-          : `<div class="stock-chips">${b.beneficiary_stocks.map(s => `<span class="stock-chip"><b>${esc(s.ticker)}</b> <span>${esc(s.name)}</span></span>`).join("")}</div>`}
+          : `<div class="stock-chips">${b.beneficiary_stocks.map(s => `<span class="stock-chip clickable-ticker" data-ticker="${esc(s.ticker)}"><b>${esc(s.ticker)}</b> <span>${esc(s.name)}</span></span>`).join("")}</div>`}
         <span class="detail-eyebrow">Congressional trades in these stocks (${b.related_trade_count || 0})</span>
         ${(b.related_trades || []).length === 0
           ? `<div class="empty-note">No disclosed trades in these stocks in the current data window.</div>`
@@ -615,13 +683,13 @@
       <button class="member-head">
         <div class="member-name">${esc(m.member.replace(/^(Sen\.|Rep\.)\s/, ""))} <span class="member-chamber">${esc(m.chamber)}</span></div>
         <div class="member-stats">
-          <span><b>${m.trade_count}</b> trades</span>
+          <span><b>${fmtMoney(m.total_value)}</b> traded</span>
           <span class="buys">${m.buy_count} buys</span>
           <span class="sells">${m.sell_count} sells</span>
-          <span>last ${fmtDate(parseMDY(m.last_filed) ? parseMDY(m.last_filed).toISOString() : null)}</span>
+          <span>${m.trade_count} total</span>
         </div>
-        ${splitBar(m.buy_count, m.sell_count)}
-        <div class="member-tickers" style="margin-top:8px;">${(m.top_tickers || []).map(t => `<span class="mini-ticker"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
+        ${splitBar(m.buy_value || m.buy_count, m.sell_value || m.sell_count)}
+        <div class="member-tickers" style="margin-top:8px;">${(m.top_tickers || []).map(t => `<span class="mini-ticker clickable-ticker" data-ticker="${esc(t.ticker)}"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
       </button>
       <div class="card-detail"><div class="card-detail-inner">
         <span class="detail-eyebrow">Trading activity over time</span>
@@ -647,20 +715,19 @@
     const signalsHtml = signals.length === 0
       ? `<div class="empty-note">No stock signals in this sector for the current window.</div>`
       : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Ticker</th><th>Company</th><th>Sector</th><th>Members</th><th>Buys</th><th>Sells</th><th>Net</th><th>Activity</th></tr></thead>
+          <thead><tr><th>Ticker</th><th>Company</th><th>Sector</th><th>Members</th><th>Est. volume</th><th>Buys</th><th>Sells</th><th>Net $</th></tr></thead>
           <tbody>${visible.map(s => {
             const sc = sectorMeta(s.sector);
-            const netCls = s.net > 0 ? "net-pos" : s.net < 0 ? "net-neg" : "net-zero";
-            const w = Math.round((s.total_trades / maxTrades) * 90);
+            const netCls = s.net_value > 0 ? "net-pos" : s.net_value < 0 ? "net-neg" : "net-zero";
             return `<tr>
-              <td class="row-ticker">${esc(s.ticker)}</td>
+              <td class="row-ticker clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
               <td>${esc(s.company)}</td>
               <td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>
               <td>${s.member_count}</td>
-              <td class="buys">${s.buy_count}</td>
-              <td class="sells">${s.sell_count}</td>
-              <td class="${netCls}">${s.net > 0 ? "+" : ""}${s.net}</td>
-              <td><span class="signal-bar" style="width:${w}px; background:${s.net >= 0 ? "var(--good)" : "var(--bad)"}"></span> ${s.total_trades}</td>
+              <td>${fmtMoney(s.total_value)}</td>
+              <td class="buys">${s.buy_count} · ${fmtMoney(s.buy_value)}</td>
+              <td class="sells">${s.sell_count} · ${fmtMoney(s.sell_value)}</td>
+              <td class="${netCls}">${fmtMoney(s.net_value)}</td>
             </tr>`;
           }).join("")}</tbody>
         </table>
@@ -674,14 +741,14 @@
     const feedHtml = trades.length === 0
       ? `<div class="empty-note">No trades disclosed in the current data window.</div>`
       : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Amount</th><th></th></tr></thead>
+          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Est. $</th><th></th></tr></thead>
           <tbody>${visibleTrades.map(t => {
             const sc = sectorMeta(t.sector);
             return `<tr>
               <td>${esc(t.filed_date)}</td><td>${esc(t.member)}</td><td>${esc(t.chamber)}</td>
-              <td class="row-ticker">${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
+              <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
               ${showSectorCol ? `<td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>` : ""}
-              <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${esc(t.amount_range)}</td>
+              <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)} <span style="color:var(--text-faint);font-size:10px">${esc(t.amount_range)}</span></td>
               <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`;
           }).join("")}</tbody>
         </table>
@@ -720,10 +787,142 @@
       </section>`;
   }
 
+  /* ---------- OVERVIEW VIEW ---------- */
+  function renderOverviewView() {
+    const o = DATA.overview;
+    if (!o) return `<div class="empty-note">Overview data not available in this build of data.json yet — it appears after the next data refresh.</div>`;
+    const tile = (v, l, sub) => `<div class="kpi-tile"><div class="kpi-value">${v}</div><div class="kpi-label">${l}</div>${sub ? `<div class="kpi-sub">${sub}</div>` : ""}</div>`;
+    const kpis = `<div class="kpi-grid">
+      ${tile(fmtMoney(o.total_value), "Est. disclosed volume", `${o.total_trades} trades`)}
+      ${tile(o.active_members, "Members trading", `across ${o.tracked_tickers_traded} tracked stocks`)}
+      ${tile(o.key_bill_count, "Key bills tracked", `of ${o.bill_count} in sectors`)}
+      ${tile(o.appropriation_count, "Appropriations bills", "funding measures")}
+    </div>`;
+
+    const balancePct = o.total_value ? Math.round((o.buy_value / o.total_value) * 100) : 50;
+    const balance = `<div class="highlight-card">
+      <div class="hc-label">Buy / sell balance — dollar-weighted</div>
+      <div class="hc-row"><span class="buys">${fmtMoney(o.buy_value)} bought</span><span class="sells">${fmtMoney(o.sell_value)} sold</span></div>
+      <div class="split-bar" style="height:10px;margin-top:8px;"><i style="width:${balancePct}%;background:var(--good)"></i><i style="width:${100 - balancePct}%;background:var(--bad)"></i></div>
+    </div>`;
+
+    const bought = o.top_bought ? `<div class="hc-row"><div><span class="hc-ticker clickable-ticker" style="color:var(--good)" data-ticker="${esc(o.top_bought.ticker)}">${esc(o.top_bought.ticker)}</span><div class="hc-company">${esc(o.top_bought.company)}</div></div><span class="hc-val net-pos">${fmtMoney(o.top_bought.net_value)} net</span></div>` : `<div class="empty-note">No net buying.</div>`;
+    const sold = o.top_sold ? `<div class="hc-row"><div><span class="hc-ticker clickable-ticker" style="color:var(--bad)" data-ticker="${esc(o.top_sold.ticker)}">${esc(o.top_sold.ticker)}</span><div class="hc-company">${esc(o.top_sold.company)}</div></div><span class="hc-val net-neg">${fmtMoney(o.top_sold.net_value)} net</span></div>` : `<div class="empty-note">No net selling.</div>`;
+    const movers = `<div class="over-grid">
+      <div class="highlight-card"><div class="hc-label">Most net-bought stock</div>${bought}</div>
+      <div class="highlight-card"><div class="hc-label">Most net-sold stock</div>${sold}</div>
+    </div>`;
+
+    const feed = (rows, showVal) => `<div class="feed-list">${rows.map(t => `
+      <div class="feed-row">
+        <span class="feed-date">${esc(t.filed_date)}</span>
+        <span class="feed-member">${esc(t.member)}</span>
+        <span class="feed-ticker clickable-ticker" data-ticker="${esc(t.ticker || "")}">${esc(t.ticker || t.company?.slice(0, 14) || "—")} <span class="${tradeTypeClass(t.type)}" style="font-weight:600">${isBuy(t.type) ? "▲" : "▼"}</span></span>
+        <span class="feed-val">${showVal ? fmtMoney(t.est_amount) : esc(t.type)}</span>
+      </div>`).join("")}</div>`;
+
+    return `<section class="data-section">
+      ${kpis}
+      ${balance}
+      ${movers}
+      <div class="over-grid">
+        <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
+        <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
+      </div>
+    </section>`;
+  }
+
+  /* ---------- STOCK DETAIL MODAL ---------- */
+  function openStock(ticker) {
+    if (!ticker) return;
+    const sig = (DATA.stock_signals || []).find(s => s.ticker === ticker);
+    const trades = DATA.trades.filter(t => t.ticker === ticker)
+      .sort((a, b) => (parseMDY(b.transaction_date) || 0) - (parseMDY(a.transaction_date) || 0));
+    if (!trades.length && !sig) return;
+    const company = sig?.company || trades[0]?.company || ticker;
+    const sc = sectorMeta(sig?.sector || trades[0]?.sector || "OTHER");
+    const relatedBills = DATA.bills.filter(b => (b.beneficiary_stocks || []).some(s => s.ticker === ticker))
+      .sort((a, b) => b.momentum - a.momentum);
+    const buyN = trades.filter(t => isBuy(t.type)).length, sellN = trades.length - buyN;
+    const buyV = trades.filter(t => isBuy(t.type)).reduce((s, t) => s + (t.est_amount || 0), 0);
+    const sellV = trades.reduce((s, t) => s + (t.est_amount || 0), 0) - buyV;
+    const members = new Set(trades.map(t => t.member)).size;
+
+    document.getElementById("stockModalInner").innerHTML = `
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">${esc(ticker)} <span class="sector-tag" style="background:${sc.color}33;color:${sc.color};vertical-align:middle;">${esc(sc.short)}</span></div>
+          <div class="modal-sub">${esc(company)}</div>
+        </div>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-stats">
+          <div class="mstat"><div class="mstat-v">${fmtMoney(buyV + sellV)}</div><div class="mstat-l">Est. volume</div></div>
+          <div class="mstat"><div class="mstat-v net-pos">${fmtMoney(buyV)}</div><div class="mstat-l">${buyN} buys</div></div>
+          <div class="mstat"><div class="mstat-v net-neg">${fmtMoney(sellV)}</div><div class="mstat-l">${sellN} sells</div></div>
+          <div class="mstat"><div class="mstat-v">${members}</div><div class="mstat-l">Members</div></div>
+        </div>
+        <span class="detail-eyebrow">Bills that would affect ${esc(ticker)} (${relatedBills.length})</span>
+        ${relatedBills.length === 0
+          ? `<div class="empty-note">No tracked bills currently map to this stock's sector.</div>`
+          : `<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">${relatedBills.slice(0, 6).map(b => `
+              <div class="hc-row" style="align-items:center;">
+                <div><span class="bill-number">${esc(b.number)}</span> ${b.key_bill ? '<span class="key-star">★</span>' : ""} <span style="color:var(--text)">${esc(b.title)}</span></div>
+                <span class="momentum-num" style="font-size:15px;color:${feasColor(b.momentum)}">${b.momentum}</span>
+              </div>`).join("")}</div>`}
+        <span class="detail-eyebrow">Every disclosed trade in ${esc(ticker)} (${trades.length})</span>
+        <div class="data-table-wrap"><table class="data-table">
+          <thead><tr><th>Tx Date</th><th>Member</th><th>Chamber</th><th>Type</th><th>Est. $</th><th>Range</th><th></th></tr></thead>
+          <tbody>${trades.slice(0, 80).map(t => `
+            <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td>${esc(t.member)}</td><td>${esc(t.chamber)}</td>
+            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${esc(t.amount_range)}</td>
+            <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
+        </table></div>
+      </div>`;
+    const modal = document.getElementById("stockModal");
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    modal.querySelector(".modal-close").addEventListener("click", closeStock);
+    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => openStock(el.dataset.ticker)));
+  }
+  function closeStock() {
+    document.getElementById("stockModal").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  /* ---------- SEARCH ---------- */
+  function runSearch(q) {
+    q = q.trim().toLowerCase();
+    const el = document.getElementById("content");
+    if (q.length < 2) { renderContent(); return; }
+    const stocks = (DATA.stock_signals || []).filter(s => s.ticker.toLowerCase().includes(q) || (s.company || "").toLowerCase().includes(q)).slice(0, 6);
+    const members = (DATA.members || []).filter(m => m.member.toLowerCase().includes(q)).slice(0, 6);
+    const bills = DATA.bills.filter(b => (b.title || "").toLowerCase().includes(q) || (b.number || "").toLowerCase().includes(q)).slice(0, 6);
+    const group = (label, items) => items.length ? `<div class="search-group-label">${label}</div>${items}` : "";
+    el.innerHTML = `<div class="search-results">
+      ${group("Stocks", stocks.map(s => `<div class="search-item" data-jump="stock" data-val="${esc(s.ticker)}"><span class="si-main">${esc(s.ticker)} <span class="si-sub">${esc(s.company)}</span></span><span class="si-sub">${fmtMoney(s.total_value)} · ${s.member_count} members</span></div>`).join(""))}
+      ${group("Politicians", members.map(m => `<div class="search-item" data-jump="member" data-val="${esc(m.member)}"><span class="si-main">${esc(m.member)}</span><span class="si-sub">${m.trade_count} trades · ${fmtMoney(m.total_value)}</span></div>`).join(""))}
+      ${group("Bills", bills.map(b => `<div class="search-item" data-jump="bill" data-val="${esc(b.id)}"><span class="si-main">${esc(b.number)} <span class="si-sub">${esc(b.title.slice(0, 60))}</span></span><span class="si-sub">${sectorMeta(b.sector).short}</span></div>`).join(""))}
+      ${(!stocks.length && !members.length && !bills.length) ? `<div class="search-item"><span class="si-sub">No matches for “${esc(q)}”.</span></div>` : ""}
+    </div>`;
+    el.querySelectorAll("[data-jump]").forEach(item => item.addEventListener("click", () => {
+      const kind = item.dataset.jump, val = item.dataset.val;
+      document.getElementById("searchBox").value = "";
+      if (kind === "stock") { renderContent(); openStock(val); }
+      else if (kind === "member") { activeView = "politicians"; openId = val; renderViewTabs(); renderContent(); scrollToOpen(); }
+      else { activeView = "bills"; openId = val; renderViewTabs(); renderContent(); scrollToOpen(); }
+    }));
+  }
+  function scrollToOpen() {
+    setTimeout(() => { const c = document.querySelector(".card-open"); if (c) c.scrollIntoView({ behavior: "smooth", block: "center" }); }, 60);
+  }
+
   /* ---------- Wiring ---------- */
   function renderContent() {
     const el = document.getElementById("content");
-    if (activeView === "bills") el.innerHTML = renderBillsView();
+    if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
 
@@ -736,6 +935,11 @@
         renderContent();
       });
     });
+    // clickable tickers open the stock detail modal (overview, tables, chips)
+    el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openStock(t.dataset.ticker);
+    }));
     const wire = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener("click", fn); };
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
     wire("signalsMore", () => { signalsShown += SIGNALS_PAGE; renderContent(); });
@@ -746,13 +950,17 @@
     renderSectorGrid();
     renderViewTabs();
     renderFilterTabs();
-    renderContent();
+    // Overview is a global snapshot — the per-sector filter doesn't apply there.
+    document.querySelector(".filter-row").style.display = activeView === "overview" ? "none" : "";
+    const q = document.getElementById("searchBox").value.trim();
+    if (q.length >= 2) runSearch(q); else renderContent();
   }
 
   document.getElementById("viewTabs").addEventListener("click", (e) => {
     const btn = e.target.closest(".view-tab");
     if (!btn) return;
     activeView = btn.dataset.view;
+    document.getElementById("searchBox").value = "";
     resetPaging();
     renderAll();
   });
@@ -760,6 +968,19 @@
     keyBillsOnly = !keyBillsOnly;
     renderAll();
   });
+
+  let searchTimer = null;
+  document.getElementById("searchBox").addEventListener("input", (e) => {
+    clearTimeout(searchTimer);
+    const v = e.target.value;
+    searchTimer = setTimeout(() => { v.trim().length >= 2 ? runSearch(v) : renderContent(); }, 120);
+  });
+
+  // Modal: close on overlay click or Escape
+  document.getElementById("stockModal").addEventListener("click", (e) => {
+    if (e.target.id === "stockModal") closeStock();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeStock(); });
 
   loadData();
 </script>

@@ -909,6 +909,7 @@ def attach_bill_trades(bills, trades):
                 "company": t["company"],
                 "type": t["type"],
                 "amount_range": t["amount_range"],
+                "est_amount": t.get("est_amount", 0),
                 "transaction_date": t["transaction_date"],
                 "filed_date": t["filed_date"],
                 "report_url": t["report_url"],
@@ -928,6 +929,26 @@ def _parse_mdy(s):
 
 def _is_buy(trade_type):
     return trade_type.lower().startswith("purchase")
+
+
+def estimate_amount(amount_range):
+    """STOCK Act disclosures give a dollar RANGE, not an exact figure. Estimate
+    a point value as the midpoint of the range (or the single value if only one
+    is given) so trades can be dollar-weighted rather than merely counted --
+    the way Quiver/Capitol-Trades size congressional activity."""
+    nums = [int(n.replace(",", "")) for n in re.findall(r"\$?([\d,]+)", amount_range or "") if n.replace(",", "").isdigit()]
+    nums = [n for n in nums if n >= 1]
+    if not nums:
+        return 0
+    if len(nums) == 1:
+        return nums[0]
+    return round((min(nums) + max(nums)) / 2)
+
+
+def annotate_trade_values(trades):
+    for t in trades:
+        t["est_amount"] = estimate_amount(t["amount_range"])
+    return trades
 
 
 def mark_key_bills(bills, per_sector=3):
@@ -970,15 +991,20 @@ def build_member_profiles(trades):
             "trade_count": 0,
             "buy_count": 0,
             "sell_count": 0,
+            "buy_value": 0,
+            "sell_value": 0,
             "tickers": {},
             "sectors": set(),
             "last_filed": None,
         })
         p["trade_count"] += 1
+        val = t.get("est_amount", 0)
         if _is_buy(t["type"]):
             p["buy_count"] += 1
+            p["buy_value"] += val
         else:
             p["sell_count"] += 1
+            p["sell_value"] += val
         if t["ticker"]:
             p["tickers"][t["ticker"]] = p["tickers"].get(t["ticker"], 0) + 1
         if t["sector"] != "OTHER":
@@ -996,12 +1022,15 @@ def build_member_profiles(trades):
             "trade_count": p["trade_count"],
             "buy_count": p["buy_count"],
             "sell_count": p["sell_count"],
+            "buy_value": p["buy_value"],
+            "sell_value": p["sell_value"],
+            "total_value": p["buy_value"] + p["sell_value"],
             "distinct_tickers": len(p["tickers"]),
             "top_tickers": [{"ticker": t, "count": c} for t, c in top_tickers],
             "sectors": sorted(p["sectors"]),
             "last_filed": p["last_filed"],
         })
-    out.sort(key=lambda p: p["trade_count"], reverse=True)
+    out.sort(key=lambda p: p["total_value"], reverse=True)
     return out
 
 
@@ -1018,13 +1047,18 @@ def build_stock_signals(trades):
             "sector": t["sector"],
             "buy_count": 0,
             "sell_count": 0,
+            "buy_value": 0,
+            "sell_value": 0,
             "members": set(),
             "last_filed": None,
         })
+        val = t.get("est_amount", 0)
         if _is_buy(t["type"]):
             s["buy_count"] += 1
+            s["buy_value"] += val
         else:
             s["sell_count"] += 1
+            s["sell_value"] += val
         s["members"].add(t["member"])
         filed = _parse_mdy(t["filed_date"])
         if s["last_filed"] is None or filed > _parse_mdy(s["last_filed"]):
@@ -1038,13 +1072,17 @@ def build_stock_signals(trades):
             "sector": s["sector"],
             "buy_count": s["buy_count"],
             "sell_count": s["sell_count"],
+            "buy_value": s["buy_value"],
+            "sell_value": s["sell_value"],
             "net": s["buy_count"] - s["sell_count"],
+            "net_value": s["buy_value"] - s["sell_value"],
+            "total_value": s["buy_value"] + s["sell_value"],
             "member_count": len(s["members"]),
             "total_trades": s["buy_count"] + s["sell_count"],
             "last_filed": s["last_filed"],
         })
-    # rank by breadth (distinct members) then volume
-    out.sort(key=lambda s: (s["member_count"], s["total_trades"]), reverse=True)
+    # rank by dollar volume, then breadth of members
+    out.sort(key=lambda s: (s["total_value"], s["member_count"]), reverse=True)
     return out
 
 
@@ -1080,6 +1118,43 @@ def build_sector_summaries(sectors, bills, trades=()):
     return summaries
 
 
+def build_overview(bills, trades, members, stock_signals):
+    """Front-door dashboard headline numbers -- the 'what's happening right now'
+    summary a Quiver/Autopilot user sees first."""
+    total_value = sum(t.get("est_amount", 0) for t in trades)
+    buy_value = sum(t.get("est_amount", 0) for t in trades if _is_buy(t["type"]))
+    sell_value = total_value - buy_value
+    # most bought / sold by net dollar direction (tracked tickers only)
+    ranked_net = sorted(stock_signals, key=lambda s: s["net_value"], reverse=True)
+    top_bought = ranked_net[0] if ranked_net and ranked_net[0]["net_value"] > 0 else None
+    top_sold = ranked_net[-1] if ranked_net and ranked_net[-1]["net_value"] < 0 else None
+    biggest = sorted(trades, key=lambda t: t.get("est_amount", 0), reverse=True)[:8]
+    latest = sorted(trades, key=lambda t: _parse_mdy(t["filed_date"]), reverse=True)[:12]
+
+    def trade_row(t):
+        return {k: t.get(k) for k in ("member", "chamber", "ticker", "company", "sector",
+                                       "type", "amount_range", "est_amount", "transaction_date",
+                                       "filed_date", "report_url")}
+    return {
+        "total_trades": len(trades),
+        "total_value": total_value,
+        "buy_value": buy_value,
+        "sell_value": sell_value,
+        "active_members": len(members),
+        "tracked_tickers_traded": sum(1 for s in stock_signals if s["sector"] != "OTHER"),
+        "bill_count": len(bills),
+        "key_bill_count": sum(1 for b in bills if b.get("key_bill")),
+        "appropriation_count": sum(1 for b in bills if b.get("is_appropriation")),
+        "most_active_member": members[0]["member"] if members else None,
+        "top_bought": {"ticker": top_bought["ticker"], "company": top_bought["company"],
+                       "net_value": top_bought["net_value"]} if top_bought else None,
+        "top_sold": {"ticker": top_sold["ticker"], "company": top_sold["company"],
+                     "net_value": top_sold["net_value"]} if top_sold else None,
+        "biggest_trades": [trade_row(t) for t in biggest],
+        "latest_trades": [trade_row(t) for t in latest],
+    }
+
+
 def main():
     sectors = load_sectors()
     ticker_index = build_ticker_index(sectors)
@@ -1087,6 +1162,7 @@ def main():
     bills = fetch_bills(sectors)
     bills = enrich_bills(bills)
     trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
+    trades = annotate_trade_values(trades)
 
     bills = [analyze_appropriation(b) for b in bills]
     bills = attach_beneficiary_stocks(bills, sectors)
@@ -1097,10 +1173,12 @@ def main():
     sector_summaries = build_sector_summaries(sectors, bills, trades)
     members = build_member_profiles(trades)
     stock_signals = build_stock_signals(trades)
+    overview = build_overview(bills, trades, members, stock_signals)
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "congress": CONGRESS,
+        "overview": overview,
         "sectors": sector_summaries,
         "bills": bills,
         "trades": trades,
