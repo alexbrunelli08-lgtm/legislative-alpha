@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T02:56:13Z",
+  "generated_at": "2026-07-30T16:06:15Z",
   "congress": 119,
   "sectors": {
     "PAVE": {
@@ -7,20 +7,20 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 12,
-      "appropriation_count": 3,
-      "trade_count": 9,
+      "bill_count": 11,
+      "appropriation_count": 2,
+      "trade_count": 8,
       "stock_count": 25,
-      "avg_momentum": 34
+      "avg_momentum": 36
     },
     "CIBR": {
       "name": "Cybersecurity",
       "short": "Cybersecurity",
       "etf": "CIBR",
       "color": "#3F7469",
-      "bill_count": 4,
+      "bill_count": 5,
       "appropriation_count": 0,
-      "trade_count": 19,
+      "trade_count": 16,
       "stock_count": 22,
       "avg_momentum": 35
     },
@@ -31,7 +31,7 @@
       "color": "#9B4638",
       "bill_count": 2,
       "appropriation_count": 1,
-      "trade_count": 16,
+      "trade_count": 15,
       "stock_count": 21,
       "avg_momentum": 36
     },
@@ -40,44 +40,44 @@
       "short": "Quantum",
       "etf": "QTUM",
       "color": "#6B5CA5",
-      "bill_count": 1,
+      "bill_count": 2,
       "appropriation_count": 0,
-      "trade_count": 33,
+      "trade_count": 29,
       "stock_count": 12,
-      "avg_momentum": 16
+      "avg_momentum": 26
     },
     "XBI": {
       "name": "Biotech",
       "short": "Biotech",
       "etf": "XBI",
       "color": "#2C6E8C",
-      "bill_count": 0,
+      "bill_count": 2,
       "appropriation_count": 0,
-      "trade_count": 15,
+      "trade_count": 8,
       "stock_count": 23,
-      "avg_momentum": 0
+      "avg_momentum": 36
     },
     "ITA": {
       "name": "Defense",
       "short": "Defense",
       "etf": "ITA",
       "color": "#5B4636",
-      "bill_count": 9,
+      "bill_count": 12,
       "appropriation_count": 0,
-      "trade_count": 17,
+      "trade_count": 15,
       "stock_count": 19,
-      "avg_momentum": 37
+      "avg_momentum": 36
     },
     "UFO": {
       "name": "Space",
       "short": "Space",
       "etf": "UFO",
       "color": "#4A5A6B",
-      "bill_count": 0,
+      "bill_count": 1,
       "appropriation_count": 0,
       "trade_count": 4,
       "stock_count": 15,
-      "avg_momentum": 0
+      "avg_momentum": 35
     },
     "URA": {
       "name": "Uranium & Nuclear",
@@ -88,49 +88,49 @@
       "appropriation_count": 0,
       "trade_count": 2,
       "stock_count": 16,
-      "avg_momentum": 38
+      "avg_momentum": 35
     },
     "SMH": {
       "name": "Semiconductors & AI",
       "short": "Semis & AI",
       "etf": "SMH",
       "color": "#B5533C",
-      "bill_count": 1,
+      "bill_count": 4,
       "appropriation_count": 0,
-      "trade_count": 44,
+      "trade_count": 40,
       "stock_count": 22,
-      "avg_momentum": 16
+      "avg_momentum": 36
     },
     "ICLN": {
       "name": "Clean Energy",
       "short": "Clean Energy",
       "etf": "ICLN",
       "color": "#5A8F4C",
-      "bill_count": 3,
+      "bill_count": 2,
       "appropriation_count": 0,
       "trade_count": 3,
       "stock_count": 16,
-      "avg_momentum": 28
+      "avg_momentum": 35
     },
     "MOO": {
       "name": "Agriculture",
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 10,
+      "bill_count": 14,
       "appropriation_count": 0,
       "trade_count": 7,
       "stock_count": 17,
-      "avg_momentum": 37
+      "avg_momentum": 36
     },
     "FINX": {
       "name": "Financial Technology",
       "short": "Fintech",
       "etf": "FINX",
       "color": "#3C6E8F",
-      "bill_count": 2,
+      "bill_count": 1,
       "appropriation_count": 0,
-      "trade_count": 11,
+      "trade_count": 10,
       "stock_count": 16,
       "avg_momentum": 35
     },
@@ -141,7 +141,7 @@
       "color": "#565F73",
       "bill_count": 0,
       "appropriation_count": 0,
-      "trade_count": 1118,
+      "trade_count": 1032,
       "stock_count": 0,
       "avg_momentum": 0
     }
@@ -3797,17 +3797,6 @@
           "transaction_date": "07/10/2026",
           "filed_date": "7/17/2026",
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Gilbert Cisneros (CA31)",
-          "chamber": "House",
-          "ticker": "PRIM",
-          "company": "Primoris Services",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "05/08/2026",
-          "filed_date": "6/8/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
       "related_trade_count": 9,
@@ -4728,6 +4717,28 @@
       "sector_trade_flag": false,
       "related_trades": [
         {
+          "member": "Rep. Sam T. Liccardo (CA16)",
+          "chamber": "House",
+          "ticker": "NVDA",
+          "company": "NVIDIA",
+          "type": "Sale (Partial)",
+          "amount_range": "$15,001 - $50,000",
+          "transaction_date": "07/21/2026",
+          "filed_date": "7/27/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf"
+        },
+        {
+          "member": "Rep. Jared Moskowitz (FL23)",
+          "chamber": "House",
+          "ticker": "MSFT",
+          "company": "Microsoft",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "transaction_date": "06/17/2026",
+          "filed_date": "7/26/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+        },
+        {
           "member": "Sen. Alan Armstrong",
           "chamber": "Senate",
           "ticker": "NVDA",
@@ -4836,28 +4847,6 @@
           "transaction_date": "07/10/2026",
           "filed_date": "7/17/2026",
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "NVDA",
-          "company": "NVIDIA",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Daniel Crenshaw (TX02)",
-          "chamber": "House",
-          "ticker": "AMZN",
-          "company": "Amazon.com",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "06/01/2026",
-          "filed_date": "7/16/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035024.pdf"
         }
       ],
       "related_trade_count": 33,
@@ -7626,7 +7615,7 @@
           "name": "Valmont Industries"
         }
       ],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -7715,17 +7704,6 @@
           "transaction_date": "07/10/2026",
           "filed_date": "7/17/2026",
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Gilbert Cisneros (CA31)",
-          "chamber": "House",
-          "ticker": "PRIM",
-          "company": "Primoris Services",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "05/08/2026",
-          "filed_date": "6/8/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
       "related_trade_count": 9,
@@ -7934,17 +7912,6 @@
           "transaction_date": "06/05/2026",
           "filed_date": "7/2/2026",
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034906.pdf"
-        },
-        {
-          "member": "Rep. Gilbert Cisneros (CA31)",
-          "chamber": "House",
-          "ticker": "PYPL",
-          "company": "PayPal Holdings",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "05/15/2026",
-          "filed_date": "6/8/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
       "related_trade_count": 11,
@@ -9858,7 +9825,7 @@
           "name": "Valmont Industries"
         }
       ],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -9947,17 +9914,6 @@
           "transaction_date": "07/10/2026",
           "filed_date": "7/17/2026",
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Gilbert Cisneros (CA31)",
-          "chamber": "House",
-          "ticker": "PRIM",
-          "company": "Primoris Services",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "transaction_date": "05/08/2026",
-          "filed_date": "6/8/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
         }
       ],
       "related_trade_count": 9,
@@ -10208,6 +10164,198 @@
     }
   ],
   "trades": [
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/21/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PITTSBURGH PA WTR & SWR AUTH WTR & SWRRate/Coupon:5%Matures:2056-09-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/22/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$500,001 - $1,000,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "ALLEGHENY CNTY PA GO BDS SER. CRate/Coupon:5%Matures:2054-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/14/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$500,001 - $1,000,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "POCONO MTN PA SCH DIST GEN OBLIG BDSRate/Coupon:5%Matures:2051-06-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/08/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$250,001 - $500,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/14/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "GS Managed Structured Note Strategy MSCI EAFE Linked Note",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "07/08/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$250,001 - $500,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2028-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/30/2026",
+      "filed_date": "07/29/2026",
+      "type": "Purchase",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST TPK COMMN TPK REVRate/Coupon:5%Matures:2030-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "CORPUS CHRISTI TEX UTIL SYS REVRate/Coupon:5%Matures:2029-07-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST HIGHER EDL REVRate/Coupon:4%Matures:2031-06-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2031-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$100,001 - $250,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "WASHINGTON ST GORate/Coupon:5%Matures:2033-02-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "PENNSYLVANIA ST TPK COMMN OIL REVRate/Coupon:5%Matures:2026-12-01",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "NORTHAMPTON CNTY PA GEN PURP A REVRate/Coupon:5%Matures:2034-11-15",
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "transaction_date": "06/29/2026",
+      "filed_date": "07/29/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "BofA Finance LLC Trigger Autocallable Contingent Yield NotesCompany:Bank of America Corporation\n                                                    \n                                                        \u00a0(Charlotte, NC)Description:Equity Index-Linked Note",
+      "member": "Sen. Bernie Moreno",
+      "chamber": "Senate",
+      "transaction_date": "06/24/2026",
+      "filed_date": "07/24/2026",
+      "type": "Sale (Full)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/bccf83ce-dd72-4ab6-8564-b3bbb1d2ee55/"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "Canadian Imperial Bank of Commerce Trigger Autocallable Contingent Yield NotesCompany:Canadian Imperial Bank of Commerce\n                                                    \n                                                        \u00a0(Toronto, Ontario)Description:Equity Index-Linked Note",
+      "member": "Sen. Bernie Moreno",
+      "chamber": "Senate",
+      "transaction_date": "06/22/2026",
+      "filed_date": "07/24/2026",
+      "type": "Sale (Full)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/bccf83ce-dd72-4ab6-8564-b3bbb1d2ee55/"
+    },
     {
       "sector": "OTHER",
       "ticker": "UHS",
@@ -18744,7 +18892,7 @@
       "sector": "OTHER",
       "ticker": "GOOG",
       "company": "Alphabet Inc. - Class C Capital Stock",
-      "member": "Sen. Jerry Moran,",
+      "member": "Sen. Jerry Moran",
       "chamber": "Senate",
       "transaction_date": "06/23/2026",
       "filed_date": "07/21/2026",
@@ -18756,7 +18904,7 @@
       "sector": "OTHER",
       "ticker": "BRK.B",
       "company": "Berkshire Hathaway Inc. New Common Stock",
-      "member": "Sen. Jerry Moran,",
+      "member": "Sen. Jerry Moran",
       "chamber": "Senate",
       "transaction_date": "06/23/2026",
       "filed_date": "07/21/2026",
@@ -19860,7 +20008,7 @@
       "sector": "OTHER",
       "ticker": "BRK.B",
       "company": "Berkshire Hathaway Inc. New Common Stock",
-      "member": "Sen. Jerry Moran,",
+      "member": "Sen. Jerry Moran",
       "chamber": "Senate",
       "transaction_date": "05/27/2026",
       "filed_date": "06/25/2026",
@@ -19872,7 +20020,7 @@
       "sector": "OTHER",
       "ticker": "GOOG",
       "company": "Alphabet Inc. - Class C Capital Stock",
-      "member": "Sen. Jerry Moran,",
+      "member": "Sen. Jerry Moran",
       "chamber": "Senate",
       "transaction_date": "05/27/2026",
       "filed_date": "06/25/2026",
@@ -20326,42 +20474,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": null,
-      "company": "EXPEDIA GROUP INC NOTERate/Coupon:5.5%Matures:2036-04-15",
-      "member": "Sen. John Fetterman",
-      "chamber": "Senate",
-      "transaction_date": "05/06/2026",
-      "filed_date": "06/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/4b69867f-0376-4526-93f2-cd556b1155c9/"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "KHC",
-      "company": "The Kraft Heinz Company - Common Stock",
-      "member": "Sen. Gary C Peters",
-      "chamber": "Senate",
-      "transaction_date": "05/21/2026",
-      "filed_date": "06/11/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/be9bb561-8290-4364-85b4-06a59ef0ec01/"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "PTON",
-      "company": "Peloton Interactive, Inc. - Common Stock",
-      "member": "Sen. James Banks",
-      "chamber": "Senate",
-      "transaction_date": "06/05/2026",
-      "filed_date": "06/07/2026",
-      "type": "Sale (Full)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/59c6f909-ad10-429d-8a8c-df81b00cf5fd/"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "ACN",
       "company": "Accenture plc Class A Ordinary Shares",
       "member": "Rep. Richard W. Allen (GA12)",
@@ -20423,18 +20535,6 @@
     {
       "sector": "OTHER",
       "ticker": null,
-      "company": "Listen Ventures IV, LP",
-      "member": "Rep. Nicholas Begich (AK00)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$250,001 - $500,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20020055.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
       "company": "Physical Superintelligence, Inc.",
       "member": "Rep. Nicholas Begich (AK00)",
       "chamber": "House",
@@ -20459,1310 +20559,14 @@
     {
       "sector": "OTHER",
       "ticker": null,
-      "company": "ALPHAKEYS BLACKSTONE LIFE SCIENCES VI LP",
+      "company": "Oaktree Strategic Credit Fund Class S",
       "member": "Rep. Sheri Biggs (SC03)",
       "chamber": "House",
-      "transaction_date": "04/28/2026",
-      "filed_date": "6/9/2026",
+      "transaction_date": "06/30/2026",
+      "filed_date": "7/27/2026",
       "type": "Purchase",
       "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034496.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "APOLLO DEBT SOLUTIONS BDC CLASS S",
-      "member": "Rep. Sheri Biggs (SC03)",
-      "chamber": "House",
-      "transaction_date": "05/01/2026",
-      "filed_date": "6/9/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034496.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "KKR Real Estate Select Trust Class U",
-      "member": "Rep. Sheri Biggs (SC03)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/9/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034496.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "OAKTREE STRATEGIC CREDIT FUND CLASS S",
-      "member": "Rep. Sheri Biggs (SC03)",
-      "chamber": "House",
-      "transaction_date": "05/27/2026",
-      "filed_date": "6/9/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034496.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ABT",
-      "company": "Abbott Laboratories Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ADBE",
-      "company": "Adobe Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "AMD",
-      "company": "Advanced Micro Devices",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "AMD",
-      "company": "Advanced Micro Devices",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/05/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "APP",
-      "company": "Applovin Corporation - Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ARQT",
-      "company": "Arcutis Biotherapeutics, Inc. - Common stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "AZO",
-      "company": "AutoZone, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BNPQF",
-      "company": "BNP PARIBAS ORD",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BKNG",
-      "company": "Booking Holdings Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BSX",
-      "company": "Boston Scientific Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BSX",
-      "company": "Boston Scientific Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/19/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BSX",
-      "company": "Boston Scientific Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BBIO",
-      "company": "BridgeBio Pharma, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BR",
-      "company": "Broadridge Financial Solutions, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CVNA",
-      "company": "Carvana Co. Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CB",
-      "company": "Chubb Limited Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CIEN",
-      "company": "Ciena Corporation",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CIEN",
-      "company": "Ciena Corporation",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CLX",
-      "company": "Clorox Company",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CAG",
-      "company": "ConAgra Brands, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "STZ",
-      "company": "Constellation Brands, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CTRA",
-      "company": "Coterra Energy Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/08/2026",
-      "filed_date": "6/8/2026",
-      "type": "Exchange",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "CIBR",
-      "ticker": "CRWD",
-      "company": "CrowdStrike",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CSW",
-      "company": "CSW Industrials, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DPZ",
-      "company": "Domino's Pizza Inc - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DASH",
-      "company": "DoorDash, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DASH",
-      "company": "DoorDash, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DASH",
-      "company": "DoorDash, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DCO",
-      "company": "Ducommun Incorporated Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "EA",
-      "company": "Electronic Arts Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FN",
-      "company": "Fabrinet Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/04/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FDS",
-      "company": "FactSet Research Systems Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "FB Financial Corporation Common ID Owner Asset Transaction Date Notification Amount Cap. T",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FSV",
-      "company": "FirstService Corporation - Common Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FSV",
-      "company": "FirstService Corporation - Common Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FLEX",
-      "company": "Flex Ltd. - Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FLEX",
-      "company": "Flex Ltd. - Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$50,001 - $100,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FLEX",
-      "company": "Flex Ltd. - Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FLEX",
-      "company": "Flex Ltd. - Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GEHCV",
-      "company": "GE HealthCare Technologies Inc.",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GIL",
-      "company": "Gildan Activewear, Inc. Class A Sub. Vot. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "Global Payments Inc. Common Stock ID Owner Asset Transaction Date Notification Amount Cap.",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "HQY",
-      "company": "HealthEquity, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "INDB",
-      "company": "Independent Bank Corp. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "IBM",
-      "company": "IBM",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LGND",
-      "company": "Ligand Pharmaceuticals Incorporated Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LPLA",
-      "company": "LPL Financial Holdings Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/19/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LPLA",
-      "company": "LPL Financial Holdings Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LPLA",
-      "company": "LPL Financial Holdings Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LPLA",
-      "company": "LPL Financial Holdings Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MTSI",
-      "company": "MACOM Technology Solutions Holdings, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/22/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MDT",
-      "company": "Medtronic plc. Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MELI",
-      "company": "MercadoLibre, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "MU",
-      "company": "Micron Technology",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "MSFT",
-      "company": "Microsoft",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$50,001 - $100,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MDB",
-      "company": "MongoDB, Inc. - Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "New York City, NY Transitional Finance Authority Bonds",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$250,001 - $500,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "NOVT",
-      "company": "Novanta Inc. - Common Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "CIBR",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/08/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/08/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "CIBR",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "PSKY",
-      "company": "Paramount Skydance Corporation - Class B Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "FINX",
-      "ticker": "PYPL",
-      "company": "PayPal Holdings",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "PWP",
-      "company": "Perella Weinberg Partners - Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "PAVE",
-      "ticker": "PRIM",
-      "company": "Primoris Services",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/08/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "REGN",
-      "company": "Regeneron",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "RVTY",
-      "company": "Revvity, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/04/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "RNMBF",
-      "company": "Rheinmetall Ag Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ROP",
-      "company": "Roper Technologies, Inc.",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ST",
-      "company": "Sensata Technologies Holding plc Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ST",
-      "company": "Sensata Technologies Holding plc Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ST",
-      "company": "Sensata Technologies Holding plc Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SFTBF",
-      "company": "SOFTBANK GROUP CORP",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "06/02/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SARO",
-      "company": "StandardAero, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "STE",
-      "company": "STERIS plc",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "STE",
-      "company": "STERIS plc",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "STRL",
-      "company": "Sterling Infrastructure, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TEL",
-      "company": "TE Connectivity plc Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TSLA",
-      "company": "Tesla, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TCBI",
-      "company": "Texas Capital Bancshares, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "THLEF",
-      "company": "Thales Ordinary Shares",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CPB",
-      "company": "The Campbell's Company - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "COO",
-      "company": "The Cooper Companies, Inc.",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TTD",
-      "company": "The Trade Desk, Inc. - Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TOELF",
-      "company": "TOKYO ELECTRON",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/18/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TPH",
-      "company": "Tri Pointe Homes, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TRMB",
-      "company": "Trimble Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TYL",
-      "company": "Tyler Technologies, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "UBER",
-      "company": "Uber Technologies, Inc. Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "PCVX",
-      "company": "Vaxcyte",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "PCVX",
-      "company": "Vaxcyte",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "VLTO",
-      "company": "Veralto Corp Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "VRSK",
-      "company": "Verisk Analytics, Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/15/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "VIAV",
-      "company": "Viavi Solutions Inc. - Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/04/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/14/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/19/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "W",
-      "company": "Wayfair Inc. Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "W",
-      "company": "Wayfair Inc. Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WDAY",
-      "company": "Workday, Inc. - Class A Common Stock",
-      "member": "Rep. Gilbert Cisneros (CA31)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034713.pdf"
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035007.pdf"
     },
     {
       "sector": "OTHER",
@@ -22978,18 +21782,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": null,
-      "company": "Pacific Co B1 Bond - Trimble 05/29/28",
-      "member": "Rep. Suzan K. DelBene (WA01)",
-      "chamber": "House",
-      "transaction_date": "05/28/2026",
-      "filed_date": "6/11/2026",
-      "type": "Purchase",
-      "amount_range": "$500,001 - $1,000,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034727.pdf"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "HONAV",
       "company": "Honeywell Aerospace Inc. - Common Stock",
       "member": "Rep. Debbie Dingell (MI06)",
@@ -23011,6 +21803,18 @@
       "type": "Exchange",
       "amount_range": "$15,001 - $50,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034960.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "FHLMC 30 YR GOLD RQ0128",
+      "member": "Rep. Debbie Dingell (MI06)",
+      "chamber": "House",
+      "transaction_date": "07/14/2026",
+      "filed_date": "7/22/2026",
+      "type": "Purchase",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035048.pdf"
     },
     {
       "sector": "OTHER",
@@ -23458,30 +22262,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": "ABT",
-      "company": "Abbott Laboratories Common Stock",
-      "member": "Rep. Julie Johnson (TX32)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/12/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034706.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ACN",
-      "company": "Accenture plc Class A Ordinary Shares",
-      "member": "Rep. Julie Johnson (TX32)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/12/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034706.pdf"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "AMCR",
       "company": "Amcor plc Ordinary Shares",
       "member": "Rep. Thomas H. Kean (NJ07)",
@@ -23746,42 +22526,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": "BMY",
-      "company": "Bristol-Myers Squibb Company Common Stock",
-      "member": "Rep. Mike Kelly (PA16)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/11/2026",
-      "type": "Sale",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034767.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CMCSA",
-      "company": "Comcast Corporation - Class A Common Stock",
-      "member": "Rep. Mike Kelly (PA16)",
-      "chamber": "House",
-      "transaction_date": "05/07/2026",
-      "filed_date": "6/11/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034767.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "Southeast Energy Authority A C Ser E Rev Call 7/1/30 - 5% due 10/1/30",
-      "member": "Rep. Mike Kelly (PA16)",
-      "chamber": "House",
-      "transaction_date": "05/27/2026",
-      "filed_date": "6/11/2026",
-      "type": "Purchase",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034767.pdf"
-    },
-    {
-      "sector": "OTHER",
       "ticker": null,
       "company": "California St Go Call 12/1/27 4% due 12/1/47",
       "member": "Rep. Mike Kelly (PA16)",
@@ -23839,6 +22583,18 @@
       "type": "Sale",
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034977.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "FMAO",
+      "company": "Farmers & Merchants Bancorp, Inc.",
+      "member": "Rep. Robert E. Latta (OH05)",
+      "chamber": "House",
+      "transaction_date": "07/20/2026",
+      "filed_date": "7/24/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035065.pdf"
     },
     {
       "sector": "OTHER",
@@ -23923,6 +22679,30 @@
       "type": "Sale (Partial)",
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034790.pdf"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "member": "Rep. Sam T. Liccardo (CA16)",
+      "chamber": "House",
+      "transaction_date": "07/21/2026",
+      "filed_date": "7/27/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "member": "Rep. Sam T. Liccardo (CA16)",
+      "chamber": "House",
+      "transaction_date": "07/21/2026",
+      "filed_date": "7/27/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf"
     },
     {
       "sector": "OTHER",
@@ -24058,30 +22838,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": "DELL",
-      "company": "Dell Technologies Inc. Class C Common Stock",
-      "member": "Rep. John McGuire (VA05)",
-      "chamber": "House",
-      "transaction_date": "06/04/2026",
-      "filed_date": "6/10/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034748.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "META",
-      "company": "Meta Platforms, Inc. - Class A Common Stock",
-      "member": "Rep. John McGuire (VA05)",
-      "chamber": "House",
-      "transaction_date": "06/04/2026",
-      "filed_date": "6/10/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034748.pdf"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "BLK",
       "company": "BlackRock, Inc. Common Stock",
       "member": "Rep. John McGuire (VA05)",
@@ -24154,6 +22910,18 @@
     },
     {
       "sector": "OTHER",
+      "ticker": null,
+      "company": "Riverside Acceleration Capital Opportunity Fund II (GLAS Funds, LP)",
+      "member": "Rep. Max Miller (OH07)",
+      "chamber": "House",
+      "transaction_date": "07/22/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035075.pdf"
+    },
+    {
+      "sector": "OTHER",
       "ticker": "DASH",
       "company": "DoorDash, Inc. - Common Stock",
       "member": "Rep. Tim Moore (NC14)",
@@ -24199,6 +22967,102 @@
       "type": "Purchase",
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034749.pdf"
+    },
+    {
+      "sector": "SMH",
+      "ticker": "AMAT",
+      "company": "Applied Materials",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/18/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "HCA",
+      "company": "HCA Healthcare, Inc. Common Stock",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "HD",
+      "company": "Home Depot, Inc.",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "META",
+      "company": "Meta Platforms, Inc. - Class A Common Stock",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "QTUM",
+      "ticker": "MSFT",
+      "company": "Microsoft",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "MNST",
+      "company": "Monster Beverage Corporation - Common Stock",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "SPGI",
+      "company": "S&P Global Inc. Common Stock",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/17/2026",
+      "filed_date": "7/26/2026",
+      "type": "Sale",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "SPCX",
+      "company": "Space Exploration Technologies Corp. Class A Common Stock",
+      "member": "Rep. Jared Moskowitz (FL23)",
+      "chamber": "House",
+      "transaction_date": "06/12/2026",
+      "filed_date": "7/26/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
     },
     {
       "sector": "OTHER",
@@ -25137,150 +24001,6 @@
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034911.pdf"
     },
     {
-      "sector": "OTHER",
-      "ticker": "AESI",
-      "company": "Atlas Energy Solutions Inc. Common Stock",
-      "member": "Rep. Chip Roy (TX21)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/10/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$100,001 - $250,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034762.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "BIIB",
-      "company": "Biogen",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "BIIB",
-      "company": "Biogen",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "BIIB",
-      "company": "Biogen",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$50,001 - $100,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "BEP",
-      "company": "Brookfield Renewable Partners L.P. Limited Partnership Units",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/29/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DDOG",
-      "company": "Datadog, Inc. - Class A Common Stock",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/19/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "DDOG",
-      "company": "Datadog, Inc. - Class A Common Stock",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/19/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "IBM",
-      "company": "IBM",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/21/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "QCOM",
-      "company": "Qualcomm",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "QCOM",
-      "company": "Qualcomm",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/13/2026",
-      "filed_date": "6/8/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SHW",
-      "company": "Sherwin-Williams Company",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/12/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "WHR",
-      "company": "Whirlpool Corporation Common Stock",
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "transaction_date": "05/11/2026",
-      "filed_date": "6/8/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034709.pdf"
-    },
-    {
       "sector": "XBI",
       "ticker": "BIIB",
       "company": "Biogen",
@@ -25378,6 +24098,30 @@
     },
     {
       "sector": "OTHER",
+      "ticker": "ARCC",
+      "company": "Ares Capital Corporation - Closed End Fund",
+      "member": "Rep. Pete Sessions (TX17)",
+      "chamber": "House",
+      "transaction_date": "07/24/2026",
+      "filed_date": "7/24/2026",
+      "type": "Sale",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035068.pdf"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": null,
+      "company": "CarterBaldwin",
+      "member": "Rep. Adrian Smith (NE03)",
+      "chamber": "House",
+      "transaction_date": "07/31/2026",
+      "filed_date": "7/27/2026",
+      "type": "Purchase",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035067.pdf"
+    },
+    {
+      "sector": "OTHER",
       "ticker": "TCNNF",
       "company": "TRULIEVE CANNABIS CORP",
       "member": "Rep. Greg Stanton (AZ04)",
@@ -25387,102 +24131,6 @@
       "type": "Sale (Partial)",
       "amount_range": "$100,001 - $250,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034717.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "American US govt money market fund",
-      "member": "Rep. Thomas Suozzi (NY03)",
-      "chamber": "House",
-      "transaction_date": "05/08/2026",
-      "filed_date": "6/9/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034747.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "AMZN",
-      "company": "Amazon.com",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "GRID",
-      "ticker": "AEP",
-      "company": "American Electric Power",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "XBI",
-      "ticker": "AMGN",
-      "company": "Amgen",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "T",
-      "company": "AT&T Inc.",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "KR",
-      "company": "Kroger Company",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "LRCX",
-      "company": "Lam Research",
-      "member": "Rep. David J. Taylor (OH02)",
-      "chamber": "House",
-      "transaction_date": "06/05/2026",
-      "filed_date": "6/12/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034780.pdf"
     },
     {
       "sector": "OTHER",
@@ -25838,41 +24486,38 @@
     {
       "member": "Rep. Gilbert Cisneros (CA31)",
       "chamber": "House",
-      "trade_count": 171,
-      "buy_count": 101,
-      "sell_count": 70,
-      "distinct_tickers": 112,
+      "trade_count": 66,
+      "buy_count": 43,
+      "sell_count": 23,
+      "distinct_tickers": 58,
       "top_tickers": [
         {
-          "ticker": "WRB",
-          "count": 7
+          "ticker": "BSX",
+          "count": 2
         },
         {
           "ticker": "LPLA",
-          "count": 6
+          "count": 2
         },
         {
-          "ticker": "BSX",
-          "count": 5
+          "ticker": "ABT",
+          "count": 1
         },
         {
-          "ticker": "FLEX",
-          "count": 4
-        },
-        {
-          "ticker": "PLTR",
-          "count": 4
+          "ticker": "ACN",
+          "count": 1
         },
         {
           "ticker": "AMD",
-          "count": 3
+          "count": 1
+        },
+        {
+          "ticker": "AJINF",
+          "count": 1
         }
       ],
       "sectors": [
-        "CIBR",
         "FINX",
-        "ITA",
-        "PAVE",
         "QTUM",
         "SMH",
         "XBI"
@@ -25917,6 +24562,17 @@
         "ITA"
       ],
       "last_filed": "07/13/2026"
+    },
+    {
+      "member": "Sen. David H McCormick",
+      "chamber": "Senate",
+      "trade_count": 46,
+      "buy_count": 10,
+      "sell_count": 36,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "07/29/2026"
     },
     {
       "member": "Rep. Scott H. Peters (CA50)",
@@ -25971,17 +24627,6 @@
         "SMH"
       ],
       "last_filed": "7/17/2026"
-    },
-    {
-      "member": "Sen. David H McCormick",
-      "chamber": "Senate",
-      "trade_count": 32,
-      "buy_count": 3,
-      "sell_count": 29,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "06/26/2026"
     },
     {
       "member": "Sen. John R Curtis",
@@ -26069,46 +24714,6 @@
       ],
       "sectors": [
         "GRID"
-      ],
-      "last_filed": "7/7/2026"
-    },
-    {
-      "member": "Rep. Maria Elvira Salazar (FL27)",
-      "chamber": "House",
-      "trade_count": 19,
-      "buy_count": 15,
-      "sell_count": 4,
-      "distinct_tickers": 10,
-      "top_tickers": [
-        {
-          "ticker": "BEP",
-          "count": 5
-        },
-        {
-          "ticker": "BIIB",
-          "count": 4
-        },
-        {
-          "ticker": "DDOG",
-          "count": 2
-        },
-        {
-          "ticker": "QCOM",
-          "count": 2
-        },
-        {
-          "ticker": "IBM",
-          "count": 1
-        },
-        {
-          "ticker": "SHW",
-          "count": 1
-        }
-      ],
-      "sectors": [
-        "QTUM",
-        "SMH",
-        "XBI"
       ],
       "last_filed": "7/7/2026"
     },
@@ -26236,45 +24841,44 @@
       "last_filed": "7/9/2026"
     },
     {
-      "member": "Rep. David J. Taylor (OH02)",
+      "member": "Rep. Jared Moskowitz (FL23)",
       "chamber": "House",
-      "trade_count": 9,
-      "buy_count": 7,
+      "trade_count": 10,
+      "buy_count": 8,
       "sell_count": 2,
-      "distinct_tickers": 9,
+      "distinct_tickers": 10,
       "top_tickers": [
         {
-          "ticker": "GOOGL",
+          "ticker": "COR",
           "count": 1
         },
         {
-          "ticker": "AMZN",
+          "ticker": "GILD",
           "count": 1
         },
         {
-          "ticker": "AEP",
+          "ticker": "AMAT",
           "count": 1
         },
         {
-          "ticker": "AMGN",
+          "ticker": "HCA",
           "count": 1
         },
         {
-          "ticker": "T",
+          "ticker": "HD",
           "count": 1
         },
         {
-          "ticker": "KR",
+          "ticker": "META",
           "count": 1
         }
       ],
       "sectors": [
-        "GRID",
         "QTUM",
         "SMH",
         "XBI"
       ],
-      "last_filed": "7/1/2026"
+      "last_filed": "7/26/2026"
     },
     {
       "member": "Rep. Daniel Crenshaw (TX02)",
@@ -26309,6 +24913,40 @@
         "QTUM"
       ],
       "last_filed": "7/16/2026"
+    },
+    {
+      "member": "Rep. Maria Elvira Salazar (FL27)",
+      "chamber": "House",
+      "trade_count": 8,
+      "buy_count": 6,
+      "sell_count": 2,
+      "distinct_tickers": 5,
+      "top_tickers": [
+        {
+          "ticker": "BEP",
+          "count": 4
+        },
+        {
+          "ticker": "BIIB",
+          "count": 1
+        },
+        {
+          "ticker": "CRM",
+          "count": 1
+        },
+        {
+          "ticker": "UNH",
+          "count": 1
+        },
+        {
+          "ticker": "VOYG",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "XBI"
+      ],
+      "last_filed": "7/7/2026"
     },
     {
       "member": "Rep. Katherine M. Clark (MA05)",
@@ -26478,7 +25116,7 @@
       "last_filed": "7/19/2026"
     },
     {
-      "member": "Sen. Jerry Moran,",
+      "member": "Sen. Jerry Moran",
       "chamber": "Senate",
       "trade_count": 4,
       "buy_count": 3,
@@ -26496,28 +25134,6 @@
       ],
       "sectors": [],
       "last_filed": "07/21/2026"
-    },
-    {
-      "member": "Sen. John Fetterman",
-      "chamber": "Senate",
-      "trade_count": 4,
-      "buy_count": 3,
-      "sell_count": 1,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "07/09/2026"
-    },
-    {
-      "member": "Rep. Sheri Biggs (SC03)",
-      "chamber": "House",
-      "trade_count": 4,
-      "buy_count": 4,
-      "sell_count": 0,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "6/9/2026"
     },
     {
       "member": "Rep. Lloyd Doggett (TX37)",
@@ -26580,26 +25196,6 @@
       "last_filed": "7/15/2026"
     },
     {
-      "member": "Rep. Mike Kelly (PA16)",
-      "chamber": "House",
-      "trade_count": 4,
-      "buy_count": 1,
-      "sell_count": 3,
-      "distinct_tickers": 2,
-      "top_tickers": [
-        {
-          "ticker": "BMY",
-          "count": 1
-        },
-        {
-          "ticker": "CMCSA",
-          "count": 1
-        }
-      ],
-      "sectors": [],
-      "last_filed": "7/8/2026"
-    },
-    {
       "member": "Rep. Rick Larsen (WA02)",
       "chamber": "House",
       "trade_count": 4,
@@ -26628,32 +25224,31 @@
       "last_filed": "7/12/2026"
     },
     {
-      "member": "Rep. John McGuire (VA05)",
-      "chamber": "House",
-      "trade_count": 4,
+      "member": "Sen. John Fetterman",
+      "chamber": "Senate",
+      "trade_count": 3,
       "buy_count": 2,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "07/09/2026"
+    },
+    {
+      "member": "Rep. Debbie Dingell (MI06)",
+      "chamber": "House",
+      "trade_count": 3,
+      "buy_count": 1,
       "sell_count": 2,
-      "distinct_tickers": 4,
+      "distinct_tickers": 1,
       "top_tickers": [
         {
-          "ticker": "DELL",
-          "count": 1
-        },
-        {
-          "ticker": "META",
-          "count": 1
-        },
-        {
-          "ticker": "BLK",
-          "count": 1
-        },
-        {
-          "ticker": "SPCX",
-          "count": 1
+          "ticker": "HONAV",
+          "count": 2
         }
       ],
       "sectors": [],
-      "last_filed": "7/8/2026"
+      "last_filed": "7/22/2026"
     },
     {
       "member": "Rep. Byron Donalds (FL19)",
@@ -26756,51 +25351,15 @@
       "last_filed": "7/2/2026"
     },
     {
-      "member": "Sen. Gary C Peters",
+      "member": "Sen. Bernie Moreno",
       "chamber": "Senate",
-      "trade_count": 2,
-      "buy_count": 2,
-      "sell_count": 0,
-      "distinct_tickers": 2,
-      "top_tickers": [
-        {
-          "ticker": "T",
-          "count": 1
-        },
-        {
-          "ticker": "KHC",
-          "count": 1
-        }
-      ],
-      "sectors": [],
-      "last_filed": "07/02/2026"
-    },
-    {
-      "member": "Rep. Nicholas Begich (AK00)",
-      "chamber": "House",
-      "trade_count": 2,
-      "buy_count": 1,
-      "sell_count": 1,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "7/7/2026"
-    },
-    {
-      "member": "Rep. Debbie Dingell (MI06)",
-      "chamber": "House",
       "trade_count": 2,
       "buy_count": 0,
       "sell_count": 2,
-      "distinct_tickers": 1,
-      "top_tickers": [
-        {
-          "ticker": "HONAV",
-          "count": 2
-        }
-      ],
+      "distinct_tickers": 0,
+      "top_tickers": [],
       "sectors": [],
-      "last_filed": "7/15/2026"
+      "last_filed": "07/24/2026"
     },
     {
       "member": "Rep. Dwight Evans (PA03)",
@@ -26846,26 +25405,6 @@
       "last_filed": "7/16/2026"
     },
     {
-      "member": "Rep. Julie Johnson (TX32)",
-      "chamber": "House",
-      "trade_count": 2,
-      "buy_count": 0,
-      "sell_count": 2,
-      "distinct_tickers": 2,
-      "top_tickers": [
-        {
-          "ticker": "ABT",
-          "count": 1
-        },
-        {
-          "ticker": "ACN",
-          "count": 1
-        }
-      ],
-      "sectors": [],
-      "last_filed": "6/12/2026"
-    },
-    {
       "member": "Rep. Susie Lee (NV03)",
       "chamber": "House",
       "trade_count": 2,
@@ -26882,7 +25421,26 @@
       "last_filed": "7/8/2026"
     },
     {
-      "member": "Rep. Jared Moskowitz (FL23)",
+      "member": "Rep. Sam T. Liccardo (CA16)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 2
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "7/27/2026"
+    },
+    {
+      "member": "Rep. John McGuire (VA05)",
       "chamber": "House",
       "trade_count": 2,
       "buy_count": 1,
@@ -26890,18 +25448,27 @@
       "distinct_tickers": 2,
       "top_tickers": [
         {
-          "ticker": "COR",
+          "ticker": "BLK",
           "count": 1
         },
         {
-          "ticker": "GILD",
+          "ticker": "SPCX",
           "count": 1
         }
       ],
-      "sectors": [
-        "XBI"
-      ],
-      "last_filed": "6/19/2026"
+      "sectors": [],
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Max Miller (OH07)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 1,
+      "sell_count": 1,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/26/2026"
     },
     {
       "member": "Rep. Nancy Pelosi (CA11)",
@@ -26924,6 +25491,26 @@
         "SMH"
       ],
       "last_filed": "6/23/2026"
+    },
+    {
+      "member": "Rep. David J. Taylor (OH02)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 2,
+      "sell_count": 0,
+      "distinct_tickers": 2,
+      "top_tickers": [
+        {
+          "ticker": "CVX",
+          "count": 1
+        },
+        {
+          "ticker": "IBP",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/1/2026"
     },
     {
       "member": "Rep. William R. Timmons (SC04)",
@@ -26964,6 +25551,22 @@
       "last_filed": "07/06/2026"
     },
     {
+      "member": "Sen. Gary C Peters",
+      "chamber": "Senate",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "T",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "07/02/2026"
+    },
+    {
       "member": "Sen. A. Mitchell McConnell, Jr.",
       "chamber": "Senate",
       "trade_count": 1,
@@ -26980,20 +25583,15 @@
       "last_filed": "06/30/2026"
     },
     {
-      "member": "Sen. James Banks",
-      "chamber": "Senate",
+      "member": "Rep. Nicholas Begich (AK00)",
+      "chamber": "House",
       "trade_count": 1,
       "buy_count": 0,
       "sell_count": 1,
-      "distinct_tickers": 1,
-      "top_tickers": [
-        {
-          "ticker": "PTON",
-          "count": 1
-        }
-      ],
+      "distinct_tickers": 0,
+      "top_tickers": [],
       "sectors": [],
-      "last_filed": "06/07/2026"
+      "last_filed": "7/7/2026"
     },
     {
       "member": "Rep. Donald Sternoff Beyer (VA08)",
@@ -27007,6 +25605,17 @@
       "last_filed": "7/1/2026"
     },
     {
+      "member": "Rep. Sheri Biggs (SC03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/27/2026"
+    },
+    {
       "member": "Rep. Steve Cohen (TN09)",
       "chamber": "House",
       "trade_count": 1,
@@ -27016,17 +25625,6 @@
       "top_tickers": [],
       "sectors": [],
       "last_filed": "6/17/2026"
-    },
-    {
-      "member": "Rep. Suzan K. DelBene (WA01)",
-      "chamber": "House",
-      "trade_count": 1,
-      "buy_count": 1,
-      "sell_count": 0,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "6/11/2026"
     },
     {
       "member": "Rep. John James (MI10)",
@@ -27045,7 +25643,7 @@
       "last_filed": "7/12/2026"
     },
     {
-      "member": "Rep. Max Miller (OH07)",
+      "member": "Rep. Mike Kelly (PA16)",
       "chamber": "House",
       "trade_count": 1,
       "buy_count": 0,
@@ -27053,7 +25651,23 @@
       "distinct_tickers": 0,
       "top_tickers": [],
       "sectors": [],
-      "last_filed": "7/1/2026"
+      "last_filed": "7/8/2026"
+    },
+    {
+      "member": "Rep. Robert E. Latta (OH05)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "FMAO",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/24/2026"
     },
     {
       "member": "Rep. Tim Moore (NC14)",
@@ -27083,7 +25697,7 @@
       "last_filed": "7/9/2026"
     },
     {
-      "member": "Rep. Chip Roy (TX21)",
+      "member": "Rep. Pete Sessions (TX17)",
       "chamber": "House",
       "trade_count": 1,
       "buy_count": 0,
@@ -27091,12 +25705,23 @@
       "distinct_tickers": 1,
       "top_tickers": [
         {
-          "ticker": "AESI",
+          "ticker": "ARCC",
           "count": 1
         }
       ],
       "sectors": [],
-      "last_filed": "6/10/2026"
+      "last_filed": "7/24/2026"
+    },
+    {
+      "member": "Rep. Adrian Smith (NE03)",
+      "chamber": "House",
+      "trade_count": 1,
+      "buy_count": 1,
+      "sell_count": 0,
+      "distinct_tickers": 0,
+      "top_tickers": [],
+      "sectors": [],
+      "last_filed": "7/27/2026"
     },
     {
       "member": "Rep. Greg Stanton (AZ04)",
@@ -27113,17 +25738,6 @@
       ],
       "sectors": [],
       "last_filed": "6/26/2026"
-    },
-    {
-      "member": "Rep. Thomas Suozzi (NY03)",
-      "chamber": "House",
-      "trade_count": 1,
-      "buy_count": 1,
-      "sell_count": 0,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "6/9/2026"
     },
     {
       "member": "Rep. Ritchie John Torres (NY15)",
@@ -27191,11 +25805,11 @@
       "company": "NVIDIA",
       "sector": "QTUM",
       "buy_count": 6,
-      "sell_count": 8,
-      "net": -2,
-      "member_count": 6,
-      "total_trades": 14,
-      "last_filed": "07/21/2026"
+      "sell_count": 10,
+      "net": -4,
+      "member_count": 7,
+      "total_trades": 16,
+      "last_filed": "7/27/2026"
     },
     {
       "ticker": "MSFT",
@@ -27204,20 +25818,20 @@
       "buy_count": 4,
       "sell_count": 4,
       "net": 0,
-      "member_count": 6,
+      "member_count": 7,
       "total_trades": 8,
-      "last_filed": "07/21/2026"
+      "last_filed": "7/26/2026"
     },
     {
-      "ticker": "ACN",
-      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
+      "ticker": "SPCX",
+      "company": "Space Exploration Technologies Corp. Class A Common Stock",
       "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 3,
-      "net": 0,
+      "buy_count": 7,
+      "sell_count": 0,
+      "net": 7,
       "member_count": 6,
-      "total_trades": 6,
-      "last_filed": "07/21/2026"
+      "total_trades": 7,
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "AAPL",
@@ -27231,39 +25845,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "ABT",
-      "company": "Abbott Laboratories Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 4,
-      "net": -2,
-      "member_count": 5,
-      "total_trades": 6,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "sector": "QTUM",
-      "buy_count": 1,
-      "sell_count": 5,
-      "net": -4,
-      "member_count": 5,
-      "total_trades": 6,
-      "last_filed": "7/17/2026"
-    },
-    {
-      "ticker": "SPCX",
-      "company": "Space Exploration Technologies Corp. Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 6,
-      "sell_count": 0,
-      "net": 6,
-      "member_count": 5,
-      "total_trades": 6,
-      "last_filed": "7/19/2026"
-    },
-    {
       "ticker": "UNH",
       "company": "UnitedHealth Group Incorporated Common Stock (DE)",
       "sector": "OTHER",
@@ -27275,9 +25856,9 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "IBM",
-      "company": "IBM",
-      "sector": "QTUM",
+      "ticker": "ACN",
+      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
+      "sector": "OTHER",
       "buy_count": 3,
       "sell_count": 2,
       "net": 1,
@@ -27294,7 +25875,7 @@
       "net": 0,
       "member_count": 4,
       "total_trades": 6,
-      "last_filed": "07/21/2026"
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "GOOG",
@@ -27308,20 +25889,31 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "HD",
+      "company": "Home Depot, Inc. (The) Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 3,
+      "net": -1,
+      "member_count": 4,
+      "total_trades": 5,
+      "last_filed": "7/26/2026"
+    },
+    {
+      "ticker": "SPGI",
+      "company": "S&P Global Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 3,
+      "net": -2,
+      "member_count": 4,
+      "total_trades": 4,
+      "last_filed": "7/26/2026"
+    },
+    {
       "ticker": "MU",
       "company": "Micron Technology",
       "sector": "SMH",
-      "buy_count": 3,
-      "sell_count": 2,
-      "net": 1,
-      "member_count": 4,
-      "total_trades": 5,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "UBER",
-      "company": "Uber Technologies, Inc. Common Stock",
-      "sector": "OTHER",
       "buy_count": 3,
       "sell_count": 1,
       "net": 2,
@@ -27363,36 +25955,14 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "AMZN",
-      "company": "Amazon.com",
-      "sector": "QTUM",
-      "buy_count": 1,
-      "sell_count": 3,
-      "net": -2,
+      "ticker": "ABT",
+      "company": "Abbott Laboratories Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 2,
+      "net": 0,
       "member_count": 4,
       "total_trades": 4,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "sector": "CIBR",
-      "buy_count": 4,
-      "sell_count": 4,
-      "net": 0,
-      "member_count": 3,
-      "total_trades": 8,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "BSX",
-      "company": "Boston Scientific Corporation Common Stock",
-      "sector": "OTHER",
-      "buy_count": 5,
-      "sell_count": 2,
-      "net": 3,
-      "member_count": 3,
-      "total_trades": 7,
       "last_filed": "07/21/2026"
     },
     {
@@ -27402,17 +25972,6 @@
       "buy_count": 1,
       "sell_count": 5,
       "net": -4,
-      "member_count": 3,
-      "total_trades": 6,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "BIIB",
-      "company": "Biogen",
-      "sector": "XBI",
-      "buy_count": 5,
-      "sell_count": 1,
-      "net": 4,
       "member_count": 3,
       "total_trades": 6,
       "last_filed": "07/21/2026"
@@ -27429,34 +25988,12 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "DASH",
-      "company": "DoorDash, Inc. - Common Stock",
+      "ticker": "BSX",
+      "company": "Boston Scientific Corporation Common Stock",
       "sector": "OTHER",
-      "buy_count": 3,
+      "buy_count": 2,
       "sell_count": 2,
-      "net": 1,
-      "member_count": 3,
-      "total_trades": 5,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "AMD",
-      "company": "Advanced Micro Devices",
-      "sector": "SMH",
-      "buy_count": 4,
-      "sell_count": 1,
-      "net": 3,
-      "member_count": 3,
-      "total_trades": 5,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "HD",
-      "company": "Home Depot, Inc. (The) Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 3,
-      "net": -2,
+      "net": 0,
       "member_count": 3,
       "total_trades": 4,
       "last_filed": "07/21/2026"
@@ -27473,12 +26010,23 @@
       "last_filed": "7/17/2026"
     },
     {
-      "ticker": "SPGI",
-      "company": "S&P Global Inc. Common Stock",
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "sector": "QTUM",
+      "buy_count": 0,
+      "sell_count": 4,
+      "net": -4,
+      "member_count": 3,
+      "total_trades": 4,
+      "last_filed": "7/17/2026"
+    },
+    {
+      "ticker": "UBER",
+      "company": "Uber Technologies, Inc. Common Stock",
       "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 2,
-      "net": -1,
+      "buy_count": 3,
+      "sell_count": 0,
+      "net": 3,
       "member_count": 3,
       "total_trades": 3,
       "last_filed": "07/21/2026"
@@ -27512,6 +26060,17 @@
       "buy_count": 1,
       "sell_count": 2,
       "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "IBM",
+      "company": "IBM",
+      "sector": "QTUM",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
       "member_count": 3,
       "total_trades": 3,
       "last_filed": "07/21/2026"
@@ -27572,23 +26131,12 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "CMCSA",
-      "company": "Comcast Corporation - Class A Common Stock",
-      "sector": "OTHER",
+      "ticker": "BIIB",
+      "company": "Biogen",
+      "sector": "XBI",
       "buy_count": 2,
       "sell_count": 1,
       "net": 1,
-      "member_count": 3,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "BKNG",
-      "company": "Booking Holdings Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 2,
-      "net": -1,
       "member_count": 3,
       "total_trades": 3,
       "last_filed": "07/21/2026"
@@ -27605,15 +26153,15 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "T",
-      "company": "AT&T Inc.",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
+      "ticker": "AMAT",
+      "company": "Applied Materials",
+      "sector": "SMH",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
       "member_count": 3,
       "total_trades": 3,
-      "last_filed": "07/21/2026"
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "ADI",
@@ -27649,12 +26197,23 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "ADBE",
-      "company": "Adobe Inc. - Common Stock",
-      "sector": "OTHER",
+      "ticker": "AMZN",
+      "company": "Amazon.com",
+      "sector": "QTUM",
       "buy_count": 1,
       "sell_count": 2,
       "net": -1,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMD",
+      "company": "Advanced Micro Devices",
+      "sector": "SMH",
+      "buy_count": 2,
+      "sell_count": 1,
+      "net": 1,
       "member_count": 3,
       "total_trades": 3,
       "last_filed": "07/21/2026"
@@ -27682,20 +26241,9 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "EA",
-      "company": "Electronic Arts Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 4,
-      "sell_count": 0,
-      "net": 4,
-      "member_count": 2,
-      "total_trades": 4,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "CIEN",
-      "company": "Ciena Corporation Common Stock",
-      "sector": "OTHER",
+      "ticker": "PLTR",
+      "company": "Palantir Technologies",
+      "sector": "CIBR",
       "buy_count": 4,
       "sell_count": 0,
       "net": 4,
@@ -27748,17 +26296,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "DDOG",
-      "company": "Datadog, Inc. - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "SAN",
       "company": "Banco Santander, S.A. Sponsored ADR (Spain)",
       "sector": "OTHER",
@@ -27770,53 +26307,9 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "TSLA",
-      "company": "Tesla, Inc.  - Common Stock",
+      "ticker": "EA",
+      "company": "Electronic Arts Inc. - Common Stock",
       "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "WDAY",
-      "company": "Workday, Inc. - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 2,
-      "net": -1,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "VRSK",
-      "company": "Verisk Analytics, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "COO",
-      "company": "The Cooper Companies, Inc.  - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "QCOM",
-      "company": "Qualcomm",
-      "sector": "SMH",
       "buy_count": 3,
       "sell_count": 0,
       "net": 3,
@@ -27847,17 +26340,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "CAG",
-      "company": "ConAgra Brands, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 1,
-      "net": 1,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "BRK.B",
       "company": "Berkshire Hathaway Inc. New Common Stock",
       "sector": "OTHER",
@@ -27869,34 +26351,12 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "GIL",
-      "company": "Gildan Activewear, Inc. Class A Sub. Vot. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 1,
-      "net": 1,
-      "member_count": 2,
-      "total_trades": 3,
-      "last_filed": "7/15/2026"
-    },
-    {
       "ticker": "CDNS",
       "company": "Cadence Design Systems",
       "sector": "SMH",
       "buy_count": 0,
       "sell_count": 2,
       "net": -2,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "BR",
-      "company": "Broadridge Financial Solutions, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -27913,8 +26373,30 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "WDAY",
+      "company": "Workday, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "WFC",
       "company": "Wells Fargo & Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "VRSK",
+      "company": "Verisk Analytics, Inc. - Common Stock",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
@@ -27946,8 +26428,8 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "CPB",
-      "company": "The Campbell's Company - Common Stock",
+      "ticker": "COO",
+      "company": "The Cooper Companies, Inc.  - Common Stock",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
@@ -27990,17 +26472,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "REGN",
-      "company": "Regeneron",
-      "sector": "XBI",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "PGR",
       "company": "Progressive Corporation (The) Common Stock",
       "sector": "OTHER",
@@ -28018,17 +26489,6 @@
       "buy_count": 0,
       "sell_count": 2,
       "net": -2,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "PYPL",
-      "company": "PayPal Holdings",
-      "sector": "FINX",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -28078,42 +26538,9 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "MDT",
-      "company": "Medtronic plc. Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "LRCX",
-      "company": "Lam Research",
-      "sector": "SMH",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "LHX",
       "company": "L3Harris Technologies",
       "sector": "ITA",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "KHC",
-      "company": "The Kraft Heinz Company - Common Stock",
-      "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
       "net": 2,
@@ -28164,6 +26591,17 @@
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HCA",
+      "company": "HCA Healthcare, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "GDDY",
@@ -28221,34 +26659,12 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "DPZ",
-      "company": "Domino's Pizza Inc - Common Stock",
+      "ticker": "DASH",
+      "company": "DoorDash, Inc. - Common Stock",
       "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "DELL",
-      "company": "Dell Technologies Inc. Class C Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "CRWD",
-      "company": "CrowdStrike",
-      "sector": "CIBR",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
+      "buy_count": 0,
+      "sell_count": 2,
+      "net": -2,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -28265,12 +26681,23 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "STZ",
-      "company": "Constellation Brands, Inc. Common Stock",
+      "ticker": "CAG",
+      "company": "ConAgra Brands, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 1,
       "net": 0,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CMCSA",
+      "company": "Comcast Corporation - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -28309,17 +26736,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "CB",
-      "company": "Chubb Limited  Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "CVX",
       "company": "Chevron Corporation Common Stock",
       "sector": "OTHER",
@@ -28342,8 +26758,8 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "BMY",
-      "company": "Bristol-Myers Squibb Company Common Stock",
+      "ticker": "BKNG",
+      "company": "Booking Holdings Inc. - Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 1,
@@ -28364,19 +26780,19 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "AZO",
-      "company": "AutoZone, Inc. Common Stock",
+      "ticker": "ADP",
+      "company": "Automatic Data Processing, Inc. - Common Stock",
       "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "ADP",
-      "company": "Automatic Data Processing, Inc. - Common Stock",
+      "ticker": "T",
+      "company": "AT&T Inc.",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
@@ -28397,45 +26813,23 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "APP",
-      "company": "Applovin Corporation - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "AMAT",
-      "company": "Applied Materials",
-      "sector": "SMH",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "AMGN",
-      "company": "Amgen",
-      "sector": "XBI",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 2,
-      "total_trades": 2,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "AXP",
       "company": "American Express Company Common Stock",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
       "net": 2,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "ADBE",
+      "company": "Adobe Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
       "member_count": 2,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -28474,70 +26868,15 @@
       "last_filed": "7/9/2026"
     },
     {
-      "ticker": "WRB",
-      "company": "W.R. Berkley Corporation Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 7,
-      "net": -7,
-      "member_count": 1,
-      "total_trades": 7,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "LPLA",
-      "company": "LPL Financial Holdings Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 6,
-      "sell_count": 0,
-      "net": 6,
-      "member_count": 1,
-      "total_trades": 6,
-      "last_filed": "7/2/2026"
-    },
-    {
       "ticker": "BEP",
       "company": "Brookfield Renewable Partners L.P. Limited Partnership Units",
       "sector": "OTHER",
-      "buy_count": 5,
+      "buy_count": 4,
       "sell_count": 0,
-      "net": 5,
-      "member_count": 1,
-      "total_trades": 5,
-      "last_filed": "7/7/2026"
-    },
-    {
-      "ticker": "FLEX",
-      "company": "Flex Ltd. - Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 4,
-      "net": -4,
+      "net": 4,
       "member_count": 1,
       "total_trades": 4,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "FSV",
-      "company": "FirstService Corporation - Common Shares",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 1,
-      "total_trades": 3,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "ST",
-      "company": "Sensata Technologies Holding plc Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 0,
-      "net": 3,
-      "member_count": 1,
-      "total_trades": 3,
-      "last_filed": "6/8/2026"
+      "last_filed": "7/7/2026"
     },
     {
       "ticker": "WMB",
@@ -28586,6 +26925,17 @@
     {
       "ticker": "WELL",
       "company": "Welltower Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TSLA",
+      "company": "Tesla, Inc.  - Common Stock",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
@@ -28645,6 +26995,17 @@
       "buy_count": 1,
       "sell_count": 1,
       "net": 0,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CIEN",
+      "company": "Ciena Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 2,
+      "sell_count": 0,
+      "net": 2,
       "member_count": 1,
       "total_trades": 2,
       "last_filed": "07/21/2026"
@@ -28771,8 +27132,8 @@
       "last_filed": "06/16/2026"
     },
     {
-      "ticker": "BNPQF",
-      "company": "BNP PARIBAS ORD",
+      "ticker": "LPLA",
+      "company": "LPL Financial Holdings Inc. - Common Stock",
       "sector": "OTHER",
       "buy_count": 2,
       "sell_count": 0,
@@ -28780,127 +27141,6 @@
       "member_count": 1,
       "total_trades": 2,
       "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "HQY",
-      "company": "HealthEquity, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "MELI",
-      "company": "MercadoLibre, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "SFTBF",
-      "company": "SOFTBANK GROUP CORP",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "STE",
-      "company": "STERIS plc",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "STRL",
-      "company": "Sterling Infrastructure, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 2,
-      "net": -2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "TEL",
-      "company": "TE Connectivity plc Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "TCBI",
-      "company": "Texas Capital Bancshares, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "TTD",
-      "company": "The Trade Desk, Inc. - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "net": 0,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "PCVX",
-      "company": "Vaxcyte",
-      "sector": "XBI",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "VLTO",
-      "company": "Veralto Corp Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "7/2/2026"
-    },
-    {
-      "ticker": "W",
-      "company": "Wayfair Inc. Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "net": 2,
-      "member_count": 1,
-      "total_trades": 2,
-      "last_filed": "6/8/2026"
     },
     {
       "ticker": "ENTG",
@@ -28931,6 +27171,17 @@
       "buy_count": 2,
       "sell_count": 0,
       "net": 2,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "7/15/2026"
+    },
+    {
+      "ticker": "GIL",
+      "company": "Gildan Activewear, Inc. Class A Sub. Vot. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "net": 0,
       "member_count": 1,
       "total_trades": 2,
       "last_filed": "7/15/2026"
@@ -28980,6 +27231,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "DDOG",
+      "company": "Datadog, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "BXP",
       "company": "BXP, Inc. Common Stock",
       "sector": "OTHER",
@@ -29004,6 +27266,17 @@
     {
       "ticker": "BRO",
       "company": "Brown & Brown, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "BR",
+      "company": "Broadridge Financial Solutions, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -29585,6 +27858,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "CPB",
+      "company": "The Campbell's Company - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "TXT",
       "company": "Textron",
       "sector": "ITA",
@@ -29838,6 +28122,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "REGN",
+      "company": "Regeneron",
+      "sector": "XBI",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "REG",
       "company": "Regency Centers Corporation - Common Stock",
       "sector": "OTHER",
@@ -29863,6 +28158,17 @@
       "ticker": "PWR",
       "company": "Quanta Services",
       "sector": "PAVE",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "QCOM",
+      "company": "Qualcomm",
+      "sector": "SMH",
       "buy_count": 1,
       "sell_count": 0,
       "net": 1,
@@ -29973,6 +28279,17 @@
       "ticker": "PEP",
       "company": "PepsiCo, Inc. - Common Stock",
       "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "PYPL",
+      "company": "PayPal Holdings",
+      "sector": "FINX",
       "buy_count": 1,
       "sell_count": 0,
       "net": 1,
@@ -30278,6 +28595,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "MDT",
+      "company": "Medtronic plc. Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "BUD",
       "company": "Anheuser-Busch Inbev SA Sponsored ADR (Belgium)",
       "sector": "OTHER",
@@ -30399,8 +28727,30 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "LRCX",
+      "company": "Lam Research",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "LH",
       "company": "Labcorp Holdings Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "KHC",
+      "company": "The Kraft Heinz Company - Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -30566,17 +28916,6 @@
     {
       "ticker": "DOC",
       "company": "Healthpeak Properties, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "HCA",
-      "company": "HCA Healthcare, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -30927,8 +29266,30 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "DPZ",
+      "company": "Domino's Pizza Inc - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "DLR",
       "company": "Digital Realty Trust, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "DELL",
+      "company": "Dell Technologies Inc. Class C Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -30971,6 +29332,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "CRWD",
+      "company": "CrowdStrike",
+      "sector": "CIBR",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "CTVA",
       "company": "Corteva",
       "sector": "MOO",
@@ -30995,6 +29367,17 @@
     {
       "ticker": "CPRT",
       "company": "Copart, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "STZ",
+      "company": "Constellation Brands, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -31039,6 +29422,17 @@
     {
       "ticker": "C",
       "company": "Citigroup, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "CB",
+      "company": "Chubb Limited  Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -31136,6 +29530,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "BMY",
+      "company": "Bristol-Myers Squibb Company Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "BX",
       "company": "Blackstone Inc. Common Stock",
       "sector": "OTHER",
@@ -31180,6 +29585,17 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "AZO",
+      "company": "AutoZone, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "ADSK",
       "company": "Autodesk, Inc. - Common Stock",
       "sector": "OTHER",
@@ -31193,6 +29609,17 @@
     {
       "ticker": "ACGL",
       "company": "Arch Capital Group Ltd. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "APP",
+      "company": "Applovin Corporation - Class A Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -31219,6 +29646,17 @@
       "buy_count": 1,
       "sell_count": 0,
       "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMGN",
+      "company": "Amgen",
+      "sector": "XBI",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
       "member_count": 1,
       "total_trades": 1,
       "last_filed": "07/21/2026"
@@ -31653,17 +30091,6 @@
       "last_filed": "06/16/2026"
     },
     {
-      "ticker": "PTON",
-      "company": "Peloton Interactive, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "06/07/2026"
-    },
-    {
       "ticker": "TSM",
       "company": "Taiwan Semiconductor",
       "sector": "SMH",
@@ -31673,314 +30100,6 @@
       "member_count": 1,
       "total_trades": 1,
       "last_filed": "6/16/2026"
-    },
-    {
-      "ticker": "ARQT",
-      "company": "Arcutis Biotherapeutics, Inc. - Common stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "BBIO",
-      "company": "BridgeBio Pharma, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "CVNA",
-      "company": "Carvana Co. Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "CLX",
-      "company": "Clorox Company",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "CTRA",
-      "company": "Coterra Energy Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "CSW",
-      "company": "CSW Industrials, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "DCO",
-      "company": "Ducommun Incorporated Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "FN",
-      "company": "Fabrinet Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "FDS",
-      "company": "FactSet Research Systems Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "GEHCV",
-      "company": "GE HealthCare Technologies Inc.",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "INDB",
-      "company": "Independent Bank Corp. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "LGND",
-      "company": "Ligand Pharmaceuticals Incorporated Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "MTSI",
-      "company": "MACOM Technology Solutions Holdings, Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "MDB",
-      "company": "MongoDB, Inc. - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "NOVT",
-      "company": "Novanta Inc. - Common Shares",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "PSKY",
-      "company": "Paramount Skydance Corporation - Class B Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "PWP",
-      "company": "Perella Weinberg Partners - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "PRIM",
-      "company": "Primoris Services",
-      "sector": "PAVE",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "RVTY",
-      "company": "Revvity, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "RNMBF",
-      "company": "Rheinmetall Ag Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "ROP",
-      "company": "Roper Technologies, Inc.",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "SARO",
-      "company": "StandardAero, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "THLEF",
-      "company": "Thales Ordinary Shares",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "TOELF",
-      "company": "TOKYO ELECTRON",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "TPH",
-      "company": "Tri Pointe Homes, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "TRMB",
-      "company": "Trimble Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "TYL",
-      "company": "Tyler Technologies, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "VIAV",
-      "company": "Viavi Solutions Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
     },
     {
       "ticker": "AJINF",
@@ -31996,6 +30115,17 @@
     {
       "ticker": "AGX",
       "company": "Argan, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "BNPQF",
+      "company": "BNP Paribas Ordinary Shares",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -32082,6 +30212,17 @@
       "last_filed": "7/2/2026"
     },
     {
+      "ticker": "FSV",
+      "company": "FirstService Corporation - Common Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
       "ticker": "FOX",
       "company": "Fox Corporation - Class B Common Stock",
       "sector": "OTHER",
@@ -32093,8 +30234,30 @@
       "last_filed": "7/2/2026"
     },
     {
+      "ticker": "HQY",
+      "company": "HealthEquity, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
       "ticker": "JKHY",
       "company": "Jack Henry & Associates, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "MELI",
+      "company": "MercadoLibre, Inc. - Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
@@ -32126,9 +30289,53 @@
       "last_filed": "7/2/2026"
     },
     {
+      "ticker": "SFTBF",
+      "company": "SOFTBANK GROUP CORP",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "STRL",
+      "company": "Sterling Infrastructure, Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
       "ticker": "MSTR",
       "company": "Strategy (MicroStrategy)",
       "sector": "FINX",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TEL",
+      "company": "TE Connectivity plc Ordinary Shares",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "TCBI",
+      "company": "Texas Capital Bancshares, Inc. - Common Stock",
+      "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
       "net": 1,
@@ -32159,12 +30366,45 @@
       "last_filed": "7/2/2026"
     },
     {
+      "ticker": "TTD",
+      "company": "The Trade Desk, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
       "ticker": "MTN",
       "company": "Vail Resorts, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
       "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "VLTO",
+      "company": "Veralto Corp Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/2/2026"
+    },
+    {
+      "ticker": "WRB",
+      "company": "W.R. Berkley Corporation Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
       "member_count": 1,
       "total_trades": 1,
       "last_filed": "7/2/2026"
@@ -32346,6 +30586,17 @@
       "last_filed": "7/15/2026"
     },
     {
+      "ticker": "FMAO",
+      "company": "Farmers & Merchants Bancorp, Inc.",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/24/2026"
+    },
+    {
       "ticker": "IMCB",
       "company": "Ishares Morningstar ETF Mid Cap",
       "sector": "OTHER",
@@ -32377,6 +30628,17 @@
       "member_count": 1,
       "total_trades": 1,
       "last_filed": "7/9/2026"
+    },
+    {
+      "ticker": "MNST",
+      "company": "Monster Beverage Corporation - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "net": 1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "FE",
@@ -32423,39 +30685,6 @@
       "last_filed": "7/17/2026"
     },
     {
-      "ticker": "AESI",
-      "company": "Atlas Energy Solutions Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/10/2026"
-    },
-    {
-      "ticker": "SHW",
-      "company": "Sherwin-Williams Company",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
-      "ticker": "WHR",
-      "company": "Whirlpool Corporation Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "net": -1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/8/2026"
-    },
-    {
       "ticker": "VOYG",
       "company": "Voyager Technologies, Inc. Class A Common Stock",
       "sector": "OTHER",
@@ -32467,6 +30696,17 @@
       "last_filed": "7/7/2026"
     },
     {
+      "ticker": "ARCC",
+      "company": "Ares Capital Corporation - Closed End Fund",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "net": -1,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/24/2026"
+    },
+    {
       "ticker": "TCNNF",
       "company": "TRULIEVE CANNABIS CORP",
       "sector": "OTHER",
@@ -32476,28 +30716,6 @@
       "member_count": 1,
       "total_trades": 1,
       "last_filed": "6/26/2026"
-    },
-    {
-      "ticker": "AEP",
-      "company": "American Electric Power",
-      "sector": "GRID",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/12/2026"
-    },
-    {
-      "ticker": "KR",
-      "company": "Kroger Company",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "net": 1,
-      "member_count": 1,
-      "total_trades": 1,
-      "last_filed": "6/12/2026"
     },
     {
       "ticker": "IBP",
