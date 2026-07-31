@@ -116,6 +116,21 @@
   .detail-eyebrow { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); display: block; margin: 14px 0 8px; }
   .detail-eyebrow:first-child { margin-top: 0; }
   .detail-row { color: var(--text-dim); margin-bottom: 6px; }
+  .impact-box { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 4px; }
+  .impact-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .impact-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .impact-badge.positive { background: #12321f; color: var(--good); border: 1px solid #1f5236; }
+  .impact-badge.negative { background: #3a1a1a; color: var(--bad); border: 1px solid #522525; }
+  .impact-badge.mixed { background: #3a2f18; color: var(--warn); border: 1px solid #4a3d20; }
+  .impact-badge.neutral { background: var(--line-soft); color: var(--text-dim); border: 1px solid var(--line); }
+  .impact-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+  .impact-text { color: var(--text); font-size: 13px; line-height: 1.6; }
+  .impact-wl { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+  .impact-wl-group { font-size: 11px; }
+  .impact-wl-group .wl-label { color: var(--text-faint); margin-right: 6px; }
+  .wl-chip { display: inline-block; font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin: 1px 3px 1px 0; }
+  .wl-chip.win { background: #12321f; color: var(--good); }
+  .wl-chip.lose { background: #3a1a1a; color: var(--bad); }
   .bill-summary { color: var(--text-dim); font-size: 12.5px; line-height: 1.6; margin-bottom: 4px; }
   .bill-summary p { margin: 0 0 8px; }
   .bill-summary p:last-child { margin-bottom: 0; }
@@ -527,6 +542,19 @@
         <div class="chevron">›</div>
       </button>
       <div class="card-detail"><div class="card-detail-inner">
+        ${b.impact_analysis ? `
+        <div class="impact-box">
+          <div class="impact-head">
+            <span class="impact-label">Market impact — how this helps or hurts stocks</span>
+            <span class="impact-badge ${esc(b.impact_direction || "neutral")}">${esc(b.impact_direction || "neutral")}</span>
+          </div>
+          <div class="impact-text">${esc(b.impact_analysis)}</div>
+          ${(b.impact_winners && b.impact_winners.length) || (b.impact_losers && b.impact_losers.length) ? `
+            <div class="impact-wl">
+              ${b.impact_winners && b.impact_winners.length ? `<div class="impact-wl-group"><span class="wl-label">Likely helped</span>${b.impact_winners.map(t => `<span class="wl-chip win">${esc(t)}</span>`).join("")}</div>` : ""}
+              ${b.impact_losers && b.impact_losers.length ? `<div class="impact-wl-group"><span class="wl-label">Likely hurt</span>${b.impact_losers.map(t => `<span class="wl-chip lose">${esc(t)}</span>`).join("")}</div>` : ""}
+            </div>` : ""}
+        </div>` : ""}
         <span class="detail-eyebrow">What this bill would do</span>
         ${b.summary
           ? `<div class="bill-summary">${esc(b.summary).replace(/\n\n/g, "</p><p>").replace(/^/, "<p>").replace(/$/, "</p>")}</div>`

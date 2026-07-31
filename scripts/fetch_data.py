@@ -46,6 +46,8 @@ REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
 
 CONGRESS_API_KEY = os.environ.get("CONGRESS_API_KEY")
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+IMPACT_MODEL = "claude-opus-4-8"
 
 
 def load_sectors():
@@ -676,6 +678,135 @@ def fetch_house_trades(ticker_index):
 
 
 # ---------------------------------------------------------------------------
+# Market-impact analysis -- how each bill would help or hurt its stocks.
+# Generated at build time with Claude, cached across runs so repeated
+# refreshes (for fresher disclosure data) don't re-pay for unchanged bills.
+# ---------------------------------------------------------------------------
+
+import hashlib
+
+IMPACT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "direction": {"type": "string", "enum": ["positive", "negative", "mixed", "neutral"]},
+        "analysis": {"type": "string"},
+        "winners": {"type": "array", "items": {"type": "string"}},
+        "losers": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["direction", "analysis", "winners", "losers"],
+    "additionalProperties": False,
+}
+
+
+def _impact_fingerprint(bill):
+    """Cache key: re-analyze only when the substance we feed the model changes."""
+    basis = "|".join([
+        bill.get("number", ""),
+        bill.get("title", ""),
+        bill.get("summary", "") or "",
+        bill.get("status", ""),
+    ])
+    return hashlib.sha256(basis.encode("utf-8")).hexdigest()
+
+
+def load_impact_cache():
+    """Read impact analyses from the previously committed data.json so a run
+    only calls Claude for new or changed bills."""
+    cache = {}
+    if not os.path.exists(OUTPUT_PATH):
+        return cache
+    try:
+        with open(OUTPUT_PATH, encoding="utf-8") as f:
+            prev = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return cache
+    for b in prev.get("bills", []):
+        if b.get("impact_analysis") and b.get("impact_fingerprint"):
+            cache[b["impact_fingerprint"]] = {
+                "impact_direction": b.get("impact_direction"),
+                "impact_analysis": b.get("impact_analysis"),
+                "impact_winners": b.get("impact_winners", []),
+                "impact_losers": b.get("impact_losers", []),
+            }
+    return cache
+
+
+def generate_bill_impact(client, bill):
+    tickers = [f"{s['ticker']} ({s['name']})" for s in bill.get("beneficiary_stocks", [])]
+    summary = bill.get("summary") or "(No official summary published yet.)"
+    prompt = (
+        "You are a policy-to-markets analyst. Given a piece of U.S. federal legislation and a list of "
+        "publicly traded companies in its sector, assess how the bill -- IF ENACTED -- would most "
+        "plausibly help or hurt those specific companies.\n\n"
+        f"BILL: {bill.get('number')} — {bill.get('title')}\n"
+        f"SECTOR: {bill.get('sector')}\n"
+        f"STATUS: {bill.get('status')}\n"
+        f"SUMMARY: {summary}\n\n"
+        f"SECTOR COMPANIES: {', '.join(tickers) if tickers else '(none tracked)'}\n\n"
+        "Write 2–4 plain-English sentences explaining the concrete mechanism of help or harm "
+        "(funding, mandates, demand creation, compliance cost, competitive shifts) and name specific "
+        "companies where the effect is clearest. Set `direction` to the net effect on the sector basket. "
+        "Put tickers most likely to benefit in `winners` and any likely to be hurt in `losers` -- only use "
+        "tickers from the provided list, and leave an array empty if none clearly apply. Do not give "
+        "investment advice or price targets; describe policy exposure only."
+    )
+    resp = client.messages.create(
+        model=IMPACT_MODEL,
+        max_tokens=1500,
+        output_config={"effort": "medium", "format": {"type": "json_schema", "schema": IMPACT_SCHEMA}},
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = next((b.text for b in resp.content if b.type == "text"), "{}")
+    return json.loads(text)
+
+
+def attach_impact_analysis(bills):
+    """Populate impact_* fields on each bill. Skips gracefully (leaving the
+    fields empty) when no ANTHROPIC_API_KEY is configured, so the pipeline
+    still produces a valid site without it."""
+    for b in bills:
+        b["impact_fingerprint"] = _impact_fingerprint(b)
+        b.setdefault("impact_analysis", "")
+        b.setdefault("impact_direction", "")
+        b.setdefault("impact_winners", [])
+        b.setdefault("impact_losers", [])
+
+    if not ANTHROPIC_API_KEY:
+        print("  ANTHROPIC_API_KEY not set -- skipping bill impact analysis", file=sys.stderr)
+        return bills
+
+    try:
+        import anthropic
+    except ImportError:
+        print("  WARN: anthropic package not installed -- skipping impact analysis", file=sys.stderr)
+        return bills
+
+    cache = load_impact_cache()
+    client = anthropic.Anthropic()
+    generated = 0
+    reused = 0
+    print(f"Generating market-impact analysis for {len(bills)} bills (cached where unchanged)...", file=sys.stderr)
+    for b in bills:
+        fp = b["impact_fingerprint"]
+        if fp in cache:
+            b.update(cache[fp])
+            reused += 1
+            continue
+        try:
+            result = generate_bill_impact(client, b)
+            b["impact_direction"] = result.get("direction", "")
+            b["impact_analysis"] = result.get("analysis", "")
+            b["impact_winners"] = result.get("winners", [])
+            b["impact_losers"] = result.get("losers", [])
+            generated += 1
+        except Exception as e:  # never let one bad analysis kill the run
+            print(f"  WARN: impact analysis failed for {b.get('number')}: {e}", file=sys.stderr)
+        time.sleep(0.1)
+    print(f"  impact analysis: {generated} generated, {reused} reused from cache", file=sys.stderr)
+    return bills
+
+
+# ---------------------------------------------------------------------------
 # Assembly
 # ---------------------------------------------------------------------------
 
@@ -959,6 +1090,7 @@ def main():
 
     bills = [analyze_appropriation(b) for b in bills]
     bills = attach_beneficiary_stocks(bills, sectors)
+    bills = attach_impact_analysis(bills)
     bills = flag_pre_filing_trades(bills, trades)
     bills = attach_bill_trades(bills, trades)
     bills = mark_key_bills(bills)
