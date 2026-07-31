@@ -116,6 +116,21 @@
   .detail-eyebrow { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); display: block; margin: 14px 0 8px; }
   .detail-eyebrow:first-child { margin-top: 0; }
   .detail-row { color: var(--text-dim); margin-bottom: 6px; }
+  .bill-summary { color: var(--text-dim); font-size: 12.5px; line-height: 1.6; margin-bottom: 4px; }
+  .bill-summary p { margin: 0 0 8px; }
+  .bill-summary p:last-child { margin-bottom: 0; }
+
+  /* ---------- Charts ---------- */
+  .chart-panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px 12px; margin-bottom: 8px; }
+  .chart-title { font-family: var(--display); font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 2px; }
+  .chart-sub { font-size: 10.5px; color: var(--text-faint); margin-bottom: 12px; }
+  .chart-legend { display: flex; gap: 14px; margin-bottom: 10px; font-size: 10.5px; color: var(--text-dim); }
+  .chart-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .chart-legend i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+  .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  svg text { font-family: var(--mono); }
+  .split-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--line-soft); margin-top: 6px; }
+  .split-bar i { display: block; height: 100%; border-radius: 3px; }
   .dollar-chips, .stock-chips { display: flex; gap: 6px; flex-wrap: wrap; }
   .dollar-chip { font-size: 11px; font-weight: 600; color: var(--warn); background: #2e2818; border: 1px solid #45391f; padding: 2px 9px; border-radius: 4px; }
   .stock-chip { font-size: 11px; padding: 3px 9px; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--line); }
@@ -187,6 +202,7 @@
     .momentum-block { text-align: left; }
     .momentum-bar-track { width: 100%; }
     .member-grid { grid-template-columns: 1fr; }
+    .chart-grid-2 { grid-template-columns: 1fr; }
     .methodology-grid { grid-template-columns: 1fr; }
     .chevron { display: none; }
     table.data-table { font-size: 11px; }
@@ -300,6 +316,98 @@
 
   function tradeTypeClass(t) {
     return "type-" + String(t || "").toLowerCase().split(" ")[0].replace(/[^a-z]/g, "");
+  }
+
+  function isBuy(t) { return String(t || "").toLowerCase().startsWith("purchase"); }
+  function parseMDY(s) {
+    const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(s || ""));
+    return m ? new Date(+m[3], +m[1] - 1, +m[2]) : null;
+  }
+
+  /* ---------- Inline-SVG charts (self-contained, dark surface) ---------- */
+  // Back-to-back "tornado": sells extend left (red), buys extend right (green),
+  // net labeled numerically so identity is never colour-alone.
+  function chartDiverging(rows, { max = null } = {}) {
+    if (!rows.length) return `<div class="empty-note">Not enough data to chart.</div>`;
+    max = max || Math.max(1, ...rows.map(r => Math.max(r.buy, r.sell)));
+    const W = 640, rowH = 22, padT = 4, labelW = 62, netW = 74;
+    const half = (W - labelW - netW) / 2;
+    const cx = labelW + half;
+    const H = rows.length * rowH + padT * 2;
+    const bars = rows.map((r, i) => {
+      const y = padT + i * rowH + 3, bh = rowH - 8;
+      const sw = (r.sell / max) * half, bw = (r.buy / max) * half;
+      const netCls = r.net > 0 ? "var(--good)" : r.net < 0 ? "var(--bad)" : "var(--text-faint)";
+      return `
+        <text x="0" y="${y + bh - 2}" fill="var(--text)" font-size="11" font-weight="600">${esc(r.label)}</text>
+        ${sw > 0 ? `<rect x="${cx - sw}" y="${y}" width="${sw}" height="${bh}" rx="3" fill="var(--bad)"/>` : ""}
+        ${bw > 0 ? `<rect x="${cx + 2}" y="${y}" width="${bw}" height="${bh}" rx="3" fill="var(--good)"/>` : ""}
+        <text x="${W}" y="${y + bh - 2}" text-anchor="end" fill="${netCls}" font-size="11" font-weight="600">${r.net > 0 ? "+" : ""}${r.net} net</text>
+        <text x="${cx - sw - 4}" y="${y + bh - 2}" text-anchor="end" fill="var(--text-faint)" font-size="9.5">${r.sell || ""}</text>
+        <text x="${cx + bw + 6}" y="${y + bh - 2}" fill="var(--text-faint)" font-size="9.5">${r.buy || ""}</text>`;
+    }).join("");
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Net buying vs selling by ticker">
+      <line x1="${cx}" y1="0" x2="${cx}" y2="${H}" stroke="var(--line)" stroke-width="1"/>
+      ${bars}
+    </svg>`;
+  }
+
+  // Horizontal buy/sell stacked bars (most-active ranking).
+  function chartStacked(rows, { max = null } = {}) {
+    if (!rows.length) return `<div class="empty-note">Not enough data to chart.</div>`;
+    max = max || Math.max(1, ...rows.map(r => r.buy + r.sell));
+    const W = 640, rowH = 24, padT = 4, labelW = 190, valW = 58;
+    const barW = W - labelW - valW;
+    const H = rows.length * rowH + padT * 2;
+    const bars = rows.map((r, i) => {
+      const y = padT + i * rowH + 4, bh = rowH - 9;
+      const bw = (r.buy / max) * barW, sw = (r.sell / max) * barW;
+      return `
+        <text x="0" y="${y + bh - 2}" fill="var(--text)" font-size="11" font-weight="600">${esc(r.label)}</text>
+        ${bw > 0 ? `<rect x="${labelW}" y="${y}" width="${bw}" height="${bh}" rx="3" fill="var(--good)"/>` : ""}
+        ${sw > 0 ? `<rect x="${labelW + bw + 2}" y="${y}" width="${sw}" height="${bh}" rx="3" fill="var(--bad)"/>` : ""}
+        <text x="${W}" y="${y + bh - 2}" text-anchor="end" fill="var(--text-dim)" font-size="11">${r.buy + r.sell}</text>`;
+    }).join("");
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Trade counts by member">${bars}</svg>`;
+  }
+
+  // Weekly buy/sell columns over time.
+  function chartTimeline(trades) {
+    const map = new Map();
+    trades.forEach(t => {
+      const d = parseMDY(t.transaction_date); if (!d) return;
+      const ws = new Date(d); ws.setDate(d.getDate() - d.getDay()); ws.setHours(0, 0, 0, 0);
+      const key = ws.getTime();
+      const e = map.get(key) || { ws, buy: 0, sell: 0 };
+      if (isBuy(t.type)) e.buy++; else e.sell++;
+      map.set(key, e);
+    });
+    const weeks = [...map.values()].sort((a, b) => a.ws - b.ws).slice(-12);
+    if (weeks.length < 2) return `<div class="empty-note">Not enough dated trades to chart a timeline.</div>`;
+    const max = Math.max(1, ...weeks.map(w => Math.max(w.buy, w.sell)));
+    const W = 640, H = 150, padL = 8, padR = 8, padT = 8, padB = 22;
+    const plotH = H - padT - padB, plotW = W - padL - padR;
+    const groupW = plotW / weeks.length, barW = Math.min(14, groupW / 2 - 2);
+    const cols = weeks.map((w, i) => {
+      const gx = padL + i * groupW + groupW / 2;
+      const bh = (w.buy / max) * plotH, sh = (w.sell / max) * plotH;
+      return `
+        <rect x="${gx - barW - 1}" y="${padT + plotH - bh}" width="${barW}" height="${bh}" rx="3" fill="var(--good)"/>
+        <rect x="${gx + 1}" y="${padT + plotH - sh}" width="${barW}" height="${sh}" rx="3" fill="var(--bad)"/>
+        <text x="${gx}" y="${H - 6}" text-anchor="middle" fill="var(--text-faint)" font-size="9">${w.ws.toLocaleDateString("en-US", { month: "short", day: "numeric" })}</text>`;
+    }).join("");
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Weekly buys and sells over time">
+      <line x1="${padL}" y1="${padT + plotH}" x2="${W - padR}" y2="${padT + plotH}" stroke="var(--line)" stroke-width="1"/>
+      ${cols}
+    </svg>`;
+  }
+
+  function buySellLegend() {
+    return `<div class="chart-legend"><span><i style="background:var(--good)"></i>Buys / Purchases</span><span><i style="background:var(--bad)"></i>Sells / Exchanges</span></div>`;
+  }
+  function splitBar(buy, sell) {
+    const total = buy + sell || 1;
+    return `<div class="split-bar"><i style="width:${(buy / total) * 100}%; background:var(--good)"></i><i style="width:${(sell / total) * 100}%; background:var(--bad)"></i></div>`;
   }
 
   async function loadData() {
@@ -419,12 +527,16 @@
         <div class="chevron">›</div>
       </button>
       <div class="card-detail"><div class="card-detail-inner">
+        <span class="detail-eyebrow">What this bill would do</span>
+        ${b.summary
+          ? `<div class="bill-summary">${esc(b.summary).replace(/\n\n/g, "</p><p>").replace(/^/, "<p>").replace(/$/, "</p>")}</div>`
+          : `<div class="empty-note">No plain-language summary has been published for this bill yet (common for recently introduced bills). See the latest action below or the full text on Congress.gov.</div>`}
         <span class="detail-eyebrow">Latest action</span>
         <div class="detail-row">${fmtDate(b.latest_action?.date)} — ${esc(b.latest_action?.text || "—")}</div>
         ${b.dollar_figures && b.dollar_figures.length ? `
           <span class="detail-eyebrow">Funding figures cited</span>
           <div class="dollar-chips">${b.dollar_figures.map(d => `<span class="dollar-chip">${esc(d)}</span>`).join("")}</div>` : ""}
-        <span class="detail-eyebrow">Stocks positioned to benefit — ${esc(sc.name)}</span>
+        <span class="detail-eyebrow">Businesses positioned to benefit — ${esc(sc.name)}</span>
         ${(b.beneficiary_stocks || []).length === 0
           ? `<div class="empty-note">No tracked companies for this sector.</div>`
           : `<div class="stock-chips">${b.beneficiary_stocks.map(s => `<span class="stock-chip"><b>${esc(s.ticker)}</b> <span>${esc(s.name)}</span></span>`).join("")}</div>`}
@@ -444,9 +556,19 @@
   function renderPoliticiansView() {
     let members = (DATA.members || []);
     if (activeSector !== "ALL") members = members.filter(m => (m.sectors || []).includes(activeSector));
-    const visible = members.slice(0, membersShown);
     if (members.length === 0) return `<div class="empty-note">No members with disclosed trades in this sector for the current window.</div>`;
+    const visible = members.slice(0, membersShown);
+    const chartRows = members.slice(0, 12).map(m => ({
+      label: m.member.replace(/^(Sen\.|Rep\.)\s/, "").replace(/\s*\([^)]*\)\s*$/, ""),
+      buy: m.buy_count, sell: m.sell_count,
+    }));
     return `<section class="data-section">
+      <div class="chart-panel">
+        <div class="chart-title">Most active traders</div>
+        <div class="chart-sub">Members ranked by disclosed trade count${activeSector !== "ALL" ? " in this sector" : ""} — buys vs sells</div>
+        ${buySellLegend()}
+        ${chartStacked(chartRows)}
+      </div>
       <div class="section-head"><span class="section-title">Politicians</span><span class="section-count">${members.length} with disclosed trades · most active first</span></div>
       <div class="member-grid">${visible.map(renderMemberCard).join("")}</div>
       ${members.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, members.length - membersShown)} more</button>` : ""}
@@ -455,7 +577,11 @@
 
   function renderMemberCard(m) {
     const open = openId === m.member;
-    const memberTrades = open ? DATA.trades.filter(t => t.member === m.member).sort((a,b)=>new Date(b.filed_date)-new Date(a.filed_date)) : [];
+    // Sort by actual TRANSACTION date, newest first -- "most recent by date".
+    const memberTrades = open
+      ? DATA.trades.filter(t => t.member === m.member)
+          .sort((a, b) => (parseMDY(b.transaction_date) || 0) - (parseMDY(a.transaction_date) || 0))
+      : [];
     return `
     <div class="member-card ${open ? "card-open" : ""}" data-id="${esc(m.member)}" data-kind="member">
       <button class="member-head">
@@ -464,17 +590,20 @@
           <span><b>${m.trade_count}</b> trades</span>
           <span class="buys">${m.buy_count} buys</span>
           <span class="sells">${m.sell_count} sells</span>
-          <span><b>${m.distinct_tickers}</b> tickers</span>
+          <span>last ${fmtDate(parseMDY(m.last_filed) ? parseMDY(m.last_filed).toISOString() : null)}</span>
         </div>
-        <div class="member-tickers">${(m.top_tickers || []).map(t => `<span class="mini-ticker"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
+        ${splitBar(m.buy_count, m.sell_count)}
+        <div class="member-tickers" style="margin-top:8px;">${(m.top_tickers || []).map(t => `<span class="mini-ticker"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
       </button>
       <div class="card-detail"><div class="card-detail-inner">
-        <span class="detail-eyebrow">Disclosed portfolio — most recent first (${m.trade_count})</span>
+        <span class="detail-eyebrow">Trading activity over time</span>
+        ${chartTimeline(memberTrades)}
+        <span class="detail-eyebrow">Disclosed portfolio — newest trade date first (${m.trade_count})</span>
         <div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Filed</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Amount</th><th>Tx Date</th><th></th></tr></thead>
+          <thead><tr><th>Tx Date</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Amount</th><th>Filed</th><th></th></tr></thead>
           <tbody>${memberTrades.slice(0,60).map(t => `
-            <tr><td>${esc(t.filed_date)}</td><td class="row-ticker">${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
-            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${esc(t.amount_range)}</td><td>${esc(t.transaction_date)}</td>
+            <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td class="row-ticker">${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
+            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${esc(t.amount_range)}</td><td>${esc(t.filed_date)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
         </table></div>
         ${memberTrades.length > 60 ? `<div class="empty-note">Showing 60 of ${memberTrades.length} disclosed trades.</div>` : ""}
@@ -531,7 +660,29 @@
         ${trades.length > tradesShown ? `<button class="show-more-btn" id="tradesMore">Show ${Math.min(TRADES_PAGE, trades.length - tradesShown)} more</button>` : ""}
         </div>`;
 
+    // Headline consensus chart: top tickers by total activity, back-to-back buy/sell.
+    const chartRows = signals.slice()
+      .sort((a, b) => b.total_trades - a.total_trades).slice(0, 14)
+      .map(s => ({ label: s.ticker, buy: s.buy_count, sell: s.sell_count, net: s.net }));
+    const chartHtml = chartRows.length
+      ? `<div class="chart-panel">
+          <div class="chart-title">What Congress is trading${activeSector !== "ALL" ? " — " + esc(sectorMeta(activeSector).short) : ""}</div>
+          <div class="chart-sub">Most-traded tickers — sells (left) vs buys (right), with net direction</div>
+          ${buySellLegend()}
+          ${chartDiverging(chartRows)}
+        </div>`
+      : "";
+    const timelineHtml = trades.length
+      ? `<div class="chart-panel">
+          <div class="chart-title">Trading activity over time</div>
+          <div class="chart-sub">Disclosed transactions per week, by trade date</div>
+          ${buySellLegend()}
+          ${chartTimeline(trades)}
+        </div>`
+      : "";
+
     return `<section class="data-section">
+        <div class="chart-grid-2">${chartHtml}${timelineHtml}</div>
         <div class="section-head"><span class="section-title">Stock Signals</span><span class="section-count">${signals.length} tickers · ranked by breadth of activity</span></div>
         ${signalsHtml}
       </section>

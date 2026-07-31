@@ -270,11 +270,50 @@ def fetch_amendments(bill):
     return out
 
 
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _html_to_text(html):
+    """Congress.gov summaries are HTML. Flatten to readable plain text."""
+    text = re.sub(r"</p\s*>", "\n\n", html or "", flags=re.IGNORECASE)
+    text = re.sub(r"<br\s*/?>", "\n", text, flags=re.IGNORECASE)
+    text = _TAG_RE.sub("", text)
+    text = (text.replace("&nbsp;", " ").replace("&amp;", "&")
+                .replace("&lt;", "<").replace("&gt;", ">").replace("&#39;", "'")
+                .replace("&quot;", '"'))
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def fetch_bill_summary(bill):
+    """CRS-written summary of what the bill actually does. Returns plain text
+    of the most recent summary version, or '' if none has been published yet
+    (common for freshly-introduced bills)."""
+    bill_type_map = {"HR": "hr", "S": "s", "HJRES": "hjres", "SJRES": "sjres",
+                     "HCONRES": "hconres", "SCONRES": "sconres", "HRES": "hres", "SRES": "sres"}
+    parts = bill["number"].split(" ", 1)
+    bill_type = bill_type_map.get(parts[0].replace(".", "").upper(), parts[0].lower())
+    number = parts[1] if len(parts) > 1 else ""
+    try:
+        data = congress_get(f"bill/{CONGRESS}/{bill_type}/{number}/summaries")
+    except requests.RequestException as e:
+        print(f"  WARN: could not fetch summary for {bill['number']}: {e}", file=sys.stderr)
+        return ""
+    summaries = data.get("summaries") or []
+    if not summaries:
+        return ""
+    # summaries are chronological; the last one is the most current version
+    latest = summaries[-1]
+    return _html_to_text(latest.get("text", ""))
+
+
 def enrich_bills(bills):
-    print("Fetching sponsor / cosponsor / amendment detail for matched bills...", file=sys.stderr)
+    print("Fetching summary / sponsor / cosponsor / amendment detail for matched bills...", file=sys.stderr)
     for bill in bills:
         bill, cosponsor_count = fetch_bill_details(bill)
         bill["amendments"] = fetch_amendments(bill)
+        bill["summary"] = fetch_bill_summary(bill)
         bill["momentum"] = compute_momentum(bill, cosponsor_count)
         time.sleep(0.15)
     return bills
