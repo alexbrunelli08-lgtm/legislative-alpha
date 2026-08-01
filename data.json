@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T03:15:47Z",
+  "generated_at": "2026-08-01T20:37:47Z",
   "congress": 119,
   "overview": {
     "total_trades": 1184,
@@ -25,7 +25,7 @@
     "top_bought": {
       "ticker": "INTC",
       "company": "Intel",
-      "net_value": 2992000
+      "net_value": 3000000
     },
     "top_sold": {
       "ticker": "WMB",
@@ -112,19 +112,6 @@
         "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034906.pdf"
       },
       {
-        "member": "Rep. Steve Cohen (TN09)",
-        "chamber": "House",
-        "ticker": null,
-        "company": "US Treas Bills MAT 11/19/26",
-        "sector": "OTHER",
-        "type": "Purchase",
-        "amount_range": "$500,001 - $1,000,000",
-        "est_amount": 750000,
-        "transaction_date": "05/27/2026",
-        "filed_date": "6/17/2026",
-        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034796.pdf"
-      },
-      {
         "member": "Rep. Nancy Pelosi (CA11)",
         "chamber": "House",
         "ticker": "UBER",
@@ -136,9 +123,48 @@
         "transaction_date": "05/29/2026",
         "filed_date": "6/23/2026",
         "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034836.pdf"
+      },
+      {
+        "member": "Rep. Scott H. Peters (CA50)",
+        "chamber": "House",
+        "ticker": null,
+        "company": "CA Infrastructure",
+        "sector": "OTHER",
+        "type": "Sale",
+        "amount_range": "$500,001 - $1,000,000",
+        "est_amount": 750000,
+        "transaction_date": "05/01/2026",
+        "filed_date": "6/19/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034784.pdf"
       }
     ],
     "latest_trades": [
+      {
+        "member": "Rep. Cleo Fields (LA06)",
+        "chamber": "House",
+        "ticker": "TSM",
+        "company": "Taiwan Semiconductor",
+        "sector": "SMH",
+        "type": "Purchase",
+        "amount_range": "$1,001 - $15,000",
+        "est_amount": 8000,
+        "transaction_date": "07/10/2026",
+        "filed_date": "7/30/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+      },
+      {
+        "member": "Rep. Kelly Louise Morrison (MN03)",
+        "chamber": "House",
+        "ticker": "HONAV",
+        "company": "Honeywell Aerospace Inc. - Common Stock",
+        "sector": "OTHER",
+        "type": "Exchange",
+        "amount_range": "$15,001 - $50,000",
+        "est_amount": 32500,
+        "transaction_date": "06/29/2026",
+        "filed_date": "7/30/2026",
+        "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034972.pdf"
+      },
       {
         "member": "Sen. David H McCormick",
         "chamber": "Senate",
@@ -268,32 +294,6 @@
         "transaction_date": "06/29/2026",
         "filed_date": "07/29/2026",
         "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PHILADELPHIA PA AUTH FOR INDL REVRate/Coupon:5%Matures:2031-12-01",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "WASHINGTON ST GORate/Coupon:5%Matures:2033-02-01",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$15,001 - $50,000",
-        "est_amount": 32500,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
       }
     ]
   },
@@ -303,20 +303,20 @@
       "short": "Infrastructure",
       "etf": "PAVE",
       "color": "#C98A3B",
-      "bill_count": 10,
+      "bill_count": 11,
       "appropriation_count": 1,
       "trade_count": 8,
       "stock_count": 25,
-      "avg_momentum": 36
+      "avg_momentum": 35
     },
     "CIBR": {
       "name": "Cybersecurity",
       "short": "Cybersecurity",
       "etf": "CIBR",
       "color": "#3F7469",
-      "bill_count": 6,
+      "bill_count": 5,
       "appropriation_count": 0,
-      "trade_count": 16,
+      "trade_count": 15,
       "stock_count": 22,
       "avg_momentum": 35
     },
@@ -325,9 +325,9 @@
       "short": "Grid",
       "etf": "GRID",
       "color": "#9B4638",
-      "bill_count": 2,
+      "bill_count": 3,
       "appropriation_count": 1,
-      "trade_count": 15,
+      "trade_count": 14,
       "stock_count": 21,
       "avg_momentum": 36
     },
@@ -336,11 +336,11 @@
       "short": "Quantum",
       "etf": "QTUM",
       "color": "#6B5CA5",
-      "bill_count": 2,
+      "bill_count": 1,
       "appropriation_count": 0,
-      "trade_count": 28,
+      "trade_count": 23,
       "stock_count": 12,
-      "avg_momentum": 26
+      "avg_momentum": 35
     },
     "XBI": {
       "name": "Biotech",
@@ -360,7 +360,7 @@
       "color": "#5B4636",
       "bill_count": 13,
       "appropriation_count": 0,
-      "trade_count": 15,
+      "trade_count": 14,
       "stock_count": 19,
       "avg_momentum": 36
     },
@@ -382,7 +382,7 @@
       "color": "#7A6A00",
       "bill_count": 3,
       "appropriation_count": 0,
-      "trade_count": 2,
+      "trade_count": 1,
       "stock_count": 16,
       "avg_momentum": 35
     },
@@ -391,9 +391,9 @@
       "short": "Semis & AI",
       "etf": "SMH",
       "color": "#B5533C",
-      "bill_count": 4,
+      "bill_count": 5,
       "appropriation_count": 0,
-      "trade_count": 39,
+      "trade_count": 38,
       "stock_count": 22,
       "avg_momentum": 36
     },
@@ -413,7 +413,7 @@
       "short": "Agriculture",
       "etf": "MOO",
       "color": "#8A7A3C",
-      "bill_count": 14,
+      "bill_count": 13,
       "appropriation_count": 0,
       "trade_count": 7,
       "stock_count": 17,
@@ -437,896 +437,12 @@
       "color": "#565F73",
       "bill_count": 0,
       "appropriation_count": 0,
-      "trade_count": 1029,
+      "trade_count": 988,
       "stock_count": 0,
       "avg_momentum": 0
     }
   },
   "bills": [
-    {
-      "id": "119-HR-6944",
-      "number": "HR 6944",
-      "title": "To require the Secretary of Agriculture to make cost-share grants for retrofitting agricultural tractors with rollover protection structures, and for other purposes.",
-      "sector": "MOO",
-      "introduced_date": "2026-01-06",
-      "latest_action": {
-        "date": "2026-01-06",
-        "text": "Referred to the House Committee on Agriculture."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/6944",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Feenstra, Randy [R-IA-4]",
-        "party": "R",
-        "state": "IA"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "summary": "",
-      "momentum": 37,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "ADM",
-          "name": "Archer-Daniels-Midland"
-        },
-        {
-          "ticker": "BG",
-          "name": "Bunge Global"
-        },
-        {
-          "ticker": "CF",
-          "name": "CF Industries Holdings"
-        },
-        {
-          "ticker": "MOS",
-          "name": "The Mosaic Company"
-        },
-        {
-          "ticker": "CTVA",
-          "name": "Corteva"
-        },
-        {
-          "ticker": "FMC",
-          "name": "FMC Corporation"
-        },
-        {
-          "ticker": "NTR",
-          "name": "Nutrien"
-        },
-        {
-          "ticker": "TSN",
-          "name": "Tyson Foods"
-        },
-        {
-          "ticker": "CNH",
-          "name": "CNH Industrial"
-        },
-        {
-          "ticker": "DAR",
-          "name": "Darling Ingredients"
-        },
-        {
-          "ticker": "LW",
-          "name": "Lamb Weston"
-        },
-        {
-          "ticker": "INGR",
-          "name": "Ingredion"
-        },
-        {
-          "ticker": "LNN",
-          "name": "Lindsay Corporation"
-        },
-        {
-          "ticker": "SMG",
-          "name": "Scotts Miracle-Gro"
-        },
-        {
-          "ticker": "CALM",
-          "name": "Cal-Maine Foods"
-        }
-      ],
-      "impact_fingerprint": "763b7bebb7554de70a2d2ec68cd8cd4a47db6fde5a11cc398a51529c952bc9fd",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "BG",
-          "company": "Bunge Global",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MOS",
-          "company": "The Mosaic Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CTVA",
-          "company": "Corteva",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CF",
-          "company": "CF Industries Holdings",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "FMC",
-          "company": "FMC Corporation",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 7,
-      "key_bill": false
-    },
-    {
-      "id": "119-S-3580",
-      "number": "S 3580",
-      "title": "A bill to require the Secretary of Agriculture to make cost-share grants for retrofitting agricultural tractors with rollover protection structures, and for other purposes.",
-      "sector": "MOO",
-      "introduced_date": "2026-01-05",
-      "latest_action": {
-        "date": "2026-01-05",
-        "text": "Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3580",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Hyde-Smith, Cindy [R-MS]",
-        "party": "R",
-        "state": "MS"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 5,
-      "amendments": [],
-      "summary": "",
-      "momentum": 37,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "ADM",
-          "name": "Archer-Daniels-Midland"
-        },
-        {
-          "ticker": "BG",
-          "name": "Bunge Global"
-        },
-        {
-          "ticker": "CF",
-          "name": "CF Industries Holdings"
-        },
-        {
-          "ticker": "MOS",
-          "name": "The Mosaic Company"
-        },
-        {
-          "ticker": "CTVA",
-          "name": "Corteva"
-        },
-        {
-          "ticker": "FMC",
-          "name": "FMC Corporation"
-        },
-        {
-          "ticker": "NTR",
-          "name": "Nutrien"
-        },
-        {
-          "ticker": "TSN",
-          "name": "Tyson Foods"
-        },
-        {
-          "ticker": "CNH",
-          "name": "CNH Industrial"
-        },
-        {
-          "ticker": "DAR",
-          "name": "Darling Ingredients"
-        },
-        {
-          "ticker": "LW",
-          "name": "Lamb Weston"
-        },
-        {
-          "ticker": "INGR",
-          "name": "Ingredion"
-        },
-        {
-          "ticker": "LNN",
-          "name": "Lindsay Corporation"
-        },
-        {
-          "ticker": "SMG",
-          "name": "Scotts Miracle-Gro"
-        },
-        {
-          "ticker": "CALM",
-          "name": "Cal-Maine Foods"
-        }
-      ],
-      "impact_fingerprint": "6acf5e60a366f43810d5af1832504d099c6a402f79b1ffb1679c867de808efe6",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "BG",
-          "company": "Bunge Global",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MOS",
-          "company": "The Mosaic Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CTVA",
-          "company": "Corteva",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CF",
-          "company": "CF Industries Holdings",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "FMC",
-          "company": "FMC Corporation",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 7,
-      "key_bill": false
-    },
-    {
-      "id": "119-SRES-175",
-      "number": "SRES 175",
-      "title": "A resolution recognizing April 14, 2025, as \"World Quantum Day\", and commemorating and supporting the goals of World Quantum Day.",
-      "sector": "QTUM",
-      "introduced_date": "2025-04-10",
-      "latest_action": {
-        "date": "2025-04-10",
-        "text": "Submitted in the Senate, considered, and agreed to without amendment and with a preamble by Unanimous Consent. (consideration: CR S2577; text: CR S2572-2573)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/175",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Young, Todd [R-IN]",
-        "party": "R",
-        "state": "IN"
-      },
-      "committee_count": 0,
-      "cosponsor_count": 2,
-      "amendments": [],
-      "summary": "This resolution recognizes April 14, 2025, as World Quantum Day and encourages schools and educators to observe the day with activities that teach students about quantum physics.",
-      "momentum": 16,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "IONQ",
-          "name": "IonQ"
-        },
-        {
-          "ticker": "RGTI",
-          "name": "Rigetti Computing"
-        },
-        {
-          "ticker": "QBTS",
-          "name": "D-Wave Quantum"
-        },
-        {
-          "ticker": "IBM",
-          "name": "IBM"
-        },
-        {
-          "ticker": "MSFT",
-          "name": "Microsoft"
-        },
-        {
-          "ticker": "HON",
-          "name": "Honeywell"
-        },
-        {
-          "ticker": "NVDA",
-          "name": "NVIDIA"
-        },
-        {
-          "ticker": "GOOGL",
-          "name": "Alphabet"
-        },
-        {
-          "ticker": "AMZN",
-          "name": "Amazon.com"
-        },
-        {
-          "ticker": "ARQQ",
-          "name": "Arqit Quantum"
-        },
-        {
-          "ticker": "QUBT",
-          "name": "Quantum Computing Inc."
-        },
-        {
-          "ticker": "KEYS",
-          "name": "Keysight Technologies"
-        }
-      ],
-      "impact_fingerprint": "2e787280bcfabd24f79dfb6534dcaedca2a1335ff2e002ffce5b0eb67e86eac4",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Rep. Sam T. Liccardo (CA16)",
-          "chamber": "House",
-          "ticker": "NVDA",
-          "company": "NVIDIA",
-          "type": "Sale (Partial)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "07/21/2026",
-          "filed_date": "7/27/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf"
-        },
-        {
-          "member": "Rep. Jared Moskowitz (FL23)",
-          "chamber": "House",
-          "ticker": "MSFT",
-          "company": "Microsoft",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/17/2026",
-          "filed_date": "7/26/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NVDA",
-          "company": "NVIDIA",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MSFT",
-          "company": "Microsoft",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NVDA",
-          "company": "NVIDIA",
-          "type": "Purchase",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MSFT",
-          "company": "Microsoft",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "IBM",
-          "company": "IBM",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "HON",
-          "company": "Honeywell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "AMZN",
-          "company": "Amazon.com",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "HON",
-          "company": "Honeywell",
-          "type": "Sale (Full)",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/24/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "GOOGL",
-          "company": "Alphabet",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "HON",
-          "company": "Honeywell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 28,
-      "key_bill": true
-    },
-    {
-      "id": "119-S-4564",
-      "number": "S 4564",
-      "title": "Maritime Cybersecurity Act",
-      "sector": "CIBR",
-      "introduced_date": "2026-05-19",
-      "latest_action": {
-        "date": "2026-05-19",
-        "text": "Read twice and referred to the Committee on Commerce, Science, and Transportation."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4564",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Scott, Rick [R-FL]",
-        "party": "R",
-        "state": "FL"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 1,
-      "amendments": [],
-      "summary": "",
-      "momentum": 35,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "CRWD",
-          "name": "CrowdStrike"
-        },
-        {
-          "ticker": "PANW",
-          "name": "Palo Alto Networks"
-        },
-        {
-          "ticker": "FTNT",
-          "name": "Fortinet"
-        },
-        {
-          "ticker": "ZS",
-          "name": "Zscaler"
-        },
-        {
-          "ticker": "CYBR",
-          "name": "CyberArk"
-        },
-        {
-          "ticker": "OKTA",
-          "name": "Okta"
-        },
-        {
-          "ticker": "S",
-          "name": "SentinelOne"
-        },
-        {
-          "ticker": "NET",
-          "name": "Cloudflare"
-        },
-        {
-          "ticker": "CHKP",
-          "name": "Check Point Software"
-        },
-        {
-          "ticker": "GEN",
-          "name": "Gen Digital"
-        },
-        {
-          "ticker": "QLYS",
-          "name": "Qualys"
-        },
-        {
-          "ticker": "TENB",
-          "name": "Tenable Holdings"
-        },
-        {
-          "ticker": "VRNS",
-          "name": "Varonis Systems"
-        },
-        {
-          "ticker": "RPD",
-          "name": "Rapid7"
-        },
-        {
-          "ticker": "CACI",
-          "name": "CACI International"
-        },
-        {
-          "ticker": "FFIV",
-          "name": "F5, Inc."
-        },
-        {
-          "ticker": "AKAM",
-          "name": "Akamai Technologies"
-        },
-        {
-          "ticker": "CSCO",
-          "name": "Cisco Systems"
-        },
-        {
-          "ticker": "MSI",
-          "name": "Motorola Solutions"
-        },
-        {
-          "ticker": "PLTR",
-          "name": "Palantir Technologies"
-        },
-        {
-          "ticker": "BAH",
-          "name": "Booz Allen Hamilton"
-        },
-        {
-          "ticker": "SAIC",
-          "name": "Science Applications International"
-        }
-      ],
-      "impact_fingerprint": "8106c1ea4d9eaddf7b6d654d45d7dff8373a4a387fa32afaf66b940f76c0806f",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": true,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PANW",
-          "company": "Palo Alto Networks",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PLTR",
-          "company": "Palantir Technologies",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CHKP",
-          "company": "Check Point Software",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MSI",
-          "company": "Motorola Solutions",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "GEN",
-          "company": "Gen Digital",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "FTNT",
-          "company": "Fortinet",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "FFIV",
-          "company": "F5, Inc.",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CRWD",
-          "company": "CrowdStrike",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CSCO",
-          "company": "Cisco Systems",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "AKAM",
-          "company": "Akamai Technologies",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "FTNT",
-          "company": "Fortinet",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "PANW",
-          "company": "Palo Alto Networks",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 16,
-      "key_bill": true
-    },
     {
       "id": "119-S-4565",
       "number": "S 4565",
@@ -1448,7 +564,7 @@
       "impact_direction": "",
       "impact_winners": [],
       "impact_losers": [],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -1595,7 +711,274 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 16,
+      "related_trade_count": 15,
+      "key_bill": true
+    },
+    {
+      "id": "119-HR-1892",
+      "number": "HR 1892",
+      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
+      "sector": "GRID",
+      "introduced_date": "2025-03-05",
+      "latest_action": {
+        "date": "2025-03-05",
+        "text": "Referred to the Subcommittee on Highways and Transit."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Stevens, Haley M. [D-MI-11]",
+        "party": "D",
+        "state": "MI"
+      },
+      "committee_count": 2,
+      "cosponsor_count": 4,
+      "amendments": [],
+      "summary": "",
+      "momentum": 37,
+      "is_appropriation": true,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "ETN",
+          "name": "Eaton Corporation"
+        },
+        {
+          "ticker": "HUBB",
+          "name": "Hubbell"
+        },
+        {
+          "ticker": "AME",
+          "name": "AMETEK"
+        },
+        {
+          "ticker": "POWL",
+          "name": "Powell Industries"
+        },
+        {
+          "ticker": "NVT",
+          "name": "nVent Electric"
+        },
+        {
+          "ticker": "SO",
+          "name": "Southern Company"
+        },
+        {
+          "ticker": "DUK",
+          "name": "Duke Energy"
+        },
+        {
+          "ticker": "AEP",
+          "name": "American Electric Power"
+        },
+        {
+          "ticker": "XEL",
+          "name": "Xcel Energy"
+        },
+        {
+          "ticker": "MYRG",
+          "name": "MYR Group"
+        },
+        {
+          "ticker": "BE",
+          "name": "Bloom Energy"
+        },
+        {
+          "ticker": "ENPH",
+          "name": "Enphase Energy"
+        },
+        {
+          "ticker": "SEDG",
+          "name": "SolarEdge Technologies"
+        },
+        {
+          "ticker": "GEV",
+          "name": "GE Vernova"
+        },
+        {
+          "ticker": "VRT",
+          "name": "Vertiv Holdings"
+        },
+        {
+          "ticker": "FLNC",
+          "name": "Fluence Energy"
+        },
+        {
+          "ticker": "ITRI",
+          "name": "Itron"
+        },
+        {
+          "ticker": "ROK",
+          "name": "Rockwell Automation"
+        },
+        {
+          "ticker": "ED",
+          "name": "Consolidated Edison"
+        },
+        {
+          "ticker": "SRE",
+          "name": "Sempra"
+        },
+        {
+          "ticker": "PCG",
+          "name": "PG&E Corporation"
+        }
+      ],
+      "impact_fingerprint": "3818252c20548fb4170731178ac78f54cba13726a2dc7104e925ea894b78d454",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "VRT",
+          "company": "Vertiv Holdings",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "GEV",
+          "company": "GE Vernova",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "ETN",
+          "company": "Eaton Corporation",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Sale (Full)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "AME",
+          "company": "AMETEK",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "06/08/2026",
+          "filed_date": "07/16/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/08/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/09/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/03/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/16/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        }
+      ],
+      "related_trade_count": 14,
       "key_bill": true
     },
     {
@@ -2097,534 +1480,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": true
-    },
-    {
-      "id": "119-HR-1892",
-      "number": "HR 1892",
-      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
-      "sector": "GRID",
-      "introduced_date": "2025-03-05",
-      "latest_action": {
-        "date": "2025-03-05",
-        "text": "Referred to the Subcommittee on Highways and Transit."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Stevens, Haley M. [D-MI-11]",
-        "party": "D",
-        "state": "MI"
-      },
-      "committee_count": 2,
-      "cosponsor_count": 4,
-      "amendments": [],
-      "summary": "",
-      "momentum": 37,
-      "is_appropriation": true,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "ETN",
-          "name": "Eaton Corporation"
-        },
-        {
-          "ticker": "HUBB",
-          "name": "Hubbell"
-        },
-        {
-          "ticker": "AME",
-          "name": "AMETEK"
-        },
-        {
-          "ticker": "POWL",
-          "name": "Powell Industries"
-        },
-        {
-          "ticker": "NVT",
-          "name": "nVent Electric"
-        },
-        {
-          "ticker": "SO",
-          "name": "Southern Company"
-        },
-        {
-          "ticker": "DUK",
-          "name": "Duke Energy"
-        },
-        {
-          "ticker": "AEP",
-          "name": "American Electric Power"
-        },
-        {
-          "ticker": "XEL",
-          "name": "Xcel Energy"
-        },
-        {
-          "ticker": "MYRG",
-          "name": "MYR Group"
-        },
-        {
-          "ticker": "BE",
-          "name": "Bloom Energy"
-        },
-        {
-          "ticker": "ENPH",
-          "name": "Enphase Energy"
-        },
-        {
-          "ticker": "SEDG",
-          "name": "SolarEdge Technologies"
-        },
-        {
-          "ticker": "GEV",
-          "name": "GE Vernova"
-        },
-        {
-          "ticker": "VRT",
-          "name": "Vertiv Holdings"
-        },
-        {
-          "ticker": "FLNC",
-          "name": "Fluence Energy"
-        },
-        {
-          "ticker": "ITRI",
-          "name": "Itron"
-        },
-        {
-          "ticker": "ROK",
-          "name": "Rockwell Automation"
-        },
-        {
-          "ticker": "ED",
-          "name": "Consolidated Edison"
-        },
-        {
-          "ticker": "SRE",
-          "name": "Sempra"
-        },
-        {
-          "ticker": "PCG",
-          "name": "PG&E Corporation"
-        }
-      ],
-      "impact_fingerprint": "3818252c20548fb4170731178ac78f54cba13726a2dc7104e925ea894b78d454",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "VRT",
-          "company": "Vertiv Holdings",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "HUBB",
-          "company": "Hubbell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "GEV",
-          "company": "GE Vernova",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ETN",
-          "company": "Eaton Corporation",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DUK",
-          "company": "Duke Energy",
-          "type": "Sale (Full)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "AME",
-          "company": "AMETEK",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DUK",
-          "company": "Duke Energy",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "DUK",
-          "company": "Duke Energy",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "06/08/2026",
-          "filed_date": "07/16/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
-        },
-        {
-          "member": "Rep. April McClain Delaney (MD06)",
-          "chamber": "House",
-          "ticker": "HUBB",
-          "company": "Hubbell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/08/2026",
-          "filed_date": "7/7/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
-        },
-        {
-          "member": "Rep. April McClain Delaney (MD06)",
-          "chamber": "House",
-          "ticker": "HUBB",
-          "company": "Hubbell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/09/2026",
-          "filed_date": "7/7/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
-        },
-        {
-          "member": "Rep. April McClain Delaney (MD06)",
-          "chamber": "House",
-          "ticker": "HUBB",
-          "company": "Hubbell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/03/2026",
-          "filed_date": "7/7/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
-        },
-        {
-          "member": "Rep. April McClain Delaney (MD06)",
-          "chamber": "House",
-          "ticker": "HUBB",
-          "company": "Hubbell",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/16/2026",
-          "filed_date": "7/7/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
-        }
-      ],
-      "related_trade_count": 15,
-      "key_bill": true
-    },
-    {
-      "id": "119-S-4611",
-      "number": "S 4611",
-      "title": "Job Corps Shipbuilding-Defense Industrial Base Pipeline Act of 2026",
-      "sector": "ITA",
-      "introduced_date": "2026-05-20",
-      "latest_action": {
-        "date": "2026-05-20",
-        "text": "Read twice and referred to the Committee on Health, Education, Labor, and Pensions. (Sponsor introductory remarks on measure: CR S2418-2419)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4611",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Reed, Jack [D-RI]",
-        "party": "D",
-        "state": "RI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 1,
-      "amendments": [],
-      "summary": "",
-      "momentum": 35,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "LMT",
-          "name": "Lockheed Martin"
-        },
-        {
-          "ticker": "RTX",
-          "name": "RTX Corporation"
-        },
-        {
-          "ticker": "NOC",
-          "name": "Northrop Grumman"
-        },
-        {
-          "ticker": "GD",
-          "name": "General Dynamics"
-        },
-        {
-          "ticker": "BA",
-          "name": "Boeing"
-        },
-        {
-          "ticker": "LHX",
-          "name": "L3Harris Technologies"
-        },
-        {
-          "ticker": "HII",
-          "name": "Huntington Ingalls Industries"
-        },
-        {
-          "ticker": "TXT",
-          "name": "Textron"
-        },
-        {
-          "ticker": "AXON",
-          "name": "Axon Enterprise"
-        },
-        {
-          "ticker": "KTOS",
-          "name": "Kratos Defense & Security"
-        },
-        {
-          "ticker": "LDOS",
-          "name": "Leidos Holdings"
-        },
-        {
-          "ticker": "BWXT",
-          "name": "BWX Technologies"
-        },
-        {
-          "ticker": "AVAV",
-          "name": "AeroVironment"
-        },
-        {
-          "ticker": "HEI",
-          "name": "HEICO Corporation"
-        },
-        {
-          "ticker": "TDG",
-          "name": "TransDigm Group"
-        },
-        {
-          "ticker": "CW",
-          "name": "Curtiss-Wright"
-        },
-        {
-          "ticker": "MRCY",
-          "name": "Mercury Systems"
-        },
-        {
-          "ticker": "PLTR",
-          "name": "Palantir Technologies"
-        },
-        {
-          "ticker": "RKLB",
-          "name": "Rocket Lab"
-        }
-      ],
-      "impact_fingerprint": "42fa6bc6f4c89f96d4039ba28cb903f9d28f6c989bd9d007c7a8a9d0c77fffeb",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": true,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "TDG",
-          "company": "TransDigm Group",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "TXT",
-          "company": "Textron",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "RTX",
-          "company": "RTX Corporation",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "PLTR",
-          "company": "Palantir Technologies",
-          "type": "Purchase",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "NOC",
-          "company": "Northrop Grumman",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "LMT",
-          "company": "Lockheed Martin",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "LDOS",
-          "company": "Leidos Holdings",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "LHX",
-          "company": "L3Harris Technologies",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "GD",
-          "company": "General Dynamics",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "BA",
-          "company": "Boeing",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "AXON",
-          "company": "Axon Enterprise",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "LMT",
-          "company": "Lockheed Martin",
-          "type": "Sale (Full)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "06/08/2026",
-          "filed_date": "07/16/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
-        }
-      ],
-      "related_trade_count": 15,
-      "key_bill": false
     },
     {
       "id": "119-HR-5854",
@@ -3264,7 +2121,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": true
     },
     {
@@ -4693,7 +3550,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -4997,21 +3854,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Matthew Robert Van Epps (TN07)",
-          "chamber": "House",
-          "ticker": "GEV",
-          "company": "GE Vernova",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/16/2026",
-          "filed_date": "6/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2,
+      "related_trade_count": 1,
       "key_bill": true
     },
     {
@@ -5421,7 +4266,7 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 16,
+      "related_trade_count": 15,
       "key_bill": true
     },
     {
@@ -5692,8 +4537,8 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 16,
-      "key_bill": false
+      "related_trade_count": 15,
+      "key_bill": true
     },
     {
       "id": "119-HR-8935",
@@ -5804,7 +4649,7 @@
       "impact_direction": "",
       "impact_winners": [],
       "impact_losers": [],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -5951,7 +4796,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": true
     },
     {
@@ -6445,7 +5290,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -6823,7 +5668,7 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 28,
+      "related_trade_count": 23,
       "key_bill": true
     },
     {
@@ -7171,21 +6016,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Matthew Robert Van Epps (TN07)",
-          "chamber": "House",
-          "ticker": "GEV",
-          "company": "GE Vernova",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/16/2026",
-          "filed_date": "6/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2,
+      "related_trade_count": 1,
       "key_bill": true
     },
     {
@@ -7298,21 +6131,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Matthew Robert Van Epps (TN07)",
-          "chamber": "House",
-          "ticker": "GEV",
-          "company": "GE Vernova",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "06/16/2026",
-          "filed_date": "6/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf"
         }
       ],
-      "related_trade_count": 2,
+      "related_trade_count": 1,
       "key_bill": true
     },
     {
@@ -7438,6 +6259,18 @@
       "impact_losers": [],
       "sector_trade_flag": true,
       "related_trades": [
+        {
+          "member": "Rep. Cleo Fields (LA06)",
+          "chamber": "House",
+          "ticker": "TSM",
+          "company": "Taiwan Semiconductor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/30/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+        },
         {
           "member": "Rep. Sam T. Liccardo (CA16)",
           "chamber": "House",
@@ -7569,21 +6402,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ASML",
-          "company": "ASML Holding",
-          "type": "Purchase",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
         }
       ],
-      "related_trade_count": 39,
+      "related_trade_count": 38,
       "key_bill": true
     },
     {
@@ -8069,7 +6890,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -8328,7 +7149,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -8599,7 +7420,7 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 16,
+      "related_trade_count": 15,
       "key_bill": false
     },
     {
@@ -8961,6 +7782,18 @@
       "sector_trade_flag": true,
       "related_trades": [
         {
+          "member": "Rep. Cleo Fields (LA06)",
+          "chamber": "House",
+          "ticker": "TSM",
+          "company": "Taiwan Semiconductor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/30/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+        },
+        {
           "member": "Rep. Sam T. Liccardo (CA16)",
           "chamber": "House",
           "ticker": "NVDA",
@@ -9091,21 +7924,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ASML",
-          "company": "ASML Holding",
-          "type": "Purchase",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
         }
       ],
-      "related_trade_count": 39,
+      "related_trade_count": 38,
       "key_bill": true
     },
     {
@@ -9232,6 +8053,18 @@
       "sector_trade_flag": true,
       "related_trades": [
         {
+          "member": "Rep. Cleo Fields (LA06)",
+          "chamber": "House",
+          "ticker": "TSM",
+          "company": "Taiwan Semiconductor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/30/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+        },
+        {
           "member": "Rep. Sam T. Liccardo (CA16)",
           "chamber": "House",
           "ticker": "NVDA",
@@ -9362,21 +8195,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ASML",
-          "company": "ASML Holding",
-          "type": "Purchase",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
         }
       ],
-      "related_trade_count": 39,
+      "related_trade_count": 38,
       "key_bill": true
     },
     {
@@ -9635,7 +8456,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -10356,7 +9177,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -10468,7 +9289,7 @@
       "impact_direction": "",
       "impact_winners": [],
       "impact_losers": [],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -10615,7 +9436,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -10962,7 +9783,7 @@
       "impact_direction": "",
       "impact_winners": [],
       "impact_losers": [],
-      "sector_trade_flag": true,
+      "sector_trade_flag": false,
       "related_trades": [
         {
           "member": "Sen. Alan Armstrong",
@@ -11109,7 +9930,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -11471,6 +10292,18 @@
       "sector_trade_flag": true,
       "related_trades": [
         {
+          "member": "Rep. Cleo Fields (LA06)",
+          "chamber": "House",
+          "ticker": "TSM",
+          "company": "Taiwan Semiconductor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/30/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+        },
+        {
           "member": "Rep. Sam T. Liccardo (CA16)",
           "chamber": "House",
           "ticker": "NVDA",
@@ -11601,21 +10434,9 @@
           "transaction_date": "03/27/2026",
           "filed_date": "07/21/2026",
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "ASML",
-          "company": "ASML Holding",
-          "type": "Purchase",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "03/30/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
         }
       ],
-      "related_trade_count": 39,
+      "related_trade_count": 38,
       "key_bill": false
     },
     {
@@ -11874,7 +10695,7 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": false
     },
     {
@@ -13570,7 +12391,7 @@
           "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
         }
       ],
-      "related_trade_count": 16,
+      "related_trade_count": 15,
       "key_bill": false
     },
     {
@@ -14020,8 +12841,1231 @@
           "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
         }
       ],
-      "related_trade_count": 15,
+      "related_trade_count": 14,
       "key_bill": true
+    },
+    {
+      "id": "119-S-4862",
+      "number": "S 4862",
+      "title": "A bill to direct the Secretary of Agriculture to consider certain acreage not planted due to a lack of irrigation water to be eligible for prevented planting payments, and for other purposes.",
+      "sector": "MOO",
+      "introduced_date": "2026-06-23",
+      "latest_action": {
+        "date": "2026-06-23",
+        "text": "Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4862",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Bennet, Michael F. [D-CO]",
+        "party": "D",
+        "state": "CO"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "ADM",
+          "name": "Archer-Daniels-Midland"
+        },
+        {
+          "ticker": "BG",
+          "name": "Bunge Global"
+        },
+        {
+          "ticker": "CF",
+          "name": "CF Industries Holdings"
+        },
+        {
+          "ticker": "MOS",
+          "name": "The Mosaic Company"
+        },
+        {
+          "ticker": "CTVA",
+          "name": "Corteva"
+        },
+        {
+          "ticker": "FMC",
+          "name": "FMC Corporation"
+        },
+        {
+          "ticker": "NTR",
+          "name": "Nutrien"
+        },
+        {
+          "ticker": "TSN",
+          "name": "Tyson Foods"
+        },
+        {
+          "ticker": "CNH",
+          "name": "CNH Industrial"
+        },
+        {
+          "ticker": "DAR",
+          "name": "Darling Ingredients"
+        },
+        {
+          "ticker": "LW",
+          "name": "Lamb Weston"
+        },
+        {
+          "ticker": "INGR",
+          "name": "Ingredion"
+        },
+        {
+          "ticker": "LNN",
+          "name": "Lindsay Corporation"
+        },
+        {
+          "ticker": "SMG",
+          "name": "Scotts Miracle-Gro"
+        },
+        {
+          "ticker": "CALM",
+          "name": "Cal-Maine Foods"
+        }
+      ],
+      "impact_fingerprint": "f50454997b241fa93f999cb5fb2196e5492920be0c2ef90915705d524fe82337",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "BG",
+          "company": "Bunge Global",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "MOS",
+          "company": "The Mosaic Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CTVA",
+          "company": "Corteva",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CF",
+          "company": "CF Industries Holdings",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "FMC",
+          "company": "FMC Corporation",
+          "type": "Sale",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        }
+      ],
+      "related_trade_count": 7,
+      "key_bill": false
+    },
+    {
+      "id": "119-HR-2986",
+      "number": "HR 2986",
+      "title": "Expediting Generator Interconnection Procedures Act of 2025",
+      "sector": "GRID",
+      "introduced_date": "2025-04-24",
+      "latest_action": {
+        "date": "2026-06-24",
+        "text": "Forwarded by Subcommittee to Full Committee (Amended) by Voice Vote."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/2986",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Castor, Kathy [D-FL-14]",
+        "party": "D",
+        "state": "FL"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 1,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "ETN",
+          "name": "Eaton Corporation"
+        },
+        {
+          "ticker": "HUBB",
+          "name": "Hubbell"
+        },
+        {
+          "ticker": "AME",
+          "name": "AMETEK"
+        },
+        {
+          "ticker": "POWL",
+          "name": "Powell Industries"
+        },
+        {
+          "ticker": "NVT",
+          "name": "nVent Electric"
+        },
+        {
+          "ticker": "SO",
+          "name": "Southern Company"
+        },
+        {
+          "ticker": "DUK",
+          "name": "Duke Energy"
+        },
+        {
+          "ticker": "AEP",
+          "name": "American Electric Power"
+        },
+        {
+          "ticker": "XEL",
+          "name": "Xcel Energy"
+        },
+        {
+          "ticker": "MYRG",
+          "name": "MYR Group"
+        },
+        {
+          "ticker": "BE",
+          "name": "Bloom Energy"
+        },
+        {
+          "ticker": "ENPH",
+          "name": "Enphase Energy"
+        },
+        {
+          "ticker": "SEDG",
+          "name": "SolarEdge Technologies"
+        },
+        {
+          "ticker": "GEV",
+          "name": "GE Vernova"
+        },
+        {
+          "ticker": "VRT",
+          "name": "Vertiv Holdings"
+        },
+        {
+          "ticker": "FLNC",
+          "name": "Fluence Energy"
+        },
+        {
+          "ticker": "ITRI",
+          "name": "Itron"
+        },
+        {
+          "ticker": "ROK",
+          "name": "Rockwell Automation"
+        },
+        {
+          "ticker": "ED",
+          "name": "Consolidated Edison"
+        },
+        {
+          "ticker": "SRE",
+          "name": "Sempra"
+        },
+        {
+          "ticker": "PCG",
+          "name": "PG&E Corporation"
+        }
+      ],
+      "impact_fingerprint": "f43a8e91c2284bbad17a8b8c8d9b21ee0f3c4daa7f2e48817001ca359d94bf96",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "VRT",
+          "company": "Vertiv Holdings",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "GEV",
+          "company": "GE Vernova",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "ETN",
+          "company": "Eaton Corporation",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Sale (Full)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "AME",
+          "company": "AMETEK",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "DUK",
+          "company": "Duke Energy",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "06/08/2026",
+          "filed_date": "07/16/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/08/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/09/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/03/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "HUBB",
+          "company": "Hubbell",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/16/2026",
+          "filed_date": "7/7/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034932.pdf"
+        }
+      ],
+      "related_trade_count": 14,
+      "key_bill": true
+    },
+    {
+      "id": "119-S-4214",
+      "number": "S 4214",
+      "title": "Artificial Intelligence Data Center Moratorium Act",
+      "sector": "SMH",
+      "introduced_date": "2026-03-25",
+      "latest_action": {
+        "date": "2026-03-25",
+        "text": "Read twice and referred to the Committee on Commerce, Science, and Transportation."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4214",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Sanders, Bernard [I-VT]",
+        "party": "I",
+        "state": "VT"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "NVDA",
+          "name": "NVIDIA"
+        },
+        {
+          "ticker": "TSM",
+          "name": "Taiwan Semiconductor"
+        },
+        {
+          "ticker": "AVGO",
+          "name": "Broadcom"
+        },
+        {
+          "ticker": "AMD",
+          "name": "Advanced Micro Devices"
+        },
+        {
+          "ticker": "INTC",
+          "name": "Intel"
+        },
+        {
+          "ticker": "QCOM",
+          "name": "Qualcomm"
+        },
+        {
+          "ticker": "MU",
+          "name": "Micron Technology"
+        },
+        {
+          "ticker": "TXN",
+          "name": "Texas Instruments"
+        },
+        {
+          "ticker": "AMAT",
+          "name": "Applied Materials"
+        },
+        {
+          "ticker": "LRCX",
+          "name": "Lam Research"
+        },
+        {
+          "ticker": "KLAC",
+          "name": "KLA Corporation"
+        },
+        {
+          "ticker": "MRVL",
+          "name": "Marvell Technology"
+        },
+        {
+          "ticker": "ARM",
+          "name": "Arm Holdings"
+        },
+        {
+          "ticker": "ASML",
+          "name": "ASML Holding"
+        },
+        {
+          "ticker": "ADI",
+          "name": "Analog Devices"
+        },
+        {
+          "ticker": "NXPI",
+          "name": "NXP Semiconductors"
+        },
+        {
+          "ticker": "ON",
+          "name": "ON Semiconductor"
+        },
+        {
+          "ticker": "MCHP",
+          "name": "Microchip Technology"
+        },
+        {
+          "ticker": "GFS",
+          "name": "GlobalFoundries"
+        },
+        {
+          "ticker": "SNPS",
+          "name": "Synopsys"
+        },
+        {
+          "ticker": "CDNS",
+          "name": "Cadence Design Systems"
+        },
+        {
+          "ticker": "TER",
+          "name": "Teradyne"
+        }
+      ],
+      "impact_fingerprint": "d7d52aab5af918dff68326e30c0846ad6050b08597d9aa3644d2df2a5990b430",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Rep. Cleo Fields (LA06)",
+          "chamber": "House",
+          "ticker": "TSM",
+          "company": "Taiwan Semiconductor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/30/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf"
+        },
+        {
+          "member": "Rep. Sam T. Liccardo (CA16)",
+          "chamber": "House",
+          "ticker": "NVDA",
+          "company": "NVIDIA",
+          "type": "Sale (Partial)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "07/21/2026",
+          "filed_date": "7/27/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf"
+        },
+        {
+          "member": "Rep. Jared Moskowitz (FL23)",
+          "chamber": "House",
+          "ticker": "AMAT",
+          "company": "Applied Materials",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "06/18/2026",
+          "filed_date": "7/26/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034963.pdf"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CDNS",
+          "company": "Cadence Design Systems",
+          "type": "Sale (Full)",
+          "amount_range": "$50,001 - $100,000",
+          "est_amount": 75000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "ASML",
+          "company": "ASML Holding",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/31/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NVDA",
+          "company": "NVIDIA",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/30/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TXN",
+          "company": "Texas Instruments",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TER",
+          "company": "Teradyne",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "SNPS",
+          "company": "Synopsys",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "QCOM",
+          "company": "Qualcomm",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NXPI",
+          "company": "NXP Semiconductors",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NVDA",
+          "company": "NVIDIA",
+          "type": "Purchase",
+          "amount_range": "$50,001 - $100,000",
+          "est_amount": 75000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        }
+      ],
+      "related_trade_count": 38,
+      "key_bill": false
+    },
+    {
+      "id": "119-S-4728",
+      "number": "S 4728",
+      "title": "Combat Emerging Threats to Critical Infrastructure Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-06-10",
+      "latest_action": {
+        "date": "2026-06-10",
+        "text": "Read twice and referred to the Committee on Homeland Security and Governmental Affairs."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4728",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Warner, Mark R. [D-VA]",
+        "party": "D",
+        "state": "VA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "VMC",
+          "name": "Vulcan Materials"
+        },
+        {
+          "ticker": "MLM",
+          "name": "Martin Marietta Materials"
+        },
+        {
+          "ticker": "NUE",
+          "name": "Nucor"
+        },
+        {
+          "ticker": "CAT",
+          "name": "Caterpillar"
+        },
+        {
+          "ticker": "URI",
+          "name": "United Rentals"
+        },
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "EMR",
+          "name": "Emerson Electric"
+        },
+        {
+          "ticker": "PWR",
+          "name": "Quanta Services"
+        },
+        {
+          "ticker": "J",
+          "name": "Jacobs Solutions"
+        },
+        {
+          "ticker": "STLD",
+          "name": "Steel Dynamics"
+        },
+        {
+          "ticker": "GVA",
+          "name": "Granite Construction"
+        },
+        {
+          "ticker": "ACM",
+          "name": "AECOM"
+        },
+        {
+          "ticker": "MAS",
+          "name": "Masco Corporation"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "WMS",
+          "name": "Advanced Drainage Systems"
+        },
+        {
+          "ticker": "X",
+          "name": "United States Steel"
+        },
+        {
+          "ticker": "CLF",
+          "name": "Cleveland-Cliffs"
+        },
+        {
+          "ticker": "EXP",
+          "name": "Eagle Materials"
+        },
+        {
+          "ticker": "CRH",
+          "name": "CRH plc"
+        },
+        {
+          "ticker": "MTZ",
+          "name": "MasTec"
+        },
+        {
+          "ticker": "PRIM",
+          "name": "Primoris Services"
+        },
+        {
+          "ticker": "FLR",
+          "name": "Fluor Corporation"
+        },
+        {
+          "ticker": "KBR",
+          "name": "KBR, Inc."
+        },
+        {
+          "ticker": "TTEK",
+          "name": "Tetra Tech"
+        },
+        {
+          "ticker": "VMI",
+          "name": "Valmont Industries"
+        }
+      ],
+      "impact_fingerprint": "7cf55fc602c3ab9bbf165c644c070320ef770c0d12272200153de27165463cc9",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "URI",
+          "company": "United Rentals",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "STLD",
+          "company": "Steel Dynamics",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "PWR",
+          "company": "Quanta Services",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NUE",
+          "company": "Nucor",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "EMR",
+          "company": "Emerson Electric",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "ACM",
+          "company": "AECOM",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        }
+      ],
+      "related_trade_count": 8,
+      "key_bill": false
+    },
+    {
+      "id": "119-HR-9283",
+      "number": "HR 9283",
+      "title": "Critical Defense Ownership Review Act",
+      "sector": "ITA",
+      "introduced_date": "2026-06-11",
+      "latest_action": {
+        "date": "2026-06-11",
+        "text": "Referred to the House Committee on Armed Services."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9283",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Khanna, Ro [D-CA-17]",
+        "party": "D",
+        "state": "CA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "LMT",
+          "name": "Lockheed Martin"
+        },
+        {
+          "ticker": "RTX",
+          "name": "RTX Corporation"
+        },
+        {
+          "ticker": "NOC",
+          "name": "Northrop Grumman"
+        },
+        {
+          "ticker": "GD",
+          "name": "General Dynamics"
+        },
+        {
+          "ticker": "BA",
+          "name": "Boeing"
+        },
+        {
+          "ticker": "LHX",
+          "name": "L3Harris Technologies"
+        },
+        {
+          "ticker": "HII",
+          "name": "Huntington Ingalls Industries"
+        },
+        {
+          "ticker": "TXT",
+          "name": "Textron"
+        },
+        {
+          "ticker": "AXON",
+          "name": "Axon Enterprise"
+        },
+        {
+          "ticker": "KTOS",
+          "name": "Kratos Defense & Security"
+        },
+        {
+          "ticker": "LDOS",
+          "name": "Leidos Holdings"
+        },
+        {
+          "ticker": "BWXT",
+          "name": "BWX Technologies"
+        },
+        {
+          "ticker": "AVAV",
+          "name": "AeroVironment"
+        },
+        {
+          "ticker": "HEI",
+          "name": "HEICO Corporation"
+        },
+        {
+          "ticker": "TDG",
+          "name": "TransDigm Group"
+        },
+        {
+          "ticker": "CW",
+          "name": "Curtiss-Wright"
+        },
+        {
+          "ticker": "MRCY",
+          "name": "Mercury Systems"
+        },
+        {
+          "ticker": "PLTR",
+          "name": "Palantir Technologies"
+        },
+        {
+          "ticker": "RKLB",
+          "name": "Rocket Lab"
+        }
+      ],
+      "impact_fingerprint": "8a47b196242120724fc44d204bc6faf030f6cdbc5f40ba628bea9b5b5d4b148b",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": true,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TDG",
+          "company": "TransDigm Group",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TXT",
+          "company": "Textron",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "RTX",
+          "company": "RTX Corporation",
+          "type": "Purchase",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "PLTR",
+          "company": "Palantir Technologies",
+          "type": "Purchase",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NOC",
+          "company": "Northrop Grumman",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "LMT",
+          "company": "Lockheed Martin",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "LDOS",
+          "company": "Leidos Holdings",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "LHX",
+          "company": "L3Harris Technologies",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "GD",
+          "company": "General Dynamics",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "BA",
+          "company": "Boeing",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "AXON",
+          "company": "Axon Enterprise",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "LMT",
+          "company": "Lockheed Martin",
+          "type": "Sale (Full)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "06/08/2026",
+          "filed_date": "07/16/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/392ac3e5-07f6-4f8c-840f-84e9066ffb29/"
+        }
+      ],
+      "related_trade_count": 14,
+      "key_bill": false
     }
   ],
   "trades": [
@@ -29770,6 +29814,19 @@
       "bioguide": "F000110"
     },
     {
+      "sector": "SMH",
+      "ticker": "TSM",
+      "company": "Taiwan Semiconductor",
+      "member": "Rep. Cleo Fields (LA06)",
+      "chamber": "House",
+      "transaction_date": "07/10/2026",
+      "filed_date": "7/30/2026",
+      "type": "Purchase",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf",
+      "est_amount": 8000
+    },
+    {
       "sector": "OTHER",
       "ticker": "ARLP",
       "company": "Alliance Resource Partners, L.P. - Common Units Representing Limited Partnership Interests",
@@ -30984,6 +31041,19 @@
       "party": "D",
       "image_url": "https://www.congress.gov/img/member/677449a70b34857ecc90912b_200.jpg",
       "bioguide": "M001234"
+    },
+    {
+      "sector": "OTHER",
+      "ticker": "HONAV",
+      "company": "Honeywell Aerospace Inc. - Common Stock",
+      "member": "Rep. Kelly Louise Morrison (MN03)",
+      "chamber": "House",
+      "transaction_date": "06/29/2026",
+      "filed_date": "7/30/2026",
+      "type": "Exchange",
+      "amount_range": "$15,001 - $50,000",
+      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034972.pdf",
+      "est_amount": 32500
     },
     {
       "sector": "OTHER",
@@ -33418,6 +33488,25 @@
       "last_filed": "7/16/2026"
     },
     {
+      "member": "Rep. Kelly Louise Morrison (MN03)",
+      "chamber": "House",
+      "trade_count": 2,
+      "buy_count": 0,
+      "sell_count": 2,
+      "buy_value": 0,
+      "sell_value": 207500,
+      "total_value": 207500,
+      "distinct_tickers": 1,
+      "top_tickers": [
+        {
+          "ticker": "HONAV",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "7/30/2026"
+    },
+    {
       "member": "Rep. Neal Patrick MD, Facs Dunn (FL02)",
       "chamber": "House",
       "party": "R",
@@ -33753,6 +33842,45 @@
       "last_filed": "7/9/2026"
     },
     {
+      "member": "Sen. John Boozman",
+      "chamber": "Senate",
+      "trade_count": 10,
+      "buy_count": 5,
+      "sell_count": 5,
+      "buy_value": 40000,
+      "sell_value": 40000,
+      "total_value": 80000,
+      "distinct_tickers": 8,
+      "top_tickers": [
+        {
+          "ticker": "TPYP",
+          "count": 1
+        },
+        {
+          "ticker": "FTGC",
+          "count": 1
+        },
+        {
+          "ticker": "IEF",
+          "count": 1
+        },
+        {
+          "ticker": "ATO",
+          "count": 1
+        },
+        {
+          "ticker": "BSX",
+          "count": 1
+        },
+        {
+          "ticker": "IGV",
+          "count": 1
+        }
+      ],
+      "sectors": [],
+      "last_filed": "07/13/2026"
+    },
+    {
       "member": "Rep. Jared Moskowitz (FL23)",
       "chamber": "House",
       "party": "D",
@@ -34068,10 +34196,10 @@
       "trade_count": 5,
       "buy_count": 5,
       "sell_count": 0,
-      "buy_value": 40000,
+      "buy_value": 48000,
       "sell_value": 0,
-      "total_value": 40000,
-      "distinct_tickers": 4,
+      "total_value": 48000,
+      "distinct_tickers": 5,
       "top_tickers": [
         {
           "ticker": "NVDA",
@@ -34088,13 +34216,17 @@
         {
           "ticker": "QNT",
           "count": 1
+        },
+        {
+          "ticker": "TSM",
+          "count": 1
         }
       ],
       "sectors": [
         "QTUM",
         "SMH"
       ],
-      "last_filed": "7/16/2026"
+      "last_filed": "7/30/2026"
     },
     {
       "member": "Rep. Richard W. Allen (GA12)",
@@ -34713,7 +34845,7 @@
       "company": "Intel",
       "sector": "SMH",
       "buy_count": 2,
-      "sell_count": 2,
+      "sell_count": 1,
       "buy_value": 3008000,
       "sell_value": 16000,
       "net": 0,
@@ -34753,7 +34885,7 @@
       "company": "Apple Inc. - Common Stock",
       "sector": "OTHER",
       "buy_count": 3,
-      "sell_count": 3,
+      "sell_count": 2,
       "buy_value": 391000,
       "sell_value": 48500,
       "net": 0,
@@ -34773,7 +34905,7 @@
       "company": "NVIDIA",
       "sector": "QTUM",
       "buy_count": 6,
-      "sell_count": 10,
+      "sell_count": 8,
       "buy_value": 182000,
       "sell_value": 178000,
       "net": -4,
@@ -34813,7 +34945,7 @@
       "company": "Exxon Mobil Corporation Common Stock",
       "sector": "OTHER",
       "buy_count": 0,
-      "sell_count": 4,
+      "sell_count": 3,
       "buy_value": 0,
       "sell_value": 223500,
       "net": -4,
@@ -34827,6 +34959,21 @@
       ],
       "bipartisan": true,
       "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "HONAV",
+      "company": "Honeywell Aerospace Inc. - Common Stock",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 5,
+      "buy_value": 0,
+      "sell_value": 180500,
+      "net": -5,
+      "net_value": -180500,
+      "total_value": 180500,
+      "member_count": 4,
+      "total_trades": 5,
+      "last_filed": "7/30/2026"
     },
     {
       "ticker": "GLW",
@@ -34988,7 +35135,7 @@
       "company": "Microsoft",
       "sector": "QTUM",
       "buy_count": 4,
-      "sell_count": 3,
+      "sell_count": 2,
       "buy_value": 56500,
       "sell_value": 48500,
       "net": 1,
@@ -35368,6 +35515,36 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "PLTR",
+      "company": "Palantir Technologies",
+      "sector": "CIBR",
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_value": 65000,
+      "sell_value": 0,
+      "net": 2,
+      "net_value": 65000,
+      "total_value": 65000,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "GEV",
+      "company": "GE Vernova",
+      "sector": "GRID",
+      "buy_count": 0,
+      "sell_count": 2,
+      "buy_value": 0,
+      "sell_value": 65000,
+      "net": -2,
+      "net_value": -65000,
+      "total_value": 65000,
+      "member_count": 1,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "UNH",
       "company": "UnitedHealth Group Incorporated Common Stock (DE)",
       "sector": "OTHER",
@@ -35405,6 +35582,21 @@
       ],
       "bipartisan": true,
       "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "META",
+      "company": "Meta Platforms, Inc. - Class A Common Stock",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 2,
+      "buy_value": 48500,
+      "sell_value": 16000,
+      "net": 1,
+      "net_value": 32500,
+      "total_value": 64500,
+      "member_count": 3,
+      "total_trades": 5,
+      "last_filed": "7/26/2026"
     },
     {
       "ticker": "MU",
@@ -35719,6 +35911,21 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "sector": "QTUM",
+      "buy_count": 0,
+      "sell_count": 3,
+      "buy_value": 0,
+      "sell_value": 48500,
+      "net": -3,
+      "net_value": -48500,
+      "total_value": 48500,
+      "member_count": 2,
+      "total_trades": 3,
+      "last_filed": "7/17/2026"
+    },
+    {
       "ticker": "WAB",
       "company": "Westinghouse Air Brake Technologies Corporation Common Stock",
       "sector": "OTHER",
@@ -35836,6 +36043,21 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "GE",
+      "company": "GE Aerospace Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "buy_value": 32500,
+      "sell_value": 8000,
+      "net": 0,
+      "net_value": 24500,
+      "total_value": 40500,
+      "member_count": 2,
+      "total_trades": 2,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "DASH",
       "company": "DoorDash, Inc. - Common Stock",
       "sector": "OTHER",
@@ -35911,6 +36133,21 @@
         "R"
       ],
       "bipartisan": true,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "AMZN",
+      "company": "Amazon.com",
+      "sector": "QTUM",
+      "buy_count": 1,
+      "sell_count": 1,
+      "buy_value": 32500,
+      "sell_value": 8000,
+      "net": 0,
+      "net_value": 24500,
+      "total_value": 40500,
+      "member_count": 2,
+      "total_trades": 2,
       "last_filed": "07/21/2026"
     },
     {
@@ -37025,6 +37262,21 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "ACN",
+      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
+      "sector": "OTHER",
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_value": 24000,
+      "sell_value": 0,
+      "net": 3,
+      "net_value": 24000,
+      "total_value": 24000,
+      "member_count": 3,
+      "total_trades": 3,
+      "last_filed": "07/21/2026"
+    },
+    {
       "ticker": "EA",
       "company": "Electronic Arts Inc. - Common Stock",
       "sector": "OTHER",
@@ -37275,6 +37527,21 @@
         "R"
       ],
       "bipartisan": true,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "IBM",
+      "company": "IBM",
+      "sector": "QTUM",
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_value": 16000,
+      "sell_value": 0,
+      "net": 2,
+      "net_value": 16000,
+      "total_value": 16000,
+      "member_count": 2,
+      "total_trades": 2,
       "last_filed": "07/21/2026"
     },
     {
@@ -39036,6 +39303,21 @@
         "R"
       ],
       "bipartisan": false,
+      "last_filed": "07/21/2026"
+    },
+    {
+      "ticker": "TPR",
+      "company": "Tapestry, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_value": 8000,
+      "sell_value": 0,
+      "net": 1,
+      "net_value": 8000,
+      "total_value": 8000,
+      "member_count": 1,
+      "total_trades": 1,
       "last_filed": "07/21/2026"
     },
     {
@@ -41946,6 +42228,36 @@
       "last_filed": "07/13/2026"
     },
     {
+      "ticker": "FTGC",
+      "company": "First Trust Global Tactical Commodity Strategy Fund",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_value": 0,
+      "sell_value": 8000,
+      "net": -1,
+      "net_value": -8000,
+      "total_value": 8000,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
+      "ticker": "IEF",
+      "company": "iShares 7-10 Year Treasury Bond ETF",
+      "sector": "OTHER",
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_value": 0,
+      "sell_value": 8000,
+      "net": -1,
+      "net_value": -8000,
+      "total_value": 8000,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "07/13/2026"
+    },
+    {
       "ticker": "ATO",
       "company": "Atmos Energy Corporation Common Stock",
       "sector": "OTHER",
@@ -42856,6 +43168,21 @@
       ],
       "bipartisan": false,
       "last_filed": "6/26/2026"
+    },
+    {
+      "ticker": "TSM",
+      "company": "Taiwan Semiconductor",
+      "sector": "SMH",
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_value": 8000,
+      "sell_value": 0,
+      "net": 1,
+      "net_value": 8000,
+      "total_value": 8000,
+      "member_count": 1,
+      "total_trades": 1,
+      "last_filed": "7/30/2026"
     },
     {
       "ticker": "ADC",
