@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T07:55:12Z",
+  "generated_at": "2026-08-01T15:43:40Z",
   "congress": 119,
   "overview": {
     "total_trades": 1133,
@@ -705,30 +705,30 @@
       "key_bill": true
     },
     {
-      "id": "119-S-651",
-      "number": "S 651",
-      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
+      "id": "119-HR-1892",
+      "number": "HR 1892",
+      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
       "sector": "GRID",
-      "introduced_date": "2025-02-20",
+      "introduced_date": "2025-03-05",
       "latest_action": {
-        "date": "2025-02-20",
-        "text": "Read twice and referred to the Committee on Environment and Public Works."
+        "date": "2025-03-05",
+        "text": "Referred to the Subcommittee on Highways and Transit."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Sen. Ernst, Joni [R-IA]",
-        "party": "R",
-        "state": "IA"
+        "name": "Rep. Stevens, Haley M. [D-MI-11]",
+        "party": "D",
+        "state": "MI"
       },
-      "committee_count": 1,
-      "cosponsor_count": 2,
+      "committee_count": 2,
+      "cosponsor_count": 4,
       "amendments": [],
-      "summary": "Unplug the Electric Vehicle Charging Stations Programs Act\n\nThis bill repeals grant programs that provide funding for electric vehicle charging infrastructure and alternative fueling infrastructure. \n\nSpecifically, the bill repeals the Charging and Fueling Infrastructure Grant Program under which the Department of Transportation provides grants for acquiring and installing publicly accessible electric vehicle charging infrastructure, hydrogen fueling infrastructure, propane fueling infrastructure, or natural gas fueling infrastructure that is directly related to the charging or fueling of a vehicle.\n\nIt also repeals the National Electric Vehicle Infrastructure Formula Program under which the Federal Highway Administration (FHWA) provides grants for deploying electric vehicle charging infrastructure and establishing a network to facilitate data collection, access, and reliability. In addition, the bill rescinds unobligated funds that were provided to the FHWA for the program and prohibits funds from being used to carry out the program.",
-      "momentum": 36,
-      "is_appropriation": false,
+      "summary": "",
+      "momentum": 37,
+      "is_appropriation": true,
       "dollar_figures": [],
       "beneficiary_stocks": [
         {
@@ -816,7 +816,7 @@
           "name": "PG&E Corporation"
         }
       ],
-      "impact_fingerprint": "af688c487d4ae53a688a9f04a45041c1aae5df8149bfbda69dab3c9c16e8aadc",
+      "impact_fingerprint": "3818252c20548fb4170731178ac78f54cba13726a2dc7104e925ea894b78d454",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -1207,30 +1207,30 @@
       "key_bill": true
     },
     {
-      "id": "119-HR-1892",
-      "number": "HR 1892",
-      "title": "Wireless Electric Vehicle Charging Grant Program Act of 2025",
+      "id": "119-S-651",
+      "number": "S 651",
+      "title": "Unplug the Electric Vehicle Charging Stations Programs Act",
       "sector": "GRID",
-      "introduced_date": "2025-03-05",
+      "introduced_date": "2025-02-20",
       "latest_action": {
-        "date": "2025-03-05",
-        "text": "Referred to the Subcommittee on Highways and Transit."
+        "date": "2025-02-20",
+        "text": "Read twice and referred to the Committee on Environment and Public Works."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/1892",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/651",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. Stevens, Haley M. [D-MI-11]",
-        "party": "D",
-        "state": "MI"
+        "name": "Sen. Ernst, Joni [R-IA]",
+        "party": "R",
+        "state": "IA"
       },
-      "committee_count": 2,
-      "cosponsor_count": 4,
+      "committee_count": 1,
+      "cosponsor_count": 2,
       "amendments": [],
-      "summary": "",
-      "momentum": 37,
-      "is_appropriation": true,
+      "summary": "Unplug the Electric Vehicle Charging Stations Programs Act\n\nThis bill repeals grant programs that provide funding for electric vehicle charging infrastructure and alternative fueling infrastructure. \n\nSpecifically, the bill repeals the Charging and Fueling Infrastructure Grant Program under which the Department of Transportation provides grants for acquiring and installing publicly accessible electric vehicle charging infrastructure, hydrogen fueling infrastructure, propane fueling infrastructure, or natural gas fueling infrastructure that is directly related to the charging or fueling of a vehicle.\n\nIt also repeals the National Electric Vehicle Infrastructure Formula Program under which the Federal Highway Administration (FHWA) provides grants for deploying electric vehicle charging infrastructure and establishing a network to facilitate data collection, access, and reliability. In addition, the bill rescinds unobligated funds that were provided to the FHWA for the program and prohibits funds from being used to carry out the program.",
+      "momentum": 36,
+      "is_appropriation": false,
       "dollar_figures": [],
       "beneficiary_stocks": [
         {
@@ -1318,7 +1318,7 @@
           "name": "PG&E Corporation"
         }
       ],
-      "impact_fingerprint": "3818252c20548fb4170731178ac78f54cba13726a2dc7104e925ea894b78d454",
+      "impact_fingerprint": "af688c487d4ae53a688a9f04a45041c1aae5df8149bfbda69dab3c9c16e8aadc",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
