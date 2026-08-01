@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-01T20:37:47Z",
+  "generated_at": "2026-08-01T23:40:54Z",
   "congress": 119,
   "overview": {
-    "total_trades": 1184,
-    "total_value": 59011523,
-    "buy_value": 27424200,
-    "sell_value": 31587323,
+    "total_trades": 1133,
+    "total_value": 57727523,
+    "buy_value": 26487200,
+    "sell_value": 31240323,
     "party_value": {
-      "D": 19789522,
-      "R": 39222001,
+      "D": 19080022,
+      "R": 38647501,
       "I": 0
     },
     "party_trades": {
-      "D": 198,
-      "R": 986,
+      "D": 199,
+      "R": 934,
       "I": 0
     },
-    "active_members": 62,
-    "tracked_tickers_traded": 74,
+    "active_members": 60,
+    "tracked_tickers_traded": 75,
     "bill_count": 60,
     "key_bill_count": 28,
     "appropriation_count": 2,
@@ -294,6 +294,347 @@
         "transaction_date": "06/29/2026",
         "filed_date": "07/29/2026",
         "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
+      }
+    ]
+  },
+  "unusual_activity": {
+    "consensus_buys": [
+      {
+        "ticker": "SPCX",
+        "company": "Space Exploration Technologies Corp. Class A Common Stock",
+        "sector": "OTHER",
+        "member_count": 6,
+        "buy_count": 7,
+        "sell_count": 0,
+        "net_value": 239000,
+        "total_value": 239000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "sector": "QTUM",
+        "member_count": 6,
+        "buy_count": 6,
+        "sell_count": 8,
+        "net_value": 20000,
+        "total_value": 344000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "UNH",
+        "company": "UnitedHealth Group Incorporated Common Stock (DE)",
+        "sector": "OTHER",
+        "member_count": 5,
+        "buy_count": 2,
+        "sell_count": 3,
+        "net_value": 16500,
+        "total_value": 64500,
+        "parties": [
+          "R"
+        ]
+      },
+      {
+        "ticker": "MSFT",
+        "company": "Microsoft",
+        "sector": "QTUM",
+        "member_count": 5,
+        "buy_count": 4,
+        "sell_count": 2,
+        "net_value": 16000,
+        "total_value": 97000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "AAPL",
+        "company": "Apple Inc. - Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 3,
+        "sell_count": 2,
+        "net_value": 350500,
+        "total_value": 431500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "GOOG",
+        "company": "Alphabet Inc. - Class C Capital Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 4,
+        "sell_count": 2,
+        "net_value": 83000,
+        "total_value": 115000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "MU",
+        "company": "Micron Technology",
+        "sector": "SMH",
+        "member_count": 4,
+        "buy_count": 3,
+        "sell_count": 1,
+        "net_value": 40500,
+        "total_value": 56500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "MCK",
+        "company": "McKesson Corporation Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 3,
+        "sell_count": 1,
+        "net_value": 16000,
+        "total_value": 32000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      }
+    ],
+    "consensus_sells": [
+      {
+        "ticker": "HONAV",
+        "company": "Honeywell Aerospace Inc. - Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 0,
+        "sell_count": 5,
+        "net_value": -180500,
+        "total_value": 180500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "HD",
+        "company": "Home Depot, Inc. (The) Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 2,
+        "sell_count": 3,
+        "net_value": -124000,
+        "total_value": 156000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "ABT",
+        "company": "Abbott Laboratories Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 2,
+        "sell_count": 2,
+        "net_value": -24500,
+        "total_value": 56500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "SPGI",
+        "company": "S&P Global Inc. Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 1,
+        "sell_count": 3,
+        "net_value": -16000,
+        "total_value": 32000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "XOM",
+        "company": "Exxon Mobil Corporation Common Stock",
+        "sector": "OTHER",
+        "member_count": 3,
+        "buy_count": 0,
+        "sell_count": 3,
+        "net_value": -215500,
+        "total_value": 215500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "MA",
+        "company": "Mastercard",
+        "sector": "FINX",
+        "member_count": 3,
+        "buy_count": 0,
+        "sell_count": 3,
+        "net_value": -73000,
+        "total_value": 73000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "INTU",
+        "company": "Intuit Inc. - Common Stock",
+        "sector": "OTHER",
+        "member_count": 3,
+        "buy_count": 1,
+        "sell_count": 2,
+        "net_value": -32500,
+        "total_value": 48500,
+        "parties": [
+          "R"
+        ]
+      },
+      {
+        "ticker": "DUK",
+        "company": "Duke Energy",
+        "sector": "GRID",
+        "member_count": 3,
+        "buy_count": 1,
+        "sell_count": 2,
+        "net_value": -32500,
+        "total_value": 48500,
+        "parties": [
+          "R"
+        ]
+      }
+    ],
+    "bipartisan": [
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "sector": "QTUM",
+        "member_count": 6,
+        "buy_count": 6,
+        "sell_count": 8,
+        "net_value": 20000,
+        "total_value": 344000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "SPCX",
+        "company": "Space Exploration Technologies Corp. Class A Common Stock",
+        "sector": "OTHER",
+        "member_count": 6,
+        "buy_count": 7,
+        "sell_count": 0,
+        "net_value": 239000,
+        "total_value": 239000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "MSFT",
+        "company": "Microsoft",
+        "sector": "QTUM",
+        "member_count": 5,
+        "buy_count": 4,
+        "sell_count": 2,
+        "net_value": 16000,
+        "total_value": 97000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "AAPL",
+        "company": "Apple Inc. - Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 3,
+        "sell_count": 2,
+        "net_value": 350500,
+        "total_value": 431500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "HONAV",
+        "company": "Honeywell Aerospace Inc. - Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 0,
+        "sell_count": 5,
+        "net_value": -180500,
+        "total_value": 180500,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "HD",
+        "company": "Home Depot, Inc. (The) Common Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 2,
+        "sell_count": 3,
+        "net_value": -124000,
+        "total_value": 156000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "GOOG",
+        "company": "Alphabet Inc. - Class C Capital Stock",
+        "sector": "OTHER",
+        "member_count": 4,
+        "buy_count": 4,
+        "sell_count": 2,
+        "net_value": 83000,
+        "total_value": 115000,
+        "parties": [
+          "D",
+          "R"
+        ]
+      },
+      {
+        "ticker": "MU",
+        "company": "Micron Technology",
+        "sector": "SMH",
+        "member_count": 4,
+        "buy_count": 3,
+        "sell_count": 1,
+        "net_value": 40500,
+        "total_value": 56500,
+        "parties": [
+          "D",
+          "R"
+        ]
       }
     ]
   },
@@ -27223,598 +27564,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": "VEA",
-      "company": "Vanguard Developed Markets Index Fund - ETF Shares",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "VNQI",
-      "company": "Vanguard Global ex-U.S. Real Estate Index Fund - ETF Shares",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LITP",
-      "company": "Sprott Lithium Miners ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "IVV",
-      "company": "iShares Core S&P 500 ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SCHP",
-      "company": "Schwab U.S. TIPS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "RNWGX",
-      "company": "NEW WORLD FUND INC - Class R-6",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "JMBS",
-      "company": "Janus Henderson Mortgage-Backed Securities ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SPYM",
-      "company": "Tradr 2X Long SPY Monthly ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "IWM",
-      "company": "iShares Russell 2000 ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "EFA",
-      "company": "iShares MSCI EAFE ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CMBS",
-      "company": "iShares CMBS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "IEI",
-      "company": "iShares 3-7 Year Treasury Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Full)",
-      "amount_range": "$50,001 - $100,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 75000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MBB",
-      "company": "iShares MBS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GEM",
-      "company": "Goldman Sachs ActiveBeta(R) Emerging Markets Equity ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "FTGC",
-      "company": "First Trust Global Tactical Commodity Strategy Fund",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "EIPI",
-      "company": "FT Energy Income Partners Enhanced Income ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ECL",
-      "company": "Ecolab Inc. Common Stock",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ACN",
-      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/727b4eb6-d8c7-4792-aa5b-c651c2d72f9c/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "SPYM - Tradr 2X Long SPY Monthly ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/a9754ff5-901a-4877-b7be-a647bd361c52/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "FTGC - First Trust Global Tactical Commodity Strategy Fund",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/a9754ff5-901a-4877-b7be-a647bd361c52/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": null,
-      "company": "ACN - Accenture plc Class A Ordinary Shares (Ireland)",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Sale (Partial)",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/a9754ff5-901a-4877-b7be-a647bd361c52/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "SCHP",
-      "company": "Schwab U.S. TIPS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "CIBR",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "ITA",
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "JMBS",
-      "company": "Janus Henderson Mortgage-Backed Securities ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "IEF",
-      "company": "iShares 7-10 Year Treasury Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TLH",
-      "company": "iShares 10-20 Year Treasury Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "CMBS",
-      "company": "iShares CMBS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "MBB",
-      "company": "iShares MBS ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "AGZ",
-      "company": "iShares Agency Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GBIL",
-      "company": "Goldman Sachs Access Treasury 0-1 Year ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GIGB",
-      "company": "Goldman Sachs Access Investment Grade Corporate Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GIGB",
-      "company": "Goldman Sachs Access Investment Grade Corporate Bond ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "XFIV",
-      "company": "BondBloxx Bloomberg Five Year Target Duration US Treasury ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "XFIV",
-      "company": "BondBloxx Bloomberg Five Year Target Duration US Treasury ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/13/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$50,001 - $100,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 75000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "XTWO",
-      "company": "BondBloxx Bloomberg Two Year Target Duration US Treasury ETF",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/27/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "ALB",
-      "company": "Albemarle Corporation Common Stock",
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "transaction_date": "05/15/2026",
-      "filed_date": "06/16/2026",
-      "type": "Purchase",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://efdsearch.senate.gov/search/view/ptr/2e076759-19df-458d-a3be-53610b8be5d0/",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "INTU",
       "company": "Intuit Inc. - Common Stock",
       "member": "Rep. Richard W. Allen (GA12)",
@@ -29047,22 +28796,6 @@
     },
     {
       "sector": "OTHER",
-      "ticker": null,
-      "company": "US Treas Bills MAT 11/19/26",
-      "member": "Rep. Steve Cohen (TN09)",
-      "chamber": "House",
-      "transaction_date": "05/27/2026",
-      "filed_date": "6/17/2026",
-      "type": "Purchase",
-      "amount_range": "$500,001 - $1,000,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034796.pdf",
-      "est_amount": 750000,
-      "party": "D",
-      "image_url": "https://www.congress.gov/img/member/c001068_200.jpg",
-      "bioguide": "C001068"
-    },
-    {
-      "sector": "OTHER",
       "ticker": "GOOG",
       "company": "Alphabet Inc. - Class C Capital Stock",
       "member": "Rep. Daniel Crenshaw (TX02)",
@@ -29824,7 +29557,10 @@
       "type": "Purchase",
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035023.pdf",
-      "est_amount": 8000
+      "est_amount": 8000,
+      "party": "D",
+      "image_url": "https://www.congress.gov/img/member/677426250b34857ecc90908f_200.jpg",
+      "bioguide": "F000110"
     },
     {
       "sector": "OTHER",
@@ -31053,7 +30789,10 @@
       "type": "Exchange",
       "amount_range": "$15,001 - $50,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034972.pdf",
-      "est_amount": 32500
+      "est_amount": 32500,
+      "party": "D",
+      "image_url": "https://www.congress.gov/img/member/677449a70b34857ecc90912b_200.jpg",
+      "bioguide": "M001234"
     },
     {
       "sector": "OTHER",
@@ -32720,246 +32459,6 @@
       "bioguide": "T000486"
     },
     {
-      "sector": "QTUM",
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "AMZN",
-      "company": "Amazon.com",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "AAPL",
-      "company": "Apple Inc. - Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "XOM",
-      "company": "Exxon Mobil Corporation Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "GE",
-      "company": "GE Aerospace Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "GRID",
-      "ticker": "GEV",
-      "company": "GE Vernova",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "URA",
-      "ticker": "GEV",
-      "company": "GE Vernova",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "INTC",
-      "company": "Intel",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "IBM",
-      "company": "IBM",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "META",
-      "company": "Meta Platforms, Inc. - Class A Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "MSFT",
-      "company": "Microsoft",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "QTUM",
-      "ticker": "NVDA",
-      "company": "NVIDIA",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "SMH",
-      "ticker": "NVDA",
-      "company": "NVIDIA",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "LUV",
-      "company": "Southwest Airlines Company Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$1,001 - $15,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
-      "sector": "OTHER",
-      "ticker": "TPR",
-      "company": "Tapestry, Inc. Common Stock",
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "transaction_date": "06/16/2026",
-      "filed_date": "6/17/2026",
-      "type": "Sale",
-      "amount_range": "$15,001 - $50,000",
-      "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034807.pdf",
-      "est_amount": 32500,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139"
-    },
-    {
       "sector": "OTHER",
       "ticker": null,
       "company": "KKR Private Equity Conglomerate LLC Class I",
@@ -33223,68 +32722,6 @@
       "last_filed": "06/30/2026"
     },
     {
-      "member": "Rep. Steve Cohen (TN09)",
-      "chamber": "House",
-      "party": "D",
-      "image_url": "https://www.congress.gov/img/member/c001068_200.jpg",
-      "bioguide": "C001068",
-      "trade_count": 1,
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 750000,
-      "sell_value": 0,
-      "total_value": 750000,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "6/17/2026"
-    },
-    {
-      "member": "Sen. John Boozman",
-      "chamber": "Senate",
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
-      "bioguide": "B001236",
-      "trade_count": 47,
-      "buy_count": 21,
-      "sell_count": 26,
-      "buy_value": 235000,
-      "sell_value": 275000,
-      "total_value": 510000,
-      "distinct_tickers": 33,
-      "top_tickers": [
-        {
-          "ticker": "FTGC",
-          "count": 2
-        },
-        {
-          "ticker": "IEF",
-          "count": 2
-        },
-        {
-          "ticker": "SCHP",
-          "count": 2
-        },
-        {
-          "ticker": "JMBS",
-          "count": 2
-        },
-        {
-          "ticker": "CMBS",
-          "count": 2
-        },
-        {
-          "ticker": "MBB",
-          "count": 2
-        }
-      ],
-      "sectors": [
-        "CIBR",
-        "ITA"
-      ],
-      "last_filed": "07/13/2026"
-    },
-    {
       "member": "Rep. Ann Wagner (MO02)",
       "chamber": "House",
       "party": "R",
@@ -33490,6 +32927,9 @@
     {
       "member": "Rep. Kelly Louise Morrison (MN03)",
       "chamber": "House",
+      "party": "D",
+      "image_url": "https://www.congress.gov/img/member/677449a70b34857ecc90912b_200.jpg",
+      "bioguide": "M001234",
       "trade_count": 2,
       "buy_count": 0,
       "sell_count": 2,
@@ -33539,23 +32979,6 @@
       "top_tickers": [],
       "sectors": [],
       "last_filed": "7/7/2026"
-    },
-    {
-      "member": "Rep. Kelly Louise Morrison (MN03)",
-      "chamber": "House",
-      "party": "D",
-      "image_url": "https://www.congress.gov/img/member/677449a70b34857ecc90912b_200.jpg",
-      "bioguide": "M001234",
-      "trade_count": 1,
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 175000,
-      "total_value": 175000,
-      "distinct_tickers": 0,
-      "top_tickers": [],
-      "sectors": [],
-      "last_filed": "7/9/2026"
     },
     {
       "member": "Rep. Greg Stanton (AZ04)",
@@ -33727,53 +33150,6 @@
       "last_filed": "07/08/2026"
     },
     {
-      "member": "Rep. Matthew Robert Van Epps (TN07)",
-      "chamber": "House",
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6931b7d5f478c0f1228e9abe_200.jpg",
-      "bioguide": "V000139",
-      "trade_count": 15,
-      "buy_count": 0,
-      "sell_count": 15,
-      "buy_value": 0,
-      "sell_value": 144500,
-      "total_value": 144500,
-      "distinct_tickers": 13,
-      "top_tickers": [
-        {
-          "ticker": "GEV",
-          "count": 2
-        },
-        {
-          "ticker": "NVDA",
-          "count": 2
-        },
-        {
-          "ticker": "GOOGL",
-          "count": 1
-        },
-        {
-          "ticker": "AMZN",
-          "count": 1
-        },
-        {
-          "ticker": "AAPL",
-          "count": 1
-        },
-        {
-          "ticker": "XOM",
-          "count": 1
-        }
-      ],
-      "sectors": [
-        "GRID",
-        "QTUM",
-        "SMH",
-        "URA"
-      ],
-      "last_filed": "6/17/2026"
-    },
-    {
       "member": "Rep. Debbie Dingell (MI06)",
       "chamber": "House",
       "party": "D",
@@ -33844,6 +33220,9 @@
     {
       "member": "Sen. John Boozman",
       "chamber": "Senate",
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/b001236_200.jpg",
+      "bioguide": "B001236",
       "trade_count": 10,
       "buy_count": 5,
       "sell_count": 5,
@@ -34193,8 +33572,8 @@
       "party": "D",
       "image_url": "https://www.congress.gov/img/member/677426250b34857ecc90908f_200.jpg",
       "bioguide": "F000110",
-      "trade_count": 5,
-      "buy_count": 5,
+      "trade_count": 6,
+      "buy_count": 6,
       "sell_count": 0,
       "buy_value": 48000,
       "sell_value": 0,
@@ -34847,12 +34226,12 @@
       "buy_count": 2,
       "sell_count": 1,
       "buy_value": 3008000,
-      "sell_value": 16000,
-      "net": 0,
-      "net_value": 2992000,
-      "total_value": 3024000,
-      "member_count": 4,
-      "total_trades": 4,
+      "sell_value": 8000,
+      "net": 1,
+      "net_value": 3000000,
+      "total_value": 3016000,
+      "member_count": 3,
+      "total_trades": 3,
       "parties": [
         "D",
         "R"
@@ -34887,12 +34266,12 @@
       "buy_count": 3,
       "sell_count": 2,
       "buy_value": 391000,
-      "sell_value": 48500,
-      "net": 0,
-      "net_value": 342500,
-      "total_value": 439500,
-      "member_count": 5,
-      "total_trades": 6,
+      "sell_value": 40500,
+      "net": 1,
+      "net_value": 350500,
+      "total_value": 431500,
+      "member_count": 4,
+      "total_trades": 5,
       "parties": [
         "D",
         "R"
@@ -34907,12 +34286,12 @@
       "buy_count": 6,
       "sell_count": 8,
       "buy_value": 182000,
-      "sell_value": 178000,
-      "net": -4,
-      "net_value": 4000,
-      "total_value": 360000,
-      "member_count": 7,
-      "total_trades": 16,
+      "sell_value": 162000,
+      "net": -2,
+      "net_value": 20000,
+      "total_value": 344000,
+      "member_count": 6,
+      "total_trades": 14,
       "parties": [
         "D",
         "R"
@@ -34947,12 +34326,12 @@
       "buy_count": 0,
       "sell_count": 3,
       "buy_value": 0,
-      "sell_value": 223500,
-      "net": -4,
-      "net_value": -223500,
-      "total_value": 223500,
-      "member_count": 4,
-      "total_trades": 4,
+      "sell_value": 215500,
+      "net": -3,
+      "net_value": -215500,
+      "total_value": 215500,
+      "member_count": 3,
+      "total_trades": 3,
       "parties": [
         "D",
         "R"
@@ -34973,6 +34352,11 @@
       "total_value": 180500,
       "member_count": 4,
       "total_trades": 5,
+      "parties": [
+        "D",
+        "R"
+      ],
+      "bipartisan": true,
       "last_filed": "7/30/2026"
     },
     {
@@ -35032,26 +34416,6 @@
       ],
       "bipartisan": true,
       "last_filed": "7/26/2026"
-    },
-    {
-      "ticker": "HONAV",
-      "company": "Honeywell Aerospace Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 4,
-      "buy_value": 0,
-      "sell_value": 148000,
-      "net": -4,
-      "net_value": -148000,
-      "total_value": 148000,
-      "member_count": 3,
-      "total_trades": 4,
-      "parties": [
-        "D",
-        "R"
-      ],
-      "bipartisan": true,
-      "last_filed": "7/17/2026"
     },
     {
       "ticker": "BRK.B",
@@ -35137,12 +34501,12 @@
       "buy_count": 4,
       "sell_count": 2,
       "buy_value": 56500,
-      "sell_value": 48500,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 105000,
-      "member_count": 6,
-      "total_trades": 7,
+      "sell_value": 40500,
+      "net": 2,
+      "net_value": 16000,
+      "total_value": 97000,
+      "member_count": 5,
+      "total_trades": 6,
       "parties": [
         "D",
         "R"
@@ -35266,44 +34630,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "XFIV",
-      "company": "BondBloxx Bloomberg Five Year Target Duration US Treasury ETF",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "buy_value": 83000,
-      "sell_value": 0,
-      "net": 2,
-      "net_value": 83000,
-      "total_value": 83000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "PLTR",
-      "company": "Palantir Technologies",
-      "sector": "CIBR",
-      "buy_count": 4,
-      "sell_count": 0,
-      "buy_value": 81000,
-      "sell_value": 0,
-      "net": 4,
-      "net_value": 81000,
-      "total_value": 81000,
-      "member_count": 2,
-      "total_trades": 4,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "LMT",
       "company": "Lockheed Martin",
       "sector": "ITA",
@@ -35313,25 +34639,6 @@
       "sell_value": 65000,
       "net": 0,
       "net_value": -49000,
-      "total_value": 81000,
-      "member_count": 2,
-      "total_trades": 4,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "GEV",
-      "company": "GE Vernova",
-      "sector": "GRID",
-      "buy_count": 0,
-      "sell_count": 4,
-      "buy_value": 0,
-      "sell_value": 81000,
-      "net": -4,
-      "net_value": -81000,
       "total_value": 81000,
       "member_count": 2,
       "total_trades": 4,
@@ -35437,25 +34744,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "IEI",
-      "company": "iShares 3-7 Year Treasury Bond ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 75000,
-      "net": -1,
-      "net_value": -75000,
-      "total_value": 75000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
       "ticker": "MA",
       "company": "Mastercard",
       "sector": "FINX",
@@ -35474,26 +34762,6 @@
       ],
       "bipartisan": true,
       "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "META",
-      "company": "Meta Platforms, Inc. - Class A Common Stock",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 3,
-      "buy_value": 48500,
-      "sell_value": 24000,
-      "net": 0,
-      "net_value": 24500,
-      "total_value": 72500,
-      "member_count": 4,
-      "total_trades": 6,
-      "parties": [
-        "D",
-        "R"
-      ],
-      "bipartisan": true,
-      "last_filed": "7/26/2026"
     },
     {
       "ticker": "PG",
@@ -35527,6 +34795,10 @@
       "total_value": 65000,
       "member_count": 1,
       "total_trades": 2,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -35542,6 +34814,10 @@
       "total_value": 65000,
       "member_count": 1,
       "total_trades": 2,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -35596,6 +34872,11 @@
       "total_value": 64500,
       "member_count": 3,
       "total_trades": 5,
+      "parties": [
+        "D",
+        "R"
+      ],
+      "bipartisan": true,
       "last_filed": "7/26/2026"
     },
     {
@@ -35637,25 +34918,6 @@
       ],
       "bipartisan": true,
       "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "GOOGL",
-      "company": "Alphabet",
-      "sector": "QTUM",
-      "buy_count": 0,
-      "sell_count": 4,
-      "buy_value": 0,
-      "sell_value": 56500,
-      "net": -4,
-      "net_value": -56500,
-      "total_value": 56500,
-      "member_count": 3,
-      "total_trades": 4,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "7/17/2026"
     },
     {
       "ticker": "NOK",
@@ -35725,25 +34987,6 @@
       "sell_value": 40500,
       "net": -1,
       "net_value": -32500,
-      "total_value": 48500,
-      "member_count": 3,
-      "total_trades": 3,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "GE",
-      "company": "GE Aerospace Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 2,
-      "buy_value": 32500,
-      "sell_value": 16000,
-      "net": -1,
-      "net_value": 16500,
       "total_value": 48500,
       "member_count": 3,
       "total_trades": 3,
@@ -35852,25 +35095,6 @@
       "last_filed": "7/26/2026"
     },
     {
-      "ticker": "AMZN",
-      "company": "Amazon.com",
-      "sector": "QTUM",
-      "buy_count": 1,
-      "sell_count": 2,
-      "buy_value": 32500,
-      "sell_value": 16000,
-      "net": -1,
-      "net_value": 16500,
-      "total_value": 48500,
-      "member_count": 3,
-      "total_trades": 3,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "AMD",
       "company": "Advanced Micro Devices",
       "sector": "SMH",
@@ -35923,6 +35147,10 @@
       "total_value": 48500,
       "member_count": 2,
       "total_trades": 3,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "7/17/2026"
     },
     {
@@ -35963,25 +35191,6 @@
         "R"
       ],
       "bipartisan": true,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "TPR",
-      "company": "Tapestry, Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 32500,
-      "net": 0,
-      "net_value": -24500,
-      "total_value": 40500,
-      "member_count": 2,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -36055,6 +35264,10 @@
       "total_value": 40500,
       "member_count": 2,
       "total_trades": 2,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -36148,6 +35361,10 @@
       "total_value": 40500,
       "member_count": 2,
       "total_trades": 2,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -37065,26 +36282,6 @@
       "last_filed": "07/21/2026"
     },
     {
-      "ticker": "ACN",
-      "company": "Accenture plc Class A Ordinary Shares (Ireland)",
-      "sector": "OTHER",
-      "buy_count": 3,
-      "sell_count": 1,
-      "buy_value": 24000,
-      "sell_value": 8000,
-      "net": 2,
-      "net_value": 16000,
-      "total_value": 32000,
-      "member_count": 4,
-      "total_trades": 4,
-      "parties": [
-        "D",
-        "R"
-      ],
-      "bipartisan": true,
-      "last_filed": "07/21/2026"
-    },
-    {
       "ticker": "BSX",
       "company": "Boston Scientific Corporation Common Stock",
       "sector": "OTHER",
@@ -37141,26 +36338,6 @@
         "R"
       ],
       "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "IBM",
-      "company": "IBM",
-      "sector": "QTUM",
-      "buy_count": 2,
-      "sell_count": 1,
-      "buy_value": 16000,
-      "sell_value": 8000,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 24000,
-      "member_count": 3,
-      "total_trades": 3,
-      "parties": [
-        "D",
-        "R"
-      ],
-      "bipartisan": true,
       "last_filed": "07/21/2026"
     },
     {
@@ -37274,6 +36451,11 @@
       "total_value": 24000,
       "member_count": 3,
       "total_trades": 3,
+      "parties": [
+        "D",
+        "R"
+      ],
+      "bipartisan": true,
       "last_filed": "07/21/2026"
     },
     {
@@ -37542,6 +36724,11 @@
       "total_value": 16000,
       "member_count": 2,
       "total_trades": 2,
+      "parties": [
+        "D",
+        "R"
+      ],
+      "bipartisan": true,
       "last_filed": "07/21/2026"
     },
     {
@@ -38107,139 +37294,6 @@
       ],
       "bipartisan": false,
       "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "FTGC",
-      "company": "First Trust Global Tactical Commodity Strategy Fund",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 2,
-      "buy_value": 0,
-      "sell_value": 16000,
-      "net": -2,
-      "net_value": -16000,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/13/2026"
-    },
-    {
-      "ticker": "IEF",
-      "company": "iShares 7-10 Year Treasury Bond ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 8000,
-      "net": 0,
-      "net_value": 0,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/13/2026"
-    },
-    {
-      "ticker": "SCHP",
-      "company": "Schwab U.S. TIPS ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 8000,
-      "net": 0,
-      "net_value": 0,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "JMBS",
-      "company": "Janus Henderson Mortgage-Backed Securities ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 8000,
-      "net": 0,
-      "net_value": 0,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "CMBS",
-      "company": "iShares CMBS ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 8000,
-      "net": 0,
-      "net_value": 0,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "MBB",
-      "company": "iShares MBS ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 1,
-      "buy_value": 8000,
-      "sell_value": 8000,
-      "net": 0,
-      "net_value": 0,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "GIGB",
-      "company": "Goldman Sachs Access Investment Grade Corporate Bond ETF",
-      "sector": "OTHER",
-      "buy_count": 2,
-      "sell_count": 0,
-      "buy_value": 16000,
-      "sell_value": 0,
-      "net": 2,
-      "net_value": 16000,
-      "total_value": 16000,
-      "member_count": 1,
-      "total_trades": 2,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
     },
     {
       "ticker": "LPLA",
@@ -39318,6 +38372,10 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/21/2026"
     },
     {
@@ -42240,6 +41298,10 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/13/2026"
     },
     {
@@ -42255,6 +41317,10 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
+      "parties": [
+        "R"
+      ],
+      "bipartisan": false,
       "last_filed": "07/13/2026"
     },
     {
@@ -42313,310 +41379,6 @@
       ],
       "bipartisan": false,
       "last_filed": "07/13/2026"
-    },
-    {
-      "ticker": "VEA",
-      "company": "Vanguard Developed Markets Index Fund - ETF Shares",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "VNQI",
-      "company": "Vanguard Global ex-U.S. Real Estate Index Fund - ETF Shares",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "LITP",
-      "company": "Sprott Lithium Miners ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "IVV",
-      "company": "iShares Core S&P 500 ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "RNWGX",
-      "company": "NEW WORLD FUND INC - Class R-6",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "SPYM",
-      "company": "Tradr 2X Long SPY Monthly ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "IWM",
-      "company": "iShares Russell 2000 ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "EFA",
-      "company": "iShares MSCI EAFE ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "GEM",
-      "company": "Goldman Sachs ActiveBeta(R) Emerging Markets Equity ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "EIPI",
-      "company": "FT Energy Income Partners Enhanced Income ETF",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "ECL",
-      "company": "Ecolab Inc. Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "TLH",
-      "company": "iShares 10-20 Year Treasury Bond ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "AGZ",
-      "company": "iShares Agency Bond ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "GBIL",
-      "company": "Goldman Sachs Access Treasury 0-1 Year ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "XTWO",
-      "company": "BondBloxx Bloomberg Two Year Target Duration US Treasury ETF",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
-    },
-    {
-      "ticker": "ALB",
-      "company": "Albemarle Corporation Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "06/16/2026"
     },
     {
       "ticker": "AJINF",
@@ -43182,6 +41944,10 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
+      "parties": [
+        "D"
+      ],
+      "bipartisan": false,
       "last_filed": "7/30/2026"
     },
     {
@@ -43565,25 +42331,6 @@
       "last_filed": "7/1/2026"
     },
     {
-      "ticker": "LUV",
-      "company": "Southwest Airlines Company Common Stock",
-      "sector": "OTHER",
-      "buy_count": 0,
-      "sell_count": 1,
-      "buy_value": 0,
-      "sell_value": 8000,
-      "net": -1,
-      "net_value": -8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "6/17/2026"
-    },
-    {
       "ticker": "ICHR",
       "company": "Ichor Holdings - Ordinary Shares",
       "sector": "OTHER",
@@ -43602,346 +42349,5 @@
       "bipartisan": false,
       "last_filed": "7/14/2026"
     }
-  ],
-  "unusual_activity": {
-    "consensus_buys": [
-      {
-        "ticker": "NVDA",
-        "company": "NVIDIA",
-        "sector": "QTUM",
-        "member_count": 7,
-        "buy_count": 6,
-        "sell_count": 10,
-        "net_value": 4000,
-        "total_value": 360000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "SPCX",
-        "company": "Space Exploration Technologies Corp. Class A Common Stock",
-        "sector": "OTHER",
-        "member_count": 6,
-        "buy_count": 7,
-        "sell_count": 0,
-        "net_value": 239000,
-        "total_value": 239000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "MSFT",
-        "company": "Microsoft",
-        "sector": "QTUM",
-        "member_count": 6,
-        "buy_count": 4,
-        "sell_count": 3,
-        "net_value": 8000,
-        "total_value": 105000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "AAPL",
-        "company": "Apple Inc. - Common Stock",
-        "sector": "OTHER",
-        "member_count": 5,
-        "buy_count": 3,
-        "sell_count": 3,
-        "net_value": 342500,
-        "total_value": 439500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "UNH",
-        "company": "UnitedHealth Group Incorporated Common Stock (DE)",
-        "sector": "OTHER",
-        "member_count": 5,
-        "buy_count": 2,
-        "sell_count": 3,
-        "net_value": 16500,
-        "total_value": 64500,
-        "parties": [
-          "R"
-        ]
-      },
-      {
-        "ticker": "INTC",
-        "company": "Intel",
-        "sector": "SMH",
-        "member_count": 4,
-        "buy_count": 2,
-        "sell_count": 2,
-        "net_value": 2992000,
-        "total_value": 3024000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "GOOG",
-        "company": "Alphabet Inc. - Class C Capital Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 4,
-        "sell_count": 2,
-        "net_value": 83000,
-        "total_value": 115000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "MU",
-        "company": "Micron Technology",
-        "sector": "SMH",
-        "member_count": 4,
-        "buy_count": 3,
-        "sell_count": 1,
-        "net_value": 40500,
-        "total_value": 56500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      }
-    ],
-    "consensus_sells": [
-      {
-        "ticker": "XOM",
-        "company": "Exxon Mobil Corporation Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 0,
-        "sell_count": 4,
-        "net_value": -223500,
-        "total_value": 223500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "HD",
-        "company": "Home Depot, Inc. (The) Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 2,
-        "sell_count": 3,
-        "net_value": -124000,
-        "total_value": 156000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "ABT",
-        "company": "Abbott Laboratories Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 2,
-        "sell_count": 2,
-        "net_value": -24500,
-        "total_value": 56500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "SPGI",
-        "company": "S&P Global Inc. Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 1,
-        "sell_count": 3,
-        "net_value": -16000,
-        "total_value": 32000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "HONAV",
-        "company": "Honeywell Aerospace Inc. - Common Stock",
-        "sector": "OTHER",
-        "member_count": 3,
-        "buy_count": 0,
-        "sell_count": 4,
-        "net_value": -148000,
-        "total_value": 148000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "MA",
-        "company": "Mastercard",
-        "sector": "FINX",
-        "member_count": 3,
-        "buy_count": 0,
-        "sell_count": 3,
-        "net_value": -73000,
-        "total_value": 73000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "GOOGL",
-        "company": "Alphabet",
-        "sector": "QTUM",
-        "member_count": 3,
-        "buy_count": 0,
-        "sell_count": 4,
-        "net_value": -56500,
-        "total_value": 56500,
-        "parties": [
-          "R"
-        ]
-      },
-      {
-        "ticker": "INTU",
-        "company": "Intuit Inc. - Common Stock",
-        "sector": "OTHER",
-        "member_count": 3,
-        "buy_count": 1,
-        "sell_count": 2,
-        "net_value": -32500,
-        "total_value": 48500,
-        "parties": [
-          "R"
-        ]
-      }
-    ],
-    "bipartisan": [
-      {
-        "ticker": "NVDA",
-        "company": "NVIDIA",
-        "sector": "QTUM",
-        "member_count": 7,
-        "buy_count": 6,
-        "sell_count": 10,
-        "net_value": 4000,
-        "total_value": 360000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "SPCX",
-        "company": "Space Exploration Technologies Corp. Class A Common Stock",
-        "sector": "OTHER",
-        "member_count": 6,
-        "buy_count": 7,
-        "sell_count": 0,
-        "net_value": 239000,
-        "total_value": 239000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "MSFT",
-        "company": "Microsoft",
-        "sector": "QTUM",
-        "member_count": 6,
-        "buy_count": 4,
-        "sell_count": 3,
-        "net_value": 8000,
-        "total_value": 105000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "AAPL",
-        "company": "Apple Inc. - Common Stock",
-        "sector": "OTHER",
-        "member_count": 5,
-        "buy_count": 3,
-        "sell_count": 3,
-        "net_value": 342500,
-        "total_value": 439500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "INTC",
-        "company": "Intel",
-        "sector": "SMH",
-        "member_count": 4,
-        "buy_count": 2,
-        "sell_count": 2,
-        "net_value": 2992000,
-        "total_value": 3024000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "XOM",
-        "company": "Exxon Mobil Corporation Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 0,
-        "sell_count": 4,
-        "net_value": -223500,
-        "total_value": 223500,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "HD",
-        "company": "Home Depot, Inc. (The) Common Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 2,
-        "sell_count": 3,
-        "net_value": -124000,
-        "total_value": 156000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      },
-      {
-        "ticker": "GOOG",
-        "company": "Alphabet Inc. - Class C Capital Stock",
-        "sector": "OTHER",
-        "member_count": 4,
-        "buy_count": 4,
-        "sell_count": 2,
-        "net_value": 83000,
-        "total_value": 115000,
-        "parties": [
-          "D",
-          "R"
-        ]
-      }
-    ]
-  }
+  ]
 }
