@@ -977,6 +977,117 @@ def mark_key_bills(bills, per_sector=3):
     return bills
 
 
+# ---------------------------------------------------------------------------
+# Member roster -- party affiliation + official photos, matched to filers.
+# ---------------------------------------------------------------------------
+
+_US_STATES = {
+    'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
+    'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA',
+    'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA', 'Kansas': 'KS',
+    'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD', 'Massachusetts': 'MA',
+    'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS', 'Missouri': 'MO', 'Montana': 'MT',
+    'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ', 'New Mexico': 'NM',
+    'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', 'Ohio': 'OH', 'Oklahoma': 'OK',
+    'Oregon': 'OR', 'Pennsylvania': 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC',
+    'South Dakota': 'SD', 'Tennessee': 'TN', 'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT',
+    'Virginia': 'VA', 'Washington': 'WA', 'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY',
+}
+_PARTY = {'Democratic': 'D', 'Republican': 'R', 'Independent': 'I'}
+_SUFFIX_RE = re.compile(r',?\s+(jr|sr|ii|iii|iv)\.?$', re.IGNORECASE)
+
+
+def _norm_name(s):
+    return re.sub(r'[^a-z]', '', (s or '').lower())
+
+
+def fetch_member_roster():
+    """Current 119th-Congress members with party, state, chamber, and photo."""
+    print("Fetching member roster (party + photos) from Congress.gov...", file=sys.stderr)
+    members = []
+    offset = 0
+    while True:
+        try:
+            data = congress_get("member", {"currentMember": "true", "limit": 250, "offset": offset})
+        except requests.RequestException as e:
+            print(f"  WARN: roster fetch failed at offset {offset}: {e}", file=sys.stderr)
+            break
+        page = data.get("members", [])
+        if not page:
+            break
+        members.extend(page)
+        offset += 250
+        if len(page) < 250:
+            break
+    print(f"  roster: {len(members)} members", file=sys.stderr)
+    return members
+
+
+def build_member_index(roster):
+    index = {"House": [], "Senate": []}
+    for m in roster:
+        name = m.get("name", "")
+        last = name.split(",")[0] if "," in name else name
+        first = name.split(",", 1)[1].strip() if "," in name else ""
+        chamber_raw = (m.get("terms", {}).get("item", [{}])[-1].get("chamber", "") or "")
+        chamber = "Senate" if "Senate" in chamber_raw else "House"
+        index[chamber].append({
+            "last": _norm_name(last),
+            "first": _norm_name(first),
+            "state": _US_STATES.get(m.get("state", ""), ""),
+            "party": _PARTY.get(m.get("partyName", ""), "?"),
+            "image_url": (m.get("depiction") or {}).get("imageUrl"),
+            "bioguide": m.get("bioguideId"),
+        })
+    return index
+
+
+def match_member(member_str, index):
+    """Match a disclosure filer string (e.g. 'Sen. Gary C Peters',
+    'Rep. Nancy Pelosi (CA11)') to a roster member. Handles multi-word last
+    names and Jr./Sr. suffixes. Returns the roster dict or None."""
+    chamber = "Senate" if member_str.startswith("Sen.") else "House"
+    body = re.sub(r"^(Sen\.|Rep\.)\s*", "", member_str)
+    state_m = re.search(r"\(([A-Z]{2})\d*\)\s*$", body)
+    state = state_m.group(1) if state_m else None
+    body = re.sub(r"\s*\([^)]*\)\s*$", "", body)
+    body = _SUFFIX_RE.sub("", body).strip().rstrip(",")
+    full = _norm_name(body)
+    if not full:
+        return None
+    cands = [m for m in index.get(chamber, []) if len(m["last"]) >= 3 and full.endswith(m["last"])]
+    if state:
+        state_cands = [m for m in cands if not m["state"] or m["state"] == state]
+        if state_cands:
+            cands = state_cands
+    cands.sort(key=lambda m: len(m["last"]), reverse=True)  # most specific last name wins
+    if len(cands) > 1:
+        first_cands = [m for m in cands if m["first"] and full.startswith(m["first"][:4])]
+        if first_cands:
+            cands = first_cands
+    return cands[0] if cands else None
+
+
+def annotate_trade_parties(trades, index):
+    """Add party / image_url / bioguide to each trade by matching its filer."""
+    cache = {}
+    unmatched = set()
+    for t in trades:
+        member = t["member"]
+        if member not in cache:
+            cache[member] = match_member(member, index)
+        info = cache[member]
+        t["party"] = info["party"] if info else "?"
+        t["image_url"] = info["image_url"] if info else None
+        t["bioguide"] = info["bioguide"] if info else None
+        if not info:
+            unmatched.add(member)
+    if unmatched:
+        print(f"  WARN: {len(unmatched)} filers unmatched to roster: {sorted(unmatched)[:5]}", file=sys.stderr)
+    print(f"  party matched: {len(cache) - len(unmatched)}/{len(cache)} distinct filers", file=sys.stderr)
+    return trades
+
+
 def build_member_profiles(trades):
     """Autopilot-style 'follow a politician': aggregate every disclosed trade
     by the member who filed it, so each politician becomes a trackable
@@ -988,6 +1099,9 @@ def build_member_profiles(trades):
         p = profiles.setdefault(member, {
             "member": member,
             "chamber": t["chamber"],
+            "party": t.get("party", "?"),
+            "image_url": t.get("image_url"),
+            "bioguide": t.get("bioguide"),
             "trade_count": 0,
             "buy_count": 0,
             "sell_count": 0,
@@ -1019,6 +1133,9 @@ def build_member_profiles(trades):
         out.append({
             "member": p["member"],
             "chamber": p["chamber"],
+            "party": p["party"],
+            "image_url": p["image_url"],
+            "bioguide": p["bioguide"],
             "trade_count": p["trade_count"],
             "buy_count": p["buy_count"],
             "sell_count": p["sell_count"],
@@ -1050,6 +1167,7 @@ def build_stock_signals(trades):
             "buy_value": 0,
             "sell_value": 0,
             "members": set(),
+            "parties": set(),
             "last_filed": None,
         })
         val = t.get("est_amount", 0)
@@ -1060,6 +1178,8 @@ def build_stock_signals(trades):
             s["sell_count"] += 1
             s["sell_value"] += val
         s["members"].add(t["member"])
+        if t.get("party") in ("D", "R", "I"):
+            s["parties"].add(t["party"])
         filed = _parse_mdy(t["filed_date"])
         if s["last_filed"] is None or filed > _parse_mdy(s["last_filed"]):
             s["last_filed"] = t["filed_date"]
@@ -1079,11 +1199,38 @@ def build_stock_signals(trades):
             "total_value": s["buy_value"] + s["sell_value"],
             "member_count": len(s["members"]),
             "total_trades": s["buy_count"] + s["sell_count"],
+            "parties": sorted(s["parties"]),
+            "bipartisan": len(s["parties"]) >= 2,
             "last_filed": s["last_filed"],
         })
     # rank by dollar volume, then breadth of members
     out.sort(key=lambda s: (s["total_value"], s["member_count"]), reverse=True)
     return out
+
+
+def build_unusual_activity(stock_signals):
+    """Surface the 'signal' in the noise -- Quiver-style unusual activity.
+    All computed from disclosed records: consensus accumulation, consensus
+    distribution, and cross-party (bipartisan) interest in the same name."""
+    tradable = [s for s in stock_signals if s["sector"] != "OTHER" or s["member_count"] >= 2]
+    consensus_buys = sorted(
+        [s for s in stock_signals if s["member_count"] >= 2 and s["net_value"] > 0],
+        key=lambda s: (s["member_count"], s["net_value"]), reverse=True)[:8]
+    consensus_sells = sorted(
+        [s for s in stock_signals if s["member_count"] >= 2 and s["net_value"] < 0],
+        key=lambda s: (s["member_count"], -s["net_value"]), reverse=True)[:8]
+    bipartisan = sorted(
+        [s for s in stock_signals if s.get("bipartisan")],
+        key=lambda s: (s["member_count"], s["total_value"]), reverse=True)[:8]
+
+    def slim(s):
+        return {k: s[k] for k in ("ticker", "company", "sector", "member_count", "buy_count",
+                                   "sell_count", "net_value", "total_value", "parties")}
+    return {
+        "consensus_buys": [slim(s) for s in consensus_buys],
+        "consensus_sells": [slim(s) for s in consensus_sells],
+        "bipartisan": [slim(s) for s in bipartisan],
+    }
 
 
 def build_sector_summaries(sectors, bills, trades=()):
@@ -1124,6 +1271,13 @@ def build_overview(bills, trades, members, stock_signals):
     total_value = sum(t.get("est_amount", 0) for t in trades)
     buy_value = sum(t.get("est_amount", 0) for t in trades if _is_buy(t["type"]))
     sell_value = total_value - buy_value
+    party_value = {"D": 0, "R": 0, "I": 0}
+    party_trades = {"D": 0, "R": 0, "I": 0}
+    for t in trades:
+        p = t.get("party")
+        if p in party_value:
+            party_value[p] += t.get("est_amount", 0)
+            party_trades[p] += 1
     # most bought / sold by net dollar direction (tracked tickers only)
     ranked_net = sorted(stock_signals, key=lambda s: s["net_value"], reverse=True)
     top_bought = ranked_net[0] if ranked_net and ranked_net[0]["net_value"] > 0 else None
@@ -1140,6 +1294,8 @@ def build_overview(bills, trades, members, stock_signals):
         "total_value": total_value,
         "buy_value": buy_value,
         "sell_value": sell_value,
+        "party_value": party_value,
+        "party_trades": party_trades,
         "active_members": len(members),
         "tracked_tickers_traded": sum(1 for s in stock_signals if s["sector"] != "OTHER"),
         "bill_count": len(bills),
@@ -1159,10 +1315,14 @@ def main():
     sectors = load_sectors()
     ticker_index = build_ticker_index(sectors)
 
+    roster = fetch_member_roster()
+    member_index = build_member_index(roster)
+
     bills = fetch_bills(sectors)
     bills = enrich_bills(bills)
     trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
     trades = annotate_trade_values(trades)
+    trades = annotate_trade_parties(trades, member_index)
 
     bills = [analyze_appropriation(b) for b in bills]
     bills = attach_beneficiary_stocks(bills, sectors)
@@ -1174,11 +1334,13 @@ def main():
     members = build_member_profiles(trades)
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
+    unusual = build_unusual_activity(stock_signals)
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "congress": CONGRESS,
         "overview": overview,
+        "unusual_activity": unusual,
         "sectors": sector_summaries,
         "bills": bills,
         "trades": trades,

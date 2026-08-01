@@ -23,6 +23,9 @@
     --warn: #F0B25C;
     --bad: #F0736F;
     --good: #62E58C;
+    --dem: #5B8FF0;
+    --rep: #E8776B;
+    --ind: #B492E8;
     --radius: 12px;
     --radius-sm: 8px;
     --mono: 'JetBrains Mono', monospace;
@@ -244,6 +247,31 @@
   .mini-ticker { font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 6px; background: var(--panel-2); color: var(--text-dim); }
   .mini-ticker b { color: var(--text); }
   .member-card .card-detail-inner { padding: 6px 16px 16px; }
+  .member-head-row { display: flex; align-items: center; gap: 11px; }
+  .member-photo { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: var(--panel-2); border: 1px solid var(--line); flex-shrink: 0; }
+  .member-photo.lg { width: 68px; height: 68px; border-radius: 12px; }
+  .member-info { flex: 1; min-width: 0; }
+
+  /* ---------- Party badges ---------- */
+  .party-badge { font-family: var(--mono); font-size: 9.5px; font-weight: 700; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; border-radius: 5px; flex-shrink: 0; }
+  .party-badge.D { background: #1c2f52; color: var(--dem); }
+  .party-badge.R { background: #4a2a26; color: var(--rep); }
+  .party-badge.I { background: #372c4a; color: var(--ind); }
+  .party-badge.unknown { background: var(--line-soft); color: var(--text-faint); }
+  .party-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .party-dot.D { background: var(--dem); } .party-dot.R { background: var(--rep); } .party-dot.I { background: var(--ind); }
+
+  /* ---------- Unusual activity ---------- */
+  .unusual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .unusual-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; }
+  .unusual-card .uc-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; }
+  .unusual-card .uc-sub { font-size: 10.5px; color: var(--text-faint); margin-bottom: 12px; }
+  .uc-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 0; border-top: 1px solid var(--line-soft); }
+  .uc-row:first-of-type { border-top: none; }
+  .uc-tk { font-family: var(--mono); font-weight: 700; font-size: 13px; cursor: pointer; }
+  .uc-tk:hover { color: var(--accent); text-decoration: underline; }
+  .uc-meta { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); text-align: right; }
+  .uc-parties { display: inline-flex; gap: 3px; margin-left: 5px; }
 
   /* ---------- Tables ---------- */
   .data-table-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
@@ -292,6 +320,7 @@
     .chart-grid-2 { grid-template-columns: 1fr; }
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .over-grid { grid-template-columns: 1fr; }
+    .unusual-grid { grid-template-columns: 1fr; }
     .detail-cols { grid-template-columns: 1fr; }
     .modal-stats { grid-template-columns: repeat(2, 1fr); }
     .search-box { max-width: 100%; width: 100%; order: 3; }
@@ -376,8 +405,9 @@
   let DATA = null;
   let activeSector = "ALL";
   let activeView = "overview";
-  let openId = null;           // open bill or member key
+  let openId = null;           // open bill key
   let keyBillsOnly = false;
+  let partyFilter = "ALL";     // ALL | D | R | I
   let tradesShown = 100;
   const TRADES_PAGE = 100;
   let signalsShown = 60;
@@ -400,6 +430,20 @@
     if (a >= 1e3) return `${sign}$${Math.round(a / 1e3)}K`;
     return `${sign}$${a}`;
   }
+  const PARTY_NAME = { D: "Democrat", R: "Republican", I: "Independent" };
+  function partyBadge(p) {
+    const cls = ["D", "R", "I"].includes(p) ? p : "unknown";
+    return `<span class="party-badge ${cls}" title="${PARTY_NAME[p] || "Unknown"}">${["D", "R", "I"].includes(p) ? p : "?"}</span>`;
+  }
+  function partyDots(parties) {
+    return `<span class="uc-parties">${(parties || []).map(p => `<span class="party-dot ${p}" title="${PARTY_NAME[p]}"></span>`).join("")}</span>`;
+  }
+  function memberPhoto(m, lg) {
+    return m.image_url
+      ? `<img class="member-photo${lg ? " lg" : ""}" src="${esc(m.image_url)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`
+      : `<div class="member-photo${lg ? " lg" : ""}"></div>`;
+  }
+  function cleanMemberName(name) { return name.replace(/^(Sen\.|Rep\.)\s/, "").replace(/\s*\([^)]*\)\s*$/, ""); }
 
   function feasColor(v) {
     if (v >= 65) return "var(--good)";
@@ -679,59 +723,112 @@
   function renderPoliticiansView() {
     let members = (DATA.members || []);
     if (activeSector !== "ALL") members = members.filter(m => (m.sectors || []).includes(activeSector));
-    if (members.length === 0) return `<div class="empty-note">No members with disclosed trades in this sector for the current window.</div>`;
+    if (partyFilter !== "ALL") members = members.filter(m => m.party === partyFilter);
+    const total = (DATA.members || []).filter(m => activeSector === "ALL" || (m.sectors || []).includes(activeSector));
+    if (members.length === 0) return partyChips(total) + `<div class="empty-note">No members match this filter for the current window.</div>`;
     const visible = members.slice(0, membersShown);
-    const chartRows = members.slice(0, 12).map(m => ({
-      label: m.member.replace(/^(Sen\.|Rep\.)\s/, "").replace(/\s*\([^)]*\)\s*$/, ""),
-      buy: m.buy_count, sell: m.sell_count,
-    }));
+    const chartRows = members.slice(0, 12).map(m => ({ label: cleanMemberName(m.member), buy: m.buy_count, sell: m.sell_count }));
     return `<section class="data-section">
+      ${partyChips(total)}
       <div class="chart-panel">
         <div class="chart-title">Most active traders</div>
         <div class="chart-sub">Members ranked by disclosed trade count${activeSector !== "ALL" ? " in this sector" : ""} — buys vs sells</div>
         ${buySellLegend()}
         ${chartStacked(chartRows)}
       </div>
-      <div class="section-head"><span class="section-title">Politicians</span><span class="section-count">${members.length} with disclosed trades · most active first</span></div>
+      <div class="section-head"><span class="section-title">Politicians</span><span class="section-count">${members.length} shown · ranked by dollar volume</span></div>
       <div class="member-grid">${visible.map(renderMemberCard).join("")}</div>
       ${members.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, members.length - membersShown)} more</button>` : ""}
     </section>`;
   }
 
+  function partyChips(members) {
+    const counts = { ALL: members.length, D: 0, R: 0, I: 0 };
+    members.forEach(m => { if (counts[m.party] !== undefined) counts[m.party]++; });
+    const chip = (p, label) => `<button class="filter-tab ${partyFilter === p ? "active" : ""}" data-party="${p}">${p !== "ALL" ? `<span class="party-dot ${p}" style="margin-right:5px;vertical-align:middle;"></span>` : ""}${label} ${counts[p] ? `<span style="opacity:0.6">${counts[p]}</span>` : ""}</button>`;
+    return `<div class="filter-tabs" style="margin-bottom:12px;">${chip("ALL", "All parties")}${chip("D", "Democrats")}${chip("R", "Republicans")}${counts.I ? chip("I", "Independents") : ""}</div>`;
+  }
+
   function renderMemberCard(m) {
-    const open = openId === m.member;
-    // Sort by actual TRANSACTION date, newest first -- "most recent by date".
-    const memberTrades = open
-      ? DATA.trades.filter(t => t.member === m.member)
-          .sort((a, b) => (parseMDY(b.transaction_date) || 0) - (parseMDY(a.transaction_date) || 0))
-      : [];
     return `
-    <div class="member-card ${open ? "card-open" : ""}" data-id="${esc(m.member)}" data-kind="member">
+    <div class="member-card" data-member="${esc(m.member)}">
       <button class="member-head">
-        <div class="member-name">${esc(m.member.replace(/^(Sen\.|Rep\.)\s/, ""))} <span class="member-chamber">${esc(m.chamber)}</span></div>
-        <div class="member-stats">
-          <span><b>${fmtMoney(m.total_value)}</b> traded</span>
-          <span class="buys">${m.buy_count} buys</span>
-          <span class="sells">${m.sell_count} sells</span>
-          <span>${m.trade_count} total</span>
+        <div class="member-head-row">
+          ${memberPhoto(m)}
+          <div class="member-info">
+            <div class="member-name">${esc(cleanMemberName(m.member))} <span class="member-chamber">${partyBadge(m.party)} ${esc(m.chamber)}</span></div>
+            <div class="member-stats" style="margin:6px 0 0;">
+              <span><b>${fmtMoney(m.total_value)}</b></span>
+              <span class="buys">${m.buy_count}B</span>
+              <span class="sells">${m.sell_count}S</span>
+              <span>${m.distinct_tickers} tickers</span>
+            </div>
+          </div>
         </div>
         ${splitBar(m.buy_value || m.buy_count, m.sell_value || m.sell_count)}
-        <div class="member-tickers" style="margin-top:8px;">${(m.top_tickers || []).map(t => `<span class="mini-ticker clickable-ticker" data-ticker="${esc(t.ticker)}"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
+        <div class="member-tickers" style="margin-top:9px;">${(m.top_tickers || []).slice(0, 5).map(t => `<span class="mini-ticker"><b>${esc(t.ticker)}</b> ×${t.count}</span>`).join("") || `<span class="mini-ticker">funds / bonds only</span>`}</div>
       </button>
-      <div class="card-detail"><div class="card-detail-inner">
+    </div>`;
+  }
+
+  /* ---------- MEMBER DETAIL MODAL ---------- */
+  function openMember(memberName) {
+    const m = (DATA.members || []).find(x => x.member === memberName);
+    if (!m) return;
+    const trades = DATA.trades.filter(t => t.member === memberName)
+      .sort((a, b) => (parseMDY(b.transaction_date) || 0) - (parseMDY(a.transaction_date) || 0));
+    // sector allocation by dollar
+    const bySector = {};
+    trades.forEach(t => { if (t.sector && t.sector !== "OTHER") bySector[t.sector] = (bySector[t.sector] || 0) + (t.est_amount || 0); });
+    const sectorRows = Object.entries(bySector).sort((a, b) => b[1] - a[1]).slice(0, 6);
+    const maxSec = Math.max(1, ...sectorRows.map(r => r[1]));
+
+    document.getElementById("stockModalInner").innerHTML = `
+      <div class="modal-head">
+        <div style="display:flex;gap:14px;align-items:center;">
+          ${memberPhoto(m, true)}
+          <div>
+            <div class="modal-title" style="display:flex;align-items:center;gap:9px;">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
+            <div class="modal-sub">${PARTY_NAME[m.party] || "Unknown party"} · ${esc(m.chamber)} · last filed ${fmtDate(parseMDY(m.last_filed) ? parseMDY(m.last_filed).toISOString() : null)}</div>
+          </div>
+        </div>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-stats">
+          <div class="mstat"><div class="mstat-v">${fmtMoney(m.total_value)}</div><div class="mstat-l">Est. volume</div></div>
+          <div class="mstat"><div class="mstat-v net-pos">${fmtMoney(m.buy_value)}</div><div class="mstat-l">${m.buy_count} buys</div></div>
+          <div class="mstat"><div class="mstat-v net-neg">${fmtMoney(m.sell_value)}</div><div class="mstat-l">${m.sell_count} sells</div></div>
+          <div class="mstat"><div class="mstat-v">${m.distinct_tickers}</div><div class="mstat-l">Tickers</div></div>
+        </div>
+        ${sectorRows.length ? `
+          <span class="detail-eyebrow">Sector allocation — dollar-weighted</span>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:6px;">${sectorRows.map(([code, val]) => {
+            const sc = sectorMeta(code);
+            return `<div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:110px;font-size:11.5px;color:var(--text-dim);flex-shrink:0;">${esc(sc.short)}</span>
+              <span style="flex:1;height:8px;background:var(--line-soft);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:${(val / maxSec) * 100}%;background:${sc.color};border-radius:999px;"></span></span>
+              <span class="num" style="font-size:11px;color:var(--text-dim);width:56px;text-align:right;">${fmtMoney(val)}</span>
+            </div>`;
+          }).join("")}</div>` : ""}
         <span class="detail-eyebrow">Trading activity over time</span>
-        ${chartTimeline(memberTrades)}
-        <span class="detail-eyebrow">Disclosed portfolio — newest trade date first (${m.trade_count})</span>
+        ${chartTimeline(trades)}
+        <span class="detail-eyebrow">Disclosed portfolio — newest first (${m.trade_count})</span>
         <div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Tx Date</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Amount</th><th>Filed</th><th></th></tr></thead>
-          <tbody>${memberTrades.slice(0,60).map(t => `
-            <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td class="row-ticker">${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
-            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${esc(t.amount_range)}</td><td>${esc(t.filed_date)}</td>
+          <thead><tr><th>Tx Date</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Est. $</th><th></th></tr></thead>
+          <tbody>${trades.slice(0, 80).map(t => `
+            <tr><td class="row-ticker">${esc(t.transaction_date)}</td>
+            <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
+            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
         </table></div>
-        ${memberTrades.length > 60 ? `<div class="empty-note">Showing 60 of ${memberTrades.length} disclosed trades.</div>` : ""}
-      </div></div>
-    </div>`;
+        ${trades.length > 80 ? `<div class="empty-note">Showing 80 of ${trades.length} disclosed trades.</div>` : ""}
+      </div>`;
+    const modal = document.getElementById("stockModal");
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    modal.querySelector(".modal-close").addEventListener("click", closeStock);
+    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => openStock(el.dataset.ticker)));
   }
 
   /* ---------- STOCKS VIEW ---------- */
@@ -772,7 +869,7 @@
           <tbody>${visibleTrades.map(t => {
             const sc = sectorMeta(t.sector);
             return `<tr>
-              <td>${esc(t.filed_date)}</td><td>${esc(t.member)}</td><td>${esc(t.chamber)}</td>
+              <td>${esc(t.filed_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td><td>${esc(t.chamber)}</td>
               <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
               ${showSectorCol ? `<td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>` : ""}
               <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)} <span style="color:var(--text-faint);font-size:10px">${esc(t.amount_range)}</span></td>
@@ -827,10 +924,19 @@
     </div>`;
 
     const balancePct = o.total_value ? Math.round((o.buy_value / o.total_value) * 100) : 50;
-    const balance = `<div class="highlight-card">
-      <div class="hc-label">Buy / sell balance — dollar-weighted</div>
-      <div class="hc-row"><span class="buys">${fmtMoney(o.buy_value)} bought</span><span class="sells">${fmtMoney(o.sell_value)} sold</span></div>
-      <div class="split-bar" style="height:10px;margin-top:8px;"><i style="width:${balancePct}%;background:var(--good)"></i><i style="width:${100 - balancePct}%;background:var(--bad)"></i></div>
+    const pv = o.party_value || { D: 0, R: 0 };
+    const pTotal = (pv.D || 0) + (pv.R || 0) + (pv.I || 0) || 1;
+    const balance = `<div class="over-grid">
+      <div class="highlight-card">
+        <div class="hc-label">Buy / sell balance — dollar-weighted</div>
+        <div class="hc-row"><span class="buys">${fmtMoney(o.buy_value)} bought</span><span class="sells">${fmtMoney(o.sell_value)} sold</span></div>
+        <div class="split-bar" style="height:10px;margin-top:8px;"><i style="width:${balancePct}%;background:var(--good)"></i><i style="width:${100 - balancePct}%;background:var(--bad)"></i></div>
+      </div>
+      <div class="highlight-card">
+        <div class="hc-label">Trading by party — dollar-weighted</div>
+        <div class="hc-row"><span style="color:var(--dem)">${fmtMoney(pv.D)} Democrats</span><span style="color:var(--rep)">${fmtMoney(pv.R)} Republicans</span></div>
+        <div class="split-bar" style="height:10px;margin-top:8px;"><i style="width:${((pv.D || 0) / pTotal) * 100}%;background:var(--dem)"></i><i style="width:${((pv.R || 0) / pTotal) * 100}%;background:var(--rep)"></i>${pv.I ? `<i style="width:${(pv.I / pTotal) * 100}%;background:var(--ind)"></i>` : ""}</div>
+      </div>
     </div>`;
 
     const bought = o.top_bought ? `<div class="hc-row"><div><span class="hc-ticker clickable-ticker" style="color:var(--good)" data-ticker="${esc(o.top_bought.ticker)}">${esc(o.top_bought.ticker)}</span><div class="hc-company">${esc(o.top_bought.company)}</div></div><span class="hc-val net-pos">${fmtMoney(o.top_bought.net_value)} net</span></div>` : `<div class="empty-note">No net buying.</div>`;
@@ -843,7 +949,7 @@
     const feed = (rows, showVal) => `<div class="feed-list">${rows.map(t => `
       <div class="feed-row">
         <span class="feed-date">${esc(t.filed_date)}</span>
-        <span class="feed-member">${esc(t.member)}</span>
+        <span class="feed-member" data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span>
         <span class="feed-ticker clickable-ticker" data-ticker="${esc(t.ticker || "")}">${esc(t.ticker || t.company?.slice(0, 14) || "—")} <span class="${tradeTypeClass(t.type)}" style="font-weight:600">${isBuy(t.type) ? "▲" : "▼"}</span></span>
         <span class="feed-val">${showVal ? fmtMoney(t.est_amount) : esc(t.type)}</span>
       </div>`).join("")}</div>`;
@@ -852,11 +958,44 @@
       ${kpis}
       ${balance}
       ${movers}
+      ${renderUnusual()}
       <div class="over-grid">
         <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
         <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
       </div>
     </section>`;
+  }
+
+  function renderUnusual() {
+    const u = DATA.unusual_activity;
+    if (!u) return "";
+    const col = (label, sub, rows, isNeg) => {
+      if (!rows || !rows.length) return "";
+      return `<div class="unusual-card">
+        <div class="uc-label">${label}</div>
+        <div class="uc-sub">${sub}</div>
+        ${rows.map(s => `<div class="uc-row">
+          <span class="uc-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}${partyDots(s.parties)}</span>
+          <span class="uc-meta">${s.member_count} members · <span class="${isNeg ? "net-neg" : "net-pos"}">${fmtMoney(s.net_value)}</span></span>
+        </div>`).join("")}
+      </div>`;
+    };
+    const bipartisanCol = (u.bipartisan && u.bipartisan.length) ? `<div class="unusual-card">
+        <div class="uc-label">Bipartisan interest</div>
+        <div class="uc-sub">Traded by both parties — cross-aisle attention</div>
+        ${u.bipartisan.map(s => `<div class="uc-row">
+          <span class="uc-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}${partyDots(s.parties)}</span>
+          <span class="uc-meta">${s.member_count} members · ${fmtMoney(s.total_value)}</span>
+        </div>`).join("")}
+      </div>` : "";
+    const cols = [
+      col("Congress is buying", "Multiple members accumulating", u.consensus_buys, false),
+      col("Congress is selling", "Multiple members distributing", u.consensus_sells, true),
+      bipartisanCol,
+    ].filter(Boolean).join("");
+    if (!cols) return "";
+    return `<div class="section-head" style="margin-top:6px;"><span class="section-title">Unusual activity</span><span class="section-count">consensus signals across Congress</span></div>
+      <div class="unusual-grid">${cols}</div>`;
   }
 
   /* ---------- STOCK DETAIL MODAL ---------- */
@@ -902,7 +1041,7 @@
         <div class="data-table-wrap"><table class="data-table">
           <thead><tr><th>Tx Date</th><th>Member</th><th>Chamber</th><th>Type</th><th>Est. $</th><th>Range</th><th></th></tr></thead>
           <tbody>${trades.slice(0, 80).map(t => `
-            <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td>${esc(t.member)}</td><td>${esc(t.chamber)}</td>
+            <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td><td>${esc(t.chamber)}</td>
             <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${esc(t.amount_range)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
         </table></div>
@@ -912,6 +1051,7 @@
     document.body.style.overflow = "hidden";
     modal.querySelector(".modal-close").addEventListener("click", closeStock);
     modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => openStock(el.dataset.ticker)));
+    modal.querySelectorAll("[data-membername]").forEach(el => el.addEventListener("click", () => openMember(el.dataset.membername)));
   }
   function closeStock() {
     document.getElementById("stockModal").classList.remove("open");
@@ -953,19 +1093,33 @@
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
 
-    el.querySelectorAll("[data-kind]").forEach(card => {
-      const btn = card.querySelector(".bill-header-btn, .member-head");
-      if (!btn) return;
-      btn.addEventListener("click", () => {
+    el.querySelectorAll("[data-kind='bill']").forEach(card => {
+      card.querySelector(".bill-header-btn")?.addEventListener("click", () => {
         const id = card.dataset.id;
         openId = openId === id ? null : id;
         renderContent();
       });
     });
+    // member cards open the member detail modal
+    el.querySelectorAll("[data-member]").forEach(card => {
+      card.querySelector(".member-head")?.addEventListener("click", (e) => {
+        if (e.target.closest("[data-ticker]")) return;
+        openMember(card.dataset.member);
+      });
+    });
+    // party filter chips
+    el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
+      partyFilter = chip.dataset.party; membersShown = MEMBERS_PAGE; renderContent();
+    }));
     // clickable tickers open the stock detail modal (overview, tables, chips)
     el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {
       e.stopPropagation();
       openStock(t.dataset.ticker);
+    }));
+    // clickable member names in feeds/tables open the member modal
+    el.querySelectorAll("[data-membername]").forEach(t => t.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openMember(t.dataset.membername);
     }));
     const wire = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener("click", fn); };
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
