@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-08-03T12:41:45Z",
+  "generated_at": "2026-08-03T21:51:28Z",
   "congress": 119,
   "overview": {
-    "total_trades": 1097,
-    "total_value": 49357323,
+    "total_trades": 1098,
+    "total_value": 49365323,
     "buy_value": 21306100,
-    "sell_value": 28051223,
+    "sell_value": 28059223,
     "party_value": {
-      "D": 10808822,
+      "D": 10816822,
       "R": 38548501,
       "I": 0
     },
     "party_trades": {
-      "D": 167,
+      "D": 168,
       "R": 930,
       "I": 0
     },
@@ -139,6 +139,19 @@
       }
     ],
     "latest_trades": [
+      {
+        "member": "Sen. Sheldon Whitehouse",
+        "chamber": "Senate",
+        "ticker": "LOW",
+        "company": "Lowe's Companies, Inc. Common Stock",
+        "sector": "OTHER",
+        "type": "Sale (Partial)",
+        "amount_range": "$1,001 - $15,000",
+        "est_amount": 8000,
+        "transaction_date": "07/20/2026",
+        "filed_date": "08/03/2026",
+        "report_url": "https://efdsearch.senate.gov/search/view/ptr/96db6e64-f7c3-4483-b0aa-af10ba2bdbbd/"
+      },
       {
         "member": "Rep. Cleo Fields (LA06)",
         "chamber": "House",
@@ -274,19 +287,6 @@
         "chamber": "Senate",
         "ticker": null,
         "company": "CORPUS CHRISTI TEX UTIL SYS REVRate/Coupon:5%Matures:2029-07-15",
-        "sector": "OTHER",
-        "type": "Sale (Partial)",
-        "amount_range": "$100,001 - $250,000",
-        "est_amount": 175000,
-        "transaction_date": "06/29/2026",
-        "filed_date": "07/29/2026",
-        "report_url": "https://efdsearch.senate.gov/search/view/ptr/19fb5a84-b9f8-4847-841e-84c67a0edfe0/"
-      },
-      {
-        "member": "Sen. David H McCormick",
-        "chamber": "Senate",
-        "ticker": null,
-        "company": "PENNSYLVANIA ST HIGHER EDL REVRate/Coupon:4%Matures:2031-06-15",
         "sector": "OTHER",
         "type": "Sale (Partial)",
         "amount_range": "$100,001 - $250,000",
@@ -778,7 +778,7 @@
       "color": "#565F73",
       "bill_count": 0,
       "appropriation_count": 0,
-      "trade_count": 954,
+      "trade_count": 955,
       "stock_count": 0,
       "avg_momentum": 0
     }
@@ -10637,197 +10637,6 @@
       "key_bill": false
     },
     {
-      "id": "119-SRES-289",
-      "number": "SRES 289",
-      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
-      "sector": "MOO",
-      "introduced_date": "2025-06-18",
-      "latest_action": {
-        "date": "2025-06-18",
-        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Sen. Merkley, Jeff [D-OR]",
-        "party": "D",
-        "state": "OR"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
-      "momentum": 35,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "ADM",
-          "name": "Archer-Daniels-Midland"
-        },
-        {
-          "ticker": "BG",
-          "name": "Bunge Global"
-        },
-        {
-          "ticker": "CF",
-          "name": "CF Industries Holdings"
-        },
-        {
-          "ticker": "MOS",
-          "name": "The Mosaic Company"
-        },
-        {
-          "ticker": "CTVA",
-          "name": "Corteva"
-        },
-        {
-          "ticker": "FMC",
-          "name": "FMC Corporation"
-        },
-        {
-          "ticker": "NTR",
-          "name": "Nutrien"
-        },
-        {
-          "ticker": "TSN",
-          "name": "Tyson Foods"
-        },
-        {
-          "ticker": "CNH",
-          "name": "CNH Industrial"
-        },
-        {
-          "ticker": "DAR",
-          "name": "Darling Ingredients"
-        },
-        {
-          "ticker": "LW",
-          "name": "Lamb Weston"
-        },
-        {
-          "ticker": "INGR",
-          "name": "Ingredion"
-        },
-        {
-          "ticker": "LNN",
-          "name": "Lindsay Corporation"
-        },
-        {
-          "ticker": "SMG",
-          "name": "Scotts Miracle-Gro"
-        },
-        {
-          "ticker": "CALM",
-          "name": "Cal-Maine Foods"
-        }
-      ],
-      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "BG",
-          "company": "Bunge Global",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "MOS",
-          "company": "The Mosaic Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CTVA",
-          "company": "Corteva",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Sen. Alan Armstrong",
-          "chamber": "Senate",
-          "ticker": "CF",
-          "company": "CF Industries Holdings",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "03/27/2026",
-          "filed_date": "07/21/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "DE",
-          "company": "Deere & Company",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        },
-        {
-          "member": "Rep. Dan Newhouse (WA04)",
-          "chamber": "House",
-          "ticker": "FMC",
-          "company": "FMC Corporation",
-          "type": "Sale",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "07/10/2026",
-          "filed_date": "7/17/2026",
-          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
-        }
-      ],
-      "related_trade_count": 7,
-      "key_bill": false
-    },
-    {
       "id": "119-HRES-526",
       "number": "HRES 526",
       "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
@@ -10924,6 +10733,197 @@
         }
       ],
       "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "BG",
+          "company": "Bunge Global",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "MOS",
+          "company": "The Mosaic Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CTVA",
+          "company": "Corteva",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "CF",
+          "company": "CF Industries Holdings",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "DE",
+          "company": "Deere & Company",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        },
+        {
+          "member": "Rep. Dan Newhouse (WA04)",
+          "chamber": "House",
+          "ticker": "FMC",
+          "company": "FMC Corporation",
+          "type": "Sale",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/10/2026",
+          "filed_date": "7/17/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034998.pdf"
+        }
+      ],
+      "related_trade_count": 7,
+      "key_bill": false
+    },
+    {
+      "id": "119-SRES-289",
+      "number": "SRES 289",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "sector": "MOO",
+      "introduced_date": "2025-06-18",
+      "latest_action": {
+        "date": "2025-06-18",
+        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Merkley, Jeff [D-OR]",
+        "party": "D",
+        "state": "OR"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "ADM",
+          "name": "Archer-Daniels-Midland"
+        },
+        {
+          "ticker": "BG",
+          "name": "Bunge Global"
+        },
+        {
+          "ticker": "CF",
+          "name": "CF Industries Holdings"
+        },
+        {
+          "ticker": "MOS",
+          "name": "The Mosaic Company"
+        },
+        {
+          "ticker": "CTVA",
+          "name": "Corteva"
+        },
+        {
+          "ticker": "FMC",
+          "name": "FMC Corporation"
+        },
+        {
+          "ticker": "NTR",
+          "name": "Nutrien"
+        },
+        {
+          "ticker": "TSN",
+          "name": "Tyson Foods"
+        },
+        {
+          "ticker": "CNH",
+          "name": "CNH Industrial"
+        },
+        {
+          "ticker": "DAR",
+          "name": "Darling Ingredients"
+        },
+        {
+          "ticker": "LW",
+          "name": "Lamb Weston"
+        },
+        {
+          "ticker": "INGR",
+          "name": "Ingredion"
+        },
+        {
+          "ticker": "LNN",
+          "name": "Lindsay Corporation"
+        },
+        {
+          "ticker": "SMG",
+          "name": "Scotts Miracle-Gro"
+        },
+        {
+          "ticker": "CALM",
+          "name": "Cal-Maine Foods"
+        }
+      ],
+      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -14358,6 +14358,22 @@
     }
   ],
   "trades": [
+    {
+      "sector": "OTHER",
+      "ticker": "LOW",
+      "company": "Lowe's Companies, Inc. Common Stock",
+      "member": "Sen. Sheldon Whitehouse",
+      "chamber": "Senate",
+      "transaction_date": "07/20/2026",
+      "filed_date": "08/03/2026",
+      "type": "Sale (Partial)",
+      "amount_range": "$1,001 - $15,000",
+      "report_url": "https://efdsearch.senate.gov/search/view/ptr/96db6e64-f7c3-4483-b0aa-af10ba2bdbbd/",
+      "est_amount": 8000,
+      "party": "D",
+      "image_url": "https://www.congress.gov/img/member/w000802_200.jpg",
+      "bioguide": "W000802"
+    },
     {
       "sector": "OTHER",
       "ticker": null,
@@ -32415,6 +32431,51 @@
       "last_filed": "7/7/2026"
     },
     {
+      "member": "Sen. Sheldon Whitehouse",
+      "chamber": "Senate",
+      "party": "D",
+      "image_url": "https://www.congress.gov/img/member/w000802_200.jpg",
+      "bioguide": "W000802",
+      "trade_count": 7,
+      "buy_count": 2,
+      "sell_count": 5,
+      "buy_value": 40500,
+      "sell_value": 113500,
+      "total_value": 154000,
+      "distinct_tickers": 6,
+      "top_tickers": [
+        {
+          "ticker": "NVDA",
+          "count": 2
+        },
+        {
+          "ticker": "LOW",
+          "count": 1
+        },
+        {
+          "ticker": "AAPL",
+          "count": 1
+        },
+        {
+          "ticker": "CCI",
+          "count": 1
+        },
+        {
+          "ticker": "COHR",
+          "count": 1
+        },
+        {
+          "ticker": "MU",
+          "count": 1
+        }
+      ],
+      "sectors": [
+        "QTUM",
+        "SMH"
+      ],
+      "last_filed": "08/03/2026"
+    },
+    {
       "member": "Rep. April McClain Delaney (MD06)",
       "chamber": "House",
       "party": "D",
@@ -32479,47 +32540,6 @@
       ],
       "sectors": [],
       "last_filed": "7/19/2026"
-    },
-    {
-      "member": "Sen. Sheldon Whitehouse",
-      "chamber": "Senate",
-      "party": "D",
-      "image_url": "https://www.congress.gov/img/member/w000802_200.jpg",
-      "bioguide": "W000802",
-      "trade_count": 6,
-      "buy_count": 2,
-      "sell_count": 4,
-      "buy_value": 40500,
-      "sell_value": 105500,
-      "total_value": 146000,
-      "distinct_tickers": 5,
-      "top_tickers": [
-        {
-          "ticker": "NVDA",
-          "count": 2
-        },
-        {
-          "ticker": "AAPL",
-          "count": 1
-        },
-        {
-          "ticker": "CCI",
-          "count": 1
-        },
-        {
-          "ticker": "COHR",
-          "count": 1
-        },
-        {
-          "ticker": "MU",
-          "count": 1
-        }
-      ],
-      "sectors": [
-        "QTUM",
-        "SMH"
-      ],
-      "last_filed": "07/08/2026"
     },
     {
       "member": "Rep. Debbie Dingell (MI06)",
@@ -35831,6 +35851,26 @@
       "last_filed": "07/21/2026"
     },
     {
+      "ticker": "LOW",
+      "company": "Lowe's Companies, Inc. Common Stock",
+      "sector": "OTHER",
+      "buy_count": 1,
+      "sell_count": 1,
+      "buy_value": 8000,
+      "sell_value": 8000,
+      "net": 0,
+      "net_value": 0,
+      "total_value": 16000,
+      "member_count": 2,
+      "total_trades": 2,
+      "parties": [
+        "D",
+        "R"
+      ],
+      "bipartisan": true,
+      "last_filed": "08/03/2026"
+    },
+    {
       "ticker": "SPOT",
       "company": "Spotify Technology S.A. Ordinary Shares",
       "sector": "OTHER",
@@ -38776,25 +38816,6 @@
     {
       "ticker": "LITE",
       "company": "Lumentum Holdings Inc. - Common Stock",
-      "sector": "OTHER",
-      "buy_count": 1,
-      "sell_count": 0,
-      "buy_value": 8000,
-      "sell_value": 0,
-      "net": 1,
-      "net_value": 8000,
-      "total_value": 8000,
-      "member_count": 1,
-      "total_trades": 1,
-      "parties": [
-        "R"
-      ],
-      "bipartisan": false,
-      "last_filed": "07/21/2026"
-    },
-    {
-      "ticker": "LOW",
-      "company": "Lowe's Companies, Inc. Common Stock",
       "sector": "OTHER",
       "buy_count": 1,
       "sell_count": 0,
