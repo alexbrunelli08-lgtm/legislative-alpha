@@ -76,6 +76,30 @@
   .status-badge b { color: var(--accent); font-weight: 600; }
   .status-badge.err { color: var(--bad); border-color: #4A2323; }
 
+  /* ---------- Hero performance ---------- */
+  .hero { padding: 30px 0 6px; }
+  .hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .hero-title { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+  .hero-sub { font-size: 12.5px; color: var(--text-dim); margin-top: 3px; }
+  .hero-return { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 6px 0 16px; }
+  .hero-return .big { font-family: var(--display); font-weight: 700; font-size: 40px; letter-spacing: -0.03em; line-height: 1; }
+  .hero-return .vs { font-size: 13px; color: var(--text-dim); }
+  .range-tabs { display: flex; gap: 2px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .range-tab { font-family: var(--mono); font-size: 11px; font-weight: 500; background: transparent; border: none; color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+  .range-tab:hover { color: var(--text); }
+  .range-tab.active { background: var(--elev); color: var(--text); }
+  .perf-chart-wrap { position: relative; }
+  .perf-chart-wrap svg { display: block; width: 100%; height: 320px; overflow: visible; }
+  .perf-legend { display: flex; gap: 18px; margin-top: 8px; font-size: 11px; color: var(--text-dim); }
+  .perf-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .perf-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+  .metric-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 16px; }
+  .metric-cell { background: var(--panel); padding: 13px 14px; }
+  .metric-v { font-family: var(--mono); font-weight: 700; font-size: 17px; }
+  .metric-l { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-top: 3px; }
+  .hero-note { font-size: 11px; color: var(--text-faint); margin-top: 12px; line-height: 1.55; max-width: 900px; }
+  .hero-empty { border: 1px solid var(--line); border-radius: var(--radius); padding: 40px; text-align: center; color: var(--text-faint); font-size: 13px; background: var(--panel); }
+
   /* ---------- Sector strip ---------- */
   .sector-section { padding: 14px 0 4px; }
   .section-label { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 12px; font-weight: 500; }
@@ -332,6 +356,8 @@
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .over-grid { grid-template-columns: 1fr; }
     .unusual-grid { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-return .big { font-size: 32px; }
     .detail-cols { grid-template-columns: 1fr; }
     .modal-stats { grid-template-columns: repeat(2, 1fr); }
     .search-box { max-width: 100%; width: 100%; order: 3; }
@@ -358,10 +384,7 @@
     </div>
   </header>
 
-  <section class="sector-section">
-    <div class="section-label">Sectors of the economy</div>
-    <div class="sector-grid" id="sectorGrid"></div>
-  </section>
+  <section class="hero" id="hero"></section>
 
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
@@ -458,6 +481,134 @@
     if (a >= 1e3) return `${sign}$${Math.round(a / 1e3)}K`;
     return `${sign}$${a}`;
   }
+  function fmtPct(v, sign) {
+    if (v == null || isNaN(v)) return "—";
+    const s = sign && v > 0 ? "+" : "";
+    return `${s}${(v * 100).toFixed(1)}%`;
+  }
+
+  /* ---------- Performance hero (Congress vs Market backtest) ---------- */
+  let perfRange = "1Y";
+  const RANGE_DAYS = { "1M": 30, "3M": 91, "6M": 182, "YTD": null, "1Y": 366 };
+
+  function sliceSeries(series, range) {
+    if (!series || !series.length) return [];
+    if (range === "YTD") {
+      const yr = series[series.length - 1].d.slice(0, 4);
+      const start = series.findIndex(p => p.d >= `${yr}-01-01`);
+      return series.slice(start < 0 ? 0 : start);
+    }
+    const days = RANGE_DAYS[range] || 366;
+    const cutoff = new Date(series[series.length - 1].d);
+    cutoff.setDate(cutoff.getDate() - days);
+    const cut = cutoff.toISOString().slice(0, 10);
+    const start = series.findIndex(p => p.d >= cut);
+    return series.slice(start < 0 ? 0 : start);
+  }
+
+  function perfMetrics(slice) {
+    if (slice.length < 2) return {};
+    const reb = (arr, k) => arr.map(p => p[k] / arr[0][k]);
+    const s = reb(slice, "s"), m = reb(slice, "m");
+    const ret = s[s.length - 1] - 1, mret = m[m.length - 1] - 1;
+    const days = (new Date(slice[slice.length - 1].d) - new Date(slice[0].d)) / 86400000;
+    const yrs = days / 365 || 1;
+    const cagr = Math.pow(s[s.length - 1], 1 / yrs) - 1;
+    let peak = -Infinity, mdd = 0;
+    s.forEach(v => { peak = Math.max(peak, v); mdd = Math.min(mdd, v / peak - 1); });
+    const dr = [], dm = [];
+    for (let i = 1; i < s.length; i++) { dr.push(s[i] / s[i - 1] - 1); dm.push(m[i] / m[i - 1] - 1); }
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+    const mr = mean(dr), std = Math.sqrt(mean(dr.map(x => (x - mr) ** 2)));
+    const sharpe = std > 0 ? (mr / std) * Math.sqrt(252) : 0;
+    // beta/alpha vs market
+    const mm = mean(dm);
+    let cov = 0, varm = 0;
+    for (let i = 0; i < dr.length; i++) { cov += (dr[i] - mr) * (dm[i] - mm); varm += (dm[i] - mm) ** 2; }
+    const beta = varm > 0 ? cov / varm : 0;
+    const alpha = (mr - beta * mm) * 252;
+    return { ret, mret, cagr, mdd, sharpe, beta, alpha };
+  }
+
+  function perfChart(slice) {
+    if (slice.length < 2) return "";
+    const W = 900, H = 300, padL = 4, padR = 52, padT = 12, padB = 24;
+    const plotW = W - padL - padR, plotH = H - padT - padB;
+    const s0 = slice[0].s, m0 = slice[0].m;
+    const S = slice.map(p => p.s / s0), M = slice.map(p => p.m / m0);
+    const lo = Math.min(...S, ...M), hi = Math.max(...S, ...M), range = hi - lo || 1;
+    const x = i => padL + (i / (slice.length - 1)) * plotW;
+    const y = v => padT + plotH - ((v - lo) / range) * plotH;
+    const linePts = arr => arr.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const areaPts = `${padL},${padT + plotH} ${linePts(S)} ${padL + plotW},${padT + plotH}`;
+    // y gridlines at rebased 1.0 and hi/lo
+    const gridVals = [lo, 1, hi].filter((v, i, a) => a.indexOf(v) === i);
+    const grid = gridVals.map(v => `
+      <line x1="${padL}" y1="${y(v).toFixed(1)}" x2="${padL + plotW}" y2="${y(v).toFixed(1)}" stroke="var(--line-soft)" stroke-width="1"/>
+      <text x="${W - padR + 6}" y="${(y(v) + 3).toFixed(1)}" fill="var(--text-faint)" font-size="10">${((v - 1) * 100).toFixed(0)}%</text>`).join("");
+    // x labels (~5)
+    const nlab = Math.min(5, slice.length);
+    let xlab = "";
+    for (let k = 0; k < nlab; k++) {
+      const i = Math.round(k * (slice.length - 1) / (nlab - 1));
+      const dt = new Date(slice[i].d);
+      xlab += `<text x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="middle" fill="var(--text-faint)" font-size="10">${dt.toLocaleDateString("en-US", { month: "short", year: "2-digit" })}</text>`;
+    }
+    const up = S[S.length - 1] >= 1;
+    const col = up ? "var(--accent)" : "var(--bad)";
+    return `<div class="perf-chart-wrap"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Congress strategy vs S&P 500">
+      <defs><linearGradient id="perfFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${col}" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="${col}" stop-opacity="0"/>
+      </linearGradient></defs>
+      ${grid}
+      <polygon points="${areaPts}" fill="url(#perfFill)"/>
+      <polyline points="${linePts(M)}" fill="none" stroke="var(--text-faint)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.85"/>
+      <polyline points="${linePts(S)}" fill="none" stroke="${col}" stroke-width="2.25" stroke-linejoin="round"/>
+      ${xlab}
+    </svg></div>`;
+  }
+
+  function renderHero() {
+    const el = document.getElementById("hero");
+    if (activeView !== "overview") { el.innerHTML = ""; el.style.padding = "0"; return; }
+    el.style.padding = "";
+    const p = DATA.performance;
+    if (!p || !p.series || p.series.length < 2) {
+      el.innerHTML = `<div class="hero-empty">Performance backtest is unavailable in this data build — it appears after the next refresh with price data.</div>`;
+      return;
+    }
+    const slice = sliceSeries(p.series, perfRange);
+    const mt = perfMetrics(slice);
+    const rangeLabel = { "1M": "past month", "3M": "past 3 months", "6M": "past 6 months", "YTD": "year to date", "1Y": "past year" }[perfRange];
+    const retColor = mt.ret >= 0 ? "var(--good)" : "var(--bad)";
+    const tiles = [
+      ["Total return", fmtPct(mt.ret, true), retColor],
+      ["vs S&P 500", fmtPct(mt.ret - mt.mret, true), (mt.ret - mt.mret) >= 0 ? "var(--good)" : "var(--bad)"],
+      ["CAGR", fmtPct(mt.cagr, true), "var(--text)"],
+      ["Max drawdown", fmtPct(mt.mdd), "var(--bad)"],
+      ["Sharpe", (mt.sharpe || 0).toFixed(2), "var(--text)"],
+      ["Beta", (mt.beta || 0).toFixed(2), "var(--text)"],
+    ];
+    el.innerHTML = `
+      <div class="hero-top">
+        <div>
+          <div class="hero-title">Congress Trading Index — long / short</div>
+          <div class="hero-sub">Follows disclosed congressional trades vs the S&amp;P 500 · ${p.n_positions} positions</div>
+        </div>
+        <div class="range-tabs" id="rangeTabs">${Object.keys(RANGE_DAYS).map(r => `<button class="range-tab ${r === perfRange ? "active" : ""}" data-range="${r}">${r}</button>`).join("")}</div>
+      </div>
+      <div class="hero-return">
+        <span class="big" style="color:${retColor}">${fmtPct(mt.ret, true)}</span>
+        <span class="vs">vs S&amp;P <b style="color:${mt.mret >= 0 ? "var(--good)" : "var(--bad)"}">${fmtPct(mt.mret, true)}</b> · ${rangeLabel}</span>
+      </div>
+      ${perfChart(slice)}
+      <div class="perf-legend"><span><i style="background:var(--accent)"></i>Congress strategy</span><span><i style="background:var(--text-faint)"></i>S&amp;P 500</span></div>
+      <div class="metric-grid">${tiles.map(([l, v, c]) => `<div class="metric-cell"><div class="metric-v" style="color:${c}">${v}</div><div class="metric-l">${l}</div></div>`).join("")}</div>
+      <div class="hero-note">${esc(p.methodology)}</div>`;
+    el.querySelectorAll("[data-range]").forEach(b => b.addEventListener("click", () => { perfRange = b.dataset.range; renderHero(); }));
+  }
+
   const PARTY_NAME = { D: "Democrat", R: "Republican", I: "Independent" };
   function partyBadge(p) {
     const cls = ["D", "R", "I"].includes(p) ? p : "unknown";
@@ -613,27 +764,20 @@
   }
 
   /* ---------- Sector grid + filters ---------- */
-  function renderSectorGrid() {
-    const grid = document.getElementById("sectorGrid");
-    grid.innerHTML = "";
-    Object.entries(DATA.sectors).forEach(([code, s]) => {
-      const btn = document.createElement("button");
-      btn.className = "sector-card";
-      btn.setAttribute("aria-pressed", activeSector === code);
+  function sectorCardsHTML() {
+    return `<div class="sector-grid">${Object.entries(DATA.sectors).map(([code, s]) => {
       const momentumHtml = s.bill_count > 0
         ? `<span class="sector-momentum" style="color:${feasColor(s.avg_momentum)}">${s.avg_momentum}</span>`
         : `<span class="sector-momentum" style="color:var(--text-faint)">—</span>`;
-      btn.style.setProperty("--accent-color", s.color);
-      btn.innerHTML = `
+      return `<button class="sector-card" data-sector-jump="${code}" style="--accent-color:${s.color}">
         <div class="sector-title" style="color:${s.color}">${esc(s.short)}</div>
         <div class="sector-sub">${esc(s.name)}${s.stock_count ? ` · ${s.stock_count} stocks` : ""}</div>
         <div class="sector-metric-row">
           ${momentumHtml}
           <span class="sector-counts">${s.bill_count} bills · ${s.appropriation_count ?? 0} approp.<br>${s.trade_count ?? 0} trades</span>
-        </div>`;
-      btn.addEventListener("click", () => { setSector(activeSector === code ? "ALL" : code); });
-      grid.appendChild(btn);
-    });
+        </div>
+      </button>`;
+    }).join("")}</div>`;
   }
 
   function renderFilterTabs() {
@@ -992,6 +1136,8 @@
         <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
         <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
       </div>
+      <div class="section-head" style="margin-top:8px;"><span class="section-title">Sectors of the economy</span><span class="section-count">momentum &amp; activity by theme — tap to explore</span></div>
+      ${sectorCardsHTML()}
     </section>`;
   }
 
@@ -1182,6 +1328,10 @@
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
       partyFilter = chip.dataset.party; membersShown = MEMBERS_PAGE; renderContent();
     }));
+    // sector cards on the overview drill into that sector's bills
+    el.querySelectorAll("[data-sector-jump]").forEach(card => card.addEventListener("click", () => {
+      activeSector = card.dataset.sectorJump; resetPaging(); setHash("bills");
+    }));
     // clickable tickers open the stock detail modal (overview, tables, chips)
     el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -1199,7 +1349,7 @@
   }
 
   function renderAll() {
-    renderSectorGrid();
+    renderHero();
     renderViewTabs();
     renderFilterTabs();
     // Overview is a global snapshot — the per-sector filter doesn't apply there.

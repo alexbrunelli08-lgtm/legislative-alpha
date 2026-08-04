@@ -39,6 +39,10 @@ SECTORS_PATH = os.path.join(SCRIPT_DIR, "sectors.json")
 OUTPUT_PATH = os.path.join(SCRIPT_DIR, "..", "data.json")
 HISTORY_PATH = os.path.join(SCRIPT_DIR, "..", "history.json")
 HISTORY_MAX_DAYS = 90
+PRICES_PATH = os.path.join(SCRIPT_DIR, "..", "prices.json")
+BACKTEST_TICKERS = 120   # top tickers by dollar exposure to price (dominate the weighting)
+BACKTEST_WINDOW = 365    # calendar days of performance history
+PRICE_HISTORY_DAYS = 400 # keep this many daily closes cached per ticker
 
 CONGRESS = 119  # 119th Congress: 2025-2027
 BILLS_LOOKBACK_DAYS = 45          # only scan bills updated in this window
@@ -1268,6 +1272,148 @@ def build_sector_summaries(sectors, bills, trades=()):
 
 
 # ---------------------------------------------------------------------------
+# Performance backtest -- a "Congress vs Market" index built from real prices.
+# Positions come from disclosed STOCK Act trades (which lag execution by weeks),
+# so this is an ILLUSTRATIVE backtest of *following the disclosures*, not a
+# claim of members' actual returns. Prices via the free Yahoo chart API.
+# ---------------------------------------------------------------------------
+
+YF_BASE = "https://query1.finance.yahoo.com/v8/finance/chart/"
+
+
+def _yf_prices(symbol, range_="2y"):
+    """Daily closes {date_str: close} from Yahoo, or {} on failure."""
+    try:
+        resp = requests.get(YF_BASE + symbol, params={"range": range_, "interval": "1d"},
+                            headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+        resp.raise_for_status()
+        res = resp.json()["chart"]["result"][0]
+        ts = res["timestamp"]
+        closes = res["indicators"]["quote"][0]["close"]
+        out = {}
+        for t, c in zip(ts, closes):
+            if c is not None:
+                out[datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d")] = round(c, 4)
+        return out
+    except (requests.RequestException, KeyError, ValueError, IndexError):
+        return {}
+
+
+def load_price_cache():
+    if not os.path.exists(PRICES_PATH):
+        return {}
+    try:
+        with open(PRICES_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def fetch_prices(tickers):
+    """Fetch daily closes for the given tickers + SPY, caching in prices.json so
+    the 6-hourly runs only hit the network once per day per symbol."""
+    cache = load_price_cache()
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    symbols = list(dict.fromkeys(list(tickers) + ["SPY"]))
+    fetched = 0
+    for i, tk in enumerate(symbols):
+        entry = cache.get(tk)
+        if entry and entry.get("asof") == today:
+            continue  # already fresh today
+        series = _yf_prices(tk)
+        if series:
+            items = sorted(series.items())[-PRICE_HISTORY_DAYS:]
+            cache[tk] = {"asof": today, "d": [d for d, _ in items], "c": [c for _, c in items]}
+            fetched += 1
+        time.sleep(0.05)
+        if (i + 1) % 40 == 0:
+            print(f"  ...priced {i + 1}/{len(symbols)} symbols", file=sys.stderr)
+    with open(PRICES_PATH, "w", encoding="utf-8") as f:
+        json.dump(cache, f, separators=(",", ":"))
+    print(f"  prices: {fetched} fetched, {len(symbols) - fetched} from cache", file=sys.stderr)
+    return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
+
+
+def build_performance(trades):
+    """Dollar-weighted long/short index of congressional trades vs the S&P 500.
+    Long the purchases, short the sales, weighted by disclosed trade size; daily
+    returns compounded. Returns None if prices are unavailable (site degrades)."""
+    priced_trades = [t for t in trades if t.get("ticker") and t.get("est_amount")]
+    if not priced_trades:
+        return None
+    exposure = {}
+    for t in priced_trades:
+        exposure[t["ticker"]] = exposure.get(t["ticker"], 0) + t["est_amount"]
+    top = [tk for tk, _ in sorted(exposure.items(), key=lambda kv: kv[1], reverse=True)[:BACKTEST_TICKERS]]
+
+    print("Fetching prices for performance backtest...", file=sys.stderr)
+    prices = fetch_prices(top)
+    spy = prices.get("SPY")
+    if not spy:
+        print("  WARN: no SPY prices -- skipping performance backtest", file=sys.stderr)
+        return None
+
+    end = max(spy)
+    start = (datetime.strptime(end, "%Y-%m-%d") - timedelta(days=BACKTEST_WINDOW)).strftime("%Y-%m-%d")
+    dates = sorted(d for d in spy if start <= d <= end)
+    if len(dates) < 20:
+        return None
+
+    def daily_returns(pr):
+        out = {}
+        for i in range(1, len(dates)):
+            a, b = pr.get(dates[i - 1]), pr.get(dates[i])
+            if a and b:
+                out[dates[i]] = b / a - 1
+        return out
+
+    rets = {tk: daily_returns(prices[tk]) for tk in top if prices.get(tk)}
+    spy_rets = daily_returns(spy)
+
+    timeline = []
+    for t in priced_trades:
+        try:
+            txd = datetime.strptime(t["transaction_date"], "%m/%d/%Y").strftime("%Y-%m-%d")
+        except (ValueError, TypeError):
+            continue
+        if t["ticker"] not in rets:
+            continue
+        sign = 1 if _is_buy(t["type"]) else -1
+        timeline.append((txd, t["ticker"], sign * t["est_amount"]))
+    timeline.sort()
+
+    series = [{"d": dates[0], "s": 100.0, "m": 100.0}]
+    expo_now = {}
+    ti = 0
+    s_val = m_val = 100.0
+    for i in range(1, len(dates)):
+        dprev, dcur = dates[i - 1], dates[i]
+        while ti < len(timeline) and timeline[ti][0] <= dprev:
+            _, tk, amt = timeline[ti]
+            expo_now[tk] = expo_now.get(tk, 0) + amt
+            ti += 1
+        denom = sum(abs(v) for v in expo_now.values()) or 1
+        r = sum(expo_now.get(tk, 0) * rets.get(tk, {}).get(dcur, 0) for tk in expo_now) / denom
+        s_val *= (1 + r)
+        m_val *= (1 + spy_rets.get(dcur, 0))
+        series.append({"d": dcur, "s": round(s_val, 3), "m": round(m_val, 3)})
+
+    return {
+        "series": series,
+        "start_date": dates[0],
+        "end_date": dates[-1],
+        "n_tickers": len(rets),
+        "n_positions": len(timeline),
+        "methodology": ("Illustrative backtest: a long position in every stock Congress disclosed "
+                        "buying and a short position in every stock they disclosed selling, weighted "
+                        "by reported trade size, vs the S&P 500. STOCK Act disclosures are filed up to "
+                        "~45 days after the trade, so this reflects the return of following the public "
+                        "disclosures — not members' actual timing. Not investment advice; past "
+                        "performance does not predict future results."),
+    }
+
+
+# ---------------------------------------------------------------------------
 # Historical tracking -- persist daily snapshots so the site can show
 # momentum over time (which stocks are GAINING congressional attention).
 # ---------------------------------------------------------------------------
@@ -1434,6 +1580,7 @@ def main():
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
+    performance = build_performance(trades)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -1442,6 +1589,7 @@ def main():
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "congress": CONGRESS,
         "overview": overview,
+        "performance": performance,
         "unusual_activity": unusual,
         "trends": trends,
         "stock_history": stock_history,
