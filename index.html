@@ -103,7 +103,7 @@
   /* ---------- Sector strip ---------- */
   .sector-section { padding: 14px 0 4px; }
   .section-label { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 12px; font-weight: 500; }
-  .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .sector-card { background: var(--panel); padding: 15px 16px; cursor: pointer; border: 1px solid var(--line); border-radius: var(--radius-sm); text-align: left; color: var(--text); font-family: inherit; display: block; width: 100%; position: relative; transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease; overflow: hidden; }
   .sector-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-color, transparent); opacity: 0; transition: opacity 0.15s ease; }
   .sector-card:hover { border-color: #2E2E36; transform: translateY(-1px); background: var(--panel-2); }
@@ -114,6 +114,26 @@
   .sector-metric-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .sector-momentum { font-family: var(--mono); font-weight: 700; font-size: 21px; }
   .sector-counts { font-family: var(--mono); font-size: 10px; color: var(--text-faint); text-align: right; line-height: 1.5; }
+  /* Rich sector cards */
+  .sector-card-rich { padding: 16px 17px 15px; }
+  .sector-card-rich .sector-sub { margin-bottom: 0; }
+  .sc-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+  .sc-head { min-width: 0; }
+  .sc-ret { text-align: right; flex-shrink: 0; }
+  .sc-ret-l { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1px; }
+  .sret { font-family: var(--mono); font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+  .sret.up { color: var(--good); } .sret.down { color: var(--bad); } .sret-na { color: var(--text-faint); }
+  .sc-flow { height: 7px; border-radius: 999px; background: var(--bad); overflow: hidden; margin-bottom: 6px; }
+  .sc-flow-fill { display: block; height: 100%; background: var(--good); border-radius: 999px 0 0 999px; }
+  .sc-flow-legend { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9.5px; margin-bottom: 12px; }
+  .sc-noflow { font-family: var(--mono); font-size: 10px; color: var(--text-faint); margin-bottom: 12px; }
+  .sc-stats { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 13px; font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); padding-top: 11px; border-top: 1px solid var(--line-soft); }
+  .sc-stats b { color: var(--text); font-size: 12px; }
+  .sc-mom { margin-left: auto; font-weight: 700; }
+  .sc-tops { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
+  .schip { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
+  .schip.buy { background: var(--tint-green); color: var(--good); }
+  .schip.sell { background: var(--tint-red); color: var(--bad); }
 
   /* ---------- View switcher + filters ---------- */
   .controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 26px 0 4px; }
@@ -322,6 +342,15 @@
   .net-pos { color: var(--good); font-weight: 600; }
   .net-neg { color: var(--bad); font-weight: 600; }
   .net-zero { color: var(--text-faint); }
+
+  /* ---------- Per-trade gain/loss ---------- */
+  .pnl { display: inline-flex; align-items: baseline; gap: 6px; font-family: var(--mono); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pnl-d { font-size: 10.5px; font-weight: 600; opacity: 0.8; }
+  .pnl-up { color: var(--good); }
+  .pnl-down { color: var(--bad); }
+  .pnl-since { font-weight: 600; }
+  .pnl-since .pnl-d { color: var(--text-faint); opacity: 1; font-style: italic; }
+  .pnl-na { color: var(--text-faint); opacity: 0.5; font-weight: 500; }
   .signal-bar { display: inline-block; height: 6px; border-radius: 999px; vertical-align: middle; }
   .mini-trade-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 11.5px; margin-top: 2px; }
   .mini-trade-table td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line-soft); color: var(--text-dim); }
@@ -485,6 +514,21 @@
     if (v == null || isNaN(v)) return "—";
     const s = sign && v > 0 ? "+" : "";
     return `${s}${(v * 100).toFixed(1)}%`;
+  }
+  function signedMoney(v) {
+    if (v == null || isNaN(v)) return "—";
+    return (v < 0 ? "-" : "+") + fmtMoney(Math.abs(v));
+  }
+  // Per-trade gain/loss. Buys show paper P&L on the open position; sales show
+  // the stock's move since the exit (context only -- the position is closed).
+  function pnlBadge(t) {
+    if (t == null || t.return_pct == null) return `<span class="pnl pnl-na">—</span>`;
+    const up = t.return_pct >= 0;
+    const pct = `${up ? "+" : ""}${Number(t.return_pct).toFixed(1)}%`;
+    if (t.gain_value != null) {
+      return `<span class="pnl ${up ? "pnl-up" : "pnl-down"}" title="Paper P&amp;L since purchase — $${t.entry_price} → $${t.last_price}">${pct}<span class="pnl-d">${signedMoney(t.gain_value)}</span></span>`;
+    }
+    return `<span class="pnl ${up ? "pnl-up" : "pnl-down"} pnl-since" title="Stock ${up ? "rose" : "fell"} ${pct} since this sale">${pct}<span class="pnl-d">since sale</span></span>`;
   }
 
   /* ---------- Performance hero (Congress vs Market backtest) ---------- */
@@ -766,16 +810,32 @@
   /* ---------- Sector grid + filters ---------- */
   function sectorCardsHTML() {
     return `<div class="sector-grid">${Object.entries(DATA.sectors).map(([code, s]) => {
-      const momentumHtml = s.bill_count > 0
-        ? `<span class="sector-momentum" style="color:${feasColor(s.avg_momentum)}">${s.avg_momentum}</span>`
-        : `<span class="sector-momentum" style="color:var(--text-faint)">—</span>`;
-      return `<button class="sector-card" data-sector-jump="${code}" style="--accent-color:${s.color}">
-        <div class="sector-title" style="color:${s.color}">${esc(s.short)}</div>
-        <div class="sector-sub">${esc(s.name)}${s.stock_count ? ` · ${s.stock_count} stocks` : ""}</div>
-        <div class="sector-metric-row">
-          ${momentumHtml}
-          <span class="sector-counts">${s.bill_count} bills · ${s.appropriation_count ?? 0} approp.<br>${s.trade_count ?? 0} trades</span>
+      const buy = s.buy_value || 0, sell = s.sell_value || 0, flow = buy + sell;
+      const buyPct = flow ? Math.round((buy / flow) * 100) : 50;
+      const ret = s.trade_return;
+      const retHtml = ret == null
+        ? `<span class="sret sret-na">—</span>`
+        : `<span class="sret ${ret >= 0 ? "up" : "down"}">${ret >= 0 ? "+" : ""}${Number(ret).toFixed(1)}%</span>`;
+      const tops = (s.top_stocks || []).map(x =>
+        `<span class="schip ${x.net >= 0 ? "buy" : "sell"}" title="${x.net >= 0 ? "Net bought" : "Net sold"} · ${fmtMoney(x.value)} volume">${esc(x.ticker)}</span>`).join("");
+      return `<button class="sector-card sector-card-rich" data-sector-jump="${code}" style="--accent-color:${s.color}">
+        <div class="sc-top">
+          <div class="sc-head">
+            <div class="sector-title" style="color:${s.color}">${esc(s.short)}</div>
+            <div class="sector-sub">${esc(s.name)}${s.stock_count ? ` · ${s.stock_count} stocks` : ""}</div>
+          </div>
+          <div class="sc-ret"><div class="sc-ret-l">Buys since</div>${retHtml}</div>
         </div>
+        ${flow ? `<div class="sc-flow" title="${fmtMoney(buy)} bought vs ${fmtMoney(sell)} sold"><span class="sc-flow-fill" style="width:${buyPct}%"></span></div>
+        <div class="sc-flow-legend"><span class="buys">▲ ${fmtMoney(buy)} bought</span><span class="sells">${fmtMoney(sell)} sold ▼</span></div>`
+        : `<div class="sc-noflow">No disclosed trades yet</div>`}
+        <div class="sc-stats">
+          <span><b>${s.trade_count || 0}</b> trades</span>
+          <span><b>${s.member_count || 0}</b> members</span>
+          <span><b>${s.bill_count || 0}</b> bills</span>
+          <span class="sc-mom" style="color:${s.bill_count ? feasColor(s.avg_momentum) : "var(--text-faint)"}">${s.bill_count ? s.avg_momentum : "—"} mom</span>
+        </div>
+        ${tops ? `<div class="sc-tops">${tops}</div>` : ""}
       </button>`;
     }).join("")}</div>`;
   }
@@ -883,7 +943,7 @@
               : `<table class="mini-trade-table"><tbody>${b.related_trades.map(t => `
                   <tr><td class="clickable-ticker row-ticker" data-ticker="${esc(t.ticker || "")}">${esc(t.ticker || "—")}</td><td>${esc(t.member.replace(/^(Sen\.|Rep\.)\s/, ""))}</td>
                   <td class="${tradeTypeClass(t.type)}">${isBuy(t.type) ? "▲" : "▼"}</td><td>${fmtMoney(t.est_amount)}</td>
-                  <td>${esc(t.transaction_date)}</td></tr>`).join("")}</tbody></table>`}
+                  <td>${esc(t.transaction_date)}</td><td>${pnlBadge(t)}</td></tr>`).join("")}</tbody></table>`}
           </div>
         </div>
         <div style="margin-top:14px;"><a class="bill-link" href="${esc(b.congress_gov_url)}" target="_blank" rel="noopener">View full text &amp; history on Congress.gov →</a></div>
@@ -987,11 +1047,12 @@
         ${chartTimeline(trades)}
         <span class="detail-eyebrow">Disclosed portfolio — newest first (${m.trade_count})</span>
         <div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Tx Date</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Est. $</th><th></th></tr></thead>
+          <thead><tr><th>Tx Date</th><th>Ticker</th><th>Company / Asset</th><th>Type</th><th>Est. $</th><th>Gain / Loss</th><th></th></tr></thead>
           <tbody>${trades.slice(0, 80).map(t => `
             <tr><td class="row-ticker">${esc(t.transaction_date)}</td>
             <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
             <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td>
+            <td>${pnlBadge(t)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
         </table></div>
         ${trades.length > 80 ? `<div class="empty-note">Showing 80 of ${trades.length} disclosed trades.</div>` : ""}
@@ -1037,7 +1098,7 @@
     const feedHtml = trades.length === 0
       ? `<div class="empty-note">No trades disclosed in the current data window.</div>`
       : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Est. $</th><th></th></tr></thead>
+          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Est. $</th><th>Gain / Loss</th><th></th></tr></thead>
           <tbody>${visibleTrades.map(t => {
             const sc = sectorMeta(t.sector);
             return `<tr>
@@ -1045,6 +1106,7 @@
               <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
               ${showSectorCol ? `<td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>` : ""}
               <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)} <span style="color:var(--text-faint);font-size:10px">${esc(t.amount_range)}</span></td>
+              <td>${pnlBadge(t)}</td>
               <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`;
           }).join("")}</tbody>
         </table>
@@ -1255,10 +1317,10 @@
               </div>`).join("")}</div>`}
         <span class="detail-eyebrow">Every disclosed trade in ${esc(ticker)} (${trades.length})</span>
         <div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Tx Date</th><th>Member</th><th>Chamber</th><th>Type</th><th>Est. $</th><th>Range</th><th></th></tr></thead>
+          <thead><tr><th>Tx Date</th><th>Member</th><th>Chamber</th><th>Type</th><th>Est. $</th><th>Gain / Loss</th><th></th></tr></thead>
           <tbody>${trades.slice(0, 80).map(t => `
             <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td><td>${esc(t.chamber)}</td>
-            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${esc(t.amount_range)}</td>
+            <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${pnlBadge(t)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
         </table></div>
       </div>`;

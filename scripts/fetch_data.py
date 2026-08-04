@@ -919,6 +919,10 @@ def attach_bill_trades(bills, trades):
                 "transaction_date": t["transaction_date"],
                 "filed_date": t["filed_date"],
                 "report_url": t["report_url"],
+                "return_pct": t.get("return_pct"),
+                "gain_value": t.get("gain_value"),
+                "entry_price": t.get("entry_price"),
+                "last_price": t.get("last_price"),
             }
             for t in related[:12]
         ]
@@ -954,6 +958,57 @@ def estimate_amount(amount_range):
 def annotate_trade_values(trades):
     for t in trades:
         t["est_amount"] = estimate_amount(t["amount_range"])
+    return trades
+
+
+def _nearest_close(series, date_str, back=10):
+    """Close on or immediately before date_str (searching back up to `back`
+    days to skip weekends/holidays). None if nothing lands in the window."""
+    if not series:
+        return None
+    d = datetime.strptime(date_str, "%Y-%m-%d")
+    for _ in range(back + 1):
+        c = series.get(d.strftime("%Y-%m-%d"))
+        if c:
+            return c
+        d -= timedelta(days=1)
+    return None
+
+
+def annotate_trade_pnl(trades, prices):
+    """Attach paper gain/loss to each trade: the stock's return from the
+    transaction date to the latest close. For a PURCHASE this is the position's
+    unrealized P&L; for a SALE it's how the stock moved after the member exited
+    (a positive number means it kept rising after they sold). Only trades in
+    tickers we have prices for get values; the rest stay unpriced (null)."""
+    last_close = {tk: s[max(s)] for tk, s in prices.items() if s}
+    priced = 0
+    for t in trades:
+        t["entry_price"] = t["last_price"] = t["return_pct"] = t["gain_value"] = None
+        tk = t.get("ticker")
+        series = prices.get(tk) if tk else None
+        if not series or not t.get("transaction_date"):
+            continue
+        try:
+            txd = datetime.strptime(t["transaction_date"], "%m/%d/%Y").strftime("%Y-%m-%d")
+        except (ValueError, TypeError):
+            continue
+        entry = _nearest_close(series, txd)
+        last = last_close.get(tk)
+        if not entry or not last:
+            continue
+        ret = last / entry - 1
+        t["entry_price"] = round(entry, 2)
+        t["last_price"] = round(last, 2)
+        # raw price move since the trade date (from the stock's perspective)
+        t["return_pct"] = round(ret * 100, 1)
+        # dollar P&L only for PURCHASES -- an open position whose paper value we
+        # can size. A sale closes the position, so we show only the price move
+        # since (as context on the exit), never an implied realized profit.
+        if _is_buy(t["type"]):
+            t["gain_value"] = round(t.get("est_amount", 0) * ret)
+        priced += 1
+    print(f"  trade P&L: priced {priced}/{len(trades)} trades", file=sys.stderr)
     return trades
 
 
@@ -1239,10 +1294,45 @@ def build_unusual_activity(stock_signals):
     }
 
 
+def _sector_trade_stats(sector_trades):
+    """Dollar flows, disclosed-buy paper return, and top movers for a sector."""
+    buy_value = sum(t["est_amount"] for t in sector_trades if _is_buy(t["type"]))
+    sell_value = sum(t["est_amount"] for t in sector_trades if not _is_buy(t["type"]))
+    # dollar-weighted paper return of the disclosed BUYS in this sector
+    priced_buys = [t for t in sector_trades if _is_buy(t["type"]) and t.get("return_pct") is not None]
+    buy_basis = sum(t["est_amount"] for t in priced_buys)
+    buy_gain = sum(t["gain_value"] for t in priced_buys)
+    trade_return = round(buy_gain / buy_basis * 100, 1) if buy_basis else None
+    # top tickers by dollar volume, with net buy/sell direction
+    vol, net = {}, {}
+    for t in sector_trades:
+        tk = t.get("ticker")
+        if not tk:
+            continue
+        vol[tk] = vol.get(tk, 0) + t["est_amount"]
+        net[tk] = net.get(tk, 0) + (t["est_amount"] if _is_buy(t["type"]) else -t["est_amount"])
+    top_stocks = [{"ticker": tk, "value": v, "net": net[tk]}
+                  for tk, v in sorted(vol.items(), key=lambda kv: kv[1], reverse=True)[:4]]
+    members = len({t.get("member") for t in sector_trades if t.get("member")})
+    return {
+        "buy_value": buy_value,
+        "sell_value": sell_value,
+        "net_value": buy_value - sell_value,
+        "trade_return": trade_return,
+        "top_stocks": top_stocks,
+        "member_count": members,
+    }
+
+
 def build_sector_summaries(sectors, bills, trades=()):
+    by_sector = {}
+    for t in trades:
+        by_sector.setdefault(t["sector"], []).append(t)
+
     summaries = {}
     for code, sector in sectors.items():
         sector_bills = [b for b in bills if b["sector"] == code]
+        sector_trades = by_sector.get(code, [])
         avg_momentum = round(sum(b["momentum"] for b in sector_bills) / len(sector_bills)) if sector_bills else 0
         summaries[code] = {
             "name": sector["name"],
@@ -1251,11 +1341,12 @@ def build_sector_summaries(sectors, bills, trades=()):
             "color": sector["color"],
             "bill_count": len(sector_bills),
             "appropriation_count": sum(1 for b in sector_bills if b.get("is_appropriation")),
-            "trade_count": sum(1 for t in trades if t["sector"] == code),
+            "trade_count": len(sector_trades),
             "stock_count": len(sector.get("constituents", {})),
             "avg_momentum": avg_momentum,
+            **_sector_trade_stats(sector_trades),
         }
-    other_trades = sum(1 for t in trades if t["sector"] == "OTHER")
+    other_trades = by_sector.get("OTHER", [])
     if other_trades:
         summaries["OTHER"] = {
             "name": "Other / Unclassified",
@@ -1264,9 +1355,10 @@ def build_sector_summaries(sectors, bills, trades=()):
             "color": "#565F73",
             "bill_count": 0,
             "appropriation_count": 0,
-            "trade_count": other_trades,
+            "trade_count": len(other_trades),
             "stock_count": 0,
             "avg_momentum": 0,
+            **_sector_trade_stats(other_trades),
         }
     return summaries
 
@@ -1334,7 +1426,7 @@ def fetch_prices(tickers):
     return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
 
 
-def build_performance(trades):
+def build_performance(trades, prices):
     """Dollar-weighted long/short index of congressional trades vs the S&P 500.
     Long the purchases, short the sales, weighted by disclosed trade size; daily
     returns compounded. Returns None if prices are unavailable (site degrades)."""
@@ -1346,8 +1438,6 @@ def build_performance(trades):
         exposure[t["ticker"]] = exposure.get(t["ticker"], 0) + t["est_amount"]
     top = [tk for tk, _ in sorted(exposure.items(), key=lambda kv: kv[1], reverse=True)[:BACKTEST_TICKERS]]
 
-    print("Fetching prices for performance backtest...", file=sys.stderr)
-    prices = fetch_prices(top)
     spy = prices.get("SPY")
     if not spy:
         print("  WARN: no SPY prices -- skipping performance backtest", file=sys.stderr)
@@ -1569,6 +1659,12 @@ def main():
     trades = annotate_trade_values(trades)
     trades = annotate_trade_parties(trades, member_index)
 
+    # Price every traded ticker once (cached daily in prices.json), then reuse
+    # for both per-trade P&L and the Congress-vs-market backtest.
+    print("Fetching prices for trade P&L + backtest...", file=sys.stderr)
+    prices = fetch_prices([t["ticker"] for t in trades if t.get("ticker")])
+    trades = annotate_trade_pnl(trades, prices)
+
     bills = [analyze_appropriation(b) for b in bills]
     bills = attach_beneficiary_stocks(bills, sectors)
     bills = attach_impact_analysis(bills)
@@ -1580,7 +1676,7 @@ def main():
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
-    performance = build_performance(trades)
+    performance = build_performance(trades, prices)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
