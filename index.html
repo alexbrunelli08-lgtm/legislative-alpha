@@ -130,6 +130,7 @@
   .sc-stats { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 13px; font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); padding-top: 11px; border-top: 1px solid var(--line-soft); }
   .sc-stats b { color: var(--text); font-size: 12px; }
   .sc-mom { margin-left: auto; font-weight: 700; }
+  .sc-net { margin-left: auto; font-weight: 700; }
   .sc-tops { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
   .schip { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
   .schip.buy { background: var(--tint-green); color: var(--good); }
@@ -808,17 +809,24 @@
   }
 
   /* ---------- Sector grid + filters ---------- */
-  function sectorCardsHTML() {
-    return `<div class="sector-grid">${Object.entries(DATA.sectors).map(([code, s]) => {
-      const buy = s.buy_value || 0, sell = s.sell_value || 0, flow = buy + sell;
-      const buyPct = flow ? Math.round((buy / flow) * 100) : 50;
-      const ret = s.trade_return;
-      const retHtml = ret == null
-        ? `<span class="sret sret-na">—</span>`
-        : `<span class="sret ${ret >= 0 ? "up" : "down"}">${ret >= 0 ? "+" : ""}${Number(ret).toFixed(1)}%</span>`;
-      const tops = (s.top_stocks || []).map(x =>
-        `<span class="schip ${x.net >= 0 ? "buy" : "sell"}" title="${x.net >= 0 ? "Net bought" : "Net sold"} · ${fmtMoney(x.value)} volume">${esc(x.ticker)}</span>`).join("");
-      return `<button class="sector-card sector-card-rich" data-sector-jump="${code}" style="--accent-color:${s.color}">
+  function sectorCardHTML(code, s) {
+    const buy = s.buy_value || 0, sell = s.sell_value || 0, flow = buy + sell;
+    const buyPct = flow ? Math.round((buy / flow) * 100) : 50;
+    const ret = s.trade_return;
+    const retHtml = ret == null
+      ? `<span class="sret sret-na">—</span>`
+      : `<span class="sret ${ret >= 0 ? "up" : "down"}">${ret >= 0 ? "+" : ""}${Number(ret).toFixed(1)}%</span>`;
+    const tops = (s.top_stocks || []).map(x =>
+      `<span class="schip ${x.net >= 0 ? "buy" : "sell"}" title="${x.net >= 0 ? "Net bought" : "Net sold"} · ${fmtMoney(x.value)} volume">${esc(x.ticker)}</span>`).join("");
+    const isTheme = s.group !== "economy";
+    // Themes are bill-linked, so they show bills + momentum; broad economic
+    // sectors have no bills, so they show net dollar flow instead.
+    const net = buy - sell;
+    const lastStat = isTheme
+      ? `<span><b>${s.bill_count || 0}</b> bills</span>
+         <span class="sc-mom" style="color:${s.bill_count ? feasColor(s.avg_momentum) : "var(--text-faint)"}">${s.bill_count ? s.avg_momentum : "—"} mom</span>`
+      : `<span class="sc-net ${net >= 0 ? "buys" : "sells"}">${net >= 0 ? "net +" : "net "}${fmtMoney(net)}</span>`;
+    return `<button class="sector-card sector-card-rich" data-sector-jump="${code}" style="--accent-color:${s.color}">
         <div class="sc-top">
           <div class="sc-head">
             <div class="sector-title" style="color:${s.color}">${esc(s.short)}</div>
@@ -832,12 +840,25 @@
         <div class="sc-stats">
           <span><b>${s.trade_count || 0}</b> trades</span>
           <span><b>${s.member_count || 0}</b> members</span>
-          <span><b>${s.bill_count || 0}</b> bills</span>
-          <span class="sc-mom" style="color:${s.bill_count ? feasColor(s.avg_momentum) : "var(--text-faint)"}">${s.bill_count ? s.avg_momentum : "—"} mom</span>
+          ${lastStat}
         </div>
         ${tops ? `<div class="sc-tops">${tops}</div>` : ""}
       </button>`;
-    }).join("")}</div>`;
+  }
+
+  function sectorGroupsHTML() {
+    const entries = Object.entries(DATA.sectors);
+    const byTrades = (a, b) => (b[1].trade_count || 0) - (a[1].trade_count || 0);
+    // Bonds/Funds is the residual bucket — keep it last regardless of size.
+    const ecoSort = (a, b) => (a[0] === "OTHER") - (b[0] === "OTHER") || byTrades(a, b);
+    const eco = entries.filter(([, s]) => s.group === "economy").sort(ecoSort);
+    const themes = entries.filter(([, s]) => s.group !== "economy").sort(byTrades);
+    const grid = list => `<div class="sector-grid">${list.map(([c, s]) => sectorCardHTML(c, s)).join("")}</div>`;
+    let html = grid(eco);
+    if (themes.length) {
+      html += `<div class="section-head" style="margin-top:26px;"><span class="section-title">Policy themes</span><span class="section-count">bill-linked niches — the politics → stock nexus</span></div>${grid(themes)}`;
+    }
+    return html;
   }
 
   function renderFilterTabs() {
@@ -1198,8 +1219,8 @@
         <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
         <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
       </div>
-      <div class="section-head" style="margin-top:8px;"><span class="section-title">Sectors of the economy</span><span class="section-count">momentum &amp; activity by theme — tap to explore</span></div>
-      ${sectorCardsHTML()}
+      <div class="section-head" style="margin-top:8px;"><span class="section-title">Sectors of the economy</span><span class="section-count">every stock Congress traded, by economic sector — tap to explore</span></div>
+      ${sectorGroupsHTML()}
     </section>`;
   }
 
@@ -1392,7 +1413,12 @@
     }));
     // sector cards on the overview drill into that sector's bills
     el.querySelectorAll("[data-sector-jump]").forEach(card => card.addEventListener("click", () => {
-      activeSector = card.dataset.sectorJump; resetPaging(); setHash("bills");
+      const code = card.dataset.sectorJump;
+      activeSector = code; resetPaging();
+      // Economic sectors carry trades but no bills -> land on Stocks; policy
+      // themes are bill-linked -> land on Bills.
+      const isTheme = (DATA.sectors[code] || {}).group !== "economy" && code !== "OTHER";
+      setHash(isTheme ? "bills" : "stocks");
     }));
     // clickable tickers open the stock detail modal (overview, tables, chips)
     el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {

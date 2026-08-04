@@ -40,6 +40,8 @@ OUTPUT_PATH = os.path.join(SCRIPT_DIR, "..", "data.json")
 HISTORY_PATH = os.path.join(SCRIPT_DIR, "..", "history.json")
 HISTORY_MAX_DAYS = 90
 PRICES_PATH = os.path.join(SCRIPT_DIR, "..", "prices.json")
+SECTOR_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "sector_cache.json")  # ticker -> GICS sector
+SECTOR_CACHE_TTL_DAYS = 45  # a company's economic sector changes rarely
 BACKTEST_TICKERS = 120   # top tickers by dollar exposure to price (dominate the weighting)
 BACKTEST_WINDOW = 365    # calendar days of performance history
 PRICE_HISTORY_DAYS = 400 # keep this many daily closes cached per ticker
@@ -111,6 +113,10 @@ def _build_keyword_patterns(sectors):
     if _SECTOR_KEYWORD_PATTERNS is None:
         _SECTOR_KEYWORD_PATTERNS = {}
         for code, sector in sectors.items():
+            # Trade-only economic sectors carry no keywords -- skip them so bills
+            # are never matched by an empty alternation (which matches everything).
+            if not sector.get("keywords"):
+                continue
             alternation = "|".join(re.escape(kw) for kw in sector["keywords"])
             _SECTOR_KEYWORD_PATTERNS[code] = re.compile(rf"\b(?:{alternation})\b", re.IGNORECASE)
     return _SECTOR_KEYWORD_PATTERNS
@@ -1012,6 +1018,108 @@ def annotate_trade_pnl(trades, prices):
     return trades
 
 
+# ---------------------------------------------------------------------------
+# Economic-sector classification -- give EVERY traded stock a home. The 12
+# curated sectors are policy THEMES (niche, bill-linked); most blue-chip trades
+# fall outside them and used to pile into "Other". We classify every traded
+# ticker by its real GICS sector (via Yahoo) and route the leftovers into 11
+# broad economic sectors so nothing but genuine non-equities stays unclassified.
+# ---------------------------------------------------------------------------
+
+# Yahoo's sector strings -> our broad economic-sector codes (see sectors.json).
+GICS_TO_CODE = {
+    "Technology": "TECH",
+    "Financial Services": "FIN",
+    "Industrials": "INDU",
+    "Healthcare": "HLTH",
+    "Consumer Cyclical": "CONSD",
+    "Consumer Defensive": "CONSS",
+    "Communication Services": "COMM",
+    "Real Estate": "REAL",
+    "Basic Materials": "MATR",
+    "Energy": "ENRG",
+    "Utilities": "UTIL",
+}
+
+
+def _yahoo_session():
+    """A requests session primed with Yahoo's cookie + crumb, required now for
+    the quoteSummary endpoint. Returns (session, crumb) or (None, None)."""
+    try:
+        s = requests.Session()
+        s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
+        s.get("https://fc.yahoo.com", timeout=REQUEST_TIMEOUT)
+        crumb = s.get("https://query1.finance.yahoo.com/v1/test/getcrumb", timeout=REQUEST_TIMEOUT).text.strip()
+        if not crumb or "<" in crumb:
+            return None, None
+        return s, crumb
+    except requests.RequestException:
+        return None, None
+
+
+def fetch_ticker_sectors(tickers):
+    """ticker -> GICS sector string, cached in sector_cache.json. Only symbols
+    missing or older than the TTL are fetched, so daily runs stay cheap and the
+    site degrades gracefully (unknown tickers simply stay in Other)."""
+    cache = {}
+    if os.path.exists(SECTOR_CACHE_PATH):
+        try:
+            cache = json.load(open(SECTOR_CACHE_PATH, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            cache = {}
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    def fresh(entry):
+        try:
+            age = (datetime.strptime(today, "%Y-%m-%d") - datetime.strptime(entry.get("asof", "2000-01-01"), "%Y-%m-%d")).days
+            return age < SECTOR_CACHE_TTL_DAYS
+        except ValueError:
+            return False
+
+    todo = [t for t in dict.fromkeys(tickers) if t and not (t in cache and fresh(cache[t]))]
+    if todo:
+        session, crumb = _yahoo_session()
+        if session:
+            fetched = 0
+            for i, tk in enumerate(todo):
+                ysym = tk.replace(".", "-")  # Yahoo uses BRK-B, not BRK.B
+                try:
+                    r = session.get(f"https://query2.finance.yahoo.com/v10/finance/quoteSummary/{ysym}",
+                                    params={"modules": "assetProfile", "crumb": crumb}, timeout=REQUEST_TIMEOUT)
+                    if r.status_code == 200:
+                        p = r.json()["quoteSummary"]["result"][0]["assetProfile"]
+                        cache[tk] = {"gics": p.get("sector"), "industry": p.get("industry"), "asof": today}
+                        fetched += 1
+                    else:
+                        cache[tk] = {"gics": None, "industry": None, "asof": today}
+                except (requests.RequestException, KeyError, ValueError, IndexError):
+                    cache[tk] = {"gics": None, "industry": None, "asof": today}
+                time.sleep(0.03)
+                if (i + 1) % 60 == 0:
+                    print(f"  ...classified {i + 1}/{len(todo)} tickers", file=sys.stderr)
+            json.dump(cache, open(SECTOR_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+            print(f"  sector classify: {fetched} fetched, {len(cache) - fetched} cached", file=sys.stderr)
+        else:
+            print("  WARN: Yahoo crumb handshake failed -- economic-sector routing skipped", file=sys.stderr)
+    return {tk: v.get("gics") for tk, v in cache.items()}
+
+
+def reclassify_trades(trades, ticker_gics):
+    """Route every 'Other' trade that has a ticker into its broad economic
+    sector using the GICS lookup. Trades already matched to a policy theme keep
+    that theme; genuine non-equities (no ticker) and unknown symbols stay Other."""
+    moved = 0
+    for t in trades:
+        if t.get("sector") != "OTHER" or not t.get("ticker"):
+            continue
+        code = GICS_TO_CODE.get(ticker_gics.get(t["ticker"]))
+        if code:
+            t["sector"] = code
+            moved += 1
+    still = sum(1 for t in trades if t.get("sector") == "OTHER")
+    print(f"  economic routing: moved {moved} trades into broad sectors; {still} remain Other (mostly bonds/funds/options)", file=sys.stderr)
+    return trades
+
+
 def mark_key_bills(bills, per_sector=3):
     """Flag the most important bills in each sector -- the "specific bills
     coming through" surface. Importance = a blend of appropriation status,
@@ -1339,6 +1447,7 @@ def build_sector_summaries(sectors, bills, trades=()):
             "short": sector.get("short", sector["name"]),
             "etf": sector["etf"],
             "color": sector["color"],
+            "group": sector.get("group", "theme"),
             "bill_count": len(sector_bills),
             "appropriation_count": sum(1 for b in sector_bills if b.get("is_appropriation")),
             "trade_count": len(sector_trades),
@@ -1349,10 +1458,11 @@ def build_sector_summaries(sectors, bills, trades=()):
     other_trades = by_sector.get("OTHER", [])
     if other_trades:
         summaries["OTHER"] = {
-            "name": "Other / Unclassified",
-            "short": "Other",
+            "name": "Bonds, Funds & Options",
+            "short": "Bonds & Funds",
             "etf": None,
             "color": "#565F73",
+            "group": "economy",
             "bill_count": 0,
             "appropriation_count": 0,
             "trade_count": len(other_trades),
@@ -1658,6 +1768,12 @@ def main():
     trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
     trades = annotate_trade_values(trades)
     trades = annotate_trade_parties(trades, member_index)
+
+    # Route every 'Other' trade into its real economic sector (GICS via Yahoo),
+    # so the ~12 niche policy themes no longer leave blue-chips unclassified.
+    print("Classifying traded tickers into economic sectors...", file=sys.stderr)
+    ticker_gics = fetch_ticker_sectors([t["ticker"] for t in trades if t.get("ticker")])
+    trades = reclassify_trades(trades, ticker_gics)
 
     # Price every traded ticker once (cached daily in prices.json), then reuse
     # for both per-trade P&L and the Congress-vs-market backtest.

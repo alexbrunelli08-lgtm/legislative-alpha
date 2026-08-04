@@ -125,7 +125,8 @@
         "lda_search": "valmont"
       }
     },
-    "short": "Infrastructure"
+    "short": "Infrastructure",
+    "group": "theme"
   },
   "CIBR": {
     "name": "Cybersecurity",
@@ -234,7 +235,8 @@
         "lda_search": "science applications international"
       }
     },
-    "short": "Cybersecurity"
+    "short": "Cybersecurity",
+    "group": "theme"
   },
   "GRID": {
     "name": "Grid & Electrification",
@@ -340,7 +342,8 @@
         "lda_search": "pacific gas and electric"
       }
     },
-    "short": "Grid"
+    "short": "Grid",
+    "group": "theme"
   },
   "QTUM": {
     "name": "Quantum Computing",
@@ -404,7 +407,8 @@
         "lda_search": "keysight"
       }
     },
-    "short": "Quantum"
+    "short": "Quantum",
+    "group": "theme"
   },
   "XBI": {
     "name": "Biotech",
@@ -518,7 +522,8 @@
         "lda_search": "ultragenyx"
       }
     },
-    "short": "Biotech"
+    "short": "Biotech",
+    "group": "theme"
   },
   "ITA": {
     "name": "Defense",
@@ -612,7 +617,8 @@
         "lda_search": "rocket lab"
       }
     },
-    "short": "Defense"
+    "short": "Defense",
+    "group": "theme"
   },
   "UFO": {
     "name": "Space",
@@ -690,7 +696,8 @@
         "lda_search": "virgin galactic"
       }
     },
-    "short": "Space"
+    "short": "Space",
+    "group": "theme"
   },
   "URA": {
     "name": "Uranium & Nuclear",
@@ -773,7 +780,8 @@
         "lda_search": "ge vernova"
       }
     },
-    "short": "Nuclear"
+    "short": "Nuclear",
+    "group": "theme"
   },
   "SMH": {
     "name": "Semiconductors & AI",
@@ -880,7 +888,8 @@
         "lda_search": "teradyne"
       }
     },
-    "short": "Semis & AI"
+    "short": "Semis & AI",
+    "group": "theme"
   },
   "ICLN": {
     "name": "Clean Energy",
@@ -963,7 +972,8 @@
         "lda_search": "eos energy"
       }
     },
-    "short": "Clean Energy"
+    "short": "Clean Energy",
+    "group": "theme"
   },
   "MOO": {
     "name": "Agriculture",
@@ -1050,7 +1060,8 @@
         "lda_search": "cal-maine"
       }
     },
-    "short": "Agriculture"
+    "short": "Agriculture",
+    "group": "theme"
   },
   "FINX": {
     "name": "Financial Technology",
@@ -1133,6 +1144,106 @@
         "lda_search": "bill.com"
       }
     },
-    "short": "Fintech"
+    "short": "Fintech",
+    "group": "theme"
+  },
+  "TECH": {
+    "name": "Technology",
+    "short": "Technology",
+    "etf": "XLK",
+    "color": "#4F9DFF",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "FIN": {
+    "name": "Financials",
+    "short": "Financials",
+    "etf": "XLF",
+    "color": "#34D399",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "INDU": {
+    "name": "Industrials",
+    "short": "Industrials",
+    "etf": "XLI",
+    "color": "#F59E0B",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "HLTH": {
+    "name": "Health Care",
+    "short": "Health Care",
+    "etf": "XLV",
+    "color": "#F472B6",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "CONSD": {
+    "name": "Consumer Discretionary",
+    "short": "Consumer Disc.",
+    "etf": "XLY",
+    "color": "#A78BFA",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "CONSS": {
+    "name": "Consumer Staples",
+    "short": "Consumer Staples",
+    "etf": "XLP",
+    "color": "#14B8A6",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "COMM": {
+    "name": "Communication Services",
+    "short": "Communications",
+    "etf": "XLC",
+    "color": "#818CF8",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "REAL": {
+    "name": "Real Estate",
+    "short": "Real Estate",
+    "etf": "XLRE",
+    "color": "#F0ABFC",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "MATR": {
+    "name": "Materials",
+    "short": "Materials",
+    "etf": "XLB",
+    "color": "#C0A080",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "ENRG": {
+    "name": "Energy",
+    "short": "Energy",
+    "etf": "XLE",
+    "color": "#FB923C",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
+  },
+  "UTIL": {
+    "name": "Utilities",
+    "short": "Utilities",
+    "etf": "XLU",
+    "color": "#A3E635",
+    "group": "economy",
+    "keywords": [],
+    "constituents": {}
   }
 }
