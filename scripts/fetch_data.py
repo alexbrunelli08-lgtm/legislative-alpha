@@ -37,6 +37,8 @@ from bs4 import BeautifulSoup
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SECTORS_PATH = os.path.join(SCRIPT_DIR, "sectors.json")
 OUTPUT_PATH = os.path.join(SCRIPT_DIR, "..", "data.json")
+HISTORY_PATH = os.path.join(SCRIPT_DIR, "..", "history.json")
+HISTORY_MAX_DAYS = 90
 
 CONGRESS = 119  # 119th Congress: 2025-2027
 BILLS_LOOKBACK_DAYS = 45          # only scan bills updated in this window
@@ -1265,6 +1267,103 @@ def build_sector_summaries(sectors, bills, trades=()):
     return summaries
 
 
+# ---------------------------------------------------------------------------
+# Historical tracking -- persist daily snapshots so the site can show
+# momentum over time (which stocks are GAINING congressional attention).
+# ---------------------------------------------------------------------------
+
+def load_history():
+    if not os.path.exists(HISTORY_PATH):
+        return {"snapshots": []}
+    try:
+        with open(HISTORY_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {"snapshots": []}
+
+
+def update_history(overview, stock_signals):
+    """Upsert today's snapshot (keyed by UTC date, so the 6-hourly runs update
+    the same day's entry) and trim to HISTORY_MAX_DAYS. Returns the history."""
+    history = load_history()
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    snapshot = {
+        "date": today,
+        "total_value": overview["total_value"],
+        "party_value": overview.get("party_value", {}),
+        # compact per-stock metrics: members (n), net dollars, total dollars
+        "stocks": {s["ticker"]: {"n": s["member_count"], "net": s["net_value"], "v": s["total_value"]}
+                   for s in stock_signals},
+    }
+    snaps = [s for s in history.get("snapshots", []) if s.get("date") != today]
+    snaps.append(snapshot)
+    snaps.sort(key=lambda s: s["date"])
+    history["snapshots"] = snaps[-HISTORY_MAX_DAYS:]
+    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+        json.dump(history, f, separators=(",", ":"))  # compact -- this file grows
+    return history
+
+
+def compute_trends(history, stock_signals, lookback_days=7):
+    """Compare today's per-stock metrics to ~lookback_days ago to surface
+    what's GAINING attention (new congressional buyers) and momentum."""
+    snaps = history.get("snapshots", [])
+    if len(snaps) < 2:
+        return {"has_history": False, "days_tracked": len(snaps),
+                "gaining_attention": [], "momentum_buys": [], "momentum_sells": []}
+
+    latest = snaps[-1]["stocks"]
+    # pick the snapshot closest to lookback_days ago (or the oldest we have)
+    target = datetime.strptime(snaps[-1]["date"], "%Y-%m-%d") - timedelta(days=lookback_days)
+    prior = min(snaps[:-1], key=lambda s: abs((datetime.strptime(s["date"], "%Y-%m-%d") - target).days))
+    prior_stocks = prior["stocks"]
+    days_between = (datetime.strptime(snaps[-1]["date"], "%Y-%m-%d") - datetime.strptime(prior["date"], "%Y-%m-%d")).days
+
+    meta = {s["ticker"]: s for s in stock_signals}
+    rows = []
+    for tk, now in latest.items():
+        if meta.get(tk, {}).get("sector") == "OTHER" and now["n"] < 2:
+            continue
+        was = prior_stocks.get(tk, {"n": 0, "net": 0, "v": 0})
+        rows.append({
+            "ticker": tk,
+            "company": meta.get(tk, {}).get("company", tk),
+            "sector": meta.get(tk, {}).get("sector", "OTHER"),
+            "d_members": now["n"] - was["n"],
+            "d_net": now["net"] - was["net"],
+            "members": now["n"],
+            "net_value": now["net"],
+        })
+
+    gaining = sorted([r for r in rows if r["d_members"] > 0],
+                     key=lambda r: (r["d_members"], r["net_value"]), reverse=True)[:8]
+    mom_buy = sorted([r for r in rows if r["d_net"] > 0],
+                     key=lambda r: r["d_net"], reverse=True)[:8]
+    mom_sell = sorted([r for r in rows if r["d_net"] < 0],
+                      key=lambda r: r["d_net"])[:8]
+    return {
+        "has_history": True,
+        "days_tracked": len(snaps),
+        "window_days": days_between,
+        "gaining_attention": gaining,
+        "momentum_buys": mom_buy,
+        "momentum_sells": mom_sell,
+    }
+
+
+def build_stock_history(history, top_tickers, days=30):
+    """Compact per-stock time series (member count) for sparklines, limited to
+    the given tickers and recent days to keep data.json lean."""
+    snaps = history.get("snapshots", [])[-days:]
+    want = set(top_tickers)
+    series = {}
+    for tk in want:
+        pts = [(s["date"], s["stocks"].get(tk, {}).get("n", 0)) for s in snaps if tk in s["stocks"]]
+        if len(pts) >= 2:
+            series[tk] = [n for _, n in pts]
+    return series
+
+
 def build_overview(bills, trades, members, stock_signals):
     """Front-door dashboard headline numbers -- the 'what's happening right now'
     summary a Quiver/Autopilot user sees first."""
@@ -1335,12 +1434,17 @@ def main():
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
+    history = update_history(overview, stock_signals)
+    trends = compute_trends(history, stock_signals)
+    stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "congress": CONGRESS,
         "overview": overview,
         "unusual_activity": unusual,
+        "trends": trends,
+        "stock_history": stock_history,
         "sectors": sector_summaries,
         "bills": bills,
         "trades": trades,

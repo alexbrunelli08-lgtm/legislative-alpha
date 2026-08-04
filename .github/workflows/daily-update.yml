@@ -31,10 +31,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/fetch_data.py
 
-      - name: Commit and push data.json if it changed
+      - name: Commit and push refreshed data if it changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json history.json
           git diff --cached --quiet && echo "No changes to commit" || git commit -m "Data refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push

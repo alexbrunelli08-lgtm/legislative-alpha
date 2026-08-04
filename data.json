@@ -42349,5 +42349,13 @@
       "bipartisan": false,
       "last_filed": "7/14/2026"
     }
-  ]
+  ],
+  "trends": {
+    "has_history": false,
+    "days_tracked": 1,
+    "gaining_attention": [],
+    "momentum_buys": [],
+    "momentum_sells": []
+  },
+  "stock_history": {}
 }

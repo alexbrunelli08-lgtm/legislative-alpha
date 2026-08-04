@@ -9,43 +9,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FFFFFF;
-    --panel: #FFFFFF;
-    --panel-2: #F5F5F2;
-    --elev: #ECECE7;
-    --line: #E6E6E1;
-    --line-soft: #F0F0EC;
-    --text: #0A0B0D;
-    --text-dim: #5B6169;
-    --text-faint: #9CA1A9;
-    --accent: #0B8F80;
-    --accent-dim: #D3F4EE;
-    --warn: #C2740B;
-    --bad: #DC2626;
-    --good: #15A34A;
-    --dem: #2563EB;
-    --rep: #DC2626;
-    --ind: #7C3AED;
-    --tint-green: #DCFCE7;
-    --tint-red: #FEE2E2;
-    --tint-amber: #FDF0C9;
-    --tint-blue: #DBEAFE;
-    --tint-violet: #EDE9FE;
-    --tint-neutral: #F0F0EC;
-    --ink-warn: #B45309;
+    --bg: #000000;
+    --panel: #0A0A0C;
+    --panel-2: #131317;
+    --elev: #1C1C22;
+    --line: #212128;
+    --line-soft: #141418;
+    --text: #F6F7F9;
+    --text-dim: #8E929C;
+    --text-faint: #575A63;
+    --accent: #5EEAD4;
+    --accent-dim: #10352F;
+    --warn: #FBBF24;
+    --bad: #F87171;
+    --good: #4ADE80;
+    --dem: #60A5FA;
+    --rep: #F87171;
+    --ind: #C084FC;
+    --tint-green: #0E2A1B;
+    --tint-red: #2E1515;
+    --tint-amber: #2C2410;
+    --tint-blue: #12233E;
+    --tint-violet: #221733;
+    --tint-neutral: #16161A;
+    --ink-warn: #FBBF24;
     --radius: 14px;
     --radius-sm: 9px;
     --mono: 'JetBrains Mono', monospace;
     --display: 'Space Grotesk', sans-serif;
-    --shadow: 0 1px 2px rgba(16,24,40,0.05), 0 6px 20px -10px rgba(16,24,40,0.15);
-    --shadow-lg: 0 20px 50px -18px rgba(16,24,40,0.28);
+    --shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 8px 30px -18px rgba(0,0,0,0.8);
+    --shadow-lg: 0 30px 80px -24px rgba(0,0,0,0.85);
   }
 
   * { box-sizing: border-box; }
 
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      radial-gradient(900px 500px at 50% -260px, rgba(94,234,212,0.06), transparent 68%),
+      var(--bg);
+    background-attachment: fixed;
     color: var(--text);
     font-family: var(--display);
     line-height: 1.55;
@@ -64,14 +67,14 @@
   .sector-card, .data-table-wrap, .search-results, .mstat { box-shadow: var(--shadow); }
 
   /* ---------- Header ---------- */
-  header { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  header { position: sticky; top: 0; z-index: 30; padding: 16px 0; border-bottom: 1px solid var(--line); background: rgba(0,0,0,0.72); backdrop-filter: blur(14px) saturate(150%); -webkit-backdrop-filter: blur(14px) saturate(150%); }
   .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .wordmark { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 11px; }
   .wordmark .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
   .tagline { font-size: 12px; color: var(--text-faint); margin-top: 3px; }
   .status-badge { font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; color: var(--text-dim); background: var(--panel); border: 1px solid var(--line); padding: 7px 13px; border-radius: 999px; white-space: nowrap; }
   .status-badge b { color: var(--accent); font-weight: 600; }
-  .status-badge.err { color: var(--bad); border-color: #F3C9C9; }
+  .status-badge.err { color: var(--bad); border-color: #4A2323; }
 
   /* ---------- Sector strip ---------- */
   .sector-section { padding: 14px 0 4px; }
@@ -79,7 +82,7 @@
   .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .sector-card { background: var(--panel); padding: 15px 16px; cursor: pointer; border: 1px solid var(--line); border-radius: var(--radius-sm); text-align: left; color: var(--text); font-family: inherit; display: block; width: 100%; position: relative; transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease; overflow: hidden; }
   .sector-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-color, transparent); opacity: 0; transition: opacity 0.15s ease; }
-  .sector-card:hover { border-color: #D0D0CB; transform: translateY(-1px); background: var(--panel-2); }
+  .sector-card:hover { border-color: #2E2E36; transform: translateY(-1px); background: var(--panel-2); }
   .sector-card[aria-pressed="true"] { background: var(--panel-2); border-color: var(--accent-color, var(--accent)); }
   .sector-card[aria-pressed="true"]::before { opacity: 1; }
   .sector-title { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; margin-bottom: 3px; }
@@ -93,7 +96,7 @@
   .view-tabs { display: flex; gap: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
   .view-tab { font-family: var(--display); font-weight: 600; font-size: 13px; background: transparent; border: none; color: var(--text-dim); padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: color 0.12s ease, background 0.12s ease; }
   .view-tab:hover { color: var(--text); }
-  .view-tab.active { background: var(--text); color: #fff; }
+  .view-tab.active { background: var(--accent); color: #05231E; }
   .view-hint { font-size: 11.5px; color: var(--text-faint); flex: 1; text-align: right; }
 
   .filter-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 16px 0 4px; }
@@ -114,8 +117,8 @@
   /* ---------- Bill cards ---------- */
   .item-list { display: flex; flex-direction: column; gap: 10px; }
   .bill-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: border-color 0.15s ease; }
-  .bill-card:hover { border-color: #D0D0CB; }
-  .bill-card.key { border-color: #BFE9E2; }
+  .bill-card:hover { border-color: #2E2E36; }
+  .bill-card.key { border-color: #1E3A34; }
   .bill-card.key .bill-header-btn { border-left: 3px solid var(--accent); }
   .bill-card.card-open { border-color: var(--accent-dim); }
   .bill-header-btn { width: 100%; background: none; border: none; text-align: left; padding: 16px 18px; cursor: pointer; font-family: inherit; color: inherit; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 18px; }
@@ -242,7 +245,7 @@
   /* ---------- Politician cards ---------- */
   .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .member-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: border-color 0.15s ease, transform 0.15s ease; }
-  .member-card:hover { border-color: #D0D0CB; transform: translateY(-1px); }
+  .member-card:hover { border-color: #2E2E36; transform: translateY(-1px); }
   .member-card.card-open { border-color: var(--accent-dim); transform: none; }
   .member-head { width: 100%; background: none; border: none; text-align: left; padding: 16px; cursor: pointer; font-family: inherit; color: inherit; }
   .member-name { font-family: var(--display); font-weight: 600; font-size: 14.5px; color: var(--text); margin-bottom: 2px; display: flex; align-items: center; justify-content: space-between; gap: 8px; letter-spacing: -0.01em; }
@@ -423,6 +426,23 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
+  const VIEWS = ["overview", "bills", "politicians", "stocks"];
+  function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
+  function setHash(h) { if (currentHash() !== h) location.hash = h; }
+  function route() {
+    if (!DATA) return;
+    const h = currentHash();
+    const slash = h.indexOf("/");
+    const kind = slash === -1 ? h : h.slice(0, slash);
+    const arg = slash === -1 ? "" : h.slice(slash + 1);
+    if (kind === "stock" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openStock(arg); return; }
+    if (kind === "member" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openMember(arg); return; }
+    const v = VIEWS.includes(kind) ? kind : "overview";
+    if (activeView !== v) { activeView = v; resetPaging(); }
+    if (document.getElementById("stockModal").classList.contains("open")) closeStock(true);
+    renderAll();
+  }
+
   const VIEW_HINTS = {
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
@@ -575,7 +595,7 @@
       DATA = await res.json();
       document.getElementById("statusBadge").innerHTML = `LIVE — updated <b>${fmtDate(DATA.generated_at)}</b>`;
       document.getElementById("footerUpdated").textContent = `Not investment advice · data as of ${fmtDate(DATA.generated_at)}`;
-      renderAll();
+      route();  // honor any deep-link hash on first load
     } catch (err) {
       document.getElementById("statusBadge").textContent = "DATA UNAVAILABLE";
       document.getElementById("statusBadge").classList.add("err");
@@ -835,8 +855,8 @@
     const modal = document.getElementById("stockModal");
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
-    modal.querySelector(".modal-close").addEventListener("click", closeStock);
-    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => openStock(el.dataset.ticker)));
+    modal.querySelector(".modal-close").addEventListener("click", () => setHash(activeView));
+    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => setHash("stock/" + el.dataset.ticker)));
   }
 
   /* ---------- STOCKS VIEW ---------- */
@@ -966,12 +986,49 @@
       ${kpis}
       ${balance}
       ${movers}
+      ${renderTrends()}
       ${renderUnusual()}
       <div class="over-grid">
         <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
         <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
       </div>
     </section>`;
+  }
+
+  function renderTrends() {
+    const t = DATA.trends;
+    if (!t) return "";
+    if (!t.has_history) {
+      return `<div class="chart-panel" style="margin-top:6px;">
+        <div class="chart-title">Momentum — building history <span style="color:var(--accent)">●</span></div>
+        <div class="chart-sub">Tracking started ${t.days_tracked} day${t.days_tracked === 1 ? "" : "s"} ago. Week-over-week movers — which stocks are gaining congressional buyers — appear here once a few days of history accumulate.</div>
+      </div>`;
+    }
+    const col = (label, sub, rows, kind) => rows.length ? `<div class="unusual-card">
+      <div class="uc-label">${label}</div><div class="uc-sub">${sub}</div>
+      ${rows.map(r => {
+        const delta = kind === "members" ? `+${r.d_members} member${r.d_members > 1 ? "s" : ""}` : fmtMoney(r.d_net);
+        const cls = kind === "sell" ? "net-neg" : "net-pos";
+        return `<div class="uc-row"><span class="uc-tk clickable-ticker" data-ticker="${esc(r.ticker)}">${esc(r.ticker)}</span><span class="uc-meta"><span class="${cls}">${delta}</span> · ${r.members} now</span></div>`;
+      }).join("")}
+    </div>` : "";
+    const cols = [
+      col("Gaining attention", `New congressional buyers in ${t.window_days}d`, t.gaining_attention, "members"),
+      col("Momentum buying", `Biggest net-$ increase over ${t.window_days}d`, t.momentum_buys, "buy"),
+      col("Momentum selling", `Biggest net-$ decrease over ${t.window_days}d`, t.momentum_sells, "sell"),
+    ].filter(Boolean).join("");
+    if (!cols) return "";
+    return `<div class="section-head" style="margin-top:6px;"><span class="section-title">Momentum</span><span class="section-count">week-over-week · ${t.days_tracked}d tracked</span></div><div class="unusual-grid">${cols}</div>`;
+  }
+
+  function sparkline(series, w = 120, h = 28) {
+    if (!series || series.length < 2) return "";
+    const max = Math.max(...series), min = Math.min(...series), range = max - min || 1;
+    const pts = series.map((v, i) => `${(i / (series.length - 1)) * w},${h - 4 - ((v - min) / range) * (h - 8)}`).join(" ");
+    const up = series[series.length - 1] >= series[0];
+    return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" style="vertical-align:middle;">
+      <polyline points="${pts}" fill="none" stroke="${up ? "var(--good)" : "var(--bad)"}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
   }
 
   function renderUnusual() {
@@ -1037,6 +1094,11 @@
           <div class="mstat"><div class="mstat-v net-neg">${fmtMoney(sellV)}</div><div class="mstat-l">${sellN} sells</div></div>
           <div class="mstat"><div class="mstat-v">${members}</div><div class="mstat-l">Members</div></div>
         </div>
+        ${(DATA.stock_history && DATA.stock_history[ticker]) ? `
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:10px 14px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);">
+            <span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);font-weight:600;">Congressional interest (members over time)</span>
+            ${sparkline(DATA.stock_history[ticker], 160, 32)}
+          </div>` : ""}
         <span class="detail-eyebrow">Bills that would affect ${esc(ticker)} (${relatedBills.length})</span>
         ${relatedBills.length === 0
           ? `<div class="empty-note">No tracked bills currently map to this stock's sector.</div>`
@@ -1057,13 +1119,14 @@
     const modal = document.getElementById("stockModal");
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
-    modal.querySelector(".modal-close").addEventListener("click", closeStock);
-    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => openStock(el.dataset.ticker)));
-    modal.querySelectorAll("[data-membername]").forEach(el => el.addEventListener("click", () => openMember(el.dataset.membername)));
+    modal.querySelector(".modal-close").addEventListener("click", () => setHash(activeView));
+    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => setHash("stock/" + el.dataset.ticker)));
+    modal.querySelectorAll("[data-membername]").forEach(el => el.addEventListener("click", () => setHash("member/" + el.dataset.membername)));
   }
-  function closeStock() {
+  function closeStock(silent) {
     document.getElementById("stockModal").classList.remove("open");
     document.body.style.overflow = "";
+    if (!silent) setHash(activeView);
   }
 
   /* ---------- SEARCH ---------- */
@@ -1112,7 +1175,7 @@
     el.querySelectorAll("[data-member]").forEach(card => {
       card.querySelector(".member-head")?.addEventListener("click", (e) => {
         if (e.target.closest("[data-ticker]")) return;
-        openMember(card.dataset.member);
+        setHash("member/" + card.dataset.member);
       });
     });
     // party filter chips
@@ -1122,12 +1185,12 @@
     // clickable tickers open the stock detail modal (overview, tables, chips)
     el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {
       e.stopPropagation();
-      openStock(t.dataset.ticker);
+      if (t.dataset.ticker) setHash("stock/" + t.dataset.ticker);
     }));
     // clickable member names in feeds/tables open the member modal
     el.querySelectorAll("[data-membername]").forEach(t => t.addEventListener("click", (e) => {
       e.stopPropagation();
-      openMember(t.dataset.membername);
+      setHash("member/" + t.dataset.membername);
     }));
     const wire = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener("click", fn); };
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
@@ -1148,11 +1211,10 @@
   document.getElementById("viewTabs").addEventListener("click", (e) => {
     const btn = e.target.closest(".view-tab");
     if (!btn) return;
-    activeView = btn.dataset.view;
     document.getElementById("searchBox").value = "";
-    resetPaging();
-    renderAll();
+    setHash(btn.dataset.view);
   });
+  window.addEventListener("hashchange", route);
   document.getElementById("contextToggle").addEventListener("click", () => {
     keyBillsOnly = !keyBillsOnly;
     renderAll();
@@ -1165,11 +1227,13 @@
     searchTimer = setTimeout(() => { v.trim().length >= 2 ? runSearch(v) : renderContent(); }, 120);
   });
 
-  // Modal: close on overlay click or Escape
+  // Modal: close on overlay click or Escape (route back to the view)
   document.getElementById("stockModal").addEventListener("click", (e) => {
-    if (e.target.id === "stockModal") closeStock();
+    if (e.target.id === "stockModal") setHash(activeView);
   });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeStock(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.getElementById("stockModal").classList.contains("open")) setHash(activeView);
+  });
 
   loadData();
 </script>
