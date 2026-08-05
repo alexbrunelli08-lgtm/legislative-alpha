@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:13:02Z",
+  "generated_at": "2026-08-05T13:30:26Z",
   "congress": 119,
   "overview": {
     "total_trades": 1181,
@@ -8,12 +8,12 @@
     "sell_value": 30945223,
     "party_value": {
       "D": 11811822,
-      "R": 43481501,
+      "R": 43538001,
       "I": 0
     },
     "party_trades": {
       "D": 235,
-      "R": 942,
+      "R": 946,
       "I": 0
     },
     "active_members": 61,
@@ -1918,87 +1918,59 @@
     "momentum_sells": []
   },
   "stock_history": {
-    "MELI": [
-      1,
-      1
-    ],
-    "NOW": [
-      1,
-      1
-    ],
-    "ABT": [
-      4,
-      4
-    ],
-    "DASH": [
-      2,
-      2
-    ],
-    "BEP": [
-      1,
-      1
-    ],
-    "CDNS": [
-      2,
-      2
-    ],
-    "BTI": [
-      1,
-      1
-    ],
-    "UBS": [
-      1,
-      1
-    ],
-    "NDAQ": [
-      1,
-      1
-    ],
-    "RTX": [
-      1,
-      1
-    ],
-    "SCI": [
-      1,
-      1
-    ],
-    "PSX": [
-      1,
-      1
-    ],
-    "PG": [
-      2,
-      2
-    ],
-    "GOOG": [
-      4,
-      4
-    ],
-    "GEV": [
-      1,
-      1
-    ],
-    "CHRW": [
-      1,
-      1
-    ],
-    "C": [
-      1,
-      1
-    ],
-    "JNJ": [
+    "META": [
       3,
       3
     ],
-    "NFLX": [
+    "WMB": [
       1,
       1
+    ],
+    "HON": [
+      2,
+      2
+    ],
+    "PLTR": [
+      1,
+      1
+    ],
+    "NVO": [
+      1,
+      1
+    ],
+    "BRK.B": [
+      2,
+      2
+    ],
+    "BAC": [
+      3,
+      3
+    ],
+    "TSCO": [
+      2,
+      2
+    ],
+    "JPM": [
+      1,
+      1
+    ],
+    "XOM": [
+      3,
+      3
     ],
     "AGX": [
       1,
       1
     ],
-    "EXPE": [
+    "WAB": [
+      3,
+      3
+    ],
+    "KO": [
+      2,
+      2
+    ],
+    "RIO": [
       1,
       1
     ],
@@ -2006,7 +1978,47 @@
       3,
       3
     ],
-    "AZN": [
+    "UNH": [
+      5,
+      5
+    ],
+    "SAN": [
+      2,
+      2
+    ],
+    "CHRW": [
+      1,
+      1
+    ],
+    "GEV": [
+      1,
+      1
+    ],
+    "T": [
+      2,
+      2
+    ],
+    "LTH": [
+      1,
+      1
+    ],
+    "HD": [
+      4,
+      4
+    ],
+    "GOOG": [
+      4,
+      4
+    ],
+    "LYV": [
+      2,
+      2
+    ],
+    "MKL": [
+      2,
+      2
+    ],
+    "PSX": [
       1,
       1
     ],
@@ -2014,27 +2026,15 @@
       2,
       2
     ],
-    "GS": [
-      1,
-      1
-    ],
-    "ASML": [
-      1,
-      1
-    ],
-    "BWXT": [
-      1,
-      1
-    ],
-    "SAN": [
+    "WDAY": [
       2,
       2
     ],
-    "MU": [
-      4,
-      4
+    "MA": [
+      3,
+      3
     ],
-    "CRWD": [
+    "MRK": [
       1,
       1
     ],
@@ -2042,23 +2042,179 @@
       1,
       1
     ],
-    "MLM": [
+    "BTI": [
       1,
       1
     ],
-    "TM": [
+    "BWXT": [
       1,
       1
     ],
-    "ACM": [
+    "ARLP": [
       1,
       1
     ],
-    "BAC": [
+    "BEP": [
+      1,
+      1
+    ],
+    "ASML": [
+      1,
+      1
+    ],
+    "UBER": [
       3,
       3
     ],
-    "ORCL": [
+    "AMAT": [
+      3,
+      3
+    ],
+    "EXPE": [
+      1,
+      1
+    ],
+    "INTC": [
+      4,
+      4
+    ],
+    "LMT": [
+      2,
+      2
+    ],
+    "MCK": [
+      4,
+      4
+    ],
+    "CDNS": [
+      2,
+      2
+    ],
+    "JNJ": [
+      3,
+      3
+    ],
+    "WMT": [
+      1,
+      1
+    ],
+    "LIN": [
+      1,
+      1
+    ],
+    "V": [
+      1,
+      1
+    ],
+    "SCI": [
+      1,
+      1
+    ],
+    "LLY": [
+      3,
+      3
+    ],
+    "AMZN": [
+      2,
+      2
+    ],
+    "TSLA": [
+      1,
+      1
+    ],
+    "NVS": [
+      1,
+      1
+    ],
+    "PGR": [
+      2,
+      2
+    ],
+    "SYK": [
+      2,
+      2
+    ],
+    "RTX": [
+      1,
+      1
+    ],
+    "BBVA": [
+      1,
+      1
+    ],
+    "CRM": [
+      2,
+      2
+    ],
+    "FDX": [
+      1,
+      1
+    ],
+    "RACE": [
+      1,
+      1
+    ],
+    "C": [
+      1,
+      1
+    ],
+    "GLW": [
+      1,
+      1
+    ],
+    "MELI": [
+      1,
+      1
+    ],
+    "DASH": [
+      2,
+      2
+    ],
+    "MSTR": [
+      1,
+      1
+    ],
+    "AVGO": [
+      1,
+      1
+    ],
+    "UNP": [
+      1,
+      1
+    ],
+    "NOW": [
+      1,
+      1
+    ],
+    "TT": [
+      1,
+      1
+    ],
+    "TMUS": [
+      1,
+      1
+    ],
+    "NVDA": [
+      6,
+      6
+    ],
+    "UBS": [
+      1,
+      1
+    ],
+    "DVN": [
+      1,
+      1
+    ],
+    "SPGI": [
+      4,
+      4
+    ],
+    "PG": [
+      2,
+      2
+    ],
+    "SGI": [
       1,
       1
     ],
@@ -2066,25 +2222,77 @@
       1,
       1
     ],
+    "GE": [
+      2,
+      2
+    ],
+    "PNC": [
+      1,
+      1
+    ],
+    "MLM": [
+      1,
+      1
+    ],
+    "CRWD": [
+      1,
+      1
+    ],
+    "NOK": [
+      2,
+      2
+    ],
     "CSCO": [
       3,
       3
     ],
-    "LMT": [
-      2,
-      2
+    "HONAV": [
+      4,
+      4
     ],
-    "KO": [
-      2,
-      2
+    "CSX": [
+      3,
+      3
     ],
-    "RACE": [
+    "AMGN": [
       1,
       1
     ],
-    "LLY": [
-      3,
-      3
+    "FWONK": [
+      1,
+      1
+    ],
+    "SNY": [
+      1,
+      1
+    ],
+    "ABBV": [
+      1,
+      1
+    ],
+    "SAP": [
+      1,
+      1
+    ],
+    "ORCL": [
+      1,
+      1
+    ],
+    "ACM": [
+      1,
+      1
+    ],
+    "HUBB": [
+      2,
+      2
+    ],
+    "MTN": [
+      1,
+      1
+    ],
+    "STRL": [
+      1,
+      1
     ],
     "AMD": [
       3,
@@ -2094,147 +2302,7 @@
       3,
       3
     ],
-    "BIIB": [
-      3,
-      3
-    ],
-    "WMB": [
-      1,
-      1
-    ],
-    "NVS": [
-      1,
-      1
-    ],
-    "MSTR": [
-      1,
-      1
-    ],
-    "MSFT": [
-      6,
-      6
-    ],
-    "LTH": [
-      1,
-      1
-    ],
-    "DVN": [
-      1,
-      1
-    ],
-    "AMAT": [
-      3,
-      3
-    ],
-    "PFE": [
-      2,
-      2
-    ],
-    "AMZN": [
-      2,
-      2
-    ],
-    "INTU": [
-      3,
-      3
-    ],
-    "ARLP": [
-      1,
-      1
-    ],
-    "UNH": [
-      5,
-      5
-    ],
-    "CSX": [
-      3,
-      3
-    ],
-    "GOOGL": [
-      2,
-      2
-    ],
-    "BBVA": [
-      1,
-      1
-    ],
-    "SGI": [
-      1,
-      1
-    ],
-    "GLW": [
-      1,
-      1
-    ],
-    "LYV": [
-      2,
-      2
-    ],
-    "TSCO": [
-      2,
-      2
-    ],
-    "BRK.B": [
-      2,
-      2
-    ],
-    "FDX": [
-      1,
-      1
-    ],
-    "WDAY": [
-      2,
-      2
-    ],
-    "AWK": [
-      1,
-      1
-    ],
-    "T": [
-      2,
-      2
-    ],
-    "STRL": [
-      1,
-      1
-    ],
-    "SMFG": [
-      1,
-      1
-    ],
-    "MA": [
-      3,
-      3
-    ],
-    "PGR": [
-      2,
-      2
-    ],
-    "MTN": [
-      1,
-      1
-    ],
-    "HSBC": [
-      1,
-      1
-    ],
-    "LIN": [
-      1,
-      1
-    ],
-    "WAB": [
-      3,
-      3
-    ],
-    "TT": [
-      1,
-      1
-    ],
-    "NEE": [
-      2,
-      2
-    ],
-    "PLTR": [
+    "NFLX": [
       1,
       1
     ],
@@ -2242,151 +2310,35 @@
       6,
       6
     ],
-    "AVGO": [
+    "COHR": [
       1,
       1
     ],
-    "META": [
-      3,
-      3
-    ],
-    "FWONK": [
-      1,
-      1
-    ],
-    "NVDA": [
+    "MSFT": [
       6,
       6
     ],
-    "HONAV": [
-      4,
-      4
-    ],
-    "INTC": [
-      4,
-      4
-    ],
-    "WMT": [
+    "AWK": [
       1,
       1
-    ],
-    "SYK": [
-      2,
-      2
-    ],
-    "TCNNF": [
-      1,
-      1
-    ],
-    "V": [
-      1,
-      1
-    ],
-    "MRK": [
-      1,
-      1
-    ],
-    "MFG": [
-      1,
-      1
-    ],
-    "XOM": [
-      3,
-      3
     ],
     "VOYG": [
       1,
       1
     ],
-    "RIO": [
-      1,
-      1
-    ],
-    "TSLA": [
-      1,
-      1
-    ],
-    "COHR": [
-      1,
-      1
-    ],
-    "SPGI": [
-      4,
-      4
-    ],
-    "UNP": [
-      1,
-      1
-    ],
-    "HD": [
-      4,
-      4
-    ],
-    "MKL": [
+    "PFE": [
       2,
       2
     ],
-    "NOK": [
-      2,
-      2
-    ],
-    "SAP": [
-      1,
-      1
-    ],
-    "HUBB": [
-      2,
-      2
-    ],
-    "ABBV": [
-      1,
-      1
-    ],
-    "AAPL": [
-      5,
-      5
-    ],
-    "GE": [
-      2,
-      2
-    ],
-    "SONY": [
-      1,
-      1
-    ],
-    "JPM": [
-      1,
-      1
-    ],
-    "CRM": [
-      2,
-      2
-    ],
-    "SNY": [
-      1,
-      1
-    ],
-    "MCK": [
-      4,
-      4
-    ],
-    "UBER": [
+    "BIIB": [
       3,
       3
     ],
-    "HON": [
-      2,
-      2
-    ],
-    "PNC": [
+    "TM": [
       1,
       1
     ],
-    "TMUS": [
-      1,
-      1
-    ],
-    "NVO": [
+    "GS": [
       1,
       1
     ],
@@ -2394,7 +2346,55 @@
       1,
       1
     ],
-    "AMGN": [
+    "NEE": [
+      2,
+      2
+    ],
+    "GOOGL": [
+      2,
+      2
+    ],
+    "MFG": [
+      1,
+      1
+    ],
+    "INTU": [
+      3,
+      3
+    ],
+    "ABT": [
+      4,
+      4
+    ],
+    "SMFG": [
+      1,
+      1
+    ],
+    "AAPL": [
+      5,
+      5
+    ],
+    "MU": [
+      4,
+      4
+    ],
+    "HSBC": [
+      1,
+      1
+    ],
+    "NDAQ": [
+      1,
+      1
+    ],
+    "AZN": [
+      1,
+      1
+    ],
+    "TCNNF": [
+      1,
+      1
+    ],
+    "SONY": [
       1,
       1
     ]
@@ -14760,28 +14760,28 @@
       "key_bill": false
     },
     {
-      "id": "119-SRES-289",
-      "number": "SRES 289",
-      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-HRES-526",
+      "number": "HRES 526",
+      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-18",
+      "introduced_date": "2025-06-20",
       "latest_action": {
-        "date": "2025-06-18",
-        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
+        "date": "2025-06-20",
+        "text": "Referred to the House Committee on Agriculture."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Sen. Merkley, Jeff [D-OR]",
+        "name": "Rep. Panetta, Jimmy [D-CA-19]",
         "party": "D",
-        "state": "OR"
+        "state": "CA"
       },
       "committee_count": 1,
-      "cosponsor_count": 0,
+      "cosponsor_count": 1,
       "amendments": [],
-      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
+      "summary": "This resolution supports the designation of National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -14855,7 +14855,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
+      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -14979,28 +14979,28 @@
       "key_bill": false
     },
     {
-      "id": "119-HRES-526",
-      "number": "HRES 526",
-      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-SRES-289",
+      "number": "SRES 289",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-20",
+      "introduced_date": "2025-06-18",
       "latest_action": {
-        "date": "2025-06-20",
-        "text": "Referred to the House Committee on Agriculture."
+        "date": "2025-06-18",
+        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. Panetta, Jimmy [D-CA-19]",
+        "name": "Sen. Merkley, Jeff [D-OR]",
         "party": "D",
-        "state": "CA"
+        "state": "OR"
       },
       "committee_count": 1,
-      "cosponsor_count": 1,
+      "cosponsor_count": 0,
       "amendments": [],
-      "summary": "This resolution supports the designation of National Pollinator Week.",
+      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -15074,7 +15074,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
+      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -41607,9 +41607,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 8000,
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
+      "bioguide": "M001204",
       "entry_price": 212.6,
       "last_price": 211.94,
       "return_pct": -0.3,
@@ -41627,9 +41627,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 8000,
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
+      "bioguide": "M001204",
       "entry_price": 212.6,
       "last_price": 211.94,
       "return_pct": -0.3,
@@ -41647,9 +41647,9 @@
       "amount_range": "$15,001 - $50,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 32500,
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
+      "bioguide": "M001204",
       "entry_price": 192.5,
       "last_price": 125.33,
       "return_pct": -34.9,
@@ -43047,9 +43047,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035068.pdf",
       "est_amount": 8000,
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/115_rp_tx_32_sessions_pete_200.jpg",
+      "bioguide": "S000250",
       "entry_price": 18.78,
       "last_price": 19.65,
       "return_pct": 4.6,
@@ -44452,9 +44452,9 @@
     {
       "member": "Rep. Daniel Meuser (PA09)",
       "chamber": "House",
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
+      "bioguide": "M001204",
       "trade_count": 3,
       "buy_count": 1,
       "sell_count": 2,
@@ -45044,9 +45044,9 @@
     {
       "member": "Rep. Pete Sessions (TX17)",
       "chamber": "House",
-      "party": "?",
-      "image_url": null,
-      "bioguide": null,
+      "party": "R",
+      "image_url": "https://www.congress.gov/img/member/115_rp_tx_32_sessions_pete_200.jpg",
+      "bioguide": "S000250",
       "trade_count": 1,
       "buy_count": 0,
       "sell_count": 1,
@@ -53455,7 +53455,9 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
-      "parties": [],
+      "parties": [
+        "R"
+      ],
       "bipartisan": false,
       "last_filed": "7/24/2026"
     },
