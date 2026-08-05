@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T01:19:39Z",
+  "generated_at": "2026-08-05T08:13:02Z",
   "congress": 119,
   "overview": {
     "total_trades": 1181,
@@ -8,12 +8,12 @@
     "sell_value": 30945223,
     "party_value": {
       "D": 11811822,
-      "R": 43538001,
+      "R": 43481501,
       "I": 0
     },
     "party_trades": {
       "D": 235,
-      "R": 946,
+      "R": 942,
       "I": 0
     },
     "active_members": 61,
@@ -1918,159 +1918,11 @@
     "momentum_sells": []
   },
   "stock_history": {
-    "ASML": [
-      1,
-      1
-    ],
-    "GS": [
-      1,
-      1
-    ],
-    "NVDA": [
-      6,
-      6
-    ],
-    "TSLA": [
-      1,
-      1
-    ],
-    "NOK": [
-      2,
-      2
-    ],
-    "JPM": [
-      1,
-      1
-    ],
-    "BSX": [
-      3,
-      3
-    ],
-    "WMB": [
-      1,
-      1
-    ],
-    "DVN": [
-      1,
-      1
-    ],
-    "CHRW": [
-      1,
-      1
-    ],
-    "XOM": [
-      3,
-      3
-    ],
-    "NVS": [
-      1,
-      1
-    ],
-    "TSCO": [
-      2,
-      2
-    ],
-    "TM": [
-      1,
-      1
-    ],
-    "CRWD": [
-      1,
-      1
-    ],
-    "INTC": [
-      4,
-      4
-    ],
-    "MLM": [
-      1,
-      1
-    ],
-    "C": [
-      1,
-      1
-    ],
-    "GLW": [
-      1,
-      1
-    ],
-    "JNJ": [
-      3,
-      3
-    ],
     "MELI": [
       1,
       1
     ],
-    "CSCO": [
-      3,
-      3
-    ],
-    "SPCX": [
-      6,
-      6
-    ],
-    "DASH": [
-      2,
-      2
-    ],
     "NOW": [
-      1,
-      1
-    ],
-    "AWK": [
-      1,
-      1
-    ],
-    "GOOG": [
-      4,
-      4
-    ],
-    "RIO": [
-      1,
-      1
-    ],
-    "ACM": [
-      1,
-      1
-    ],
-    "BRK.B": [
-      2,
-      2
-    ],
-    "WAB": [
-      3,
-      3
-    ],
-    "SYK": [
-      2,
-      2
-    ],
-    "CAG": [
-      2,
-      2
-    ],
-    "CPAY": [
-      1,
-      1
-    ],
-    "BIIB": [
-      3,
-      3
-    ],
-    "AMAT": [
-      3,
-      3
-    ],
-    "LTH": [
-      1,
-      1
-    ],
-    "NEE": [
-      2,
-      2
-    ],
-    "ABBV": [
       1,
       1
     ],
@@ -2078,15 +1930,19 @@
       4,
       4
     ],
-    "TCNNF": [
+    "DASH": [
+      2,
+      2
+    ],
+    "BEP": [
       1,
       1
     ],
-    "NFLX": [
-      1,
-      1
+    "CDNS": [
+      2,
+      2
     ],
-    "SCI": [
+    "BTI": [
       1,
       1
     ],
@@ -2094,31 +1950,7 @@
       1,
       1
     ],
-    "HUBB": [
-      2,
-      2
-    ],
-    "MRK": [
-      1,
-      1
-    ],
-    "BTI": [
-      1,
-      1
-    ],
-    "SMFG": [
-      1,
-      1
-    ],
-    "GE": [
-      2,
-      2
-    ],
-    "SNY": [
-      1,
-      1
-    ],
-    "TMUS": [
+    "NDAQ": [
       1,
       1
     ],
@@ -2126,23 +1958,75 @@
       1,
       1
     ],
+    "SCI": [
+      1,
+      1
+    ],
+    "PSX": [
+      1,
+      1
+    ],
     "PG": [
       2,
       2
     ],
-    "UNH": [
-      5,
-      5
+    "GOOG": [
+      4,
+      4
     ],
-    "MFG": [
+    "GEV": [
       1,
       1
     ],
-    "MKL": [
+    "CHRW": [
+      1,
+      1
+    ],
+    "C": [
+      1,
+      1
+    ],
+    "JNJ": [
+      3,
+      3
+    ],
+    "NFLX": [
+      1,
+      1
+    ],
+    "AGX": [
+      1,
+      1
+    ],
+    "EXPE": [
+      1,
+      1
+    ],
+    "BSX": [
+      3,
+      3
+    ],
+    "AZN": [
+      1,
+      1
+    ],
+    "CAG": [
       2,
       2
     ],
-    "KO": [
+    "GS": [
+      1,
+      1
+    ],
+    "ASML": [
+      1,
+      1
+    ],
+    "BWXT": [
+      1,
+      1
+    ],
+    "SAN": [
       2,
       2
     ],
@@ -2150,23 +2034,23 @@
       4,
       4
     ],
-    "STRL": [
+    "CRWD": [
       1,
       1
-    ],
-    "NDAQ": [
-      1,
-      1
-    ],
-    "HD": [
-      4,
-      4
     ],
     "LDOS": [
       1,
       1
     ],
-    "BBVA": [
+    "MLM": [
+      1,
+      1
+    ],
+    "TM": [
+      1,
+      1
+    ],
+    "ACM": [
       1,
       1
     ],
@@ -2174,7 +2058,55 @@
       3,
       3
     ],
-    "COHR": [
+    "ORCL": [
+      1,
+      1
+    ],
+    "CPAY": [
+      1,
+      1
+    ],
+    "CSCO": [
+      3,
+      3
+    ],
+    "LMT": [
+      2,
+      2
+    ],
+    "KO": [
+      2,
+      2
+    ],
+    "RACE": [
+      1,
+      1
+    ],
+    "LLY": [
+      3,
+      3
+    ],
+    "AMD": [
+      3,
+      3
+    ],
+    "DUK": [
+      3,
+      3
+    ],
+    "BIIB": [
+      3,
+      3
+    ],
+    "WMB": [
+      1,
+      1
+    ],
+    "NVS": [
+      1,
+      1
+    ],
+    "MSTR": [
       1,
       1
     ],
@@ -2182,57 +2114,17 @@
       6,
       6
     ],
-    "CSX": [
+    "LTH": [
+      1,
+      1
+    ],
+    "DVN": [
+      1,
+      1
+    ],
+    "AMAT": [
       3,
       3
-    ],
-    "CDNS": [
-      2,
-      2
-    ],
-    "LIN": [
-      1,
-      1
-    ],
-    "AMGN": [
-      1,
-      1
-    ],
-    "MA": [
-      3,
-      3
-    ],
-    "AVGO": [
-      1,
-      1
-    ],
-    "VOYG": [
-      1,
-      1
-    ],
-    "UBER": [
-      3,
-      3
-    ],
-    "ORCL": [
-      1,
-      1
-    ],
-    "GOOGL": [
-      2,
-      2
-    ],
-    "PGR": [
-      2,
-      2
-    ],
-    "MSTR": [
-      1,
-      1
-    ],
-    "TDY": [
-      1,
-      1
     ],
     "PFE": [
       2,
@@ -2242,19 +2134,51 @@
       2,
       2
     ],
-    "AZN": [
+    "INTU": [
+      3,
+      3
+    ],
+    "ARLP": [
       1,
       1
     ],
-    "SAN": [
+    "UNH": [
+      5,
+      5
+    ],
+    "CSX": [
+      3,
+      3
+    ],
+    "GOOGL": [
       2,
       2
     ],
-    "SAP": [
+    "BBVA": [
       1,
       1
     ],
-    "EXPE": [
+    "SGI": [
+      1,
+      1
+    ],
+    "GLW": [
+      1,
+      1
+    ],
+    "LYV": [
+      2,
+      2
+    ],
+    "TSCO": [
+      2,
+      2
+    ],
+    "BRK.B": [
+      2,
+      2
+    ],
+    "FDX": [
       1,
       1
     ],
@@ -2262,87 +2186,7 @@
       2,
       2
     ],
-    "META": [
-      3,
-      3
-    ],
-    "PLTR": [
-      1,
-      1
-    ],
-    "WMT": [
-      1,
-      1
-    ],
-    "HON": [
-      2,
-      2
-    ],
-    "SPGI": [
-      4,
-      4
-    ],
-    "MCK": [
-      4,
-      4
-    ],
-    "RACE": [
-      1,
-      1
-    ],
-    "HONAV": [
-      4,
-      4
-    ],
-    "TT": [
-      1,
-      1
-    ],
-    "BEP": [
-      1,
-      1
-    ],
-    "GEV": [
-      1,
-      1
-    ],
-    "HSBC": [
-      1,
-      1
-    ],
-    "FDX": [
-      1,
-      1
-    ],
-    "AMD": [
-      3,
-      3
-    ],
-    "AAPL": [
-      5,
-      5
-    ],
-    "BWXT": [
-      1,
-      1
-    ],
-    "FWONK": [
-      1,
-      1
-    ],
-    "LMT": [
-      2,
-      2
-    ],
-    "LLY": [
-      3,
-      3
-    ],
-    "INTU": [
-      3,
-      3
-    ],
-    "MTN": [
+    "AWK": [
       1,
       1
     ],
@@ -2350,27 +2194,167 @@
       2,
       2
     ],
-    "PNC": [
+    "STRL": [
       1,
       1
     ],
-    "ARLP": [
+    "SMFG": [
       1,
       1
     ],
-    "PSX": [
+    "MA": [
+      3,
+      3
+    ],
+    "PGR": [
+      2,
+      2
+    ],
+    "MTN": [
       1,
       1
+    ],
+    "HSBC": [
+      1,
+      1
+    ],
+    "LIN": [
+      1,
+      1
+    ],
+    "WAB": [
+      3,
+      3
+    ],
+    "TT": [
+      1,
+      1
+    ],
+    "NEE": [
+      2,
+      2
+    ],
+    "PLTR": [
+      1,
+      1
+    ],
+    "SPCX": [
+      6,
+      6
+    ],
+    "AVGO": [
+      1,
+      1
+    ],
+    "META": [
+      3,
+      3
+    ],
+    "FWONK": [
+      1,
+      1
+    ],
+    "NVDA": [
+      6,
+      6
+    ],
+    "HONAV": [
+      4,
+      4
+    ],
+    "INTC": [
+      4,
+      4
+    ],
+    "WMT": [
+      1,
+      1
+    ],
+    "SYK": [
+      2,
+      2
+    ],
+    "TCNNF": [
+      1,
+      1
+    ],
+    "V": [
+      1,
+      1
+    ],
+    "MRK": [
+      1,
+      1
+    ],
+    "MFG": [
+      1,
+      1
+    ],
+    "XOM": [
+      3,
+      3
+    ],
+    "VOYG": [
+      1,
+      1
+    ],
+    "RIO": [
+      1,
+      1
+    ],
+    "TSLA": [
+      1,
+      1
+    ],
+    "COHR": [
+      1,
+      1
+    ],
+    "SPGI": [
+      4,
+      4
+    ],
+    "UNP": [
+      1,
+      1
+    ],
+    "HD": [
+      4,
+      4
+    ],
+    "MKL": [
+      2,
+      2
+    ],
+    "NOK": [
+      2,
+      2
+    ],
+    "SAP": [
+      1,
+      1
+    ],
+    "HUBB": [
+      2,
+      2
+    ],
+    "ABBV": [
+      1,
+      1
+    ],
+    "AAPL": [
+      5,
+      5
+    ],
+    "GE": [
+      2,
+      2
     ],
     "SONY": [
       1,
       1
     ],
-    "DUK": [
-      3,
-      3
-    ],
-    "V": [
+    "JPM": [
       1,
       1
     ],
@@ -2378,7 +2362,27 @@
       2,
       2
     ],
-    "SGI": [
+    "SNY": [
+      1,
+      1
+    ],
+    "MCK": [
+      4,
+      4
+    ],
+    "UBER": [
+      3,
+      3
+    ],
+    "HON": [
+      2,
+      2
+    ],
+    "PNC": [
+      1,
+      1
+    ],
+    "TMUS": [
       1,
       1
     ],
@@ -2386,17 +2390,13 @@
       1,
       1
     ],
-    "AGX": [
+    "TDY": [
       1,
       1
     ],
-    "UNP": [
+    "AMGN": [
       1,
       1
-    ],
-    "LYV": [
-      2,
-      2
     ]
   },
   "sectors": {
@@ -41607,9 +41607,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
-      "bioguide": "M001204",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "entry_price": 212.6,
       "last_price": 211.94,
       "return_pct": -0.3,
@@ -41627,9 +41627,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
-      "bioguide": "M001204",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "entry_price": 212.6,
       "last_price": 211.94,
       "return_pct": -0.3,
@@ -41647,9 +41647,9 @@
       "amount_range": "$15,001 - $50,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034774.pdf",
       "est_amount": 32500,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
-      "bioguide": "M001204",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "entry_price": 192.5,
       "last_price": 125.33,
       "return_pct": -34.9,
@@ -43047,9 +43047,9 @@
       "amount_range": "$1,001 - $15,000",
       "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035068.pdf",
       "est_amount": 8000,
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/115_rp_tx_32_sessions_pete_200.jpg",
-      "bioguide": "S000250",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "entry_price": 18.78,
       "last_price": 19.65,
       "return_pct": 4.6,
@@ -44452,9 +44452,9 @@
     {
       "member": "Rep. Daniel Meuser (PA09)",
       "chamber": "House",
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/6776ebbf4f8a93753830ca7d_200.jpg",
-      "bioguide": "M001204",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "trade_count": 3,
       "buy_count": 1,
       "sell_count": 2,
@@ -45044,9 +45044,9 @@
     {
       "member": "Rep. Pete Sessions (TX17)",
       "chamber": "House",
-      "party": "R",
-      "image_url": "https://www.congress.gov/img/member/115_rp_tx_32_sessions_pete_200.jpg",
-      "bioguide": "S000250",
+      "party": "?",
+      "image_url": null,
+      "bioguide": null,
       "trade_count": 1,
       "buy_count": 0,
       "sell_count": 1,
@@ -53455,9 +53455,7 @@
       "total_value": 8000,
       "member_count": 1,
       "total_trades": 1,
-      "parties": [
-        "R"
-      ],
+      "parties": [],
       "bipartisan": false,
       "last_filed": "7/24/2026"
     },
