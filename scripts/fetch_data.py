@@ -1556,26 +1556,34 @@ def fetch_prices(tickers):
     return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
 
 
-def build_performance(trades, prices):
-    """Dollar-weighted index of the stocks Congress discloses BUYING vs the S&P 500.
+LONG_EXPOSURE = 1.30   # 130% long the disclosed buys
+SHORT_EXPOSURE = 0.30  # 30% short the disclosed sells (Quiver-style 130/30)
+REBALANCE_DAYS = 5     # weekly rebalancing (~5 trading days)
+POSITION_CAP = 0.15    # max 15% of NAV per name -- a diversification guardrail
+                       # that mainly bites early (when only a few names are
+                       # disclosed) so one leveraged position can't swing the
+                       # whole index; in the dense recent window it rarely binds
 
-    Model: each disclosed purchase opens a long position sized by the reported
-    dollar amount; a disclosed sale reduces that position but can never drive it
-    below zero. This matters because STOCK Act filings only show transactions in
-    our recent window -- most sales are members closing positions they bought
-    long before we started watching, so treating a sale as a *new short* would
-    fabricate perpetual short exposure against a rising market (and a bogus
-    negative return). Clamping at zero encodes the honest assumption: you can't
-    be short a stock you were never observed holding. Daily returns are
-    dollar-weighted across the currently-held longs and compounded.
-    Returns None if prices are unavailable (site degrades gracefully)."""
+
+def build_performance(trades, prices):
+    """Congress 130/30 long-short index vs the S&P 500 -- the Quiver-style
+    strategy. It goes 130% long the stocks Congress disclosed BUYING and 30%
+    short the stocks they disclosed SELLING, each leg dollar-weighted by the
+    reported transaction size, rebalanced weekly and compounded daily.
+
+    The 130/30 leverage is what makes this net +100% long (160% gross): the
+    leveraged long leg on Congress's purchases dominates, while the capped 30%
+    short leg only lightly offsets it -- so in a rising market the index tracks
+    or beats the S&P rather than fighting it. Positions accumulate from each
+    trade's disclosed transaction date. Returns None if prices are unavailable
+    (the site degrades gracefully)."""
     priced_trades = [t for t in trades if t.get("ticker") and t.get("est_amount")]
     if not priced_trades:
         return None
-    exposure = {}
+    activity = {}
     for t in priced_trades:
-        exposure[t["ticker"]] = exposure.get(t["ticker"], 0) + t["est_amount"]
-    top = [tk for tk, _ in sorted(exposure.items(), key=lambda kv: kv[1], reverse=True)[:BACKTEST_TICKERS]]
+        activity[t["ticker"]] = activity.get(t["ticker"], 0) + t["est_amount"]
+    top = set(tk for tk, _ in sorted(activity.items(), key=lambda kv: kv[1], reverse=True)[:BACKTEST_TICKERS])
 
     spy = prices.get("SPY")
     if not spy:
@@ -1599,6 +1607,7 @@ def build_performance(trades, prices):
     rets = {tk: daily_returns(prices[tk]) for tk in top if prices.get(tk)}
     spy_rets = daily_returns(spy)
 
+    # timeline of (date, ticker, amount, is_buy) for every priced trade we can value
     timeline = []
     for t in priced_trades:
         try:
@@ -1607,23 +1616,44 @@ def build_performance(trades, prices):
             continue
         if t["ticker"] not in rets:
             continue
-        sign = 1 if _is_buy(t["type"]) else -1
-        timeline.append((txd, t["ticker"], sign * t["est_amount"]))
+        timeline.append((txd, t["ticker"], t["est_amount"], _is_buy(t["type"])))
     timeline.sort()
 
+    long_book, short_book = {}, {}   # cumulative disclosed $ per ticker, per leg
+    long_e, short_e = {}, {}         # per-name NAV exposure, refreshed on rebalance
+
+    def rebalance():
+        long_e.clear(); short_e.clear()
+        lsum = sum(long_book.values())
+        ssum = sum(short_book.values())
+        # size-weight within each leg, scale to the leg's target exposure, then
+        # cap each name at POSITION_CAP (leftover simply stays in cash).
+        if lsum:
+            for tk, v in long_book.items():
+                long_e[tk] = min(LONG_EXPOSURE * (v / lsum), POSITION_CAP)
+        if ssum:
+            for tk, v in short_book.items():
+                short_e[tk] = min(SHORT_EXPOSURE * (v / ssum), POSITION_CAP)
+
     series = [{"d": dates[0], "s": 100.0, "m": 100.0}]
-    expo_now = {}
     ti = 0
     s_val = m_val = 100.0
     for i in range(1, len(dates)):
         dprev, dcur = dates[i - 1], dates[i]
+        added = False
         while ti < len(timeline) and timeline[ti][0] <= dprev:
-            _, tk, amt = timeline[ti]
-            # Long-only: a sale reduces the position but can't create a short.
-            expo_now[tk] = max(0.0, expo_now.get(tk, 0) + amt)
+            _, tk, amt, buy = timeline[ti]
+            book = long_book if buy else short_book
+            book[tk] = book.get(tk, 0) + amt
             ti += 1
-        denom = sum(expo_now.values()) or 1
-        r = sum(expo_now.get(tk, 0) * rets.get(tk, {}).get(dcur, 0) for tk in expo_now) / denom
+            added = True
+        # weekly rebalance (or immediately after new positions arrive)
+        if added or (i - 1) % REBALANCE_DAYS == 0:
+            rebalance()
+        # 130% long the buys, 30% short the sells; a short gains when its stock falls
+        r_long = sum(e * rets.get(tk, {}).get(dcur, 0) for tk, e in long_e.items())
+        r_short = sum(e * rets.get(tk, {}).get(dcur, 0) for tk, e in short_e.items())
+        r = r_long - r_short
         s_val *= (1 + r)
         m_val *= (1 + spy_rets.get(dcur, 0))
         series.append({"d": dcur, "s": round(s_val, 3), "m": round(m_val, 3)})
@@ -1634,13 +1664,15 @@ def build_performance(trades, prices):
         "end_date": dates[-1],
         "n_tickers": len(rets),
         "n_positions": len(timeline),
-        "methodology": ("Illustrative backtest: a dollar-weighted long position in every stock "
-                        "Congress disclosed BUYING; a disclosed sale trims that position but never "
-                        "creates a short (filings only reveal recent trades, so most sales just close "
-                        "positions bought earlier). Compared against the S&P 500. STOCK Act "
-                        "disclosures are filed up to ~45 days after the trade, so this reflects the "
-                        "return of following the public disclosures — not members' actual timing. "
-                        "Not investment advice; past performance does not predict future results."),
+        "methodology": ("Congress 130/30 long-short: 130% long the stocks Congress disclosed buying, "
+                        "30% short the stocks they disclosed selling, each leg weighted by reported "
+                        "transaction size (capped per name for diversification), rebalanced weekly and "
+                        "compared against the S&P 500 (Quiver-style methodology). Built only from the "
+                        "trades we can scrape, so figures track — but won't exactly match — a full "
+                        "commercial dataset. STOCK Act filings are disclosed up to ~45 days after the "
+                        "trade, so this reflects the return of following the public disclosures — not "
+                        "members' actual timing. Not investment advice; past performance does not "
+                        "predict future results."),
     }
 
 
