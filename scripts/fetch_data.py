@@ -170,13 +170,24 @@ def compute_momentum(bill, cosponsor_count):
     return max(0, min(100, round(stage + cosponsor_bonus + recency_bonus)))
 
 
+# Titles that mark a spending/authorization measure -- these bills are ALWAYS
+# kept (the money bills are the point), even when no thematic keyword matches.
+APPROP_TITLE = re.compile(
+    r"\b(appropriations?|authorization act|reauthoriz\w+|"
+    r"omnibus|continuing resolution|supplemental appropriations|"
+    r"consolidated appropriations|making appropriations)\b",
+    re.IGNORECASE,
+)
+
+
 def fetch_bills(sectors):
     print("Fetching recently updated bills from Congress.gov...", file=sys.stderr)
     from_dt = (datetime.now(timezone.utc) - timedelta(days=BILLS_LOOKBACK_DAYS)).strftime("%Y-%m-%dT00:00:00Z")
-    matched = []
+    matched, approps = [], []   # thematic bills, and appropriations bills (always kept)
+    seen = set()
     offset = 0
     page_size = 250
-    max_pages = 4  # scan up to 1000 recently-updated bills
+    max_pages = 4  # scan up to 1000 recently-updated bills (don't early-stop -- find approps too)
     for _ in range(max_pages):
         data = congress_get(
             f"bill/{CONGRESS}",
@@ -187,14 +198,23 @@ def fetch_bills(sectors):
             break
         for b in bills:
             title = b.get("title") or ""
+            is_appr = bool(APPROP_TITLE.search(title))
             sector = match_sector(title, sectors)
+            # Appropriations bills that match no theme still get kept, in the
+            # cross-cutting "Appropriations & Budget" bucket.
+            if not sector and is_appr:
+                sector = "APPRO"
             if not sector:
                 continue
             bill_type = b.get("type", "").upper()
             number = b.get("number")
+            bid = f"{CONGRESS}-{bill_type}-{number}"
+            if bid in seen:
+                continue
+            seen.add(bid)
             latest_action = b.get("latestAction") or {}
             record = {
-                "id": f"{CONGRESS}-{bill_type}-{number}",
+                "id": bid,
                 "number": f"{bill_type} {number}",
                 "title": title,
                 "sector": sector,
@@ -205,16 +225,15 @@ def fetch_bills(sectors):
                 "amendments_url": (b.get("amendments") or {}).get("url"),
             }
             record["status"] = derive_status(record["latest_action"]["text"])
-            matched.append(record)
-            if len(matched) >= MAX_MATCHED_BILLS:
-                break
-        if len(matched) >= MAX_MATCHED_BILLS:
-            break
+            (approps if is_appr else matched).append(record)
         offset += page_size
         time.sleep(0.2)
 
-    print(f"  matched {len(matched)} bills to a sector", file=sys.stderr)
-    return matched
+    # Always keep every appropriations bill; fill the remaining slots with the
+    # most-recent thematic bills so the total stays bounded for detail fetching.
+    result = approps + matched[: max(0, MAX_MATCHED_BILLS - len(approps))]
+    print(f"  matched {len(result)} bills ({len(approps)} appropriations/authorization, {len(result) - len(approps)} thematic)", file=sys.stderr)
+    return result
 
 
 def fetch_bill_details(bill):
@@ -871,8 +890,9 @@ def analyze_appropriation(bill):
     blob = " ".join(filter(None, [
         bill.get("title"),
         (bill.get("latest_action") or {}).get("text"),
+        bill.get("summary"),
     ]))
-    bill["is_appropriation"] = bool(APPROPRIATION_TERMS.search(blob))
+    bill["is_appropriation"] = bool(APPROPRIATION_TERMS.search(blob) or APPROP_TITLE.search(bill.get("title") or ""))
     figures = []
     seen = set()
     for m in DOLLAR_FIGURE.finditer(blob):

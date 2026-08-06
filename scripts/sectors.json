@@ -1147,6 +1147,15 @@
     "short": "Fintech",
     "group": "theme"
   },
+  "APPRO": {
+    "name": "Appropriations & Budget",
+    "short": "Appropriations",
+    "etf": null,
+    "color": "#8FD14F",
+    "group": "theme",
+    "keywords": [],
+    "constituents": {}
+  },
   "TECH": {
     "name": "Technology",
     "short": "Technology",

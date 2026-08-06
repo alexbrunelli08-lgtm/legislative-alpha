@@ -136,6 +136,38 @@
   .schip.buy { background: var(--tint-green); color: var(--good); }
   .schip.sell { background: var(--tint-red); color: var(--bad); }
 
+  /* ---------- Sector treemap heatmap ---------- */
+  .treemap-wrap { margin-bottom: 22px; }
+  .treemap { position: relative; width: 100%; height: 340px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--panel); }
+  .tm-tile { position: absolute; box-sizing: border-box; border: 1.5px solid var(--bg); cursor: pointer; overflow: hidden; transition: filter 0.12s ease, box-shadow 0.12s ease; }
+  .tm-tile::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--tm-accent); opacity: 0.9; }
+  .tm-tile:hover { filter: brightness(1.35); box-shadow: inset 0 0 0 1.5px var(--tm-accent); z-index: 2; }
+  .tm-inner { padding: 8px 10px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; gap: 1px; }
+  .tm-name { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--text); letter-spacing: -0.01em; line-height: 1.1; }
+  .tm-vol { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+  .tm-ret { font-family: var(--mono); font-size: 12px; font-weight: 700; margin-top: auto; }
+  .tm-ret.up { color: var(--good); } .tm-ret.down { color: var(--bad); }
+  .treemap-legend { display: flex; gap: 16px; justify-content: flex-end; margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--text-faint); }
+  .tl-item { display: inline-flex; align-items: center; gap: 5px; }
+  .tl-swatch { width: 12px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* ---------- Sector modal extras ---------- */
+  .grp-badge { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; vertical-align: middle; margin-left: 6px; }
+  .grp-badge.eco { background: var(--tint-blue); color: var(--dem); }
+  .grp-badge.theme { background: var(--tint-violet); color: var(--ind); }
+  .psplit { display: flex; height: 12px; border-radius: 999px; overflow: hidden; background: var(--panel-2); }
+  .pseg { display: block; height: 100%; }
+  .pseg.D { background: var(--dem); } .pseg.R { background: var(--rep); } .pseg.I { background: var(--ind); }
+  .psplit-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+  .psplit-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .sm-list { display: flex; flex-direction: column; }
+  .sm-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line-soft); cursor: pointer; font-size: 12px; }
+  .sm-row:first-child { border-top: none; }
+  .sm-row:hover { color: var(--accent); }
+  .sm-vol { font-family: var(--mono); font-size: 11px; color: var(--text-faint); white-space: nowrap; }
+  .sector-jump-btn { background: var(--panel-2); border: 1px solid var(--line); color: var(--text); font-family: var(--display); font-weight: 600; font-size: 12px; padding: 9px 14px; border-radius: 8px; cursor: pointer; transition: all 0.12s ease; }
+  .sector-jump-btn:hover { background: var(--accent); color: #05231E; border-color: var(--accent); }
+
   /* ---------- View switcher + filters ---------- */
   .controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 26px 0 4px; }
   .view-tabs { display: flex; gap: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
@@ -490,6 +522,7 @@
     const arg = slash === -1 ? "" : h.slice(slash + 1);
     if (kind === "stock" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openStock(arg); return; }
     if (kind === "member" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openMember(arg); return; }
+    if (kind === "sector" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openSector(arg); return; }
     const v = VIEWS.includes(kind) ? kind : "overview";
     if (activeView !== v) { activeView = v; resetPaging(); }
     if (document.getElementById("stockModal").classList.contains("open")) closeStock(true);
@@ -844,6 +877,80 @@
         </div>
         ${tops ? `<div class="sc-tops">${tops}</div>` : ""}
       </button>`;
+  }
+
+  // Diverging heat color for a % return: red (down) -> neutral -> green (up).
+  function returnHeat(r) {
+    if (r == null || isNaN(r)) return "rgba(120,120,132,0.10)";
+    const c = Math.max(-1, Math.min(1, r / 22));
+    return c >= 0 ? `rgba(74,222,128,${(0.14 + 0.52 * c).toFixed(3)})`
+                  : `rgba(248,113,113,${(0.14 + 0.52 * -c).toFixed(3)})`;
+  }
+
+  // Squarified treemap layout -> [{...item, x,y,w,h}] in the given box.
+  function squarify(items, X, Y, W, H) {
+    const total = items.reduce((s, i) => s + i.value, 0) || 1;
+    let scaled = items.map(i => ({ ...i, area: (i.value / total) * (W * H) }));
+    const out = [], rect = { x: X, y: Y, w: W, h: H };
+    const worst = (row, len) => {
+      const s = row.reduce((a, b) => a + b.area, 0);
+      const mx = Math.max(...row.map(r => r.area)), mn = Math.min(...row.map(r => r.area));
+      return Math.max((len * len * mx) / (s * s), (s * s) / (len * len * mn));
+    };
+    const place = (row, horizontal) => {
+      const s = row.reduce((a, b) => a + b.area, 0);
+      if (horizontal) {
+        const rh = s / rect.w; let cx = rect.x;
+        row.forEach(r => { const rw = r.area / rh; out.push({ ...r, x: cx, y: rect.y, w: rw, h: rh }); cx += rw; });
+        rect.y += rh; rect.h -= rh;
+      } else {
+        const rw = s / rect.h; let cy = rect.y;
+        row.forEach(r => { const rh = r.area / rw; out.push({ ...r, x: rect.x, y: cy, w: rw, h: rh }); cy += rh; });
+        rect.x += rw; rect.w -= rw;
+      }
+    };
+    let rem = scaled.slice();
+    while (rem.length) {
+      const horizontal = rect.w >= rect.h, len = horizontal ? rect.w : rect.h;
+      let row = [];
+      while (rem.length) {
+        const trial = row.concat(rem[0]);
+        if (row.length && worst(trial, len) > worst(row, len)) break;
+        row.push(rem.shift());
+      }
+      place(row, horizontal);
+    }
+    return out;
+  }
+
+  // Fill any .treemap containers now that their pixel size is known.
+  function fillTreemaps() {
+    document.querySelectorAll(".treemap").forEach(box => {
+      const W = box.clientWidth, H = box.clientHeight;
+      if (!W || !H) return;
+      // Size by NUMBER of disclosed trades (congressional activity) -- robust to
+      // the occasional multi-million-dollar single filing that would otherwise
+      // swallow the whole map. Color still encodes the disclosed-buy return.
+      const items = Object.entries(DATA.sectors)
+        .filter(([c, s]) => s.group === "economy" && c !== "OTHER" && s.trade_count)
+        .map(([c, s]) => ({ code: c, s, value: s.trade_count }))
+        .sort((a, b) => b.value - a.value);
+      if (!items.length) { box.innerHTML = ""; return; }
+      const tiles = squarify(items, 0, 0, W, H);
+      box.innerHTML = tiles.map(t => {
+        const s = t.s, big = t.w > 96 && t.h > 54, mid = t.w > 64 && t.h > 38;
+        const ret = s.trade_return;
+        return `<div class="tm-tile" data-sector-jump="${t.code}"
+            style="left:${t.x}px;top:${t.y}px;width:${t.w}px;height:${t.h}px;background:${returnHeat(ret)};--tm-accent:${s.color}">
+            <div class="tm-inner">
+              <div class="tm-name">${esc(s.short)}</div>
+              ${big ? `<div class="tm-vol">${t.value} trades · ${fmtMoney((s.buy_value || 0) + (s.sell_value || 0))}</div>` : ""}
+              ${mid ? `<div class="tm-ret ${ret >= 0 ? "up" : "down"}">${ret == null ? "" : (ret >= 0 ? "+" : "") + Number(ret).toFixed(1) + "%"}</div>` : ""}
+            </div></div>`;
+      }).join("");
+      box.querySelectorAll("[data-sector-jump]").forEach(tile =>
+        tile.addEventListener("click", () => setHash("sector/" + tile.dataset.sectorJump)));
+    });
   }
 
   function sectorGroupsHTML() {
@@ -1219,7 +1326,10 @@
         <div class="highlight-card"><div class="hc-label">Biggest disclosed trades</div>${feed(o.biggest_trades, true)}</div>
         <div class="highlight-card"><div class="hc-label">Latest disclosures</div>${feed(o.latest_trades, true)}</div>
       </div>
-      <div class="section-head" style="margin-top:8px;"><span class="section-title">Sectors of the economy</span><span class="section-count">every stock Congress traded, by economic sector — tap to explore</span></div>
+      <div class="section-head" style="margin-top:8px;"><span class="section-title">Sectors of the economy</span><span class="section-count">tile size = number of disclosed trades · color = disclosed-buy return — tap any sector</span></div>
+      <div class="treemap-wrap"><div class="treemap" id="sectorMap"></div>
+        <div class="treemap-legend"><span class="tl-item"><span class="tl-swatch" style="background:rgba(248,113,113,0.6)"></span>Buys down</span><span class="tl-item"><span class="tl-swatch" style="background:rgba(120,120,132,0.25)"></span>Flat</span><span class="tl-item"><span class="tl-swatch" style="background:rgba(74,222,128,0.6)"></span>Buys up</span></div>
+      </div>
       ${sectorGroupsHTML()}
     </section>`;
   }
@@ -1358,6 +1468,119 @@
     if (!silent) setHash(activeView);
   }
 
+  function openSector(code) {
+    const s = DATA.sectors[code];
+    if (!s) return;
+    const trades = DATA.trades.filter(t => t.sector === code);
+    if (!trades.length) return;
+    const buyV = trades.filter(t => isBuy(t.type)).reduce((a, t) => a + (t.est_amount || 0), 0);
+    const sellV = trades.reduce((a, t) => a + (t.est_amount || 0), 0) - buyV;
+    const net = buyV - sellV, vol = buyV + sellV;
+    const members = new Set(trades.map(t => t.member)).size;
+    const isTheme = s.group !== "economy" && code !== "OTHER";
+
+    // top stocks in the sector, aggregated
+    const byTk = {};
+    trades.forEach(t => {
+      if (!t.ticker) return;
+      const k = (byTk[t.ticker] ||= { ticker: t.ticker, company: t.company, vol: 0, net: 0, gain: 0, gained: false, n: 0 });
+      k.vol += t.est_amount || 0; k.n++;
+      k.net += (isBuy(t.type) ? 1 : -1) * (t.est_amount || 0);
+      if (t.gain_value != null) { k.gain += t.gain_value; k.gained = true; }
+    });
+    const topStocks = Object.values(byTk).sort((a, b) => b.vol - a.vol).slice(0, 10);
+
+    // most active members
+    const byMem = {};
+    trades.forEach(t => {
+      const k = (byMem[t.member] ||= { member: t.member, party: t.party, vol: 0, n: 0 });
+      k.vol += t.est_amount || 0; k.n++;
+    });
+    const topMembers = Object.values(byMem).sort((a, b) => b.vol - a.vol).slice(0, 8);
+
+    // party split by dollar volume
+    const party = { D: 0, R: 0, I: 0 };
+    trades.forEach(t => { const p = (t.party || "").toUpperCase(); if (party[p] != null) party[p] += t.est_amount || 0; });
+    const pTotal = party.D + party.R + party.I || 1;
+    const partyBar = `<div class="psplit">
+        ${party.D ? `<span class="pseg D" style="width:${(party.D / pTotal * 100).toFixed(1)}%" title="Democrats ${fmtMoney(party.D)}"></span>` : ""}
+        ${party.R ? `<span class="pseg R" style="width:${(party.R / pTotal * 100).toFixed(1)}%" title="Republicans ${fmtMoney(party.R)}"></span>` : ""}
+        ${party.I ? `<span class="pseg I" style="width:${(party.I / pTotal * 100).toFixed(1)}%" title="Independents ${fmtMoney(party.I)}"></span>` : ""}
+      </div>
+      <div class="psplit-legend"><span><span class="party-dot D"></span> Dem ${fmtMoney(party.D)}</span><span><span class="party-dot R"></span> Rep ${fmtMoney(party.R)}</span>${party.I ? `<span><span class="party-dot I"></span> Ind ${fmtMoney(party.I)}</span>` : ""}</div>`;
+
+    const bills = isTheme ? DATA.bills.filter(b => b.sector === code).sort((a, b) => b.momentum - a.momentum) : [];
+    const ret = s.trade_return;
+
+    document.getElementById("stockModalInner").innerHTML = `
+      <div class="modal-head">
+        <div>
+          <div class="modal-title"><span style="color:${s.color}">${esc(s.name)}</span>
+            <span class="grp-badge ${isTheme ? "theme" : "eco"}">${isTheme ? "Policy theme" : "Economic sector"}</span></div>
+          <div class="modal-sub">${s.etf ? `Reference ETF ${esc(s.etf)} · ` : ""}${trades.length} disclosed trades · ${members} members</div>
+        </div>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-stats">
+          <div class="mstat"><div class="mstat-v">${fmtMoney(vol)}</div><div class="mstat-l">Est. volume</div></div>
+          <div class="mstat"><div class="mstat-v ${net >= 0 ? "net-pos" : "net-neg"}">${signedMoney(net)}</div><div class="mstat-l">Net flow</div></div>
+          <div class="mstat"><div class="mstat-v ${ret == null ? "" : ret >= 0 ? "net-pos" : "net-neg"}">${ret == null ? "—" : (ret >= 0 ? "+" : "") + ret.toFixed(1) + "%"}</div><div class="mstat-l">Buys since</div></div>
+          <div class="mstat"><div class="mstat-v">${topStocks.length ? topStocks.length : "—"}</div><div class="mstat-l">Stocks traded</div></div>
+        </div>
+
+        <div class="detail-cols">
+          <div>
+            <span class="detail-eyebrow">Party split (disclosed $)</span>
+            ${partyBar}
+            <span class="detail-eyebrow" style="margin-top:16px;">Money flow</span>
+            ${splitBar(buyV, sellV)}
+          </div>
+          <div>
+            <span class="detail-eyebrow">Most active members</span>
+            <div class="sm-list">${topMembers.map(m => `
+              <div class="sm-row" data-membername="${esc(m.member)}">
+                <span>${partyBadge(m.party)} ${esc(cleanMemberName(m.member))}</span>
+                <span class="sm-vol">${fmtMoney(m.vol)} · ${m.n}</span>
+              </div>`).join("")}</div>
+          </div>
+        </div>
+
+        <span class="detail-eyebrow">Top stocks in this sector</span>
+        <div class="data-table-wrap"><table class="data-table">
+          <thead><tr><th>Ticker</th><th>Company</th><th>Trades</th><th>Est. volume</th><th>Net</th><th>Buy P&amp;L</th></tr></thead>
+          <tbody>${topStocks.map(k => `
+            <tr><td class="row-ticker clickable-ticker" data-ticker="${esc(k.ticker)}">${esc(k.ticker)}</td>
+            <td>${esc(k.company || "")}</td><td>${k.n}</td><td>${fmtMoney(k.vol)}</td>
+            <td class="${k.net >= 0 ? "net-pos" : "net-neg"}">${signedMoney(k.net)}</td>
+            <td>${k.gained ? `<span class="pnl ${k.gain >= 0 ? "pnl-up" : "pnl-down"}">${signedMoney(k.gain)}</span>` : `<span class="pnl-na">—</span>`}</td></tr>`).join("")}</tbody>
+        </table></div>
+
+        ${isTheme ? `<span class="detail-eyebrow">Bills driving this theme (${bills.length})</span>
+          ${bills.length === 0 ? `<div class="empty-note">No tracked bills currently map to this theme.</div>`
+            : `<div style="display:flex;flex-direction:column;gap:6px;">${bills.slice(0, 6).map(b => `
+              <div class="hc-row" style="align-items:center;">
+                <div><span class="bill-number">${esc(b.number)}</span> ${b.key_bill ? '<span class="key-star">★</span>' : ""} <span style="color:var(--text)">${esc(b.title)}</span></div>
+                <span class="momentum-num" style="font-size:15px;color:${feasColor(b.momentum)}">${b.momentum}</span>
+              </div>`).join("")}</div>`}` : ""}
+
+        <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="sector-jump-btn" data-jump="stocks" data-code="${code}">View all ${trades.length} trades →</button>
+          ${isTheme ? `<button class="sector-jump-btn" data-jump="bills" data-code="${code}">View bills →</button>` : ""}
+        </div>
+      </div>`;
+
+    const modal = document.getElementById("stockModal");
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    modal.querySelector(".modal-close").addEventListener("click", () => setHash(activeView));
+    modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => setHash("stock/" + el.dataset.ticker)));
+    modal.querySelectorAll("[data-membername]").forEach(el => el.addEventListener("click", () => setHash("member/" + el.dataset.membername)));
+    modal.querySelectorAll(".sector-jump-btn").forEach(btn => btn.addEventListener("click", () => {
+      activeSector = btn.dataset.code; resetPaging(); closeStock(true); setHash(btn.dataset.jump);
+    }));
+  }
+
   /* ---------- SEARCH ---------- */
   function runSearch(q) {
     q = q.trim().toLowerCase();
@@ -1411,14 +1634,9 @@
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
       partyFilter = chip.dataset.party; membersShown = MEMBERS_PAGE; renderContent();
     }));
-    // sector cards on the overview drill into that sector's bills
+    // sector cards + treemap tiles open the sector breakdown modal
     el.querySelectorAll("[data-sector-jump]").forEach(card => card.addEventListener("click", () => {
-      const code = card.dataset.sectorJump;
-      activeSector = code; resetPaging();
-      // Economic sectors carry trades but no bills -> land on Stocks; policy
-      // themes are bill-linked -> land on Bills.
-      const isTheme = (DATA.sectors[code] || {}).group !== "economy" && code !== "OTHER";
-      setHash(isTheme ? "bills" : "stocks");
+      setHash("sector/" + card.dataset.sectorJump);
     }));
     // clickable tickers open the stock detail modal (overview, tables, chips)
     el.querySelectorAll("[data-ticker]").forEach(t => t.addEventListener("click", (e) => {
@@ -1434,7 +1652,10 @@
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
     wire("signalsMore", () => { signalsShown += SIGNALS_PAGE; renderContent(); });
     wire("membersMore", () => { membersShown += MEMBERS_PAGE; renderContent(); });
+    fillTreemaps();
   }
+  let _tmResize = null;
+  window.addEventListener("resize", () => { clearTimeout(_tmResize); _tmResize = setTimeout(fillTreemaps, 150); });
 
   function renderAll() {
     renderHero();
