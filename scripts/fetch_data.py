@@ -1557,9 +1557,18 @@ def fetch_prices(tickers):
 
 
 def build_performance(trades, prices):
-    """Dollar-weighted long/short index of congressional trades vs the S&P 500.
-    Long the purchases, short the sales, weighted by disclosed trade size; daily
-    returns compounded. Returns None if prices are unavailable (site degrades)."""
+    """Dollar-weighted index of the stocks Congress discloses BUYING vs the S&P 500.
+
+    Model: each disclosed purchase opens a long position sized by the reported
+    dollar amount; a disclosed sale reduces that position but can never drive it
+    below zero. This matters because STOCK Act filings only show transactions in
+    our recent window -- most sales are members closing positions they bought
+    long before we started watching, so treating a sale as a *new short* would
+    fabricate perpetual short exposure against a rising market (and a bogus
+    negative return). Clamping at zero encodes the honest assumption: you can't
+    be short a stock you were never observed holding. Daily returns are
+    dollar-weighted across the currently-held longs and compounded.
+    Returns None if prices are unavailable (site degrades gracefully)."""
     priced_trades = [t for t in trades if t.get("ticker") and t.get("est_amount")]
     if not priced_trades:
         return None
@@ -1610,9 +1619,10 @@ def build_performance(trades, prices):
         dprev, dcur = dates[i - 1], dates[i]
         while ti < len(timeline) and timeline[ti][0] <= dprev:
             _, tk, amt = timeline[ti]
-            expo_now[tk] = expo_now.get(tk, 0) + amt
+            # Long-only: a sale reduces the position but can't create a short.
+            expo_now[tk] = max(0.0, expo_now.get(tk, 0) + amt)
             ti += 1
-        denom = sum(abs(v) for v in expo_now.values()) or 1
+        denom = sum(expo_now.values()) or 1
         r = sum(expo_now.get(tk, 0) * rets.get(tk, {}).get(dcur, 0) for tk in expo_now) / denom
         s_val *= (1 + r)
         m_val *= (1 + spy_rets.get(dcur, 0))
@@ -1624,12 +1634,13 @@ def build_performance(trades, prices):
         "end_date": dates[-1],
         "n_tickers": len(rets),
         "n_positions": len(timeline),
-        "methodology": ("Illustrative backtest: a long position in every stock Congress disclosed "
-                        "buying and a short position in every stock they disclosed selling, weighted "
-                        "by reported trade size, vs the S&P 500. STOCK Act disclosures are filed up to "
-                        "~45 days after the trade, so this reflects the return of following the public "
-                        "disclosures — not members' actual timing. Not investment advice; past "
-                        "performance does not predict future results."),
+        "methodology": ("Illustrative backtest: a dollar-weighted long position in every stock "
+                        "Congress disclosed BUYING; a disclosed sale trims that position but never "
+                        "creates a short (filings only reveal recent trades, so most sales just close "
+                        "positions bought earlier). Compared against the S&P 500. STOCK Act "
+                        "disclosures are filed up to ~45 days after the trade, so this reflects the "
+                        "return of following the public disclosures — not members' actual timing. "
+                        "Not investment advice; past performance does not predict future results."),
     }
 
 

@@ -671,8 +671,8 @@
     el.innerHTML = `
       <div class="hero-top">
         <div>
-          <div class="hero-title">Congress Trading Index — long / short</div>
-          <div class="hero-sub">Follows disclosed congressional trades vs the S&amp;P 500 · ${p.n_positions} positions</div>
+          <div class="hero-title">Congress Buy Index vs S&amp;P 500</div>
+          <div class="hero-sub">A dollar-weighted basket of the stocks Congress disclosed buying · ${p.n_positions} positions</div>
         </div>
         <div class="range-tabs" id="rangeTabs">${Object.keys(RANGE_DAYS).map(r => `<button class="range-tab ${r === perfRange ? "active" : ""}" data-range="${r}">${r}</button>`).join("")}</div>
       </div>
