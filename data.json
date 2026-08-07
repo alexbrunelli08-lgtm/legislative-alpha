@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T02:01:17Z",
+  "generated_at": "2026-08-07T06:58:32Z",
   "congress": 119,
   "overview": {
     "total_trades": 1412,
@@ -20,7 +20,7 @@
     "tracked_tickers_traded": 468,
     "bill_count": 60,
     "key_bill_count": 27,
-    "appropriation_count": 17,
+    "appropriation_count": 16,
     "most_active_member": "Sen. Alan Armstrong",
     "top_bought": {
       "ticker": "SPCX",
@@ -2137,11 +2137,169 @@
     ]
   },
   "stock_history": {
+    "LMT": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "AMZN": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "NOK": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "EIBLX": [
+      1,
+      1
+    ],
+    "GLW": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "ORCL": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "NVO": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "KO": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "SYK": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "NOW": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "INTC": [
+      4,
+      4,
+      5,
+      4
+    ],
+    "JPM": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "STZ": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "TM": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AAPL": [
+      5,
+      5,
+      6,
+      6
+    ],
     "VRSK": [
       2,
       2,
       4,
       4
+    ],
+    "PNC": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "PG": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "NDAQ": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "TSLA": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "PFE": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "HON": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "GOLD": [
+      1,
+      1
+    ],
+    "PEP": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "DE": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "MA": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "HONAV": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "NFLX": [
+      1,
+      1,
+      2,
+      2
     ],
     "ABT": [
       4,
@@ -2149,11 +2307,265 @@
       4,
       4
     ],
-    "FITB": [
+    "SONY": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "WMB": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "ASML": [
+      1,
+      1,
       2,
       2
     ],
+    "MCD": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "ABNFX": [
+      1,
+      1
+    ],
+    "PSX": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AZN": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DVN": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "MFG": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DEO": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "LYV": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "META": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "WBA": [
+      1,
+      1
+    ],
+    "MLM": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "ADBE": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "MKL": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "AMD": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "UPS": [
+      2,
+      2,
+      3,
+      3
+    ],
     "GS": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "WDAY": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "JNJ": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "SAN": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "CLF": [
+      1,
+      1
+    ],
+    "FDX": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "MDT": [
+      1,
+      1,
+      3,
+      3
+    ],
+    "HUMA": [
+      1,
+      1
+    ],
+    "TRV": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "NVDA": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "PYPL": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "HSBC": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "HUBB": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "UNH": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "GE": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "NVS": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "CSCO": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "LLY": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "SPCX": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "XOM": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "XLU": [
+      1,
+      1
+    ],
+    "SCI": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "XLV": [
+      1,
+      1
+    ],
+    "CDNS": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "HD": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "BA": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "WMT": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "KMB": [
       1,
       1,
       2,
@@ -2165,71 +2577,13 @@
       2,
       2
     ],
-    "JPM": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "BWXT": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "AMGN": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "NEE": [
+    "TSCO": [
       2,
       2,
       2,
       2
     ],
-    "PGR": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "MDT": [
-      1,
-      1,
-      3,
-      3
-    ],
-    "MSFT": [
-      6,
-      6,
-      7,
-      7
-    ],
-    "PG": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "HONAV": [
-      4,
-      4,
-      4,
-      4
-    ],
-    "PARA": [
-      1,
-      1
-    ],
-    "INTC": [
-      4,
-      4,
-      5,
-      4
-    ],
-    "TSLA": [
+    "GEV": [
       1,
       1,
       1,
@@ -2241,75 +2595,49 @@
       1,
       1
     ],
-    "LLY": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "ORCL": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "NVS": [
+    "RIO": [
       1,
       1,
       1,
       1
     ],
-    "ABNFX": [
+    "OC": [
       1,
       1
     ],
-    "MA": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "SAP": [
+    "LTH": [
       1,
       1,
       1,
       1
     ],
-    "QCOM": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "PYPL": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "CDNS": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "TRV": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "META": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "WMB": [
+    "BEP": [
       1,
       1,
       1,
       1
+    ],
+    "DASH": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "UBS": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "USIG": [
+      1,
+      1
+    ],
+    "NEE": [
+      2,
+      2,
+      2,
+      2
     ],
     "GOOG": [
       4,
@@ -2323,13 +2651,63 @@
       1,
       1
     ],
-    "SONY": [
+    "WAB": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "CRM": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "BAC": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "MU": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "AMGN": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "FITB": [
+      2,
+      2
+    ],
+    "CPAY": [
       1,
       1,
       1,
       1
     ],
-    "LMT": [
+    "GOOGL": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "DUK": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "XLP": [
+      1,
+      1
+    ],
+    "PGR": [
       2,
       2,
       2,
@@ -2341,109 +2719,31 @@
       1,
       1
     ],
-    "ASML": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "MKL": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "PNC": [
+    "PLTR": [
       1,
       1,
       1,
       1
     ],
-    "GEV": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "XLU": [
-      1,
-      1
-    ],
-    "GOLD": [
-      1,
-      1
-    ],
-    "SPCX": [
-      6,
-      6,
-      6,
-      6
-    ],
-    "STZ": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "OC": [
-      1,
-      1
-    ],
-    "CRM": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "NOW": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "ADBE": [
-      2,
-      2,
-      4,
-      4
-    ],
-    "SYK": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "TDY": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "GLW": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "INTU": [
+    "CSX": [
       3,
       3,
       3,
       3
     ],
-    "LYV": [
-      2,
-      2,
-      2,
-      2
+    "AMAT": [
+      3,
+      3,
+      4,
+      4
     ],
-    "WMT": [
+    "BWXT": [
       1,
       1,
       1,
       1
     ],
-    "RACE": [
+    "TDY": [
       1,
       1,
       1,
@@ -2455,255 +2755,33 @@
       3,
       3
     ],
-    "WAB": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "AMD": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "DUK": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "ADM": [
-      1,
-      1
-    ],
-    "MU": [
-      4,
-      4,
-      4,
-      4
-    ],
-    "PSX": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "CSCO": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "HUBB": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "XOM": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "PEP": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "PFE": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "GE": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "HD": [
-      4,
-      4,
-      4,
-      4
-    ],
-    "DE": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "UNH": [
-      5,
-      5,
-      5,
-      5
-    ],
-    "CLF": [
-      1,
-      1
-    ],
-    "KO": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "NVDA": [
-      6,
-      6,
-      6,
-      6
-    ],
-    "EIBLX": [
-      1,
-      1
-    ],
-    "WBA": [
-      1,
-      1
-    ],
-    "HSBC": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "SAN": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "MCD": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "HON": [
-      2,
-      2,
-      4,
-      4
-    ],
-    "XLV": [
-      1,
-      1
-    ],
-    "BA": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "NVO": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "WDAY": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "T": [
-      2,
-      2,
-      2,
-      2
-    ],
     "SNY": [
       1,
       1,
       1,
       1
     ],
-    "USIG": [
-      1,
-      1
-    ],
-    "AZN": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "CPAY": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "FDX": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "KMB": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "DVN": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "BEP": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "DEO": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "CSX": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "HUMA": [
-      1,
-      1
-    ],
-    "AAPL": [
-      5,
-      5,
+    "MSFT": [
       6,
-      6
+      6,
+      7,
+      7
     ],
-    "AMZN": [
+    "BRK.B": [
       2,
       2,
       2,
       2
     ],
-    "UPS": [
-      2,
-      2,
+    "INTU": [
+      3,
+      3,
       3,
       3
     ],
-    "NOK": [
-      2,
-      2,
-      2,
-      2
+    "PARA": [
+      1,
+      1
     ],
     "CHRW": [
       1,
@@ -2711,35 +2789,13 @@
       1,
       1
     ],
-    "XLP": [
-      1,
-      1
-    ],
-    "LTH": [
+    "SAP": [
       1,
       1,
       1,
       1
     ],
-    "AMAT": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "GOOGL": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "BAC": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "TM": [
+    "RACE": [
       1,
       1,
       1,
@@ -2751,83 +2807,27 @@
       2,
       2
     ],
-    "TSCO": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "NDAQ": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "MLM": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "JNJ": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "SCI": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "NFLX": [
-      1,
-      1,
-      2,
-      2
-    ],
     "TXN": [
       1,
       1,
       2,
       2
     ],
-    "UBS": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "RIO": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "DASH": [
+    "T": [
       2,
       2,
       2,
       2
     ],
-    "PLTR": [
-      1,
-      1,
+    "ADM": [
       1,
       1
     ],
-    "BRK.B": [
-      2,
-      2,
+    "QCOM": [
+      1,
+      1,
       2,
       2
-    ],
-    "MFG": [
-      1,
-      1,
-      1,
-      1
     ]
   },
   "sectors": {
@@ -2837,11 +2837,11 @@
       "etf": "PAVE",
       "color": "#C98A3B",
       "group": "theme",
-      "bill_count": 8,
+      "bill_count": 9,
       "appropriation_count": 1,
       "trade_count": 25,
       "stock_count": 25,
-      "avg_momentum": 36,
+      "avg_momentum": 35,
       "buy_value": 152500,
       "sell_value": 689000,
       "net_value": -536500,
@@ -3285,11 +3285,11 @@
       "etf": null,
       "color": "#8FD14F",
       "group": "theme",
-      "bill_count": 13,
-      "appropriation_count": 13,
+      "bill_count": 12,
+      "appropriation_count": 12,
       "trade_count": 0,
       "stock_count": 0,
-      "avg_momentum": 36,
+      "avg_momentum": 37,
       "buy_value": 0,
       "sell_value": 0,
       "net_value": 0,
@@ -4496,43 +4496,6 @@
       "dollar_figures": [],
       "beneficiary_stocks": [],
       "impact_fingerprint": "20319f3f82cd7fc62b1c0503de521d1af3e18acf07c0e33b29473df7cf150b6b",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [],
-      "related_trade_count": 0,
-      "key_bill": false
-    },
-    {
-      "id": "119-S-2398",
-      "number": "S 2398",
-      "title": "Kay Hagan Tick Reauthorization Act",
-      "sector": "APPRO",
-      "introduced_date": "2025-07-23",
-      "latest_action": {
-        "date": "2025-09-08",
-        "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 154."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/2398",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Introduced",
-      "sponsor": {
-        "name": "Sen. Collins, Susan M. [R-ME]",
-        "party": "R",
-        "state": "ME"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 23,
-      "amendments": [],
-      "summary": "",
-      "momentum": 24,
-      "is_appropriation": true,
-      "dollar_figures": [],
-      "beneficiary_stocks": [],
-      "impact_fingerprint": "c3a339951ffc063d464bd76baf8b47ebcb98f3bbc20acbf007d823537596013d",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -15335,28 +15298,28 @@
       "key_bill": false
     },
     {
-      "id": "119-SRES-289",
-      "number": "SRES 289",
-      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-HRES-526",
+      "number": "HRES 526",
+      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-18",
+      "introduced_date": "2025-06-20",
       "latest_action": {
-        "date": "2025-06-18",
-        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
+        "date": "2025-06-20",
+        "text": "Referred to the House Committee on Agriculture."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Sen. Merkley, Jeff [D-OR]",
+        "name": "Rep. Panetta, Jimmy [D-CA-19]",
         "party": "D",
-        "state": "OR"
+        "state": "CA"
       },
       "committee_count": 1,
-      "cosponsor_count": 0,
+      "cosponsor_count": 1,
       "amendments": [],
-      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
+      "summary": "This resolution supports the designation of National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -15430,7 +15393,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
+      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -15602,28 +15565,28 @@
       "key_bill": false
     },
     {
-      "id": "119-HRES-526",
-      "number": "HRES 526",
-      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-SRES-289",
+      "number": "SRES 289",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-20",
+      "introduced_date": "2025-06-18",
       "latest_action": {
-        "date": "2025-06-20",
-        "text": "Referred to the House Committee on Agriculture."
+        "date": "2025-06-18",
+        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. Panetta, Jimmy [D-CA-19]",
+        "name": "Sen. Merkley, Jeff [D-OR]",
         "party": "D",
-        "state": "CA"
+        "state": "OR"
       },
       "committee_count": 1,
-      "cosponsor_count": 1,
+      "cosponsor_count": 0,
       "amendments": [],
-      "summary": "This resolution supports the designation of National Pollinator Week.",
+      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -15697,7 +15660,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
+      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -17927,6 +17890,337 @@
         }
       ],
       "related_trade_count": 54,
+      "key_bill": false
+    },
+    {
+      "id": "119-S-4728",
+      "number": "S 4728",
+      "title": "Combat Emerging Threats to Critical Infrastructure Act of 2026",
+      "sector": "PAVE",
+      "introduced_date": "2026-06-10",
+      "latest_action": {
+        "date": "2026-06-10",
+        "text": "Read twice and referred to the Committee on Homeland Security and Governmental Affairs."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/4728",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Sen. Warner, Mark R. [D-VA]",
+        "party": "D",
+        "state": "VA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "VMC",
+          "name": "Vulcan Materials"
+        },
+        {
+          "ticker": "MLM",
+          "name": "Martin Marietta Materials"
+        },
+        {
+          "ticker": "NUE",
+          "name": "Nucor"
+        },
+        {
+          "ticker": "CAT",
+          "name": "Caterpillar"
+        },
+        {
+          "ticker": "URI",
+          "name": "United Rentals"
+        },
+        {
+          "ticker": "DE",
+          "name": "Deere & Company"
+        },
+        {
+          "ticker": "EMR",
+          "name": "Emerson Electric"
+        },
+        {
+          "ticker": "PWR",
+          "name": "Quanta Services"
+        },
+        {
+          "ticker": "J",
+          "name": "Jacobs Solutions"
+        },
+        {
+          "ticker": "STLD",
+          "name": "Steel Dynamics"
+        },
+        {
+          "ticker": "GVA",
+          "name": "Granite Construction"
+        },
+        {
+          "ticker": "ACM",
+          "name": "AECOM"
+        },
+        {
+          "ticker": "MAS",
+          "name": "Masco Corporation"
+        },
+        {
+          "ticker": "AGCO",
+          "name": "AGCO Corporation"
+        },
+        {
+          "ticker": "WMS",
+          "name": "Advanced Drainage Systems"
+        },
+        {
+          "ticker": "X",
+          "name": "United States Steel"
+        },
+        {
+          "ticker": "CLF",
+          "name": "Cleveland-Cliffs"
+        },
+        {
+          "ticker": "EXP",
+          "name": "Eagle Materials"
+        },
+        {
+          "ticker": "CRH",
+          "name": "CRH plc"
+        },
+        {
+          "ticker": "MTZ",
+          "name": "MasTec"
+        },
+        {
+          "ticker": "PRIM",
+          "name": "Primoris Services"
+        },
+        {
+          "ticker": "FLR",
+          "name": "Fluor Corporation"
+        },
+        {
+          "ticker": "KBR",
+          "name": "KBR, Inc."
+        },
+        {
+          "ticker": "TTEK",
+          "name": "Tetra Tech"
+        },
+        {
+          "ticker": "VMI",
+          "name": "Valmont Industries"
+        }
+      ],
+      "impact_fingerprint": "7cf55fc602c3ab9bbf165c644c070320ef770c0d12272200153de27165463cc9",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Full)",
+          "amount_range": "$100,001 - $250,000",
+          "est_amount": 175000,
+          "transaction_date": "05/13/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Partial)",
+          "amount_range": "$100,001 - $250,000",
+          "est_amount": 175000,
+          "transaction_date": "05/13/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Partial)",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Partial)",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Partial)",
+          "amount_range": "$50,001 - $100,000",
+          "est_amount": 75000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Sale (Partial)",
+          "amount_range": "$100,001 - $250,000",
+          "est_amount": 175000,
+          "transaction_date": "05/10/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/07/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        },
+        {
+          "member": "Sen. Thomas H Tuberville",
+          "chamber": "Senate",
+          "ticker": "CLF",
+          "company": "Cleveland-Cliffs",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "05/07/2024",
+          "filed_date": "08/05/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
+          "return_pct": null,
+          "gain_value": null,
+          "entry_price": null,
+          "last_price": null
+        }
+      ],
+      "related_trade_count": 25,
       "key_bill": false
     }
   ],
