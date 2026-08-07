@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T06:58:32Z",
+  "generated_at": "2026-08-07T12:36:18Z",
   "congress": 119,
   "overview": {
     "total_trades": 1412,
@@ -2137,107 +2137,67 @@
     ]
   },
   "stock_history": {
+    "UNH": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "XLV": [
+      1,
+      1
+    ],
+    "TCNNF": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "PEP": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "INTU": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "OC": [
+      1,
+      1
+    ],
+    "AMD": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "MLM": [
+      1,
+      1,
+      1,
+      1
+    ],
     "LMT": [
       2,
       2,
       2,
       2
     ],
-    "AMZN": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "NOK": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "EIBLX": [
+    "XLP": [
       1,
       1
     ],
-    "GLW": [
+    "FDX": [
       1,
       1,
       1,
       1
     ],
-    "ORCL": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "NVO": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "KO": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "SYK": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "NOW": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "INTC": [
-      4,
-      4,
-      5,
-      4
-    ],
-    "JPM": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "STZ": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "TM": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "AAPL": [
-      5,
-      5,
-      6,
-      6
-    ],
-    "VRSK": [
-      2,
-      2,
-      4,
-      4
-    ],
-    "PNC": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "PG": [
+    "BRK.B": [
       2,
       2,
       2,
@@ -2249,103 +2209,11 @@
       1,
       1
     ],
-    "TSLA": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "PFE": [
+    "CRM": [
       2,
       2,
       2,
       2
-    ],
-    "HON": [
-      2,
-      2,
-      4,
-      4
-    ],
-    "GOLD": [
-      1,
-      1
-    ],
-    "PEP": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "DE": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "MA": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "HONAV": [
-      4,
-      4,
-      4,
-      4
-    ],
-    "NFLX": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "ABT": [
-      4,
-      4,
-      4,
-      4
-    ],
-    "SONY": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "WMB": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "ASML": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "MCD": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "ABNFX": [
-      1,
-      1
-    ],
-    "PSX": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "AZN": [
-      1,
-      1,
-      1,
-      1
     ],
     "DVN": [
       1,
@@ -2353,205 +2221,11 @@
       1,
       1
     ],
-    "MFG": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "DEO": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "LYV": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "META": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "WBA": [
-      1,
-      1
-    ],
-    "MLM": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "ADBE": [
-      2,
-      2,
-      4,
-      4
-    ],
-    "MKL": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "AMD": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "UPS": [
+    "KO": [
       2,
       2,
       3,
       3
-    ],
-    "GS": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "WDAY": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "JNJ": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "SAN": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "CLF": [
-      1,
-      1
-    ],
-    "FDX": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "MDT": [
-      1,
-      1,
-      3,
-      3
-    ],
-    "HUMA": [
-      1,
-      1
-    ],
-    "TRV": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "NVDA": [
-      6,
-      6,
-      6,
-      6
-    ],
-    "PYPL": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "HSBC": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "HUBB": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "UNH": [
-      5,
-      5,
-      5,
-      5
-    ],
-    "GE": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "NVS": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "CSCO": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "LLY": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "SPCX": [
-      6,
-      6,
-      6,
-      6
-    ],
-    "XOM": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "XLU": [
-      1,
-      1
-    ],
-    "SCI": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "XLV": [
-      1,
-      1
-    ],
-    "CDNS": [
-      2,
-      2,
-      3,
-      3
-    ],
-    "HD": [
-      4,
-      4,
-      4,
-      4
     ],
     "BA": [
       1,
@@ -2559,7 +2233,49 @@
       2,
       2
     ],
+    "DUK": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "RIO": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "SYK": [
+      2,
+      2,
+      2,
+      2
+    ],
     "WMT": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "JNJ": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "MFG": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AMAT": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "SNY": [
       1,
       1,
       1,
@@ -2571,11 +2287,85 @@
       2,
       2
     ],
-    "CAG": [
+    "MKL": [
       2,
       2,
       2,
       2
+    ],
+    "GS": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "SONY": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "ADM": [
+      1,
+      1
+    ],
+    "HON": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "MDT": [
+      1,
+      1,
+      3,
+      3
+    ],
+    "CHRW": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "WDAY": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "TRV": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "BWXT": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "QCOM": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "FWONK": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "GOLD": [
+      1,
+      1
+    ],
+    "NVO": [
+      1,
+      1,
+      1,
+      1
     ],
     "TSCO": [
       2,
@@ -2583,69 +2373,149 @@
       2,
       2
     ],
-    "GEV": [
+    "MSFT": [
+      6,
+      6,
+      7,
+      7
+    ],
+    "CSCO": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "BIIB": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "WMB": [
       1,
       1,
       1,
       1
     ],
-    "TCNNF": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "RIO": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "OC": [
-      1,
-      1
-    ],
-    "LTH": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "BEP": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "DASH": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "UBS": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "USIG": [
-      1,
-      1
-    ],
-    "NEE": [
-      2,
-      2,
-      2,
-      2
-    ],
-    "GOOG": [
+    "ABT": [
       4,
       4,
       4,
       4
     ],
-    "FWONK": [
+    "GOOGL": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "PYPL": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "PLTR": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AAPL": [
+      5,
+      5,
+      6,
+      6
+    ],
+    "CPAY": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "HUBB": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "ADBE": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "WBA": [
+      1,
+      1
+    ],
+    "XOM": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "FITB": [
+      2,
+      2
+    ],
+    "CSX": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "SCI": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "JPM": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "BAC": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "UPS": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "MA": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "GLW": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "EIBLX": [
+      1,
+      1
+    ],
+    "SAP": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "XLU": [
+      1,
+      1
+    ],
+    "UBS": [
       1,
       1,
       1,
@@ -2657,53 +2527,47 @@
       3,
       3
     ],
-    "CRM": [
-      2,
-      2,
-      2,
-      2
+    "ABNFX": [
+      1,
+      1
     ],
-    "BAC": [
-      3,
-      3,
+    "DE": [
+      2,
+      2,
       3,
       3
     ],
-    "MU": [
-      4,
-      4,
-      4,
-      4
+    "NVDA": [
+      6,
+      6,
+      6,
+      6
     ],
-    "AMGN": [
-      1,
-      1,
-      2,
-      2
-    ],
-    "FITB": [
-      2,
-      2
-    ],
-    "CPAY": [
+    "TSLA": [
       1,
       1,
       1,
       1
     ],
-    "GOOGL": [
+    "VRSK": [
       2,
       2,
-      3,
-      3
+      4,
+      4
     ],
-    "DUK": [
-      3,
-      3,
-      3,
-      3
+    "PARA": [
+      1,
+      1
     ],
-    "XLP": [
+    "LLY": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "TM": [
+      1,
+      1,
       1,
       1
     ],
@@ -2713,87 +2577,51 @@
       2,
       2
     ],
-    "SMFG": [
+    "TXN": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "BEP": [
       1,
       1,
       1,
       1
     ],
-    "PLTR": [
-      1,
-      1,
+    "USIG": [
       1,
       1
     ],
-    "CSX": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "AMAT": [
-      3,
-      3,
-      4,
-      4
-    ],
-    "BWXT": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "TDY": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "BIIB": [
-      3,
-      3,
-      3,
-      3
-    ],
-    "SNY": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "MSFT": [
-      6,
-      6,
-      7,
-      7
-    ],
-    "BRK.B": [
+    "GE": [
       2,
       2,
       2,
       2
     ],
-    "INTU": [
-      3,
-      3,
-      3,
-      3
+    "NFLX": [
+      1,
+      1,
+      2,
+      2
     ],
-    "PARA": [
-      1,
-      1
+    "SPCX": [
+      6,
+      6,
+      6,
+      6
     ],
-    "CHRW": [
-      1,
-      1,
-      1,
-      1
+    "AMZN": [
+      2,
+      2,
+      2,
+      2
     ],
-    "SAP": [
+    "ASML": [
       1,
       1,
-      1,
-      1
+      2,
+      2
     ],
     "RACE": [
       1,
@@ -2801,13 +2629,19 @@
       1,
       1
     ],
-    "V": [
+    "MCD": [
       1,
       1,
       2,
       2
     ],
-    "TXN": [
+    "PSX": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AMGN": [
       1,
       1,
       2,
@@ -2819,15 +2653,181 @@
       2,
       2
     ],
-    "ADM": [
-      1,
-      1
+    "NOK": [
+      2,
+      2,
+      2,
+      2
     ],
-    "QCOM": [
+    "MU": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "CAG": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "ORCL": [
       1,
       1,
       2,
       2
+    ],
+    "HONAV": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "HSBC": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DEO": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "PFE": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "TDY": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DASH": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "SMFG": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "CLF": [
+      1,
+      1
+    ],
+    "AZN": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "NEE": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "NOW": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "PNC": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "LTH": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "LYV": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "V": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "GEV": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "GOOG": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "META": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "HD": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "NVS": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "INTC": [
+      4,
+      4,
+      5,
+      4
+    ],
+    "STZ": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "HUMA": [
+      1,
+      1
+    ],
+    "SAN": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "PG": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "CDNS": [
+      2,
+      2,
+      3,
+      3
     ]
   },
   "sectors": {
@@ -15298,28 +15298,28 @@
       "key_bill": false
     },
     {
-      "id": "119-HRES-526",
-      "number": "HRES 526",
-      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-SRES-289",
+      "number": "SRES 289",
+      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-20",
+      "introduced_date": "2025-06-18",
       "latest_action": {
-        "date": "2025-06-20",
-        "text": "Referred to the House Committee on Agriculture."
+        "date": "2025-06-18",
+        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Rep. Panetta, Jimmy [D-CA-19]",
+        "name": "Sen. Merkley, Jeff [D-OR]",
         "party": "D",
-        "state": "CA"
+        "state": "OR"
       },
       "committee_count": 1,
-      "cosponsor_count": 1,
+      "cosponsor_count": 0,
       "amendments": [],
-      "summary": "This resolution supports the designation of National Pollinator Week.",
+      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -15393,7 +15393,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
+      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
@@ -15565,28 +15565,28 @@
       "key_bill": false
     },
     {
-      "id": "119-SRES-289",
-      "number": "SRES 289",
-      "title": "A resolution recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
+      "id": "119-HRES-526",
+      "number": "HRES 526",
+      "title": "Recognizing the importance of pollinators to ecosystem health and agriculture in the United States by designating June 15 through June 22, 2025, as \"National Pollinator Week\".",
       "sector": "MOO",
-      "introduced_date": "2025-06-18",
+      "introduced_date": "2025-06-20",
       "latest_action": {
-        "date": "2025-06-18",
-        "text": "Referred to the Committee on Environment and Public Works. (text: CR S3474-3475)"
+        "date": "2025-06-20",
+        "text": "Referred to the House Committee on Agriculture."
       },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/senate-bill/289",
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/526",
       "amendments_count": 0,
       "amendments_url": null,
       "status": "Committee",
       "sponsor": {
-        "name": "Sen. Merkley, Jeff [D-OR]",
+        "name": "Rep. Panetta, Jimmy [D-CA-19]",
         "party": "D",
-        "state": "OR"
+        "state": "CA"
       },
       "committee_count": 1,
-      "cosponsor_count": 0,
+      "cosponsor_count": 1,
       "amendments": [],
-      "summary": "This resolution supports the designation of June 15-June 22, 2025, as National Pollinator Week.",
+      "summary": "This resolution supports the designation of National Pollinator Week.",
       "momentum": 35,
       "is_appropriation": false,
       "dollar_figures": [],
@@ -15660,7 +15660,7 @@
           "name": "Cal-Maine Foods"
         }
       ],
-      "impact_fingerprint": "6434e960c093a09baaf837d64353d68db948d749373661795389947a28bb9891",
+      "impact_fingerprint": "0452e70268d32ea4f24c710099264ade3b50e5961e1bc918f8c651329ff23468",
       "impact_analysis": "",
       "impact_direction": "",
       "impact_winners": [],
