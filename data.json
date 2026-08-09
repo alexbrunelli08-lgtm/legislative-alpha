@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T12:21:21Z",
+  "generated_at": "2026-08-09T00:45:40Z",
   "congress": 119,
   "overview": {
     "total_trades": 1417,
@@ -1556,7 +1556,7 @@
       },
       {
         "d": "2026-08-07",
-        "s": 135.955,
+        "s": 135.96,
         "m": 122.303
       }
     ],
@@ -1910,8 +1910,8 @@
   },
   "trends": {
     "has_history": true,
-    "days_tracked": 5,
-    "window_days": 4,
+    "days_tracked": 6,
+    "window_days": 5,
     "gaining_attention": [
       {
         "ticker": "FITB",
@@ -2136,392 +2136,38 @@
     ]
   },
   "stock_history": {
-    "AMAT": [
-      3,
-      3,
-      4,
-      4,
-      4
+    "DEO": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
     ],
-    "SONY": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "PFE": [
+    "LMT": [
+      2,
       2,
       2,
       2,
       2,
       2
     ],
-    "HONAV": [
-      4,
-      4,
-      4,
-      4,
-      4
-    ],
-    "NFLX": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "SAP": [
-      1,
+    "HUMA": [
       1,
       1,
       1,
       1
-    ],
-    "GLW": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "DASH": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "SYK": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "GOLD": [
-      1,
-      1,
-      1
-    ],
-    "NVS": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AZN": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "NDAQ": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "DE": [
-      2,
-      2,
-      3,
-      3,
-      3
     ],
     "NOW": [
       1,
       1,
       2,
       2,
-      2
-    ],
-    "MA": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "FITB": [
-      2,
-      3,
-      3
-    ],
-    "TXN": [
-      1,
-      1,
-      2,
       2,
       2
     ],
-    "STZ": [
-      1,
-      1,
+    "PG": [
       2,
-      2,
-      2
-    ],
-    "DVN": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "ADBE": [
-      2,
-      2,
-      4,
-      4,
-      4
-    ],
-    "HD": [
-      4,
-      4,
-      4,
-      4,
-      4
-    ],
-    "MSFT": [
-      6,
-      6,
-      7,
-      8,
-      8
-    ],
-    "AMD": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "TSCO": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "SAN": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "KO": [
-      2,
-      2,
-      3,
-      3,
-      3
-    ],
-    "SMFG": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "KMB": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "RACE": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "XLP": [
-      1,
-      1,
-      1
-    ],
-    "VRSK": [
-      2,
-      2,
-      4,
-      4,
-      4
-    ],
-    "QCOM": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "GEV": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "ORCL": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "WMB": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "DEO": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "XLV": [
-      1,
-      1,
-      1
-    ],
-    "MU": [
-      4,
-      4,
-      4,
-      4,
-      4
-    ],
-    "TCNNF": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "TM": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AAPL": [
-      5,
-      5,
-      6,
-      6,
-      6
-    ],
-    "CPAY": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "LYV": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "PSX": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "GOOG": [
-      4,
-      4,
-      4,
-      4,
-      4
-    ],
-    "BRK.B": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "CLF": [
-      1,
-      1,
-      1
-    ],
-    "ASML": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "PARA": [
-      1,
-      1,
-      1
-    ],
-    "JPM": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "EIBLX": [
-      1,
-      1,
-      1
-    ],
-    "BEP": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "CSCO": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "CSX": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "AVGO": [
-      1,
-      1,
-      1,
-      2,
-      2
-    ],
-    "PNC": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AMZN": [
       2,
       2,
       2,
@@ -2533,171 +2179,35 @@
       2,
       2,
       2,
+      2,
       2
     ],
-    "FDX": [
+    "BA": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "TCNNF": [
+      1,
       1,
       1,
       1,
       1,
       1
     ],
-    "NVO": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "V": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "JNJ": [
+    "CSCO": [
       3,
-      3,
-      4,
-      4,
-      4
-    ],
-    "MCD": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "GS": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "HON": [
-      2,
-      2,
-      4,
-      4,
-      4
-    ],
-    "UPS": [
-      2,
-      2,
-      3,
-      3,
-      3
-    ],
-    "CDNS": [
-      2,
-      2,
-      3,
-      3,
-      3
-    ],
-    "BIIB": [
       3,
       3,
       3,
       3,
       3
     ],
-    "GOOGL": [
-      2,
-      2,
-      3,
-      4,
-      4
-    ],
-    "TRV": [
+    "WMB": [
       1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "HUMA": [
-      1,
-      1,
-      1
-    ],
-    "PGR": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "LMT": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "XOM": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "FWONK": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "HSBC": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "ADM": [
-      1,
-      1,
-      1
-    ],
-    "CHRW": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "PLTR": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "OC": [
-      1,
-      1,
-      1
-    ],
-    "TSLA": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "TDY": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "MLM": [
       1,
       1,
       1,
@@ -2709,23 +2219,11 @@
       6,
       6,
       6,
+      6,
       6
     ],
-    "RIO": [
+    "RACE": [
       1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "GE": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "LTH": [
       1,
       1,
       1,
@@ -2737,6 +2235,419 @@
       1,
       2,
       2,
+      2,
+      2
+    ],
+    "USIG": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "UBS": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "TM": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "MSFT": [
+      6,
+      6,
+      7,
+      8,
+      8,
+      8
+    ],
+    "HUBB": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "GS": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "BAC": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "TDY": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "LYV": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "KO": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "ABT": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "PFE": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "PARA": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "NFLX": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "FDX": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "TXN": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "GOOGL": [
+      2,
+      2,
+      3,
+      4,
+      4,
+      4
+    ],
+    "EIBLX": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AMD": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "AMAT": [
+      3,
+      3,
+      4,
+      4,
+      4,
+      4
+    ],
+    "PNC": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "GOLD": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "BWXT": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "HONAV": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "INTU": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "MU": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "BEP": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "V": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "JPM": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "PLTR": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "SONY": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AZN": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "TSLA": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "MCD": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "CSX": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "HSBC": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "GOOG": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "TRV": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "LTH": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ADBE": [
+      2,
+      2,
+      4,
+      4,
+      4,
+      4
+    ],
+    "XLV": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "TSCO": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "SNY": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "INTC": [
+      4,
+      4,
+      5,
+      4,
+      3,
+      3
+    ],
+    "UPS": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "WAB": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "CDNS": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "AMZN": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "SAP": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "FITB": [
+      2,
+      3,
+      3,
+      3
+    ],
+    "WDAY": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "NEE": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "CAG": [
+      2,
+      2,
+      2,
+      2,
+      2,
       2
     ],
     "PEP": [
@@ -2744,183 +2655,109 @@
       1,
       2,
       2,
-      2
-    ],
-    "PYPL": [
-      1,
-      1,
-      2,
       2,
       2
     ],
-    "ABNFX": [
+    "ADM": [
+      1,
       1,
       1,
       1
     ],
-    "USIG": [
+    "NVO": [
       1,
-      1,
-      1
-    ],
-    "WAB": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "UBS": [
       1,
       1,
       1,
       1,
       1
     ],
-    "NVDA": [
-      6,
-      6,
-      6,
-      6,
-      6
-    ],
-    "ABT": [
-      4,
-      4,
-      4,
-      4,
-      4
-    ],
-    "BAC": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "T": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "INTC": [
-      4,
-      4,
-      5,
-      4,
-      3
-    ],
-    "INTU": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "WBA": [
+    "GLW": [
+      1,
+      1,
+      1,
       1,
       1,
       1
-    ],
-    "WDAY": [
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "BA": [
-      1,
-      1,
-      2,
-      2,
-      2
-    ],
-    "XLU": [
-      1,
-      1,
-      1
-    ],
-    "META": [
-      3,
-      3,
-      3,
-      3,
-      3
     ],
     "SCI": [
       1,
       1,
       1,
       1,
+      1,
       1
     ],
-    "HUBB": [
+    "SYK": [
+      2,
       2,
       2,
       2,
       2,
       2
     ],
-    "DUK": [
-      3,
+    "DE": [
+      2,
+      2,
       3,
       3,
       3,
       3
     ],
-    "MDT": [
+    "KMB": [
       1,
       1,
-      3,
-      3,
-      3
-    ],
-    "NEE": [
-      2,
       2,
       2,
       2,
       2
     ],
-    "BWXT": [
+    "MLM": [
+      1,
       1,
       1,
       1,
       1,
       1
     ],
-    "UNH": [
-      5,
-      5,
-      5,
-      5,
-      5
-    ],
-    "CAG": [
-      2,
+    "STZ": [
+      1,
+      1,
       2,
       2,
       2,
       2
     ],
-    "LLY": [
-      3,
-      3,
+    "NVDA": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "WBA": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "CLF": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "HON": [
+      2,
+      2,
+      4,
       4,
       4,
       4
     ],
-    "MKL": [
+    "BRK.B": [
       2,
-      2,
-      2,
-      2,
-      2
-    ],
-    "CRM": [
       2,
       2,
       2,
@@ -2932,17 +2769,300 @@
       1,
       1,
       1,
-      1
-    ],
-    "SNY": [
-      1,
-      1,
-      1,
       1,
       1
     ],
-    "PG": [
+    "PYPL": [
+      1,
+      1,
       2,
+      2,
+      2,
+      2
+    ],
+    "LLY": [
+      3,
+      3,
+      4,
+      4,
+      4,
+      4
+    ],
+    "META": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "JNJ": [
+      3,
+      3,
+      4,
+      4,
+      4,
+      4
+    ],
+    "QCOM": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "HD": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "ABNFX": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "AVGO": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "PGR": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "GEV": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "DASH": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "SAN": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "AAPL": [
+      5,
+      5,
+      6,
+      6,
+      6,
+      6
+    ],
+    "MDT": [
+      1,
+      1,
+      3,
+      3,
+      3,
+      3
+    ],
+    "XLU": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "ASML": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "XLP": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DUK": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "CPAY": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "GE": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "PSX": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "MA": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "CRM": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "XOM": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "BIIB": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "T": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "FWONK": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "CHRW": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "UNH": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "NDAQ": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "SMFG": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "OC": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "DVN": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "MKL": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "NVS": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "RIO": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "VRSK": [
+      2,
+      2,
+      4,
+      4,
+      4,
+      4
+    ],
+    "ORCL": [
+      1,
+      1,
       2,
       2,
       2,
@@ -2956,7 +3076,7 @@
       "etf": "PAVE",
       "color": "#C98A3B",
       "group": "theme",
-      "bill_count": 4,
+      "bill_count": 3,
       "appropriation_count": 0,
       "trade_count": 25,
       "stock_count": 25,
@@ -3151,11 +3271,11 @@
       "etf": "ITA",
       "color": "#5B4636",
       "group": "theme",
-      "bill_count": 8,
+      "bill_count": 9,
       "appropriation_count": 2,
       "trade_count": 19,
       "stock_count": 19,
-      "avg_momentum": 31,
+      "avg_momentum": 32,
       "buy_value": 201500,
       "sell_value": 73000,
       "net_value": 128500,
@@ -5268,7 +5388,7 @@
         "state": "OK"
       },
       "committee_count": 1,
-      "cosponsor_count": 4,
+      "cosponsor_count": 5,
       "amendments": [],
       "summary": "",
       "momentum": 17,
@@ -6058,337 +6178,6 @@
         }
       ],
       "related_trade_count": 5,
-      "key_bill": true
-    },
-    {
-      "id": "119-HR-8998",
-      "number": "HR 8998",
-      "title": "Researching Innovative Shipbuilding and Next-Generation Transit Infrastructure for Durable and Efficient Systems",
-      "sector": "PAVE",
-      "introduced_date": "2026-05-21",
-      "latest_action": {
-        "date": "2026-05-21",
-        "text": "Referred to the House Committee on Transportation and Infrastructure."
-      },
-      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/8998",
-      "amendments_count": 0,
-      "amendments_url": null,
-      "status": "Committee",
-      "sponsor": {
-        "name": "Rep. Scholten, Hillary J. [D-MI-3]",
-        "party": "D",
-        "state": "MI"
-      },
-      "committee_count": 1,
-      "cosponsor_count": 0,
-      "amendments": [],
-      "summary": "",
-      "momentum": 35,
-      "is_appropriation": false,
-      "dollar_figures": [],
-      "beneficiary_stocks": [
-        {
-          "ticker": "VMC",
-          "name": "Vulcan Materials"
-        },
-        {
-          "ticker": "MLM",
-          "name": "Martin Marietta Materials"
-        },
-        {
-          "ticker": "NUE",
-          "name": "Nucor"
-        },
-        {
-          "ticker": "CAT",
-          "name": "Caterpillar"
-        },
-        {
-          "ticker": "URI",
-          "name": "United Rentals"
-        },
-        {
-          "ticker": "DE",
-          "name": "Deere & Company"
-        },
-        {
-          "ticker": "EMR",
-          "name": "Emerson Electric"
-        },
-        {
-          "ticker": "PWR",
-          "name": "Quanta Services"
-        },
-        {
-          "ticker": "J",
-          "name": "Jacobs Solutions"
-        },
-        {
-          "ticker": "STLD",
-          "name": "Steel Dynamics"
-        },
-        {
-          "ticker": "GVA",
-          "name": "Granite Construction"
-        },
-        {
-          "ticker": "ACM",
-          "name": "AECOM"
-        },
-        {
-          "ticker": "MAS",
-          "name": "Masco Corporation"
-        },
-        {
-          "ticker": "AGCO",
-          "name": "AGCO Corporation"
-        },
-        {
-          "ticker": "WMS",
-          "name": "Advanced Drainage Systems"
-        },
-        {
-          "ticker": "X",
-          "name": "United States Steel"
-        },
-        {
-          "ticker": "CLF",
-          "name": "Cleveland-Cliffs"
-        },
-        {
-          "ticker": "EXP",
-          "name": "Eagle Materials"
-        },
-        {
-          "ticker": "CRH",
-          "name": "CRH plc"
-        },
-        {
-          "ticker": "MTZ",
-          "name": "MasTec"
-        },
-        {
-          "ticker": "PRIM",
-          "name": "Primoris Services"
-        },
-        {
-          "ticker": "FLR",
-          "name": "Fluor Corporation"
-        },
-        {
-          "ticker": "KBR",
-          "name": "KBR, Inc."
-        },
-        {
-          "ticker": "TTEK",
-          "name": "Tetra Tech"
-        },
-        {
-          "ticker": "VMI",
-          "name": "Valmont Industries"
-        }
-      ],
-      "impact_fingerprint": "a38cf2d854656ecfa0cea600e753a079eb03272395149beeec33dd3b475bdea7",
-      "impact_analysis": "",
-      "impact_direction": "",
-      "impact_winners": [],
-      "impact_losers": [],
-      "sector_trade_flag": false,
-      "related_trades": [
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Full)",
-          "amount_range": "$100,001 - $250,000",
-          "est_amount": 175000,
-          "transaction_date": "05/13/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Partial)",
-          "amount_range": "$100,001 - $250,000",
-          "est_amount": 175000,
-          "transaction_date": "05/13/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Partial)",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Partial)",
-          "amount_range": "$15,001 - $50,000",
-          "est_amount": 32500,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Partial)",
-          "amount_range": "$50,001 - $100,000",
-          "est_amount": 75000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Sale (Partial)",
-          "amount_range": "$100,001 - $250,000",
-          "est_amount": 175000,
-          "transaction_date": "05/10/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/07/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        },
-        {
-          "member": "Sen. Thomas H Tuberville",
-          "chamber": "Senate",
-          "ticker": "CLF",
-          "company": "Cleveland-Cliffs",
-          "type": "Purchase",
-          "amount_range": "$1,001 - $15,000",
-          "est_amount": 8000,
-          "transaction_date": "05/07/2024",
-          "filed_date": "08/05/2026",
-          "report_url": "https://efdsearch.senate.gov/search/view/ptr/0a25588d-a3f8-4ed6-971a-706097f78e3a/",
-          "return_pct": null,
-          "gain_value": null,
-          "entry_price": null,
-          "last_price": null
-        }
-      ],
-      "related_trade_count": 25,
       "key_bill": true
     },
     {
@@ -7748,7 +7537,7 @@
           "return_pct": 39.2,
           "gain_value": null,
           "entry_price": 295.3,
-          "last_price": 410.94
+          "last_price": 410.95
         },
         {
           "member": "Sen. Thomas H Tuberville",
@@ -7876,7 +7665,7 @@
           "return_pct": 17.8,
           "gain_value": null,
           "entry_price": 348.77,
-          "last_price": 410.94
+          "last_price": 410.95
         },
         {
           "member": "Rep. Maria Elvira Salazar (FL27)",
@@ -13158,7 +12947,7 @@
         }
       ],
       "related_trade_count": 25,
-      "key_bill": false
+      "key_bill": true
     },
     {
       "id": "119-SJRES-70",
@@ -13608,7 +13397,7 @@
           "return_pct": 39.2,
           "gain_value": null,
           "entry_price": 295.3,
-          "last_price": 410.94
+          "last_price": 410.95
         },
         {
           "member": "Sen. Thomas H Tuberville",
@@ -13736,7 +13525,7 @@
           "return_pct": 17.8,
           "gain_value": null,
           "entry_price": 348.77,
-          "last_price": 410.94
+          "last_price": 410.95
         },
         {
           "member": "Rep. Maria Elvira Salazar (FL27)",
@@ -13773,6 +13562,313 @@
       ],
       "related_trade_count": 11,
       "key_bill": true
+    },
+    {
+      "id": "119-HR-9091",
+      "number": "HR 9091",
+      "title": "Defense Industrial Base Advanced Manufacturing Enhancement Act",
+      "sector": "ITA",
+      "introduced_date": "2026-06-02",
+      "latest_action": {
+        "date": "2026-06-02",
+        "text": "Referred to the House Committee on Armed Services."
+      },
+      "congress_gov_url": "https://www.congress.gov/bill/119th-congress/house-bill/9091",
+      "amendments_count": 0,
+      "amendments_url": null,
+      "status": "Committee",
+      "sponsor": {
+        "name": "Rep. Deluzio, Christopher R. [D-PA-17]",
+        "party": "D",
+        "state": "PA"
+      },
+      "committee_count": 1,
+      "cosponsor_count": 0,
+      "amendments": [],
+      "summary": "",
+      "momentum": 35,
+      "is_appropriation": false,
+      "dollar_figures": [],
+      "beneficiary_stocks": [
+        {
+          "ticker": "LMT",
+          "name": "Lockheed Martin"
+        },
+        {
+          "ticker": "RTX",
+          "name": "RTX Corporation"
+        },
+        {
+          "ticker": "NOC",
+          "name": "Northrop Grumman"
+        },
+        {
+          "ticker": "GD",
+          "name": "General Dynamics"
+        },
+        {
+          "ticker": "BA",
+          "name": "Boeing"
+        },
+        {
+          "ticker": "LHX",
+          "name": "L3Harris Technologies"
+        },
+        {
+          "ticker": "HII",
+          "name": "Huntington Ingalls Industries"
+        },
+        {
+          "ticker": "TXT",
+          "name": "Textron"
+        },
+        {
+          "ticker": "AXON",
+          "name": "Axon Enterprise"
+        },
+        {
+          "ticker": "KTOS",
+          "name": "Kratos Defense & Security"
+        },
+        {
+          "ticker": "LDOS",
+          "name": "Leidos Holdings"
+        },
+        {
+          "ticker": "BWXT",
+          "name": "BWX Technologies"
+        },
+        {
+          "ticker": "AVAV",
+          "name": "AeroVironment"
+        },
+        {
+          "ticker": "HEI",
+          "name": "HEICO Corporation"
+        },
+        {
+          "ticker": "TDG",
+          "name": "TransDigm Group"
+        },
+        {
+          "ticker": "CW",
+          "name": "Curtiss-Wright"
+        },
+        {
+          "ticker": "MRCY",
+          "name": "Mercury Systems"
+        },
+        {
+          "ticker": "PLTR",
+          "name": "Palantir Technologies"
+        },
+        {
+          "ticker": "RKLB",
+          "name": "Rocket Lab"
+        }
+      ],
+      "impact_fingerprint": "408b0c9012ba1e1f263be681a14256cb8dd8c227a51500b2e9e53b52a2392785",
+      "impact_analysis": "",
+      "impact_direction": "",
+      "impact_winners": [],
+      "impact_losers": [],
+      "sector_trade_flag": false,
+      "related_trades": [
+        {
+          "member": "Rep. Julie Johnson (TX32)",
+          "chamber": "House",
+          "ticker": "BA",
+          "company": "Boeing",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "12/02/2025",
+          "filed_date": "8/5/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035035.pdf",
+          "return_pct": 14.1,
+          "gain_value": 1131,
+          "entry_price": 205.38,
+          "last_price": 234.42
+        },
+        {
+          "member": "Rep. Julie Johnson (TX32)",
+          "chamber": "House",
+          "ticker": "BA",
+          "company": "Boeing",
+          "type": "Sale",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "12/02/2025",
+          "filed_date": "8/5/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035035.pdf",
+          "return_pct": 14.1,
+          "gain_value": null,
+          "entry_price": 205.38,
+          "last_price": 234.42
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "BWXT",
+          "company": "BWX Technologies",
+          "type": "Purchase",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "07/24/2026",
+          "filed_date": "8/3/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035118.pdf",
+          "return_pct": -2.6,
+          "gain_value": -860,
+          "entry_price": 174.52,
+          "last_price": 169.9
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "BWXT",
+          "company": "BWX Technologies",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/27/2026",
+          "filed_date": "8/3/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035118.pdf",
+          "return_pct": -3.8,
+          "gain_value": -300,
+          "entry_price": 176.53,
+          "last_price": 169.9
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "BWXT",
+          "company": "BWX Technologies",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/30/2026",
+          "filed_date": "8/3/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035118.pdf",
+          "return_pct": 2.6,
+          "gain_value": 208,
+          "entry_price": 165.59,
+          "last_price": 169.9
+        },
+        {
+          "member": "Rep. April McClain Delaney (MD06)",
+          "chamber": "House",
+          "ticker": "TDG",
+          "company": "TransDigm Group",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "07/28/2026",
+          "filed_date": "8/3/2026",
+          "report_url": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035118.pdf",
+          "return_pct": -6.3,
+          "gain_value": -506,
+          "entry_price": 1307.97,
+          "last_price": 1225.25
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TDG",
+          "company": "TransDigm Group",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": 7.5,
+          "gain_value": 598,
+          "entry_price": 1140.03,
+          "last_price": 1225.25
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "TXT",
+          "company": "Textron",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": 2.2,
+          "gain_value": 179,
+          "entry_price": 87.47,
+          "last_price": 89.43
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "RTX",
+          "company": "RTX Corporation",
+          "type": "Purchase",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": 17.6,
+          "gain_value": 5708,
+          "entry_price": 189.71,
+          "last_price": 223.03
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "PLTR",
+          "company": "Palantir Technologies",
+          "type": "Purchase",
+          "amount_range": "$15,001 - $50,000",
+          "est_amount": 32500,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": 20.2,
+          "gain_value": 6577,
+          "entry_price": 143.06,
+          "last_price": 172.01
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "NOC",
+          "company": "Northrop Grumman",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": -15.8,
+          "gain_value": -1266,
+          "entry_price": 679.0,
+          "last_price": 571.58
+        },
+        {
+          "member": "Sen. Alan Armstrong",
+          "chamber": "Senate",
+          "ticker": "LMT",
+          "company": "Lockheed Martin",
+          "type": "Purchase",
+          "amount_range": "$1,001 - $15,000",
+          "est_amount": 8000,
+          "transaction_date": "03/27/2026",
+          "filed_date": "07/21/2026",
+          "report_url": "https://efdsearch.senate.gov/search/view/ptr/fda235b3-bad7-4637-8fa1-053f354d929c/",
+          "return_pct": -4.5,
+          "gain_value": -362,
+          "entry_price": 615.84,
+          "last_price": 587.95
+        }
+      ],
+      "related_trade_count": 19,
+      "key_bill": false
     }
   ],
   "trades": [
@@ -14152,7 +14248,7 @@
       "image_url": "https://www.congress.gov/img/member/t000278_200.jpg",
       "bioguide": "T000278",
       "entry_price": 295.3,
-      "last_price": 410.94,
+      "last_price": 410.95,
       "return_pct": 39.2,
       "gain_value": null
     },
@@ -31172,7 +31268,7 @@
       "image_url": null,
       "bioguide": "A000383",
       "entry_price": 348.77,
-      "last_price": 410.94,
+      "last_price": 410.95,
       "return_pct": 17.8,
       "gain_value": null
     },
@@ -33972,9 +34068,9 @@
       "image_url": "https://www.congress.gov/img/member/6807d8d63e52ea7df920ef05_200.jpg",
       "bioguide": "C001123",
       "entry_price": 107.3,
-      "last_price": 128.76,
-      "return_pct": 20.0,
-      "gain_value": 1600
+      "last_price": 128.98,
+      "return_pct": 20.2,
+      "gain_value": 1616
     },
     {
       "sector": "CONSD",
@@ -34732,8 +34828,8 @@
       "image_url": "https://www.congress.gov/img/member/6807d8d63e52ea7df920ef05_200.jpg",
       "bioguide": "C001123",
       "entry_price": 37.95,
-      "last_price": 35.2,
-      "return_pct": -7.2,
+      "last_price": 35.43,
+      "return_pct": -6.6,
       "gain_value": null
     },
     {
@@ -35912,9 +36008,9 @@
       "image_url": "https://www.congress.gov/img/member/677446d80b34857ecc90911f_200.jpg",
       "bioguide": "M001232",
       "entry_price": 147.73,
-      "last_price": 149.34,
+      "last_price": 149.35,
       "return_pct": 1.1,
-      "gain_value": 355
+      "gain_value": 356
     },
     {
       "sector": "INDU",
@@ -35932,9 +36028,9 @@
       "image_url": "https://www.congress.gov/img/member/677446d80b34857ecc90911f_200.jpg",
       "bioguide": "M001232",
       "entry_price": 174.46,
-      "last_price": 149.34,
+      "last_price": 149.35,
       "return_pct": -14.4,
-      "gain_value": -4679
+      "gain_value": -4678
     },
     {
       "sector": "INDU",
@@ -35952,9 +36048,9 @@
       "image_url": "https://www.congress.gov/img/member/677446d80b34857ecc90911f_200.jpg",
       "bioguide": "M001232",
       "entry_price": 169.34,
-      "last_price": 149.34,
+      "last_price": 149.35,
       "return_pct": -11.8,
-      "gain_value": -945
+      "gain_value": -944
     },
     {
       "sector": "INDU",
@@ -35972,7 +36068,7 @@
       "image_url": "https://www.congress.gov/img/member/677446d80b34857ecc90911f_200.jpg",
       "bioguide": "M001232",
       "entry_price": 186.51,
-      "last_price": 149.34,
+      "last_price": 149.35,
       "return_pct": -19.9,
       "gain_value": -1594
     },
@@ -36012,9 +36108,9 @@
       "image_url": "https://www.congress.gov/img/member/677446d80b34857ecc90911f_200.jpg",
       "bioguide": "M001232",
       "entry_price": 205.8,
-      "last_price": 149.34,
+      "last_price": 149.35,
       "return_pct": -27.4,
-      "gain_value": -2195
+      "gain_value": -2194
     },
     {
       "sector": "INDU",
@@ -37572,8 +37668,8 @@
       "image_url": "https://www.congress.gov/img/member/115_rp_nj_5_gottheimer_josh_200.jpg",
       "bioguide": "G000583",
       "entry_price": 98.42,
-      "last_price": 100.51,
-      "return_pct": 2.1,
+      "last_price": 100.41,
+      "return_pct": 2.0,
       "gain_value": null
     },
     {
@@ -37592,8 +37688,8 @@
       "image_url": "https://www.congress.gov/img/member/115_rp_nj_5_gottheimer_josh_200.jpg",
       "bioguide": "G000583",
       "entry_price": 11.16,
-      "last_price": 12.69,
-      "return_pct": 13.7,
+      "last_price": 12.72,
+      "return_pct": 14.0,
       "gain_value": null
     },
     {
@@ -37612,7 +37708,7 @@
       "image_url": "https://www.congress.gov/img/member/115_rp_nj_5_gottheimer_josh_200.jpg",
       "bioguide": "G000583",
       "entry_price": 58.17,
-      "last_price": 65.94,
+      "last_price": 65.97,
       "return_pct": 13.4,
       "gain_value": null
     },
