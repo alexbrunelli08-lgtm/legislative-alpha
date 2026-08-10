@@ -780,8 +780,8 @@
     el.innerHTML = `
       <div class="hero-top">
         <div>
-          <div class="hero-title">Congress Long-Short Index vs S&amp;P 500</div>
-          <div class="hero-sub">130% long the disclosed buys, 30% short the sells · Quiver-style · ${p.n_positions} positions</div>
+          <div class="hero-title">Follow-Congress Index vs S&amp;P 500</div>
+          <div class="hero-sub">Equal-weighted — buy when they buy, close when they sell · Quiver's public method · ${p.n_positions} trades</div>
         </div>
         <div class="range-tabs" id="rangeTabs">${Object.keys(RANGE_DAYS).map(r => `<button class="range-tab ${r === perfRange ? "active" : ""}" data-range="${r}">${r}</button>`).join("")}</div>
       </div>
