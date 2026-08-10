@@ -9,36 +9,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #000000;
-    --panel: #0A0A0C;
-    --panel-2: #131317;
-    --elev: #1C1C22;
-    --line: #212128;
-    --line-soft: #141418;
-    --text: #F6F7F9;
-    --text-dim: #8E929C;
-    --text-faint: #575A63;
+    --bg: #07080B;
+    --panel: #101218;
+    --panel-2: #181B22;
+    --elev: #21242D;
+    --line: #262A34;
+    --line-soft: #171A21;
+    --text: #F4F6FA;
+    --text-dim: #9096A3;
+    --text-faint: #5B606D;
     --accent: #5EEAD4;
-    --accent-dim: #10352F;
+    --accent-2: #7C87FF;
+    --accent-dim: #123240;
+    --grad: linear-gradient(120deg, #5EEAD4 0%, #7C87FF 100%);
+    --grad-soft: linear-gradient(120deg, rgba(94,234,212,0.14), rgba(124,135,255,0.14));
     --warn: #FBBF24;
-    --bad: #F87171;
+    --bad: #F97066;
     --good: #4ADE80;
     --dem: #60A5FA;
-    --rep: #F87171;
+    --rep: #F97066;
     --ind: #C084FC;
     --tint-green: #0E2A1B;
     --tint-red: #2E1515;
     --tint-amber: #2C2410;
     --tint-blue: #12233E;
     --tint-violet: #221733;
-    --tint-neutral: #16161A;
+    --tint-neutral: #191B22;
     --ink-warn: #FBBF24;
-    --radius: 14px;
-    --radius-sm: 9px;
+    --radius: 16px;
+    --radius-sm: 11px;
     --mono: 'JetBrains Mono', monospace;
     --display: 'Space Grotesk', sans-serif;
-    --shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 8px 30px -18px rgba(0,0,0,0.8);
-    --shadow-lg: 0 30px 80px -24px rgba(0,0,0,0.85);
+    --shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 10px 34px -20px rgba(0,0,0,0.8);
+    --shadow-lg: 0 40px 90px -30px rgba(0,0,0,0.9);
   }
 
   * { box-sizing: border-box; }
@@ -46,7 +49,8 @@
   body {
     margin: 0;
     background:
-      radial-gradient(900px 500px at 50% -260px, rgba(94,234,212,0.06), transparent 68%),
+      radial-gradient(1100px 620px at 12% -300px, rgba(124,135,255,0.10), transparent 66%),
+      radial-gradient(1000px 560px at 88% -240px, rgba(94,234,212,0.08), transparent 64%),
       var(--bg);
     background-attachment: fixed;
     color: var(--text);
@@ -61,13 +65,13 @@
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .num { font-family: var(--mono); font-feature-settings: "tnum"; }
 
-  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
 
   .kpi-tile, .highlight-card, .unusual-card, .chart-panel, .bill-card, .member-card,
   .sector-card, .data-table-wrap, .search-results, .mstat { box-shadow: var(--shadow); }
 
   /* ---------- Header ---------- */
-  header { position: sticky; top: 0; z-index: 30; padding: 16px 0; border-bottom: 1px solid var(--line); background: rgba(0,0,0,0.72); backdrop-filter: blur(14px) saturate(150%); -webkit-backdrop-filter: blur(14px) saturate(150%); }
+  header { position: sticky; top: 0; z-index: 30; padding: 16px 0; border-bottom: 1px solid var(--line); background: rgba(7,8,11,0.75); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); }
   .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .wordmark { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 11px; }
   .wordmark .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
@@ -173,7 +177,7 @@
   .view-tabs { display: flex; gap: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
   .view-tab { font-family: var(--display); font-weight: 600; font-size: 13px; background: transparent; border: none; color: var(--text-dim); padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: color 0.12s ease, background 0.12s ease; }
   .view-tab:hover { color: var(--text); }
-  .view-tab.active { background: var(--accent); color: #05231E; }
+  .view-tab.active { background: var(--grad); color: #05231E; box-shadow: 0 6px 22px -8px rgba(124,135,255,0.5); }
   .view-hint { font-size: 11.5px; color: var(--text-faint); flex: 1; text-align: right; }
 
   .filter-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 16px 0 4px; }
@@ -320,6 +324,96 @@
   .bill-link:hover { text-decoration: underline; }
 
   /* ---------- Politician cards ---------- */
+  /* ---------- Trading leaderboard ---------- */
+  .lead-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .lead-title { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; margin: 0; }
+  .lead-sub { font-size: 13px; color: var(--text-dim); margin: 6px 0 0; max-width: 560px; line-height: 1.5; }
+  .sort-tabs { display: inline-flex; gap: 2px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+  .sort-tab { font-family: var(--display); font-weight: 600; font-size: 12px; color: var(--text-dim); background: none; border: none; padding: 7px 13px; border-radius: 8px; cursor: pointer; transition: all 0.12s ease; }
+  .sort-tab:hover { color: var(--text); }
+  .sort-tab.active { background: var(--grad); color: #04231d; }
+  .lead-list { display: flex; flex-direction: column; gap: 8px; }
+  .lead-row { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; transition: border-color 0.14s ease, transform 0.14s ease, background 0.14s ease; }
+  .lead-row:hover { border-color: var(--accent-dim); transform: translateX(2px); background: var(--panel-2); }
+  .lead-rank { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-faint); width: 26px; text-align: center; flex-shrink: 0; }
+  .lead-row .member-photo { width: 40px; height: 40px; flex-shrink: 0; }
+  .lead-id { flex: 1; min-width: 0; }
+  .lead-name { font-family: var(--display); font-weight: 600; font-size: 14.5px; display: flex; align-items: center; gap: 8px; }
+  .lead-meta { font-size: 11.5px; color: var(--text-faint); margin-top: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .lead-best { color: var(--text-dim); }
+  .lead-metrics { display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+  .lead-metric { text-align: right; font-family: var(--mono); }
+  .lead-metric b { display: block; font-size: 15px; color: var(--text); }
+  .lead-metric i { font-style: normal; font-size: 9.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .lead-return { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+  .lead-return i { font-style: normal; font-size: 9.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .ret-pill { font-family: var(--mono); font-weight: 700; font-size: 13px; padding: 2px 9px; border-radius: 7px; white-space: nowrap; display: inline-block; }
+  .ret-pill.big { font-size: 19px; padding: 4px 12px; letter-spacing: -0.01em; }
+  .ret-pill.up { background: var(--tint-green); color: var(--good); }
+  .ret-pill.down { background: var(--tint-red); color: var(--bad); }
+  .ret-pill.flat { background: var(--tint-neutral); color: var(--text-faint); }
+  /* member track-record banner (in modal) */
+  .track-banner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; background: linear-gradient(135deg, var(--panel-2), var(--panel)); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 16px; }
+  .track-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; margin-bottom: 5px; }
+  .track-val { margin-bottom: 4px; }
+  .track-note { font-size: 11px; color: var(--text-faint); }
+  .track-splits { display: flex; gap: 20px; }
+  .track-split { text-align: right; }
+  .track-split b { display: block; font-family: var(--mono); font-size: 15px; color: var(--text); }
+  .track-split i { font-style: normal; font-size: 10px; color: var(--text-faint); display: flex; gap: 5px; align-items: center; justify-content: flex-end; margin-top: 2px; }
+
+  /* ---------- Smart money ---------- */
+  .cluster-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .cluster-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; transition: border-color 0.14s ease, transform 0.14s ease; }
+  .cluster-card:hover { border-color: var(--accent-dim); transform: translateY(-1px); }
+  .cl-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .cl-ticker { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; cursor: pointer; }
+  .cl-ticker:hover { color: var(--accent); }
+  .cl-company { font-size: 11px; color: var(--text-faint); margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cl-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+  .cl-buyers-badge { font-family: var(--mono); font-weight: 700; font-size: 11px; background: var(--accent); color: #04231d; padding: 3px 9px; border-radius: 999px; }
+  .cl-bipartisan { font-family: var(--display); font-weight: 600; font-size: 9.5px; letter-spacing: 0.04em; text-transform: uppercase; background: var(--tint-violet); color: var(--ind); padding: 3px 8px; border-radius: 999px; }
+  .cl-metrics { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 13px 0 12px; font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); }
+  .cl-val { font-weight: 600; color: var(--text); }
+  .cl-ret { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; }
+  .cl-ret i { font-style: normal; font-size: 9px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .cl-buyers { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+  .cl-buyer { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--text-dim); background: var(--panel-2); padding: 3px 8px; border-radius: 6px; cursor: pointer; }
+  .cl-buyer:hover { color: var(--text); }
+  .bets-list { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .bet-row { display: grid; grid-template-columns: 64px 62px 1.4fr 1fr 90px 90px 74px; gap: 10px; align-items: center; padding: 11px 16px; border-top: 1px solid var(--line-soft); font-size: 12px; }
+  .bet-row:first-child { border-top: none; }
+  .bet-row:not(.bet-head):hover { background: var(--panel-2); }
+  .bet-head { font-family: var(--display); font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; background: var(--panel-2); }
+  .bet-ticker { font-family: var(--mono); font-weight: 700; font-size: 13px; cursor: pointer; }
+  .bet-ticker:hover { color: var(--accent); }
+  .bet-member { cursor: pointer; display: flex; align-items: center; gap: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bet-member:hover { color: var(--accent); }
+  .bet-val { font-family: var(--mono); font-weight: 600; color: var(--text); }
+  .bet-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+  .ta-r { text-align: right; justify-self: end; }
+
+  /* ---------- Command palette (⌘K) ---------- */
+  .cmdk-btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--display); font-size: 12px; font-weight: 500; color: var(--text-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; cursor: pointer; transition: all 0.12s ease; white-space: nowrap; }
+  .cmdk-btn:hover { color: var(--text); border-color: var(--accent-dim); }
+  .cmdk-kbd { font-family: var(--mono); font-size: 10px; font-weight: 600; background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 2px 5px; color: var(--text-dim); }
+  .cmdk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding-top: 14vh; }
+  .cmdk-overlay.open { display: flex; }
+  .cmdk-box { width: min(92vw, 620px); background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.6); overflow: hidden; animation: cmdkPop 0.14s ease; }
+  @keyframes cmdkPop { from { transform: translateY(-8px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+  .cmdk-input-row { display: flex; align-items: center; gap: 11px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+  .cmdk-icon { font-size: 18px; color: var(--text-faint); }
+  .cmdk-input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-family: var(--display); font-size: 16px; }
+  .cmdk-input::placeholder { color: var(--text-faint); }
+  .cmdk-esc { font-family: var(--mono); font-size: 10px; color: var(--text-faint); border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px; }
+  .cmdk-results { max-height: 46vh; overflow-y: auto; padding: 6px; }
+  .cmdk-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 10px; cursor: pointer; }
+  .cmdk-item.active { background: var(--panel-2); }
+  .cmdk-type { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 0; text-align: center; }
+  .cmdk-label { font-family: var(--display); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 7px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cmdk-sub { font-size: 11.5px; color: var(--text-faint); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
+  .cmdk-empty { padding: 26px; text-align: center; color: var(--text-faint); font-size: 13px; }
+
   .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .member-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: border-color 0.15s ease, transform 0.15s ease; }
   .member-card:hover { border-color: #2E2E36; transform: translateY(-1px); }
@@ -451,11 +545,13 @@
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="overview">Overview</button>
-      <button class="view-tab" data-view="bills">Bills</button>
-      <button class="view-tab" data-view="politicians">Politicians</button>
+      <button class="view-tab" data-view="smart">Smart Money</button>
+      <button class="view-tab" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
+      <button class="view-tab" data-view="bills">Bills</button>
     </div>
     <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, or bill…" autocomplete="off">
+    <button class="cmdk-btn" id="cmdkBtn" title="Command palette"><span class="cmdk-kbd">⌘K</span> Jump to…</button>
     <span class="view-hint" id="viewHint"></span>
   </section>
 
@@ -497,6 +593,17 @@
 
 <div class="modal-overlay" id="stockModal"><div class="modal" id="stockModalInner"></div></div>
 
+<div class="cmdk-overlay" id="cmdk">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <span class="cmdk-icon">⌕</span>
+      <input type="text" id="cmdkInput" class="cmdk-input" placeholder="Jump to a member, stock, sector, bill, or view…" autocomplete="off" spellcheck="false">
+      <span class="cmdk-esc">esc</span>
+    </div>
+    <div class="cmdk-results" id="cmdkResults"></div>
+  </div>
+</div>
+
 <script>
   let DATA = null;
   let activeSector = "ALL";
@@ -504,6 +611,7 @@
   let openId = null;           // open bill key
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
+  let memberSort = "return";   // return | winrate | volume | trades
   let tradesShown = 100;
   const TRADES_PAGE = 100;
   let signalsShown = 60;
@@ -511,7 +619,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "bills", "politicians", "stocks"];
+  const VIEWS = ["overview", "smart", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -531,8 +639,9 @@
 
   const VIEW_HINTS = {
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
+    smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
-    politicians: "Pick a member to open their disclosed portfolio. Autopilot-style.",
+    politicians: "Every member ranked by the actual return on their disclosed trades.",
     stocks: "What Congress is buying and selling, aggregated per ticker. Quiver-style consensus.",
   };
 
@@ -1080,26 +1189,67 @@
   }
 
   /* ---------- POLITICIANS VIEW ---------- */
+  const MEMBER_SORTS = {
+    return:  { label: "Return",   fn: m => m.portfolio_return, sub: "paper return on disclosed buys" },
+    winrate: { label: "Win rate", fn: m => m.win_rate,         sub: "share of buys now in the green" },
+    volume:  { label: "Volume",   fn: m => m.total_value,      sub: "total disclosed dollar volume" },
+    trades:  { label: "Trades",   fn: m => m.trade_count,      sub: "number of disclosed transactions" },
+  };
+
   function renderPoliticiansView() {
     let members = (DATA.members || []);
     if (activeSector !== "ALL") members = members.filter(m => (m.sectors || []).includes(activeSector));
     if (partyFilter !== "ALL") members = members.filter(m => m.party === partyFilter);
     const total = (DATA.members || []).filter(m => activeSector === "ALL" || (m.sectors || []).includes(activeSector));
     if (members.length === 0) return partyChips(total) + `<div class="empty-note">No members match this filter for the current window.</div>`;
-    const visible = members.slice(0, membersShown);
-    const chartRows = members.slice(0, 12).map(m => ({ label: cleanMemberName(m.member), buy: m.buy_count, sell: m.sell_count }));
+
+    const sort = MEMBER_SORTS[memberSort] || MEMBER_SORTS.return;
+    // nulls (no scored trades) always sort to the bottom
+    const ranked = members.slice().sort((a, b) => {
+      const av = sort.fn(a), bv = sort.fn(b);
+      if (av == null && bv == null) return b.total_value - a.total_value;
+      if (av == null) return 1; if (bv == null) return -1;
+      return bv - av;
+    });
+    const visible = ranked.slice(0, membersShown);
+    const sortTabs = Object.entries(MEMBER_SORTS).map(([k, v]) =>
+      `<button class="sort-tab ${k === memberSort ? "active" : ""}" data-msort="${k}">${v.label}</button>`).join("");
+
     return `<section class="data-section">
-      ${partyChips(total)}
-      <div class="chart-panel">
-        <div class="chart-title">Most active traders</div>
-        <div class="chart-sub">Members ranked by disclosed trade count${activeSector !== "ALL" ? " in this sector" : ""} — buys vs sells</div>
-        ${buySellLegend()}
-        ${chartStacked(chartRows)}
+      <div class="lead-head">
+        <div>
+          <h2 class="lead-title">Congress Trading Leaderboard</h2>
+          <p class="lead-sub">Every member ranked by ${sort.sub}. Track record = dollar-weighted paper return of their disclosed purchases.</p>
+        </div>
+        <div class="sort-tabs">${sortTabs}</div>
       </div>
-      <div class="section-head"><span class="section-title">Politicians</span><span class="section-count">${members.length} shown · ranked by dollar volume</span></div>
-      <div class="member-grid">${visible.map(renderMemberCard).join("")}</div>
-      ${members.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, members.length - membersShown)} more</button>` : ""}
+      ${partyChips(total)}
+      <div class="lead-list">${visible.map((m, i) => renderLeaderRow(m, i + 1)).join("")}</div>
+      ${ranked.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, ranked.length - membersShown)} more</button>` : ""}
     </section>`;
+  }
+
+  function returnPill(v, big) {
+    if (v == null) return `<span class="ret-pill flat${big ? " big" : ""}">—</span>`;
+    const cls = v > 0 ? "up" : v < 0 ? "down" : "flat";
+    return `<span class="ret-pill ${cls}${big ? " big" : ""}">${v > 0 ? "+" : ""}${Number(v).toFixed(1)}%</span>`;
+  }
+
+  function renderLeaderRow(m, rank) {
+    const wins = m.win_rate == null ? "" : `<span class="lead-metric"><b>${m.win_rate}%</b><i>win rate</i></span>`;
+    const best = m.best_trade ? `<span class="lead-best">Best ${esc(m.best_trade.ticker)} ${returnPill(m.best_trade.return_pct)}</span>` : "";
+    return `<div class="lead-row" data-member="${esc(m.member)}">
+      <div class="lead-rank">${rank}</div>
+      ${memberPhoto(m)}
+      <div class="lead-id">
+        <div class="lead-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
+        <div class="lead-meta">${esc(m.chamber)} · ${m.trade_count} trades · ${fmtMoney(m.total_value)} ${best}</div>
+      </div>
+      <div class="lead-metrics">
+        ${wins}
+        <div class="lead-return">${returnPill(m.portfolio_return, true)}<i>track record</i></div>
+      </div>
+    </div>`;
   }
 
   function partyChips(members) {
@@ -1155,6 +1305,15 @@
         <button class="modal-close" aria-label="Close">✕</button>
       </div>
       <div class="modal-body">
+        ${m.portfolio_return != null ? `
+        <div class="track-banner">
+          <div class="track-main"><div class="track-label">Track record</div><div class="track-val">${returnPill(m.portfolio_return, true)}</div><div class="track-note">paper return on ${m.priced_buys} scored buys</div></div>
+          <div class="track-splits">
+            ${m.win_rate != null ? `<div class="track-split"><b>${m.win_rate}%</b><i>win rate</i></div>` : ""}
+            ${m.best_trade ? `<div class="track-split"><b class="clickable-ticker" data-ticker="${esc(m.best_trade.ticker)}">${esc(m.best_trade.ticker)}</b><i>best ${returnPill(m.best_trade.return_pct)}</i></div>` : ""}
+            ${m.worst_trade ? `<div class="track-split"><b class="clickable-ticker" data-ticker="${esc(m.worst_trade.ticker)}">${esc(m.worst_trade.ticker)}</b><i>worst ${returnPill(m.worst_trade.return_pct)}</i></div>` : ""}
+          </div>
+        </div>` : ""}
         <div class="modal-stats">
           <div class="mstat"><div class="mstat-v">${fmtMoney(m.total_value)}</div><div class="mstat-l">Est. volume</div></div>
           <div class="mstat"><div class="mstat-v net-pos">${fmtMoney(m.buy_value)}</div><div class="mstat-l">${m.buy_count} buys</div></div>
@@ -1190,6 +1349,60 @@
     document.body.style.overflow = "hidden";
     modal.querySelector(".modal-close").addEventListener("click", () => setHash(activeView));
     modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => setHash("stock/" + el.dataset.ticker)));
+  }
+
+  /* ---------- SMART MONEY VIEW ---------- */
+  function renderSmartView() {
+    const sm = DATA.smart_money || { clusters: [], big_bets: [] };
+    if (!(sm.clusters || []).length && !(sm.big_bets || []).length)
+      return `<div class="empty-note">No smart-money signals in the current window.</div>`;
+    return `<section class="data-section">
+      <div class="lead-head"><div>
+        <h2 class="lead-title">Smart Money</h2>
+        <p class="lead-sub">Stocks several members bought within ~${sm.cluster_window_days || 75} days of one another — clustered conviction, not one person's idiosyncratic bet. <b style="color:var(--ind)">Bipartisan</b> clusters are the strongest tell.</p>
+      </div></div>
+      ${sm.clusters.length ? `<div class="cluster-grid">${sm.clusters.map(renderClusterCard).join("")}</div>`
+        : `<div class="empty-note">No multi-member cluster buys in the window yet.</div>`}
+      <div class="section-head" style="margin-top:28px;"><span class="section-title">Biggest recent bets</span><span class="section-count">largest single disclosed trades · last 45 days</span></div>
+      <div class="bets-list">
+        <div class="bet-row bet-head"><span>Ticker</span><span>Side</span><span>Member</span><span>Sector</span><span class="ta-r">Size</span><span>Traded</span><span class="ta-r">Since</span></div>
+        ${sm.big_bets.map(renderBetRow).join("")}
+      </div>
+    </section>`;
+  }
+
+  function renderClusterCard(c) {
+    const sc = sectorMeta(c.sector);
+    const buyers = (c.buyers || []).map(b =>
+      `<span class="cl-buyer" data-membername="${esc(b.member)}"><span class="party-dot ${b.party}"></span>${esc(cleanMemberName(b.member))}</span>`).join("");
+    return `<div class="cluster-card">
+      <div class="cl-top">
+        <div style="min-width:0"><div class="cl-ticker clickable-ticker" data-ticker="${esc(c.ticker)}">${esc(c.ticker)}</div><div class="cl-company">${esc(c.company || "")}</div></div>
+        <div class="cl-badges">
+          <span class="cl-buyers-badge">${c.n_buyers} buyers</span>
+          ${c.bipartisan ? `<span class="cl-bipartisan">Bipartisan</span>` : ""}
+        </div>
+      </div>
+      <div class="cl-metrics">
+        <span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>
+        <span class="cl-val">${fmtMoney(c.total_value)} bought</span>
+        ${c.avg_return != null ? `<span class="cl-ret">${returnPill(c.avg_return)}<i>avg since</i></span>` : ""}
+      </div>
+      <div class="cl-buyers">${buyers}</div>
+    </div>`;
+  }
+
+  function renderBetRow(t) {
+    const sc = sectorMeta(t.sector);
+    return `<div class="bet-row">
+      <span class="bet-ticker clickable-ticker" data-ticker="${esc(t.ticker || "")}">${esc(t.ticker || "—")}</span>
+      <span class="${tradeTypeClass(t.type)}" style="font-weight:600">${isBuy(t.type) ? "▲ Buy" : "▼ Sell"}</span>
+      <span class="bet-member" data-membername="${esc(t.member)}">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span>
+      <span><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span></span>
+      <span class="ta-r bet-val">${fmtMoney(t.value)}</span>
+      <span class="bet-date">${esc(t.transaction_date)}</span>
+      <span class="ta-r">${t.return_pct != null ? returnPill(t.return_pct) : "—"}</span>
+    </div>`;
   }
 
   /* ---------- STOCKS VIEW ---------- */
@@ -1612,6 +1825,7 @@
   function renderContent() {
     const el = document.getElementById("content");
     if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
@@ -1623,13 +1837,18 @@
         renderContent();
       });
     });
-    // member cards open the member detail modal
+    // member cards / leaderboard rows open the member detail modal
     el.querySelectorAll("[data-member]").forEach(card => {
-      card.querySelector(".member-head")?.addEventListener("click", (e) => {
+      const target = card.querySelector(".member-head") || card;
+      target.addEventListener("click", (e) => {
         if (e.target.closest("[data-ticker]")) return;
         setHash("member/" + card.dataset.member);
       });
     });
+    // leaderboard sort tabs
+    el.querySelectorAll("[data-msort]").forEach(btn => btn.addEventListener("click", () => {
+      memberSort = btn.dataset.msort; membersShown = MEMBERS_PAGE; renderContent();
+    }));
     // party filter chips
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
       partyFilter = chip.dataset.party; membersShown = MEMBERS_PAGE; renderContent();
@@ -1690,9 +1909,60 @@
   document.getElementById("stockModal").addEventListener("click", (e) => {
     if (e.target.id === "stockModal") setHash(activeView);
   });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && document.getElementById("stockModal").classList.contains("open")) setHash(activeView);
+  /* ---------- Command palette (⌘K) ---------- */
+  let cmdkItems = [], cmdkFiltered = [], cmdkActive = 0;
+  function buildCmdkIndex() {
+    const items = [];
+    [["overview", "Overview"], ["smart", "Smart Money"], ["politicians", "Leaderboard"], ["stocks", "Stocks"], ["bills", "Bills"]]
+      .forEach(([v, l]) => items.push({ type: "View", label: l, sub: "Go to " + l, act: () => { document.getElementById("searchBox").value = ""; setHash(v); } }));
+    (DATA.members || []).forEach(m => items.push({ type: "Member", label: cleanMemberName(m.member), party: m.party,
+      sub: `${m.chamber} · ${m.trade_count} trades${m.portfolio_return != null ? ` · ${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%` : ""}`, act: () => setHash("member/" + m.member) }));
+    (DATA.stock_signals || []).forEach(s => items.push({ type: "Stock", label: s.ticker, sub: s.company || "", act: () => setHash("stock/" + s.ticker) }));
+    Object.entries(DATA.sectors || {}).forEach(([c, s]) => items.push({ type: "Sector", label: s.short, sub: s.name, act: () => setHash("sector/" + c) }));
+    (DATA.bills || []).forEach(b => items.push({ type: "Bill", label: b.number, sub: b.title || "", act: () => { activeView = "bills"; openId = b.id; renderViewTabs(); renderContent(); scrollToOpen(); } }));
+    cmdkItems = items;
+  }
+  function cmdkFilter(q) {
+    q = q.trim().toLowerCase();
+    if (!q) cmdkFiltered = cmdkItems.filter(i => i.type === "View")
+      .concat(cmdkItems.filter(i => i.type === "Member").slice(0, 4), cmdkItems.filter(i => i.type === "Stock").slice(0, 4));
+    else cmdkFiltered = cmdkItems.filter(i => i.label.toLowerCase().includes(q) || (i.sub || "").toLowerCase().includes(q)).slice(0, 40);
+    cmdkActive = 0; renderCmdkResults();
+  }
+  function renderCmdkResults() {
+    const el = document.getElementById("cmdkResults");
+    if (!cmdkFiltered.length) { el.innerHTML = `<div class="cmdk-empty">No matches</div>`; return; }
+    el.innerHTML = cmdkFiltered.map((i, idx) => `<div class="cmdk-item ${idx === cmdkActive ? "active" : ""}" data-idx="${idx}">
+      <span class="cmdk-type">${i.type}</span>
+      <span class="cmdk-label">${i.party ? `<span class="party-dot ${i.party}"></span>` : ""}${esc(i.label)}</span>
+      <span class="cmdk-sub">${esc((i.sub || "").slice(0, 60))}</span></div>`).join("");
+    const active = el.querySelector(".cmdk-item.active"); if (active) active.scrollIntoView({ block: "nearest" });
+    el.querySelectorAll(".cmdk-item").forEach(it => it.addEventListener("click", () => { cmdkActive = +it.dataset.idx; cmdkSelect(); }));
+  }
+  function cmdkSelect() { const it = cmdkFiltered[cmdkActive]; if (it) { closeCmdk(); it.act(); } }
+  function openCmdk() { if (!DATA) return; buildCmdkIndex(); document.getElementById("cmdk").classList.add("open"); const inp = document.getElementById("cmdkInput"); inp.value = ""; cmdkFilter(""); setTimeout(() => inp.focus(), 20); }
+  function closeCmdk() { document.getElementById("cmdk").classList.remove("open"); }
+  document.getElementById("cmdkInput").addEventListener("input", e => cmdkFilter(e.target.value));
+  document.getElementById("cmdk").addEventListener("click", e => { if (e.target.id === "cmdk") closeCmdk(); });
+  document.getElementById("cmdkInput").addEventListener("keydown", e => {
+    if (e.key === "ArrowDown") { e.preventDefault(); cmdkActive = Math.min(cmdkActive + 1, cmdkFiltered.length - 1); renderCmdkResults(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); cmdkActive = Math.max(cmdkActive - 1, 0); renderCmdkResults(); }
+    else if (e.key === "Enter") { e.preventDefault(); cmdkSelect(); }
   });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      document.getElementById("cmdk").classList.contains("open") ? closeCmdk() : openCmdk();
+      return;
+    }
+    if (e.key === "Escape") {
+      if (document.getElementById("cmdk").classList.contains("open")) { closeCmdk(); return; }
+      if (document.getElementById("stockModal").classList.contains("open")) setHash(activeView);
+    }
+  });
+  const cmdkBtn = document.getElementById("cmdkBtn");
+  if (cmdkBtn) cmdkBtn.addEventListener("click", openCmdk);
 
   loadData();
 </script>

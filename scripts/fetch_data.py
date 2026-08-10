@@ -49,7 +49,9 @@ PRICE_HISTORY_DAYS = 400 # keep this many daily closes cached per ticker
 CONGRESS = 119  # 119th Congress: 2025-2027
 BILLS_LOOKBACK_DAYS = 45          # only scan bills updated in this window
 MAX_MATCHED_BILLS = 60            # cap how many matched bills we keep
-SENATE_TRADES_LOOKBACK_DAYS = 45  # PTR filings to scan for tracked tickers
+SENATE_TRADES_LOOKBACK_DAYS = 45  # (legacy) short window; superseded by TRADES_LOOKBACK_DAYS
+TRADES_LOOKBACK_DAYS = 400         # scrape ~13 months of filings so the 1-year backtest is dense
+TRADES_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "trades_cache.json")  # per-filing raw txns
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
 
@@ -480,60 +482,61 @@ def fetch_ptr_transactions(session, report_path):
     return out
 
 
-def fetch_senate_trades(ticker_index):
-    print("Scraping Senate periodic transaction reports (efdsearch.senate.gov)...", file=sys.stderr)
+TX_FIELDS = ("ticker", "asset_name", "transaction_date", "type", "amount_range")
+
+
+def load_trades_cache():
+    if os.path.exists(TRADES_CACHE_PATH):
+        try:
+            c = json.load(open(TRADES_CACHE_PATH, encoding="utf-8"))
+            c.setdefault("senate", {}); c.setdefault("house", {})
+            return c
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {"senate": {}, "house": {}}
+
+
+def save_trades_cache(cache):
+    json.dump(cache, open(TRADES_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+
+
+def scrape_senate_filings(cache, start_date, end_date):
+    """Enumerate Senate PTR filings in the window and fetch/parse only the ones
+    not already cached (each filing's raw transactions are stored once)."""
+    print("Scraping Senate PTRs (efdsearch.senate.gov)...", file=sys.stderr)
     try:
         session, csrf_token = efd_open_session()
     except (requests.RequestException, RuntimeError) as e:
-        print(f"  WARN: could not open eFD session, skipping trades: {e}", file=sys.stderr)
-        return []
-
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=SENATE_TRADES_LOOKBACK_DAYS)
+        print(f"  WARN: could not open eFD session: {e}", file=sys.stderr)
+        return
     try:
         reports = search_ptr_reports(session, csrf_token, start_date, end_date)
     except (requests.RequestException, ValueError) as e:
-        print(f"  WARN: PTR search failed, skipping trades: {e}", file=sys.stderr)
-        return []
+        print(f"  WARN: PTR search failed: {e}", file=sys.stderr)
+        return
 
-    print(f"  found {len(reports)} PTR filings in the last {SENATE_TRADES_LOOKBACK_DAYS} days, scanning for tracked tickers...", file=sys.stderr)
-    trades = []
-    seen = set()  # dedupe: an amendment report restates the original's transactions
-    for report in reports:
+    sc = cache["senate"]
+    todo = [r for r in reports if r["report_path"] not in sc]
+    print(f"  {len(reports)} filings in window, {len(todo)} new to fetch...", file=sys.stderr)
+    fetched = 0
+    for i, r in enumerate(todo):
         try:
-            transactions = fetch_ptr_transactions(session, report["report_path"])
+            txns = fetch_ptr_transactions(session, r["report_path"])
         except requests.RequestException:
             continue
-        for tx in transactions:
-            # Every disclosed trade is kept. Trades in a tracked constituent
-            # are attributed to that constituent's sector(s); everything else
-            # (including non-ticker assets like bonds and funds) goes in the
-            # OTHER bucket so nothing is silently dropped.
-            matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
-                {"sector": "OTHER", "company": tx["asset_name"]}
-            ]
-            for info in matches:
-                dedupe_key = (report["senator"], tx["ticker"], tx["asset_name"], tx["transaction_date"], tx["type"], tx["amount_range"], info["sector"])
-                if dedupe_key in seen:
-                    continue
-                seen.add(dedupe_key)
-                trades.append({
-                    "sector": info["sector"],
-                    "ticker": tx["ticker"],
-                    "company": info["company"],
-                    "member": f"Sen. {report['senator']}",
-                    "chamber": "Senate",
-                    "transaction_date": tx["transaction_date"],
-                    "filed_date": report["filed_date"],
-                    "type": tx["type"],
-                    "amount_range": tx["amount_range"],
-                    "report_url": f"{EFD_BASE}{report['report_path']}",
-                })
-        time.sleep(0.25)
-
-    matched = sum(1 for t in trades if t["sector"] != "OTHER")
-    print(f"  {len(trades)} trades captured ({matched} matched a tracked sector)", file=sys.stderr)
-    return trades
+        sc[r["report_path"]] = {
+            "member": f"Sen. {r['senator']}",
+            "chamber": "Senate",
+            "filed_date": r["filed_date"],
+            "report_url": f"{EFD_BASE}{r['report_path']}",
+            "txns": [{k: tx[k] for k in TX_FIELDS} for tx in txns],
+        }
+        fetched += 1
+        time.sleep(0.2)
+        if fetched % 100 == 0:
+            print(f"  ...senate {fetched}/{len(todo)}", file=sys.stderr)
+            save_trades_cache(cache)  # checkpoint the backfill
+    print(f"  senate: {fetched} newly cached, {len(sc)} total filings", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------
@@ -641,12 +644,12 @@ def parse_house_ptr_pdf(pdf_bytes):
     return txs
 
 
-def fetch_house_trades(ticker_index):
-    print("Fetching House periodic transaction reports (disclosures-clerk.house.gov)...", file=sys.stderr)
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=SENATE_TRADES_LOOKBACK_DAYS)
-    years = sorted({start_date.year, end_date.year})
-
+def scrape_house_filings(cache, start_date, end_date):
+    """Enumerate House PTR filings in the window and download/parse only the
+    ones not already cached. Paper (scanned) filings are cached as empty so we
+    don't re-download them each run."""
+    print("Scraping House PTRs (disclosures-clerk.house.gov)...", file=sys.stderr)
+    years = sorted({start_date.year, end_date.year, end_date.year - 1})
     reports = []
     for year in years:
         try:
@@ -663,48 +666,75 @@ def fetch_house_trades(ticker_index):
         if start_date <= filed <= end_date:
             in_window.append(r)
 
-    print(f"  found {len(in_window)} House PTR filings in the last {SENATE_TRADES_LOOKBACK_DAYS} days, parsing PDFs...", file=sys.stderr)
-    trades = []
-    seen = set()
-    skipped_paper = 0
-    for report in in_window:
-        pdf_url = f"{HOUSE_BASE}/ptr-pdfs/{report['year']}/{report['doc_id']}.pdf"
+    hc = cache["house"]
+    todo = [r for r in in_window if r["doc_id"] not in hc]
+    print(f"  {len(in_window)} filings in window, {len(todo)} new to fetch...", file=sys.stderr)
+    fetched = paper = 0
+    for r in todo:
+        pdf_url = f"{HOUSE_BASE}/ptr-pdfs/{r['year']}/{r['doc_id']}.pdf"
         try:
             resp = requests.get(pdf_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
             resp.raise_for_status()
-        except requests.RequestException as e:
-            print(f"  WARN: could not download House PTR {report['doc_id']}: {e}", file=sys.stderr)
+        except requests.RequestException:
             continue
         transactions = parse_house_ptr_pdf(resp.content)
         if transactions is None:
-            skipped_paper += 1
-            continue
-        member = f"Rep. {report['name']} ({report['state_district']})"
-        for tx in transactions:
-            matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
-                {"sector": "OTHER", "company": tx["asset_name"]}
-            ]
-            for info in matches:
-                dedupe_key = (member, tx["ticker"], tx["asset_name"], tx["transaction_date"], tx["type"], tx["amount_range"], info["sector"])
-                if dedupe_key in seen:
-                    continue
-                seen.add(dedupe_key)
-                trades.append({
-                    "sector": info["sector"],
-                    "ticker": tx["ticker"],
-                    "company": info["company"],
-                    "member": member,
-                    "chamber": "House",
-                    "transaction_date": tx["transaction_date"],
-                    "filed_date": report["filed_date"],
-                    "type": tx["type"],
-                    "amount_range": tx["amount_range"],
-                    "report_url": pdf_url,
-                })
-        time.sleep(0.3)
+            hc[r["doc_id"]] = {"paper": True, "txns": []}  # cache the skip
+            paper += 1
+        else:
+            hc[r["doc_id"]] = {
+                "member": f"Rep. {r['name']} ({r['state_district']})",
+                "chamber": "House",
+                "filed_date": r["filed_date"],
+                "report_url": pdf_url,
+                "txns": [{k: tx[k] for k in TX_FIELDS} for tx in transactions],
+            }
+            fetched += 1
+        time.sleep(0.25)
+        if (fetched + paper) % 100 == 0:
+            print(f"  ...house {fetched + paper}/{len(todo)}", file=sys.stderr)
+            save_trades_cache(cache)
+    print(f"  house: {fetched} newly cached, {paper} paper skipped, {len(hc)} total filings", file=sys.stderr)
 
+
+def build_trades_from_cache(cache, ticker_index, start_date):
+    """Rebuild the flat trades list from every cached filing, applying the
+    current sector matching. Cheap, so sector logic can evolve without rescraping."""
+    trades = []
+    seen = set()
+    for source in ("senate", "house"):
+        for f in cache.get(source, {}).values():
+            if not f.get("txns"):
+                continue
+            try:
+                if datetime.strptime(f["filed_date"], "%m/%d/%Y") < start_date:
+                    continue
+            except (ValueError, KeyError):
+                pass
+            for tx in f["txns"]:
+                matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
+                    {"sector": "OTHER", "company": tx["asset_name"]}
+                ]
+                for info in matches:
+                    key = (f["member"], tx["ticker"], tx["asset_name"], tx["transaction_date"],
+                           tx["type"], tx["amount_range"], info["sector"])
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    trades.append({
+                        "sector": info["sector"],
+                        "ticker": tx["ticker"],
+                        "company": info["company"],
+                        "member": f["member"],
+                        "chamber": f["chamber"],
+                        "transaction_date": tx["transaction_date"],
+                        "filed_date": f["filed_date"],
+                        "type": tx["type"],
+                        "amount_range": tx["amount_range"],
+                        "report_url": f["report_url"],
+                    })
     matched = sum(1 for t in trades if t["sector"] != "OTHER")
-    print(f"  {len(trades)} House trades captured ({matched} matched a tracked sector; {skipped_paper} paper filings skipped)", file=sys.stderr)
+    print(f"  built {len(trades)} trades from cache ({matched} matched a tracked sector)", file=sys.stderr)
     return trades
 
 
@@ -1299,12 +1329,26 @@ def build_member_profiles(trades):
             "tickers": {},
             "sectors": set(),
             "last_filed": None,
+            "buy_basis": 0, "buy_gain": 0, "priced": 0, "wins": 0,
+            "best": None, "worst": None,
         })
         p["trade_count"] += 1
         val = t.get("est_amount", 0)
         if _is_buy(t["type"]):
             p["buy_count"] += 1
             p["buy_value"] += val
+            # Track record: dollar-weighted paper return of the member's BUYS
+            # (a sale closes a position, so P&L is only meaningful on purchases).
+            if t.get("return_pct") is not None and t.get("gain_value") is not None:
+                p["buy_basis"] += val
+                p["buy_gain"] += t["gain_value"]
+                p["priced"] += 1
+                if t["return_pct"] > 0:
+                    p["wins"] += 1
+                if p["best"] is None or t["return_pct"] > p["best"]["return_pct"]:
+                    p["best"] = {"ticker": t["ticker"], "return_pct": t["return_pct"]}
+                if p["worst"] is None or t["return_pct"] < p["worst"]["return_pct"]:
+                    p["worst"] = {"ticker": t["ticker"], "return_pct": t["return_pct"]}
         else:
             p["sell_count"] += 1
             p["sell_value"] += val
@@ -1335,6 +1379,12 @@ def build_member_profiles(trades):
             "top_tickers": [{"ticker": t, "count": c} for t, c in top_tickers],
             "sectors": sorted(p["sectors"]),
             "last_filed": p["last_filed"],
+            # Track record (dollar-weighted paper return of disclosed buys)
+            "portfolio_return": round(p["buy_gain"] / p["buy_basis"] * 100, 1) if p["buy_basis"] else None,
+            "win_rate": round(p["wins"] / p["priced"] * 100) if p["priced"] else None,
+            "priced_buys": p["priced"],
+            "best_trade": p["best"],
+            "worst_trade": p["worst"],
         })
     out.sort(key=lambda p: p["total_value"], reverse=True)
     return out
@@ -1420,6 +1470,56 @@ def build_unusual_activity(stock_signals):
         "consensus_sells": [slim(s) for s in consensus_sells],
         "bipartisan": [slim(s) for s in bipartisan],
     }
+
+
+def build_smart_money(trades, cluster_days=75, min_buyers=3):
+    """The 'smart money' surface -- the signals that actually mean something:
+      * cluster buys: several DIFFERENT members buying the same stock inside a
+        short window (conviction that isn't one person's idiosyncratic bet),
+      * big single bets placed recently,
+    each carrying the buyers, party mix, dollar size, and how the stock has done
+    since. All from disclosed records."""
+    now = datetime.now()
+    cutoff = now - timedelta(days=cluster_days)
+    by_tk = {}
+    for t in trades:
+        if not t.get("ticker") or not _is_buy(t["type"]):
+            continue
+        if _parse_mdy(t["transaction_date"]) < cutoff:
+            continue
+        e = by_tk.setdefault(t["ticker"], {"ticker": t["ticker"], "company": t["company"],
+                                           "sector": t["sector"], "buyers": {}, "value": 0, "rets": []})
+        b = e["buyers"].setdefault(t["member"], {"member": t["member"], "party": t.get("party", "?"), "value": 0})
+        b["value"] += t.get("est_amount", 0)
+        e["value"] += t.get("est_amount", 0)
+        if t.get("return_pct") is not None:
+            e["rets"].append(t["return_pct"])
+
+    clusters = []
+    for e in by_tk.values():
+        if len(e["buyers"]) < min_buyers:
+            continue
+        parties = {b["party"] for b in e["buyers"].values() if b["party"] in ("D", "R", "I")}
+        clusters.append({
+            "ticker": e["ticker"], "company": e["company"], "sector": e["sector"],
+            "n_buyers": len(e["buyers"]),
+            "total_value": e["value"],
+            "parties": sorted(parties),
+            "bipartisan": len(parties & {"D", "R"}) == 2,
+            "avg_return": round(sum(e["rets"]) / len(e["rets"]), 1) if e["rets"] else None,
+            "buyers": sorted(([dict(b) for b in e["buyers"].values()]), key=lambda b: b["value"], reverse=True)[:10],
+        })
+    clusters.sort(key=lambda c: (c["n_buyers"], c["total_value"]), reverse=True)
+
+    recent_cut = now - timedelta(days=45)
+    recent = [t for t in trades if t.get("ticker") and _parse_mdy(t["transaction_date"]) >= recent_cut]
+    recent.sort(key=lambda t: t.get("est_amount", 0), reverse=True)
+    big_bets = [{"ticker": t["ticker"], "company": t["company"], "member": t["member"],
+                 "party": t.get("party", "?"), "type": t["type"], "value": t.get("est_amount", 0),
+                 "transaction_date": t["transaction_date"], "return_pct": t.get("return_pct"),
+                 "sector": t["sector"]} for t in recent[:14]]
+
+    return {"cluster_window_days": cluster_days, "clusters": clusters[:24], "big_bets": big_bets}
 
 
 def _sector_trade_stats(sector_trades):
@@ -1828,7 +1928,12 @@ def main():
 
     bills = fetch_bills(sectors)
     bills = enrich_bills(bills)
-    trades = fetch_senate_trades(ticker_index) + fetch_house_trades(ticker_index)
+    trades_cache = load_trades_cache()
+    trade_start = datetime.now() - timedelta(days=TRADES_LOOKBACK_DAYS)
+    scrape_senate_filings(trades_cache, trade_start, datetime.now())
+    scrape_house_filings(trades_cache, trade_start, datetime.now())
+    save_trades_cache(trades_cache)
+    trades = build_trades_from_cache(trades_cache, ticker_index, trade_start)
     trades = annotate_trade_values(trades)
     trades = annotate_trade_parties(trades, member_index)
 
@@ -1855,6 +1960,7 @@ def main():
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
+    smart_money = build_smart_money(trades)
     performance = build_performance(trades, prices)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
@@ -1866,6 +1972,7 @@ def main():
         "overview": overview,
         "performance": performance,
         "unusual_activity": unusual,
+        "smart_money": smart_money,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,
@@ -1876,7 +1983,7 @@ def main():
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
+        json.dump(output, f, separators=(",", ":"))  # compact -- clients download this on every load
     appropriations = sum(1 for b in bills if b.get("is_appropriation"))
     key = sum(1 for b in bills if b.get("key_bill"))
     print(f"Wrote {OUTPUT_PATH}: {len(bills)} bills ({key} key, {appropriations} appropriations), "
