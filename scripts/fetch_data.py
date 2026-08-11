@@ -702,6 +702,8 @@ def build_trades_from_cache(cache, ticker_index, start_date):
     current sector matching. Cheap, so sector logic can evolve without rescraping."""
     trades = []
     seen = set()
+    future = datetime.now() + timedelta(days=1)  # a trade can't have happened tomorrow
+    dropped_future = 0
     for source in ("senate", "house"):
         for f in cache.get(source, {}).values():
             if not f.get("txns"):
@@ -712,6 +714,11 @@ def build_trades_from_cache(cache, ticker_index, start_date):
             except (ValueError, KeyError):
                 pass
             for tx in f["txns"]:
+                # Drop data-entry errors with an impossible future transaction date.
+                txd = _parse_mdy(tx["transaction_date"])
+                if txd != datetime.min and txd > future:
+                    dropped_future += 1
+                    continue
                 matches = (ticker_index.get(tx["ticker"]) if tx["ticker"] else None) or [
                     {"sector": "OTHER", "company": tx["asset_name"]}
                 ]
@@ -734,7 +741,8 @@ def build_trades_from_cache(cache, ticker_index, start_date):
                         "report_url": f["report_url"],
                     })
     matched = sum(1 for t in trades if t["sector"] != "OTHER")
-    print(f"  built {len(trades)} trades from cache ({matched} matched a tracked sector)", file=sys.stderr)
+    print(f"  built {len(trades)} trades from cache ({matched} matched a tracked sector; "
+          f"dropped {dropped_future} with future dates)", file=sys.stderr)
     return trades
 
 
