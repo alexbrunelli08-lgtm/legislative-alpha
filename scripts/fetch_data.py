@@ -52,8 +52,13 @@ MAX_MATCHED_BILLS = 60            # cap how many matched bills we keep
 SENATE_TRADES_LOOKBACK_DAYS = 45  # (legacy) short window; superseded by TRADES_LOOKBACK_DAYS
 TRADES_LOOKBACK_DAYS = 400         # scrape ~13 months of filings so the 1-year backtest is dense
 TRADES_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "trades_cache.json")  # per-filing raw txns
+INSIDER_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "insider_cache.json")  # SEC Form 4 filings
+INSIDER_FILINGS_PER_RUN = 300     # recent Form 4 filings to scan per run (1 req each)
+INSIDER_MAX_DAYS = 120            # keep insider transactions from this window
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
+SEC_HEADERS = {"User-Agent": "Legislative Alpha research tracker admin@legislative-alpha.example",
+               "Accept-Encoding": "gzip, deflate"}
 
 CONGRESS_API_KEY = os.environ.get("CONGRESS_API_KEY")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
@@ -744,6 +749,204 @@ def build_trades_from_cache(cache, ticker_index, start_date):
     print(f"  built {len(trades)} trades from cache ({matched} matched a tracked sector; "
           f"dropped {dropped_future} with future dates)", file=sys.stderr)
     return trades
+
+
+# ---------------------------------------------------------------------------
+# 2c. Corporate insider trades -- SEC Form 4 filings (EDGAR).
+# Officers, directors and 10% owners buying/selling their OWN company's stock.
+# Open-market purchases (code P) are the classic bullish "insiders are buying"
+# signal; sales (code S) are noisier. Free from SEC EDGAR (needs a real UA).
+# ---------------------------------------------------------------------------
+
+EDGAR_ATOM_NS = {"a": "http://www.w3.org/2005/Atom"}
+SEC_TXN_KEEP = {"P", "S"}  # open-market purchase / sale (skip grants, option exercises, gifts)
+
+
+def load_insider_cache():
+    if os.path.exists(INSIDER_CACHE_PATH):
+        try:
+            return json.load(open(INSIDER_CACHE_PATH, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def save_insider_cache(cache):
+    json.dump(cache, open(INSIDER_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+
+
+def fetch_recent_form4_links(count):
+    """(accession, index_url) for the most recent Form 4 filings across EDGAR."""
+    out = []
+    for start in range(0, count, 100):
+        try:
+            r = requests.get("https://www.sec.gov/cgi-bin/browse-edgar",
+                             params={"action": "getcurrent", "type": "4", "output": "atom",
+                                     "count": 100, "start": start},
+                             headers=SEC_HEADERS, timeout=REQUEST_TIMEOUT)
+            if r.status_code != 200:
+                break
+            root = ET.fromstring(r.text)
+        except (requests.RequestException, ET.ParseError):
+            break
+        entries = root.findall("a:entry", EDGAR_ATOM_NS)
+        if not entries:
+            break
+        for e in entries:
+            link = e.find("a:link", EDGAR_ATOM_NS)
+            href = link.get("href") if link is not None else None
+            if not href:
+                continue
+            m = re.search(r"/(\d{10}-\d{2}-\d{6})-index", href)
+            out.append((m.group(1) if m else href, href))
+        time.sleep(0.2)
+    return out
+
+
+def _f4_text(parent, path):
+    if parent is None:
+        return None
+    el = parent.find(path)
+    return el.text.strip() if el is not None and el.text else None
+
+
+def parse_form4(index_url):
+    """Fetch a Form 4's XML and return {ticker, company, insider, roles, txns[]}.
+    Tries the standard primary_doc.xml directly (1 request) to stay well under
+    SEC's 10 req/sec limit; falls back to scraping the index page if needed."""
+    folder = index_url.rsplit("/", 1)[0]
+    try:
+        r = requests.get(folder + "/primary_doc.xml", headers=SEC_HEADERS, timeout=REQUEST_TIMEOUT)
+        if r.status_code != 200 or "<issuer" not in r.text[:4000]:
+            idx = requests.get(index_url, headers=SEC_HEADERS, timeout=REQUEST_TIMEOUT)
+            m = re.search(r'href="([^"]*\.xml)"', idx.text)
+            if not m:
+                return None
+            path = m.group(1)
+            xml_url = ("https://www.sec.gov" + path) if path.startswith("/") else path
+            r = requests.get(xml_url, headers=SEC_HEADERS, timeout=REQUEST_TIMEOUT)
+        root = ET.fromstring(r.text)
+    except (requests.RequestException, ET.ParseError):
+        return None
+
+    issuer = root.find("issuer")
+    ticker = _f4_text(issuer, "issuerTradingSymbol")
+    if ticker:
+        ticker = ticker.upper().strip()
+    owner = root.find("reportingOwner")
+    rel = owner.find("reportingOwnerRelationship") if owner is not None else None
+    roles = []
+    if _f4_text(rel, "isDirector") in ("1", "true"):
+        roles.append("Director")
+    if _f4_text(rel, "isOfficer") in ("1", "true"):
+        roles.append(_f4_text(rel, "officerTitle") or "Officer")
+    if _f4_text(rel, "isTenPercentOwner") in ("1", "true"):
+        roles.append("10% owner")
+
+    txns = []
+    for t in root.findall(".//nonDerivativeTransaction"):
+        code = _f4_text(t, "transactionCoding/transactionCode")
+        if code not in SEC_TXN_KEEP:
+            continue
+        try:
+            shares = float(_f4_text(t, "transactionAmounts/transactionShares/value") or 0)
+            price = float(_f4_text(t, "transactionAmounts/transactionPricePerShare/value") or 0)
+        except (TypeError, ValueError):
+            shares = price = 0
+        txns.append({
+            "code": code,  # P=purchase, S=sale
+            "date": _f4_text(t, "transactionDate/value"),
+            "shares": round(shares),
+            "price": round(price, 2),
+            "value": round(shares * price),
+        })
+    return {"ticker": ticker, "company": _f4_text(issuer, "issuerName"),
+            "insider": _f4_text(owner, "reportingOwnerId/rptOwnerName"), "roles": roles, "txns": txns}
+
+
+def scrape_insider_filings(cache):
+    """Fetch recent Form 4 filings and parse the ones we haven't cached yet.
+    Cache is keyed by accession number; filings with no open-market P/S trades are
+    cached as empty so they aren't re-fetched."""
+    print("Scraping SEC Form 4 insider filings (edgar)...", file=sys.stderr)
+    try:
+        links = fetch_recent_form4_links(INSIDER_FILINGS_PER_RUN)
+    except requests.RequestException as e:
+        print(f"  WARN: could not list Form 4 filings: {e}", file=sys.stderr)
+        return
+    todo = [(acc, url) for acc, url in links if acc not in cache]
+    print(f"  {len(links)} recent filings, {len(todo)} new to parse...", file=sys.stderr)
+    fetched = kept = 0
+    for i, (acc, url) in enumerate(todo):
+        parsed = parse_form4(url)
+        if parsed is None:
+            cache[acc] = {"txns": []}  # unparseable -> don't retry
+        else:
+            parsed["url"] = url
+            cache[acc] = parsed
+            if parsed["txns"]:
+                kept += 1
+        fetched += 1
+        time.sleep(0.15)
+        if fetched % 100 == 0:
+            print(f"  ...insiders {fetched}/{len(todo)}", file=sys.stderr)
+            save_insider_cache(cache)
+    print(f"  insiders: {fetched} parsed ({kept} with open-market trades), {len(cache)} cached total", file=sys.stderr)
+
+
+def build_insider_data(cache):
+    """Aggregate cached Form 4s into a feed, per-ticker signals, and cluster buys
+    (several distinct insiders buying the same stock in the window)."""
+    cutoff = datetime.now() - timedelta(days=INSIDER_MAX_DAYS)
+    feed = []
+    for acc, f in cache.items():
+        if not f.get("txns") or not f.get("ticker"):
+            continue
+        for tx in f["txns"]:
+            try:
+                d = datetime.strptime(tx["date"], "%Y-%m-%d")
+            except (ValueError, TypeError):
+                continue
+            if d < cutoff:
+                continue
+            feed.append({
+                "ticker": f["ticker"], "company": f.get("company"),
+                "insider": f.get("insider"), "roles": f.get("roles", []),
+                "code": tx["code"], "buy": tx["code"] == "P",
+                "date": tx["date"], "shares": tx["shares"], "price": tx["price"], "value": tx["value"],
+                "url": f.get("url"),
+            })
+    feed.sort(key=lambda x: x["date"], reverse=True)
+
+    # per-ticker signals
+    sig = {}
+    for x in feed:
+        s = sig.setdefault(x["ticker"], {"ticker": x["ticker"], "company": x["company"],
+                                         "buyers": set(), "sellers": set(), "buy_value": 0, "sell_value": 0,
+                                         "buy_count": 0, "sell_count": 0})
+        if x["buy"]:
+            s["buyers"].add(x["insider"]); s["buy_value"] += x["value"]; s["buy_count"] += 1
+        else:
+            s["sellers"].add(x["insider"]); s["sell_value"] += x["value"]; s["sell_count"] += 1
+    signals = [{"ticker": s["ticker"], "company": s["company"],
+                "n_buyers": len(s["buyers"]), "n_sellers": len(s["sellers"]),
+                "buy_value": s["buy_value"], "sell_value": s["sell_value"],
+                "buy_count": s["buy_count"], "sell_count": s["sell_count"],
+                "net_value": s["buy_value"] - s["sell_value"]} for s in sig.values()]
+
+    # cluster buys: 2+ distinct insiders buying the same ticker
+    clusters = sorted([s for s in signals if s["n_buyers"] >= 2],
+                      key=lambda s: (s["n_buyers"], s["buy_value"]), reverse=True)[:24]
+    top_buys = [x for x in feed if x["buy"]][:40]
+    top_sells = [x for x in feed if not x["buy"]][:20]
+    return {
+        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "window_days": INSIDER_MAX_DAYS,
+        "recent_buys": top_buys,
+        "recent_sells": top_sells,
+        "clusters": clusters,
+        "signals": {s["ticker"]: s for s in signals},
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -1909,6 +2112,12 @@ def main():
     trades = annotate_trade_values(trades)
     trades = annotate_trade_parties(trades, member_index)
 
+    # Corporate insider trades (SEC Form 4) -- independent of congressional data.
+    insider_cache = load_insider_cache()
+    scrape_insider_filings(insider_cache)
+    save_insider_cache(insider_cache)
+    insiders = build_insider_data(insider_cache)
+
     # Route every 'Other' trade into its real economic sector (GICS via Yahoo),
     # so the ~12 niche policy themes no longer leave blue-chips unclassified.
     print("Classifying traded tickers into economic sectors...", file=sys.stderr)
@@ -1945,6 +2154,7 @@ def main():
         "performance": performance,
         "unusual_activity": unusual,
         "smart_money": smart_money,
+        "insiders": insiders,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,

@@ -424,6 +424,22 @@
   .bet-val { font-family: var(--mono); font-weight: 600; color: var(--text); }
   .bet-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
   .ta-r { text-align: right; justify-self: end; }
+  /* Insider (Form 4) rows */
+  .ins-row { display: grid; grid-template-columns: 64px 1.5fr 1.2fr 100px 80px 92px; gap: 10px; align-items: center; padding: 11px 16px; border-top: 1px solid var(--line-soft); font-size: 12px; }
+  .ins-row:first-child { border-top: none; }
+  .ins-row:not(.ins-head):hover { background: var(--panel-2); }
+  .ins-head { font-family: var(--display); font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; background: var(--panel-2); }
+  .ins-ticker { font-family: var(--mono); font-weight: 700; font-size: 13px; cursor: pointer; }
+  .ins-ticker:hover { color: var(--accent); }
+  .ins-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ins-role { color: var(--text-faint); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ins-val { font-family: var(--mono); font-weight: 700; }
+  .ins-val.buys { color: var(--good); } .ins-val.sells { color: var(--bad); }
+  .ins-shares, .ins-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+  .insider-flag { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--grad-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 11px 14px; margin-bottom: 16px; }
+  .if-label { font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+  .if-body { display: flex; gap: 16px; font-family: var(--mono); font-size: 12px; }
+  .if-body b { font-size: 13px; }
 
   /* ---------- Command palette (⌘K) ---------- */
   .cmdk-btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--display); font-size: 12px; font-weight: 500; color: var(--text-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; cursor: pointer; transition: all 0.12s ease; white-space: nowrap; }
@@ -577,6 +593,7 @@
     <div class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="smart">Smart Money</button>
+      <button class="view-tab" data-view="insiders">Insiders</button>
       <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
       <button class="view-tab" data-view="bills">Bills</button>
@@ -650,7 +667,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "smart", "bills", "politicians", "stocks"];
+  const VIEWS = ["overview", "smart", "insiders", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -671,6 +688,7 @@
   const VIEW_HINTS = {
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     smart: "Where conviction is clustering — the same stocks several members are buying at once.",
+    insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
     politicians: "Every member ranked by the actual return on their disclosed trades.",
     stocks: "What Congress is buying and selling, aggregated per ticker. Quiver-style consensus.",
@@ -1469,6 +1487,70 @@
     </div>`;
   }
 
+  /* ---------- INSIDERS VIEW (SEC Form 4) ---------- */
+  function renderInsidersView() {
+    const ins = DATA.insiders;
+    if (!ins || (!(ins.recent_buys || []).length && !(ins.recent_sells || []).length))
+      return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
+        <div class="lead-eyebrow">SEC Form 4</div><h1 class="lead-h1">Corporate<br>insiders</h1>
+        <p class="lead-tagline">Officers, directors and 10% owners buying and selling their own company's stock.</p></div></div>
+        <div class="empty-note">No open-market insider trades captured yet — this fills in as SEC Form 4 filings are scraped over the coming runs.</div></section>`;
+
+    const insRow = x => `<div class="ins-row">
+      <span class="ins-ticker clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</span>
+      <span class="ins-name">${esc(x.insider || "—")}</span>
+      <span class="ins-role">${esc((x.roles || []).join(" · ") || "insider")}</span>
+      <span class="ta-r ins-val ${x.buy ? "buys" : "sells"}">${x.buy ? "+" : "−"}${fmtMoney(x.value)}</span>
+      <span class="ins-shares">${x.shares ? x.shares.toLocaleString() + " sh" : ""}</span>
+      <span class="ins-date">${esc(x.date)}</span>
+    </div>`;
+    const table = (rows, empty) => rows.length
+      ? `<div class="bets-list"><div class="ins-row ins-head"><span>Ticker</span><span>Insider</span><span>Role</span><span class="ta-r">Value</span><span>Size</span><span>Date</span></div>${rows.map(insRow).join("")}</div>`
+      : `<div class="empty-note">${empty}</div>`;
+
+    return `<section class="data-section">
+      <div class="lead-hero">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">SEC Form 4 · last ${ins.window_days || 120} days</div>
+          <h1 class="lead-h1">Corporate<br>insiders</h1>
+          <p class="lead-tagline">When a company's own officers, directors and 10% owners buy on the open market, they're betting on themselves — the classic conviction signal.</p>
+          <div class="lead-stat-row">
+            <div class="lead-stat"><b class="up">${(ins.recent_buys || []).length}</b><i>recent buys</i></div>
+            <div class="lead-stat"><b>${(ins.clusters || []).length}</b><i>cluster buys</i></div>
+          </div>
+        </div>
+        ${(ins.clusters || []).length ? `<div class="podium">${ins.clusters.slice(0, 3).map(renderInsiderCluster).join("")}</div>` : ""}
+      </div>
+      ${(ins.clusters || []).length > 3 ? `<div class="section-head"><span class="section-title">More cluster buys</span><span class="section-count">2+ insiders buying the same stock</span></div>
+        <div class="cluster-grid">${ins.clusters.slice(3).map(renderInsiderClusterCard).join("")}</div>` : ""}
+      <div class="section-head" style="margin-top:24px;"><span class="section-title">Insider buys</span><span class="section-count">open-market purchases · biggest bets of conviction</span></div>
+      ${table(ins.recent_buys || [], "No insider buys captured yet.")}
+      <div class="section-head" style="margin-top:24px;"><span class="section-title">Insider sells</span><span class="section-count">open-market sales</span></div>
+      ${table(ins.recent_sells || [], "No insider sells captured yet.")}
+    </section>`;
+  }
+
+  function renderInsiderCluster(c) {
+    return `<div class="podium-card pod-1" style="cursor:pointer">
+      <div class="podium-rank">${c.n_buyers}</div>
+      <div class="podium-id">
+        <div class="podium-name clickable-ticker" data-ticker="${esc(c.ticker)}">${esc(c.ticker)}</div>
+        <div class="podium-meta">${esc((c.company || "").slice(0, 30))} · ${c.n_buyers} insiders buying</div>
+      </div>
+      <div class="ret-pill up">${fmtMoney(c.buy_value)}</div>
+    </div>`;
+  }
+
+  function renderInsiderClusterCard(c) {
+    return `<div class="cluster-card">
+      <div class="cl-top">
+        <div style="min-width:0"><div class="cl-ticker clickable-ticker" data-ticker="${esc(c.ticker)}">${esc(c.ticker)}</div><div class="cl-company">${esc(c.company || "")}</div></div>
+        <div class="cl-badges"><span class="cl-buyers-badge">${c.n_buyers} insiders</span></div>
+      </div>
+      <div class="cl-metrics"><span class="cl-val">${fmtMoney(c.buy_value)} bought</span></div>
+    </div>`;
+  }
+
   /* ---------- STOCKS VIEW ---------- */
   function renderStocksView() {
     let signals = filterBySector(DATA.stock_signals || []);
@@ -1710,6 +1792,17 @@
           <div class="mstat"><div class="mstat-v net-neg">${fmtMoney(sellV)}</div><div class="mstat-l">${sellN} sells</div></div>
           <div class="mstat"><div class="mstat-v">${members}</div><div class="mstat-l">Members</div></div>
         </div>
+        ${(() => {
+          const isig = DATA.insiders && DATA.insiders.signals && DATA.insiders.signals[ticker];
+          if (!isig || (!isig.n_buyers && !isig.n_sellers)) return "";
+          return `<div class="insider-flag">
+            <span class="if-label">Corporate insiders · SEC Form 4</span>
+            <span class="if-body">
+              ${isig.n_buyers ? `<span class="buys"><b>${isig.n_buyers}</b> insider${isig.n_buyers > 1 ? "s" : ""} bought ${fmtMoney(isig.buy_value)}</span>` : ""}
+              ${isig.n_sellers ? `<span class="sells"><b>${isig.n_sellers}</b> sold ${fmtMoney(isig.sell_value)}</span>` : ""}
+            </span>
+          </div>`;
+        })()}
         ${(DATA.stock_history && DATA.stock_history[ticker]) ? `
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:10px 14px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);">
             <span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);font-weight:600;">Congressional interest (members over time)</span>
@@ -1890,6 +1983,7 @@
     const el = document.getElementById("content");
     if (activeView === "overview") el.innerHTML = renderOverviewView();
     else if (activeView === "smart") el.innerHTML = renderSmartView();
+    else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
