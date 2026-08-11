@@ -569,7 +569,6 @@
     </div>
   </header>
 
-  <section class="hero" id="hero"></section>
 
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
@@ -1939,7 +1938,6 @@
   window.addEventListener("resize", () => { clearTimeout(_tmResize); _tmResize = setTimeout(fillTreemaps, 150); });
 
   function renderAll() {
-    renderHero();
     renderViewTabs();
     renderFilterTabs();
     // Overview is a global snapshot — the per-sector filter doesn't apply there.
