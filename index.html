@@ -957,11 +957,15 @@
 
   async function loadData() {
     try {
-      const res = await fetch("data.json", { cache: "no-store" });
+      // Cache-buster: GitHub Pages' CDN can otherwise serve a stale data.json to
+      // returning visitors, making fresh trades look missing. A per-load query
+      // param guarantees the newest file every time.
+      const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       DATA = await res.json();
-      document.getElementById("statusBadge").innerHTML = `LIVE — updated <b>${fmtDate(DATA.generated_at)}</b>`;
-      document.getElementById("footerUpdated").textContent = `Not investment advice · data as of ${fmtDate(DATA.generated_at)}`;
+      const asOf = fmtDate(DATA.generated_at);
+      document.getElementById("statusBadge").innerHTML = `LIVE — updated <b>${asOf}</b>`;
+      document.getElementById("footerUpdated").textContent = `Not investment advice · data as of ${asOf}`;
       route();  // honor any deep-link hash on first load
     } catch (err) {
       document.getElementById("statusBadge").textContent = "DATA UNAVAILABLE";
