@@ -325,6 +325,35 @@
 
   /* ---------- Politician cards ---------- */
   /* ---------- Trading leaderboard ---------- */
+  /* Leaderboard hero + podium */
+  .lead-hero { display: grid; grid-template-columns: 1fr 1.15fr; gap: 30px; align-items: center; padding: 12px 0 30px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .lead-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .lead-h1 { font-family: var(--display); font-weight: 700; font-size: 46px; line-height: 1.02; letter-spacing: -0.03em; margin: 0; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .lead-tagline { font-size: 14px; color: var(--text-dim); margin: 16px 0 20px; max-width: 380px; line-height: 1.55; }
+  .lead-stat-row { display: flex; gap: 30px; }
+  .lead-stat b { display: block; font-family: var(--display); font-weight: 700; font-size: 28px; letter-spacing: -0.02em; }
+  .lead-stat b.up { color: var(--good); } .lead-stat b.down { color: var(--bad); }
+  .lead-stat i { font-style: normal; font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .podium { display: flex; flex-direction: column; gap: 10px; }
+  .podium-card { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--panel); cursor: pointer; position: relative; overflow: hidden; transition: transform 0.14s ease, border-color 0.14s ease; }
+  .podium-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; }
+  .podium-card:hover { transform: translateX(3px); border-color: var(--accent-dim); }
+  .podium-card.pod-1 { background: linear-gradient(100deg, rgba(94,234,212,0.10), rgba(124,135,255,0.06), var(--panel) 70%); }
+  .podium-card.pod-1::before { background: var(--grad); }
+  .podium-card.pod-2::before { background: #9AA3B2; }
+  .podium-card.pod-3::before { background: #C08A5A; }
+  .podium-rank { font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--text-faint); width: 20px; text-align: center; flex-shrink: 0; }
+  .podium-card.pod-1 .podium-rank { color: var(--accent); }
+  .podium-card .member-photo { width: 46px; height: 46px; flex-shrink: 0; }
+  .podium-id { flex: 1; min-width: 0; }
+  .podium-name { font-family: var(--display); font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .podium-meta { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+  .podium-ret { flex-shrink: 0; }
+  .lead-controls { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sort-wrap { display: flex; align-items: center; gap: 10px; }
+  .sort-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); }
+  @media (max-width: 820px) { .lead-hero { grid-template-columns: 1fr; gap: 22px; } .lead-h1 { font-size: 38px; } }
+
   .lead-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
   .lead-title { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; margin: 0; }
   .lead-sub { font-size: 13px; color: var(--text-dim); margin: 6px 0 0; max-width: 560px; line-height: 1.5; }
@@ -544,9 +573,9 @@
 
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
-      <button class="view-tab active" data-view="overview">Overview</button>
+      <button class="view-tab active" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="smart">Smart Money</button>
-      <button class="view-tab" data-view="politicians">Leaderboard</button>
+      <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
       <button class="view-tab" data-view="bills">Bills</button>
     </div>
@@ -607,7 +636,7 @@
 <script>
   let DATA = null;
   let activeSector = "ALL";
-  let activeView = "overview";
+  let activeView = "politicians";
   let openId = null;           // open bill key
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
@@ -631,7 +660,7 @@
     if (kind === "stock" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openStock(arg); return; }
     if (kind === "member" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openMember(arg); return; }
     if (kind === "sector" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openSector(arg); return; }
-    const v = VIEWS.includes(kind) ? kind : "overview";
+    const v = VIEWS.includes(kind) ? kind : "politicians";
     if (activeView !== v) { activeView = v; resetPaging(); }
     if (document.getElementById("stockModal").classList.contains("open")) closeStock(true);
     renderAll();
@@ -1215,18 +1244,47 @@
     const sortTabs = Object.entries(MEMBER_SORTS).map(([k, v]) =>
       `<button class="sort-tab ${k === memberSort ? "active" : ""}" data-msort="${k}">${v.label}</button>`).join("");
 
+    // headline stats + podium (always the top performers by return)
+    const scored = members.filter(m => m.portfolio_return != null);
+    const byRet = scored.slice().sort((a, b) => b.portfolio_return - a.portfolio_return);
+    const podium = byRet.slice(0, 3);
+    const green = scored.filter(m => m.portfolio_return > 0).length;
+    const greenPct = scored.length ? Math.round(green / scored.length * 100) : 0;
+    const sortedRets = scored.map(m => m.portfolio_return).sort((a, b) => a - b);
+    const median = sortedRets.length ? sortedRets[Math.floor(sortedRets.length / 2)] : null;
+
     return `<section class="data-section">
-      <div class="lead-head">
-        <div>
-          <h2 class="lead-title">Congress Trading Leaderboard</h2>
-          <p class="lead-sub">Every member ranked by ${sort.sub}. Track record = dollar-weighted paper return of their disclosed purchases.</p>
+      <div class="lead-hero">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Congress Trading · ${scored.length} tracked</div>
+          <h1 class="lead-h1">Who's beating<br>the market</h1>
+          <p class="lead-tagline">Every member's disclosed trades, scored by how the stock has performed since they filed.</p>
+          <div class="lead-stat-row">
+            <div class="lead-stat"><b>${greenPct}%</b><i>members in the green</i></div>
+            <div class="lead-stat"><b class="${median > 0 ? "up" : "down"}">${median != null ? (median > 0 ? "+" : "") + median.toFixed(1) + "%" : "—"}</b><i>median track record</i></div>
+          </div>
         </div>
-        <div class="sort-tabs">${sortTabs}</div>
+        <div class="podium">${podium.map((m, i) => renderPodium(m, i)).join("")}</div>
       </div>
-      ${partyChips(total)}
+      <div class="lead-controls">
+        <div class="sort-wrap"><span class="sort-label">Rank by</span><div class="sort-tabs">${sortTabs}</div></div>
+        ${partyChips(total)}
+      </div>
       <div class="lead-list">${visible.map((m, i) => renderLeaderRow(m, i + 1)).join("")}</div>
       ${ranked.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, ranked.length - membersShown)} more</button>` : ""}
     </section>`;
+  }
+
+  function renderPodium(m, i) {
+    return `<div class="podium-card pod-${i + 1}" data-member="${esc(m.member)}">
+      <div class="podium-rank">${i + 1}</div>
+      ${memberPhoto(m, true)}
+      <div class="podium-id">
+        <div class="podium-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
+        <div class="podium-meta">${m.chamber}${m.win_rate != null ? ` · ${m.win_rate}% win` : ""} · ${m.trade_count} trades</div>
+      </div>
+      <div class="podium-ret">${returnPill(m.portfolio_return, true)}</div>
+    </div>`;
   }
 
   function returnPill(v, big) {
