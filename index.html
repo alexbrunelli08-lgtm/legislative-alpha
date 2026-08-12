@@ -355,6 +355,20 @@
   .lead-controls { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
   .sort-wrap { display: flex; align-items: center; gap: 10px; }
   .sort-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); }
+  /* Screener */
+  .phil-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .phil-tab { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 13px; color: var(--text-dim); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 9px 15px; cursor: pointer; transition: all 0.13s ease; }
+  .phil-tab:hover { color: var(--text); border-color: var(--accent-dim); }
+  .phil-tab.active { background: var(--grad); color: #05231e; border-color: transparent; box-shadow: 0 6px 20px -8px rgba(124,135,255,0.5); }
+  .phil-n { font-family: var(--mono); font-size: 10.5px; font-weight: 700; background: rgba(0,0,0,0.18); border-radius: 999px; padding: 1px 7px; }
+  .phil-tab:not(.active) .phil-n { background: var(--panel-2); color: var(--text-faint); }
+  .phil-thesis { font-size: 13px; color: var(--text-dim); line-height: 1.55; margin-bottom: 16px; max-width: 780px; }
+  .phil-thesis b { color: var(--text); }
+  .scr-table td.num { font-family: var(--mono); text-align: right; }
+  .scr-table th:not(:nth-child(1)):not(:nth-child(2)) { text-align: right; }
+  .scr-tk { font-family: var(--mono); font-weight: 700; color: var(--text); }
+  .scr-co { color: var(--text-dim); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .num-up { color: var(--good); } .num-down { color: var(--bad); }
   @media (max-width: 820px) { .lead-hero { grid-template-columns: 1fr; gap: 22px; } .lead-h1 { font-size: 38px; } }
 
   .lead-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -594,6 +608,7 @@
       <button class="view-tab active" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="smart">Smart Money</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
+      <button class="view-tab" data-view="screener">Screener</button>
       <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
       <button class="view-tab" data-view="bills">Bills</button>
@@ -660,6 +675,7 @@
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
   let memberSort = "return";   // return | winrate | volume | trades
+  let screenPhilosophy = null; // active screener philosophy key
   let tradesShown = 100;
   const TRADES_PAGE = 100;
   let signalsShown = 60;
@@ -667,7 +683,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "smart", "insiders", "bills", "politicians", "stocks"];
+  const VIEWS = ["overview", "smart", "insiders", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -689,6 +705,7 @@
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
+    screener: "The whole US market filtered by investment philosophy — momentum, value, trend, mean-reversion.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
     politicians: "Every member ranked by the actual return on their disclosed trades.",
     stocks: "What Congress is buying and selling, aggregated per ticker. Quiver-style consensus.",
@@ -1551,6 +1568,50 @@
     </div>`;
   }
 
+  /* ---------- SCREENER VIEW (philosophy-based technical screen) ---------- */
+  function renderScreenerView() {
+    const scr = DATA.screener;
+    if (!scr || !(scr.philosophies || []).length)
+      return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
+        <div class="lead-eyebrow">Technical screener</div><h1 class="lead-h1">Screen the<br>whole market</h1>
+        <p class="lead-tagline">Every US-listed stock, filtered by investment philosophy.</p></div></div>
+        <div class="empty-note">The screener is still scanning the market — it appears after the next full data run.</div></section>`;
+
+    const phils = scr.philosophies;
+    const active = phils.find(p => p.key === screenPhilosophy) || phils[0];
+    const tabs = phils.map(p => `<button class="phil-tab ${p.key === active.key ? "active" : ""}" data-phil="${p.key}">${esc(p.name)}<span class="phil-n">${p.stocks.length}</span></button>`).join("");
+    const sgn = (v, suf = "%") => v == null ? `<td class="num">—</td>` : `<td class="num ${v >= 0 ? "num-up" : "num-down"}">${v > 0 ? "+" : ""}${v}${suf}</td>`;
+    const plain = (v, suf = "") => `<td class="num">${v == null ? "—" : v + suf}</td>`;
+    const rows = active.stocks.map(s => `<tr>
+      <td class="scr-tk">${esc(s.ticker)}</td>
+      <td class="scr-co">${esc(s.company || "")}</td>
+      ${plain("$" + s.price)}
+      ${sgn(s.vs200)}
+      ${sgn(s.vs_high)}
+      ${plain(s.rsi)}
+      ${sgn(s.r3)}
+      ${sgn(s.r6)}
+      ${plain(s.vol, "%")}
+    </tr>`).join("");
+
+    return `<section class="data-section">
+      <div class="lead-hero">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Technical screener · ${(scr.universe || 0).toLocaleString()} stocks scanned</div>
+          <h1 class="lead-h1">Screen the<br>whole market</h1>
+          <p class="lead-tagline">Every US-listed stock filtered through classic investment philosophies — momentum, mean-reversion, trend and value — from live technical indicators (200-DMA, RSI, momentum, drawdown).</p>
+        </div>
+      </div>
+      <div class="phil-tabs">${tabs}</div>
+      <div class="phil-thesis"><b>${esc(active.name)}.</b> ${esc(active.thesis)}</div>
+      <div class="data-table-wrap"><table class="data-table scr-table">
+        <thead><tr><th>Ticker</th><th>Company</th><th>Price</th><th>vs 200-DMA</th><th>52w high</th><th>RSI</th><th>3M</th><th>6M</th><th>Volatility</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+      <div class="hero-note">Indicators computed from daily closes across ${(scr.universe || 0).toLocaleString()} US-listed common stocks. Screens are rules-based, not recommendations. Not investment advice.</div>
+    </section>`;
+  }
+
   /* ---------- STOCKS VIEW ---------- */
   function renderStocksView() {
     let signals = filterBySector(DATA.stock_signals || []);
@@ -1984,6 +2045,7 @@
     if (activeView === "overview") el.innerHTML = renderOverviewView();
     else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
+    else if (activeView === "screener") el.innerHTML = renderScreenerView();
     else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
@@ -2006,6 +2068,10 @@
     // leaderboard sort tabs
     el.querySelectorAll("[data-msort]").forEach(btn => btn.addEventListener("click", () => {
       memberSort = btn.dataset.msort; membersShown = MEMBERS_PAGE; renderContent();
+    }));
+    // screener philosophy tabs
+    el.querySelectorAll("[data-phil]").forEach(btn => btn.addEventListener("click", () => {
+      screenPhilosophy = btn.dataset.phil; renderContent();
     }));
     // party filter chips
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {

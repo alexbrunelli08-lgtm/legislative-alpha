@@ -20,6 +20,7 @@ Everything is matched to the thematic sectors defined in sectors.json;
 trades in companies outside every sector's tracked list land in OTHER.
 """
 
+import csv
 import io
 import json
 import os
@@ -1867,6 +1868,41 @@ def fetch_prices(tickers):
     return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
 
 
+SCREENER_PRICES_PATH = os.path.join(SCRIPT_DIR, "..", "screener_prices.json")
+SCREENER_HISTORY_DAYS = 300  # ~14 months of closes -- enough for 200-DMA + 52-week
+
+
+def fetch_screener_prices(tickers):
+    """Daily closes for the whole screener universe (~5-6k names). Kept in its
+    own cache (persisted via GitHub Actions cache, not git -- too large to
+    commit). Skips symbols already fresh today, so the big fetch runs once/day."""
+    cache = {}
+    if os.path.exists(SCREENER_PRICES_PATH):
+        try:
+            cache = json.load(open(SCREENER_PRICES_PATH, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            cache = {}
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    todo = [t for t in dict.fromkeys(tickers) if not (t in cache and cache[t].get("asof") == today)]
+    print(f"  screener prices: {len(todo)} of {len(tickers)} to fetch...", file=sys.stderr)
+    fetched = 0
+    for i, tk in enumerate(todo):
+        series = _yf_prices(tk)
+        if series:
+            items = sorted(series.items())[-SCREENER_HISTORY_DAYS:]
+            cache[tk] = {"asof": today, "d": [d for d, _ in items], "c": [c for _, c in items]}
+            fetched += 1
+        else:
+            cache[tk] = {"asof": today, "d": [], "c": []}  # attempted; retry tomorrow
+        time.sleep(0.04)
+        if (i + 1) % 400 == 0:
+            print(f"  ...screener priced {i + 1}/{len(todo)}", file=sys.stderr)
+            json.dump(cache, open(SCREENER_PRICES_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+    json.dump(cache, open(SCREENER_PRICES_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+    print(f"  screener prices: {fetched} fetched, {len(cache)} cached total", file=sys.stderr)
+    return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
+
+
 def build_performance(trades, prices):
     """'Follow Congress' index vs the S&P 500 -- Quiver's public methodology.
 
@@ -1949,6 +1985,175 @@ def build_performance(trades, prices):
                         "multi-year record. STOCK Act filings are disclosed up to ~45 days after the "
                         "trade. Not investment advice; past performance does not predict future results."),
     }
+
+
+# ---------------------------------------------------------------------------
+# Screener -- Finviz-style, but organized by INVESTMENT PHILOSOPHY. Technical
+# indicators (200-DMA, RSI, momentum, drawdown) computed from the daily closes
+# we already cache, then bucketed so each philosophy surfaces different names.
+# ---------------------------------------------------------------------------
+
+def _sma(closes, n):
+    return sum(closes[-n:]) / n if len(closes) >= n else None
+
+
+def _stdev(xs):
+    if len(xs) < 2:
+        return 0.0
+    mean = sum(xs) / len(xs)
+    return (sum((x - mean) ** 2 for x in xs) / len(xs)) ** 0.5
+
+
+def _rsi(closes, n=14):
+    if len(closes) < n + 1:
+        return None
+    gains = losses = 0.0
+    for i in range(-n, 0):
+        ch = closes[i] - closes[i - 1]
+        if ch >= 0:
+            gains += ch
+        else:
+            losses -= ch
+    if losses == 0:
+        return 100.0
+    rs = (gains / n) / (losses / n)
+    return round(100 - 100 / (1 + rs), 1)
+
+
+UNIVERSE_PATH = os.path.join(SCRIPT_DIR, "..", "universe.json")
+NASDAQ_LISTED = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
+OTHER_LISTED = "https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
+# names that signal a non-common-stock security we don't want in the screener
+_NONCOMMON = re.compile(r"warrant|\bunit(s)?\b|\bright(s)?\b|preferred|depositary|when issued|%|convertible note", re.I)
+
+
+def _parse_listing(text, sym_i, name_i, etf_i, test_i, out):
+    for ln in text.splitlines()[1:]:
+        if ln.startswith("File Creation Time"):
+            break
+        p = ln.split("|")
+        if len(p) <= max(sym_i, name_i, etf_i, test_i):
+            continue
+        sym, name = p[sym_i].strip().upper(), p[name_i].strip()
+        if p[test_i].strip() == "Y" or p[etf_i].strip() == "Y":
+            continue
+        if not sym.isalpha() or len(sym) > 5 or _NONCOMMON.search(name):
+            continue
+        # trim boilerplate suffixes from the display name
+        short = re.split(r"\s*[-–]\s*(Common|Class|Ordinary|American)", name)[0].strip() or name
+        out.setdefault(sym, {"name": short[:48]})
+
+
+def load_universe():
+    """Every US-listed common stock (NASDAQ + NYSE/AMEX) from the exchanges'
+    official symbol directories, cached ~7 days. This is the screener's universe
+    -- the whole market, small caps included, independent of congressional data."""
+    if os.path.exists(UNIVERSE_PATH):
+        try:
+            cached = json.load(open(UNIVERSE_PATH, encoding="utf-8"))
+            asof = cached.get("_asof")
+            if asof and (datetime.now() - datetime.strptime(asof, "%Y-%m-%d")).days < 7:
+                return cached.get("tickers", {})
+        except (json.JSONDecodeError, OSError, ValueError):
+            pass
+    tickers = {}
+    try:
+        nas = requests.get(NASDAQ_LISTED, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT).text
+        oth = requests.get(OTHER_LISTED, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT).text
+        # nasdaqlisted: Symbol|Security Name|Market Category|Test Issue|Financial Status|Round Lot|ETF|NextShares
+        _parse_listing(nas, 0, 1, 6, 3, tickers)
+        # otherlisted: ACT Symbol|Security Name|Exchange|CQS Symbol|ETF|Round Lot|Test Issue|NASDAQ Symbol
+        _parse_listing(oth, 0, 1, 4, 6, tickers)
+    except requests.RequestException as e:
+        print(f"  WARN: could not load stock universe: {e}", file=sys.stderr)
+        if os.path.exists(UNIVERSE_PATH):
+            try:
+                return json.load(open(UNIVERSE_PATH, encoding="utf-8")).get("tickers", {})
+            except (json.JSONDecodeError, OSError):
+                pass
+        return {}
+    json.dump({"_asof": datetime.now().strftime("%Y-%m-%d"), "tickers": tickers},
+              open(UNIVERSE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+    print(f"  universe: {len(tickers)} US common stocks", file=sys.stderr)
+    return tickers
+
+
+_SCR_JUNK = re.compile(r"acquisition|\bspac\b|merger corp|capital corp|investment corp|"
+                       r"capital investment|\btrust\b|\bfund\b|\bETF\b|\bETN\b|"
+                       r"fixed|floating|\brate\b|preferred|\bpfd\b|\bnote|depositary|"
+                       r"debenture|\bctf\b|\bsr\b|warrant|"
+                       r"voya|virtus|nuveen|\bpimco\b|abrdn|eaton vance|cohen & steers|"
+                       r"income fund|dividend|municipal|\bmuni\b", re.I)
+
+
+def build_screener(prices, universe):
+    """Compute technical indicators per stock and bucket them into investment
+    philosophies (momentum, mean-reversion, trend, value...). Quality gates keep
+    penny stocks, SPAC shells and low-float pump-and-dumps out of the results."""
+    rows = []
+    for tk, info in universe.items():
+        series = prices.get(tk)
+        if not series:
+            continue
+        name = info.get("name", tk)
+        if _SCR_JUNK.search(name):  # SPAC shells, closed-end funds, trusts
+            continue
+        closes = [c for _, c in sorted(series.items())]
+        if len(closes) < 200 or not closes[-1]:
+            continue
+        last = closes[-1]
+        if last < 3:  # drop pennies / stale-data names
+            continue
+        sma50, sma200 = _sma(closes, 50), _sma(closes, 200)
+        hi = max(closes[-252:])
+        vs_high = round((last / hi - 1) * 100, 1) if hi else None
+        def ret(n):
+            return round((last / closes[-n] - 1) * 100, 1) if len(closes) > n and closes[-n] else None
+        r1, r3, r6 = ret(21), ret(63), ret(126)
+        rsi = _rsi(closes)
+        drets = [closes[i] / closes[i - 1] - 1 for i in range(-63, 0) if closes[i - 1]]
+        vol = round(_stdev(drets) * (252 ** 0.5) * 100, 1) if len(drets) > 2 else None
+        vs200 = round((last / sma200 - 1) * 100, 1) if sma200 else None
+        above200 = bool(sma200 and last > sma200)
+        sma50p, sma200p = _sma(closes[:-15], 50), _sma(closes[:-15], 200)
+        golden = bool(sma50 and sma200 and sma50 > sma200 and sma50p and sma200p and sma50p <= sma200p)
+        # exclude implausible moves (low-float pumps) and data glitches:
+        #   vol < 8%  -> SPAC trusts pinned near $10
+        #   vol > 250% -> reverse-split artifacts / near-delisting zombies
+        if vol is None or vol < 8 or vol > 250:
+            continue
+        if (r6 is not None and r6 > 400) or (r1 is not None and r1 > 150):
+            continue
+        rows.append({
+            "ticker": tk, "company": name, "sector": info.get("sector", ""),
+            "price": round(last, 2), "vs200": vs200, "vs_high": vs_high, "rsi": rsi,
+            "r1": r1, "r3": r3, "r6": r6, "vol": vol, "above200": above200, "golden": golden,
+        })
+
+    def screen(pred, key, reverse, n=30):
+        return sorted([r for r in rows if pred(r)], key=lambda r: (key(r) if key(r) is not None else -1e9), reverse=reverse)[:n]
+
+    philosophies = [
+        {"key": "momentum", "name": "Momentum", "metric": "6M return",
+         "thesis": "Ride the winners. Stocks in strong uptrends — above both their 50- and 200-day averages with powerful 6-month gains. The trend is your friend.",
+         "stocks": screen(lambda r: r["above200"] and (r["r6"] or 0) > 15 and (r["vs200"] or 0) > 5, lambda r: r["r6"], True)},
+        {"key": "breakout", "name": "52-Week Highs", "metric": "% from high",
+         "thesis": "New highs beget new highs. Names trading within a few percent of their 52-week high — buyers firmly in control, no overhead resistance.",
+         "stocks": screen(lambda r: r["vs_high"] is not None and r["vs_high"] > -3, lambda r: r["vs_high"], True)},
+        {"key": "golden", "name": "Golden Cross", "metric": "3M return",
+         "thesis": "A textbook bullish trend change — the 50-day average has just crossed above the 200-day, historically a signal that a new uptrend is beginning.",
+         "stocks": screen(lambda r: r["golden"], lambda r: r["r3"], True)},
+        {"key": "oversold", "name": "Oversold Bounce", "metric": "RSI",
+         "thesis": "Mean reversion. Beaten-down names with a low RSI (below 35) that statistically tend to snap back. For contrarians who buy fear.",
+         "stocks": screen(lambda r: r["rsi"] is not None and r["rsi"] < 35, lambda r: r["rsi"], False)},
+        {"key": "value", "name": "Fallen Angels", "metric": "% from high",
+         "thesis": "Deep-value turnaround candidates — names trading 30-80% below their 52-week high (but not left for dead). Where value investors go bargain hunting.",
+         "stocks": screen(lambda r: r["vs_high"] is not None and -80 < r["vs_high"] < -30, lambda r: r["vs_high"], False)},
+        {"key": "steady", "name": "Steady Compounders", "metric": "volatility",
+         "thesis": "Low-drama uptrends. Above the 200-day with below-average volatility yet a real 6-month gain — the sleep-at-night winners that grind steadily higher.",
+         "stocks": screen(lambda r: r["above200"] and 12 <= (r["vol"] or 999) < 32 and (r["r6"] or 0) > 8, lambda r: r["vol"], False)},
+    ]
+    return {"universe": len(rows), "philosophies": [p for p in philosophies if p["stocks"]]}
 
 
 # ---------------------------------------------------------------------------
@@ -2143,6 +2348,12 @@ def main():
     unusual = build_unusual_activity(stock_signals)
     smart_money = build_smart_money(trades)
     performance = build_performance(trades, prices)
+
+    # Standalone whole-market technical screener (independent of congress).
+    print("Building philosophy screener over the US stock universe...", file=sys.stderr)
+    universe = load_universe()
+    screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
+    screener = build_screener(screener_prices, universe)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -2155,6 +2366,7 @@ def main():
         "unusual_activity": unusual,
         "smart_money": smart_money,
         "insiders": insiders,
+        "screener": screener,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,
