@@ -2125,49 +2125,53 @@ _SCR_JUNK = re.compile(r"acquisition|\bspac\b|merger corp|capital corp|investmen
                        r"income fund|dividend|municipal|\bmuni\b", re.I)
 
 
+def _stock_indicators(closes):
+    """Technical indicators from a close series (assumed chronological), or None
+    if it fails basic history / price / volatility quality gates. Shared by the
+    live screener and the point-in-time agent backtester."""
+    if len(closes) < 200 or not closes[-1]:
+        return None
+    last = closes[-1]
+    if last < 3:  # pennies / stale data
+        return None
+    sma50, sma200 = _sma(closes, 50), _sma(closes, 200)
+    hi = max(closes[-252:])
+    vs_high = round((last / hi - 1) * 100, 1) if hi else None
+    def ret(n):
+        return round((last / closes[-n] - 1) * 100, 1) if len(closes) > n and closes[-n] else None
+    r1, r3, r6 = ret(21), ret(63), ret(126)
+    drets = [closes[i] / closes[i - 1] - 1 for i in range(-63, 0) if closes[i - 1]]
+    vol = round(_stdev(drets) * (252 ** 0.5) * 100, 1) if len(drets) > 2 else None
+    if vol is None or vol < 8 or vol > 250:            # SPAC trusts / split glitches
+        return None
+    if (r6 is not None and r6 > 400) or (r1 is not None and r1 > 150):  # low-float pumps
+        return None
+    sma50p, sma200p = _sma(closes[:-15], 50), _sma(closes[:-15], 200)
+    return {
+        "price": round(last, 2),
+        "vs200": round((last / sma200 - 1) * 100, 1) if sma200 else None,
+        "vs_high": vs_high, "rsi": _rsi(closes), "r1": r1, "r3": r3, "r6": r6, "vol": vol,
+        "above200": bool(sma200 and last > sma200),
+        "golden": bool(sma50 and sma200 and sma50 > sma200 and sma50p and sma200p and sma50p <= sma200p),
+    }
+
+
 def build_screener(prices, universe):
-    """Compute technical indicators per stock and bucket them into investment
-    philosophies (momentum, mean-reversion, trend, value...). Quality gates keep
-    penny stocks, SPAC shells and low-float pump-and-dumps out of the results."""
+    """Bucket every stock into investment philosophies (momentum, value, trend...)
+    from its technical indicators. Quality gates keep pennies, SPAC shells and
+    low-float pumps out."""
     rows = []
     for tk, info in universe.items():
         series = prices.get(tk)
         if not series:
             continue
         name = info.get("name", tk)
-        if _SCR_JUNK.search(name):  # SPAC shells, closed-end funds, trusts
+        if _SCR_JUNK.search(name):
             continue
-        closes = [c for _, c in sorted(series.items())]
-        if len(closes) < 200 or not closes[-1]:
+        ind = _stock_indicators([c for _, c in sorted(series.items())])
+        if ind is None:
             continue
-        last = closes[-1]
-        if last < 3:  # drop pennies / stale-data names
-            continue
-        sma50, sma200 = _sma(closes, 50), _sma(closes, 200)
-        hi = max(closes[-252:])
-        vs_high = round((last / hi - 1) * 100, 1) if hi else None
-        def ret(n):
-            return round((last / closes[-n] - 1) * 100, 1) if len(closes) > n and closes[-n] else None
-        r1, r3, r6 = ret(21), ret(63), ret(126)
-        rsi = _rsi(closes)
-        drets = [closes[i] / closes[i - 1] - 1 for i in range(-63, 0) if closes[i - 1]]
-        vol = round(_stdev(drets) * (252 ** 0.5) * 100, 1) if len(drets) > 2 else None
-        vs200 = round((last / sma200 - 1) * 100, 1) if sma200 else None
-        above200 = bool(sma200 and last > sma200)
-        sma50p, sma200p = _sma(closes[:-15], 50), _sma(closes[:-15], 200)
-        golden = bool(sma50 and sma200 and sma50 > sma200 and sma50p and sma200p and sma50p <= sma200p)
-        # exclude implausible moves (low-float pumps) and data glitches:
-        #   vol < 8%  -> SPAC trusts pinned near $10
-        #   vol > 250% -> reverse-split artifacts / near-delisting zombies
-        if vol is None or vol < 8 or vol > 250:
-            continue
-        if (r6 is not None and r6 > 400) or (r1 is not None and r1 > 150):
-            continue
-        rows.append({
-            "ticker": tk, "company": name, "sector": info.get("sector", ""),
-            "price": round(last, 2), "vs200": vs200, "vs_high": vs_high, "rsi": rsi,
-            "r1": r1, "r3": r3, "r6": r6, "vol": vol, "above200": above200, "golden": golden,
-        })
+        rows.append({"ticker": tk, "company": name, "sector": info.get("sector", ""), **ind})
 
     def screen(pred, key, reverse, n=30):
         return sorted([r for r in rows if pred(r)], key=lambda r: (key(r) if key(r) is not None else -1e9), reverse=reverse)[:n]
@@ -2193,6 +2197,133 @@ def build_screener(prices, universe):
          "stocks": screen(lambda r: r["above200"] and 12 <= (r["vol"] or 999) < 32 and (r["r6"] or 0) > 8, lambda r: r["vol"], False)},
     ]
     return {"universe": len(rows), "philosophies": [p for p in philosophies if p["stocks"]]}
+
+
+# ---------------------------------------------------------------------------
+# Agents -- simulated, no-fee model portfolios. Each agent is a rules-based
+# strategy (a "philosophy") that we BACKTEST point-in-time: at each monthly
+# rebalance we re-screen using only data available then (no look-ahead), hold
+# the picks equal-weighted for the month, and compound. Educational only.
+# ---------------------------------------------------------------------------
+
+# (select filter, rank key desc, hold count, name, tag, thesis). VTI holds all.
+AGENT_DEFS = [
+    {"key": "vti", "name": "Total Market", "tag": "VTI mimic", "hold": None,
+     "thesis": "Own the whole market, equal-weighted — a fee-free take on a total-market index fund. Maximum diversification, minimal maintenance.",
+     "sel": lambda i: True, "rank": lambda i: 0},
+    {"key": "momentum", "name": "Momentum", "tag": "Trend-following", "hold": 25,
+     "thesis": "Ride the winners. Each month, buy the strongest uptrends — above the 50- and 200-day averages with the biggest 6-month gains — and rotate as leadership changes.",
+     "sel": lambda i: i["above200"] and (i["r6"] or 0) > 15 and (i["vs200"] or 0) > 5, "rank": lambda i: i["r6"] or 0},
+    {"key": "value", "name": "Deep Value", "tag": "Contrarian", "hold": 25,
+     "thesis": "Buy the beaten-down. Each month, hold names 30-80% below their 52-week high (but not left for dead), betting on mean reversion and turnarounds.",
+     "sel": lambda i: i["vs_high"] is not None and -80 < i["vs_high"] < -30, "rank": lambda i: -(i["vs_high"] or 0)},
+    {"key": "steady", "name": "Steady Compounders", "tag": "Low volatility", "hold": 25,
+     "thesis": "Sleep-at-night growth. Above the 200-day, below-average volatility, but still gaining — the low-drama winners that grind steadily higher.",
+     "sel": lambda i: i["above200"] and 12 <= (i["vol"] or 999) < 32 and (i["r6"] or 0) > 8, "rank": lambda i: -(i["vol"] or 0)},
+]
+
+
+def build_agents(screener_prices, universe, congress_perf=None):
+    """Point-in-time monthly-rebalanced backtests of each philosophy agent."""
+    # clean, priced universe with a date->close map
+    stocks = {}
+    for tk, info in universe.items():
+        if _SCR_JUNK.search(info.get("name", tk)):
+            continue
+        s = screener_prices.get(tk)
+        if not s or len(s) < 220:
+            continue
+        items = sorted(s.items())
+        stocks[tk] = {"name": info["name"], "dates": [d for d, _ in items], "closes": [c for _, c in items]}
+    if len(stocks) < 50:
+        return {"agents": [], "as_of": None}
+
+    # monthly rebalance dates = last trading day of each month across the union axis
+    month_last = {}
+    for st in stocks.values():
+        for d in st["dates"]:
+            month_last[d[:7]] = max(month_last.get(d[:7], ""), d)
+    targets = [month_last[m] for m in sorted(month_last)][-13:]  # ~1 year, 13 month-ends
+
+    # snapshot indicators + price as-of each rebalance date (computed once, shared)
+    import bisect
+    snaps = {t: {} for t in targets}
+    for tk, st in stocks.items():
+        ds, cs = st["dates"], st["closes"]
+        for t in targets:
+            idx = bisect.bisect_right(ds, t) - 1
+            if idx < 200:
+                continue
+            ind = _stock_indicators(cs[:idx + 1])
+            if ind:
+                snaps[t][tk] = (cs[idx], ind)
+
+    def backtest(sel, rank, hold):
+        val = 100.0
+        series = [{"d": targets[0], "v": 100.0}]
+        turnovers = []
+        prev = set()
+        for a, b in zip(targets, targets[1:]):
+            picks = [(tk, px) for tk, (px, ind) in snaps[a].items() if sel(ind)]
+            picks.sort(key=lambda x: rank(snaps[a][x[0]][1]), reverse=True)
+            if hold:
+                picks = picks[:hold]
+            held = {tk for tk, _ in picks}
+            rets = []
+            for tk, p0 in picks:
+                nb = snaps[b].get(tk)
+                if nb and p0:
+                    rets.append(nb[0] / p0 - 1)
+            r = sum(rets) / len(rets) if rets else 0.0
+            val *= (1 + r)
+            series.append({"d": b, "v": round(val, 2)})
+            if prev:
+                turnovers.append(len(held - prev) / max(1, len(held)))
+            prev = held
+        total = round((series[-1]["v"] / 100 - 1) * 100, 1)
+        turnover = round(sum(turnovers) / len(turnovers) * 100) if turnovers else 0
+        return series, total, turnover
+
+    mkt_series, mkt_total, _ = backtest(lambda i: True, lambda i: 0, None)
+
+    agents = []
+    for d in AGENT_DEFS:
+        series, total, turnover = backtest(d["sel"], d["rank"], d["hold"])
+        # current holdings from the latest snapshot
+        latest = snaps[targets[-1]]
+        picks = [(tk, ind) for tk, (px, ind) in latest.items() if d["sel"](ind)]
+        picks.sort(key=lambda x: d["rank"](x[1]), reverse=True)
+        if d["hold"]:
+            picks = picks[:d["hold"]]
+        # the own-everything agent is too broad to list -- show a note instead
+        holdings = [] if d["hold"] is None else [
+            {"ticker": tk, "company": stocks[tk]["name"], "price": ind["price"],
+             "r6": ind["r6"], "vs200": ind["vs200"], "vs_high": ind["vs_high"]}
+            for tk, ind in picks[:24]]
+        agents.append({
+            "key": d["key"], "name": d["name"], "tag": d["tag"], "thesis": d["thesis"],
+            "hold": d["hold"] or len(picks), "n_holdings": len(picks),
+            "total_return": total, "vs_market": round(total - mkt_total, 1),
+            "turnover": turnover, "series": series, "market": mkt_series,
+            "holdings": holdings,
+        })
+
+    # Follow Congress agent -- reuse the congressional follow backtest if present
+    if congress_perf and congress_perf.get("series") and len(congress_perf["series"]) > 2:
+        cs = congress_perf["series"]
+        cong = [{"d": p["d"], "v": round(p["s"], 2)} for p in cs]
+        cmkt = [{"d": p["d"], "v": round(p["m"], 2)} for p in cs]
+        ctot = round((cs[-1]["s"] / cs[0]["s"] - 1) * 100, 1)
+        cmt = round((cs[-1]["m"] / cs[0]["m"] - 1) * 100, 1)
+        agents.append({
+            "key": "congress", "name": "Follow Congress", "tag": "Political alpha",
+            "thesis": "Mirror Congress. Buys every stock members of Congress disclose buying (equal-weighted), tracking the crowd that trades on Capitol Hill knowledge.",
+            "hold": congress_perf.get("n_tickers", 0), "n_holdings": congress_perf.get("n_tickers", 0),
+            "total_return": ctot, "vs_market": round(ctot - cmt, 1), "turnover": None,
+            "series": cong, "market": cmkt, "holdings": [],
+        })
+
+    return {"as_of": targets[-1], "market_return": mkt_total, "agents": agents}
 
 
 # ---------------------------------------------------------------------------
@@ -2393,6 +2524,8 @@ def main():
     universe = load_universe()
     screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
     screener = build_screener(screener_prices, universe)
+    print("Backtesting philosophy agents...", file=sys.stderr)
+    agents = build_agents(screener_prices, universe, performance)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -2406,6 +2539,7 @@ def main():
         "smart_money": smart_money,
         "insiders": insiders,
         "screener": screener,
+        "agents": agents,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,
