@@ -450,6 +450,24 @@
   .ins-val { font-family: var(--mono); font-weight: 700; }
   .ins-val.buys { color: var(--good); } .ins-val.sells { color: var(--bad); }
   .ins-shares, .ins-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+  /* Whale watch */
+  .whale-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .whale-card { background: linear-gradient(160deg, var(--grad-soft), var(--panel) 60%); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 15px; transition: transform 0.14s ease, border-color 0.14s ease; }
+  .whale-card:hover { transform: translateY(-2px); border-color: var(--accent-dim); }
+  .whale-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .whale-ticker { font-family: var(--mono); font-weight: 700; font-size: 18px; cursor: pointer; }
+  .whale-ticker:hover { color: var(--accent); }
+  .whale-val { font-family: var(--mono); font-weight: 800; font-size: 17px; color: var(--good); letter-spacing: -0.01em; }
+  .whale-co { font-size: 11.5px; color: var(--text-dim); margin: 3px 0 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .whale-who { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .whale-name { font-size: 11.5px; color: var(--text); font-weight: 600; }
+  .whale-foot { font-family: var(--mono); font-size: 10px; color: var(--text-faint); margin-top: 9px; }
+  .tier-badge { font-family: var(--display); font-weight: 700; font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+  .tier-badge.exec { background: var(--grad); color: #05231e; }
+  .tier-badge.director { background: var(--tint-blue); color: var(--dem); }
+  .tier-badge.owner { background: var(--tint-violet); color: var(--ind); }
+  .tier-badge.insider { background: var(--panel-2); color: var(--text-dim); }
+
   .insider-flag { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--grad-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 11px 14px; margin-bottom: 16px; }
   .if-label { font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
   .if-body { display: flex; gap: 16px; font-family: var(--mono); font-size: 12px; }
@@ -1505,18 +1523,36 @@
   }
 
   /* ---------- INSIDERS VIEW (SEC Form 4) ---------- */
+  function cleanInsider(n) {
+    if (!n) return "—";
+    n = n.trim();
+    return n.length > 26 ? n.slice(0, 26) + "…" : n;
+  }
+  function tierBadge(tier, roles) {
+    roles = roles || [];
+    let label;
+    if (tier === "exec") {
+      const t = roles.find(r => /chief|ceo|cfo|coo|president|chair|founder|treasurer|officer/i.test(r));
+      label = (t || "Exec").replace(/chief executive officer/i, "CEO").replace(/chief financial officer/i, "CFO")
+        .replace(/chief operating officer/i, "COO").replace(/chief\s+\w+\s+officer/i, m => m.split(/\s+/).map(w => w[0]).join("").toUpperCase());
+    } else label = tier === "director" ? "Director" : tier === "owner" ? "10% Owner" : "Insider";
+    return `<span class="tier-badge ${tier}">${esc(label.slice(0, 20))}</span>`;
+  }
+
   function renderInsidersView() {
     const ins = DATA.insiders;
-    if (!ins || (!(ins.recent_buys || []).length && !(ins.recent_sells || []).length))
+    const whales = (ins && (ins.whale_buys || ins.recent_buys)) || [];
+    if (!ins || !whales.length)
       return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
-        <div class="lead-eyebrow">SEC Form 4</div><h1 class="lead-h1">Corporate<br>insiders</h1>
-        <p class="lead-tagline">Officers, directors and 10% owners buying and selling their own company's stock.</p></div></div>
-        <div class="empty-note">No open-market insider trades captured yet — this fills in as SEC Form 4 filings are scraped over the coming runs.</div></section>`;
+        <div class="lead-eyebrow">SEC Form 4 · whale watch</div><h1 class="lead-h1">Insider<br>whales</h1>
+        <p class="lead-tagline">The biggest bets corporate insiders make on their own stock.</p></div></div>
+        <div class="empty-note">No open-market insider buys captured yet — this fills in as SEC Form 4 filings are scraped over the coming runs.</div></section>`;
+    const st = ins.stats || {};
 
     const insRow = x => `<div class="ins-row">
       <span class="ins-ticker clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</span>
-      <span class="ins-name">${esc(x.insider || "—")}</span>
-      <span class="ins-role">${esc((x.roles || []).join(" · ") || "insider")}</span>
+      <span class="ins-name">${esc(cleanInsider(x.insider))}</span>
+      <span class="ins-role">${tierBadge(x.tier, x.roles)}</span>
       <span class="ta-r ins-val ${x.buy ? "buys" : "sells"}">${x.buy ? "+" : "−"}${fmtMoney(x.value)}</span>
       <span class="ins-shares">${x.shares ? x.shares.toLocaleString() + " sh" : ""}</span>
       <span class="ins-date">${esc(x.date)}</span>
@@ -1528,33 +1564,47 @@
     return `<section class="data-section">
       <div class="lead-hero">
         <div class="lead-hero-copy">
-          <div class="lead-eyebrow">SEC Form 4 · last ${ins.window_days || 120} days</div>
-          <h1 class="lead-h1">Corporate<br>insiders</h1>
-          <p class="lead-tagline">When a company's own officers, directors and 10% owners buy on the open market, they're betting on themselves — the classic conviction signal.</p>
+          <div class="lead-eyebrow">SEC Form 4 · whale watch · last ${ins.window_days || 120} days</div>
+          <h1 class="lead-h1">Insider<br>whales</h1>
+          <p class="lead-tagline">The biggest bets corporate insiders are making on their own stock. When a CEO buys on the open market with their own money, they're telling you something.</p>
           <div class="lead-stat-row">
-            <div class="lead-stat"><b class="up">${(ins.recent_buys || []).length}</b><i>recent buys</i></div>
-            <div class="lead-stat"><b>${(ins.clusters || []).length}</b><i>cluster buys</i></div>
+            <div class="lead-stat"><b class="up">${fmtMoney(st.total_buy_value || 0)}</b><i>insider buying</i></div>
+            <div class="lead-stat"><b>${st.exec_buy_count || 0}</b><i>C-suite buys</i></div>
           </div>
         </div>
-        ${(ins.clusters || []).length ? `<div class="podium">${ins.clusters.slice(0, 3).map(renderInsiderCluster).join("")}</div>` : ""}
+        ${whales.length ? `<div class="podium">${whales.slice(0, 3).map((x, i) => renderWhaleTop(x, i)).join("")}</div>` : ""}
       </div>
-      ${(ins.clusters || []).length > 3 ? `<div class="section-head"><span class="section-title">More cluster buys</span><span class="section-count">2+ insiders buying the same stock</span></div>
-        <div class="cluster-grid">${ins.clusters.slice(3).map(renderInsiderClusterCard).join("")}</div>` : ""}
-      <div class="section-head" style="margin-top:24px;"><span class="section-title">Insider buys</span><span class="section-count">open-market purchases · biggest bets of conviction</span></div>
+      <div class="section-head"><span class="section-title">Biggest insider buys</span><span class="section-count">the whales — largest open-market purchases</span></div>
+      <div class="whale-grid">${whales.slice(0, 12).map(renderWhaleCard).join("")}</div>
+      ${(ins.clusters || []).length ? `<div class="section-head" style="margin-top:26px;"><span class="section-title">Cluster conviction</span><span class="section-count">2+ insiders buying the same stock at once</span></div>
+        <div class="cluster-grid">${ins.clusters.map(renderInsiderClusterCard).join("")}</div>` : ""}
+      <div class="section-head" style="margin-top:26px;"><span class="section-title">All insider buys</span><span class="section-count">open-market purchases · newest first</span></div>
       ${table(ins.recent_buys || [], "No insider buys captured yet.")}
       <div class="section-head" style="margin-top:24px;"><span class="section-title">Insider sells</span><span class="section-count">open-market sales</span></div>
       ${table(ins.recent_sells || [], "No insider sells captured yet.")}
     </section>`;
   }
 
-  function renderInsiderCluster(c) {
-    return `<div class="podium-card pod-1" style="cursor:pointer">
-      <div class="podium-rank">${c.n_buyers}</div>
+  function renderWhaleTop(x, i) {
+    return `<div class="podium-card pod-${i + 1}">
+      <div class="podium-rank">${i + 1}</div>
       <div class="podium-id">
-        <div class="podium-name clickable-ticker" data-ticker="${esc(c.ticker)}">${esc(c.ticker)}</div>
-        <div class="podium-meta">${esc((c.company || "").slice(0, 30))} · ${c.n_buyers} insiders buying</div>
+        <div class="podium-name clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</div>
+        <div class="podium-meta">${tierBadge(x.tier, x.roles)} ${esc(cleanInsider(x.insider))}</div>
       </div>
-      <div class="ret-pill up">${fmtMoney(c.buy_value)}</div>
+      <div class="ret-pill up">${fmtMoney(x.value)}</div>
+    </div>`;
+  }
+
+  function renderWhaleCard(x) {
+    return `<div class="whale-card">
+      <div class="whale-top">
+        <span class="whale-ticker clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</span>
+        <span class="whale-val">${fmtMoney(x.value)}</span>
+      </div>
+      <div class="whale-co">${esc(x.company || "")}</div>
+      <div class="whale-who">${tierBadge(x.tier, x.roles)}<span class="whale-name">${esc(cleanInsider(x.insider))}</span></div>
+      <div class="whale-foot">${x.n > 1 ? x.n + " buys · " : ""}${x.shares ? x.shares.toLocaleString() + " sh" : ""} · ${esc(x.date)}</div>
     </div>`;
   }
 

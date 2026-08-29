@@ -54,7 +54,7 @@ SENATE_TRADES_LOOKBACK_DAYS = 45  # (legacy) short window; superseded by TRADES_
 TRADES_LOOKBACK_DAYS = 400         # scrape ~13 months of filings so the 1-year backtest is dense
 TRADES_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "trades_cache.json")  # per-filing raw txns
 INSIDER_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "insider_cache.json")  # SEC Form 4 filings
-INSIDER_FILINGS_PER_RUN = 300     # recent Form 4 filings to scan per run (1 req each)
+INSIDER_FILINGS_PER_RUN = 600     # recent Form 4 filings to scan per run (1 req each)
 INSIDER_MAX_DAYS = 120            # keep insider transactions from this window
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
@@ -895,14 +895,32 @@ def scrape_insider_filings(cache):
     print(f"  insiders: {fetched} parsed ({kept} with open-market trades), {len(cache)} cached total", file=sys.stderr)
 
 
+_EXEC_TITLES = re.compile(r"chief|ceo|cfo|coo|\bc[a-z]?o\b|president|chairman|chair\b|founder|treasurer|principal officer", re.I)
+
+
+def _role_tier(roles):
+    """exec (C-suite) > director > owner (10%) > insider -- for whale ranking."""
+    blob = " ".join(roles or [])
+    if _EXEC_TITLES.search(blob):
+        return "exec"
+    if re.search(r"director", blob, re.I):
+        return "director"
+    if "10%" in blob:
+        return "owner"
+    return "insider"
+
+
 def build_insider_data(cache):
-    """Aggregate cached Form 4s into a feed, per-ticker signals, and cluster buys
-    (several distinct insiders buying the same stock in the window)."""
+    """Aggregate cached Form 4s into whale buys, a feed, per-ticker signals and
+    cluster buys. 'Whales' = the biggest open-market bets insiders make on their
+    own stock, with C-suite (CEO/CFO) buys flagged as the strongest conviction."""
     cutoff = datetime.now() - timedelta(days=INSIDER_MAX_DAYS)
     feed = []
     for acc, f in cache.items():
         if not f.get("txns") or not f.get("ticker"):
             continue
+        roles = f.get("roles", [])
+        tier = _role_tier(roles)
         for tx in f["txns"]:
             try:
                 d = datetime.strptime(tx["date"], "%Y-%m-%d")
@@ -912,12 +930,14 @@ def build_insider_data(cache):
                 continue
             feed.append({
                 "ticker": f["ticker"], "company": f.get("company"),
-                "insider": f.get("insider"), "roles": f.get("roles", []),
+                "insider": f.get("insider"), "roles": roles, "tier": tier,
                 "code": tx["code"], "buy": tx["code"] == "P",
                 "date": tx["date"], "shares": tx["shares"], "price": tx["price"], "value": tx["value"],
                 "url": f.get("url"),
             })
     feed.sort(key=lambda x: x["date"], reverse=True)
+    buys = [x for x in feed if x["buy"]]
+    sells = [x for x in feed if not x["buy"]]
 
     # per-ticker signals
     sig = {}
@@ -935,16 +955,35 @@ def build_insider_data(cache):
                 "buy_count": s["buy_count"], "sell_count": s["sell_count"],
                 "net_value": s["buy_value"] - s["sell_value"]} for s in sig.values()]
 
-    # cluster buys: 2+ distinct insiders buying the same ticker
     clusters = sorted([s for s in signals if s["n_buyers"] >= 2],
                       key=lambda s: (s["n_buyers"], s["buy_value"]), reverse=True)[:24]
-    top_buys = [x for x in feed if x["buy"]][:40]
-    top_sells = [x for x in feed if not x["buy"]][:20]
+
+    total_buy_value = sum(x["value"] for x in buys)
+    exec_buys = [x for x in buys if x["tier"] == "exec"]
+    biggest = max(buys, key=lambda x: x["value"]) if buys else None
+
+    # Whales: aggregate an insider's repeat buys of the same stock into one bet
+    # (so a 10% owner accumulating over a week shows as a single big card).
+    whale_agg = {}
+    for x in buys:  # buys are newest-first, so the first seen keeps the latest date
+        k = (x["ticker"], x["insider"])
+        w = whale_agg.get(k)
+        if w is None:
+            whale_agg[k] = {**x, "n": 1}
+        else:
+            w["value"] += x["value"]; w["shares"] += x["shares"]; w["n"] += 1
+    whale_buys = sorted(whale_agg.values(), key=lambda w: w["value"], reverse=True)[:24]
+
     return {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "window_days": INSIDER_MAX_DAYS,
-        "recent_buys": top_buys,
-        "recent_sells": top_sells,
+        "stats": {"total_buy_value": total_buy_value, "buy_count": len(buys),
+                  "exec_buy_count": len(exec_buys),
+                  "biggest": {"ticker": biggest["ticker"], "value": biggest["value"],
+                              "insider": biggest["insider"]} if biggest else None},
+        "whale_buys": whale_buys,  # biggest bets, one per insider-stock
+        "recent_buys": buys[:50],       # newest first
+        "recent_sells": sells[:24],
         "clusters": clusters,
         "signals": {s["ticker"]: s for s in signals},
     }
