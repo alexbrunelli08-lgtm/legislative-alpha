@@ -443,6 +443,42 @@
   .track-split i { font-style: normal; font-size: 10px; color: var(--text-faint); display: flex; gap: 5px; align-items: center; justify-content: flex-end; margin-top: 2px; }
 
   /* ---------- Smart money ---------- */
+  /* ---------- Dashboard visuals (Smart Money / Insiders) ---------- */
+  .gauge-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(150deg, var(--panel-2), var(--panel) 70%); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; align-self: center; }
+  .gauge-svg { width: 240px; max-width: 100%; height: auto; }
+  .gauge-big { font-family: var(--display); font-weight: 800; font-size: 34px; letter-spacing: -0.02em; }
+  .gauge-lbl { font-family: var(--display); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; fill: var(--text-faint); }
+  .gauge-cap { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 4px; max-width: 240px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 4px 0 20px; }
+  .stat-cell { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; }
+  .sc-v { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+  .sc-v.up { color: var(--good); } .sc-v.down { color: var(--bad); }
+  .sc-v.clickable-ticker { font-family: var(--mono); cursor: pointer; }
+  .sc-l { font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+  .dash-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .dash-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .dash-title { font-family: var(--display); font-weight: 700; font-size: 15px; }
+  .dash-sub { font-size: 11.5px; color: var(--text-faint); margin: 2px 0 15px; }
+  .hbars { display: flex; flex-direction: column; gap: 10px; }
+  .hbar-row { display: grid; grid-template-columns: 180px 1fr 92px; gap: 12px; align-items: center; }
+  .hbar-row.clickable-ticker { cursor: pointer; }
+  .hbar-row.clickable-ticker:hover .hbar-lab b { color: var(--accent); }
+  .hbar-lab { min-width: 0; overflow: hidden; }
+  .hbar-lab b { font-family: var(--mono); font-weight: 700; font-size: 13px; color: var(--text); }
+  .hbar-lab i { display: block; font-style: normal; font-size: 10.5px; color: var(--text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hbar-track { height: 9px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
+  .hbar-fill { display: block; height: 100%; border-radius: 999px; }
+  .hbar-val { font-family: var(--mono); font-size: 12px; font-weight: 600; text-align: right; color: var(--text-dim); white-space: nowrap; }
+  .donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .donut-svg { width: 150px; height: 150px; }
+  .donut-big { font-family: var(--display); font-weight: 700; font-size: 17px; fill: var(--text); }
+  .donut-lbl { font-size: 10px; fill: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .donut-legend { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+  .donut-legend span { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-dim); }
+  .donut-legend i { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .donut-legend b { margin-left: auto; font-family: var(--mono); color: var(--text); }
+  @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } .dash-grid { grid-template-columns: 1fr; } .hbar-row { grid-template-columns: 130px 1fr 78px; } }
+
   .cluster-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .cluster-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; transition: border-color 0.14s ease, transform 0.14s ease; }
   .cluster-card:hover { border-color: var(--accent-dim); transform: translateY(-1px); }
@@ -1502,22 +1538,106 @@
     modal.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", () => setHash("stock/" + el.dataset.ticker)));
   }
 
-  /* ---------- SMART MONEY VIEW ---------- */
+  /* ---------- Reusable dashboard visuals ---------- */
+  function gaugeSVG(pct, big, label, color) {
+    pct = Math.max(0, Math.min(100, Number(pct) || 0));
+    const cx = 120, cy = 122, r = 100, circ = Math.PI * r;
+    const col = color || (pct >= 55 ? "var(--good)" : pct <= 45 ? "var(--bad)" : "var(--warn)");
+    const arc = `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`;
+    return `<svg viewBox="0 0 240 132" class="gauge-svg">
+      <path d="${arc}" fill="none" stroke="var(--panel-2)" stroke-width="15" stroke-linecap="round"/>
+      <path d="${arc}" fill="none" stroke="${col}" stroke-width="15" stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${circ * (1 - pct / 100)}"/>
+      <text x="${cx}" y="${cy - 30}" text-anchor="middle" class="gauge-big" fill="${col}">${big}</text>
+      <text x="${cx}" y="${cy - 8}" text-anchor="middle" class="gauge-lbl">${esc(label)}</text>
+    </svg>`;
+  }
+  function hbars(items, opts) {
+    opts = opts || {};
+    const max = opts.max || Math.max(1, ...items.map(i => Math.abs(i.value)));
+    return `<div class="hbars">${items.map(i => `
+      <div class="hbar-row ${i.ticker ? "clickable-ticker" : ""}" ${i.ticker ? `data-ticker="${esc(i.ticker)}"` : ""}>
+        <span class="hbar-lab"><b>${esc(i.label)}</b>${i.sub ? `<i>${esc(i.sub)}</i>` : ""}</span>
+        <span class="hbar-track"><span class="hbar-fill" style="width:${Math.max(3, Math.abs(i.value) / max * 100)}%;background:${i.color || "var(--accent)"}"></span></span>
+        <span class="hbar-val">${i.valLabel != null ? i.valLabel : fmtMoney(i.value)}</span>
+      </div>`).join("")}</div>`;
+  }
+  function donutSVG(segs, big, label) {
+    const active = segs.filter(s => s.value > 0);
+    const total = active.reduce((s, x) => s + x.value, 0) || 1;
+    const r = 52, c = 2 * Math.PI * r;
+    let off = 0;
+    const rings = active.map(s => {
+      const dash = s.value / total * c;
+      const el = `<circle cx="70" cy="70" r="${r}" fill="none" stroke="${s.color}" stroke-width="15" stroke-dasharray="${dash} ${c - dash}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;
+      off += dash; return el;
+    }).join("");
+    return `<div class="donut-wrap"><svg viewBox="0 0 140 140" class="donut-svg">${rings}
+      <text x="70" y="67" text-anchor="middle" class="donut-big">${big}</text>
+      <text x="70" y="83" text-anchor="middle" class="donut-lbl">${esc(label)}</text></svg>
+      <div class="donut-legend">${active.map(s => `<span><i style="background:${s.color}"></i>${esc(s.label)} <b>${Math.round(s.value / total * 100)}%</b></span>`).join("")}</div></div>`;
+  }
+
+  /* ---------- SMART MONEY VIEW (dashboard) ---------- */
   function renderSmartView() {
-    const sm = DATA.smart_money || { clusters: [], big_bets: [] };
-    if (!(sm.clusters || []).length && !(sm.big_bets || []).length)
-      return `<div class="empty-note">No smart-money signals in the current window.</div>`;
+    const sm = DATA.smart_money || {}, o = DATA.overview || {};
+    const clusters = sm.clusters || [], bets = sm.big_bets || [];
+    if (!clusters.length && !bets.length) return `<div class="empty-note">No smart-money signals in the current window.</div>`;
+
+    const buyV = o.buy_value || 0, sellV = o.sell_value || 0;
+    const pressure = (buyV + sellV) ? Math.round(buyV / (buyV + sellV) * 100) : 50;
+    const netV = buyV - sellV;
+    const activeBuyers = new Set((DATA.trades || []).filter(t => isBuy(t.type)).map(t => t.member)).size;
+    const biParty = clusters.filter(c => c.bipartisan).length;
+
+    const partyBuy = { D: 0, R: 0, I: 0 };
+    (DATA.trades || []).forEach(t => { if (isBuy(t.type)) { const p = (t.party || "").toUpperCase(); if (partyBuy[p] != null) partyBuy[p] += t.est_amount || 0; } });
+
+    const secFlow = Object.entries(DATA.sectors || {})
+      .filter(([c, s]) => s.group === "economy" && c !== "OTHER" && s.net_value)
+      .map(([c, s]) => ({ short: s.short, net: s.net_value || 0, color: s.color }))
+      .sort((a, b) => Math.abs(b.net) - Math.abs(a.net)).slice(0, 7);
+
+    const clusterBars = clusters.slice(0, 8).map(c => ({
+      ticker: c.ticker, label: c.ticker, sub: `${fmtMoney(c.total_value)} bought${c.bipartisan ? " · bipartisan" : ""}`,
+      value: c.n_buyers, color: c.bipartisan ? "var(--ind)" : "var(--accent)", valLabel: `${c.n_buyers} buyers`,
+    }));
+
     return `<section class="data-section">
-      <div class="lead-head"><div>
-        <h2 class="lead-title">Smart Money</h2>
-        <p class="lead-sub">Stocks several members bought within ~${sm.cluster_window_days || 75} days of one another — clustered conviction, not one person's idiosyncratic bet. <b style="color:var(--ind)">Bipartisan</b> clusters are the strongest tell.</p>
-      </div></div>
-      ${sm.clusters.length ? `<div class="cluster-grid">${sm.clusters.map(renderClusterCard).join("")}</div>`
-        : `<div class="empty-note">No multi-member cluster buys in the window yet.</div>`}
-      <div class="section-head" style="margin-top:28px;"><span class="section-title">Biggest recent bets</span><span class="section-count">largest single disclosed trades · last 45 days</span></div>
+      <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Congressional smart money</div>
+          <h1 class="lead-h1">Smart<br>money</h1>
+          <p class="lead-tagline">Where conviction is clustering — the stocks multiple members of Congress are buying at once, and which way the political money is flowing.</p>
+        </div>
+        <div class="gauge-card">
+          ${gaugeSVG(pressure, pressure + "%", pressure >= 55 ? "Net buying" : pressure <= 45 ? "Net selling" : "Balanced")}
+          <div class="gauge-cap">Buy pressure — ${fmtMoney(buyV)} bought vs ${fmtMoney(sellV)} sold</div>
+        </div>
+      </div>
+      <div class="stat-strip">
+        <div class="stat-cell"><div class="sc-v ${netV >= 0 ? "up" : "down"}">${signedMoney(netV)}</div><div class="sc-l">Net flow</div></div>
+        <div class="stat-cell"><div class="sc-v">${activeBuyers}</div><div class="sc-l">Members buying</div></div>
+        <div class="stat-cell"><div class="sc-v" style="color:var(--ind)">${biParty}</div><div class="sc-l">Bipartisan clusters</div></div>
+        <div class="stat-cell"><div class="sc-v">${clusters.length}</div><div class="sc-l">Conviction clusters</div></div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-title">Cluster conviction</div><div class="dash-sub">Stocks several members bought together — <b style="color:var(--ind)">bipartisan</b> in violet</div>
+          ${clusterBars.length ? hbars(clusterBars) : `<div class="empty-note">No cluster buys yet.</div>`}
+        </div>
+        <div class="dash-card">
+          <div class="dash-title">Who's buying</div><div class="dash-sub">Disclosed purchase dollars, by party</div>
+          ${donutSVG([{ label: "Dem", value: partyBuy.D, color: "var(--dem)" }, { label: "Rep", value: partyBuy.R, color: "var(--rep)" }, { label: "Ind", value: partyBuy.I, color: "var(--ind)" }], fmtMoney(partyBuy.D + partyBuy.R + partyBuy.I), "bought")}
+        </div>
+      </div>
+      ${secFlow.length ? `<div class="dash-card">
+        <div class="dash-title">Where the money flows</div><div class="dash-sub">Net congressional buying by economic sector</div>
+        ${hbars(secFlow.map(s => ({ label: s.short, value: s.net, color: s.net >= 0 ? "var(--good)" : "var(--bad)", valLabel: signedMoney(s.net) })), { max: Math.max(...secFlow.map(s => Math.abs(s.net)), 1) })}
+      </div>` : ""}
+      <div class="section-head" style="margin-top:24px;"><span class="section-title">Biggest recent bets</span><span class="section-count">largest single disclosed trades · last 45 days</span></div>
       <div class="bets-list">
         <div class="bet-row bet-head"><span>Ticker</span><span>Side</span><span>Member</span><span>Sector</span><span class="ta-r">Size</span><span>Traded</span><span class="ta-r">Since</span></div>
-        ${sm.big_bets.map(renderBetRow).join("")}
+        ${bets.map(renderBetRow).join("")}
       </div>
     </section>`;
   }
@@ -1573,6 +1693,10 @@
     return `<span class="tier-badge ${tier}">${esc(label.slice(0, 20))}</span>`;
   }
 
+  const TIER_COL = { exec: "var(--accent)", director: "var(--dem)", owner: "var(--ind)", insider: "var(--text-faint)" };
+  const TIER_LBL = { exec: "C-suite", director: "Directors", owner: "10% owners", insider: "Other" };
+  const TIER_SHORT = { exec: "C-suite", director: "Director", owner: "10% owner", insider: "Insider" };
+
   function renderInsidersView() {
     const ins = DATA.insiders;
     const whales = (ins && (ins.whale_buys || ins.recent_buys)) || [];
@@ -1581,7 +1705,15 @@
         <div class="lead-eyebrow">SEC Form 4 · whale watch</div><h1 class="lead-h1">Insider<br>whales</h1>
         <p class="lead-tagline">The biggest bets corporate insiders make on their own stock.</p></div></div>
         <div class="empty-note">No open-market insider buys captured yet — this fills in as SEC Form 4 filings are scraped over the coming runs.</div></section>`;
-    const st = ins.stats || {};
+    const st = ins.stats || {}, tiers = st.tiers || {};
+    const bc = st.buy_count || 0, sc = st.sell_count || 0;
+    const sentiment = (bc + sc) ? Math.round(bc / (bc + sc) * 100) : 50;
+
+    const whaleBars = whales.slice(0, 8).map(x => ({
+      ticker: x.ticker, label: x.ticker, sub: `${TIER_SHORT[x.tier] || "Insider"} · ${cleanInsider(x.insider)}`,
+      value: x.value, color: TIER_COL[x.tier] || "var(--good)", valLabel: fmtMoney(x.value),
+    }));
+    const roleSegs = ["exec", "owner", "director", "insider"].map(k => ({ label: TIER_LBL[k], value: tiers[k] || 0, color: TIER_COL[k] }));
 
     const insRow = x => `<div class="ins-row">
       <span class="ins-ticker clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</span>
@@ -1596,25 +1728,38 @@
       : `<div class="empty-note">${empty}</div>`;
 
     return `<section class="data-section">
-      <div class="lead-hero">
+      <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
         <div class="lead-hero-copy">
-          <div class="lead-eyebrow">SEC Form 4 · whale watch · last ${ins.window_days || 120} days</div>
+          <div class="lead-eyebrow">SEC Form 4 · insider whale watch · ${ins.window_days || 120}d</div>
           <h1 class="lead-h1">Insider<br>whales</h1>
-          <p class="lead-tagline">The biggest bets corporate insiders are making on their own stock. When a CEO buys on the open market with their own money, they're telling you something.</p>
-          <div class="lead-stat-row">
-            <div class="lead-stat"><b class="up">${fmtMoney(st.total_buy_value || 0)}</b><i>insider buying</i></div>
-            <div class="lead-stat"><b>${st.exec_buy_count || 0}</b><i>C-suite buys</i></div>
-          </div>
+          <p class="lead-tagline">The biggest bets corporate insiders make on their own stock. When a CEO buys on the open market with their own money, it's the strongest conviction signal there is.</p>
         </div>
-        ${whales.length ? `<div class="podium">${whales.slice(0, 3).map((x, i) => renderWhaleTop(x, i)).join("")}</div>` : ""}
+        <div class="gauge-card">
+          ${gaugeSVG(sentiment, sentiment + "%", sentiment >= 55 ? "Net buying" : sentiment <= 45 ? "Net selling" : "Mixed")}
+          <div class="gauge-cap">Open-market buy/sell mix — ${bc} buys vs ${sc} sells</div>
+        </div>
       </div>
-      <div class="section-head"><span class="section-title">Biggest insider buys</span><span class="section-count">the whales — largest open-market purchases</span></div>
-      <div class="whale-grid">${whales.slice(0, 12).map(renderWhaleCard).join("")}</div>
-      ${(ins.clusters || []).length ? `<div class="section-head" style="margin-top:26px;"><span class="section-title">Cluster conviction</span><span class="section-count">2+ insiders buying the same stock at once</span></div>
+      <div class="stat-strip">
+        <div class="stat-cell"><div class="sc-v up">${fmtMoney(st.total_buy_value || 0)}</div><div class="sc-l">Insider buying</div></div>
+        <div class="stat-cell"><div class="sc-v down">${fmtMoney(st.total_sell_value || 0)}</div><div class="sc-l">Insider selling</div></div>
+        <div class="stat-cell"><div class="sc-v" style="color:var(--accent)">${st.exec_buy_count || 0}</div><div class="sc-l">C-suite buys</div></div>
+        <div class="stat-cell"><div class="sc-v clickable-ticker" ${st.biggest ? `data-ticker="${esc(st.biggest.ticker)}"` : ""}>${st.biggest ? esc(st.biggest.ticker) : "—"}</div><div class="sc-l">${st.biggest ? "biggest · " + fmtMoney(st.biggest.value) : "—"}</div></div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-title">Biggest insider buys</div><div class="dash-sub">The whales — largest open-market purchases, colored by role</div>
+          ${whaleBars.length ? hbars(whaleBars) : `<div class="empty-note">No insider buys yet.</div>`}
+        </div>
+        <div class="dash-card">
+          <div class="dash-title">Who's buying</div><div class="dash-sub">Open-market buys by insider role</div>
+          ${donutSVG(roleSegs, bc, "buys")}
+        </div>
+      </div>
+      ${(ins.clusters || []).length ? `<div class="section-head" style="margin-top:24px;"><span class="section-title">Cluster conviction</span><span class="section-count">2+ insiders buying the same stock at once</span></div>
         <div class="cluster-grid">${ins.clusters.map(renderInsiderClusterCard).join("")}</div>` : ""}
-      <div class="section-head" style="margin-top:26px;"><span class="section-title">All insider buys</span><span class="section-count">open-market purchases · newest first</span></div>
+      <div class="section-head" style="margin-top:24px;"><span class="section-title">All insider buys</span><span class="section-count">open-market purchases · newest first</span></div>
       ${table(ins.recent_buys || [], "No insider buys captured yet.")}
-      <div class="section-head" style="margin-top:24px;"><span class="section-title">Insider sells</span><span class="section-count">open-market sales</span></div>
+      <div class="section-head" style="margin-top:22px;"><span class="section-title">Insider sells</span><span class="section-count">open-market sales</span></div>
       ${table(ins.recent_sells || [], "No insider sells captured yet.")}
     </section>`;
   }

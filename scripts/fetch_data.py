@@ -974,11 +974,17 @@ def build_insider_data(cache):
             w["value"] += x["value"]; w["shares"] += x["shares"]; w["n"] += 1
     whale_buys = sorted(whale_agg.values(), key=lambda w: w["value"], reverse=True)[:24]
 
+    tier_counts = {}
+    for x in buys:
+        tier_counts[x["tier"]] = tier_counts.get(x["tier"], 0) + 1
+    total_sell_value = sum(x["value"] for x in sells)
+
     return {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "window_days": INSIDER_MAX_DAYS,
         "stats": {"total_buy_value": total_buy_value, "buy_count": len(buys),
-                  "exec_buy_count": len(exec_buys),
+                  "total_sell_value": total_sell_value, "sell_count": len(sells),
+                  "exec_buy_count": len(exec_buys), "tiers": tier_counts,
                   "biggest": {"ticker": biggest["ticker"], "value": biggest["value"],
                               "insider": biggest["insider"]} if biggest else None},
         "whale_buys": whale_buys,  # biggest bets, one per insider-stock
