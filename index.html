@@ -479,6 +479,27 @@
   .donut-legend b { margin-left: auto; font-family: var(--mono); color: var(--text); }
   @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } .dash-grid { grid-template-columns: 1fr; } .hbar-row { grid-template-columns: 130px 1fr 78px; } }
 
+  /* ---------- Conviction signals ---------- */
+  .conv-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+  .conv-title { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 0; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .conv-sub { font-size: 13px; color: var(--text-dim); line-height: 1.55; margin: 8px 0 0; max-width: 660px; }
+  .conv-badge { text-align: center; background: var(--grad-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 20px; flex-shrink: 0; }
+  .conv-badge b { display: block; font-family: var(--display); font-weight: 800; font-size: 30px; letter-spacing: -0.02em; }
+  .conv-badge i { font-style: normal; font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .conv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+  .conv-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; cursor: pointer; transition: transform 0.14s ease, border-color 0.14s ease; }
+  .conv-card:hover { transform: translateY(-2px); border-color: var(--accent-dim); }
+  .conv-top { display: flex; align-items: center; justify-content: space-between; }
+  .conv-ticker { font-family: var(--mono); font-weight: 700; font-size: 17px; }
+  .conv-conf { display: inline-flex; gap: 4px; }
+  .conv-conf i { width: 8px; height: 8px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--line); }
+  .conv-conf i.on { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 6px -1px var(--accent); }
+  .conv-co { font-size: 11px; color: var(--text-faint); margin: 2px 0 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .conv-sigs { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 11px; min-height: 22px; }
+  .conv-sig { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid transparent; }
+  .conv-foot { display: flex; align-items: center; gap: 8px; }
+  .conv-6m { font-family: var(--mono); font-size: 11px; font-weight: 600; margin-left: auto; }
+
   .cluster-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .cluster-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; transition: border-color 0.14s ease, transform 0.14s ease; }
   .cluster-card:hover { border-color: var(--accent-dim); transform: translateY(-1px); }
@@ -762,7 +783,7 @@
   let openId = null;           // open bill key
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
-  let memberSort = "return";   // return | winrate | volume | trades
+  let memberSort = "alpha";    // alpha | return | winrate | volume | trades
   let screenPhilosophy = null; // active screener philosophy key (or "custom")
   const customFilters = { mcap: "any", trend: "any", mom: "any", rsi: "any", high: "any", sort: "mcap" };
   let activeAgent = null;      // active agent key
@@ -1348,7 +1369,8 @@
 
   /* ---------- POLITICIANS VIEW ---------- */
   const MEMBER_SORTS = {
-    return:  { label: "Return",   fn: m => m.portfolio_return, sub: "paper return on disclosed buys" },
+    alpha:   { label: "Alpha",    fn: m => m.alpha,            sub: "return above the S&P 500 over the same holding periods — the honest measure of skill" },
+    return:  { label: "Return",   fn: m => m.portfolio_return, sub: "raw paper return on disclosed buys (before benchmarking)" },
     winrate: { label: "Win rate", fn: m => m.win_rate,         sub: "share of buys now in the green" },
     volume:  { label: "Volume",   fn: m => m.total_value,      sub: "total disclosed dollar volume" },
     trades:  { label: "Trades",   fn: m => m.trade_count,      sub: "number of disclosed transactions" },
@@ -1373,24 +1395,24 @@
     const sortTabs = Object.entries(MEMBER_SORTS).map(([k, v]) =>
       `<button class="sort-tab ${k === memberSort ? "active" : ""}" data-msort="${k}">${v.label}</button>`).join("");
 
-    // headline stats + podium (always the top performers by return)
-    const scored = members.filter(m => m.portfolio_return != null);
-    const byRet = scored.slice().sort((a, b) => b.portfolio_return - a.portfolio_return);
-    const podium = byRet.slice(0, 3);
-    const green = scored.filter(m => m.portfolio_return > 0).length;
-    const greenPct = scored.length ? Math.round(green / scored.length * 100) : 0;
-    const sortedRets = scored.map(m => m.portfolio_return).sort((a, b) => a - b);
-    const median = sortedRets.length ? sortedRets[Math.floor(sortedRets.length / 2)] : null;
+    // headline stats + podium (always the top performers by ALPHA vs the market)
+    const scored = members.filter(m => m.alpha != null);
+    const byAlpha = scored.slice().sort((a, b) => b.alpha - a.alpha);
+    const podium = byAlpha.slice(0, 3);
+    const beat = scored.filter(m => m.alpha > 0).length;
+    const beatPct = scored.length ? Math.round(beat / scored.length * 100) : 0;
+    const sortedA = scored.map(m => m.alpha).sort((a, b) => a - b);
+    const median = sortedA.length ? sortedA[Math.floor(sortedA.length / 2)] : null;
 
     return `<section class="data-section">
       <div class="lead-hero">
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Congress Trading · ${scored.length} tracked</div>
           <h1 class="lead-h1">Who's beating<br>the market</h1>
-          <p class="lead-tagline">Every member's disclosed trades, scored by how the stock has performed since they filed.</p>
+          <p class="lead-tagline">Every member ranked by <b>alpha</b> — how much their disclosed buys have beaten the S&amp;P 500 over the same holding period. Raw return flatters everyone in a bull market; alpha is the real skill test.</p>
           <div class="lead-stat-row">
-            <div class="lead-stat"><b>${greenPct}%</b><i>members in the green</i></div>
-            <div class="lead-stat"><b class="${median > 0 ? "up" : "down"}">${median != null ? (median > 0 ? "+" : "") + median.toFixed(1) + "%" : "—"}</b><i>median track record</i></div>
+            <div class="lead-stat"><b>${beatPct}%</b><i>members beating the market</i></div>
+            <div class="lead-stat"><b class="${median > 0 ? "up" : "down"}">${median != null ? (median > 0 ? "+" : "") + median.toFixed(1) + "%" : "—"}</b><i>median alpha</i></div>
           </div>
         </div>
         <div class="podium">${podium.map((m, i) => renderPodium(m, i)).join("")}</div>
@@ -1410,9 +1432,9 @@
       ${memberPhoto(m, true)}
       <div class="podium-id">
         <div class="podium-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
-        <div class="podium-meta">${m.chamber}${m.win_rate != null ? ` · ${m.win_rate}% win` : ""} · ${m.trade_count} trades</div>
+        <div class="podium-meta">${m.portfolio_return != null ? `${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}% return · ` : ""}${m.trade_count} trades</div>
       </div>
-      <div class="podium-ret">${returnPill(m.portfolio_return, true)}</div>
+      <div class="podium-ret">${returnPill(m.alpha, true)}</div>
     </div>`;
   }
 
@@ -1423,6 +1445,7 @@
   }
 
   function renderLeaderRow(m, rank) {
+    const ret = m.portfolio_return == null ? "" : `<span class="lead-metric"><b class="${m.portfolio_return >= 0 ? "up" : "down"}">${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%</b><i>return</i></span>`;
     const wins = m.win_rate == null ? "" : `<span class="lead-metric"><b>${m.win_rate}%</b><i>win rate</i></span>`;
     const best = m.best_trade ? `<span class="lead-best">Best ${esc(m.best_trade.ticker)} ${returnPill(m.best_trade.return_pct)}</span>` : "";
     return `<div class="lead-row" data-member="${esc(m.member)}">
@@ -1433,8 +1456,8 @@
         <div class="lead-meta">${esc(m.chamber)} · ${m.trade_count} trades · ${fmtMoney(m.total_value)} ${best}</div>
       </div>
       <div class="lead-metrics">
-        ${wins}
-        <div class="lead-return">${returnPill(m.portfolio_return, true)}<i>track record</i></div>
+        ${ret}${wins}
+        <div class="lead-return">${returnPill(m.alpha, true)}<i>alpha vs S&amp;P</i></div>
       </div>
     </div>`;
   }
@@ -1494,11 +1517,12 @@
       <div class="modal-body">
         ${m.portfolio_return != null ? `
         <div class="track-banner">
-          <div class="track-main"><div class="track-label">Track record</div><div class="track-val">${returnPill(m.portfolio_return, true)}</div><div class="track-note">paper return on ${m.priced_buys} scored buys</div></div>
+          <div class="track-main"><div class="track-label">${m.alpha != null ? "Alpha — vs S&amp;P 500" : "Track record"}</div><div class="track-val">${returnPill(m.alpha != null ? m.alpha : m.portfolio_return, true)}</div><div class="track-note">${m.alpha != null ? `market-beating return on ${m.priced_buys} scored buys` : `paper return on ${m.priced_buys} scored buys`}</div></div>
           <div class="track-splits">
+            ${m.alpha != null && m.portfolio_return != null ? `<div class="track-split"><b style="color:${m.portfolio_return >= 0 ? "var(--good)" : "var(--bad)"}">${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%</b><i>raw return</i></div>` : ""}
+            ${m.beat_market_rate != null ? `<div class="track-split"><b>${m.beat_market_rate}%</b><i>beat market</i></div>` : ""}
             ${m.win_rate != null ? `<div class="track-split"><b>${m.win_rate}%</b><i>win rate</i></div>` : ""}
             ${m.best_trade ? `<div class="track-split"><b class="clickable-ticker" data-ticker="${esc(m.best_trade.ticker)}">${esc(m.best_trade.ticker)}</b><i>best ${returnPill(m.best_trade.return_pct)}</i></div>` : ""}
-            ${m.worst_trade ? `<div class="track-split"><b class="clickable-ticker" data-ticker="${esc(m.worst_trade.ticker)}">${esc(m.worst_trade.ticker)}</b><i>worst ${returnPill(m.worst_trade.return_pct)}</i></div>` : ""}
           </div>
         </div>` : ""}
         <div class="modal-stats">
@@ -2078,6 +2102,34 @@
   }
 
   /* ---------- OVERVIEW VIEW ---------- */
+  const SIG_COL = { congress: "var(--accent)", insider: "var(--ind)", trend: "var(--good)", bipartisan: "var(--dem)" };
+  function renderConvictionSection() {
+    const cv = DATA.conviction;
+    if (!cv || !(cv.stocks || []).length) return "";
+    const card = r => {
+      const sc = sectorMeta(r.sector);
+      const sigs = r.signals.map(s => {
+        const col = SIG_COL[s.src] || "var(--text-dim)";
+        return `<span class="conv-sig" style="color:${col};background:${col}1c;border-color:${col}44">${esc(s.label)}</span>`;
+      }).join("");
+      const dots = [0, 1, 2].map(i => `<i class="${i < r.confluence ? "on" : ""}"></i>`).join("");
+      return `<div class="conv-card clickable-ticker" data-ticker="${esc(r.ticker)}">
+        <div class="conv-top">
+          <span class="conv-ticker">${esc(r.ticker)}</span>
+          <span class="conv-conf" title="${r.confluence} independent signals aligned">${dots}</span>
+        </div>
+        <div class="conv-co">${esc(r.company || "")}</div>
+        <div class="conv-sigs">${sigs}</div>
+        <div class="conv-foot"><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>${r.r6 != null ? `<span class="conv-6m ${r.r6 >= 0 ? "num-up" : "num-down"}">6M ${r.r6 > 0 ? "+" : ""}${r.r6}%</span>` : ""}</div>
+      </div>`;
+    };
+    return `<div class="conv-head">
+        <div><h2 class="conv-title">Conviction signals</h2><p class="conv-sub">Where independent smart money agrees — stocks that <b style="color:var(--accent)">Congress</b> is buying, <b style="color:var(--ind)">corporate insiders</b> are buying, and the <b style="color:var(--good)">trend</b> confirms. Two or more aligned is the strongest tell on the site.</p></div>
+        <div class="conv-badge"><b>${cv.multi_signal}</b><i>stocks · 2+ signals</i></div>
+      </div>
+      <div class="conv-grid">${cv.stocks.slice(0, 9).map(card).join("")}</div>`;
+  }
+
   function renderOverviewView() {
     const o = DATA.overview;
     if (!o) return `<div class="empty-note">Overview data not available in this build of data.json yet — it appears after the next data refresh.</div>`;
@@ -2121,6 +2173,7 @@
       </div>`).join("")}</div>`;
 
     return `<section class="data-section">
+      ${renderConvictionSection()}
       ${kpis}
       ${balance}
       ${movers}

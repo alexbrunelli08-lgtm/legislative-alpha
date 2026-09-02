@@ -1295,9 +1295,11 @@ def annotate_trade_pnl(trades, prices):
     (a positive number means it kept rising after they sold). Only trades in
     tickers we have prices for get values; the rest stay unpriced (null)."""
     last_close = {tk: s[max(s)] for tk, s in prices.items() if s}
+    spy = prices.get("SPY")
+    spy_last = last_close.get("SPY")
     priced = 0
     for t in trades:
-        t["entry_price"] = t["last_price"] = t["return_pct"] = t["gain_value"] = None
+        t["entry_price"] = t["last_price"] = t["return_pct"] = t["gain_value"] = t["excess_pct"] = None
         tk = t.get("ticker")
         series = prices.get(tk) if tk else None
         if not series or not t.get("transaction_date"):
@@ -1315,6 +1317,12 @@ def annotate_trade_pnl(trades, prices):
         t["last_price"] = round(last, 2)
         # raw price move since the trade date (from the stock's perspective)
         t["return_pct"] = round(ret * 100, 1)
+        # excess return vs the S&P 500 over the SAME holding period (alpha) --
+        # the honest measure of whether the pick actually beat the market.
+        if spy and spy_last:
+            spy_entry = _nearest_close(spy, txd)
+            if spy_entry:
+                t["excess_pct"] = round((ret - (spy_last / spy_entry - 1)) * 100, 1)
         # dollar P&L only for PURCHASES -- an open position whose paper value we
         # can size. A sale closes the position, so we show only the price move
         # since (as context on the exit), never an implied realized profit.
@@ -1587,6 +1595,7 @@ def build_member_profiles(trades):
             "sectors": set(),
             "last_filed": None,
             "buy_basis": 0, "buy_gain": 0, "priced": 0, "wins": 0,
+            "buy_excess": 0, "excess_basis": 0, "beat_market": 0,
             "best": None, "worst": None,
         })
         p["trade_count"] += 1
@@ -1606,6 +1615,11 @@ def build_member_profiles(trades):
                     p["best"] = {"ticker": t["ticker"], "return_pct": t["return_pct"]}
                 if p["worst"] is None or t["return_pct"] < p["worst"]["return_pct"]:
                     p["worst"] = {"ticker": t["ticker"], "return_pct": t["return_pct"]}
+                if t.get("excess_pct") is not None:
+                    p["buy_excess"] += val * t["excess_pct"] / 100.0
+                    p["excess_basis"] += val
+                    if t["excess_pct"] > 0:
+                        p["beat_market"] += 1
         else:
             p["sell_count"] += 1
             p["sell_value"] += val
@@ -1638,7 +1652,11 @@ def build_member_profiles(trades):
             "last_filed": p["last_filed"],
             # Track record (dollar-weighted paper return of disclosed buys)
             "portfolio_return": round(p["buy_gain"] / p["buy_basis"] * 100, 1) if p["buy_basis"] else None,
+            # Alpha: dollar-weighted EXCESS return vs the S&P over the same holding
+            # periods -- the honest measure of stock-picking skill.
+            "alpha": round(p["buy_excess"] / p["excess_basis"] * 100, 1) if p["excess_basis"] else None,
             "win_rate": round(p["wins"] / p["priced"] * 100) if p["priced"] else None,
+            "beat_market_rate": round(p["beat_market"] / p["priced"] * 100) if p["priced"] else None,
             "priced_buys": p["priced"],
             "best_trade": p["best"],
             "worst_trade": p["worst"],
@@ -2239,6 +2257,57 @@ def build_screener(prices, universe, mcaps):
     return {"universe": len(stocks), "min_mcap": MID_CAP_FLOOR, "stocks": stocks}
 
 
+def build_conviction(stock_signals, insiders, screener):
+    """The site's edge: where independent smart-money signals CONFLUENCE on the
+    same stock -- Congress buying + corporate insiders buying + a technical
+    uptrend. Two or more aligned is a far stronger tell than any one alone."""
+    csig = {s["ticker"]: s for s in stock_signals}
+    isig = (insiders or {}).get("signals") or {}
+    tech = {s["ticker"]: s for s in (screener.get("stocks") or [])}
+
+    tickers = set()
+    for tk, s in csig.items():
+        if s.get("net_value", 0) > 0 and s.get("member_count", 0) >= 1:
+            tickers.add(tk)
+    for tk, s in isig.items():
+        if s.get("n_buyers", 0) >= 1 and s.get("buy_value", 0) > 0:
+            tickers.add(tk)
+
+    rows = []
+    for tk in tickers:
+        c, i, t = csig.get(tk), isig.get(tk), tech.get(tk)
+        cong_buy = bool(c and c.get("net_value", 0) > 0 and c.get("member_count", 0) >= 1)
+        ins_buy = bool(i and i.get("n_buyers", 0) >= 1 and i.get("buy_value", 0) > 0)
+        uptrend = bool(t and t.get("above200") and (t.get("r6") or 0) > 0)
+        signals, score = [], 0.0
+        if cong_buy:
+            n = c["member_count"]
+            score += 1 + min(n - 1, 3) * 0.4
+            signals.append({"src": "congress", "label": f"{n} in Congress buying"})
+            if c.get("bipartisan"):
+                score += 0.5
+                signals.append({"src": "bipartisan", "label": "Bipartisan"})
+        if ins_buy:
+            n = i["n_buyers"]
+            score += 1.2 + min(n - 1, 3) * 0.4   # insiders weighted a touch higher
+            signals.append({"src": "insider", "label": f"{n} insider{'s' if n > 1 else ''} buying"})
+        if uptrend:
+            score += 0.8
+            signals.append({"src": "trend", "label": "Uptrend"})
+        confluence = cong_buy + ins_buy + uptrend
+        rows.append({
+            "ticker": tk,
+            "company": (c or {}).get("company") or (i or {}).get("company") or (t or {}).get("company") or tk,
+            "sector": (c or {}).get("sector") or (t or {}).get("sector") or "OTHER",
+            "confluence": confluence, "score": round(score, 2), "signals": signals,
+            "member_count": (c or {}).get("member_count", 0), "n_insiders": (i or {}).get("n_buyers", 0),
+            "congress_value": (c or {}).get("net_value", 0), "insider_value": (i or {}).get("buy_value", 0),
+            "r6": (t or {}).get("r6"), "vs200": (t or {}).get("vs200"), "mcap": (t or {}).get("mcap"),
+        })
+    rows.sort(key=lambda r: (r["confluence"], r["score"], r["congress_value"] + r["insider_value"]), reverse=True)
+    return {"stocks": rows[:30], "multi_signal": sum(1 for r in rows if r["confluence"] >= 2)}
+
+
 # ---------------------------------------------------------------------------
 # Agents -- simulated, no-fee model portfolios. Each agent is a rules-based
 # strategy (a "philosophy") that we BACKTEST point-in-time: at each monthly
@@ -2565,6 +2634,7 @@ def main():
     screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
     mcaps = fetch_market_caps(list(universe.keys())) if universe else {}
     screener = build_screener(screener_prices, universe, mcaps)
+    conviction = build_conviction(stock_signals, insiders, screener)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -2578,6 +2648,7 @@ def main():
         "smart_money": smart_money,
         "insiders": insiders,
         "screener": screener,
+        "conviction": conviction,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,
