@@ -2017,6 +2017,148 @@ def fetch_market_caps(tickers):
     return {t: v.get("mc") for t, v in cache.items()}
 
 
+# ---------------------------------------------------------------------------
+# Wall Street vs the Crowd -- analyst ratings (Yahoo) + retail social sentiment
+# (StockTwits) for the stocks this site cares about. Both cached; both degrade
+# gracefully if a source rate-limits.
+# ---------------------------------------------------------------------------
+
+RATINGS_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "ratings_cache.json")
+SOCIAL_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "social_cache.json")
+RATINGS_TTL_DAYS = 3
+SOCIAL_TTL_DAYS = 1
+STREET_MAX_TICKERS = 240
+
+
+def _load_cache(path):
+    if os.path.exists(path):
+        try:
+            return json.load(open(path, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def _fresh(entry, today, ttl):
+    try:
+        return (datetime.strptime(today, "%Y-%m-%d") - datetime.strptime(entry.get("asof", "2000-01-01"), "%Y-%m-%d")).days < ttl
+    except ValueError:
+        return False
+
+
+def fetch_ratings(tickers):
+    """Analyst consensus per ticker via Yahoo quoteSummary: recommendation, mean
+    price target + upside, analyst count, and the strong-buy..strong-sell split."""
+    cache = _load_cache(RATINGS_CACHE_PATH)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    todo = [t for t in dict.fromkeys(tickers) if not (t in cache and _fresh(cache[t], today, RATINGS_TTL_DAYS))]
+    if todo:
+        session, crumb = _yahoo_session()
+        if session:
+            got = 0
+            for i, tk in enumerate(todo):
+                try:
+                    r = session.get(f"https://query2.finance.yahoo.com/v10/finance/quoteSummary/{tk.replace('.', '-')}",
+                                    params={"modules": "financialData,recommendationTrend", "crumb": crumb}, timeout=REQUEST_TIMEOUT)
+                    if r.status_code == 200:
+                        res = r.json()["quoteSummary"]["result"][0]
+                        f = res.get("financialData") or {}
+                        rt = (res.get("recommendationTrend") or {}).get("trend") or []
+                        t0 = rt[0] if rt else {}
+                        cur = (f.get("currentPrice") or {}).get("raw")
+                        tgt = (f.get("targetMeanPrice") or {}).get("raw")
+                        cache[tk] = {"asof": today, "rec": f.get("recommendationKey"),
+                                     "target": round(tgt, 2) if tgt else None, "current": round(cur, 2) if cur else None,
+                                     "upside": round((tgt / cur - 1) * 100, 1) if tgt and cur else None,
+                                     "n": (f.get("numberOfAnalystOpinions") or {}).get("raw"),
+                                     "sb": t0.get("strongBuy", 0), "b": t0.get("buy", 0), "h": t0.get("hold", 0),
+                                     "s": t0.get("sell", 0), "ss": t0.get("strongSell", 0)}
+                        got += 1
+                    else:
+                        cache[tk] = {"asof": today, "rec": None}
+                except (requests.RequestException, KeyError, ValueError, IndexError):
+                    cache[tk] = {"asof": today, "rec": None}
+                time.sleep(0.2)
+                if (i + 1) % 80 == 0:
+                    json.dump(cache, open(RATINGS_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+            json.dump(cache, open(RATINGS_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+            print(f"  analyst ratings: {got} fetched, {len(cache)} cached", file=sys.stderr)
+    return cache
+
+
+def fetch_social(tickers):
+    """Retail social sentiment per ticker from StockTwits: message volume (buzz)
+    and bullish/bearish tags. Stops on rate-limit and fills in over later runs."""
+    cache = _load_cache(SOCIAL_CACHE_PATH)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    todo = [t for t in dict.fromkeys(tickers) if not (t in cache and _fresh(cache[t], today, SOCIAL_TTL_DAYS))]
+    got = limited = 0
+    for tk in todo:
+        try:
+            r = requests.get(f"https://api.stocktwits.com/api/2/streams/symbol/{tk}.json",
+                             headers={"User-Agent": "Mozilla/5.0"}, timeout=REQUEST_TIMEOUT)
+            if r.status_code == 429:
+                limited = 1
+                break
+            if r.status_code == 200:
+                msgs = r.json().get("messages", [])
+                bull = sum(1 for m in msgs if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bullish")
+                bear = sum(1 for m in msgs if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bearish")
+                cache[tk] = {"asof": today, "msgs": len(msgs), "bull": bull, "bear": bear}
+                got += 1
+            else:
+                cache[tk] = {"asof": today, "msgs": 0}
+        except (requests.RequestException, ValueError):
+            cache[tk] = {"asof": today, "msgs": 0}
+        time.sleep(0.35)
+    json.dump(cache, open(SOCIAL_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+    print(f"  social sentiment: {got} fetched{' (rate-limited, will continue next run)' if limited else ''}, {len(cache)} cached", file=sys.stderr)
+    return cache
+
+
+def build_street(tickers, ratings, social, stock_signals, insiders, screener):
+    """Combine analyst ratings + retail buzz with this site's own smart-money
+    signals into one 'Wall Street vs the Crowd' picture per stock."""
+    csig = {s["ticker"]: s for s in stock_signals}
+    isig = (insiders or {}).get("signals") or {}
+    tech = {s["ticker"]: s for s in (screener.get("stocks") or [])}
+    rows = []
+    for tk in dict.fromkeys(tickers):
+        r = ratings.get(tk) or {}
+        soc = social.get(tk) or {}
+        n = r.get("n") or 0
+        # a rating is only trustworthy with real coverage (>=3 analysts)
+        has_rating = bool(r.get("rec")) and n >= 3
+        has_social = bool(soc.get("msgs"))
+        if not has_rating and not has_social:
+            continue
+        # clamp obviously-stale price targets (a >250% or <-90% "upside" is a glitch)
+        upside = r.get("upside")
+        if upside is not None and (upside > 250 or upside < -90):
+            upside = None
+        buy = r.get("sb", 0) + r.get("b", 0)
+        hold = r.get("h", 0)
+        sell = r.get("s", 0) + r.get("ss", 0)
+        bull, bear = soc.get("bull", 0), soc.get("bear", 0)
+        stotal = bull + bear
+        c = csig.get(tk) or {}
+        info = c or tech.get(tk) or {}
+        rows.append({
+            "ticker": tk, "company": info.get("company", tk),
+            "sector": c.get("sector") or (tech.get(tk) or {}).get("sector") or "OTHER",
+            "rec": r.get("rec") if has_rating else None,
+            "target": r.get("target") if has_rating else None, "current": r.get("current"),
+            "upside": upside if has_rating else None, "n_analysts": n if has_rating else None,
+            "buy": buy, "hold": hold, "sell": sell,
+            "buzz": soc.get("msgs", 0), "bull": bull, "bear": bear,
+            "bull_pct": round(bull / stotal * 100) if stotal else None,
+            "congress": c.get("member_count", 0) if c.get("net_value", 0) > 0 else 0,
+            "insiders": (isig.get(tk) or {}).get("n_buyers", 0),
+            "r6": (tech.get(tk) or {}).get("r6"),
+        })
+    return {"as_of": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "stocks": rows}
+
+
 def build_performance(trades, prices):
     """'Follow Congress' index vs the S&P 500 -- Quiver's public methodology.
 
@@ -2635,6 +2777,16 @@ def main():
     mcaps = fetch_market_caps(list(universe.keys())) if universe else {}
     screener = build_screener(screener_prices, universe, mcaps)
     conviction = build_conviction(stock_signals, insiders, screener)
+
+    # Analyst ratings + retail social sentiment for the stocks that matter here.
+    print("Fetching analyst ratings + social sentiment...", file=sys.stderr)
+    street_tickers = ([r["ticker"] for r in conviction["stocks"]]
+                      + [s["ticker"] for s in stock_signals[:120]]
+                      + [s["ticker"] for s in screener["stocks"][:60]])
+    street_tickers = list(dict.fromkeys(t for t in street_tickers if t))[:STREET_MAX_TICKERS]
+    ratings = fetch_ratings(street_tickers)
+    social = fetch_social(street_tickers)
+    street = build_street(street_tickers, ratings, social, stock_signals, insiders, screener)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -2649,6 +2801,7 @@ def main():
         "insiders": insiders,
         "screener": screener,
         "conviction": conviction,
+        "street": street,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,

@@ -479,6 +479,39 @@
   .donut-legend b { margin-left: auto; font-family: var(--mono); color: var(--text); }
   @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } .dash-grid { grid-template-columns: 1fr; } .hbar-row { grid-template-columns: 130px 1fr 78px; } }
 
+  /* ---------- Sentiment (Wall Street vs the Crowd) ---------- */
+  .gauge-card .street-hero-stat { text-align: center; margin: 3px 0; }
+  .street-hero-stat b { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
+  .street-hero-stat b.up { color: var(--good); }
+  .street-hero-stat i { font-style: normal; display: block; font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px; }
+  .street-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .street-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 17px; transition: border-color 0.14s ease; }
+  .street-card:hover { border-color: var(--accent-dim); }
+  .st-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+  .st-ticker { font-family: var(--mono); font-weight: 700; font-size: 17px; cursor: pointer; }
+  .st-ticker:hover { color: var(--accent); }
+  .st-co { font-size: 11px; color: var(--text-faint); margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+  .st-sigs { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+  .st-sig { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+  .st-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .st-side { min-width: 0; }
+  .st-side-head { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+  .st-side-label { font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; }
+  .st-side-n { font-family: var(--mono); font-size: 10px; color: var(--text-faint); }
+  .st-rec { font-family: var(--display); font-weight: 700; font-size: 16px; margin-bottom: 7px; }
+  .seg-bar { display: flex; height: 7px; border-radius: 999px; overflow: hidden; background: var(--panel-2); }
+  .seg-bar span { display: block; height: 100%; }
+  .st-metric { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-top: 7px; }
+  .st-metric.num-up { color: var(--good); } .st-metric.num-down { color: var(--bad); }
+  .st-empty { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+  .st-na { font-size: 11.5px; color: var(--text-faint); font-style: italic; }
+  .rating-banner { display: flex; gap: 12px; margin-bottom: 16px; }
+  .rb-cell { flex: 1; display: flex; flex-direction: column; gap: 3px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 11px 14px; }
+  .rb-label { font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; }
+  .rb-val { font-family: var(--display); font-weight: 700; font-size: 16px; }
+  .rb-sub { font-size: 11px; color: var(--text-faint); }
+  @media (max-width: 720px) { .street-grid { grid-template-columns: 1fr; } .rating-banner { flex-direction: column; } }
+
   /* ---------- Conviction signals ---------- */
   .conv-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
   .conv-title { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 0; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -717,6 +750,7 @@
       <button class="view-tab active" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="smart">Smart Money</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
+      <button class="view-tab" data-view="sentiment">Sentiment</button>
       <button class="view-tab" data-view="screener">Screener</button>
       <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
@@ -785,8 +819,10 @@
   let partyFilter = "ALL";     // ALL | D | R | I
   let memberSort = "alpha";    // alpha | return | winrate | volume | trades
   let screenPhilosophy = null; // active screener philosophy key (or "custom")
-  const customFilters = { mcap: "any", trend: "any", mom: "any", rsi: "any", high: "any", sort: "mcap" };
+  const customFilters = { mcap: "any", trend: "any", mom: "any", rsi: "any", high: "any", vol: "any", golden: "any", sort: "mcap" };
   let activeAgent = null;      // active agent key
+  let streetSort = "upside";   // sentiment view sort
+  let streetFilter = "all";    // all | buy | buzzing | signal
   let tradesShown = 100;
   const TRADES_PAGE = 100;
   let signalsShown = 60;
@@ -794,7 +830,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "smart", "insiders", "screener", "bills", "politicians", "stocks"];
+  const VIEWS = ["overview", "smart", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -816,6 +852,7 @@
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
+    sentiment: "Wall Street vs the Crowd — analyst buy ratings and price targets next to retail social buzz.",
     screener: "The whole US market filtered by investment philosophy — momentum, value, trend, mean-reversion.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
     politicians: "Every member ranked by the actual return on their disclosed trades.",
@@ -1898,6 +1935,113 @@
     </section>`;
   }
 
+  /* ---------- SENTIMENT VIEW (Wall Street vs the Crowd) ---------- */
+  const REC_META = {
+    strong_buy: ["Strong Buy", "var(--good)", 5], buy: ["Buy", "var(--good)", 4],
+    hold: ["Hold", "var(--warn)", 3], underperform: ["Underperform", "var(--bad)", 2],
+    sell: ["Sell", "var(--bad)", 1],
+  };
+  function recMeta(rec) { return REC_META[rec] || null; }
+
+  function segBar(segs) {
+    const total = segs.reduce((a, s) => a + s.v, 0) || 1;
+    return `<span class="seg-bar">${segs.filter(s => s.v > 0).map(s => `<span style="width:${s.v / total * 100}%;background:${s.c}"></span>`).join("")}</span>`;
+  }
+
+  function ratingBanner(ticker) {
+    const s = (DATA.street && DATA.street.stocks || []).find(x => x.ticker === ticker);
+    if (!s || (!s.rec && !s.buzz)) return "";
+    const rm = recMeta(s.rec);
+    const analyst = rm ? `<div class="rb-cell">
+        <span class="rb-label">Wall Street</span>
+        <span class="rb-val" style="color:${rm[1]}">${rm[0]}</span>
+        <span class="rb-sub">${s.upside != null ? `${s.upside > 0 ? "+" : ""}${s.upside}% to $${s.target} target · ${s.n_analysts || "—"} analysts` : "no target"}</span>
+      </div>` : "";
+    const retail = s.buzz ? `<div class="rb-cell">
+        <span class="rb-label">The Crowd</span>
+        <span class="rb-val" style="color:${s.bull_pct >= 50 ? "var(--good)" : "var(--bad)"}">${s.bull_pct != null ? s.bull_pct + "% bullish" : "—"}</span>
+        <span class="rb-sub">${s.buzz} StockTwits messages</span>
+      </div>` : "";
+    return `<div class="rating-banner">${analyst}${retail}</div>`;
+  }
+
+  function renderStreetView() {
+    const stocks = (DATA.street && DATA.street.stocks) || [];
+    if (!stocks.length)
+      return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
+        <div class="lead-eyebrow">Analyst ratings + social buzz</div><h1 class="lead-h1">Wall Street<br>vs the Crowd</h1>
+        <p class="lead-tagline">What professional analysts and retail traders think about the stocks smart money is watching.</p></div></div>
+        <div class="empty-note">Ratings and social sentiment appear after the next full data run.</div></section>`;
+
+    let rows = stocks.slice();
+    if (streetFilter === "buy") rows = rows.filter(s => (recMeta(s.rec) || [0, 0, 0])[2] >= 4);
+    else if (streetFilter === "buzzing") rows = rows.filter(s => s.buzz >= 15);
+    else if (streetFilter === "signal") rows = rows.filter(s => s.congress || s.insiders);
+    const SORTS = {
+      upside: s => s.upside, buzz: s => s.buzz, rating: s => (recMeta(s.rec) || [0, 0, 0])[2],
+      bullish: s => s.bull_pct, congress: s => s.congress,
+    };
+    const key = SORTS[streetSort] || SORTS.upside;
+    rows.sort((a, b) => (key(b) ?? -1e9) - (key(a) ?? -1e9));
+
+    const nBuy = stocks.filter(s => (recMeta(s.rec) || [0, 0, 0])[2] >= 4).length;
+    const nBuzz = stocks.filter(s => s.buzz >= 15).length;
+    const avgUpside = (() => { const u = stocks.map(s => s.upside).filter(x => x != null); return u.length ? Math.round(u.reduce((a, b) => a + b, 0) / u.length) : null; })();
+
+    const sortTab = (k, l) => `<button class="sort-tab ${streetSort === k ? "active" : ""}" data-ssort="${k}">${l}</button>`;
+    const filtTab = (k, l) => `<button class="phil-tab ${streetFilter === k ? "active" : ""}" data-sfilt="${k}">${l}</button>`;
+
+    return `<section class="data-section">
+      <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Analyst ratings + social buzz · ${stocks.length} stocks</div>
+          <h1 class="lead-h1">Wall Street<br>vs the Crowd</h1>
+          <p class="lead-tagline">For the stocks smart money is watching: the professional analyst consensus and price targets, side by side with live retail buzz. When Wall Street and the crowd agree — and when they don't.</p>
+        </div>
+        <div class="gauge-card" style="padding:20px 26px;">
+          <div class="street-hero-stat"><b class="up">${nBuy}</b><i>rated Buy or better</i></div>
+          <div class="street-hero-stat"><b>${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b><i>avg upside to target</i></div>
+          <div class="street-hero-stat"><b style="color:var(--accent)">${nBuzz}</b><i>buzzing on social</i></div>
+        </div>
+      </div>
+      <div class="lead-controls">
+        <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("signal", "Smart-money picks")}</div>
+        <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("buzz", "Buzz")}${sortTab("congress", "Congress")}</div></div>
+      </div>
+      <div class="street-grid">${rows.slice(0, 60).map(renderStreetCard).join("")}</div>
+      <div class="hero-note">Analyst ratings & price targets via Yahoo Finance; retail sentiment via StockTwits (share of recent messages tagged bullish). Informational only, not investment advice.</div>
+    </section>`;
+  }
+
+  function renderStreetCard(s) {
+    const rm = recMeta(s.rec);
+    const sc = sectorMeta(s.sector);
+    const sigs = [];
+    if (s.congress) sigs.push(`<span class="st-sig" style="color:var(--accent);background:var(--accent-dim)">${s.congress} in Congress</span>`);
+    if (s.insiders) sigs.push(`<span class="st-sig" style="color:var(--ind);background:var(--tint-violet)">${s.insiders} insider${s.insiders > 1 ? "s" : ""}</span>`);
+    const analyst = rm ? `
+      <div class="st-side">
+        <div class="st-side-head"><span class="st-side-label">Wall Street</span>${s.n_analysts ? `<span class="st-side-n">${s.n_analysts} analysts</span>` : ""}</div>
+        <div class="st-rec" style="color:${rm[1]}">${rm[0]}</div>
+        ${segBar([{ v: s.buy, c: "var(--good)" }, { v: s.hold, c: "var(--text-faint)" }, { v: s.sell, c: "var(--bad)" }])}
+        <div class="st-metric ${s.upside >= 0 ? "num-up" : "num-down"}">${s.upside != null ? `${s.upside > 0 ? "+" : ""}${s.upside}% to target` : "—"}</div>
+      </div>` : `<div class="st-side st-empty"><span class="st-side-label">Wall Street</span><span class="st-na">No analyst coverage</span></div>`;
+    const retail = s.buzz ? `
+      <div class="st-side">
+        <div class="st-side-head"><span class="st-side-label">The Crowd</span><span class="st-side-n">${s.buzz} msgs</span></div>
+        <div class="st-rec" style="color:${s.bull_pct >= 50 ? "var(--good)" : "var(--bad)"}">${s.bull_pct != null ? s.bull_pct + "% bullish" : "—"}</div>
+        ${segBar([{ v: s.bull, c: "var(--good)" }, { v: s.bear, c: "var(--bad)" }])}
+        <div class="st-metric">${s.bull} bull · ${s.bear} bear</div>
+      </div>` : `<div class="st-side st-empty"><span class="st-side-label">The Crowd</span><span class="st-na">Quiet on social</span></div>`;
+    return `<div class="street-card">
+      <div class="st-top">
+        <div style="min-width:0"><span class="st-ticker clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</span><div class="st-co">${esc(s.company || "")}</div></div>
+        <div class="st-sigs"><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>${sigs.join("")}</div>
+      </div>
+      <div class="st-sides">${analyst}${retail}</div>
+    </div>`;
+  }
+
   /* ---------- SCREENER VIEW (philosophy presets + custom builder) ---------- */
   const SCREENS = [
     { key: "momentum", name: "Momentum", metric: "6M return", reverse: true,
@@ -1942,9 +2086,13 @@
       if (f.high === "near" && !(s.vs_high != null && s.vs_high > -5)) return false;
       if (f.high === "off20" && !(s.vs_high != null && s.vs_high < -20)) return false;
       if (f.high === "off40" && !(s.vs_high != null && s.vs_high < -40)) return false;
+      if (f.vol === "low" && !(s.vol != null && s.vol < 25)) return false;
+      if (f.vol === "med" && !(s.vol != null && s.vol >= 25 && s.vol <= 50)) return false;
+      if (f.vol === "high" && !(s.vol != null && s.vol > 50)) return false;
+      if (f.golden === "yes" && !s.golden) return false;
       return true;
     });
-    const SORTS = { mcap: s => s.mcap, r6: s => s.r6, r3: s => s.r3, rsi: s => s.rsi, vs200: s => s.vs200, vs_high: s => s.vs_high };
+    const SORTS = { mcap: s => s.mcap, r6: s => s.r6, r3: s => s.r3, rsi: s => s.rsi, vs200: s => s.vs200, vs_high: s => s.vs_high, vol: s => -(s.vol ?? 999) };
     const key = SORTS[f.sort] || SORTS.mcap;
     rows.sort((a, b) => (key(b) ?? -1e18) - (key(a) ?? -1e18));
     return rows;
@@ -1978,7 +2126,9 @@
         <label>6M momentum ${sel("mom", [["any", "Any"], ["up", "Positive"], ["up25", "> +25%"], ["up50", "> +50%"], ["down", "Negative"]])}</label>
         <label>RSI ${sel("rsi", [["any", "Any"], ["oversold", "Oversold (<30)"], ["neutral", "Neutral (30–70)"], ["overbought", "Overbought (>70)"]])}</label>
         <label>From 52w high ${sel("high", [["any", "Any"], ["near", "Near high (<5%)"], ["off20", "Down 20%+"], ["off40", "Down 40%+"]])}</label>
-        <label>Sort by ${sel("sort", [["mcap", "Market cap"], ["r6", "6M return"], ["r3", "3M return"], ["rsi", "RSI"], ["vs200", "vs 200-DMA"], ["vs_high", "From high"]])}</label>
+        <label>Volatility ${sel("vol", [["any", "Any"], ["low", "Low (<25%)"], ["med", "Medium (25–50%)"], ["high", "High (>50%)"]])}</label>
+        <label>Golden cross ${sel("golden", [["any", "Any"], ["yes", "Golden cross only"]])}</label>
+        <label>Sort by ${sel("sort", [["mcap", "Market cap"], ["r6", "6M return"], ["r3", "3M return"], ["rsi", "RSI"], ["vs200", "vs 200-DMA"], ["vs_high", "From high"], ["vol", "Lowest volatility"]])}</label>
         <span class="custom-count">${count.toLocaleString()} match${count === 1 ? "" : "es"}</span>
       </div>`;
     } else {
@@ -2301,11 +2451,7 @@
             </span>
           </div>`;
         })()}
-        ${(DATA.stock_history && DATA.stock_history[ticker]) ? `
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:10px 14px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);">
-            <span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);font-weight:600;">Congressional interest (members over time)</span>
-            ${sparkline(DATA.stock_history[ticker], 160, 32)}
-          </div>` : ""}
+        ${ratingBanner(ticker)}
         <span class="detail-eyebrow">Bills that would affect ${esc(ticker)} (${relatedBills.length})</span>
         ${relatedBills.length === 0
           ? `<div class="empty-note">No tracked bills currently map to this stock's sector.</div>`
@@ -2482,6 +2628,7 @@
     if (activeView === "overview") el.innerHTML = renderOverviewView();
     else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
+    else if (activeView === "sentiment") el.innerHTML = renderStreetView();
     else if (activeView === "screener") el.innerHTML = renderScreenerView();
     else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
@@ -2514,6 +2661,9 @@
     el.querySelectorAll("[data-cf]").forEach(sel => sel.addEventListener("change", () => {
       customFilters[sel.dataset.cf] = sel.value; renderContent();
     }));
+    // sentiment (Wall Street vs Crowd) sort + filter
+    el.querySelectorAll("[data-ssort]").forEach(b => b.addEventListener("click", () => { streetSort = b.dataset.ssort; renderContent(); }));
+    el.querySelectorAll("[data-sfilt]").forEach(b => b.addEventListener("click", () => { streetFilter = b.dataset.sfilt; renderContent(); }));
     // party filter chips
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
       partyFilter = chip.dataset.party; membersShown = MEMBERS_PAGE; renderContent();
