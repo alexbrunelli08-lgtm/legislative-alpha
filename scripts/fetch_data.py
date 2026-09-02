@@ -2524,8 +2524,6 @@ def main():
     universe = load_universe()
     screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
     screener = build_screener(screener_prices, universe)
-    print("Backtesting philosophy agents...", file=sys.stderr)
-    agents = build_agents(screener_prices, universe, performance)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
@@ -2539,7 +2537,6 @@ def main():
         "smart_money": smart_money,
         "insiders": insiders,
         "screener": screener,
-        "agents": agents,
         "trends": trends,
         "stock_history": stock_history,
         "sectors": sector_summaries,

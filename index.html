@@ -654,7 +654,6 @@
       <button class="view-tab" data-view="smart">Smart Money</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
       <button class="view-tab" data-view="screener">Screener</button>
-      <button class="view-tab" data-view="agents">Agents</button>
       <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
       <button class="view-tab" data-view="bills">Bills</button>
@@ -730,7 +729,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "smart", "insiders", "screener", "agents", "bills", "politicians", "stocks"];
+  const VIEWS = ["overview", "smart", "insiders", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -753,7 +752,6 @@
     smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
     screener: "The whole US market filtered by investment philosophy — momentum, value, trend, mean-reversion.",
-    agents: "Simulated, no-fee model portfolios — each follows a philosophy, backtested vs the market.",
     bills: "The legislation moving through each sector — and the trades in the stocks it would benefit.",
     politicians: "Every member ranked by the actual return on their disclosed trades.",
     stocks: "What Congress is buying and selling, aggregated per ticker. Quiver-style consensus.",
@@ -1197,16 +1195,14 @@
 
   function renderFilterTabs() {
     const wrap = document.getElementById("filterTabs");
-    wrap.innerHTML = "";
-    const options = [["ALL", "All sectors"], ...Object.entries(DATA.sectors).map(([c, s]) => [c, s.short])];
-    options.forEach(([code, label]) => {
-      const btn = document.createElement("button");
-      btn.className = "filter-tab" + (activeSector === code ? " active" : "");
-      btn.textContent = label;
-      btn.addEventListener("click", () => setSector(code));
-      wrap.appendChild(btn);
-    });
-    // context toggle: only meaningful in the Bills view
+    // Only show a dismissible chip when a sector drill-down is active -- no
+    // persistent sector bar cluttering every tab.
+    if (activeSector !== "ALL" && DATA.sectors[activeSector]) {
+      wrap.innerHTML = `<button class="filter-tab active" id="clearSector">${esc(DATA.sectors[activeSector].short)} <span style="opacity:0.7">✕</span></button>`;
+      document.getElementById("clearSector").addEventListener("click", () => setSector("ALL"));
+    } else {
+      wrap.innerHTML = "";
+    }
     const toggle = document.getElementById("contextToggle");
     if (activeView === "bills") {
       toggle.style.display = "";
@@ -2203,7 +2199,6 @@
     else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "screener") el.innerHTML = renderScreenerView();
-    else if (activeView === "agents") el.innerHTML = renderAgentsView();
     else if (activeView === "bills") el.innerHTML = renderBillsView();
     else if (activeView === "politicians") el.innerHTML = renderPoliticiansView();
     else el.innerHTML = renderStocksView();
@@ -2230,10 +2225,6 @@
     // screener philosophy tabs
     el.querySelectorAll("[data-phil]").forEach(btn => btn.addEventListener("click", () => {
       screenPhilosophy = btn.dataset.phil; renderContent();
-    }));
-    // agent selector pills
-    el.querySelectorAll("[data-agent]").forEach(btn => btn.addEventListener("click", () => {
-      activeAgent = btn.dataset.agent; renderContent();
     }));
     // party filter chips
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {
@@ -2265,8 +2256,10 @@
   function renderAll() {
     renderViewTabs();
     renderFilterTabs();
-    // Overview is a global snapshot — the per-sector filter doesn't apply there.
-    document.querySelector(".filter-row").style.display = activeView === "overview" ? "none" : "";
+    // The filter row now only carries the Bills "key bills" toggle and an active
+    // sector-drill-down chip -- hide it entirely otherwise.
+    const showFilter = activeView === "bills" || (activeSector !== "ALL" && DATA.sectors[activeSector]);
+    document.querySelector(".filter-row").style.display = showFilter ? "" : "none";
     const q = document.getElementById("searchBox").value.trim();
     if (q.length >= 2) runSearch(q); else renderContent();
   }
