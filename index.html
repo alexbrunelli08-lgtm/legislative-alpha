@@ -364,6 +364,13 @@
   .phil-tab:not(.active) .phil-n { background: var(--panel-2); color: var(--text-faint); }
   .phil-thesis { font-size: 13px; color: var(--text-dim); line-height: 1.55; margin-bottom: 16px; max-width: 780px; }
   .phil-thesis b { color: var(--text); }
+  .phil-tab.custom { border-style: dashed; }
+  .phil-tab.custom.active { border-style: solid; }
+  .custom-bar { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: flex-end; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 16px; }
+  .custom-bar label { display: flex; flex-direction: column; gap: 5px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); font-weight: 600; }
+  .scr-select { font-family: var(--display); font-size: 12.5px; font-weight: 500; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; cursor: pointer; min-width: 130px; }
+  .scr-select:focus { outline: none; border-color: var(--accent-dim); }
+  .custom-count { margin-left: auto; align-self: center; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); }
   .scr-table td.num { font-family: var(--mono); text-align: right; }
   .scr-table th:not(:nth-child(1)):not(:nth-child(2)) { text-align: right; }
   .scr-tk { font-family: var(--mono); font-weight: 700; color: var(--text); }
@@ -720,7 +727,8 @@
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
   let memberSort = "return";   // return | winrate | volume | trades
-  let screenPhilosophy = null; // active screener philosophy key
+  let screenPhilosophy = null; // active screener philosophy key (or "custom")
+  const customFilters = { mcap: "any", trend: "any", mom: "any", rsi: "any", high: "any", sort: "mcap" };
   let activeAgent = null;      // active agent key
   let tradesShown = 100;
   const TRADES_PAGE = 100;
@@ -1721,28 +1729,105 @@
     </section>`;
   }
 
-  /* ---------- SCREENER VIEW (philosophy-based technical screen) ---------- */
+  /* ---------- SCREENER VIEW (philosophy presets + custom builder) ---------- */
+  const SCREENS = [
+    { key: "momentum", name: "Momentum", metric: "6M return", reverse: true,
+      thesis: "Ride the winners. Stocks in strong uptrends — above both their 50- and 200-day averages with powerful 6-month gains. The trend is your friend.",
+      sel: s => s.above200 && (s.r6 || 0) > 15 && (s.vs200 || 0) > 5, rank: s => s.r6 },
+    { key: "breakout", name: "52-Week Highs", metric: "% from high", reverse: true,
+      thesis: "New highs beget new highs. Names within a few percent of their 52-week high — buyers firmly in control, no overhead resistance.",
+      sel: s => s.vs_high != null && s.vs_high > -3, rank: s => s.vs_high },
+    { key: "golden", name: "Golden Cross", metric: "3M return", reverse: true,
+      thesis: "A textbook bullish trend change — the 50-day average has just crossed above the 200-day, historically the start of a new uptrend.",
+      sel: s => s.golden, rank: s => s.r3 },
+    { key: "oversold", name: "Oversold Bounce", metric: "RSI", reverse: false,
+      thesis: "Mean reversion. Beaten-down names with a low RSI (below 35) that statistically tend to snap back. For contrarians who buy fear.",
+      sel: s => s.rsi != null && s.rsi < 35, rank: s => s.rsi },
+    { key: "value", name: "Fallen Angels", metric: "% from high", reverse: false,
+      thesis: "Deep-value turnarounds — quality names trading 30-80% below their 52-week high (but not left for dead). Where value investors hunt.",
+      sel: s => s.vs_high != null && -80 < s.vs_high && s.vs_high < -30, rank: s => s.vs_high },
+    { key: "steady", name: "Steady Compounders", metric: "volatility", reverse: false,
+      thesis: "Low-drama uptrends. Above the 200-day, below-average volatility, but still gaining — the sleep-at-night winners that grind higher.",
+      sel: s => s.above200 && (s.vol != null && s.vol >= 12 && s.vol < 32) && (s.r6 || 0) > 8, rank: s => s.vol },
+  ];
+  function fmtMcap(v) {
+    if (!v) return "—";
+    if (v >= 1e12) return "$" + (v / 1e12).toFixed(1) + "T";
+    if (v >= 1e9) return "$" + (v / 1e9).toFixed(1) + "B";
+    return "$" + Math.round(v / 1e6) + "M";
+  }
+  const MCAP_TIERS = { any: [0, 1e15], mid: [2e9, 1e10], large: [1e10, 2e11], mega: [2e11, 1e15] };
+  function customScreen(stocks) {
+    const f = customFilters, mc = MCAP_TIERS[f.mcap] || MCAP_TIERS.any;
+    let rows = stocks.filter(s => {
+      if (!(s.mcap >= mc[0] && s.mcap < mc[1])) return false;
+      if (f.trend === "above" && !s.above200) return false;
+      if (f.trend === "below" && s.above200) return false;
+      if (f.mom === "up" && !((s.r6 || 0) > 0)) return false;
+      if (f.mom === "up25" && !((s.r6 || 0) > 25)) return false;
+      if (f.mom === "up50" && !((s.r6 || 0) > 50)) return false;
+      if (f.mom === "down" && !((s.r6 || 0) < 0)) return false;
+      if (f.rsi === "oversold" && !(s.rsi != null && s.rsi < 30)) return false;
+      if (f.rsi === "neutral" && !(s.rsi != null && s.rsi >= 30 && s.rsi <= 70)) return false;
+      if (f.rsi === "overbought" && !(s.rsi != null && s.rsi > 70)) return false;
+      if (f.high === "near" && !(s.vs_high != null && s.vs_high > -5)) return false;
+      if (f.high === "off20" && !(s.vs_high != null && s.vs_high < -20)) return false;
+      if (f.high === "off40" && !(s.vs_high != null && s.vs_high < -40)) return false;
+      return true;
+    });
+    const SORTS = { mcap: s => s.mcap, r6: s => s.r6, r3: s => s.r3, rsi: s => s.rsi, vs200: s => s.vs200, vs_high: s => s.vs_high };
+    const key = SORTS[f.sort] || SORTS.mcap;
+    rows.sort((a, b) => (key(b) ?? -1e18) - (key(a) ?? -1e18));
+    return rows;
+  }
+
   function renderScreenerView() {
     const scr = DATA.screener;
-    if (!scr || !(scr.philosophies || []).length)
+    const stocks = (scr && scr.stocks) || [];
+    if (!stocks.length)
       return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
-        <div class="lead-eyebrow">Technical screener</div><h1 class="lead-h1">Screen the<br>whole market</h1>
-        <p class="lead-tagline">Every US-listed stock, filtered by investment philosophy.</p></div></div>
+        <div class="lead-eyebrow">Technical screener</div><h1 class="lead-h1">Screen the<br>market</h1>
+        <p class="lead-tagline">Mid-cap and larger US stocks, filtered by investment philosophy.</p></div></div>
         <div class="empty-note">The screener is still scanning the market — it appears after the next full data run.</div></section>`;
 
-    const phils = scr.philosophies;
-    const active = phils.find(p => p.key === screenPhilosophy) || phils[0];
-    const tabs = phils.map(p => `<button class="phil-tab ${p.key === active.key ? "active" : ""}" data-phil="${p.key}">${esc(p.name)}<span class="phil-n">${p.stocks.length}</span></button>`).join("");
+    const isCustom = screenPhilosophy === "custom";
+    const active = SCREENS.find(p => p.key === screenPhilosophy) || SCREENS[0];
+    const tabs = SCREENS.map(p => {
+      const n = stocks.filter(p.sel).length;
+      return `<button class="phil-tab ${!isCustom && p.key === active.key ? "active" : ""}" data-phil="${p.key}">${esc(p.name)}<span class="phil-n">${n}</span></button>`;
+    }).join("") + `<button class="phil-tab custom ${isCustom ? "active" : ""}" data-phil="custom">✦ Custom</button>`;
+
+    let rows, count, thesisHtml;
+    if (isCustom) {
+      rows = customScreen(stocks);
+      count = rows.length;
+      rows = rows.slice(0, 100);
+      const sel = (id, opts) => `<select class="scr-select" data-cf="${id}">${opts.map(([v, l]) => `<option value="${v}" ${customFilters[id] === v ? "selected" : ""}>${l}</option>`).join("")}</select>`;
+      thesisHtml = `<div class="custom-bar">
+        <label>Market cap ${sel("mcap", [["any", "Mid-cap & up"], ["mid", "Mid ($2–10B)"], ["large", "Large ($10–200B)"], ["mega", "Mega ($200B+)"]])}</label>
+        <label>Trend ${sel("trend", [["any", "Any"], ["above", "Above 200-DMA"], ["below", "Below 200-DMA"]])}</label>
+        <label>6M momentum ${sel("mom", [["any", "Any"], ["up", "Positive"], ["up25", "> +25%"], ["up50", "> +50%"], ["down", "Negative"]])}</label>
+        <label>RSI ${sel("rsi", [["any", "Any"], ["oversold", "Oversold (<30)"], ["neutral", "Neutral (30–70)"], ["overbought", "Overbought (>70)"]])}</label>
+        <label>From 52w high ${sel("high", [["any", "Any"], ["near", "Near high (<5%)"], ["off20", "Down 20%+"], ["off40", "Down 40%+"]])}</label>
+        <label>Sort by ${sel("sort", [["mcap", "Market cap"], ["r6", "6M return"], ["r3", "3M return"], ["rsi", "RSI"], ["vs200", "vs 200-DMA"], ["vs_high", "From high"]])}</label>
+        <span class="custom-count">${count.toLocaleString()} match${count === 1 ? "" : "es"}</span>
+      </div>`;
+    } else {
+      rows = stocks.filter(active.sel).sort((a, b) => ((active.rank(b) ?? -1e9) - (active.rank(a) ?? -1e9)) * (active.reverse ? 1 : -1)).slice(0, 60);
+      count = rows.length;
+      thesisHtml = `<div class="phil-thesis"><b>${esc(active.name)}.</b> ${esc(active.thesis)}</div>`;
+    }
+
     const sgn = (v, suf = "%") => v == null ? `<td class="num">—</td>` : `<td class="num ${v >= 0 ? "num-up" : "num-down"}">${v > 0 ? "+" : ""}${v}${suf}</td>`;
     const plain = (v, suf = "") => `<td class="num">${v == null ? "—" : v + suf}</td>`;
-    const rows = active.stocks.map(s => `<tr>
-      <td class="scr-tk">${esc(s.ticker)}</td>
+    const body = rows.map(s => `<tr>
+      <td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
       <td class="scr-co">${esc(s.company || "")}</td>
+      <td class="num">${fmtMcap(s.mcap)}</td>
       ${plain("$" + s.price)}
       ${sgn(s.vs200)}
       ${sgn(s.vs_high)}
       ${plain(s.rsi)}
-      ${sgn(s.r3)}
       ${sgn(s.r6)}
       ${plain(s.vol, "%")}
     </tr>`).join("");
@@ -1750,18 +1835,19 @@
     return `<section class="data-section">
       <div class="lead-hero">
         <div class="lead-hero-copy">
-          <div class="lead-eyebrow">Technical screener · ${(scr.universe || 0).toLocaleString()} stocks scanned</div>
-          <h1 class="lead-h1">Screen the<br>whole market</h1>
-          <p class="lead-tagline">Every US-listed stock filtered through classic investment philosophies — momentum, mean-reversion, trend and value — from live technical indicators (200-DMA, RSI, momentum, drawdown).</p>
+          <div class="lead-eyebrow">Technical screener · ${(scr.universe || 0).toLocaleString()} mid-cap+ stocks</div>
+          <h1 class="lead-h1">Screen<br>the market</h1>
+          <p class="lead-tagline">Mid-cap and larger US stocks filtered by investment philosophy — or build your own screen — from live technical indicators (200-DMA, RSI, momentum, drawdown).</p>
         </div>
       </div>
       <div class="phil-tabs">${tabs}</div>
-      <div class="phil-thesis"><b>${esc(active.name)}.</b> ${esc(active.thesis)}</div>
+      ${thesisHtml}
       <div class="data-table-wrap"><table class="data-table scr-table">
-        <thead><tr><th>Ticker</th><th>Company</th><th>Price</th><th>vs 200-DMA</th><th>52w high</th><th>RSI</th><th>3M</th><th>6M</th><th>Volatility</th></tr></thead>
-        <tbody>${rows}</tbody>
+        <thead><tr><th>Ticker</th><th>Company</th><th>Mkt cap</th><th>Price</th><th>vs 200-DMA</th><th>52w high</th><th>RSI</th><th>6M</th><th>Volatility</th></tr></thead>
+        <tbody>${body}</tbody>
       </table></div>
-      <div class="hero-note">Indicators computed from daily closes across ${(scr.universe || 0).toLocaleString()} US-listed common stocks. Screens are rules-based, not recommendations. Not investment advice.</div>
+      ${count > rows.length ? `<div class="empty-note">Showing ${rows.length} of ${count.toLocaleString()} matches.</div>` : ""}
+      <div class="hero-note">Indicators from daily closes across ${(scr.universe || 0).toLocaleString()} US common stocks, mid-cap ($2B+) and above. Screens are rules-based, not recommendations. Not investment advice.</div>
     </section>`;
   }
 
@@ -2225,6 +2311,10 @@
     // screener philosophy tabs
     el.querySelectorAll("[data-phil]").forEach(btn => btn.addEventListener("click", () => {
       screenPhilosophy = btn.dataset.phil; renderContent();
+    }));
+    // custom screener filter dropdowns
+    el.querySelectorAll("[data-cf]").forEach(sel => sel.addEventListener("change", () => {
+      customFilters[sel.dataset.cf] = sel.value; renderContent();
     }));
     // party filter chips
     el.querySelectorAll("[data-party]").forEach(chip => chip.addEventListener("click", () => {

@@ -1942,6 +1942,57 @@ def fetch_screener_prices(tickers):
     return {tk: dict(zip(v["d"], v["c"])) for tk, v in cache.items() if v.get("c")}
 
 
+MCAP_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "mcap_cache.json")
+MCAP_TTL_DAYS = 7          # market cap changes slowly; a weekly refresh is plenty
+MID_CAP_FLOOR = 2_000_000_000  # $2B -- screener universe is mid-cap and above only
+
+
+def fetch_market_caps(tickers):
+    """Market cap per ticker via Yahoo's batch quote endpoint (~200/request),
+    cached weekly. Used to keep the screener at mid-cap and above."""
+    cache = {}
+    if os.path.exists(MCAP_CACHE_PATH):
+        try:
+            cache = json.load(open(MCAP_CACHE_PATH, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            cache = {}
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    def fresh(e):
+        try:
+            return (datetime.strptime(today, "%Y-%m-%d") - datetime.strptime(e.get("asof", "2000-01-01"), "%Y-%m-%d")).days < MCAP_TTL_DAYS
+        except ValueError:
+            return False
+    todo = [t for t in dict.fromkeys(tickers) if not (t in cache and fresh(cache[t]))]
+    if todo:
+        session, crumb = _yahoo_session()
+        if session:
+            fetched = 0
+            for i in range(0, len(todo), 200):
+                batch = todo[i:i + 200]
+                try:
+                    r = session.get("https://query1.finance.yahoo.com/v7/finance/quote",
+                                    params={"symbols": ",".join(batch), "crumb": crumb}, timeout=REQUEST_TIMEOUT)
+                    got = set()
+                    if r.status_code == 200:
+                        for q in r.json().get("quoteResponse", {}).get("result", []):
+                            sym = q.get("symbol")
+                            if sym:
+                                cache[sym] = {"mc": q.get("marketCap"), "asof": today}
+                                got.add(sym)
+                    for s in batch:
+                        if s not in got:
+                            cache[s] = {"mc": None, "asof": today}
+                    fetched += len(batch)
+                except (requests.RequestException, ValueError):
+                    pass
+                time.sleep(0.3)
+            json.dump(cache, open(MCAP_CACHE_PATH, "w", encoding="utf-8"), separators=(",", ":"))
+            print(f"  market caps: {fetched} refreshed, {len(cache)} cached", file=sys.stderr)
+        else:
+            print("  WARN: Yahoo crumb failed -- market-cap floor skipped", file=sys.stderr)
+    return {t: v.get("mc") for t, v in cache.items()}
+
+
 def build_performance(trades, prices):
     """'Follow Congress' index vs the S&P 500 -- Quiver's public methodology.
 
@@ -2156,47 +2207,30 @@ def _stock_indicators(closes):
     }
 
 
-def build_screener(prices, universe):
-    """Bucket every stock into investment philosophies (momentum, value, trend...)
-    from its technical indicators. Quality gates keep pennies, SPAC shells and
-    low-float pumps out."""
-    rows = []
+def build_screener(prices, universe, mcaps):
+    """Return every screenable stock (mid-cap and above) with its technical
+    indicators + market cap. The front-end buckets these into preset philosophies
+    and applies custom filters. Quality gates keep pennies, SPAC shells, low-float
+    pumps and sub-$2B names out."""
+    stocks = []
     for tk, info in universe.items():
-        series = prices.get(tk)
-        if not series:
-            continue
         name = info.get("name", tk)
         if _SCR_JUNK.search(name):
+            continue
+        mc = mcaps.get(tk)
+        if not mc or mc < MID_CAP_FLOOR:   # mid-cap and above only
+            continue
+        series = prices.get(tk)
+        if not series:
             continue
         ind = _stock_indicators([c for _, c in sorted(series.items())])
         if ind is None:
             continue
-        rows.append({"ticker": tk, "company": name, "sector": info.get("sector", ""), **ind})
-
-    def screen(pred, key, reverse, n=30):
-        return sorted([r for r in rows if pred(r)], key=lambda r: (key(r) if key(r) is not None else -1e9), reverse=reverse)[:n]
-
-    philosophies = [
-        {"key": "momentum", "name": "Momentum", "metric": "6M return",
-         "thesis": "Ride the winners. Stocks in strong uptrends — above both their 50- and 200-day averages with powerful 6-month gains. The trend is your friend.",
-         "stocks": screen(lambda r: r["above200"] and (r["r6"] or 0) > 15 and (r["vs200"] or 0) > 5, lambda r: r["r6"], True)},
-        {"key": "breakout", "name": "52-Week Highs", "metric": "% from high",
-         "thesis": "New highs beget new highs. Names trading within a few percent of their 52-week high — buyers firmly in control, no overhead resistance.",
-         "stocks": screen(lambda r: r["vs_high"] is not None and r["vs_high"] > -3, lambda r: r["vs_high"], True)},
-        {"key": "golden", "name": "Golden Cross", "metric": "3M return",
-         "thesis": "A textbook bullish trend change — the 50-day average has just crossed above the 200-day, historically a signal that a new uptrend is beginning.",
-         "stocks": screen(lambda r: r["golden"], lambda r: r["r3"], True)},
-        {"key": "oversold", "name": "Oversold Bounce", "metric": "RSI",
-         "thesis": "Mean reversion. Beaten-down names with a low RSI (below 35) that statistically tend to snap back. For contrarians who buy fear.",
-         "stocks": screen(lambda r: r["rsi"] is not None and r["rsi"] < 35, lambda r: r["rsi"], False)},
-        {"key": "value", "name": "Fallen Angels", "metric": "% from high",
-         "thesis": "Deep-value turnaround candidates — names trading 30-80% below their 52-week high (but not left for dead). Where value investors go bargain hunting.",
-         "stocks": screen(lambda r: r["vs_high"] is not None and -80 < r["vs_high"] < -30, lambda r: r["vs_high"], False)},
-        {"key": "steady", "name": "Steady Compounders", "metric": "volatility",
-         "thesis": "Low-drama uptrends. Above the 200-day with below-average volatility yet a real 6-month gain — the sleep-at-night winners that grind steadily higher.",
-         "stocks": screen(lambda r: r["above200"] and 12 <= (r["vol"] or 999) < 32 and (r["r6"] or 0) > 8, lambda r: r["vol"], False)},
-    ]
-    return {"universe": len(rows), "philosophies": [p for p in philosophies if p["stocks"]]}
+        ind.pop("r1", None)  # not displayed -- trim payload
+        stocks.append({"ticker": tk, "company": name, "sector": info.get("sector", ""),
+                       "mcap": mc, **ind})
+    stocks.sort(key=lambda s: s["mcap"] or 0, reverse=True)
+    return {"universe": len(stocks), "min_mcap": MID_CAP_FLOOR, "stocks": stocks}
 
 
 # ---------------------------------------------------------------------------
@@ -2523,7 +2557,8 @@ def main():
     print("Building philosophy screener over the US stock universe...", file=sys.stderr)
     universe = load_universe()
     screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
-    screener = build_screener(screener_prices, universe)
+    mcaps = fetch_market_caps(list(universe.keys())) if universe else {}
+    screener = build_screener(screener_prices, universe, mcaps)
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
