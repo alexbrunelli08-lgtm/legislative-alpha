@@ -479,6 +479,31 @@
   .donut-legend b { margin-left: auto; font-family: var(--mono); color: var(--text); }
   @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } .dash-grid { grid-template-columns: 1fr; } .hbar-row { grid-template-columns: 130px 1fr 78px; } }
 
+  /* ---------- Home (fluid landing) ---------- */
+  html { scroll-behavior: smooth; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  .home-hero { display: grid; grid-template-columns: 1fr 1.1fr; gap: 34px; align-items: center; padding: 24px 0 34px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .home-h1 { font-family: var(--display); font-weight: 800; font-size: 52px; line-height: 0.98; letter-spacing: -0.035em; margin: 12px 0 0; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .home-hero-copy .lead-tagline { margin: 16px 0 22px; max-width: 440px; }
+  .home-hero-stats { display: flex; gap: 30px; }
+  .hh-stat b { display: block; font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
+  .hh-stat b.up { color: var(--good); }
+  .hh-stat i { font-style: normal; font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .home-section { padding: 26px 0; border-bottom: 1px solid var(--line-soft); }
+  .home-section:last-child { border-bottom: none; }
+  .home-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .home-title { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; margin: 0; }
+  .home-sub { font-size: 12.5px; color: var(--text-dim); margin: 5px 0 0; }
+  .home-seeall { font-family: var(--display); font-weight: 600; font-size: 12.5px; color: var(--accent); background: var(--accent-dim); border: 1px solid transparent; border-radius: 999px; padding: 8px 15px; cursor: pointer; transition: all 0.13s ease; white-space: nowrap; }
+  .home-seeall:hover { background: var(--grad); color: #04231d; }
+  .home-seeall span { transition: transform 0.15s ease; display: inline-block; }
+  .home-seeall:hover span { transform: translateX(3px); }
+  .home-two { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 14px; align-items: stretch; }
+  .home-two .gauge-card { align-self: stretch; }
+  @media (max-width: 860px) { .home-hero { grid-template-columns: 1fr; gap: 24px; } .home-h1 { font-size: 40px; } .home-two { grid-template-columns: 1fr; } }
+
   /* ---------- Sentiment (Wall Street vs the Crowd) ---------- */
   .gauge-card .street-hero-stat { text-align: center; margin: 3px 0; }
   .street-hero-stat b { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
@@ -747,14 +772,14 @@
 
   <section class="controls">
     <div class="view-tabs" id="viewTabs">
-      <button class="view-tab active" data-view="politicians">Leaderboard</button>
+      <button class="view-tab active" data-view="home">Home</button>
+      <button class="view-tab" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="smart">Smart Money</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
       <button class="view-tab" data-view="sentiment">Sentiment</button>
       <button class="view-tab" data-view="screener">Screener</button>
-      <button class="view-tab" data-view="overview">Overview</button>
-      <button class="view-tab" data-view="stocks">Stocks</button>
       <button class="view-tab" data-view="bills">Bills</button>
+      <button class="view-tab" data-view="stocks">Stocks</button>
     </div>
     <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, or bill…" autocomplete="off">
     <button class="cmdk-btn" id="cmdkBtn" title="Command palette"><span class="cmdk-kbd">⌘K</span> Jump to…</button>
@@ -813,7 +838,7 @@
 <script>
   let DATA = null;
   let activeSector = "ALL";
-  let activeView = "politicians";
+  let activeView = "home";
   let openId = null;           // open bill key
   let keyBillsOnly = false;
   let partyFilter = "ALL";     // ALL | D | R | I
@@ -830,7 +855,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["overview", "smart", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
+  const VIEWS = ["home", "overview", "smart", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -842,13 +867,14 @@
     if (kind === "stock" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openStock(arg); return; }
     if (kind === "member" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openMember(arg); return; }
     if (kind === "sector" && arg) { if (!document.querySelector("#content").children.length) renderAll(); openSector(arg); return; }
-    const v = VIEWS.includes(kind) ? kind : "politicians";
+    const v = VIEWS.includes(kind) ? kind : "home";
     if (activeView !== v) { activeView = v; resetPaging(); }
     if (document.getElementById("stockModal").classList.contains("open")) closeStock(true);
     renderAll();
   }
 
   const VIEW_HINTS = {
+    home: "Every smart-money signal in one flow — scroll through, or dive into any section.",
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
@@ -2252,6 +2278,96 @@
   }
 
   /* ---------- OVERVIEW VIEW ---------- */
+  /* ---------- HOME (fluid landing that flows through every signal) ---------- */
+  function renderHomeView() {
+    const members = (DATA.members || []).filter(m => m.alpha != null).sort((a, b) => b.alpha - a.alpha);
+    const podium = members.slice(0, 3);
+    const topLeaders = members.slice(0, 6);
+    const beatPct = members.length ? Math.round(members.filter(m => m.alpha > 0).length / members.length * 100) : 0;
+
+    const sm = DATA.smart_money || {}, o = DATA.overview || {};
+    const buyV = o.buy_value || 0, sellV = o.sell_value || 0;
+    const pressure = (buyV + sellV) ? Math.round(buyV / (buyV + sellV) * 100) : 50;
+    const clusters = (sm.clusters || []).slice(0, 5).map(c => ({
+      ticker: c.ticker, label: c.ticker, sub: `${fmtMoney(c.total_value)} bought${c.bipartisan ? " · bipartisan" : ""}`,
+      value: c.n_buyers, color: c.bipartisan ? "var(--ind)" : "var(--accent)", valLabel: `${c.n_buyers} buyers`,
+    }));
+
+    const ins = DATA.insiders || {}, ist = ins.stats || {};
+    const isent = ((ist.buy_count || 0) + (ist.sell_count || 0)) ? Math.round(ist.buy_count / (ist.buy_count + ist.sell_count) * 100) : 50;
+    const whales = (ins.whale_buys || []).slice(0, 5).map(x => ({
+      ticker: x.ticker, label: x.ticker, sub: `${TIER_SHORT[x.tier] || "Insider"} · ${cleanInsider(x.insider)}`,
+      value: x.value, color: TIER_COL[x.tier] || "var(--good)", valLabel: fmtMoney(x.value),
+    }));
+
+    const street = (DATA.street && DATA.street.stocks) || [];
+    const streetTop = street.filter(s => s.rec && s.bull_pct != null).slice(0, 4);
+    const scrStocks = (DATA.screener && DATA.screener.stocks) || [];
+    const momentum = scrStocks.filter(SCREENS[0].sel).sort((a, b) => (b.r6 || 0) - (a.r6 || 0)).slice(0, 6);
+
+    const goto = (v, label) => `<button class="home-seeall" data-goto="${v}">${label} <span>→</span></button>`;
+    const head = (title, sub, v, label) => `<div class="home-head"><div><h2 class="home-title">${title}</h2><p class="home-sub">${sub}</p></div>${goto(v, label)}</div>`;
+
+    return `
+      <section class="home-hero reveal">
+        <div class="home-hero-copy">
+          <div class="lead-eyebrow">Where Congress meets the market</div>
+          <h1 class="home-h1">The smart-money<br>terminal</h1>
+          <p class="lead-tagline">Congressional trades, corporate insiders, Wall&nbsp;Street analysts and the retail crowd — every signal, one place. Start with who's actually beating the market.</p>
+          <div class="home-hero-stats">
+            <div class="hh-stat"><b>${members.length}</b><i>members scored</i></div>
+            <div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>
+            <div class="hh-stat"><b style="color:var(--accent)">${(DATA.conviction || {}).multi_signal || 0}</b><i>conviction signals</i></div>
+          </div>
+        </div>
+        <div class="podium">${podium.map((m, i) => renderPodium(m, i)).join("")}</div>
+      </section>
+
+      <div class="home-section reveal">
+        ${head("Congress trading leaderboard", "Ranked by alpha — return above the S&amp;P over the same holding period", "politicians", "Full leaderboard")}
+        <div class="lead-list">${topLeaders.map((m, i) => renderLeaderRow(m, i + 1)).join("")}</div>
+      </div>
+
+      <div class="home-section reveal">${renderConvictionSection()}</div>
+
+      <div class="home-section reveal">
+        ${head("Smart-money pulse", "Congressional buy pressure and where conviction is clustering", "smart", "Smart Money")}
+        <div class="home-two">
+          <div class="gauge-card">${gaugeSVG(pressure, pressure + "%", pressure >= 55 ? "Net buying" : pressure <= 45 ? "Net selling" : "Balanced")}<div class="gauge-cap">Congress buy pressure</div></div>
+          <div class="dash-card" style="margin:0"><div class="dash-title">Cluster conviction</div><div class="dash-sub">Stocks several members bought together</div>${clusters.length ? hbars(clusters) : `<div class="empty-note">No clusters right now.</div>`}</div>
+        </div>
+      </div>
+
+      <div class="home-section reveal">
+        ${head("Wall Street vs the Crowd", "Analyst ratings beside vetted retail sentiment", "sentiment", "Sentiment")}
+        <div class="street-grid">${streetTop.map(renderStreetCard).join("")}</div>
+      </div>
+
+      <div class="home-section reveal">
+        ${head("Insider whales", "The biggest bets corporate insiders are making on their own stock", "insiders", "Insiders")}
+        <div class="home-two">
+          <div class="gauge-card">${gaugeSVG(isent, isent + "%", isent >= 55 ? "Net buying" : isent <= 45 ? "Net selling" : "Mixed")}<div class="gauge-cap">Insider buy/sell mix</div></div>
+          <div class="dash-card" style="margin:0"><div class="dash-title">Biggest insider buys</div><div class="dash-sub">Colored by role</div>${whales.length ? hbars(whales) : `<div class="empty-note">Filling in as filings arrive.</div>`}</div>
+        </div>
+      </div>
+
+      <div class="home-section reveal">
+        ${head("Momentum leaders", "Mid-cap+ stocks in the strongest uptrends", "screener", "Screener")}
+        <div class="data-table-wrap"><table class="data-table scr-table">
+          <thead><tr><th>Ticker</th><th>Company</th><th>Mkt cap</th><th>6M</th><th>vs 200-DMA</th></tr></thead>
+          <tbody>${momentum.map(s => `<tr><td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td><td class="scr-co">${esc(s.company || "")}</td><td class="num">${fmtMcap(s.mcap)}</td><td class="num num-up">+${s.r6}%</td><td class="num num-up">+${s.vs200}%</td></tr>`).join("")}</tbody>
+        </table></div>
+      </div>
+
+      <div class="home-section reveal">
+        <div class="home-head"><div><h2 class="home-title">Sectors of the economy</h2><p class="home-sub">Where Congress is trading — tile size = trade count, color = disclosed-buy return</p></div></div>
+        <div class="treemap-wrap"><div class="treemap" id="sectorMap"></div>
+          <div class="treemap-legend"><span class="tl-item"><span class="tl-swatch" style="background:rgba(248,113,113,0.6)"></span>Down</span><span class="tl-item"><span class="tl-swatch" style="background:rgba(120,120,132,0.25)"></span>Flat</span><span class="tl-item"><span class="tl-swatch" style="background:rgba(74,222,128,0.6)"></span>Up</span></div>
+        </div>
+        ${sectorGroupsHTML()}
+      </div>`;
+  }
+
   const SIG_COL = { congress: "var(--accent)", insider: "var(--ind)", trend: "var(--good)", bipartisan: "var(--dem)" };
   function renderConvictionSection() {
     const cv = DATA.conviction;
@@ -2625,7 +2741,8 @@
   /* ---------- Wiring ---------- */
   function renderContent() {
     const el = document.getElementById("content");
-    if (activeView === "overview") el.innerHTML = renderOverviewView();
+    if (activeView === "home") el.innerHTML = renderHomeView();
+    else if (activeView === "overview") el.innerHTML = renderOverviewView();
     else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "sentiment") el.innerHTML = renderStreetView();
@@ -2686,7 +2803,21 @@
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
     wire("signalsMore", () => { signalsShown += SIGNALS_PAGE; renderContent(); });
     wire("membersMore", () => { membersShown += MEMBERS_PAGE; renderContent(); });
+    // Home "See all →" drill-ins jump to the full deep-dive view
+    el.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "auto" }); setHash(b.dataset.goto); }));
     fillTreemaps();
+    revealSections();
+  }
+  // Fluid staggered entrance -- sections cascade in on render. Robust: content
+  // is never left hidden (unlike a scroll-observer, which can miss in edge cases).
+  function revealSections() {
+    const els = [...document.querySelectorAll(".reveal:not(.in)")];
+    if (!els.length) return;
+    els.forEach((e, i) => { e.style.transitionDelay = Math.min(i * 55, 380) + "ms"; });
+    requestAnimationFrame(() => requestAnimationFrame(() => els.forEach(e => e.classList.add("in"))));
+    // hard safety: after the animation window, force visible with no transition
+    // so content can never be left hidden (e.g. a frozen/interrupted transition)
+    setTimeout(() => els.forEach(e => { e.style.transition = "none"; e.classList.add("in"); e.style.transitionDelay = ""; }), 1400);
   }
   let _tmResize = null;
   window.addEventListener("resize", () => { clearTimeout(_tmResize); _tmResize = setTimeout(fillTreemaps, 150); });

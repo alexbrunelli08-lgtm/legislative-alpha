@@ -2086,9 +2086,14 @@ def fetch_ratings(tickers):
     return cache
 
 
+SOCIAL_MIN_FOLLOWERS = 25   # a "quality" voice, not a throwaway/pump account
+SOCIAL_MIN_IDEAS = 15       # has a real posting history
+
+
 def fetch_social(tickers):
-    """Retail social sentiment per ticker from StockTwits: message volume (buzz)
-    and bullish/bearish tags. Stops on rate-limit and fills in over later runs."""
+    """Retail social sentiment per ticker from StockTwits. Buzz = raw message
+    volume, but bull/bear sentiment is counted ONLY from established users
+    (min followers + posting history) so pump/spam accounts don't skew it."""
     cache = _load_cache(SOCIAL_CACHE_PATH)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     todo = [t for t in dict.fromkeys(tickers) if not (t in cache and _fresh(cache[t], today, SOCIAL_TTL_DAYS))]
@@ -2102,9 +2107,19 @@ def fetch_social(tickers):
                 break
             if r.status_code == 200:
                 msgs = r.json().get("messages", [])
-                bull = sum(1 for m in msgs if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bullish")
-                bear = sum(1 for m in msgs if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bearish")
-                cache[tk] = {"asof": today, "msgs": len(msgs), "bull": bull, "bear": bear}
+                bull = bear = 0
+                for m in msgs:
+                    s = ((m.get("entities") or {}).get("sentiment") or {}).get("basic")
+                    if s not in ("Bullish", "Bearish"):
+                        continue
+                    u = m.get("user") or {}
+                    if (u.get("followers") or 0) < SOCIAL_MIN_FOLLOWERS or (u.get("ideas") or 0) < SOCIAL_MIN_IDEAS:
+                        continue  # low-quality / brand-new account -- ignore its vote
+                    if s == "Bullish":
+                        bull += 1
+                    else:
+                        bear += 1
+                cache[tk] = {"asof": today, "msgs": len(msgs), "bull": bull, "bear": bear, "q": bull + bear}
                 got += 1
             else:
                 cache[tk] = {"asof": today, "msgs": 0}
@@ -2150,8 +2165,9 @@ def build_street(tickers, ratings, social, stock_signals, insiders, screener):
             "target": r.get("target") if has_rating else None, "current": r.get("current"),
             "upside": upside if has_rating else None, "n_analysts": n if has_rating else None,
             "buy": buy, "hold": hold, "sell": sell,
-            "buzz": soc.get("msgs", 0), "bull": bull, "bear": bear,
-            "bull_pct": round(bull / stotal * 100) if stotal else None,
+            "buzz": soc.get("msgs", 0), "bull": bull, "bear": bear, "q_msgs": stotal,
+            # only report a sentiment split with a real quality sample behind it
+            "bull_pct": round(bull / stotal * 100) if stotal >= 3 else None,
             "congress": c.get("member_count", 0) if c.get("net_value", 0) > 0 else 0,
             "insiders": (isig.get(tk) or {}).get("n_buyers", 0),
             "r6": (tech.get(tk) or {}).get("r6"),
