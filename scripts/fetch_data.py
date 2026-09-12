@@ -1439,10 +1439,15 @@ def fetch_ticker_sectors(tickers):
                         p = r.json()["quoteSummary"]["result"][0]["assetProfile"]
                         cache[tk] = {"gics": p.get("sector"), "industry": p.get("industry"), "asof": today}
                         fetched += 1
+                    elif r.status_code == 404:
+                        cache[tk] = {"gics": None, "industry": None, "asof": today}  # no such profile: don't retry
                     else:
-                        cache[tk] = {"gics": None, "industry": None, "asof": today}
+                        # rate-limited / transient: leave uncached so it retries next run
+                        if r.status_code == 429:
+                            print(f"  sector classify: rate-limited at {i}/{len(todo)}, stopping (fills in next run)", file=sys.stderr)
+                            break
                 except (requests.RequestException, KeyError, ValueError, IndexError):
-                    cache[tk] = {"gics": None, "industry": None, "asof": today}
+                    pass  # transient: leave uncached so it retries next run
                 time.sleep(0.03)
                 if (i + 1) % 60 == 0:
                     print(f"  ...classified {i + 1}/{len(todo)} tickers", file=sys.stderr)
@@ -2950,6 +2955,25 @@ def main():
     ratings = fetch_ratings(street_tickers)
     social = fetch_social(street_tickers)
     street = build_street(street_tickers, ratings, social, stock_signals, insiders, screener)
+
+    # Cross-reference the screener with THIS site's own signals so it isn't just a
+    # generic technical screen: tag every stock with its economic sector, how many
+    # members of Congress are net-buying it, and the analyst view where we have
+    # coverage. Sectors are cached (TTL) so the first run backfills the universe
+    # and later runs are cheap.
+    print("Cross-referencing screener with sector + Congress + analyst signals...", file=sys.stderr)
+    scr_gics = fetch_ticker_sectors([s["ticker"] for s in screener["stocks"]])
+    csig = {s["ticker"]: s for s in stock_signals}
+    strat = {s["ticker"]: s for s in street["stocks"]}
+    for s in screener["stocks"]:
+        s["sector"] = GICS_TO_CODE.get(scr_gics.get(s["ticker"])) or ""
+        c = csig.get(s["ticker"])
+        s["cong"] = c["member_count"] if c and c.get("net_value", 0) > 0 else 0
+        st = strat.get(s["ticker"])
+        s["rate"] = st.get("rec") if st and st.get("rec") else None
+        s["upside"] = st.get("upside") if st else None
+    screener["sectors"] = sorted({s["sector"] for s in screener["stocks"] if s["sector"]})
+
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])

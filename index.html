@@ -375,6 +375,36 @@
   .scr-table th:not(:nth-child(1)):not(:nth-child(2)) { text-align: right; }
   .scr-tk { font-family: var(--mono); font-weight: 700; color: var(--text); }
   .scr-co { color: var(--text-dim); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .phil-tab.signature { border-color: var(--accent-dim); box-shadow: inset 0 0 0 1px var(--accent-dim); }
+  .phil-tab.signature:not(.active) { color: var(--text); }
+  /* screener controls bar */
+  .scr-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 14px; }
+  .scr-search-wrap { position: relative; display: flex; align-items: center; flex: 1 1 260px; min-width: 200px; }
+  .scr-search-ico { position: absolute; left: 11px; color: var(--text-faint); font-size: 15px; pointer-events: none; }
+  .scr-search { width: 100%; font-family: var(--display); font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 9px; padding: 9px 30px 9px 32px; }
+  .scr-search:focus { outline: none; border-color: var(--accent-dim); }
+  .scr-search-clear { position: absolute; right: 8px; background: none; border: none; color: var(--text-faint); cursor: pointer; font-size: 13px; padding: 2px 5px; }
+  .scr-search-clear:hover { color: var(--text); }
+  .scr-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .scr-chip { font-family: var(--display); font-weight: 600; font-size: 12px; color: var(--text-dim); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; cursor: pointer; transition: all 0.12s ease; }
+  .scr-chip:hover { color: var(--text); border-color: var(--accent-dim); }
+  .scr-chip.active { background: var(--accent-dim); color: var(--accent); border-color: transparent; }
+  .scr-sector { min-width: 150px; padding: 8px 10px; border-radius: 9px; }
+  /* sortable headers */
+  .scr-table th.scr-th { cursor: pointer; user-select: none; white-space: nowrap; transition: color 0.12s ease; }
+  .scr-table th.scr-th:hover { color: var(--text); }
+  .scr-table th.scr-th.sorted { color: var(--accent); }
+  .scr-arrow { display: inline-block; width: 10px; font-size: 10px; }
+  /* signals column */
+  .scr-table th.scr-th[data-sort="cong"], .scr-table td.scr-sigs { text-align: left; }
+  .scr-sigs { white-space: nowrap; }
+  .scr-sig { display: inline-flex; align-items: center; font-family: var(--display); font-weight: 600; font-size: 11px; border-radius: 6px; padding: 2px 7px; margin-right: 5px; }
+  .scr-cong { color: var(--accent); background: var(--accent-dim); }
+  .scr-rate { background: transparent; border: 1px solid; }
+  .scr-none { color: var(--text-faint); }
+  .scr-count { text-align: center; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-faint); padding: 10px; }
+  .scr-empty { text-align: center; color: var(--text-dim); padding: 26px 16px; line-height: 1.6; }
+  .scr-empty b { color: var(--text); }
   .num-up { color: var(--good); } .num-down { color: var(--bad); }
   /* Agents */
   .agent-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -856,6 +886,12 @@
   let memberSort = "alpha";    // alpha | return | winrate | volume | trades
   let screenPhilosophy = null; // active screener philosophy key (or "custom")
   const customFilters = { mcap: "any", trend: "any", mom: "any", rsi: "any", high: "any", vol: "any", golden: "any", sort: "mcap" };
+  let screenSearch = "";       // screener ticker/company search
+  let screenSignal = "any";    // any | congress | buy  (global overlay filter)
+  let screenSector = "any";    // sector code overlay filter
+  let screenSort = { key: null, dir: -1 }; // click-to-sort column (null = preset/custom default)
+  let screenerShown = 60;
+  const SCREENER_PAGE = 60;
   let activeAgent = null;      // active agent key
   let streetSort = "upside";   // sentiment view sort
   let streetFilter = "all";    // all | buy | buzzing | signal
@@ -1357,7 +1393,7 @@
   }
 
   function setSector(code) { activeSector = code; resetPaging(); renderAll(); }
-  function resetPaging() { tradesShown = TRADES_PAGE; signalsShown = SIGNALS_PAGE; membersShown = MEMBERS_PAGE; openId = null; }
+  function resetPaging() { tradesShown = TRADES_PAGE; signalsShown = SIGNALS_PAGE; membersShown = MEMBERS_PAGE; screenerShown = SCREENER_PAGE; openId = null; }
 
   /* ---------- BILLS VIEW ---------- */
   function renderBillsView() {
@@ -2012,6 +2048,9 @@
 
   /* ---------- SCREENER VIEW (philosophy presets + custom builder) ---------- */
   const SCREENS = [
+    { key: "smart", name: "Congress + Trend", metric: "in Congress", reverse: true, signature: true,
+      thesis: "The signature screen — mid-cap+ names that members of Congress are net-buying AND that are already in a confirmed uptrend (above the 200-day, positive 6-month). Where political conviction meets price momentum.",
+      sel: s => (s.cong || 0) > 0 && s.above200 && (s.r6 || 0) > 0, rank: s => s.cong },
     { key: "momentum", name: "Momentum", metric: "6M return", reverse: true,
       thesis: "Ride the winners. Stocks in strong uptrends — above both their 50- and 200-day averages with powerful 6-month gains. The trend is your friend.",
       sel: s => s.above200 && (s.r6 || 0) > 15 && (s.vs200 || 0) > 5, rank: s => s.r6 },
@@ -2038,9 +2077,10 @@
     return "$" + Math.round(v / 1e6) + "M";
   }
   const MCAP_TIERS = { any: [0, 1e15], mid: [2e9, 1e10], large: [1e10, 2e11], mega: [2e11, 1e15] };
+  // technical filters from the custom builder (signal/search/sector overlay is applied separately)
   function customScreen(stocks) {
     const f = customFilters, mc = MCAP_TIERS[f.mcap] || MCAP_TIERS.any;
-    let rows = stocks.filter(s => {
+    return stocks.filter(s => {
       if (!(s.mcap >= mc[0] && s.mcap < mc[1])) return false;
       if (f.trend === "above" && !s.above200) return false;
       if (f.trend === "below" && s.above200) return false;
@@ -2060,10 +2100,30 @@
       if (f.golden === "yes" && !s.golden) return false;
       return true;
     });
-    const SORTS = { mcap: s => s.mcap, r6: s => s.r6, r3: s => s.r3, rsi: s => s.rsi, vs200: s => s.vs200, vs_high: s => s.vs_high, vol: s => -(s.vol ?? 999) };
-    const key = SORTS[f.sort] || SORTS.mcap;
-    rows.sort((a, b) => (key(b) ?? -1e18) - (key(a) ?? -1e18));
-    return rows;
+  }
+  // global overlay filters (apply on top of any preset OR the custom builder)
+  function screenOverlay(rows) {
+    const q = screenSearch.trim().toLowerCase();
+    return rows.filter(s => {
+      if (q && !(s.ticker.toLowerCase().includes(q) || (s.company || "").toLowerCase().includes(q))) return false;
+      if (screenSignal === "congress" && !((s.cong || 0) > 0)) return false;
+      if (screenSignal === "buy") { const rm = recMeta(s.rate); if (!(rm && rm[2] >= 4)) return false; }
+      if (screenSector !== "any" && s.sector !== screenSector) return false;
+      return true;
+    });
+  }
+  const SCR_COLS = { cong: s => s.cong || 0, mcap: s => s.mcap, price: s => s.price, vs200: s => s.vs200, vs_high: s => s.vs_high, rsi: s => s.rsi, r6: s => s.r6, vol: s => s.vol };
+  function screenSortRows(rows, active, isCustom) {
+    if (screenSort.key && SCR_COLS[screenSort.key]) {
+      const k = SCR_COLS[screenSort.key], dir = screenSort.dir;
+      return rows.slice().sort((a, b) => ((k(a) ?? -1e18) - (k(b) ?? -1e18)) * dir);
+    }
+    if (isCustom) {
+      const CS = { mcap: s => s.mcap, r6: s => s.r6, r3: s => s.r3, rsi: s => s.rsi, vs200: s => s.vs200, vs_high: s => s.vs_high, vol: s => -(s.vol ?? 999) };
+      const k = CS[customFilters.sort] || CS.mcap;
+      return rows.slice().sort((a, b) => (k(b) ?? -1e18) - (k(a) ?? -1e18));
+    }
+    return rows.slice().sort((a, b) => ((active.rank(b) ?? -1e9) - (active.rank(a) ?? -1e9)) * (active.reverse ? 1 : -1));
   }
 
   function renderScreenerView() {
@@ -2079,16 +2139,24 @@
     const active = SCREENS.find(p => p.key === screenPhilosophy) || SCREENS[0];
     const tabs = SCREENS.map(p => {
       const n = stocks.filter(p.sel).length;
-      return `<button class="phil-tab ${!isCustom && p.key === active.key ? "active" : ""}" data-phil="${p.key}">${esc(p.name)}<span class="phil-n">${n}</span></button>`;
+      return `<button class="phil-tab ${p.signature ? "signature" : ""} ${!isCustom && p.key === active.key ? "active" : ""}" data-phil="${p.key}">${esc(p.name)}<span class="phil-n">${n}</span></button>`;
     }).join("") + `<button class="phil-tab custom ${isCustom ? "active" : ""}" data-phil="custom">✦ Custom</button>`;
 
-    let rows, count, thesisHtml;
+    // base rows -> overlay (search/signal/sector) -> sort -> page.
+    // An active search is a global find: it looks across the whole universe rather
+    // than only within the selected preset, so you can pull up any stock by name.
+    const searching = screenSearch.trim().length > 0;
+    const base = searching ? stocks : (isCustom ? customScreen(stocks) : stocks.filter(active.sel));
+    const filtered = screenOverlay(base);
+    const count = filtered.length;
+    const rows = (searching && !screenSort.key
+      ? filtered.slice().sort((a, b) => (b.mcap || 0) - (a.mcap || 0))
+      : screenSortRows(filtered, active, isCustom)).slice(0, screenerShown);
+
+    let controlHtml;
     if (isCustom) {
-      rows = customScreen(stocks);
-      count = rows.length;
-      rows = rows.slice(0, 100);
       const sel = (id, opts) => `<select class="scr-select" data-cf="${id}">${opts.map(([v, l]) => `<option value="${v}" ${customFilters[id] === v ? "selected" : ""}>${l}</option>`).join("")}</select>`;
-      thesisHtml = `<div class="custom-bar">
+      controlHtml = `<div class="custom-bar">
         <label>Market cap ${sel("mcap", [["any", "Mid-cap & up"], ["mid", "Mid ($2–10B)"], ["large", "Large ($10–200B)"], ["mega", "Mega ($200B+)"]])}</label>
         <label>Trend ${sel("trend", [["any", "Any"], ["above", "Above 200-DMA"], ["below", "Below 200-DMA"]])}</label>
         <label>6M momentum ${sel("mom", [["any", "Any"], ["up", "Positive"], ["up25", "> +25%"], ["up50", "> +50%"], ["down", "Negative"]])}</label>
@@ -2096,20 +2164,37 @@
         <label>From 52w high ${sel("high", [["any", "Any"], ["near", "Near high (<5%)"], ["off20", "Down 20%+"], ["off40", "Down 40%+"]])}</label>
         <label>Volatility ${sel("vol", [["any", "Any"], ["low", "Low (<25%)"], ["med", "Medium (25–50%)"], ["high", "High (>50%)"]])}</label>
         <label>Golden cross ${sel("golden", [["any", "Any"], ["yes", "Golden cross only"]])}</label>
-        <label>Sort by ${sel("sort", [["mcap", "Market cap"], ["r6", "6M return"], ["r3", "3M return"], ["rsi", "RSI"], ["vs200", "vs 200-DMA"], ["vs_high", "From high"], ["vol", "Lowest volatility"]])}</label>
-        <span class="custom-count">${count.toLocaleString()} match${count === 1 ? "" : "es"}</span>
       </div>`;
     } else {
-      rows = stocks.filter(active.sel).sort((a, b) => ((active.rank(b) ?? -1e9) - (active.rank(a) ?? -1e9)) * (active.reverse ? 1 : -1)).slice(0, 60);
-      count = rows.length;
-      thesisHtml = `<div class="phil-thesis"><b>${esc(active.name)}.</b> ${esc(active.thesis)}</div>`;
+      controlHtml = `<div class="phil-thesis"><b>${esc(active.name)}.</b> ${esc(active.thesis)}</div>`;
     }
 
+    const sectorOpts = (scr.sectors && scr.sectors.length ? scr.sectors : [...new Set(stocks.map(s => s.sector).filter(Boolean))].sort())
+      .map(c => `<option value="${esc(c)}" ${screenSector === c ? "selected" : ""}>${esc(sectorMeta(c).short)}</option>`).join("");
+    const chip = (v, l) => `<button class="scr-chip ${screenSignal === v ? "active" : ""}" data-scr-sig="${v}">${l}</button>`;
+    const controlsBar = `<div class="scr-controls">
+      <div class="scr-search-wrap"><span class="scr-search-ico">⌕</span><input class="scr-search" data-scr-search type="text" placeholder="Search ticker or company…" value="${esc(screenSearch)}">${screenSearch ? `<button class="scr-search-clear" data-scr-clear>✕</button>` : ""}</div>
+      <div class="scr-chips">${chip("any", "All")}${chip("congress", "🏛 Congress buying")}${chip("buy", "★ Analyst Buy")}</div>
+      <select class="scr-select scr-sector" data-scr-sector><option value="any">All sectors</option>${sectorOpts}</select>
+    </div>`;
+
+    const th = (key, label, cls = "") => {
+      if (!key) return `<th class="${cls}">${label}</th>`;
+      const on = screenSort.key === key;
+      return `<th class="scr-th ${cls} ${on ? "sorted" : ""}" data-sort="${key}">${label}<span class="scr-arrow">${on ? (screenSort.dir === -1 ? "▾" : "▴") : ""}</span></th>`;
+    };
     const sgn = (v, suf = "%") => v == null ? `<td class="num">—</td>` : `<td class="num ${v >= 0 ? "num-up" : "num-down"}">${v > 0 ? "+" : ""}${v}${suf}</td>`;
     const plain = (v, suf = "") => `<td class="num">${v == null ? "—" : v + suf}</td>`;
+    const sigCell = s => {
+      const cong = (s.cong || 0) > 0 ? `<span class="scr-sig scr-cong" title="${s.cong} member${s.cong > 1 ? "s" : ""} of Congress net-buying">🏛 ${s.cong}</span>` : "";
+      const rm = recMeta(s.rate);
+      const rate = rm ? `<span class="scr-sig scr-rate" style="color:${rm[1]};border-color:${rm[1]}66" title="Analyst consensus${s.upside != null ? ` · ${s.upside > 0 ? "+" : ""}${s.upside}% to target` : ""}">${rm[0]}${s.upside != null ? ` ${s.upside > 0 ? "+" : ""}${s.upside}%` : ""}</span>` : "";
+      return `<td class="scr-sigs">${cong || rate ? cong + rate : `<span class="scr-none">—</span>`}</td>`;
+    };
     const body = rows.map(s => `<tr>
       <td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
       <td class="scr-co">${esc(s.company || "")}</td>
+      ${sigCell(s)}
       <td class="num">${fmtMcap(s.mcap)}</td>
       ${plain("$" + s.price)}
       ${sgn(s.vs200)}
@@ -2118,23 +2203,27 @@
       ${sgn(s.r6)}
       ${plain(s.vol, "%")}
     </tr>`).join("");
+    const emptyRow = `<tr><td colspan="10" class="scr-empty">No stocks match these filters. Try widening the market cap, clearing the search, or switching the signal filter to <b>All</b>.</td></tr>`;
 
     return `<section class="data-section">
       <div class="lead-hero">
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Technical screener · ${(scr.universe || 0).toLocaleString()} mid-cap+ stocks</div>
           <h1 class="lead-h1">Screen<br>the market</h1>
-          <p class="lead-tagline">Mid-cap and larger US stocks filtered by investment philosophy — or build your own screen — from live technical indicators (200-DMA, RSI, momentum, drawdown).</p>
+          <p class="lead-tagline">Every mid-cap+ US stock, filtered by investment philosophy — cross-referenced with what <b style="color:var(--accent)">Congress is buying</b> and how <b>Wall Street</b> rates it. Pick a screen, layer on filters, sort any column.</p>
         </div>
       </div>
       <div class="phil-tabs">${tabs}</div>
-      ${thesisHtml}
+      ${controlHtml}
+      ${controlsBar}
       <div class="data-table-wrap"><table class="data-table scr-table">
-        <thead><tr><th>Ticker</th><th>Company</th><th>Mkt cap</th><th>Price</th><th>vs 200-DMA</th><th>52w high</th><th>RSI</th><th>6M</th><th>Volatility</th></tr></thead>
-        <tbody>${body}</tbody>
+        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("cong", "Signals")}${th("mcap", "Mkt cap", "num")}${th("price", "Price", "num")}${th("vs200", "vs 200-DMA", "num")}${th("vs_high", "52w high", "num")}${th("rsi", "RSI", "num")}${th("r6", "6M", "num")}${th("vol", "Vol", "num")}</tr></thead>
+        <tbody>${body || emptyRow}</tbody>
       </table></div>
-      ${count > rows.length ? `<div class="empty-note">Showing ${rows.length} of ${count.toLocaleString()} matches.</div>` : ""}
-      <div class="hero-note">Indicators from daily closes across ${(scr.universe || 0).toLocaleString()} US common stocks, mid-cap ($2B+) and above. Screens are rules-based, not recommendations. Not investment advice.</div>
+      ${count > rows.length
+        ? `<button class="show-more-btn" id="screenerMore">Show ${Math.min(SCREENER_PAGE, count - rows.length)} more · ${count.toLocaleString()} match${count === 1 ? "" : "es"}</button>`
+        : count ? `<div class="scr-count">${count.toLocaleString()} match${count === 1 ? "" : "es"}</div>` : ""}
+      <div class="hero-note">Technicals from daily closes across ${(scr.universe || 0).toLocaleString()} US common stocks (mid-cap $2B+ and up). 🏛 = members of Congress net-buying; analyst chip = Wall Street consensus + upside to target where covered. Rules-based, not recommendations. Not investment advice.</div>
     </section>`;
   }
 
@@ -2770,13 +2859,27 @@
     el.querySelectorAll("[data-msort]").forEach(btn => btn.addEventListener("click", () => {
       memberSort = btn.dataset.msort; membersShown = MEMBERS_PAGE; renderContent();
     }));
-    // screener philosophy tabs
+    // screener philosophy tabs — switching a preset resets manual sort + paging
     el.querySelectorAll("[data-phil]").forEach(btn => btn.addEventListener("click", () => {
-      screenPhilosophy = btn.dataset.phil; renderContent();
+      screenPhilosophy = btn.dataset.phil; screenSort = { key: null, dir: -1 }; screenerShown = SCREENER_PAGE; renderContent();
     }));
     // custom screener filter dropdowns
     el.querySelectorAll("[data-cf]").forEach(sel => sel.addEventListener("change", () => {
-      customFilters[sel.dataset.cf] = sel.value; renderContent();
+      customFilters[sel.dataset.cf] = sel.value; screenerShown = SCREENER_PAGE; renderContent();
+    }));
+    // screener global overlay: search (keep focus + caret across re-render)
+    el.querySelectorAll("[data-scr-search]").forEach(inp => inp.addEventListener("input", () => {
+      const caret = inp.selectionStart; screenSearch = inp.value; screenerShown = SCREENER_PAGE; renderContent();
+      const ni = document.querySelector("[data-scr-search]"); if (ni) { ni.focus(); try { ni.setSelectionRange(caret, caret); } catch (e) {} }
+    }));
+    el.querySelectorAll("[data-scr-clear]").forEach(b => b.addEventListener("click", () => { screenSearch = ""; screenerShown = SCREENER_PAGE; renderContent(); }));
+    el.querySelectorAll("[data-scr-sig]").forEach(b => b.addEventListener("click", () => { screenSignal = b.dataset.scrSig; screenerShown = SCREENER_PAGE; renderContent(); }));
+    el.querySelectorAll("[data-scr-sector]").forEach(sel => sel.addEventListener("change", () => { screenSector = sel.value; screenerShown = SCREENER_PAGE; renderContent(); }));
+    // click-to-sort screener columns (toggle direction on repeat click)
+    el.querySelectorAll("[data-sort]").forEach(thEl => thEl.addEventListener("click", () => {
+      const k = thEl.dataset.sort;
+      if (screenSort.key === k) screenSort.dir = -screenSort.dir; else screenSort = { key: k, dir: -1 };
+      screenerShown = SCREENER_PAGE; renderContent();
     }));
     // sentiment (Wall Street vs Crowd) sort + filter
     el.querySelectorAll("[data-ssort]").forEach(b => b.addEventListener("click", () => { streetSort = b.dataset.ssort; renderContent(); }));
@@ -2803,6 +2906,7 @@
     wire("tradesMore", () => { tradesShown += TRADES_PAGE; renderContent(); });
     wire("signalsMore", () => { signalsShown += SIGNALS_PAGE; renderContent(); });
     wire("membersMore", () => { membersShown += MEMBERS_PAGE; renderContent(); });
+    wire("screenerMore", () => { screenerShown += SCREENER_PAGE; renderContent(); });
     // Home "See all →" drill-ins jump to the full deep-dive view
     el.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "auto" }); setHash(b.dataset.goto); }));
     fillTreemaps();
