@@ -438,6 +438,16 @@
   .track-val { margin-bottom: 4px; }
   .track-note { font-size: 11px; color: var(--text-faint); }
   .pod-alpha-lbl { display: block; margin-top: 2px; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-style: normal; font-weight: 600; }
+  .race-chart { width: 100%; margin: 6px 0 2px; }
+  .race-chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .race-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; }
+  .race-leg { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); cursor: pointer; }
+  .race-leg[data-membername]:hover { color: var(--text); }
+  .race-leg.race-spy { cursor: default; }
+  .race-leg b { color: var(--text); font-weight: 600; }
+  .race-swatch { width: 11px; height: 3px; border-radius: 2px; display: inline-block; }
+  .race-spy .race-swatch { height: 0; border-top: 2.4px dashed var(--text-faint); background: none !important; }
+  .race-foot { margin-top: 9px; font-size: 11px; color: var(--text-faint); line-height: 1.45; }
   .track-splits { display: flex; gap: 20px; }
   .track-split { text-align: right; }
   .track-split b { display: block; font-family: var(--mono); font-size: 15px; color: var(--text); }
@@ -776,7 +786,6 @@
     <div class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="home">Home</button>
       <button class="view-tab" data-view="politicians">Leaderboard</button>
-      <button class="view-tab" data-view="smart">Smart Money</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
       <button class="view-tab" data-view="sentiment">Sentiment</button>
       <button class="view-tab" data-view="screener">Screener</button>
@@ -857,7 +866,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["home", "overview", "smart", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
+  const VIEWS = ["home", "overview", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -878,7 +887,6 @@
   const VIEW_HINTS = {
     home: "Every smart-money signal in one flow — scroll through, or dive into any section.",
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
-    smart: "Where conviction is clustering — the same stocks several members are buying at once.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
     sentiment: "Wall Street vs the Crowd — analyst buy ratings and price targets next to retail social buzz.",
     screener: "The whole US market filtered by investment philosophy — momentum, value, trend, mean-reversion.",
@@ -1675,104 +1683,6 @@
   }
 
   /* ---------- SMART MONEY VIEW (dashboard) ---------- */
-  function renderSmartView() {
-    const sm = DATA.smart_money || {}, o = DATA.overview || {};
-    const clusters = sm.clusters || [], bets = sm.big_bets || [];
-    if (!clusters.length && !bets.length) return `<div class="empty-note">No smart-money signals in the current window.</div>`;
-
-    const buyV = o.buy_value || 0, sellV = o.sell_value || 0;
-    const pressure = (buyV + sellV) ? Math.round(buyV / (buyV + sellV) * 100) : 50;
-    const netV = buyV - sellV;
-    const activeBuyers = new Set((DATA.trades || []).filter(t => isBuy(t.type)).map(t => t.member)).size;
-    const biParty = clusters.filter(c => c.bipartisan).length;
-
-    const partyBuy = { D: 0, R: 0, I: 0 };
-    (DATA.trades || []).forEach(t => { if (isBuy(t.type)) { const p = (t.party || "").toUpperCase(); if (partyBuy[p] != null) partyBuy[p] += t.est_amount || 0; } });
-
-    const secFlow = Object.entries(DATA.sectors || {})
-      .filter(([c, s]) => s.group === "economy" && c !== "OTHER" && s.net_value)
-      .map(([c, s]) => ({ short: s.short, net: s.net_value || 0, color: s.color }))
-      .sort((a, b) => Math.abs(b.net) - Math.abs(a.net)).slice(0, 7);
-
-    const clusterBars = clusters.slice(0, 8).map(c => ({
-      ticker: c.ticker, label: c.ticker, sub: `${fmtMoney(c.total_value)} bought${c.bipartisan ? " · bipartisan" : ""}`,
-      value: c.n_buyers, color: c.bipartisan ? "var(--ind)" : "var(--accent)", valLabel: `${c.n_buyers} buyers`,
-    }));
-
-    return `<section class="data-section">
-      <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
-        <div class="lead-hero-copy">
-          <div class="lead-eyebrow">Congressional smart money</div>
-          <h1 class="lead-h1">Smart<br>money</h1>
-          <p class="lead-tagline">Where conviction is clustering — the stocks multiple members of Congress are buying at once, and which way the political money is flowing.</p>
-        </div>
-        <div class="gauge-card">
-          ${gaugeSVG(pressure, pressure + "%", pressure >= 55 ? "Net buying" : pressure <= 45 ? "Net selling" : "Balanced")}
-          <div class="gauge-cap">Buy pressure — ${fmtMoney(buyV)} bought vs ${fmtMoney(sellV)} sold</div>
-        </div>
-      </div>
-      <div class="stat-strip">
-        <div class="stat-cell"><div class="sc-v ${netV >= 0 ? "up" : "down"}">${signedMoney(netV)}</div><div class="sc-l">Net flow</div></div>
-        <div class="stat-cell"><div class="sc-v">${activeBuyers}</div><div class="sc-l">Members buying</div></div>
-        <div class="stat-cell"><div class="sc-v" style="color:var(--ind)">${biParty}</div><div class="sc-l">Bipartisan clusters</div></div>
-        <div class="stat-cell"><div class="sc-v">${clusters.length}</div><div class="sc-l">Conviction clusters</div></div>
-      </div>
-      <div class="dash-grid">
-        <div class="dash-card">
-          <div class="dash-title">Cluster conviction</div><div class="dash-sub">Stocks several members bought together — <b style="color:var(--ind)">bipartisan</b> in violet</div>
-          ${clusterBars.length ? hbars(clusterBars) : `<div class="empty-note">No cluster buys yet.</div>`}
-        </div>
-        <div class="dash-card">
-          <div class="dash-title">Who's buying</div><div class="dash-sub">Disclosed purchase dollars, by party</div>
-          ${donutSVG([{ label: "Dem", value: partyBuy.D, color: "var(--dem)" }, { label: "Rep", value: partyBuy.R, color: "var(--rep)" }, { label: "Ind", value: partyBuy.I, color: "var(--ind)" }], fmtMoney(partyBuy.D + partyBuy.R + partyBuy.I), "bought")}
-        </div>
-      </div>
-      ${secFlow.length ? `<div class="dash-card">
-        <div class="dash-title">Where the money flows</div><div class="dash-sub">Net congressional buying by economic sector</div>
-        ${hbars(secFlow.map(s => ({ label: s.short, value: s.net, color: s.net >= 0 ? "var(--good)" : "var(--bad)", valLabel: signedMoney(s.net) })), { max: Math.max(...secFlow.map(s => Math.abs(s.net)), 1) })}
-      </div>` : ""}
-      <div class="section-head" style="margin-top:24px;"><span class="section-title">Biggest recent bets</span><span class="section-count">largest single disclosed trades · last 45 days</span></div>
-      <div class="bets-list">
-        <div class="bet-row bet-head"><span>Ticker</span><span>Side</span><span>Member</span><span>Sector</span><span class="ta-r">Size</span><span>Traded</span><span class="ta-r">Since</span></div>
-        ${bets.map(renderBetRow).join("")}
-      </div>
-    </section>`;
-  }
-
-  function renderClusterCard(c) {
-    const sc = sectorMeta(c.sector);
-    const buyers = (c.buyers || []).map(b =>
-      `<span class="cl-buyer" data-membername="${esc(b.member)}"><span class="party-dot ${b.party}"></span>${esc(cleanMemberName(b.member))}</span>`).join("");
-    return `<div class="cluster-card">
-      <div class="cl-top">
-        <div style="min-width:0"><div class="cl-ticker clickable-ticker" data-ticker="${esc(c.ticker)}">${esc(c.ticker)}</div><div class="cl-company">${esc(c.company || "")}</div></div>
-        <div class="cl-badges">
-          <span class="cl-buyers-badge">${c.n_buyers} buyers</span>
-          ${c.bipartisan ? `<span class="cl-bipartisan">Bipartisan</span>` : ""}
-        </div>
-      </div>
-      <div class="cl-metrics">
-        <span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>
-        <span class="cl-val">${fmtMoney(c.total_value)} bought</span>
-        ${c.avg_return != null ? `<span class="cl-ret">${returnPill(c.avg_return)}<i>avg since</i></span>` : ""}
-      </div>
-      <div class="cl-buyers">${buyers}</div>
-    </div>`;
-  }
-
-  function renderBetRow(t) {
-    const sc = sectorMeta(t.sector);
-    return `<div class="bet-row">
-      <span class="bet-ticker clickable-ticker" data-ticker="${esc(t.ticker || "")}">${esc(t.ticker || "—")}</span>
-      <span class="${tradeTypeClass(t.type)}" style="font-weight:600">${isBuy(t.type) ? "▲ Buy" : "▼ Sell"}</span>
-      <span class="bet-member" data-membername="${esc(t.member)}">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span>
-      <span><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span></span>
-      <span class="ta-r bet-val">${fmtMoney(t.value)}</span>
-      <span class="bet-date">${esc(t.transaction_date)}</span>
-      <span class="ta-r">${t.return_pct != null ? returnPill(t.return_pct) : "—"}</span>
-    </div>`;
-  }
-
   /* ---------- INSIDERS VIEW (SEC Form 4) ---------- */
   function cleanInsider(n) {
     if (!n) return "—";
@@ -2309,7 +2219,79 @@
       </section>`;
   }
 
-  /* ---------- OVERVIEW VIEW ---------- */
+  /* ---------- HOME HERO CHART: members outpacing the S&P 500 ---------- */
+  const RACE_COLORS = ["#4ade80", "#38bdf8", "#f0a94e", "#a78bfa", "#f472b6"];
+  function raceDateLabel(iso) {
+    const d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { month: "short", year: "2-digit" }).replace(" ", " '");
+  }
+  function renderMemberRace() {
+    const R = DATA.member_race;
+    if (!R || !R.members || !R.members.length || !R.dates || R.dates.length < 2) return "";
+    const dates = R.dates, spy = R.spy, mem = R.members;
+    const N = dates.length;
+    const vals = spy.concat(...mem.map(m => m.series));
+    let ymin = Math.min(...vals, 0), ymax = Math.max(...vals);
+    const span = (ymax - ymin) || 1;
+    ymax += span * 0.06; ymin -= span * 0.04;
+    const W = 960, H = 380, ml = 46, mr = 14, mt = 14, mb = 26;
+    const x = i => ml + (i / (N - 1)) * (W - ml - mr);
+    const y = v => mt + (1 - (v - ymin) / (ymax - ymin)) * (H - mt - mb);
+    const path = s => s.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+
+    // y gridlines at ~5 rounded steps
+    const step = niceStep((ymax - ymin) / 5);
+    const grid = [];
+    for (let g = Math.ceil(ymin / step) * step; g <= ymax; g += step) {
+      const yy = y(g).toFixed(1), zero = Math.abs(g) < 1e-9;
+      grid.push(`<line x1="${ml}" y1="${yy}" x2="${W - mr}" y2="${yy}" stroke="var(--line)" stroke-width="${zero ? 1.4 : 1}" ${zero ? "" : 'stroke-dasharray="3 4"'} opacity="${zero ? 0.9 : 0.5}"/>
+        <text x="${ml - 6}" y="${(+yy + 3).toFixed(1)}" text-anchor="end" font-size="10" fill="var(--text-faint)">${g > 0 ? "+" : ""}${Math.round(g)}%</text>`);
+    }
+    // x labels: first / mid / last
+    const xl = [0, Math.floor((N - 1) / 2), N - 1].map(i =>
+      `<text x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === N - 1 ? "end" : "middle"}" font-size="10" fill="var(--text-faint)">${raceDateLabel(dates[i])}</text>`).join("");
+
+    // S&P baseline: subtle area + dashed line
+    const area = `M ${x(0).toFixed(1)},${y(spy[0]).toFixed(1)} L ${path(spy).replace(/ /g, " L ")} L ${x(N - 1).toFixed(1)},${y(ymin).toFixed(1)} L ${x(0).toFixed(1)},${y(ymin).toFixed(1)} Z`;
+    const spyLine = `<polyline points="${path(spy)}" fill="none" stroke="var(--text-faint)" stroke-width="2.4" stroke-dasharray="6 4" opacity="0.85"/>`;
+
+    const memLines = mem.map((m, i) => {
+      const c = RACE_COLORS[i % RACE_COLORS.length];
+      const lx = x(N - 1), ly = y(m.series[N - 1]);
+      return `<polyline points="${path(m.series)}" fill="none" stroke="${c}" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3.2" fill="${c}"/>`;
+    }).join("");
+    // end dot for S&P
+    const spyDot = `<circle cx="${x(N - 1).toFixed(1)}" cy="${y(spy[N - 1]).toFixed(1)}" r="3" fill="var(--text-faint)"/>`;
+
+    const legend = `<div class="race-legend">
+      <span class="race-leg race-spy"><span class="race-swatch" style="background:var(--text-faint)"></span>S&amp;P 500 <b>${spy[N - 1] > 0 ? "+" : ""}${Math.round(spy[N - 1])}%</b></span>
+      ${mem.map((m, i) => `<span class="race-leg" data-membername="${esc(m.member)}"><span class="race-swatch" style="background:${RACE_COLORS[i % RACE_COLORS.length]}"></span>${partyBadge(m.party)} ${esc(cleanMemberName(m.member))} <b class="up">+${Math.round(m.final)}%</b></span>`).join("")}
+    </div>`;
+
+    return `<div class="home-section reveal race-section">
+      <div class="home-head"><div>
+        <h2 class="home-title">Congress is outpacing the market</h2>
+        <p class="home-sub">Cumulative return of following each of the top ${mem.length} members' disclosed trades over the past year, drawn over the S&amp;P 500 — ${R.n_beating} of ${R.n_ranked} scored members are beating the index.</p>
+      </div>${`<button class="home-seeall" data-goto="politicians">Full leaderboard <span>→</span></button>`}</div>
+      <div class="race-chart">
+        <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Members of Congress cumulative return vs the S&P 500">
+          ${grid.join("")}
+          <path d="${area}" fill="var(--text-faint)" opacity="0.06"/>
+          ${spyLine}${memLines}${spyDot}
+          ${xl}
+        </svg>
+      </div>
+      ${legend}
+      <div class="race-foot">Each line follows that member's disclosed buys equal-weighted, held while their net position stays positive — the same methodology across everyone. Disclosures lag trades by up to ~45 days. Not investment advice.</div>
+    </div>`;
+  }
+  function niceStep(raw) {
+    const p = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+    const n = (raw || 1) / p;
+    return (n >= 5 ? 5 : n >= 2 ? 2 : 1) * p;
+  }
+
   /* ---------- HOME (fluid landing that flows through every signal) ---------- */
   function renderHomeView() {
     const scored = (DATA.members || []).filter(m => m.alpha != null);
@@ -2317,14 +2299,6 @@
     const podium = members.slice(0, 3);
     const topLeaders = members.slice(0, 6);
     const beatPct = scored.length ? Math.round(scored.filter(m => m.alpha > 0).length / scored.length * 100) : 0;
-
-    const sm = DATA.smart_money || {}, o = DATA.overview || {};
-    const buyV = o.buy_value || 0, sellV = o.sell_value || 0;
-    const pressure = (buyV + sellV) ? Math.round(buyV / (buyV + sellV) * 100) : 50;
-    const clusters = (sm.clusters || []).slice(0, 5).map(c => ({
-      ticker: c.ticker, label: c.ticker, sub: `${fmtMoney(c.total_value)} bought${c.bipartisan ? " · bipartisan" : ""}`,
-      value: c.n_buyers, color: c.bipartisan ? "var(--ind)" : "var(--accent)", valLabel: `${c.n_buyers} buyers`,
-    }));
 
     const ins = DATA.insiders || {}, ist = ins.stats || {};
     const isent = ((ist.buy_count || 0) + (ist.sell_count || 0)) ? Math.round(ist.buy_count / (ist.buy_count + ist.sell_count) * 100) : 50;
@@ -2356,20 +2330,14 @@
         <div class="podium">${podium.map((m, i) => renderPodium(m, i)).join("")}</div>
       </section>
 
+      ${renderMemberRace()}
+
       <div class="home-section reveal">
         ${head("Congress trading leaderboard", "Ranked by alpha — return above the S&amp;P over the same holding period", "politicians", "Full leaderboard")}
         <div class="lead-list">${topLeaders.map((m, i) => renderLeaderRow(m, i + 1)).join("")}</div>
       </div>
 
       <div class="home-section reveal">${renderConvictionSection()}</div>
-
-      <div class="home-section reveal">
-        ${head("Smart-money pulse", "Congressional buy pressure and where conviction is clustering", "smart", "Smart Money")}
-        <div class="home-two">
-          <div class="gauge-card">${gaugeSVG(pressure, pressure + "%", pressure >= 55 ? "Net buying" : pressure <= 45 ? "Net selling" : "Balanced")}<div class="gauge-cap">Congress buy pressure</div></div>
-          <div class="dash-card" style="margin:0"><div class="dash-title">Cluster conviction</div><div class="dash-sub">Stocks several members bought together</div>${clusters.length ? hbars(clusters) : `<div class="empty-note">No clusters right now.</div>`}</div>
-        </div>
-      </div>
 
       <div class="home-section reveal">
         ${head("Wall Street vs the Crowd", "Analyst ratings beside vetted retail sentiment", "sentiment", "Sentiment")}
@@ -2776,7 +2744,6 @@
     const el = document.getElementById("content");
     if (activeView === "home") el.innerHTML = renderHomeView();
     else if (activeView === "overview") el.innerHTML = renderOverviewView();
-    else if (activeView === "smart") el.innerHTML = renderSmartView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "sentiment") el.innerHTML = renderStreetView();
     else if (activeView === "screener") el.innerHTML = renderScreenerView();
@@ -2893,7 +2860,7 @@
   let cmdkItems = [], cmdkFiltered = [], cmdkActive = 0;
   function buildCmdkIndex() {
     const items = [];
-    [["overview", "Overview"], ["smart", "Smart Money"], ["politicians", "Leaderboard"], ["stocks", "Stocks"], ["bills", "Bills"]]
+    [["overview", "Overview"], ["politicians", "Leaderboard"], ["stocks", "Stocks"], ["bills", "Bills"]]
       .forEach(([v, l]) => items.push({ type: "View", label: l, sub: "Go to " + l, act: () => { document.getElementById("searchBox").value = ""; setHash(v); } }));
     (DATA.members || []).forEach(m => items.push({ type: "Member", label: cleanMemberName(m.member), party: m.party,
       sub: `${m.chamber} · ${m.trade_count} trades${m.portfolio_return != null ? ` · ${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%` : ""}`, act: () => setHash("member/" + m.member) }));

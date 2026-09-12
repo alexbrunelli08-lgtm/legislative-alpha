@@ -2312,6 +2312,91 @@ def build_performance(trades, prices):
     }
 
 
+def build_member_race(members, trades, prices, top_n=5, min_buys=3):
+    """The Home hero chart: cumulative-return curves of the members who are
+    OUTPACING the S&P 500, drawn over the index itself.
+
+    For each member we run the same equal-weighted 'follow' backtest as
+    build_performance, but using only that member's own disclosed trades: hold a
+    stock while their net position in it is positive, equal-weight across current
+    holdings, and track the cumulative return over the backtest window. We then
+    keep the members whose windowed return beats the S&P, ranked by that return,
+    so the chart shows real outperformers rather than a lucky single trade
+    (members need >=min_buys scored buys to qualify). Returns None if prices are
+    unavailable."""
+    spy = prices.get("SPY")
+    if not spy or not trades:
+        return None
+    end = max(spy)
+    start = (datetime.strptime(end, "%Y-%m-%d") - timedelta(days=BACKTEST_WINDOW)).strftime("%Y-%m-%d")
+    dates = sorted(d for d in spy if start <= d <= end)
+    if len(dates) < 20:
+        return None
+
+    def daily_returns(pr):
+        out = {}
+        for i in range(1, len(dates)):
+            a, b = pr.get(dates[i - 1]), pr.get(dates[i])
+            if a and b:
+                out[dates[i]] = b / a - 1
+        return out
+
+    traded = {t["ticker"] for t in trades if t.get("ticker") and prices.get(t["ticker"])}
+    rets = {tk: daily_returns(prices[tk]) for tk in traded}
+    spy_rets = daily_returns(spy)
+
+    # S&P cumulative-return line (percent), the shared baseline.
+    spy_series, m_val = [], 1.0
+    for i, d in enumerate(dates):
+        if i:
+            m_val *= (1 + spy_rets.get(d, 0))
+        spy_series.append(round((m_val - 1) * 100, 2))
+    spy_final = spy_series[-1]
+
+    # eligible members: enough scored buys to be a real record
+    eligible = {m["member"] for m in members if (m.get("priced_buys") or 0) >= min_buys}
+    by_member = {}
+    for t in trades:
+        if t["member"] not in eligible or t.get("ticker") not in rets:
+            continue
+        try:
+            txd = datetime.strptime(t["transaction_date"], "%m/%d/%Y").strftime("%Y-%m-%d")
+        except (ValueError, TypeError):
+            continue
+        by_member.setdefault(t["member"], []).append((txd, t["ticker"], 1 if _is_buy(t["type"]) else -1))
+
+    runs = []
+    for member, tl in by_member.items():
+        tl.sort()
+        net, ti, val = {}, 0, 1.0
+        series = [0.0]
+        for i in range(1, len(dates)):
+            dprev, dcur = dates[i - 1], dates[i]
+            while ti < len(tl) and tl[ti][0] <= dprev:
+                _, tk, sgn = tl[ti]
+                net[tk] = net.get(tk, 0) + sgn
+                ti += 1
+            held = [tk for tk, n in net.items() if n > 0]
+            r = sum(rets[tk].get(dcur, 0) for tk in held) / len(held) if held else 0.0
+            val *= (1 + r)
+            series.append(round((val - 1) * 100, 2))
+        runs.append({"member": member, "final": series[-1], "series": series})
+
+    party = {m["member"]: m.get("party", "?") for m in members}
+    beating = sorted([r for r in runs if r["final"] > spy_final], key=lambda r: r["final"], reverse=True)[:top_n]
+    for r in beating:
+        r["party"] = party.get(r["member"], "?")
+    return {
+        "as_of": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "start_date": dates[0], "end_date": dates[-1],
+        "dates": dates,
+        "spy": spy_series, "spy_final": spy_final,
+        "n_beating": sum(1 for r in runs if r["final"] > spy_final),
+        "n_ranked": len(runs),
+        "members": beating,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Screener -- Finviz-style, but organized by INVESTMENT PHILOSOPHY. Technical
 # indicators (200-DMA, RSI, momentum, drawdown) computed from the daily closes
@@ -2836,8 +2921,9 @@ def main():
     stock_signals = build_stock_signals(trades)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
-    smart_money = build_smart_money(trades)
     performance = build_performance(trades, prices)
+    # Home hero: cumulative-return curves of the members outpacing the S&P.
+    member_race = build_member_race(members, trades, prices)
 
     # Standalone whole-market technical screener (independent of congress).
     print("Building philosophy screener over the US stock universe...", file=sys.stderr)
@@ -2880,8 +2966,8 @@ def main():
         "congress": CONGRESS,
         "overview": overview,
         "performance": performance,
+        "member_race": member_race,
         "unusual_activity": unusual,
-        "smart_money": smart_money,
         "insiders": insiders,
         "screener": screener,
         "conviction": conviction,
