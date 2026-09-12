@@ -25,6 +25,7 @@ import io
 import json
 import os
 import re
+import statistics
 import sys
 import time
 import xml.etree.ElementTree as ET
@@ -64,6 +65,40 @@ SEC_HEADERS = {"User-Agent": "Legislative Alpha research tracker admin@legislati
 CONGRESS_API_KEY = os.environ.get("CONGRESS_API_KEY")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 IMPACT_MODEL = "claude-opus-4-8"
+
+# Exchange/security-type boilerplate that clutters raw security names from the
+# NASDAQ/SEC feeds ("Meta Platforms, Inc. - Class A Common Stock"). We strip the
+# trailing share-class / security-type tail for display, but keep the corporate
+# form (Inc./Corp.) so names stay recognizable.
+# The security-type boilerplate always BEGINS with one of these markers; the real
+# company name is everything before the first one. Cutting at the marker is far
+# more robust than trying to match every trailing variant ("Class A Ordinary
+# Shares (Ireland)", "Common Stock New", "Class B Sub. Vot. Common Stock", ...).
+_NAME_MARKER_RE = re.compile(
+    r"\s+(?:-\s+)?(?:"
+    r"Class\s+[A-Z]\b|Common\s+Stock\b|Common\s+Shares?\b|Capital\s+Stock\b|"
+    r"Ordinary\s+Shares?\b|American\s+Depositary\b|Depositary\s+(?:Shares?|Units?|Receipts?)\b|"
+    r"Subordinate\s+Voting\b|Sub\.\s*Vot\.|Beneficial\s+Interest\b|Shares\s+Representing\b|"
+    r"Preferred\b|Warrants?\b|Units?\b|Rights?\b"
+    r")", re.IGNORECASE)
+
+
+def _clean_company_name(name):
+    """Reduce a raw security name to just the company: cut parse garbage that
+    leaks in from option disclosures / scanned-PDF filings, then drop the
+    security-type boilerplate at the first marker. Idempotent."""
+    if not name:
+        return name
+    s = " ".join(str(name).split())  # collapse runaway whitespace from PDFs
+    # cut obvious parse/option-contract garbage that trails the real name
+    for cut in ("Option Type:", " ID Owner ", " Transaction Date ", " Notification "):
+        i = s.find(cut)
+        if i > 0:
+            s = s[:i]
+    m = _NAME_MARKER_RE.search(s)
+    if m and m.start() > 0:
+        s = s[:m.start()]
+    return s.strip().rstrip(" -,") or name
 
 
 def load_sectors():
@@ -1661,6 +1696,24 @@ def build_member_profiles(trades):
             "best_trade": p["best"],
             "worst_trade": p["worst"],
         })
+
+    # Confidence-adjust the alpha so a lucky one- or two-trade streak can't top
+    # the leaderboard. Empirical-Bayes style shrinkage: treat each member as if
+    # they had also made ALPHA_SHRINK_K "average" trades at the group's typical
+    # alpha (a robust median prior). A long, consistent record barely moves; a
+    # thin sample gets pulled hard toward the mean. This is the honest way to
+    # RANK skill under very different sample sizes.
+    ALPHA_SHRINK_K = 5
+    prior_sample = [p["alpha"] for p in out
+                    if p["alpha"] is not None and (p["priced_buys"] or 0) >= 3]
+    alpha_prior = round(statistics.median(prior_sample), 1) if prior_sample else 0.0
+    for p in out:
+        n = p["priced_buys"] or 0
+        p["alpha_adj"] = (round((n * p["alpha"] + ALPHA_SHRINK_K * alpha_prior) / (n + ALPHA_SHRINK_K), 1)
+                          if p["alpha"] is not None and n > 0 else None)
+        p["alpha_prior"] = alpha_prior
+        p["alpha_k"] = ALPHA_SHRINK_K
+
     out.sort(key=lambda p: p["total_value"], reverse=True)
     return out
 
@@ -1702,7 +1755,7 @@ def build_stock_signals(trades):
     for s in signals.values():
         out.append({
             "ticker": s["ticker"],
-            "company": s["company"],
+            "company": _clean_company_name(s["company"]),
             "sector": s["sector"],
             "buy_count": s["buy_count"],
             "sell_count": s["sell_count"],
@@ -2409,7 +2462,7 @@ def build_screener(prices, universe, mcaps):
         if ind is None:
             continue
         ind.pop("r1", None)  # not displayed -- trim payload
-        stocks.append({"ticker": tk, "company": name, "sector": info.get("sector", ""),
+        stocks.append({"ticker": tk, "company": _clean_company_name(name), "sector": info.get("sector", ""),
                        "mcap": mc, **ind})
     stocks.sort(key=lambda s: s["mcap"] or 0, reverse=True)
     return {"universe": len(stocks), "min_mcap": MID_CAP_FLOOR, "stocks": stocks}
@@ -2789,6 +2842,14 @@ def main():
     # Standalone whole-market technical screener (independent of congress).
     print("Building philosophy screener over the US stock universe...", file=sys.stderr)
     universe = load_universe()
+    # Canonical, cleaned display names from the market universe -- override the raw
+    # disclosure/PDF names on the aggregated signal tables (which conviction and
+    # the sentiment view inherit) so every listed ticker reads cleanly.
+    canon_names = {tk: _clean_company_name(info.get("name")) for tk, info in universe.items() if info.get("name")}
+    for s in stock_signals:
+        nm = canon_names.get(s["ticker"])
+        if nm:
+            s["company"] = nm
     screener_prices = fetch_screener_prices(list(universe.keys())) if universe else {}
     mcaps = fetch_market_caps(list(universe.keys())) if universe else {}
     screener = build_screener(screener_prices, universe, mcaps)
@@ -2806,6 +2867,13 @@ def main():
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
+
+    # Slim the trades feed before shipping: image_url + bioguide were only needed
+    # to build member profiles (which already carry them). Dropping them from all
+    # ~9k trade rows trims the payload clients download with no loss of function.
+    for t in trades:
+        t.pop("image_url", None)
+        t.pop("bioguide", None)
 
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

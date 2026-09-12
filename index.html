@@ -437,6 +437,7 @@
   .track-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; margin-bottom: 5px; }
   .track-val { margin-bottom: 4px; }
   .track-note { font-size: 11px; color: var(--text-faint); }
+  .pod-alpha-lbl { display: block; margin-top: 2px; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-style: normal; font-weight: 600; }
   .track-splits { display: flex; gap: 20px; }
   .track-split { text-align: right; }
   .track-split b { display: block; font-family: var(--mono); font-size: 15px; color: var(--text); }
@@ -512,6 +513,7 @@
   .street-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .street-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 17px; transition: border-color 0.14s ease; }
   .street-card:hover { border-color: var(--accent-dim); }
+  .st-div { color: var(--warn, #e0a84e); background: rgba(224,168,78,0.14); font-weight: 600; }
   .st-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
   .st-ticker { font-family: var(--mono); font-weight: 700; font-size: 17px; cursor: pointer; }
   .st-ticker:hover { color: var(--accent); }
@@ -1431,10 +1433,13 @@
   }
 
   /* ---------- POLITICIANS VIEW ---------- */
+  // Minimum scored buys to be eligible for the ALPHA ranking. Below this a
+  // member's excess return is statistical noise, so we don't rank them on it.
+  const MIN_SCORED_BUYS = 3;
   const MEMBER_SORTS = {
-    alpha:   { label: "Alpha",    fn: m => m.alpha,            sub: "return above the S&P 500 over the same holding periods — the honest measure of skill" },
-    return:  { label: "Return",   fn: m => m.portfolio_return, sub: "raw paper return on disclosed buys (before benchmarking)" },
-    winrate: { label: "Win rate", fn: m => m.win_rate,         sub: "share of buys now in the green" },
+    alpha:   { label: "Alpha",    fn: m => m.alpha_adj,        floor: true, sub: "excess return vs the S&P over the same holding periods, confidence-adjusted — shrunk toward the group average so a lucky one- or two-trade streak can't top the board (needs ≥3 scored buys)" },
+    return:  { label: "Return",   fn: m => m.portfolio_return, floor: true, sub: "raw paper return on disclosed buys, before benchmarking (needs ≥3 scored buys)" },
+    winrate: { label: "Win rate", fn: m => m.win_rate,         floor: true, sub: "share of buys now in the green (needs ≥3 scored buys)" },
     volume:  { label: "Volume",   fn: m => m.total_value,      sub: "total disclosed dollar volume" },
     trades:  { label: "Trades",   fn: m => m.trade_count,      sub: "number of disclosed transactions" },
   };
@@ -1447,8 +1452,11 @@
     if (members.length === 0) return partyChips(total) + `<div class="empty-note">No members match this filter for the current window.</div>`;
 
     const sort = MEMBER_SORTS[memberSort] || MEMBER_SORTS.return;
+    // For alpha, only members with enough scored buys are eligible — thin
+    // samples are noise, not skill.
+    const pool = sort.floor ? members.filter(m => (m.priced_buys || 0) >= MIN_SCORED_BUYS) : members;
     // nulls (no scored trades) always sort to the bottom
-    const ranked = members.slice().sort((a, b) => {
+    const ranked = pool.slice().sort((a, b) => {
       const av = sort.fn(a), bv = sort.fn(b);
       if (av == null && bv == null) return b.total_value - a.total_value;
       if (av == null) return 1; if (bv == null) return -1;
@@ -1458,9 +1466,10 @@
     const sortTabs = Object.entries(MEMBER_SORTS).map(([k, v]) =>
       `<button class="sort-tab ${k === memberSort ? "active" : ""}" data-msort="${k}">${v.label}</button>`).join("");
 
-    // headline stats + podium (always the top performers by ALPHA vs the market)
+    // headline stats + podium (top performers by confidence-adjusted ALPHA)
     const scored = members.filter(m => m.alpha != null);
-    const byAlpha = scored.slice().sort((a, b) => b.alpha - a.alpha);
+    const eligible = scored.filter(m => (m.priced_buys || 0) >= MIN_SCORED_BUYS);
+    const byAlpha = eligible.slice().sort((a, b) => b.alpha_adj - a.alpha_adj);
     const podium = byAlpha.slice(0, 3);
     const beat = scored.filter(m => m.alpha > 0).length;
     const beatPct = scored.length ? Math.round(beat / scored.length * 100) : 0;
@@ -1472,7 +1481,7 @@
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Congress Trading · ${scored.length} tracked</div>
           <h1 class="lead-h1">Who's beating<br>the market</h1>
-          <p class="lead-tagline">Every member ranked by <b>alpha</b> — how much their disclosed buys have beaten the S&amp;P 500 over the same holding period. Raw return flatters everyone in a bull market; alpha is the real skill test.</p>
+          <p class="lead-tagline">Every member ranked by <b>alpha</b> — how much their disclosed buys have beaten the S&amp;P 500 over the same holding period, confidence-adjusted so a lucky one- or two-trade streak can't top the board. Raw return flatters everyone in a bull market; alpha is the real skill test.</p>
           <div class="lead-stat-row">
             <div class="lead-stat"><b>${beatPct}%</b><i>members beating the market</i></div>
             <div class="lead-stat"><b class="${median > 0 ? "up" : "down"}">${median != null ? (median > 0 ? "+" : "") + median.toFixed(1) + "%" : "—"}</b><i>median alpha</i></div>
@@ -1497,7 +1506,7 @@
         <div class="podium-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
         <div class="podium-meta">${m.portfolio_return != null ? `${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}% return · ` : ""}${m.trade_count} trades</div>
       </div>
-      <div class="podium-ret">${returnPill(m.alpha, true)}</div>
+      <div class="podium-ret">${returnPill(m.alpha_adj, true)}<i class="pod-alpha-lbl">adj. alpha</i></div>
     </div>`;
   }
 
@@ -1520,7 +1529,7 @@
       </div>
       <div class="lead-metrics">
         ${ret}${wins}
-        <div class="lead-return">${returnPill(m.alpha, true)}<i>alpha vs S&amp;P</i></div>
+        <div class="lead-return">${returnPill(m.alpha_adj, true)}<i>adj. alpha · n=${m.priced_buys || 0}</i></div>
       </div>
     </div>`;
   }
@@ -1580,9 +1589,10 @@
       <div class="modal-body">
         ${m.portfolio_return != null ? `
         <div class="track-banner">
-          <div class="track-main"><div class="track-label">${m.alpha != null ? "Alpha — vs S&amp;P 500" : "Track record"}</div><div class="track-val">${returnPill(m.alpha != null ? m.alpha : m.portfolio_return, true)}</div><div class="track-note">${m.alpha != null ? `market-beating return on ${m.priced_buys} scored buys` : `paper return on ${m.priced_buys} scored buys`}</div></div>
+          <div class="track-main"><div class="track-label">${m.alpha_adj != null ? "Alpha — vs S&amp;P 500 <span style='opacity:.6;font-weight:600'>(confidence-adj.)</span>" : "Track record"}</div><div class="track-val">${returnPill(m.alpha_adj != null ? m.alpha_adj : m.portfolio_return, true)}</div><div class="track-note">${m.alpha_adj != null ? `${m.priced_buys} scored buys · shrunk toward the ${(m.alpha_prior ?? 0) >= 0 ? "+" : ""}${m.alpha_prior}% group average` : `paper return on ${m.priced_buys} scored buys`}</div></div>
           <div class="track-splits">
-            ${m.alpha != null && m.portfolio_return != null ? `<div class="track-split"><b style="color:${m.portfolio_return >= 0 ? "var(--good)" : "var(--bad)"}">${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%</b><i>raw return</i></div>` : ""}
+            ${m.alpha != null ? `<div class="track-split"><b style="color:${m.alpha >= 0 ? "var(--good)" : "var(--bad)"}">${m.alpha > 0 ? "+" : ""}${m.alpha}%</b><i>raw alpha</i></div>` : ""}
+            ${m.portfolio_return != null ? `<div class="track-split"><b style="color:${m.portfolio_return >= 0 ? "var(--good)" : "var(--bad)"}">${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%</b><i>raw return</i></div>` : ""}
             ${m.beat_market_rate != null ? `<div class="track-split"><b>${m.beat_market_rate}%</b><i>beat market</i></div>` : ""}
             ${m.win_rate != null ? `<div class="track-split"><b>${m.win_rate}%</b><i>win rate</i></div>` : ""}
             ${m.best_trade ? `<div class="track-split"><b class="clickable-ticker" data-ticker="${esc(m.best_trade.ticker)}">${esc(m.best_trade.ticker)}</b><i>best ${returnPill(m.best_trade.return_pct)}</i></div>` : ""}
@@ -1991,6 +2001,22 @@
     return `<div class="rating-banner">${analyst}${retail}</div>`;
   }
 
+  // Quant divergence: how far the professional analyst stance and the retail
+  // crowd stance point in OPPOSITE directions, on a -2..+2 scale. Positive =
+  // Wall Street more bullish than the crowd; negative = the crowd more bullish
+  // than Wall Street. Needs a trustworthy sample on both sides (>=3 analysts,
+  // >=4 vetted messages), else null.
+  function streetGap(s) {
+    const tot = (s.buy || 0) + (s.hold || 0) + (s.sell || 0);
+    // require the same trustworthy analyst stance the card actually renders
+    if (!recMeta(s.rec) || !tot || !s.n_analysts || s.n_analysts < 3) return null;
+    if (s.bull_pct == null || (s.q_msgs || 0) < 4) return null;
+    const proLean = ((s.buy || 0) - (s.sell || 0)) / tot;  // -1 (all sell) .. +1 (all buy)
+    const crowdLean = (s.bull_pct - 50) / 50;              // -1 (all bear) .. +1 (all bull)
+    return proLean - crowdLean;
+  }
+  const DIVERGENT = 0.7;  // |gap| above this = a meaningful disagreement
+
   function renderStreetView() {
     const stocks = (DATA.street && DATA.street.stocks) || [];
     if (!stocks.length)
@@ -2003,15 +2029,18 @@
     if (streetFilter === "buy") rows = rows.filter(s => (recMeta(s.rec) || [0, 0, 0])[2] >= 4);
     else if (streetFilter === "buzzing") rows = rows.filter(s => s.buzz >= 15);
     else if (streetFilter === "signal") rows = rows.filter(s => s.congress || s.insiders);
+    else if (streetFilter === "divergent") rows = rows.filter(s => { const g = streetGap(s); return g != null && Math.abs(g) >= DIVERGENT; });
     const SORTS = {
       upside: s => s.upside, buzz: s => s.buzz, rating: s => (recMeta(s.rec) || [0, 0, 0])[2],
       bullish: s => s.bull_pct, congress: s => s.congress,
+      divergence: s => { const g = streetGap(s); return g == null ? null : Math.abs(g); },
     };
     const key = SORTS[streetSort] || SORTS.upside;
     rows.sort((a, b) => (key(b) ?? -1e9) - (key(a) ?? -1e9));
 
     const nBuy = stocks.filter(s => (recMeta(s.rec) || [0, 0, 0])[2] >= 4).length;
     const nBuzz = stocks.filter(s => s.buzz >= 15).length;
+    const nDiv = stocks.filter(s => { const g = streetGap(s); return g != null && Math.abs(g) >= DIVERGENT; }).length;
     const avgUpside = (() => { const u = stocks.map(s => s.upside).filter(x => x != null); return u.length ? Math.round(u.reduce((a, b) => a + b, 0) / u.length) : null; })();
 
     const sortTab = (k, l) => `<button class="sort-tab ${streetSort === k ? "active" : ""}" data-ssort="${k}">${l}</button>`;
@@ -2027,12 +2056,12 @@
         <div class="gauge-card" style="padding:20px 26px;">
           <div class="street-hero-stat"><b class="up">${nBuy}</b><i>rated Buy or better</i></div>
           <div class="street-hero-stat"><b>${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b><i>avg upside to target</i></div>
-          <div class="street-hero-stat"><b style="color:var(--accent)">${nBuzz}</b><i>buzzing on social</i></div>
+          <div class="street-hero-stat"><b style="color:var(--warn,#e0a84e)">${nDiv}</b><i>Wall St ↔ crowd split</i></div>
         </div>
       </div>
       <div class="lead-controls">
-        <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("signal", "Smart-money picks")}</div>
-        <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("buzz", "Buzz")}${sortTab("congress", "Congress")}</div></div>
+        <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("divergent", "Divergent")}${filtTab("signal", "Smart-money picks")}</div>
+        <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("divergence", "Divergence")}${sortTab("buzz", "Buzz")}${sortTab("congress", "Congress")}</div></div>
       </div>
       <div class="street-grid">${rows.slice(0, 60).map(renderStreetCard).join("")}</div>
       <div class="hero-note">Analyst ratings & price targets via Yahoo Finance; retail sentiment via StockTwits (share of recent messages tagged bullish). Informational only, not investment advice.</div>
@@ -2045,6 +2074,9 @@
     const sigs = [];
     if (s.congress) sigs.push(`<span class="st-sig" style="color:var(--accent);background:var(--accent-dim)">${s.congress} in Congress</span>`);
     if (s.insiders) sigs.push(`<span class="st-sig" style="color:var(--ind);background:var(--tint-violet)">${s.insiders} insider${s.insiders > 1 ? "s" : ""}</span>`);
+    const g = streetGap(s);
+    if (g != null && Math.abs(g) >= DIVERGENT)
+      sigs.push(`<span class="st-sig st-div" title="Analyst consensus and retail sentiment disagree">${g > 0 ? "Pros ▲ / crowd cool" : "Crowd ▲ / pros cool"}</span>`);
     const analyst = rm ? `
       <div class="st-side">
         <div class="st-side-head"><span class="st-side-label">Wall Street</span>${s.n_analysts ? `<span class="st-side-n">${s.n_analysts} analysts</span>` : ""}</div>
@@ -2280,10 +2312,11 @@
   /* ---------- OVERVIEW VIEW ---------- */
   /* ---------- HOME (fluid landing that flows through every signal) ---------- */
   function renderHomeView() {
-    const members = (DATA.members || []).filter(m => m.alpha != null).sort((a, b) => b.alpha - a.alpha);
+    const scored = (DATA.members || []).filter(m => m.alpha != null);
+    const members = scored.filter(m => (m.priced_buys || 0) >= MIN_SCORED_BUYS).sort((a, b) => b.alpha_adj - a.alpha_adj);
     const podium = members.slice(0, 3);
     const topLeaders = members.slice(0, 6);
-    const beatPct = members.length ? Math.round(members.filter(m => m.alpha > 0).length / members.length * 100) : 0;
+    const beatPct = scored.length ? Math.round(scored.filter(m => m.alpha > 0).length / scored.length * 100) : 0;
 
     const sm = DATA.smart_money || {}, o = DATA.overview || {};
     const buyV = o.buy_value || 0, sellV = o.sell_value || 0;
@@ -2315,7 +2348,7 @@
           <h1 class="home-h1">The smart-money<br>terminal</h1>
           <p class="lead-tagline">Congressional trades, corporate insiders, Wall&nbsp;Street analysts and the retail crowd — every signal, one place. Start with who's actually beating the market.</p>
           <div class="home-hero-stats">
-            <div class="hh-stat"><b>${members.length}</b><i>members scored</i></div>
+            <div class="hh-stat"><b>${scored.length}</b><i>members scored</i></div>
             <div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>
             <div class="hh-stat"><b style="color:var(--accent)">${(DATA.conviction || {}).multi_signal || 0}</b><i>conviction signals</i></div>
           </div>
