@@ -950,6 +950,18 @@
 <script>
   let DATA = null;
   let activeSector = "ALL";
+  // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
+  // 10 min, so returning visitors can get stuck on an old UI; this checks for a
+  // newer build in the background and reloads once (cache-busted) when found.
+  const BUILD_ID = "2026-09-13-hero-spotlight";
+  (function checkForUpdate() {
+    if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
+    fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
+      const m = html.match(/BUILD_ID\s*=\s*"([^"]+)"/);
+      if (m && m[1] && m[1] !== BUILD_ID) location.replace(location.pathname + "?v=" + encodeURIComponent(m[1]) + location.hash);
+    }).catch(() => {});
+  })();
+
   let activeView = "home";
   let openId = null;           // open bill key
   let keyBillsOnly = false;
