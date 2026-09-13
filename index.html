@@ -74,11 +74,29 @@
   .sector-card, .data-table-wrap, .search-results, .mstat { box-shadow: var(--shadow); }
 
   /* ---------- Header ---------- */
-  header { position: sticky; top: 0; z-index: 30; padding: 16px 0; border-bottom: 1px solid var(--line); background: rgba(7,8,11,0.75); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); }
-  .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .wordmark { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 11px; }
-  .wordmark .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-  .tagline { font-size: 12px; color: var(--text-faint); margin-top: 3px; }
+  /* ===== Unified sticky terminal top-bar ===== */
+  .topbar { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line);
+    background: rgba(9,10,14,0.72); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); }
+  .topbar-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 0 11px; }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); flex-shrink: 0; }
+  .brand .wordmark { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+  .brand-sub { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); padding-left: 12px; margin-left: 2px; border-left: 1px solid var(--line); }
+  .topbar-right { display: flex; align-items: center; gap: 9px; }
+  /* underline-style nav tabs */
+  .topbar .view-tabs { display: flex; gap: 3px; background: none; border: none; border-radius: 0; padding: 0 0 2px; overflow-x: auto; scrollbar-width: none; }
+  .topbar .view-tabs::-webkit-scrollbar { display: none; }
+  .topbar .view-tab { position: relative; background: transparent; border: none; border-radius: 8px 8px 0 0; color: var(--text-dim); padding: 8px 15px 13px; font-family: var(--display); font-weight: 600; font-size: 13px; white-space: nowrap; box-shadow: none; }
+  .topbar .view-tab::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; border-radius: 2px 2px 0 0; background: var(--grad); transform: scaleX(0); transition: transform .22s cubic-bezier(.2,.8,.2,1); }
+  .topbar .view-tab:hover:not(.active) { color: var(--text); background: linear-gradient(180deg, transparent, rgba(94,234,212,0.05)); }
+  .topbar .view-tab.active { color: var(--text); background: none; box-shadow: none; }
+  .topbar .view-tab.active::after { transform: scaleX(1); box-shadow: 0 0 12px rgba(94,234,212,0.6); }
+  @media (max-width: 680px) {
+    .brand-sub { display: none; }
+    .topbar-top { flex-wrap: wrap; gap: 10px; }
+    .topbar-right { width: 100%; gap: 8px; }
+    .topbar .search-box { flex: 1 1 auto; width: auto; min-width: 0; max-width: none; order: 0; }
+  }
   .status-badge { font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; color: var(--text-dim); background: var(--panel); border: 1px solid var(--line); padding: 7px 13px; border-radius: 999px; white-space: nowrap; }
   .status-badge b { color: var(--accent); font-weight: 600; }
   .status-badge.err { color: var(--bad); border-color: #4A2323; }
@@ -636,7 +654,7 @@
   .conv-badge { text-align: center; background: var(--grad-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 20px; flex-shrink: 0; }
   .conv-badge b { display: block; font-family: var(--display); font-weight: 800; font-size: 30px; letter-spacing: -0.02em; }
   .conv-badge i { font-style: normal; font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
-  .conv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+  .conv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(240px, 100%, 300px), 1fr)); gap: 12px; margin-bottom: 28px; }
   .conv-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 16px; cursor: pointer; transition: transform 0.14s ease, border-color 0.14s ease; }
   .conv-card:hover { transform: translateY(-2px); border-color: var(--accent-dim); }
   .conv-top { display: flex; align-items: center; justify-content: space-between; }
@@ -966,8 +984,46 @@
   .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--good); margin-right: 7px; vertical-align: middle; box-shadow: 0 0 8px var(--good); animation: livePulse 1.8s ease-in-out infinite; }
   @keyframes livePulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
 
+  /* Section headers: gradient accent marker */
+  .section-title { position: relative; padding-left: 15px; }
+  .section-title::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 17px; border-radius: 3px; background: var(--grad); box-shadow: 0 0 10px rgba(94,234,212,0.55); }
+
+  /* Data tables: premium header + first-column emphasis */
+  table.data-table th { background: linear-gradient(180deg, var(--panel-2), var(--panel)); border-bottom: 1px solid var(--line); }
+  table.data-table thead tr { box-shadow: inset 0 -1px 0 var(--accent-dim); }
+  table.data-table tbody tr:last-child td { border-bottom: none; }
+  table.data-table td:first-child { color: var(--text); }
+
+  /* Screener hero "market breadth" snapshot */
+  .hero-snapshot { background: linear-gradient(160deg, var(--panel-2), var(--panel) 78%); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); align-self: center; }
+  .hs-cap { font-family: var(--display); font-weight: 700; font-size: 13px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .hs-cap span { font-family: var(--mono); font-size: 9.5px; font-weight: 400; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .brd-row { display: grid; grid-template-columns: 128px 1fr 38px; align-items: center; gap: 12px; margin: 10px 0; }
+  .brd-lbl { font-size: 12px; color: var(--text-dim); }
+  .brd-bar { height: 7px; border-radius: 4px; background: var(--panel-2); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line-soft); }
+  .brd-bar > span { display: block; height: 100%; border-radius: 4px; box-shadow: 0 0 8px rgba(94,234,212,0.25); }
+  .brd-val { font-family: var(--mono); font-size: 12px; font-weight: 700; text-align: right; color: var(--text); }
+  @media (max-width: 820px) { .brd-row { grid-template-columns: 118px 1fr 34px; } }
+
   /* KPI / big numbers get a gentle sheen underline */
   .hsig-title, .lead-eyebrow { position: relative; }
+
+  /* Mobile: collapse multi-column grids + contain wide rows so nothing spills */
+  @media (max-width: 640px) {
+    .street-grid, .ic-grid, .dash-grid, .home-two, .cluster-grid, .conv-grid,
+    .chart-grid-2, .lead-hero, .home-hero { grid-template-columns: 1fr !important; }
+    .bets-list { overflow-x: auto; }
+    .bets-list .ins-row { min-width: 520px; }
+    .scr-controls { flex-direction: column; align-items: stretch; }
+    .scr-chips { justify-content: flex-start; }
+    .section-head { flex-wrap: wrap; }
+    .section-count { white-space: normal; }
+    .home-head { flex-wrap: wrap; }
+    .lead-controls { flex-wrap: wrap; }
+    .sort-wrap { width: 100%; }
+    .sort-tabs { flex-wrap: wrap; }
+    .lead-metrics { flex-wrap: wrap; justify-content: flex-end; gap: 8px 12px; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
@@ -979,20 +1035,17 @@
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="header-row">
-      <div>
-        <div class="wordmark"><span class="dot"></span>Legislative Alpha</div>
-        <div class="tagline">Key bills → the stocks that benefit → who in Congress is trading them</div>
+<header class="topbar">
+  <div class="wrap">
+    <div class="topbar-top">
+      <div class="brand"><span class="dot"></span><span class="wordmark">Legislative&nbsp;Alpha</span><span class="brand-sub">smart-money terminal</span></div>
+      <div class="topbar-right">
+        <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, bill…" autocomplete="off">
+        <button class="cmdk-btn" id="cmdkBtn" title="Command palette"><span class="cmdk-kbd">⌘K</span></button>
+        <div class="status-badge" id="statusBadge">Loading…</div>
       </div>
-      <div class="status-badge" id="statusBadge">Loading…</div>
     </div>
-  </header>
-
-
-  <section class="controls">
-    <div class="view-tabs" id="viewTabs">
+    <nav class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="home">Home</button>
       <button class="view-tab" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
@@ -1000,11 +1053,12 @@
       <button class="view-tab" data-view="screener">Screener</button>
       <button class="view-tab" data-view="bills">Bills</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
-    </div>
-    <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, or bill…" autocomplete="off">
-    <button class="cmdk-btn" id="cmdkBtn" title="Command palette"><span class="cmdk-kbd">⌘K</span> Jump to…</button>
-    <span class="view-hint" id="viewHint"></span>
-  </section>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <span class="view-hint" id="viewHint" hidden></span>
 
   <section class="filter-row">
     <div class="filter-tabs" id="filterTabs"></div>
@@ -1061,7 +1115,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-13-design-flash";
+  const BUILD_ID = "2026-09-14-bones-topbar";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2478,6 +2532,18 @@
           <h1 class="lead-h1">Screen<br>the market</h1>
           <p class="lead-tagline">Every mid-cap+ US stock, filtered by investment philosophy — cross-referenced with what <b style="color:var(--accent)">Congress is buying</b> and how <b>Wall Street</b> rates it. Pick a screen, layer on filters, sort any column.</p>
         </div>
+        ${(() => {
+          const N = stocks.length || 1;
+          const meter = (lbl, n, color) => { const p = Math.round(n / N * 100); return `<div class="brd-row"><span class="brd-lbl">${lbl}</span><span class="brd-bar"><span style="width:${p}%;background:${color}"></span></span><span class="brd-val">${p}%</span></div>`; };
+          return `<div class="hero-snapshot">
+            <div class="hs-cap">Market breadth <span>live across ${stocks.length.toLocaleString()} names</span></div>
+            ${meter("In an uptrend", stocks.filter(s => s.above200).length, "var(--good)")}
+            ${meter("Near 52-week high", stocks.filter(s => s.vs_high != null && s.vs_high > -5).length, "var(--accent)")}
+            ${meter("Golden cross", stocks.filter(s => s.golden).length, "var(--accent-2)")}
+            ${meter("Oversold (RSI&lt;35)", stocks.filter(s => s.rsi != null && s.rsi < 35).length, "var(--warn)")}
+            ${meter("Congress buying", stocks.filter(s => (s.cong || 0) > 0).length, "#7C87FF")}
+          </div>`;
+        })()}
       </div>
       <div class="phil-tabs">${tabs}</div>
       ${controlHtml}
