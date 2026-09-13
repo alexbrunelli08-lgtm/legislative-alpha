@@ -311,6 +311,22 @@
   .mstat { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px 14px; }
   .mstat-v { font-family: var(--mono); font-weight: 700; font-size: 19px; }
   .mstat-l { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-top: 3px; }
+  .modal-stats.m5 { grid-template-columns: repeat(5, 1fr); }
+  .modal-edge { font-family: var(--display); font-weight: 700; font-size: 13px; vertical-align: middle; margin-left: 4px; }
+  .modal-ins-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .modal-ins-head .ic-score { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid; border-radius: 9px; padding: 3px 10px; line-height: 1.1; }
+  .modal-ins-head .ic-score b { font-family: var(--display); font-weight: 700; font-size: 17px; }
+  .modal-ins-head .ic-score i { font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-style: normal; }
+  .mi-list { margin-bottom: 6px; }
+  .mi-row { display: grid; grid-template-columns: 1.6fr 100px 150px 88px; gap: 10px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line-soft); font-size: 12px; }
+  .mi-row:first-child { border-top: none; }
+  .mi-who { min-width: 0; display: flex; align-items: center; gap: 6px; }
+  .mi-who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mi-val { font-family: var(--mono); font-weight: 700; text-align: right; }
+  .mi-val.buys { color: var(--good); } .mi-val.sells { color: var(--bad); }
+  .mi-since { font-family: var(--mono); font-size: 11px; }
+  .mi-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); text-align: right; }
+  @media (max-width: 640px) { .modal-stats.m5 { grid-template-columns: repeat(2, 1fr); } .mi-row { grid-template-columns: 1fr auto; } .mi-since, .mi-date { display: none; } }
   .dollar-chips, .stock-chips { display: flex; gap: 7px; flex-wrap: wrap; }
   .dollar-chip { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--ink-warn); background: var(--tint-amber); padding: 3px 10px; border-radius: 6px; }
   .stock-chip { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line); transition: all 0.12s ease; }
@@ -2684,59 +2700,90 @@
     const sig = (DATA.stock_signals || []).find(s => s.ticker === ticker);
     const trades = DATA.trades.filter(t => t.ticker === ticker)
       .sort((a, b) => (parseMDY(b.transaction_date) || 0) - (parseMDY(a.transaction_date) || 0));
-    if (!trades.length && !sig) return;
-    const company = sig?.company || trades[0]?.company || ticker;
-    const sc = sectorMeta(sig?.sector || trades[0]?.sector || "OTHER");
+    const scr = ((DATA.screener || {}).stocks || []).find(s => s.ticker === ticker);
+    const strt = ((DATA.street || {}).stocks || []).find(s => s.ticker === ticker);
+    const ins = DATA.insiders || {};
+    const insBuys = (ins.recent_buys || []).filter(x => x.ticker === ticker);
+    const insSells = (ins.recent_sells || []).filter(x => x.ticker === ticker);
+    const insWhale = (ins.top_conviction || []).concat(ins.best_performers || [], ins.whale_buys || []).find(x => x.ticker === ticker);
+    const isig = ins.signals && ins.signals[ticker];
+    // open for ANY ticker we have data on -- congress, screener, sentiment or insider
+    if (!trades.length && !sig && !scr && !strt && !insBuys.length && !insSells.length && !isig && !insWhale) return;
+
+    const company = sig?.company || scr?.company || strt?.company || insBuys[0]?.company || insSells[0]?.company || trades[0]?.company || ticker;
+    const realSector = sig?.sector || scr?.sector || strt?.sector || trades[0]?.sector || "";
+    const sc = sectorMeta(realSector || "OTHER");
+    const sectorTag = realSector && realSector !== "OTHER" ? `<span class="sector-tag" style="background:${sc.color}33;color:${sc.color};vertical-align:middle;">${esc(sc.short)}</span>` : "";
     const relatedBills = DATA.bills.filter(b => (b.beneficiary_stocks || []).some(s => s.ticker === ticker))
       .sort((a, b) => b.momentum - a.momentum);
     const buyN = trades.filter(t => isBuy(t.type)).length, sellN = trades.length - buyN;
     const buyV = trades.filter(t => isBuy(t.type)).reduce((s, t) => s + (t.est_amount || 0), 0);
     const sellV = trades.reduce((s, t) => s + (t.est_amount || 0), 0) - buyV;
     const members = new Set(trades.map(t => t.member)).size;
+    const num = (v, suf = "%") => v == null ? "—" : `${v > 0 ? "+" : ""}${v}${suf}`;
 
-    document.getElementById("stockModalInner").innerHTML = `
-      <div class="modal-head">
-        <div>
-          <div class="modal-title">${esc(ticker)} <span class="sector-tag" style="background:${sc.color}33;color:${sc.color};vertical-align:middle;">${esc(sc.short)}</span></div>
-          <div class="modal-sub">${esc(company)}</div>
-        </div>
-        <button class="modal-close" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-stats">
-          <div class="mstat"><div class="mstat-v">${fmtMoney(buyV + sellV)}</div><div class="mstat-l">Est. volume</div></div>
+    const techStrip = scr ? `<div class="modal-stats m5">
+          <div class="mstat"><div class="mstat-v">$${scr.price}</div><div class="mstat-l">Price</div></div>
+          <div class="mstat"><div class="mstat-v">${fmtMcap(scr.mcap)}</div><div class="mstat-l">Mkt cap</div></div>
+          <div class="mstat"><div class="mstat-v ${(scr.r6 || 0) >= 0 ? "net-pos" : "net-neg"}">${num(scr.r6)}</div><div class="mstat-l">6M return</div></div>
+          <div class="mstat"><div class="mstat-v ${(scr.vs200 || 0) >= 0 ? "net-pos" : "net-neg"}">${num(scr.vs200)}</div><div class="mstat-l">vs 200-DMA</div></div>
+          <div class="mstat"><div class="mstat-v">${scr.rsi ?? "—"}</div><div class="mstat-l">RSI</div></div>
+        </div>` : "";
+    const congStrip = trades.length ? `<div class="modal-stats">
+          <div class="mstat"><div class="mstat-v">${fmtMoney(buyV + sellV)}</div><div class="mstat-l">Congress volume</div></div>
           <div class="mstat"><div class="mstat-v net-pos">${fmtMoney(buyV)}</div><div class="mstat-l">${buyN} buys</div></div>
           <div class="mstat"><div class="mstat-v net-neg">${fmtMoney(sellV)}</div><div class="mstat-l">${sellN} sells</div></div>
           <div class="mstat"><div class="mstat-v">${members}</div><div class="mstat-l">Members</div></div>
-        </div>
-        ${(() => {
-          const isig = DATA.insiders && DATA.insiders.signals && DATA.insiders.signals[ticker];
-          if (!isig || (!isig.n_buyers && !isig.n_sellers)) return "";
-          return `<div class="insider-flag">
-            <span class="if-label">Corporate insiders · SEC Form 4</span>
-            <span class="if-body">
-              ${isig.n_buyers ? `<span class="buys"><b>${isig.n_buyers}</b> insider${isig.n_buyers > 1 ? "s" : ""} bought ${fmtMoney(isig.buy_value)}</span>` : ""}
-              ${isig.n_sellers ? `<span class="sells"><b>${isig.n_sellers}</b> sold ${fmtMoney(isig.sell_value)}</span>` : ""}
-            </span>
-          </div>`;
-        })()}
-        ${ratingBanner(ticker)}
-        <span class="detail-eyebrow">Bills that would affect ${esc(ticker)} (${relatedBills.length})</span>
-        ${relatedBills.length === 0
-          ? `<div class="empty-note">No tracked bills currently map to this stock's sector.</div>`
-          : `<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">${relatedBills.slice(0, 6).map(b => `
-              <div class="hc-row" style="align-items:center;">
-                <div><span class="bill-number">${esc(b.number)}</span> ${b.key_bill ? '<span class="key-star">★</span>' : ""} <span style="color:var(--text)">${esc(b.title)}</span></div>
-                <span class="momentum-num" style="font-size:15px;color:${feasColor(b.momentum)}">${b.momentum}</span>
-              </div>`).join("")}</div>`}
-        <span class="detail-eyebrow">Every disclosed trade in ${esc(ticker)} (${trades.length})</span>
+        </div>` : "";
+
+    const miRow = x => `<div class="mi-row">
+        <span class="mi-who">${tierBadge(x.tier, x.roles)} <span>${esc(cleanInsider(x.insider))}</span></span>
+        <span class="mi-val ${x.buy ? "buys" : "sells"}">${x.buy ? "+" : "−"}${fmtMoney(x.value)}</span>
+        <span class="mi-since">${x.buy ? insiderSince(x, false) : ""}</span>
+        <span class="mi-date">${esc(x.date)}</span>
+      </div>`;
+    const rb = ratingBanner(ticker);
+    let allIns = insBuys.concat(insSells).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    if (!allIns.length && insWhale) allIns = [insWhale];  // micro-cap not in the capped feed
+    const insiderBlock = (isig || allIns.length) ? `
+        <span class="detail-eyebrow">Corporate insiders · SEC Form 4</span>
+        ${insWhale ? `<div class="modal-ins-head"><span class="ic-score" style="color:${convColor(insWhale.conviction)};border-color:${convColor(insWhale.conviction)}55"><b>${insWhale.conviction}</b><i>conviction</i></span>${insiderBadges(insWhale) || ""}</div>` : ""}
+        ${allIns.length ? `<div class="bets-list mi-list">${allIns.slice(0, 12).map(miRow).join("")}</div>`
+          : `<div class="empty-note">${isig.n_buyers || 0} insider buy(s), ${isig.n_sellers || 0} sell(s) on record.</div>`}` : "";
+
+    const congTable = trades.length ? `
+        <span class="detail-eyebrow">Every disclosed congressional trade in ${esc(ticker)} (${trades.length})</span>
         <div class="data-table-wrap"><table class="data-table">
           <thead><tr><th>Tx Date</th><th>Member</th><th>Chamber</th><th>Type</th><th>Est. $</th><th>Gain / Loss</th><th></th></tr></thead>
           <tbody>${trades.slice(0, 80).map(t => `
             <tr><td class="row-ticker">${esc(t.transaction_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td><td>${esc(t.chamber)}</td>
             <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${pnlBadge(t)}</td>
             <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
-        </table></div>
+        </table></div>` : "";
+    const billsBlock = relatedBills.length ? `
+        <span class="detail-eyebrow">Bills that would affect ${esc(ticker)} (${relatedBills.length})</span>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">${relatedBills.slice(0, 6).map(b => `
+              <div class="hc-row" style="align-items:center;">
+                <div><span class="bill-number">${esc(b.number)}</span> ${b.key_bill ? '<span class="key-star">★</span>' : ""} <span style="color:var(--text)">${esc(b.title)}</span></div>
+                <span class="momentum-num" style="font-size:15px;color:${feasColor(b.momentum)}">${b.momentum}</span>
+              </div>`).join("")}</div>` : "";
+
+    document.getElementById("stockModalInner").innerHTML = `
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">${esc(ticker)} ${sectorTag}${strt && strt.edge != null ? ` <span class="modal-edge" style="color:${convColor(strt.edge)}">Edge ${strt.edge}</span>` : ""}</div>
+          <div class="modal-sub">${esc(company)}</div>
+        </div>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        ${techStrip}
+        ${congStrip}
+        ${rb}
+        ${insiderBlock}
+        ${billsBlock}
+        ${congTable}
+        ${!techStrip && !congStrip && !insiderBlock && !rb && !billsBlock && !congTable ? `<div class="empty-note">Limited data for ${esc(ticker)} in the current window.</div>` : ""}
       </div>`;
     const modal = document.getElementById("stockModal");
     modal.classList.add("open");
