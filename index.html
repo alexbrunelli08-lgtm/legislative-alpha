@@ -566,6 +566,27 @@
   .street-hero-stat b { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
   .street-hero-stat b.up { color: var(--good); }
   .street-hero-stat i { font-style: normal; display: block; font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px; }
+  /* hero "top signals" spotlight card */
+  .hero-signals { display: flex; flex-direction: column; background: linear-gradient(150deg, var(--panel-2), var(--panel) 70%); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 15px; min-width: 320px; max-width: 400px; align-self: center; box-shadow: var(--shadow); }
+  .hsig-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; padding: 0 4px; }
+  .hsig-title { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--text); }
+  .hsig-sub { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); }
+  .hsig-list { display: flex; flex-direction: column; gap: 2px; }
+  .hsig-row { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 10px; cursor: pointer; transition: background 0.12s ease; }
+  .hsig-row:hover { background: var(--panel-2); }
+  .hsig-rank { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--text-faint); width: 10px; flex-shrink: 0; }
+  .hsig-ring { flex-shrink: 0; width: 40px; height: 40px; line-height: 0; }
+  .sc-ring { width: 40px; height: 40px; }
+  .sc-ring-n { font-family: var(--display); font-weight: 700; font-size: 14px; }
+  .hsig-mid { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 1px; }
+  .hsig-mid b { font-family: var(--mono); font-weight: 700; font-size: 14px; color: var(--text); }
+  .hsig-mid i { font-size: 11px; color: var(--text-dim); font-style: normal; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hsig-metric { font-family: var(--mono); font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .hsig-metric.up { color: var(--good); } .hsig-metric.down { color: var(--bad); } .hsig-metric.neutral { color: var(--text-dim); }
+  .hsig-foot { margin-top: 10px; padding: 10px 4px 0; border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 11px; color: var(--text-faint); }
+  .hsig-foot b { color: var(--text); font-family: var(--mono); font-weight: 700; }
+  .hsig-foot .up { color: var(--good); } .hsig-foot .down { color: var(--bad); }
+  @media (max-width: 780px) { .hero-signals { min-width: 0; max-width: none; width: 100%; } }
   .street-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .street-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 17px; transition: border-color 0.14s ease; }
   .street-card:hover { border-color: var(--accent-dim); }
@@ -1791,6 +1812,30 @@
   const TIER_SHORT = { exec: "C-suite", director: "Director", owner: "10% owner", insider: "Insider" };
 
   function convColor(s) { return s >= 70 ? "var(--good)" : s >= 50 ? "var(--accent)" : s >= 35 ? "var(--warn,#e0a84e)" : "var(--text-faint)"; }
+  // circular score ring (0-100) with the number inside -- used in the hero spotlight
+  function scoreRing(score, color) {
+    const r = 15.5, c = 2 * Math.PI * r, off = c * (1 - Math.max(0, Math.min(100, score)) / 100);
+    return `<svg viewBox="0 0 40 40" class="sc-ring" aria-hidden="true">
+      <circle cx="20" cy="20" r="${r}" fill="none" stroke="var(--line)" stroke-width="4"/>
+      <circle cx="20" cy="20" r="${r}" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round"
+        stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 20 20)"/>
+      <text x="20" y="24.5" text-anchor="middle" class="sc-ring-n" fill="${color}">${score}</text>
+    </svg>`;
+  }
+  // hero "top signals" card: a ranked spotlight of the best plays + a stat footer
+  function heroSpotlight(title, sub, items, footer) {
+    return `<div class="hero-signals">
+      <div class="hsig-head"><span class="hsig-title">${title}</span><span class="hsig-sub">${sub}</span></div>
+      <div class="hsig-list">${items.map((it, i) => `
+        <div class="hsig-row clickable-ticker" data-ticker="${esc(it.ticker)}">
+          <span class="hsig-rank">${i + 1}</span>
+          <span class="hsig-ring">${scoreRing(it.score, it.color)}</span>
+          <span class="hsig-mid"><b>${esc(it.ticker)}</b><i>${esc(it.sub)}</i></span>
+          <span class="hsig-metric ${it.metricCls || "neutral"}">${it.metric || ""}</span>
+        </div>`).join("")}</div>
+      ${footer ? `<div class="hsig-foot">${footer}</div>` : ""}
+    </div>`;
+  }
   function insiderBadges(x) {
     const b = [];
     if (x.tier === "exec") b.push(`<span class="ic-badge exec">C-suite</span>`);
@@ -1853,11 +1898,17 @@
           <h1 class="lead-h1">Insider<br>alpha</h1>
           <p class="lead-tagline">Not every insider buy is a signal. We score each open-market purchase on what the research says actually predicts returns — <b>C-suite over passive 10% holders</b>, clustered buying, buys <b>into weakness</b>, trend confirmation and Congress overlap — then track how each has done since.</p>
         </div>
-        <div class="gauge-card" style="padding:20px 26px;">
-          <div class="street-hero-stat"><b class="${(medExc || 0) >= 0 ? "up" : "down"}">${medExc != null ? (medExc > 0 ? "+" : "") + medExc + "%" : "—"}</b><i>median excess vs S&P</i></div>
-          <div class="street-hero-stat"><b>${sig.pct_beating != null ? sig.pct_beating + "%" : "—"}</b><i>beating the market</i></div>
-          <div class="street-hero-stat"><b style="color:var(--accent)">${sig.n_tracked || 0}</b><i>tracked quality buys</i></div>
-        </div>
+        ${(() => {
+          const items = top.slice(0, 3).map(x => ({
+            ticker: x.ticker, score: x.conviction, color: convColor(x.conviction),
+            sub: `${TIER_SHORT[x.tier] || "Insider"} · ${cleanInsider(x.insider)}${x.opportunistic ? " · bought the dip" : (x.n_insiders >= 2 ? " · " + x.n_insiders + " insiders" : "")}`,
+            metric: x.since_pct != null ? `${x.since_pct > 0 ? "+" : ""}${x.since_pct}%` : fmtMoney(x.value),
+            metricCls: x.since_pct != null ? (x.since_pct >= 0 ? "up" : "down") : "neutral",
+          }));
+          const foot = `<span><b>${sig.pct_beating != null ? sig.pct_beating + "%" : "—"}</b> beat S&P</span><span><b>${sig.n_tracked || 0}</b> tracked</span><span><b class="${(medExc || 0) >= 0 ? "up" : "down"}">${medExc != null ? (medExc > 0 ? "+" : "") + medExc + "%" : "—"}</b> median excess</span>`;
+          return items.length ? heroSpotlight("⚡ Highest-conviction buys", "live · scored 0–100", items, foot)
+            : `<div class="hero-signals"><div class="hsig-head"><span class="hsig-title">⚡ Top signals</span></div><div class="empty-note">Filling in as filings arrive.</div></div>`;
+        })()}
       </div>
 
       <div class="section-head" style="margin-top:8px;"><span class="section-title">Highest-conviction buys</span><span class="section-count">scored on role, size, clustering, dip-buying, trend &amp; Congress overlap</span></div>
@@ -2076,11 +2127,24 @@
           <h1 class="lead-h1">The Edge<br>board</h1>
           <p class="lead-tagline">One <b>Edge score</b> per stock — a synthesis of analyst upside, congressional buying, corporate-insider buying, price momentum and a <b>contrarian</b> read of the crowd (pros ahead of an unexcited crowd rate up; euphoric retail running ahead of the pros gets penalised). No single signal is reliable alone; the edge is in the confluence.</p>
         </div>
-        <div class="gauge-card" style="padding:20px 26px;">
-          <div class="street-hero-stat"><b style="color:var(--accent)">${nEdge}</b><i>high-edge setups (50+)</i></div>
-          <div class="street-hero-stat"><b>${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b><i>avg upside to target</i></div>
-          <div class="street-hero-stat"><b style="color:var(--warn,#e0a84e)">${nDiv}</b><i>Wall St ↔ crowd split</i></div>
-        </div>
+        ${(() => {
+          const edgeReason = s => {
+            const p = [];
+            if (s.upside != null && s.upside >= 10) p.push(`+${Math.round(s.upside)}% target`);
+            if (s.congress) p.push(`${s.congress} in Congress`);
+            if (s.insiders) p.push("insiders in");
+            if ((s.r6 || 0) > 15) p.push("uptrend");
+            const g = streetGap(s); if (g != null && g >= DIVERGENT) p.push("contrarian");
+            return p.slice(0, 3).join(" · ") || "analyst + crowd";
+          };
+          const items = stocks.slice().sort((a, b) => (b.edge || 0) - (a.edge || 0)).slice(0, 3).map(s => ({
+            ticker: s.ticker, score: s.edge, color: convColor(s.edge), sub: edgeReason(s),
+            metric: s.upside != null ? `${s.upside > 0 ? "+" : ""}${s.upside}%` : "",
+            metricCls: (s.upside || 0) >= 0 ? "up" : "down",
+          }));
+          const foot = `<span><b style="color:var(--accent)">${nEdge}</b> high-edge (50+)</span><span><b>${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b> avg upside</span><span><b style="color:var(--warn,#e0a84e)">${nDiv}</b> divergent</span>`;
+          return heroSpotlight("⚡ Top edge plays", "ranked 0–100", items, foot);
+        })()}
       </div>
       <div class="lead-controls">
         <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("divergent", "Divergent")}${filtTab("signal", "Smart-money picks")}</div>
