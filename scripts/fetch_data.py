@@ -23,6 +23,7 @@ trades in companies outside every sector's tracked list land in OTHER.
 import csv
 import io
 import json
+import math
 import os
 import re
 import statistics
@@ -933,6 +934,13 @@ def scrape_insider_filings(cache):
 _EXEC_TITLES = re.compile(r"chief|ceo|cfo|coo|\bc[a-z]?o\b|president|chairman|chair\b|founder|treasurer|principal officer", re.I)
 
 
+# Base conviction by role. The academic insider-alpha literature (Lakonishok &
+# Lee; Cohen, Malloy & Pomorski) finds executive/officer purchases carry the
+# strongest predictive signal, directors weaker, and passive 10% holders (funds)
+# the weakest -- so weight them accordingly.
+ROLE_W = {"exec": 45, "director": 30, "owner": 18, "insider": 12}
+
+
 def _role_tier(roles):
     """exec (C-suite) > director > owner (10%) > insider -- for whale ranking."""
     blob = " ".join(roles or [])
@@ -945,10 +953,14 @@ def _role_tier(roles):
     return "insider"
 
 
-def build_insider_data(cache):
+def build_insider_data(cache, prices=None, cong_buyers=None):
     """Aggregate cached Form 4s into whale buys, a feed, per-ticker signals and
     cluster buys. 'Whales' = the biggest open-market bets insiders make on their
-    own stock, with C-suite (CEO/CFO) buys flagged as the strongest conviction."""
+    own stock, with C-suite (CEO/CFO) buys flagged as the strongest conviction.
+
+    When `prices` is supplied, each buy is turned into an alpha signal: the stock's
+    return SINCE the insider bought (and the excess over the S&P), whether they
+    bought into a dip (opportunistic), the trend, and a 0-100 conviction score."""
     cutoff = datetime.now() - timedelta(days=INSIDER_MAX_DAYS)
     feed = []
     for acc, f in cache.items():
@@ -1000,14 +1012,93 @@ def build_insider_data(cache):
     # Whales: aggregate an insider's repeat buys of the same stock into one bet
     # (so a 10% owner accumulating over a week shows as a single big card).
     whale_agg = {}
-    for x in buys:  # buys are newest-first, so the first seen keeps the latest date
+    for x in buys:
         k = (x["ticker"], x["insider"])
         w = whale_agg.get(k)
         if w is None:
             whale_agg[k] = {**x, "n": 1}
         else:
             w["value"] += x["value"]; w["shares"] += x["shares"]; w["n"] += 1
-    whale_buys = sorted(whale_agg.values(), key=lambda w: w["value"], reverse=True)[:24]
+            if x["date"] < w["date"]:
+                w["date"] = x["date"]  # earliest accumulation date -> longest track record
+    for w in whale_agg.values():
+        if w.get("shares"):
+            w["price"] = round(w["value"] / w["shares"], 2)  # value-weighted cost basis
+    whale_buys = sorted(whale_agg.values(), key=lambda w: w["value"], reverse=True)
+
+    # ---- Alpha layer -----------------------------------------------------------
+    tk_buyers = {tk: len(s["buyers"]) for tk, s in sig.items()}  # cluster size per ticker
+    spy = (prices or {}).get("SPY")
+    spy_last = spy[max(spy)] if spy else None
+    cong = cong_buyers or {}
+
+    def enrich(x):
+        """Attach return-since-bought, opportunistic dip, trend + conviction score."""
+        series = (prices or {}).get(x["ticker"])
+        x["since_pct"] = x["since_excess"] = x["pre30"] = x["above200"] = None
+        entry = x.get("price") or (_nearest_close(series, x["date"]) if series else None)
+        last = series[max(series)] if series else None
+        if series and entry and last:
+            x["since_pct"] = round((last / entry - 1) * 100, 1)
+            # micro-cap Form 4 data is split/currency-glitch prone: a >300% or
+            # <-95% "return since bought" is almost always a bad cost basis, so
+            # drop it rather than let it poison the aggregate or the leaderboard.
+            if not (-95 <= x["since_pct"] <= 300):
+                x["since_pct"] = None
+            elif spy and spy_last:
+                se = _nearest_close(spy, x["date"])
+                if se:
+                    x["since_excess"] = round(x["since_pct"] - (spy_last / se - 1) * 100, 1)
+            bd = _nearest_close(series, x["date"])
+            try:
+                prior = (datetime.strptime(x["date"], "%Y-%m-%d") - timedelta(days=45)).strftime("%Y-%m-%d")
+                pre = _nearest_close(series, prior)
+            except (ValueError, TypeError):
+                pre = None
+            if bd and pre:
+                x["pre30"] = round((bd / pre - 1) * 100, 1)
+            sma200 = _sma([c for _, c in sorted(series.items())], 200)
+            if sma200:
+                x["above200"] = last > sma200
+        nb = tk_buyers.get(x["ticker"], 1)
+        cb = cong.get(x["ticker"], 0)
+        x["n_insiders"] = nb
+        x["congress"] = cb
+        x["opportunistic"] = bool(x.get("pre30") is not None and x["pre30"] < -10)
+        sc = ROLE_W.get(x["tier"], 12)
+        sc += max(0, min(24, (math.log10(max(x["value"], 1)) - 3) * 8))   # size, $10k->8 .. $1M->24
+        sc += 18 if nb >= 3 else 10 if nb >= 2 else 0                     # insider cluster
+        if x["opportunistic"]:
+            sc += 12                                                       # bought the dip
+        if x.get("above200"):
+            sc += 8                                                        # trend-confirmed
+        if cb:
+            sc += 10                                                       # Congress also buying
+        x["conviction"] = min(100, round(sc))
+        # quality gate: keep real bets out of penny/nano noise
+        x["quality"] = bool((x.get("price") or 0) >= 1 and x["value"] >= 25000)
+        return x
+
+    for w in whale_buys:
+        enrich(w)
+    for b in buys:
+        enrich(b)
+
+    quality = [w for w in whale_buys if w["quality"]]
+    # one row per ticker on the conviction board (a cluster shows once, with its
+    # n_insiders count doing the talking) -- keep the highest-conviction bet.
+    top_conviction, seen = [], set()
+    for w in sorted(quality, key=lambda w: w["conviction"], reverse=True):
+        if w["ticker"] in seen:
+            continue
+        seen.add(w["ticker"])
+        top_conviction.append(w)
+        if len(top_conviction) >= 12:
+            break
+    perf = [w for w in quality if w.get("since_excess") is not None]
+    best_performers = sorted(perf, key=lambda w: w["since_excess"], reverse=True)[:8]
+    med_excess = round(statistics.median([w["since_excess"] for w in perf]), 1) if perf else None
+    pct_beating = round(sum(1 for w in perf if w["since_excess"] > 0) / len(perf) * 100) if perf else None
 
     tier_counts = {}
     for x in buys:
@@ -1022,8 +1113,13 @@ def build_insider_data(cache):
                   "exec_buy_count": len(exec_buys), "tiers": tier_counts,
                   "biggest": {"ticker": biggest["ticker"], "value": biggest["value"],
                               "insider": biggest["insider"]} if biggest else None},
-        "whale_buys": whale_buys,  # biggest bets, one per insider-stock
-        "recent_buys": buys[:50],       # newest first
+        # realized signal: how the tracked quality buys have done vs the S&P
+        "signal": {"n_quality": len(quality), "n_tracked": len(perf),
+                   "median_excess": med_excess, "pct_beating": pct_beating},
+        "top_conviction": top_conviction,   # highest-conviction bets (scored)
+        "best_performers": best_performers,  # best return-since-bought
+        "whale_buys": whale_buys[:24],       # biggest bets, one per insider-stock
+        "recent_buys": buys[:60],            # newest first
         "recent_sells": sells[:24],
         "clusters": clusters,
         "signals": {s["ticker"]: s for s in signals},
@@ -2216,7 +2312,8 @@ def build_street(tickers, ratings, social, stock_signals, insiders, screener):
         stotal = bull + bear
         c = csig.get(tk) or {}
         info = c or tech.get(tk) or {}
-        rows.append({
+        bull_pct = round(bull / stotal * 100) if stotal >= 3 else None
+        row = {
             "ticker": tk, "company": info.get("company", tk),
             "sector": c.get("sector") or (tech.get(tk) or {}).get("sector") or "OTHER",
             "rec": r.get("rec") if has_rating else None,
@@ -2224,13 +2321,45 @@ def build_street(tickers, ratings, social, stock_signals, insiders, screener):
             "upside": upside if has_rating else None, "n_analysts": n if has_rating else None,
             "buy": buy, "hold": hold, "sell": sell,
             "buzz": soc.get("msgs", 0), "bull": bull, "bear": bear, "q_msgs": stotal,
-            # only report a sentiment split with a real quality sample behind it
-            "bull_pct": round(bull / stotal * 100) if stotal >= 3 else None,
+            "bull_pct": bull_pct,
             "congress": c.get("member_count", 0) if c.get("net_value", 0) > 0 else 0,
             "insiders": (isig.get(tk) or {}).get("n_buyers", 0),
             "r6": (tech.get(tk) or {}).get("r6"),
-        })
+            "above200": (tech.get(tk) or {}).get("above200"),
+        }
+        row["edge"] = _edge_score(row, has_rating)
+        rows.append(row)
+    rows.sort(key=lambda s: s["edge"], reverse=True)
     return {"as_of": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "stocks": rows}
+
+
+def _edge_score(row, has_rating):
+    """Composite 0-100 alpha 'edge' -- a synthesis of the documented signals, not a
+    single noisy one: analyst implied upside + buy consensus (weak alone, useful in
+    aggregate), how many members of Congress are buying, corporate-insider buying,
+    price momentum, and a CONTRARIAN divergence term (pros ahead of an unexcited
+    crowd scores up; a euphoric crowd running ahead of the pros is penalised)."""
+    e = 0.0
+    up = row.get("upside")
+    tot = row["buy"] + row["hold"] + row["sell"]
+    if has_rating:
+        if up is not None:
+            e += max(0.0, min(50.0, up)) / 50 * 25          # implied upside to target
+        if tot:
+            e += (row["buy"] - row["sell"]) / tot * 10        # analyst buy consensus
+    e += min(row["congress"], 10) / 10 * 20                   # congressional buying breadth
+    ins = row["insiders"]
+    e += 12 if ins >= 2 else 7 if ins >= 1 else 0             # corporate insider buying
+    r6 = row.get("r6")
+    if r6 is not None:
+        e += max(0.0, min(50.0, r6)) / 50 * 18               # price momentum
+    if has_rating and tot and row["bull_pct"] is not None and row["q_msgs"] >= 4:
+        gap = (row["buy"] - row["sell"]) / tot - (row["bull_pct"] - 50) / 50
+        if gap > 0.4:
+            e += min(gap, 1.5) / 1.5 * 12                     # pros ahead of the crowd (contrarian +)
+        elif gap < -0.4:
+            e -= 10                                           # crowd euphoric vs pros (caution)
+    return round(max(0.0, min(100.0, e)))
 
 
 def build_performance(trades, prices):
@@ -2901,7 +3030,9 @@ def main():
     insider_cache = load_insider_cache()
     scrape_insider_filings(insider_cache)
     save_insider_cache(insider_cache)
-    insiders = build_insider_data(insider_cache)
+    # tickers insiders BOUGHT -- priced below so we can measure return-since-bought
+    insider_tks = sorted({f["ticker"] for f in insider_cache.values()
+                          if f.get("ticker") and any(t.get("code") == "P" for t in (f.get("txns") or []))})
 
     # Route every 'Other' trade into its real economic sector (GICS via Yahoo),
     # so the ~12 niche policy themes no longer leave blue-chips unclassified.
@@ -2912,7 +3043,7 @@ def main():
     # Price every traded ticker once (cached daily in prices.json), then reuse
     # for both per-trade P&L and the Congress-vs-market backtest.
     print("Fetching prices for trade P&L + backtest...", file=sys.stderr)
-    prices = fetch_prices([t["ticker"] for t in trades if t.get("ticker")])
+    prices = fetch_prices([t["ticker"] for t in trades if t.get("ticker")] + insider_tks)
     trades = annotate_trade_pnl(trades, prices)
 
     bills = [analyze_appropriation(b) for b in bills]
@@ -2924,6 +3055,10 @@ def main():
     sector_summaries = build_sector_summaries(sectors, bills, trades)
     members = build_member_profiles(trades)
     stock_signals = build_stock_signals(trades)
+    # Insider alpha: now that prices + Congress signals exist, score each insider
+    # buy by return-since-bought, conviction and cross-signal confluence.
+    cong_buyers = {s["ticker"]: s["member_count"] for s in stock_signals if s.get("net_value", 0) > 0}
+    insiders = build_insider_data(insider_cache, prices, cong_buyers)
     overview = build_overview(bills, trades, members, stock_signals)
     unusual = build_unusual_activity(stock_signals)
     performance = build_performance(trades, prices)

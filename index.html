@@ -554,11 +554,14 @@
   .street-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 17px; transition: border-color 0.14s ease; }
   .street-card:hover { border-color: var(--accent-dim); }
   .st-div { color: var(--warn, #e0a84e); background: rgba(224,168,78,0.14); font-weight: 600; }
-  .st-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+  .st-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 9px; }
   .st-ticker { font-family: var(--mono); font-weight: 700; font-size: 17px; cursor: pointer; }
   .st-ticker:hover { color: var(--accent); }
   .st-co { font-size: 11px; color: var(--text-faint); margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
-  .st-sigs { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+  .st-edge { display: flex; flex-direction: column; align-items: center; border: 1px solid; border-radius: 9px; padding: 3px 10px; line-height: 1.1; flex-shrink: 0; }
+  .st-edge b { font-family: var(--display); font-weight: 700; font-size: 18px; }
+  .st-edge i { font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-style: normal; }
+  .st-sigs { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-start; margin-bottom: 13px; }
   .st-sig { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
   .st-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .st-side { min-width: 0; }
@@ -641,6 +644,37 @@
   .ins-val { font-family: var(--mono); font-weight: 700; }
   .ins-val.buys { color: var(--good); } .ins-val.sells { color: var(--bad); }
   .ins-shares, .ins-date { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+  .ins-row { grid-template-columns: 64px 1.4fr 1.1fr 100px 150px 88px; }
+  .ins-since { font-family: var(--mono); font-size: 11px; }
+  .ins-since .up, .ic-since.up { color: var(--good); } .ins-since .down, .ic-since.down { color: var(--bad); }
+  /* insider conviction cards */
+  .ic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 6px; }
+  .ic-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; transition: border-color 0.14s ease; }
+  .ic-card:hover { border-color: var(--accent-dim); }
+  .ic-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .ic-tk { font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--text); cursor: pointer; }
+  .ic-tk:hover { color: var(--accent); }
+  .ic-co { color: var(--text-dim); font-size: 11.5px; margin-top: 1px; max-width: 175px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ic-score { display: flex; flex-direction: column; align-items: center; border: 1px solid; border-radius: 10px; padding: 4px 11px; line-height: 1.1; }
+  .ic-score b { font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .ic-score i { font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-style: normal; }
+  .ic-who { font-size: 12px; color: var(--text-dim); margin-top: 11px; }
+  .ic-who b { color: var(--text); font-family: var(--mono); }
+  .ic-name { color: var(--text); }
+  .ic-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .ic-badge { font-family: var(--display); font-weight: 600; font-size: 10.5px; border-radius: 6px; padding: 3px 8px; color: var(--text-dim); background: var(--panel-2); }
+  .ic-badge.exec { color: var(--accent); background: var(--accent-dim); }
+  .ic-badge.cluster { color: var(--ind); background: var(--tint-violet); }
+  .ic-badge.opp { color: var(--warn, #e0a84e); background: rgba(224,168,78,0.14); }
+  .ic-badge.cong { color: var(--accent); background: var(--accent-dim); }
+  .ic-foot { margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: 11.5px; color: var(--text-faint); }
+  .ic-since { font-family: var(--mono); font-weight: 600; }
+  .ic-since.none { color: var(--text-faint); font-weight: 400; }
+  .ic-vs { color: var(--text-faint); font-weight: 400; }
+  .ins-sells-wrap { margin-top: 20px; }
+  .ins-sells-wrap summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 12.5px; color: var(--text-dim); padding: 10px 0; list-style-position: inside; }
+  .ins-sells-wrap summary:hover { color: var(--text); }
+  .ins-sells-wrap[open] summary { margin-bottom: 10px; }
   /* Whale watch */
   .whale-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .whale-card { background: linear-gradient(160deg, var(--grad-soft), var(--panel) 60%); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 15px; transition: transform 0.14s ease, border-color 0.14s ease; }
@@ -893,8 +927,8 @@
   let screenerShown = 60;
   const SCREENER_PAGE = 60;
   let activeAgent = null;      // active agent key
-  let streetSort = "upside";   // sentiment view sort
-  let streetFilter = "all";    // all | buy | buzzing | signal
+  let streetSort = "edge";     // sentiment view sort
+  let streetFilter = "all";    // all | buy | buzzing | signal | divergent
   let tradesShown = 100;
   const TRADES_PAGE = 100;
   let signalsShown = 60;
@@ -1740,22 +1774,47 @@
   const TIER_LBL = { exec: "C-suite", director: "Directors", owner: "10% owners", insider: "Other" };
   const TIER_SHORT = { exec: "C-suite", director: "Director", owner: "10% owner", insider: "Insider" };
 
+  function convColor(s) { return s >= 70 ? "var(--good)" : s >= 50 ? "var(--accent)" : s >= 35 ? "var(--warn,#e0a84e)" : "var(--text-faint)"; }
+  function insiderBadges(x) {
+    const b = [];
+    if (x.tier === "exec") b.push(`<span class="ic-badge exec">C-suite</span>`);
+    if ((x.n_insiders || 1) >= 2) b.push(`<span class="ic-badge cluster">👥 ${x.n_insiders} insiders</span>`);
+    if (x.opportunistic) b.push(`<span class="ic-badge opp" title="Bought after a ~30-day decline">🎯 Bought the dip</span>`);
+    if (x.above200) b.push(`<span class="ic-badge trend">📈 Uptrend</span>`);
+    if (x.congress) b.push(`<span class="ic-badge cong">🏛 ${x.congress} Congress</span>`);
+    return b.join("");
+  }
+  function insiderSince(x, lbl = true) {
+    if (x.since_pct == null) return `<span class="ic-since none">price n/a</span>`;
+    const c = x.since_pct >= 0 ? "up" : "down";
+    return `<span class="ic-since ${c}">${x.since_pct > 0 ? "+" : ""}${x.since_pct}%${lbl ? " since bought" : ""}${x.since_excess != null ? ` <span class="ic-vs">${x.since_excess > 0 ? "+" : ""}${x.since_excess}% vs S&P</span>` : ""}</span>`;
+  }
+  function insiderConvCard(x) {
+    const col = convColor(x.conviction);
+    return `<div class="ic-card">
+      <div class="ic-head">
+        <div style="min-width:0"><span class="ic-tk clickable-ticker" data-ticker="${esc(x.ticker)}">${esc(x.ticker)}</span><div class="ic-co">${esc(x.company || "")}</div></div>
+        <div class="ic-score" style="color:${col};border-color:${col}55"><b>${x.conviction}</b><i>conviction</i></div>
+      </div>
+      <div class="ic-who">${tierBadge(x.tier, x.roles)} <span class="ic-name">${esc(cleanInsider(x.insider))}</span> · <b>${fmtMoney(x.value)}</b></div>
+      ${insiderBadges(x) ? `<div class="ic-badges">${insiderBadges(x)}</div>` : ""}
+      <div class="ic-foot">${insiderSince(x)} · ${esc(x.date)}</div>
+    </div>`;
+  }
+
   function renderInsidersView() {
     const ins = DATA.insiders;
     const whales = (ins && (ins.whale_buys || ins.recent_buys)) || [];
     if (!ins || !whales.length)
       return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
-        <div class="lead-eyebrow">SEC Form 4 · whale watch</div><h1 class="lead-h1">Insider<br>whales</h1>
-        <p class="lead-tagline">The biggest bets corporate insiders make on their own stock.</p></div></div>
+        <div class="lead-eyebrow">SEC Form 4 · insider alpha</div><h1 class="lead-h1">Insider<br>alpha</h1>
+        <p class="lead-tagline">The open-market bets corporate insiders make on their own stock.</p></div></div>
         <div class="empty-note">No open-market insider buys captured yet — this fills in as SEC Form 4 filings are scraped over the coming runs.</div></section>`;
-    const st = ins.stats || {}, tiers = st.tiers || {};
+    const st = ins.stats || {}, tiers = st.tiers || {}, sig = ins.signal || {};
     const bc = st.buy_count || 0, sc = st.sell_count || 0;
     const sentiment = (bc + sc) ? Math.round(bc / (bc + sc) * 100) : 50;
-
-    const whaleBars = whales.slice(0, 8).map(x => ({
-      ticker: x.ticker, label: x.ticker, sub: `${TIER_SHORT[x.tier] || "Insider"} · ${cleanInsider(x.insider)}`,
-      value: x.value, color: TIER_COL[x.tier] || "var(--good)", valLabel: fmtMoney(x.value),
-    }));
+    const top = ins.top_conviction || [];
+    const best = ins.best_performers || [];
     const roleSegs = ["exec", "owner", "director", "insider"].map(k => ({ label: TIER_LBL[k], value: tiers[k] || 0, color: TIER_COL[k] }));
 
     const insRow = x => `<div class="ins-row">
@@ -1763,47 +1822,50 @@
       <span class="ins-name">${esc(cleanInsider(x.insider))}</span>
       <span class="ins-role">${tierBadge(x.tier, x.roles)}</span>
       <span class="ta-r ins-val ${x.buy ? "buys" : "sells"}">${x.buy ? "+" : "−"}${fmtMoney(x.value)}</span>
-      <span class="ins-shares">${x.shares ? x.shares.toLocaleString() + " sh" : ""}</span>
+      <span class="ins-since">${x.buy ? insiderSince(x, false) : ""}</span>
       <span class="ins-date">${esc(x.date)}</span>
     </div>`;
     const table = (rows, empty) => rows.length
-      ? `<div class="bets-list"><div class="ins-row ins-head"><span>Ticker</span><span>Insider</span><span>Role</span><span class="ta-r">Value</span><span>Size</span><span>Date</span></div>${rows.map(insRow).join("")}</div>`
+      ? `<div class="bets-list"><div class="ins-row ins-head"><span>Ticker</span><span>Insider</span><span>Role</span><span class="ta-r">Value</span><span>Since bought</span><span>Date</span></div>${rows.map(insRow).join("")}</div>`
       : `<div class="empty-note">${empty}</div>`;
 
+    const medExc = sig.median_excess;
     return `<section class="data-section">
       <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
         <div class="lead-hero-copy">
-          <div class="lead-eyebrow">SEC Form 4 · insider whale watch · ${ins.window_days || 120}d</div>
-          <h1 class="lead-h1">Insider<br>whales</h1>
-          <p class="lead-tagline">The biggest bets corporate insiders make on their own stock. When a CEO buys on the open market with their own money, it's the strongest conviction signal there is.</p>
+          <div class="lead-eyebrow">SEC Form 4 · open-market buys · ${ins.window_days || 120}d</div>
+          <h1 class="lead-h1">Insider<br>alpha</h1>
+          <p class="lead-tagline">Not every insider buy is a signal. We score each open-market purchase on what the research says actually predicts returns — <b>C-suite over passive 10% holders</b>, clustered buying, buys <b>into weakness</b>, trend confirmation and Congress overlap — then track how each has done since.</p>
         </div>
-        <div class="gauge-card">
-          ${gaugeSVG(sentiment, sentiment + "%", sentiment >= 55 ? "Net buying" : sentiment <= 45 ? "Net selling" : "Mixed")}
-          <div class="gauge-cap">Open-market buy/sell mix — ${bc} buys vs ${sc} sells</div>
+        <div class="gauge-card" style="padding:20px 26px;">
+          <div class="street-hero-stat"><b class="${(medExc || 0) >= 0 ? "up" : "down"}">${medExc != null ? (medExc > 0 ? "+" : "") + medExc + "%" : "—"}</b><i>median excess vs S&P</i></div>
+          <div class="street-hero-stat"><b>${sig.pct_beating != null ? sig.pct_beating + "%" : "—"}</b><i>beating the market</i></div>
+          <div class="street-hero-stat"><b style="color:var(--accent)">${sig.n_tracked || 0}</b><i>tracked quality buys</i></div>
         </div>
       </div>
-      <div class="stat-strip">
-        <div class="stat-cell"><div class="sc-v up">${fmtMoney(st.total_buy_value || 0)}</div><div class="sc-l">Insider buying</div></div>
-        <div class="stat-cell"><div class="sc-v down">${fmtMoney(st.total_sell_value || 0)}</div><div class="sc-l">Insider selling</div></div>
-        <div class="stat-cell"><div class="sc-v" style="color:var(--accent)">${st.exec_buy_count || 0}</div><div class="sc-l">C-suite buys</div></div>
-        <div class="stat-cell"><div class="sc-v clickable-ticker" ${st.biggest ? `data-ticker="${esc(st.biggest.ticker)}"` : ""}>${st.biggest ? esc(st.biggest.ticker) : "—"}</div><div class="sc-l">${st.biggest ? "biggest · " + fmtMoney(st.biggest.value) : "—"}</div></div>
-      </div>
-      <div class="dash-grid">
+
+      <div class="section-head" style="margin-top:8px;"><span class="section-title">Highest-conviction buys</span><span class="section-count">scored on role, size, clustering, dip-buying, trend &amp; Congress overlap</span></div>
+      ${top.length ? `<div class="ic-grid">${top.map(insiderConvCard).join("")}</div>` : `<div class="empty-note">No quality insider buys in the window yet.</div>`}
+
+      ${best.length ? `<div class="section-head" style="margin-top:24px;"><span class="section-title">Best performers since bought</span><span class="section-count">quality buys ranked by excess return over the S&amp;P since the insider bought</span></div>
+        <div class="ic-grid">${best.map(insiderConvCard).join("")}</div>` : ""}
+
+      <div class="dash-grid" style="margin-top:24px;">
         <div class="dash-card">
-          <div class="dash-title">Biggest insider buys</div><div class="dash-sub">The whales — largest open-market purchases, colored by role</div>
-          ${whaleBars.length ? hbars(whaleBars) : `<div class="empty-note">No insider buys yet.</div>`}
+          <div class="dash-title">Open-market buy/sell mix</div><div class="dash-sub">Insider sells carry little signal (diversification, taxes) — buying is the tell</div>
+          <div style="display:flex;justify-content:center">${gaugeSVG(sentiment, sentiment + "%", sentiment >= 55 ? "Net buying" : sentiment <= 45 ? "Net selling" : "Mixed")}</div>
+          <div class="gauge-cap" style="text-align:center">${bc} buys (${fmtMoney(st.total_buy_value || 0)}) vs ${sc} sells (${fmtMoney(st.total_sell_value || 0)})</div>
         </div>
         <div class="dash-card">
-          <div class="dash-title">Who's buying</div><div class="dash-sub">Open-market buys by insider role</div>
+          <div class="dash-title">Who's buying</div><div class="dash-sub">Open-market buys by insider role — execs are the strongest signal</div>
           ${donutSVG(roleSegs, bc, "buys")}
         </div>
       </div>
-      ${(ins.clusters || []).length ? `<div class="section-head" style="margin-top:24px;"><span class="section-title">Cluster conviction</span><span class="section-count">2+ insiders buying the same stock at once</span></div>
-        <div class="cluster-grid">${ins.clusters.map(renderInsiderClusterCard).join("")}</div>` : ""}
+
       <div class="section-head" style="margin-top:24px;"><span class="section-title">All insider buys</span><span class="section-count">open-market purchases · newest first</span></div>
       ${table(ins.recent_buys || [], "No insider buys captured yet.")}
-      <div class="section-head" style="margin-top:22px;"><span class="section-title">Insider sells</span><span class="section-count">open-market sales</span></div>
-      ${table(ins.recent_sells || [], "No insider sells captured yet.")}
+      <details class="ins-sells-wrap"><summary>Insider sells (${sc}) — low predictive value, shown for completeness</summary>
+        ${table(ins.recent_sells || [], "No insider sells captured yet.")}</details>
     </section>`;
   }
 
@@ -1977,15 +2039,14 @@
     else if (streetFilter === "signal") rows = rows.filter(s => s.congress || s.insiders);
     else if (streetFilter === "divergent") rows = rows.filter(s => { const g = streetGap(s); return g != null && Math.abs(g) >= DIVERGENT; });
     const SORTS = {
-      upside: s => s.upside, buzz: s => s.buzz, rating: s => (recMeta(s.rec) || [0, 0, 0])[2],
+      edge: s => s.edge, upside: s => s.upside, buzz: s => s.buzz, rating: s => (recMeta(s.rec) || [0, 0, 0])[2],
       bullish: s => s.bull_pct, congress: s => s.congress,
       divergence: s => { const g = streetGap(s); return g == null ? null : Math.abs(g); },
     };
-    const key = SORTS[streetSort] || SORTS.upside;
+    const key = SORTS[streetSort] || SORTS.edge;
     rows.sort((a, b) => (key(b) ?? -1e9) - (key(a) ?? -1e9));
 
-    const nBuy = stocks.filter(s => (recMeta(s.rec) || [0, 0, 0])[2] >= 4).length;
-    const nBuzz = stocks.filter(s => s.buzz >= 15).length;
+    const nEdge = stocks.filter(s => (s.edge || 0) >= 50).length;
     const nDiv = stocks.filter(s => { const g = streetGap(s); return g != null && Math.abs(g) >= DIVERGENT; }).length;
     const avgUpside = (() => { const u = stocks.map(s => s.upside).filter(x => x != null); return u.length ? Math.round(u.reduce((a, b) => a + b, 0) / u.length) : null; })();
 
@@ -1996,18 +2057,18 @@
       <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Analyst ratings + social buzz · ${stocks.length} stocks</div>
-          <h1 class="lead-h1">Wall Street<br>vs the Crowd</h1>
-          <p class="lead-tagline">For the stocks smart money is watching: the professional analyst consensus and price targets, side by side with live retail buzz. When Wall Street and the crowd agree — and when they don't.</p>
+          <h1 class="lead-h1">The Edge<br>board</h1>
+          <p class="lead-tagline">One <b>Edge score</b> per stock — a synthesis of analyst upside, congressional buying, corporate-insider buying, price momentum and a <b>contrarian</b> read of the crowd (pros ahead of an unexcited crowd rate up; euphoric retail running ahead of the pros gets penalised). No single signal is reliable alone; the edge is in the confluence.</p>
         </div>
         <div class="gauge-card" style="padding:20px 26px;">
-          <div class="street-hero-stat"><b class="up">${nBuy}</b><i>rated Buy or better</i></div>
+          <div class="street-hero-stat"><b style="color:var(--accent)">${nEdge}</b><i>high-edge setups (50+)</i></div>
           <div class="street-hero-stat"><b>${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b><i>avg upside to target</i></div>
           <div class="street-hero-stat"><b style="color:var(--warn,#e0a84e)">${nDiv}</b><i>Wall St ↔ crowd split</i></div>
         </div>
       </div>
       <div class="lead-controls">
         <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("divergent", "Divergent")}${filtTab("signal", "Smart-money picks")}</div>
-        <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("divergence", "Divergence")}${sortTab("buzz", "Buzz")}${sortTab("congress", "Congress")}</div></div>
+        <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("edge", "Edge score")}${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("divergence", "Divergence")}${sortTab("congress", "Congress")}</div></div>
       </div>
       <div class="street-grid">${rows.slice(0, 60).map(renderStreetCard).join("")}</div>
       <div class="hero-note">Analyst ratings & price targets via Yahoo Finance; retail sentiment via StockTwits (share of recent messages tagged bullish). Informational only, not investment advice.</div>
@@ -2037,11 +2098,13 @@
         ${segBar([{ v: s.bull, c: "var(--good)" }, { v: s.bear, c: "var(--bad)" }])}
         <div class="st-metric">${s.bull} bull · ${s.bear} bear</div>
       </div>` : `<div class="st-side st-empty"><span class="st-side-label">The Crowd</span><span class="st-na">Quiet on social</span></div>`;
+    const edge = s.edge != null ? (() => { const c = convColor(s.edge); return `<div class="st-edge" style="color:${c};border-color:${c}55"><b>${s.edge}</b><i>edge</i></div>`; })() : "";
     return `<div class="street-card">
       <div class="st-top">
         <div style="min-width:0"><span class="st-ticker clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</span><div class="st-co">${esc(s.company || "")}</div></div>
-        <div class="st-sigs"><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>${sigs.join("")}</div>
+        ${edge}
       </div>
+      <div class="st-sigs"><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>${sigs.join("")}</div>
       <div class="st-sides">${analyst}${retail}</div>
     </div>`;
   }
