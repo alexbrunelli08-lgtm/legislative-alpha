@@ -1876,6 +1876,65 @@ def build_stock_signals(trades):
     return out
 
 
+def _smart_money_score(s):
+    """Per-stock 'Smart Money Score' (0-100). Unlike raw trade volume, it weights
+    what actually matters: how many members are buying (breadth), the NET
+    direction, the demonstrated SKILL of the buyers (their alpha), how the buys
+    have DONE since disclosure, plus corporate-insider confirmation, the analyst
+    edge and the price trend. A stock a few skilled members are quietly
+    accumulating -- that has since outperformed -- outranks one dozens dumped."""
+    e = 0.0
+    e += min(s["member_count"], 15) / 15 * 20                         # breadth of buyers
+    tot = s["buy_count"] + s["sell_count"]
+    if tot:
+        e += max(0.0, (s["buy_count"] - s["sell_count"]) / tot) * 12  # net-buy tilt
+    if s.get("buyer_alpha") is not None:
+        e += max(0.0, min(20.0, s["buyer_alpha"])) / 20 * 16          # skill of the buyers
+    if s.get("buy_excess") is not None:
+        e += max(0.0, min(40.0, s["buy_excess"])) / 40 * 16           # realized track record
+    ib = s.get("insider_buyers", 0)
+    e += 10 if ib >= 2 else 6 if ib >= 1 else 0                       # corporate-insider confirm
+    if s.get("edge") is not None:
+        e += s["edge"] / 100 * 12                                     # analyst/composite edge
+    if s.get("above200") and (s.get("r6") or 0) > 0:
+        e += 8                                                        # price trend confirms
+    return round(max(0.0, min(100.0, e)))
+
+
+def enrich_stock_signals(stock_signals, trades, members, insiders, street, screener):
+    """Turn the raw per-stock Congress tallies into a research surface: weight the
+    buyers by their skill (alpha), measure how the buys have done since disclosure,
+    and join corporate-insider / analyst / technical signals -- then score it all."""
+    alpha = {m["member"]: m.get("alpha_adj") for m in members if m.get("alpha_adj") is not None}
+    isig = (insiders or {}).get("signals") or {}
+    strt = {s["ticker"]: s for s in (street or {}).get("stocks") or []}
+    tech = {s["ticker"]: s for s in (screener or {}).get("stocks") or []}
+    buys_by_tk = {}
+    for t in trades:
+        tk = t.get("ticker")
+        if tk and _is_buy(t["type"]):
+            buys_by_tk.setdefault(tk, []).append(t)
+    for s in stock_signals:
+        tk = s["ticker"]
+        buys = buys_by_tk.get(tk, [])
+        skilled = [alpha[t["member"]] for t in {b["member"]: b for b in buys}.values() if t["member"] in alpha]
+        s["buyer_alpha"] = round(statistics.mean(skilled), 1) if skilled else None
+        s["scored_buyers"] = len(skilled)
+        exc = [t["excess_pct"] for t in buys if t.get("excess_pct") is not None]
+        s["buy_excess"] = round(statistics.mean(exc), 1) if exc else None
+        s["priced_buys"] = len(exc)
+        st, te, ii = strt.get(tk), tech.get(tk), isig.get(tk)
+        s["insider_buyers"] = (ii or {}).get("n_buyers", 0)
+        s["edge"] = st.get("edge") if st else None
+        s["upside"] = st.get("upside") if st else None
+        s["rec"] = st.get("rec") if st else None
+        s["r6"] = (te or {}).get("r6")
+        s["above200"] = (te or {}).get("above200")
+        s["mcap"] = (te or {}).get("mcap")
+        s["sm_score"] = _smart_money_score(s)
+    return stock_signals
+
+
 def build_unusual_activity(stock_signals):
     """Surface the 'signal' in the noise -- Quiver-style unusual activity.
     All computed from disclosed records: consensus accumulation, consensus
@@ -3108,6 +3167,10 @@ def main():
         s["rate"] = st.get("rec") if st and st.get("rec") else None
         s["upside"] = st.get("upside") if st else None
     screener["sectors"] = sorted({s["sector"] for s in screener["stocks"] if s["sector"]})
+
+    # Stock intelligence: weight each stock's Congress signal by buyer SKILL and
+    # REALIZED performance, and fold in insider / analyst / technical cross-signals.
+    enrich_stock_signals(stock_signals, trades, members, insiders, street, screener)
 
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)

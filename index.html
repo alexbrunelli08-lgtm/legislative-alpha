@@ -421,6 +421,16 @@
   .scr-count { text-align: center; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-faint); padding: 10px; }
   .scr-empty { text-align: center; color: var(--text-dim); padding: 26px 16px; line-height: 1.6; }
   .scr-empty b { color: var(--text); }
+  /* Stocks board */
+  .sm-pill { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 14px; border: 1px solid; border-radius: 8px; padding: 2px 9px; min-width: 34px; text-align: center; }
+  .stock-table th:last-child, .stock-table td.ss-badges { text-align: left; }
+  .ss-badges { white-space: nowrap; }
+  .ss-b { display: inline-block; font-family: var(--display); font-weight: 600; font-size: 10.5px; border-radius: 6px; padding: 2px 7px; margin-right: 4px; color: var(--text-dim); background: var(--panel-2); }
+  .ss-b.ins { color: var(--ind); background: var(--tint-violet); }
+  .ss-b.edge { color: var(--accent); background: var(--accent-dim); }
+  .ss-b.trend { color: var(--good); background: rgba(74,222,128,0.12); }
+  .ss-split { display: block; font-family: var(--mono); font-size: 9.5px; color: var(--text-faint); margin-top: 1px; }
+  .ss-n { display: block; font-family: var(--mono); font-size: 9.5px; color: var(--text-faint); font-weight: 400; margin-top: 1px; }
   .num-up { color: var(--good); } .num-down { color: var(--bad); }
   /* Agents */
   .agent-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -953,7 +963,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-13-hero-spotlight";
+  const BUILD_ID = "2026-09-13-stocks-board";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -975,6 +985,9 @@
   let screenSort = { key: null, dir: -1 }; // click-to-sort column (null = preset/custom default)
   let screenerShown = 60;
   const SCREENER_PAGE = 60;
+  let stockSort = { key: "sm_score", dir: -1 };  // Stocks tab column sort
+  let stockSearch = "";
+  let stockFilter = "all";     // all | buying | insider | analyst | winners | bipartisan
   let activeAgent = null;      // active agent key
   let streetSort = "edge";     // sentiment view sort
   let streetFilter = "all";    // all | buy | buzzing | signal | divergent
@@ -2383,84 +2396,111 @@
   }
 
   /* ---------- STOCKS VIEW ---------- */
+  const STOCK_COLS = {
+    sm_score: s => s.sm_score, member_count: s => s.member_count, net_value: s => s.net_value,
+    buyer_alpha: s => s.buyer_alpha, buy_excess: s => s.buy_excess, total_value: s => s.total_value,
+  };
+  function stockBadges(s) {
+    const b = [];
+    if (s.insider_buyers) b.push(`<span class="ss-b ins" title="Corporate insiders also buying">${s.insider_buyers} insider${s.insider_buyers > 1 ? "s" : ""}</span>`);
+    if (s.edge != null && s.edge >= 50) b.push(`<span class="ss-b edge" title="High analyst/composite edge score">Edge ${s.edge}</span>`);
+    if (s.above200 && (s.r6 || 0) > 0) b.push(`<span class="ss-b trend" title="Above the 200-day, positive 6-month">Uptrend</span>`);
+    if (s.bipartisan) b.push(`<span class="ss-b bip">Bipartisan</span>`);
+    return b.join("");
+  }
   function renderStocksView() {
-    let signals = filterBySector(DATA.stock_signals || []);
-    const visible = signals.slice(0, signalsShown);
-    const maxTrades = Math.max(1, ...visible.map(s => s.total_trades));
-    const signalsHtml = signals.length === 0
-      ? `<div class="empty-note">No stock signals in this sector for the current window.</div>`
-      : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Ticker</th><th>Company</th><th>Sector</th><th>Members</th><th>Est. volume</th><th>Buys</th><th>Sells</th><th>Net $</th></tr></thead>
-          <tbody>${visible.map(s => {
-            const sc = sectorMeta(s.sector);
-            const netCls = s.net_value > 0 ? "net-pos" : s.net_value < 0 ? "net-neg" : "net-zero";
-            return `<tr>
-              <td class="row-ticker clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
-              <td>${esc(s.company)}</td>
-              <td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>
-              <td>${s.member_count}</td>
-              <td>${fmtMoney(s.total_value)}</td>
-              <td class="buys">${s.buy_count} · ${fmtMoney(s.buy_value)}</td>
-              <td class="sells">${s.sell_count} · ${fmtMoney(s.sell_value)}</td>
-              <td class="${netCls}">${fmtMoney(s.net_value)}</td>
-            </tr>`;
-          }).join("")}</tbody>
-        </table>
-        ${signals.length > signalsShown ? `<button class="show-more-btn" id="signalsMore">Show ${Math.min(SIGNALS_PAGE, signals.length - signalsShown)} more</button>` : ""}
-        </div>`;
+    const all = DATA.stock_signals || [];
+    if (!all.length)
+      return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
+        <div class="lead-eyebrow">Stock intelligence</div><h1 class="lead-h1">Every stock<br>the smart money touches</h1></div></div>
+        <div class="empty-note">Stock signals appear after the next full data run.</div></section>`;
 
-    // full disclosure feed below the signal leaderboard
-    const trades = filterBySector(DATA.trades).slice().sort((a, b) => new Date(b.filed_date) - new Date(a.filed_date));
+    // spotlight + footer (unfiltered, by Smart Money Score)
+    const bySm = all.slice().sort((a, b) => (b.sm_score || 0) - (a.sm_score || 0));
+    const spot = bySm.slice(0, 3).map(s => ({
+      ticker: s.ticker, score: s.sm_score, color: convColor(s.sm_score),
+      sub: `${s.member_count} buying${s.buyer_alpha != null ? ` · +${s.buyer_alpha}% buyer α` : ""}${s.above200 && (s.r6 || 0) > 0 ? " · uptrend" : ""}`,
+      metric: s.buy_excess != null ? `${s.buy_excess > 0 ? "+" : ""}${Math.round(s.buy_excess)}%` : "",
+      metricCls: (s.buy_excess || 0) >= 0 ? "up" : "down",
+    }));
+    const nBuying = all.filter(s => s.net_value > 0 || s.buy_count > s.sell_count).length;
+    const tracked = all.filter(s => (s.priced_buys || 0) >= 2);
+    const winners = tracked.filter(s => (s.buy_excess || 0) > 0).length;
+    const foot = `<span><b>${nBuying}</b> net-bought</span><span><b class="up">${tracked.length ? Math.round(winners / tracked.length * 100) : 0}%</b> of picks beat S&P</span><span><b>${all.length.toLocaleString()}</b> tracked</span>`;
+
+    // filter + search + sort
+    const q = stockSearch.trim().toLowerCase();
+    let rows = all.filter(s => {
+      if (q && !(s.ticker.toLowerCase().includes(q) || (s.company || "").toLowerCase().includes(q))) return false;
+      if (stockFilter === "buying" && !(s.net_value > 0 || s.buy_count > s.sell_count)) return false;
+      if (stockFilter === "skilled" && !((s.buyer_alpha || -1e9) >= 5 && (s.scored_buyers || 0) >= 2)) return false;
+      if (stockFilter === "analyst" && !((s.edge || 0) >= 50 || (recMeta(s.rec) && recMeta(s.rec)[2] >= 4))) return false;
+      if (stockFilter === "winners" && !((s.buy_excess || -1e9) > 0 && (s.priced_buys || 0) >= 2)) return false;
+      if (stockFilter === "bipartisan" && !s.bipartisan) return false;
+      return true;
+    });
+    const count = rows.length;
+    const K = STOCK_COLS[stockSort.key] || STOCK_COLS.sm_score;
+    rows = rows.slice().sort((a, b) => ((K(a) ?? -1e18) - (K(b) ?? -1e18)) * stockSort.dir);
+    const shown = rows.slice(0, signalsShown);
+
+    const chip = (v, l) => `<button class="scr-chip ${stockFilter === v ? "active" : ""}" data-stock-filt="${v}">${l}</button>`;
+    const th = (key, label, cls = "") => {
+      if (!key) return `<th class="${cls}">${label}</th>`;
+      const on = stockSort.key === key;
+      return `<th class="scr-th ${cls} ${on ? "sorted" : ""}" data-stock-sort="${key}">${label}<span class="scr-arrow">${on ? (stockSort.dir === -1 ? "▾" : "▴") : ""}</span></th>`;
+    };
+    const netCell = v => `<td class="num ${v > 0 ? "num-up" : v < 0 ? "num-down" : ""}">${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtMoney(Math.abs(v))}</td>`;
+    const pctCell = (v, faint) => v == null ? `<td class="num scr-none">—</td>` : `<td class="num ${v >= 0 ? "num-up" : "num-down"}"${faint ? ' style="opacity:.85"' : ""}>${v > 0 ? "+" : ""}${v}%</td>`;
+    const smCell = s => { const c = convColor(s.sm_score); return `<td class="num"><span class="sm-pill" style="color:${c};border-color:${c}55">${s.sm_score}</span></td>`; };
+
+    const body = shown.map(s => `<tr>
+      <td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
+      <td class="scr-co">${esc(s.company || "")}</td>
+      ${smCell(s)}
+      <td class="num">${s.member_count}<span class="ss-split">${s.buy_count}▲ ${s.sell_count}▼</span></td>
+      ${netCell(s.net_value)}
+      ${pctCell(s.buyer_alpha)}
+      ${s.buy_excess == null ? `<td class="num scr-none">—</td>` : `<td class="num ${s.buy_excess >= 0 ? "num-up" : "num-down"}">${s.buy_excess > 0 ? "+" : ""}${Math.round(s.buy_excess)}%<span class="ss-n">n=${s.priced_buys}</span></td>`}
+      <td class="ss-badges">${stockBadges(s) || `<span class="scr-none">—</span>`}</td>
+    </tr>`).join("");
+    const emptyRow = `<tr><td colspan="8" class="scr-empty">No stocks match. Clear the search or switch the filter to <b>All</b>.</td></tr>`;
+
+    // raw disclosure feed (collapsed -- the ranked table above is the signal)
+    const trades = (DATA.trades || []).slice().sort((a, b) => new Date(b.filed_date) - new Date(a.filed_date));
     const visibleTrades = trades.slice(0, tradesShown);
-    const showSectorCol = activeSector === "ALL";
-    const feedHtml = trades.length === 0
-      ? `<div class="empty-note">No trades disclosed in the current data window.</div>`
-      : `<div class="data-table-wrap"><table class="data-table">
-          <thead><tr><th>Filed</th><th>Member</th><th>Chamber</th><th>Ticker</th><th>Company / Asset</th>${showSectorCol ? "<th>Sector</th>" : ""}<th>Type</th><th>Est. $</th><th>Gain / Loss</th><th></th></tr></thead>
-          <tbody>${visibleTrades.map(t => {
-            const sc = sectorMeta(t.sector);
-            return `<tr>
-              <td>${esc(t.filed_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td><td>${esc(t.chamber)}</td>
-              <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td><td>${esc(t.company)}</td>
-              ${showSectorCol ? `<td><span class="sector-tag" style="background:${sc.color}33; color:${sc.color}">${esc(sc.short)}</span></td>` : ""}
-              <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)} <span style="color:var(--text-faint);font-size:10px">${esc(t.amount_range)}</span></td>
-              <td>${pnlBadge(t)}</td>
-              <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`;
-          }).join("")}</tbody>
-        </table>
-        ${trades.length > tradesShown ? `<button class="show-more-btn" id="tradesMore">Show ${Math.min(TRADES_PAGE, trades.length - tradesShown)} more</button>` : ""}
-        </div>`;
-
-    // Headline consensus chart: top tickers by total activity, back-to-back buy/sell.
-    const chartRows = signals.slice()
-      .sort((a, b) => b.total_trades - a.total_trades).slice(0, 14)
-      .map(s => ({ label: s.ticker, buy: s.buy_count, sell: s.sell_count, net: s.net }));
-    const chartHtml = chartRows.length
-      ? `<div class="chart-panel">
-          <div class="chart-title">What Congress is trading${activeSector !== "ALL" ? " — " + esc(sectorMeta(activeSector).short) : ""}</div>
-          <div class="chart-sub">Most-traded tickers — sells (left) vs buys (right), with net direction</div>
-          ${buySellLegend()}
-          ${chartDiverging(chartRows)}
-        </div>`
-      : "";
-    const timelineHtml = trades.length
-      ? `<div class="chart-panel">
-          <div class="chart-title">Trading activity over time</div>
-          <div class="chart-sub">Disclosed transactions per week, by trade date</div>
-          ${buySellLegend()}
-          ${chartTimeline(trades)}
-        </div>`
-      : "";
+    const feedHtml = `<div class="data-table-wrap"><table class="data-table">
+        <thead><tr><th>Filed</th><th>Member</th><th>Ticker</th><th>Type</th><th>Est. $</th><th>Since</th><th></th></tr></thead>
+        <tbody>${visibleTrades.map(t => `<tr>
+          <td>${esc(t.filed_date)}</td><td><span data-membername="${esc(t.member)}" style="cursor:pointer">${partyBadge(t.party)} ${esc(cleanMemberName(t.member))}</span></td>
+          <td class="row-ticker ${t.ticker ? "clickable-ticker" : ""}" ${t.ticker ? `data-ticker="${esc(t.ticker)}"` : ""}>${esc(t.ticker || "—")}</td>
+          <td class="${tradeTypeClass(t.type)}">${esc(t.type)}</td><td>${fmtMoney(t.est_amount)}</td><td>${pnlBadge(t)}</td>
+          <td><a class="bill-link" href="${esc(t.report_url)}" target="_blank" rel="noopener">filing →</a></td></tr>`).join("")}</tbody>
+      </table>${trades.length > tradesShown ? `<button class="show-more-btn" id="tradesMore">Show ${Math.min(TRADES_PAGE, trades.length - tradesShown)} more</button>` : ""}</div>`;
 
     return `<section class="data-section">
-        <div class="chart-grid-2">${chartHtml}${timelineHtml}</div>
-        <div class="section-head"><span class="section-title">Stock Signals</span><span class="section-count">${signals.length} tickers · ranked by breadth of activity</span></div>
-        ${signalsHtml}
-      </section>
-      <section class="data-section">
-        <div class="section-head"><span class="section-title">Full Disclosure Feed</span><span class="section-count">${trades.length} trades · Senate + House</span></div>
-        ${feedHtml}
-      </section>`;
+      <div class="lead-hero" style="border-bottom:none;padding-bottom:6px;">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Stock intelligence · ${all.length.toLocaleString()} tickers</div>
+          <h1 class="lead-h1">The smart-money<br>stock board</h1>
+          <p class="lead-tagline">Every stock Congress touches, ranked by a <b>Smart Money Score</b> that weights what matters — how many members are buying, <b>how skilled</b> those buyers are (their alpha), <b>how the buys have done since</b> disclosure, and whether corporate insiders, analysts and the trend agree. Volume alone is noise; this is signal.</p>
+        </div>
+        ${heroSpotlight("⚡ Top smart-money stocks", "scored 0–100", spot, foot)}
+      </div>
+      <div class="scr-controls">
+        <div class="scr-search-wrap"><span class="scr-search-ico">⌕</span><input class="scr-search" data-stock-search type="text" placeholder="Search ticker or company…" value="${esc(stockSearch)}">${stockSearch ? `<button class="scr-search-clear" data-stock-clear>✕</button>` : ""}</div>
+        <div class="scr-chips">${chip("all", "All")}${chip("buying", "Net buying")}${chip("winners", "Beating S&P")}${chip("skilled", "Skilled buyers")}${chip("analyst", "★ Analyst Buy")}${chip("bipartisan", "Bipartisan")}</div>
+      </div>
+      <div class="data-table-wrap"><table class="data-table scr-table stock-table">
+        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("sm_score", "SM Score", "num")}${th("member_count", "Members", "num")}${th("net_value", "Net flow", "num")}${th("buyer_alpha", "Buyer α", "num")}${th("buy_excess", "Since disclosed", "num")}${th(null, "Signals")}</tr></thead>
+        <tbody>${body || emptyRow}</tbody>
+      </table></div>
+      ${count > shown.length
+        ? `<button class="show-more-btn" id="signalsMore">Show ${Math.min(SIGNALS_PAGE, count - shown.length)} more · ${count.toLocaleString()} match${count === 1 ? "" : "es"}</button>`
+        : count ? `<div class="scr-count">${count.toLocaleString()} stock${count === 1 ? "" : "s"}</div>` : ""}
+      <div class="hero-note"><b>Buyer α</b> = the average confidence-adjusted alpha of the members buying it (skill of the money). <b>Since disclosed</b> = average excess return vs the S&P of those buys since they were disclosed (realized, backward-looking). Rules-based, not advice.</div>
+      <details class="ins-sells-wrap"><summary>Full disclosure feed — every congressional trade, newest first (${trades.length.toLocaleString()})</summary>${feedHtml}</details>
+    </section>`;
   }
 
   /* ---------- HOME HERO CHART: members outpacing the S&P 500 ---------- */
@@ -3066,6 +3106,18 @@
       const k = thEl.dataset.sort;
       if (screenSort.key === k) screenSort.dir = -screenSort.dir; else screenSort = { key: k, dir: -1 };
       screenerShown = SCREENER_PAGE; renderContent();
+    }));
+    // Stocks board: search / filter / click-to-sort
+    el.querySelectorAll("[data-stock-search]").forEach(inp => inp.addEventListener("input", () => {
+      const caret = inp.selectionStart; stockSearch = inp.value; signalsShown = SIGNALS_PAGE; renderContent();
+      const ni = document.querySelector("[data-stock-search]"); if (ni) { ni.focus(); try { ni.setSelectionRange(caret, caret); } catch (e) {} }
+    }));
+    el.querySelectorAll("[data-stock-clear]").forEach(b => b.addEventListener("click", () => { stockSearch = ""; signalsShown = SIGNALS_PAGE; renderContent(); }));
+    el.querySelectorAll("[data-stock-filt]").forEach(b => b.addEventListener("click", () => { stockFilter = b.dataset.stockFilt; signalsShown = SIGNALS_PAGE; renderContent(); }));
+    el.querySelectorAll("[data-stock-sort]").forEach(thEl => thEl.addEventListener("click", () => {
+      const k = thEl.dataset.stockSort;
+      if (stockSort.key === k) stockSort.dir = -stockSort.dir; else stockSort = { key: k, dir: -1 };
+      signalsShown = SIGNALS_PAGE; renderContent();
     }));
     // sentiment (Wall Street vs Crowd) sort + filter
     el.querySelectorAll("[data-ssort]").forEach(b => b.addEventListener("click", () => { streetSort = b.dataset.ssort; renderContent(); }));
