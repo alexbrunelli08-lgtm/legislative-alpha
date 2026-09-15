@@ -325,6 +325,29 @@
   .modal-close { background: var(--panel-2); border: 1px solid var(--line); color: var(--text-dim); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 15px; line-height: 1; flex-shrink: 0; transition: all 0.12s ease; }
   .modal-close:hover { color: var(--text); background: var(--elev); }
   .modal-body { padding: 18px 22px 24px; }
+  /* Redesigned stock modal hero (scoped to the stock modal) */
+  #stockModalInner { position: relative; }
+  #stockModalInner > .modal-close { position: absolute; top: 15px; right: 15px; z-index: 3; }
+  .modal-hero { position: relative; padding: 22px 22px 20px; border-bottom: 1px solid var(--line); border-radius: 18px 18px 0 0;
+    background: radial-gradient(130% 150% at 0% 0%, rgba(94,234,212,0.07), transparent 52%), linear-gradient(160deg, var(--panel-2), var(--panel) 72%); }
+  .mh-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .mh-tk { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; }
+  .mh-co { font-size: 12.5px; color: var(--text-dim); margin-top: 3px; }
+  .mh-edge { font-family: var(--display); font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px; vertical-align: middle; }
+  .mh-ring { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; }
+  .mh-ring .sc-ring { width: 62px; height: 62px; }
+  .mh-ring-l { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+  .mh-quote { display: flex; align-items: flex-end; gap: 20px; margin-top: 16px; }
+  .mh-quote-nums { flex-shrink: 0; }
+  .mh-price { font-family: var(--mono); font-weight: 700; font-size: 25px; color: var(--text); line-height: 1.1; }
+  .mh-chg { font-family: var(--mono); font-weight: 700; font-size: 14px; margin-top: 3px; }
+  .mh-chg.up { color: var(--good); } .mh-chg.down { color: var(--bad); }
+  .mh-chg span { color: var(--text-faint); font-weight: 400; font-size: 10px; margin-left: 5px; }
+  .mh-chart { flex: 1; min-width: 0; height: 92px; }
+  .spark-area { width: 100%; height: 92px; display: block; }
+  .spark { display: inline-block; vertical-align: middle; }
+  .spark-na { color: var(--text-faint); font-family: var(--mono); }
+  @media (max-width: 560px) { .mh-quote { flex-direction: column; align-items: stretch; gap: 10px; } .mh-chart { height: 70px; } }
   .modal-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
   .mstat { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px 14px; }
   .mstat-v { font-family: var(--mono); font-weight: 700; font-size: 19px; }
@@ -443,6 +466,9 @@
   .sm-pill { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 14px; border: 1px solid; border-radius: 8px; padding: 2px 9px; min-width: 34px; text-align: center; }
   .stock-table th:last-child, .stock-table td.ss-badges { text-align: left; }
   .ss-badges { white-space: nowrap; }
+  .scr-trend { text-align: center !important; padding: 6px 10px !important; }
+  .scr-trend .spark { width: 62px; height: 18px; opacity: 0.92; }
+  tr:hover .scr-trend .spark { opacity: 1; }
   .ss-b { display: inline-block; font-family: var(--display); font-weight: 600; font-size: 10.5px; border-radius: 6px; padding: 2px 7px; margin-right: 4px; color: var(--text-dim); background: var(--panel-2); }
   .ss-b.ins { color: var(--ind); background: var(--tint-violet); }
   .ss-b.edge { color: var(--accent); background: var(--accent-dim); }
@@ -1115,7 +1141,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-14-bones-topbar";
+  const BUILD_ID = "2026-09-14-modal-sparklines";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -1990,6 +2016,30 @@
 
   function convColor(s) { return s >= 70 ? "var(--good)" : s >= 50 ? "var(--accent)" : s >= 35 ? "var(--warn,#e0a84e)" : "var(--text-faint)"; }
   // circular score ring (0-100) with the number inside -- used in the hero spotlight
+  // Tiny inline row sparkline from a normalized 0-100 array.
+  function miniSpark(spark, opts) {
+    opts = opts || {};
+    if (!spark || spark.length < 2) return `<span class="spark-na">—</span>`;
+    const w = opts.w || 60, h = opts.h || 18, n = spark.length;
+    const up = spark[n - 1] >= spark[0], color = opts.color || (up ? "var(--good)" : "var(--bad)");
+    const pts = spark.map((v, i) => `${(i / (n - 1) * w).toFixed(1)},${(h - 1 - (v / 100) * (h - 2)).toFixed(1)}`).join(" ");
+    return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+  }
+  // Larger area-fill price chart for the stock modal.
+  function sparkArea(spark) {
+    if (!spark || spark.length < 2) return "";
+    const w = 600, h = 92, n = spark.length, up = spark[n - 1] >= spark[0];
+    const color = up ? "var(--good)" : "var(--bad)";
+    const x = i => i / (n - 1) * w, y = v => (h - 8) - (v / 100) * (h - 18);
+    const line = spark.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const area = `M0,${h} L ${spark.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" L ")} L ${w},${h} Z`;
+    const gid = "sg" + Math.random().toString(36).slice(2, 7);
+    return `<svg class="spark-area" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity="0.3"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+      <path d="${area}" fill="url(#${gid})"/>
+      <polyline points="${line}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="${x(n - 1).toFixed(1)}" cy="${y(spark[n - 1]).toFixed(1)}" r="3.4" fill="${color}"/></svg>`;
+  }
   function scoreRing(score, color) {
     const r = 15.5, c = 2 * Math.PI * r, off = c * (1 - Math.max(0, Math.min(100, score)) / 100);
     return `<svg viewBox="0 0 40 40" class="sc-ring" aria-hidden="true">
@@ -2521,9 +2571,10 @@
       ${sgn(s.vs_high)}
       ${plain(s.rsi)}
       ${sgn(s.r6)}
+      <td class="scr-trend">${miniSpark(s.spark)}</td>
       ${plain(s.vol, "%")}
     </tr>`).join("");
-    const emptyRow = `<tr><td colspan="10" class="scr-empty">No stocks match these filters. Try widening the market cap, clearing the search, or switching the signal filter to <b>All</b>.</td></tr>`;
+    const emptyRow = `<tr><td colspan="11" class="scr-empty">No stocks match these filters. Try widening the market cap, clearing the search, or switching the signal filter to <b>All</b>.</td></tr>`;
 
     return `<section class="data-section">
       <div class="lead-hero">
@@ -2549,7 +2600,7 @@
       ${controlHtml}
       ${controlsBar}
       <div class="data-table-wrap"><table class="data-table scr-table">
-        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("cong", "Signals")}${th("mcap", "Mkt cap", "num")}${th("price", "Price", "num")}${th("vs200", "vs 200-DMA", "num")}${th("vs_high", "52w high", "num")}${th("rsi", "RSI", "num")}${th("r6", "6M", "num")}${th("vol", "Vol", "num")}</tr></thead>
+        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("cong", "Signals")}${th("mcap", "Mkt cap", "num")}${th("price", "Price", "num")}${th("vs200", "vs 200-DMA", "num")}${th("vs_high", "52w high", "num")}${th("rsi", "RSI", "num")}${th("r6", "6M", "num")}${th(null, "Trend")}${th("vol", "Vol", "num")}</tr></thead>
         <tbody>${body || emptyRow}</tbody>
       </table></div>
       ${count > rows.length
@@ -2621,6 +2672,7 @@
     const body = shown.map(s => `<tr>
       <td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
       <td class="scr-co">${esc(s.company || "")}</td>
+      <td class="scr-trend">${miniSpark(s.spark)}</td>
       ${smCell(s)}
       <td class="num">${s.member_count}<span class="ss-split">${s.buy_count}▲ ${s.sell_count}▼</span></td>
       ${netCell(s.net_value)}
@@ -2628,7 +2680,7 @@
       ${s.buy_excess == null ? `<td class="num scr-none">—</td>` : `<td class="num ${s.buy_excess >= 0 ? "num-up" : "num-down"}">${s.buy_excess > 0 ? "+" : ""}${Math.round(s.buy_excess)}%<span class="ss-n">n=${s.priced_buys}</span></td>`}
       <td class="ss-badges">${stockBadges(s) || `<span class="scr-none">—</span>`}</td>
     </tr>`).join("");
-    const emptyRow = `<tr><td colspan="8" class="scr-empty">No stocks match. Clear the search or switch the filter to <b>All</b>.</td></tr>`;
+    const emptyRow = `<tr><td colspan="9" class="scr-empty">No stocks match. Clear the search or switch the filter to <b>All</b>.</td></tr>`;
 
     // raw disclosure feed (collapsed -- the ranked table above is the signal)
     const trades = (DATA.trades || []).slice().sort((a, b) => new Date(b.filed_date) - new Date(a.filed_date));
@@ -2656,7 +2708,7 @@
         <div class="scr-chips">${chip("all", "All")}${chip("buying", "Net buying")}${chip("winners", "Beating S&P")}${chip("skilled", "Skilled buyers")}${chip("analyst", "★ Analyst Buy")}${chip("bipartisan", "Bipartisan")}</div>
       </div>
       <div class="data-table-wrap"><table class="data-table scr-table stock-table">
-        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("sm_score", "SM Score", "num")}${th("member_count", "Members", "num")}${th("net_value", "Net flow", "num")}${th("buyer_alpha", "Buyer α", "num")}${th("buy_excess", "Since disclosed", "num")}${th(null, "Signals")}</tr></thead>
+        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th(null, "6M")}${th("sm_score", "SM Score", "num")}${th("member_count", "Members", "num")}${th("net_value", "Net flow", "num")}${th("buyer_alpha", "Buyer α", "num")}${th("buy_excess", "Since disclosed", "num")}${th(null, "Signals")}</tr></thead>
         <tbody>${body || emptyRow}</tbody>
       </table></div>
       ${count > shown.length
@@ -3048,13 +3100,28 @@
                 <span class="momentum-num" style="font-size:15px;color:${feasColor(b.momentum)}">${b.momentum}</span>
               </div>`).join("")}</div>` : "";
 
+    const hScore = sig && sig.sm_score != null ? { v: sig.sm_score, l: "Smart $", c: convColor(sig.sm_score) }
+      : strt && strt.edge != null ? { v: strt.edge, l: "Edge", c: convColor(strt.edge) } : null;
+    const price = scr ? scr.price : null;
+    const r6 = (scr && scr.r6 != null) ? scr.r6 : (sig ? sig.r6 : null);
+    const spark = (scr && scr.spark) || (sig && sig.spark);
     document.getElementById("stockModalInner").innerHTML = `
-      <div class="modal-head">
-        <div>
-          <div class="modal-title">${esc(ticker)} ${sectorTag}${strt && strt.edge != null ? ` <span class="modal-edge" style="color:${convColor(strt.edge)}">Edge ${strt.edge}</span>` : ""}</div>
-          <div class="modal-sub">${esc(company)}</div>
+      <button class="modal-close" aria-label="Close">✕</button>
+      <div class="modal-hero">
+        <div class="mh-row">
+          <div class="mh-id">
+            <div class="mh-tk">${esc(ticker)} ${sectorTag}${hScore && hScore.l !== "Edge" && strt && strt.edge != null ? ` <span class="mh-edge">Edge ${strt.edge}</span>` : ""}</div>
+            <div class="mh-co">${esc(company)}</div>
+          </div>
+          ${hScore ? `<div class="mh-ring">${scoreRing(hScore.v, hScore.c)}<span class="mh-ring-l">${hScore.l}</span></div>` : ""}
         </div>
-        <button class="modal-close" aria-label="Close">✕</button>
+        ${(spark || price != null) ? `<div class="mh-quote">
+          <div class="mh-quote-nums">
+            ${price != null ? `<div class="mh-price">$${price}</div>` : ""}
+            ${r6 != null ? `<div class="mh-chg ${r6 >= 0 ? "up" : "down"}">${r6 > 0 ? "+" : ""}${r6}%<span>6&nbsp;mo</span></div>` : ""}
+          </div>
+          ${spark ? `<div class="mh-chart">${sparkArea(spark)}</div>` : ""}
+        </div>` : ""}
       </div>
       <div class="modal-body">
         ${techStrip}

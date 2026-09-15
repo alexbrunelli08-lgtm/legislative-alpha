@@ -2600,6 +2600,23 @@ def _sma(closes, n):
     return sum(closes[-n:]) / n if len(closes) >= n else None
 
 
+def _sparkline(series, n=22, window=126):
+    """A compact price sparkline: the last ~6 months of closes downsampled to n
+    points and normalised to 0-100 (period low..high). Tiny to ship, enough to
+    draw a shape in a row or the modal. `series` is a {date: close} dict."""
+    if not series:
+        return None
+    closes = [c for _, c in sorted(series.items()) if c]
+    if len(closes) < 8:
+        return None
+    w = closes[-window:]
+    step = max(1, len(w) // n)
+    pts = w[::step][-n:]
+    lo, hi = min(pts), max(pts)
+    rng = (hi - lo) or 1
+    return [round((p - lo) / rng * 100) for p in pts]
+
+
 def _stdev(xs):
     if len(xs) < 2:
         return 0.0
@@ -2741,7 +2758,7 @@ def build_screener(prices, universe, mcaps):
             continue
         ind.pop("r1", None)  # not displayed -- trim payload
         stocks.append({"ticker": tk, "company": _clean_company_name(name), "sector": info.get("sector", ""),
-                       "mcap": mc, **ind})
+                       "mcap": mc, "spark": _sparkline(series), **ind})
     stocks.sort(key=lambda s: s["mcap"] or 0, reverse=True)
     return {"universe": len(stocks), "min_mcap": MID_CAP_FLOOR, "stocks": stocks}
 
@@ -3171,6 +3188,10 @@ def main():
     # Stock intelligence: weight each stock's Congress signal by buyer SKILL and
     # REALIZED performance, and fold in insider / analyst / technical cross-signals.
     enrich_stock_signals(stock_signals, trades, members, insiders, street, screener)
+    # compact 6-month price sparkline per stock (for row + modal charts)
+    scr_spark = {s["ticker"]: s.get("spark") for s in screener["stocks"]}
+    for s in stock_signals:
+        s["spark"] = scr_spark.get(s["ticker"]) or _sparkline(prices.get(s["ticker"]))
 
     history = update_history(overview, stock_signals)
     trends = compute_trends(history, stock_signals)
