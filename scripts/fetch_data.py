@@ -2561,7 +2561,7 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
     runs = []
     for member, tl in by_member.items():
         tl.sort()
-        net, ti, val = {}, 0, 1.0
+        net, ti, val, invested = {}, 0, 1.0, 0
         series = [0.0]
         for i in range(1, len(dates)):
             dprev, dcur = dates[i - 1], dates[i]
@@ -2570,13 +2570,27 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
                 net[tk] = net.get(tk, 0) + sgn
                 ti += 1
             held = [tk for tk, n in net.items() if n > 0]
+            if held:
+                invested += 1
             r = sum(rets[tk].get(dcur, 0) for tk in held) / len(held) if held else 0.0
             val *= (1 + r)
             series.append(round((val - 1) * 100, 2))
-        runs.append({"member": member, "final": series[-1], "series": series})
+        runs.append({"member": member, "final": series[-1], "series": series,
+                     "coverage": round(invested / max(1, len(dates) - 1), 3)})
 
     party = {m["member"]: m.get("party", "?") for m in members}
-    beating = sorted([r for r in runs if r["final"] > spy_final], key=lambda r: r["final"], reverse=True)[:top_n]
+    # A member who only starts holding late in the window draws a flat line that
+    # spikes at the end -- the curve looks broken and the ranking rewards a short
+    # lucky window. Require them to have actually been invested for most of it.
+    MIN_COVERAGE = 0.6
+    ahead = [r for r in runs if r["final"] > spy_final]
+    qualified = sorted([r for r in ahead if r["coverage"] >= MIN_COVERAGE],
+                       key=lambda r: r["final"], reverse=True)
+    beating = qualified[:top_n]
+    if len(beating) < top_n:  # fall back to the best-covered of the rest
+        rest = sorted([r for r in ahead if r["coverage"] < MIN_COVERAGE],
+                      key=lambda r: (r["coverage"], r["final"]), reverse=True)
+        beating += rest[:top_n - len(beating)]
     for r in beating:
         r["party"] = party.get(r["member"], "?")
     return {
