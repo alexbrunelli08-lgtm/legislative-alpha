@@ -126,6 +126,11 @@
     transition: color .25s var(--ease), background .25s var(--ease); }
   .topbar .view-tab:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.06); }
   .topbar .view-tab.active { color: var(--text); background: rgba(255,255,255,0.11); box-shadow: none; font-weight: 600; }
+  @media (max-width: 900px) {
+    /* the search box was running under the wordmark before the 680px rules hit */
+    .brand-sub, .cmdk-btn { display: none; }
+    .topbar .search-box { width: 180px; }
+  }
   @media (max-width: 680px) {
     .brand-sub, .cmdk-btn { display: none; }
     .topbar-top { flex-wrap: wrap; gap: 9px; padding-bottom: 4px; }
@@ -1257,6 +1262,121 @@
   .hsig-foot { margin-top: 12px; padding: 12px 6px 0; border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; }
   .hsig-foot b { color: var(--text); font-family: var(--display); font-weight: 600; }
 
+  /* =====================================================================
+     SENTIMENT v2 -- the view is about disagreement, so disagreement is the visual
+     ===================================================================== */
+  .dmap-section { margin: 8px 0 40px; }
+  .dmap-card { background: radial-gradient(90% 120% at 50% 0%, rgba(232,197,131,0.045), transparent 62%), linear-gradient(180deg, var(--panel), #060607);
+    border: 1px solid var(--line-soft); border-radius: 24px; padding: 26px clamp(18px, 2.4vw, 32px) 20px; }
+  .dmap-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .dmap-title { font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -0.026em; }
+  .dmap-sub { font-size: 13px; color: var(--text-faint); margin-top: 6px; letter-spacing: -0.008em; max-width: 620px; line-height: 1.45; }
+  .dmap-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; }
+  .dmap-legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 7px; }
+  .dmap svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .dm-dot { cursor: pointer; transition: opacity .3s var(--ease); }
+  .dm-dot:hover { opacity: 1 !important; }
+  .dm-quad { font-size: 11.5px; letter-spacing: -0.005em; }
+
+  .street-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .street-card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; padding: 22px 22px 0; overflow: hidden;
+    transition: transform .45s var(--ease), background .45s var(--ease), border-color .45s var(--ease); }
+  .street-card:hover { transform: translateY(-3px); background: var(--panel-2); border-color: var(--line); }
+  .st-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 0; }
+  .st-ticker { font-family: var(--mono); font-weight: 600; font-size: 24px; letter-spacing: -0.04em; cursor: pointer; }
+  .st-ticker:hover { color: var(--accent); }
+  .st-co { font-size: 13px; color: var(--text-dim); margin-top: 4px; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 210px; }
+  .st-edge { display: flex; flex-direction: column; align-items: center; gap: 3px; border: none; border-radius: 0; padding: 0; flex-shrink: 0; }
+  .st-edge .sc-ring { width: 52px; height: 52px; }
+  .st-edge i { font-size: 10.5px; letter-spacing: -0.005em; text-transform: none; color: var(--text-faint); font-style: normal; }
+  .st-sigs { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 18px; }
+  .st-sig { font-family: var(--display); font-size: 11.5px; font-weight: 500; letter-spacing: -0.008em; text-transform: none;
+    padding: 4px 11px; border-radius: var(--pill); white-space: nowrap; background: rgba(255,255,255,0.06); border: none !important; color: var(--text-dim); }
+  /* stacked face-off: same shape twice, so the two views are directly comparable */
+  .st-sides { display: flex; flex-direction: column; gap: 0; }
+  .st-side { min-width: 0; padding: 14px 0; border-top: 1px solid var(--line-soft); }
+  .st-side:first-child { border-top: none; padding-top: 0; }
+  .st-side-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+  .st-side-label { font-size: 12.5px; letter-spacing: -0.008em; text-transform: none; color: var(--text-faint); font-weight: 400; }
+  .st-side-n { font-family: var(--display); font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; }
+  .st-rec { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: -0.026em; margin-bottom: 0; }
+  .st-headline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+  .st-metric { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -0.025em; color: var(--text-dim); margin-top: 8px; }
+  .st-metric.num-up { color: var(--good); } .st-metric.num-down { color: var(--bad); }
+  .st-na { font-size: 13px; color: var(--text-faint); font-style: normal; }
+  .st-foot { margin: 6px -22px 0; padding: 13px 22px; border-top: 1px solid var(--line-soft); background: rgba(255,255,255,0.018);
+    font-size: 12.5px; letter-spacing: -0.008em; color: var(--text-faint); display: flex; align-items: center; gap: 9px; }
+  .st-foot b { font-weight: 500; }
+  .st-foot.agree b { color: var(--text-dim); }
+  .st-foot.pros b { color: var(--good); }
+  .st-foot.crowd b { color: var(--warn); }
+  .seg-bar { display: flex; height: 7px; border-radius: var(--pill); overflow: hidden; background: rgba(255,255,255,0.05); }
+  @media (max-width: 900px) { .street-grid { grid-template-columns: 1fr; } }
+
+  /* =====================================================================
+     SCREENER v2
+     ===================================================================== */
+  .breadth-card { background: radial-gradient(110% 130% at 50% 0%, rgba(232,197,131,0.05), transparent 62%), linear-gradient(180deg, var(--panel), #060607);
+    border: 1px solid var(--line-soft); border-radius: 24px; padding: 26px 26px 22px; align-self: center; width: 100%; box-shadow: none; }
+  .bc-lead { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 20px; margin-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+  .bc-n { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 4.4vw, 56px); letter-spacing: -0.045em; line-height: 1; color: var(--good); font-variant-numeric: tabular-nums; }
+  .bc-l { font-size: 14px; color: var(--text-dim); letter-spacing: -0.012em; line-height: 1.35; }
+  .bc-l b { display: block; color: var(--text); font-weight: 600; }
+  .brd-row { display: grid; grid-template-columns: 1fr 88px 46px; align-items: center; gap: 14px; margin: 11px 0; }
+  .brd-lbl { font-size: 13.5px; color: var(--text-dim); letter-spacing: -0.01em; }
+  .brd-bar { height: 6px; border-radius: var(--pill); background: rgba(255,255,255,0.06); overflow: hidden; box-shadow: none; }
+  .brd-bar > span { display: block; height: 100%; border-radius: var(--pill); box-shadow: none; }
+  .brd-val { font-family: var(--display); font-size: 13.5px; font-weight: 600; text-align: right; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+  .phil-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .phil-n { font-family: var(--display); font-size: 12px; font-weight: 600; background: rgba(0,0,0,0.22); border-radius: var(--pill); padding: 1px 8px; letter-spacing: -0.01em; }
+  .phil-tab:not(.active) .phil-n { background: rgba(255,255,255,0.07); color: var(--text-faint); }
+  .phil-tab.signature { border-color: transparent; box-shadow: inset 0 0 0 1px rgba(232,197,131,0.3); }
+  .phil-thesis { font-size: 14.5px; color: var(--text-dim); line-height: 1.5; letter-spacing: -0.008em; margin-bottom: 20px; max-width: none;
+    background: var(--panel); border: 1px solid var(--line-soft); border-radius: 16px; padding: 18px 22px; }
+  .phil-thesis b { color: var(--text); font-weight: 600; }
+  .custom-bar { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: flex-end; background: var(--panel); border: 1px solid var(--line-soft); border-radius: 16px; padding: 18px 22px; margin-bottom: 20px; }
+  .custom-bar label { display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; text-transform: none; letter-spacing: -0.008em; color: var(--text-faint); font-weight: 400; }
+  .scr-select { font-family: var(--display); font-size: 13px; font-weight: 500; letter-spacing: -0.012em; color: var(--text); background: rgba(255,255,255,0.06); border: 1px solid transparent; border-radius: 10px; padding: 9px 12px; cursor: pointer; min-width: 140px; }
+  .scr-search { width: 100%; font-family: var(--display); font-size: 13.5px; letter-spacing: -0.012em; color: var(--text); background: rgba(255,255,255,0.06); border: 1px solid transparent; border-radius: var(--pill); padding: 10px 32px 10px 36px; }
+  .scr-search:focus { outline: none; border-color: var(--accent); background: rgba(255,255,255,0.09); }
+  .scr-sector { min-width: 158px; padding: 9px 12px; border-radius: var(--pill); }
+  .scr-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 18px; }
+
+  .data-table-wrap { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 18px; overflow-x: auto; box-shadow: none; }
+  table.data-table { width: 100%; border-collapse: collapse; font-size: 13px; letter-spacing: -0.01em; }
+  table.data-table th { text-align: left; font-family: var(--display); font-size: 12px; letter-spacing: -0.005em; text-transform: none;
+    color: var(--text-faint); font-weight: 400; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); background: rgba(255,255,255,0.02); white-space: nowrap; }
+  table.data-table td { font-family: var(--mono); padding: 13px 16px; border-bottom: 1px solid var(--line-soft); color: var(--text-dim); }
+  table.data-table tbody tr:hover { background: rgba(255,255,255,0.03); box-shadow: none; }
+  /* merged identity cell: ticker leads, company sits under it */
+  .scr-id { min-width: 190px; }
+  .scr-tk { font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: -0.03em; color: var(--text); cursor: pointer; display: block; }
+  .scr-tk:hover { color: var(--accent); }
+  .scr-co { font-family: var(--display); font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; margin-top: 3px;
+    max-width: 230px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .scr-sig { display: inline-flex; align-items: center; font-family: var(--display); font-weight: 500; font-size: 11.5px; letter-spacing: -0.008em;
+    border-radius: var(--pill); padding: 3px 10px; margin-right: 6px; border: none !important; }
+  .scr-cong { color: var(--accent); background: rgba(232,197,131,0.13); }
+  .scr-rate { background: rgba(255,255,255,0.06); }
+  /* RSI as a position on its range, not a bare number */
+  .rsi-cell { min-width: 88px; }
+  /* the screener carries the most columns -- tighten its gutters so the whole
+     table fits a normal desktop without a horizontal scroll */
+  table.scr-table th, table.scr-table td { padding-left: 12px; padding-right: 12px; }
+  table.scr-table th:first-child, table.scr-table td:first-child { padding-left: 18px; }
+  table.scr-table th:last-child, table.scr-table td:last-child { padding-right: 18px; }
+  .rsi-wrap { display: flex; align-items: center; gap: 9px; justify-content: flex-end; }
+  .rsi-n { font-family: var(--mono); font-size: 12.5px; letter-spacing: -0.02em; width: 30px; text-align: right; }
+  .rsi-track { position: relative; width: 46px; height: 5px; border-radius: var(--pill); flex-shrink: 0;
+    background: linear-gradient(90deg, rgba(50,213,131,0.45) 0%, rgba(255,255,255,0.07) 32%, rgba(255,255,255,0.07) 68%, rgba(255,107,99,0.45) 100%); }
+  .rsi-mark { position: absolute; top: -2.5px; width: 3px; height: 10px; border-radius: 2px; background: var(--text); transform: translateX(-1.5px); }
+  .scr-trend { text-align: center !important; padding: 8px 12px !important; }
+  .scr-trend .spark { width: 84px; height: 26px; opacity: 0.95; }
+  .scr-count { text-align: center; font-family: var(--display); font-size: 13px; font-weight: 500; color: var(--text-faint); padding: 16px; letter-spacing: -0.01em; }
+  .scr-empty { text-align: center; color: var(--text-dim); padding: 40px 20px; line-height: 1.6; font-family: var(--display); font-size: 14px; }
+  @media (max-width: 560px) { .brd-row { grid-template-columns: 1fr 64px 42px; gap: 10px; } }
+
 </style>
 </head>
 <body>
@@ -1341,7 +1461,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-22-board-redesign";
+  const BUILD_ID = "2026-09-22-signal-redesign";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2657,6 +2777,80 @@
   }
   const DIVERGENT = 0.7;  // |gap| above this = a meaningful disagreement
 
+
+  /* A quadrant scatter was the obvious chart here and it is the wrong one: 99 of
+     120 covered names sit in the bullish corner (analysts almost never say sell,
+     and thin StockTwits threads round to 100% bullish), so it draws a blob.
+     What actually varies is the DISAGREEMENT, so that is the axis. */
+  function divergenceMap(stocks) {
+    const pts = stocks.map(s => { const g = streetGap(s); return g == null ? null : { s, g }; }).filter(Boolean);
+    if (pts.length < 8) return "";
+
+    const W = 1000, H = 262, ml = 20, mr = 20, mt = 42, mb = 58;
+    const lim = Math.max(1, Math.ceil(Math.max(...pts.map(q => Math.abs(q.g))) * 10) / 10);
+    const x = v => ml + (v + lim) / (2 * lim) * (W - ml - mr);
+    const cy = mt + (H - mt - mb) / 2;
+    const R = 5.4, BIN = R * 1.7, STEP = R * 1.95;
+
+    const bins = {};
+    const placed = pts.slice().sort((a, b) => a.g - b.g).map(q => {
+      const px = x(q.g), b = Math.round(px / BIN);
+      const k = (bins[b] = (bins[b] || 0) + 1) - 1;
+      const off = Math.ceil(k / 2) * STEP;
+      return { ...q, px, py: cy + (k % 2 ? off : -off) };
+    });
+
+    const zoneL = x(-DIVERGENT), zoneR = x(DIVERGENT);
+    const byGap = pts.slice().sort((a, b) => a.g - b.g);
+    const hotNames = byGap.slice(0, 3).map(q => q.s.ticker).join("  \u00b7  ");
+    const coldNames = byGap.slice(-3).reverse().map(q => q.s.ticker).join("  \u00b7  ");
+    const zones = `
+      <rect x="${ml}" y="${mt}" width="${(zoneL - ml).toFixed(1)}" height="${(H - mt - mb).toFixed(1)}" fill="rgba(217,164,65,0.055)" rx="10"/>
+      <rect x="${zoneR.toFixed(1)}" y="${mt}" width="${(W - mr - zoneR).toFixed(1)}" height="${(H - mt - mb).toFixed(1)}" fill="rgba(50,213,131,0.055)" rx="10"/>
+      <line x1="${zoneL.toFixed(1)}" y1="${mt}" x2="${zoneL.toFixed(1)}" y2="${H - mb}" stroke="var(--warn)" stroke-width="1" stroke-dasharray="4 5" opacity="0.5"/>
+      <line x1="${zoneR.toFixed(1)}" y1="${mt}" x2="${zoneR.toFixed(1)}" y2="${H - mb}" stroke="var(--good)" stroke-width="1" stroke-dasharray="4 5" opacity="0.5"/>
+      <line x1="${x(0).toFixed(1)}" y1="${mt - 14}" x2="${x(0).toFixed(1)}" y2="${H - mb + 8}" stroke="var(--text-dim)" stroke-width="1.5"/>
+      <text x="${x(0).toFixed(1)}" y="${mt - 20}" text-anchor="middle" font-size="11.5" fill="var(--text-dim)">they agree</text>
+      <text class="dm-quad" x="${ml + 6}" y="${mt - 20}" fill="var(--warn)">◀ crowd is ahead of the pros</text>
+      <text class="dm-quad" x="${W - mr - 6}" y="${mt - 20}" text-anchor="end" fill="var(--good)">pros are ahead of the crowd ▶</text>
+      <text x="${((ml + zoneL) / 2).toFixed(1)}" y="${H - mb + 24}" text-anchor="middle" font-size="11.5" fill="var(--text-faint)">retail running hot</text>
+      <text x="${x(0).toFixed(1)}" y="${H - mb + 24}" text-anchor="middle" font-size="11.5" fill="var(--text-faint)">broadly in line</text>
+      <text x="${((W - mr + zoneR) / 2).toFixed(1)}" y="${H - mb + 24}" text-anchor="middle" font-size="11.5" fill="var(--text-faint)">contrarian setups</text>
+      <text x="${((ml + zoneL) / 2).toFixed(1)}" y="${H - mb + 41}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--warn)">${esc(hotNames)}</text>
+      <text x="${((W - mr + zoneR) / 2).toFixed(1)}" y="${H - mb + 41}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--good)">${esc(coldNames)}</text>`;
+
+    const dots = placed.map(({ s, g, px, py }) => {
+      const div = Math.abs(g) >= DIVERGENT;
+      const col = !div ? "var(--text-faint)" : g > 0 ? "var(--good)" : "var(--warn)";
+      const r = div ? R + 1.3 : R;
+      return `<circle class="dm-dot" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}"
+        opacity="${div ? 0.95 : 0.38}" data-ticker="${esc(s.ticker)}"><title>${esc(s.ticker)} — ${esc(s.company || "")}
+Wall Street: ${esc((recMeta(s.rec) || ["?"])[0])} across ${s.n_analysts} analysts
+The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
+    }).join("");
+
+    const nPros = pts.filter(q => q.g >= DIVERGENT).length, nCrowd = pts.filter(q => q.g <= -DIVERGENT).length;
+    return `<section class="dmap-section">
+      <div class="dmap-card">
+        <div class="dmap-head">
+          <div>
+            <div class="dmap-title">Where the pros and the crowd disagree</div>
+            <p class="dmap-sub">${pts.length} stocks with both real analyst coverage and real social volume, placed by how far the two camps have drifted apart. Both sides skew bullish — analysts rarely say sell — so it is the gap between them, not the direction of either, that carries information.</p>
+          </div>
+          <div class="dmap-legend">
+            <span><i style="background:var(--good)"></i>${nPros} pros ahead</span>
+            <span><i style="background:var(--warn)"></i>${nCrowd} crowd ahead</span>
+            <span><i style="background:var(--text-faint);opacity:.45"></i>${pts.length - nPros - nCrowd} in line</span>
+          </div>
+        </div>
+        <div class="dmap"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img"
+          aria-label="Disagreement between analyst consensus and retail sentiment across ${pts.length} stocks">
+          ${zones}${dots}
+        </svg></div>
+      </div>
+    </section>`;
+  }
+
   function renderStreetView() {
     const stocks = (DATA.street && DATA.street.stocks) || [];
     if (!stocks.length)
@@ -2690,7 +2884,12 @@
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Analyst ratings + social buzz · ${stocks.length} stocks</div>
           <h1 class="lead-h1">The Edge<br>board</h1>
-          <p class="lead-tagline">One <b>Edge score</b> per stock — a synthesis of analyst upside, congressional buying, corporate-insider buying, price momentum and a <b>contrarian</b> read of the crowd (pros ahead of an unexcited crowd rate up; euphoric retail running ahead of the pros gets penalised). No single signal is reliable alone; the edge is in the confluence.</p>
+          <p class="lead-tagline">One <b>Edge score</b> per stock — analyst upside, congressional buying, insider buying, momentum and a <b>contrarian</b> read of the crowd. Pros ahead of an unexcited crowd rate up; euphoric retail running ahead of the pros gets marked down. No single signal is reliable alone.</p>
+          <div class="lead-stat-row">
+            <div class="lead-stat"><b style="color:var(--accent)">${nEdge}</b><i>high-edge setups</i></div>
+            <div class="lead-stat"><b class="${(avgUpside || 0) >= 0 ? "up" : "down"}">${avgUpside != null ? (avgUpside > 0 ? "+" : "") + avgUpside + "%" : "—"}</b><i>average upside to target</i></div>
+            <div class="lead-stat"><b>${nDiv}</b><i>pros and crowd split</i></div>
+          </div>
         </div>
         ${(() => {
           const edgeReason = s => {
@@ -2711,6 +2910,8 @@
           return heroSpotlight("Top edge plays", "ranked 0–100", items, foot);
         })()}
       </div>
+      ${divergenceMap(stocks)}
+      <div class="section-head"><span class="section-title">Every covered stock</span><span class="section-count">${rows.length} in view of ${stocks.length}</span></div>
       <div class="lead-controls">
         <div class="phil-tabs" style="margin:0">${filtTab("all", "All")}${filtTab("buy", "Buy-rated")}${filtTab("buzzing", "Buzzing")}${filtTab("divergent", "Divergent")}${filtTab("signal", "Smart-money picks")}</div>
         <div class="sort-wrap"><span class="sort-label">Sort by</span><div class="sort-tabs">${sortTab("edge", "Edge score")}${sortTab("upside", "Upside")}${sortTab("rating", "Analyst rating")}${sortTab("bullish", "Retail bullish")}${sortTab("divergence", "Divergence")}${sortTab("congress", "Congress")}</div></div>
@@ -2728,22 +2929,33 @@
     if (s.insiders) sigs.push(`<span class="st-sig" style="color:var(--text-dim);border:1px solid #33333A">${s.insiders} insider${s.insiders > 1 ? "s" : ""}</span>`);
     const g = streetGap(s);
     if (g != null && Math.abs(g) >= DIVERGENT)
-      sigs.push(`<span class="st-sig st-div" title="Analyst consensus and retail sentiment disagree">${g > 0 ? "Pros ▲ / crowd cool" : "Crowd ▲ / pros cool"}</span>`);
+      sigs.push(`<span class="st-sig st-div" title="Analyst consensus and retail sentiment disagree" style="color:${g > 0 ? "var(--good)" : "var(--warn)"};background:${g > 0 ? "rgba(50,213,131,0.11)" : "rgba(217,164,65,0.12)"}">Divergent</span>`);
+    // both camps get the same shape -- headline, meter, detail -- so the card
+    // reads as a direct comparison rather than two unrelated widgets
     const analyst = rm ? `
       <div class="st-side">
         <div class="st-side-head"><span class="st-side-label">Wall Street</span>${s.n_analysts ? `<span class="st-side-n">${s.n_analysts} analysts</span>` : ""}</div>
-        <div class="st-rec" style="color:${rm[1]}">${rm[0]}</div>
+        <div class="st-headline"><span class="st-rec" style="color:${rm[1]}">${rm[0]}</span>${s.upside != null ? `<span class="st-metric ${s.upside >= 0 ? "num-up" : "num-down"}" style="margin:0">${s.upside > 0 ? "+" : ""}${s.upside}% to target</span>` : ""}</div>
         ${segBar([{ v: s.buy, c: "var(--good)" }, { v: s.hold, c: "var(--text-faint)" }, { v: s.sell, c: "var(--bad)" }])}
-        <div class="st-metric ${s.upside >= 0 ? "num-up" : "num-down"}">${s.upside != null ? `${s.upside > 0 ? "+" : ""}${s.upside}% to target` : "—"}</div>
-      </div>` : `<div class="st-side st-empty"><span class="st-side-label">Wall Street</span><span class="st-na">No analyst coverage</span></div>`;
+        <div class="st-metric">${s.buy} buy · ${s.hold} hold · ${s.sell} sell</div>
+      </div>` : `<div class="st-side"><div class="st-side-head"><span class="st-side-label">Wall Street</span></div><span class="st-na">No analyst coverage</span></div>`;
     const retail = s.buzz ? `
       <div class="st-side">
-        <div class="st-side-head"><span class="st-side-label">The Crowd</span><span class="st-side-n">${s.buzz} msgs</span></div>
-        <div class="st-rec" style="color:${s.bull_pct >= 50 ? "var(--good)" : "var(--bad)"}">${s.bull_pct != null ? s.bull_pct + "% bullish" : "—"}</div>
+        <div class="st-side-head"><span class="st-side-label">The Crowd</span><span class="st-side-n">${s.buzz} messages</span></div>
+        <div class="st-headline"><span class="st-rec" style="color:${s.bull_pct >= 50 ? "var(--good)" : "var(--bad)"}">${s.bull_pct != null ? s.bull_pct + "% bullish" : "—"}</span></div>
         ${segBar([{ v: s.bull, c: "var(--good)" }, { v: s.bear, c: "var(--bad)" }])}
         <div class="st-metric">${s.bull} bull · ${s.bear} bear</div>
-      </div>` : `<div class="st-side st-empty"><span class="st-side-label">The Crowd</span><span class="st-na">Quiet on social</span></div>`;
-    const edge = s.edge != null ? (() => { const c = convColor(s.edge); return `<div class="st-edge" style="color:${c};border-color:${c}55"><b>${s.edge}</b><i>edge</i></div>`; })() : "";
+      </div>` : `<div class="st-side"><div class="st-side-head"><span class="st-side-label">The Crowd</span></div><span class="st-na">Quiet on social</span></div>`;
+    const edge = s.edge != null ? (() => { const c = convColor(s.edge);
+      return `<div class="st-edge">${scoreRing(s.edge, c)}<i>edge</i></div>`; })() : "";
+    // the verdict line: who is out in front, in words
+    const foot = g == null
+      ? `<div class="st-foot"><b>Not enough coverage on both sides to compare</b></div>`
+      : Math.abs(g) < DIVERGENT
+        ? `<div class="st-foot agree"><b>Analysts and the crowd broadly agree</b></div>`
+        : g > 0
+          ? `<div class="st-foot pros"><b>Pros are ahead of the crowd</b> — the contrarian side of this trade</div>`
+          : `<div class="st-foot crowd"><b>The crowd is ahead of the pros</b> — retail running hot</div>`;
     return `<div class="street-card">
       <div class="st-top">
         <div style="min-width:0"><span class="st-ticker clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</span><div class="st-co">${esc(s.company || "")}</div></div>
@@ -2751,6 +2963,7 @@
       </div>
       <div class="st-sigs"><span class="sector-tag" style="background:${sc.color}22;color:${sc.color}">${esc(sc.short)}</span>${sigs.join("")}</div>
       <div class="st-sides">${analyst}${retail}</div>
+      ${foot}
     </div>`;
   }
 
@@ -2899,20 +3112,26 @@
       const rate = rm ? `<span class="scr-sig scr-rate" style="color:${rm[1]};border-color:${rm[1]}66" title="Analyst consensus${s.upside != null ? ` · ${s.upside > 0 ? "+" : ""}${s.upside}% to target` : ""}">${rm[0]}${s.upside != null ? ` ${s.upside > 0 ? "+" : ""}${s.upside}%` : ""}</span>` : "";
       return `<td class="scr-sigs">${cong || rate ? cong + rate : `<span class="scr-none">—</span>`}</td>`;
     };
+    // RSI reads better as a position on its range than as a bare number
+    const rsiCell = v => {
+      if (v == null) return `<td class="num rsi-cell">—</td>`;
+      const col = v < 35 ? "var(--good)" : v > 70 ? "var(--bad)" : "var(--text)";
+      return `<td class="rsi-cell"><span class="rsi-wrap"><span class="rsi-n" style="color:${col}">${v}</span>
+        <span class="rsi-track"><i class="rsi-mark" style="left:${Math.max(0, Math.min(100, v)).toFixed(0)}%;background:${col}"></i></span></span></td>`;
+    };
     const body = rows.map(s => `<tr>
-      <td class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</td>
-      <td class="scr-co">${esc(s.company || "")}</td>
+      <td class="scr-id"><span class="scr-tk clickable-ticker" data-ticker="${esc(s.ticker)}">${esc(s.ticker)}</span><div class="scr-co">${esc(s.company || "")}</div></td>
       ${sigCell(s)}
       <td class="num">${fmtMcap(s.mcap)}</td>
       ${plain("$" + s.price)}
+      ${sgn(s.r6)}
       ${sgn(s.vs200)}
       ${sgn(s.vs_high)}
-      ${plain(s.rsi)}
-      ${sgn(s.r6)}
-      <td class="scr-trend">${miniSpark(s.spark)}</td>
+      ${rsiCell(s.rsi)}
+      <td class="scr-trend">${miniSpark(s.spark, { w: 84, h: 26 })}</td>
       ${plain(s.vol, "%")}
     </tr>`).join("");
-    const emptyRow = `<tr><td colspan="11" class="scr-empty">No stocks match these filters. Try widening the market cap, clearing the search, or switching the signal filter to <b>All</b>.</td></tr>`;
+    const emptyRow = `<tr><td colspan="10" class="scr-empty">No stocks match these filters. Try widening the market cap, clearing the search, or switching the signal filter to <b>All</b>.</td></tr>`;
 
     return `<section class="data-section">
       <div class="lead-hero">
@@ -2923,22 +3142,32 @@
         </div>
         ${(() => {
           const N = stocks.length || 1;
-          const meter = (lbl, n, color) => { const p = Math.round(n / N * 100); return `<div class="brd-row"><span class="brd-lbl">${lbl}</span><span class="brd-bar"><span style="width:${p}%;background:${color}"></span></span><span class="brd-val">${p}%</span></div>`; };
-          return `<div class="hero-snapshot">
-            <div class="hs-cap">Market breadth <span>live across ${stocks.length.toLocaleString()} names</span></div>
-            ${meter("In an uptrend", stocks.filter(s => s.above200).length, "var(--good)")}
-            ${meter("Near 52-week high", stocks.filter(s => s.vs_high != null && s.vs_high > -5).length, "var(--accent)")}
-            ${meter("Golden cross", stocks.filter(s => s.golden).length, "var(--accent-2)")}
-            ${meter("Oversold (RSI&lt;35)", stocks.filter(s => s.rsi != null && s.rsi < 35).length, "var(--warn)")}
-            ${meter("Congress buying", stocks.filter(s => (s.cong || 0) > 0).length, "var(--accent)")}
+          const pct = n => Math.round(n / N * 100);
+          const meter = (lbl, n, color) => `<div class="brd-row"><span class="brd-lbl">${lbl}</span><span class="brd-bar"><span style="width:${pct(n)}%;background:${color}"></span></span><span class="brd-val">${pct(n)}%</span></div>`;
+          const up = stocks.filter(s => s.above200).length, upPct = pct(up);
+          const verdict = upPct >= 60 ? "Broad participation — most of the market is working."
+            : upPct >= 40 ? "Mixed tape — leadership is narrow."
+            : "Thin breadth — most names are below trend.";
+          return `<div class="breadth-card">
+            <div class="bc-lead">
+              <span class="bc-n" style="color:${upPct >= 60 ? "var(--good)" : upPct >= 40 ? "var(--warn)" : "var(--bad)"}">${upPct}%</span>
+              <span class="bc-l"><b>of the market is in an uptrend</b>${verdict}</span>
+            </div>
+            ${meter("Near a 52-week high", stocks.filter(s => s.vs_high != null && s.vs_high > -5).length, "var(--accent)")}
+            ${meter("Golden cross", stocks.filter(s => s.golden).length, "var(--accent)")}
+            ${meter("Oversold (RSI under 35)", stocks.filter(s => s.rsi != null && s.rsi < 35).length, "var(--warn)")}
+            ${meter("Congress net-buying", stocks.filter(s => (s.cong || 0) > 0).length, "var(--good)")}
+            ${meter("Analyst Buy-rated", stocks.filter(s => { const rm = recMeta(s.rate); return rm && rm[2] >= 4; }).length, "var(--dem)")}
           </div>`;
         })()}
       </div>
+      <div class="section-head" style="margin-top:20px"><span class="section-title">Pick a screen</span><span class="section-count">${SCREENS.length} preset philosophies · or build your own</span></div>
       <div class="phil-tabs">${tabs}</div>
       ${controlHtml}
       ${controlsBar}
+      <div class="section-head"><span class="section-title">${searching ? "Search results" : esc(isCustom ? "Custom screen" : active.name)}</span><span class="section-count">${count.toLocaleString()} match${count === 1 ? "" : "es"}${count > rows.length ? ` · showing ${rows.length}` : ""}</span></div>
       <div class="data-table-wrap"><table class="data-table scr-table">
-        <thead><tr>${th(null, "Ticker")}${th(null, "Company")}${th("cong", "Signals")}${th("mcap", "Mkt cap", "num")}${th("price", "Price", "num")}${th("vs200", "vs 200-DMA", "num")}${th("vs_high", "52w high", "num")}${th("rsi", "RSI", "num")}${th("r6", "6M", "num")}${th(null, "Trend")}${th("vol", "Vol", "num")}</tr></thead>
+        <thead><tr>${th(null, "Stock")}${th("cong", "Signals")}${th("mcap", "Mkt cap", "num")}${th("price", "Price", "num")}${th("r6", "6M", "num")}${th("vs200", "vs 200-DMA", "num")}${th("vs_high", "From high", "num")}${th("rsi", "RSI", "num")}${th(null, "6-month trend")}${th("vol", "Volatility", "num")}</tr></thead>
         <tbody>${body || emptyRow}</tbody>
       </table></div>
       ${count > rows.length
