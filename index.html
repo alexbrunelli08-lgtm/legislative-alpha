@@ -130,6 +130,7 @@
     /* the search box was running under the wordmark before the 680px rules hit */
     .brand-sub, .cmdk-btn { display: none; }
     .topbar .search-box { width: 180px; }
+    .watch-btn { padding: 8px 11px; }
   }
   @media (max-width: 680px) {
     .brand-sub, .cmdk-btn { display: none; }
@@ -1470,6 +1471,102 @@
   .cv-mean { opacity: 0.62; margin-top: 3px; }
   .cv-caveat { display: block; margin-top: 10px; font-size: 12.5px; color: var(--text-faint); line-height: 1.5; }
 
+  /* =====================================================================
+     FLOW VIEW
+     ===================================================================== */
+  .flow-curve { background: radial-gradient(110% 130% at 50% 0%, rgba(232,197,131,0.05), transparent 62%), linear-gradient(180deg, var(--panel), #060607);
+    border: 1px solid var(--line-soft); border-radius: 24px; padding: 24px 24px 18px; align-self: center; width: 100%; }
+  .fc-head { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.022em; margin-bottom: 16px; }
+  .flow-curve svg { display: block; width: 100%; height: 150px; }
+  .fc-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 12px; color: var(--text-faint); letter-spacing: -0.008em; }
+
+  .fl-block { margin-top: clamp(34px, 4vw, 52px); }
+  .fl-block-head { margin-bottom: 16px; }
+  .fl-block-head h3 { font-family: var(--display); font-weight: 700; font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -0.03em; margin: 0; }
+  .fl-block-head p { margin: 8px 0 0; font-size: 14px; color: var(--text-faint); letter-spacing: -0.008em; line-height: 1.45; max-width: 780px; }
+  .fl-list { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 18px; overflow: hidden; }
+  .fl-row { display: grid; grid-template-columns: 34px minmax(150px, 1.6fr) 120px 104px 74px minmax(130px, 1fr);
+    align-items: center; gap: 14px; padding: 13px 18px; border-top: 1px solid var(--line-soft); cursor: pointer;
+    transition: background .25s var(--ease); }
+  .fl-row:hover:not(.fl-head) { background: rgba(255,255,255,0.03); }
+  .fl-row.fl-head { border-top: none; background: rgba(255,255,255,0.02); cursor: default;
+    font-size: 12px; color: var(--text-faint); letter-spacing: -0.005em; padding: 11px 18px; }
+  .fl-row.fl-head:hover { background: rgba(255,255,255,0.02); }
+  .fl-tk { font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: -0.03em; color: var(--text); }
+  .fl-tk:hover { color: var(--accent); }
+  .fl-co { font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; margin-top: 3px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fl-id { min-width: 0; }
+  .fl-delta b { font-family: var(--display); font-weight: 600; font-size: 14.5px; letter-spacing: -0.02em; display: block; }
+  .fl-delta b.up { color: var(--good); } .fl-delta b.down { color: var(--bad); }
+  .fl-delta i { font-style: normal; font-size: 12px; color: var(--text-faint); letter-spacing: -0.008em; }
+  .fl-net { font-family: var(--mono); font-weight: 600; font-size: 14px; letter-spacing: -0.03em; text-align: right; }
+  .fl-net.up { color: var(--good); } .fl-net.down { color: var(--bad); }
+  .fl-spark { line-height: 0; }
+  .fl-sigs { display: flex; flex-wrap: wrap; gap: 5px; }
+  .fl-chip { font-family: var(--display); font-size: 11.5px; font-weight: 500; letter-spacing: -0.008em;
+    padding: 3px 10px; border-radius: var(--pill); background: rgba(255,255,255,0.06); color: var(--text-dim); white-space: nowrap; }
+  .fl-chip.ins { color: var(--ind); background: rgba(180,142,173,0.14); }
+  .fl-chip.up { color: var(--good); background: rgba(50,213,131,0.11); }
+  .fl-chip.edge { color: var(--accent); background: rgba(232,197,131,0.13); }
+  .fl-none { font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; }
+  @media (max-width: 1000px) {
+    .fl-row { grid-template-columns: 30px minmax(0,1fr) 108px 96px; row-gap: 10px; }
+    .fl-spark, .fl-sigs { display: none; }
+    .fl-row.fl-head span:nth-child(5), .fl-row.fl-head span:nth-child(6) { display: none; }
+  }
+  @media (max-width: 560px) {
+    .fl-row { grid-template-columns: 28px minmax(0,1fr) 96px; }
+    .fl-net { grid-column: 2 / -1; text-align: left; }
+  }
+
+  /* sector rotation bars */
+  .rot-wrap { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 18px; padding: 20px 24px; }
+  .rot-row { display: grid; grid-template-columns: 150px 1fr 104px; align-items: center; gap: 16px; padding: 9px 0; }
+  .rot-lab { font-size: 13.5px; color: var(--text-dim); letter-spacing: -0.01em; }
+  .rot-track { position: relative; height: 8px; border-radius: var(--pill); background: rgba(255,255,255,0.05); }
+  .rot-zero { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: rgba(255,255,255,0.24); }
+  .rot-fill { position: absolute; top: 0; bottom: 0; border-radius: var(--pill); }
+  .rot-fill.up { background: linear-gradient(90deg, rgba(50,213,131,0.45), var(--good)); }
+  .rot-fill.down { background: linear-gradient(90deg, var(--bad), rgba(255,107,99,0.45)); }
+  .rot-val { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: -0.025em; text-align: right; }
+  @media (max-width: 620px) { .rot-row { grid-template-columns: 96px 1fr 84px; gap: 10px; } }
+
+  /* =====================================================================
+     WATCHLIST
+     ===================================================================== */
+  .watch-star { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 4px;
+    color: var(--text-faint); transition: color .25s var(--ease), transform .25s var(--ease); }
+  .watch-star:hover { color: var(--accent); transform: scale(1.15); }
+  .watch-star.on { color: var(--accent); }
+  .watch-btn { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; font-family: var(--display); font-size: 13px;
+    color: var(--accent); background: rgba(255,255,255,0.06); border: 1px solid transparent; border-radius: var(--pill);
+    padding: 8px 13px; cursor: pointer; transition: all .3s var(--ease); white-space: nowrap; }
+  .watch-btn:hover { background: rgba(255,255,255,0.11); }
+  .watch-n { font-family: var(--display); font-size: 11.5px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+
+  /* Deliberately NOT transitioned. A transition that never gets stepped keeps
+     serving its interpolated start value -- which overrides the class AND any
+     inline style -- and strands the panel off-screen with no way to open it.
+     For a utility drawer, appearing reliably is worth more than sliding. */
+  .watch-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 92vw); z-index: 60;
+    background: var(--panel); border-left: 1px solid var(--line); box-shadow: -30px 0 80px -40px rgba(0,0,0,1);
+    overflow-y: auto; display: none; }
+  .watch-drawer.open { display: block; }
+  .wl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
+    padding: 26px 24px 18px; border-bottom: 1px solid var(--line-soft); position: sticky; top: 0;
+    background: var(--panel); z-index: 2; }
+  .wl-head h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: -0.03em; margin: 0; }
+  .wl-head p { margin: 7px 0 0; font-size: 13px; color: var(--text-faint); letter-spacing: -0.008em; }
+  .wl-empty { padding: 34px 24px; font-size: 13.5px; color: var(--text-faint); line-height: 1.6; letter-spacing: -0.008em; }
+  .wl-list { display: flex; flex-direction: column; }
+  .wl-row { display: grid; grid-template-columns: 30px minmax(0,1fr) 72px 60px; align-items: center; gap: 10px;
+    padding: 14px 24px; border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background .25s var(--ease); }
+  .wl-row:hover { background: var(--panel-2); }
+  .wl-row .fl-sigs { grid-column: 2 / -1; margin-top: 2px; }
+  .wl-price { font-family: var(--mono); font-size: 13px; text-align: right; color: var(--text-dim); letter-spacing: -0.025em; }
+  .wl-r6 { font-family: var(--mono); font-size: 13px; font-weight: 600; text-align: right; letter-spacing: -0.025em; }
+
 </style>
 </head>
 <body>
@@ -1480,6 +1577,7 @@
       <div class="brand"><span class="dot"></span><span class="wordmark">Legislative&nbsp;Alpha</span><span class="brand-sub">smart-money terminal</span></div>
       <div class="topbar-right">
         <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, bill…" autocomplete="off">
+        <button class="watch-btn" id="watchBtn" title="Watchlist" aria-label="Open watchlist">★<span class="watch-n" data-watch-count hidden></span></button>
         <button class="cmdk-btn" id="cmdkBtn" title="Command palette"><span class="cmdk-kbd">⌘K</span></button>
         <div class="status-badge" id="statusBadge">Loading…</div>
       </div>
@@ -1487,6 +1585,7 @@
     <nav class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="home">Home</button>
       <button class="view-tab" data-view="politicians">Leaderboard</button>
+      <button class="view-tab" data-view="flow">Flow</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
       <button class="view-tab" data-view="sentiment">Sentiment</button>
       <button class="view-tab" data-view="screener">Screener</button>
@@ -1535,6 +1634,14 @@
   </footer>
 </div>
 
+<aside class="watch-drawer" id="watchDrawer" aria-label="Watchlist" aria-hidden="true">
+  <div class="wl-head">
+    <div><h2>Watchlist</h2><p>Every signal the site holds on your names.</p></div>
+    <button class="modal-close" id="watchClose" aria-label="Close">✕</button>
+  </div>
+  <div id="watchPanel"></div>
+</aside>
+
 <div class="modal-overlay" id="stockModal"><div class="modal" id="stockModalInner"></div></div>
 
 <div class="cmdk-overlay" id="cmdk">
@@ -1554,7 +1661,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-23-robust-validation";
+  const BUILD_ID = "2026-09-23-flow-watchlist";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -1581,6 +1688,7 @@
   let stockFilter = "all";     // all | buying | insider | analyst | winners | bipartisan
   let activeAgent = null;      // active agent key
   let streetSort = "edge";     // sentiment view sort
+  let flowWindow = "w90";   // flow view lookback: w90 | w180
   let raceMode = "filed";      // hero curve: "filed" (implementable) | "trade" (member's own dates)
   let streetFilter = "all";    // all | buy | buzzing | signal | divergent
   let tradesShown = 100;
@@ -1590,7 +1698,7 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["home", "overview", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
+  const VIEWS = ["home", "overview", "flow", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -1609,6 +1717,7 @@
   }
 
   const VIEW_HINTS = {
+    flow: "What Congress is buying NOW that it was not buying a window ago — new money, not old positions.",
     home: "Every smart-money signal in one flow — scroll through, or dive into any section.",
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
@@ -2880,6 +2989,235 @@
         ${holdings}
         <div class="hero-note">Simulated backtest with monthly rebalancing over ~1 year of price history, equal-weighted, no transaction costs or fees. Rules-based model, not a recommendation. Not investment advice; past performance does not predict future results.</div>
       </div>
+    </section>`;
+  }
+
+
+
+  /* ---------- WATCHLIST ----------
+     Per-browser, no account. localStorage can be unavailable (private windows,
+     blocked site data) so every read and write is guarded and the site works
+     identically with the feature simply inert. */
+  const WATCH_KEY = "la.watchlist.v1";
+  let watchSet = new Set();
+  function loadWatch() {
+    try {
+      const raw = localStorage.getItem(WATCH_KEY);
+      watchSet = new Set(raw ? JSON.parse(raw) : []);
+    } catch (e) { watchSet = new Set(); }
+  }
+  function saveWatch() {
+    try { localStorage.setItem(WATCH_KEY, JSON.stringify([...watchSet])); } catch (e) { /* inert */ }
+  }
+  function watchStar(ticker) {
+    const on = watchSet.has(ticker);
+    return `<button class="watch-star${on ? " on" : ""}" data-watch="${esc(ticker)}"
+      title="${on ? "Remove from" : "Add to"} watchlist" aria-label="${on ? "Remove" : "Add"} ${esc(ticker)}"
+      aria-pressed="${on}">${on ? "\u2605" : "\u2606"}</button>`;
+  }
+  function toggleWatch(ticker) {
+    if (watchSet.has(ticker)) watchSet.delete(ticker); else watchSet.add(ticker);
+    saveWatch();
+    document.querySelectorAll(`[data-watch="${CSS.escape(ticker)}"]`).forEach(b => {
+      const on = watchSet.has(ticker);
+      b.classList.toggle("on", on);
+      b.textContent = on ? "\u2605" : "\u2606";
+      b.setAttribute("aria-pressed", String(on));
+    });
+    renderWatchPanel();
+  }
+
+  /* Everything the site knows about one ticker, in one row. */
+  function watchRow(tk) {
+    const sig = (DATA.stock_signals || []).find(x => x.ticker === tk);
+    const scr = ((DATA.screener || {}).stocks || []).find(x => x.ticker === tk);
+    const strt = ((DATA.street || {}).stocks || []).find(x => x.ticker === tk);
+    const ins = ((DATA.insiders || {}).signal_by_ticker || {})[tk];
+    const co = (sig && sig.company) || (scr && scr.company) || (strt && strt.company) || "";
+    const bits = [];
+    if (sig && sig.member_count) bits.push(`<span class="fl-chip">${sig.member_count} in Congress</span>`);
+    if (sig && sig.insider_buyers) bits.push(`<span class="fl-chip ins">${sig.insider_buyers} insider${sig.insider_buyers > 1 ? "s" : ""}</span>`);
+    if (strt && strt.edge != null) bits.push(`<span class="fl-chip edge">Edge ${strt.edge}</span>`);
+    if (scr && scr.above200 && (scr.r6 || 0) > 0) bits.push(`<span class="fl-chip up">Uptrend</span>`);
+    const r6 = scr && scr.r6 != null ? scr.r6 : (sig && sig.r6 != null ? sig.r6 : null);
+    return `<div class="wl-row">
+      ${watchStar(tk)}
+      <div class="fl-id"><span class="fl-tk clickable-ticker" data-ticker="${esc(tk)}">${esc(tk)}</span>
+        <div class="fl-co">${esc(co)}</div></div>
+      <div class="wl-price">${scr && scr.price != null ? "$" + scr.price : "\u2014"}</div>
+      <div class="wl-r6 ${(r6 || 0) >= 0 ? "num-up" : "num-down"}">${r6 != null ? (r6 > 0 ? "+" : "") + r6 + "%" : "\u2014"}</div>
+      <div class="fl-sigs">${bits.join("") || `<span class="fl-none">no active signal</span>`}</div>
+    </div>`;
+  }
+
+  function renderWatchPanel() {
+    const host = document.getElementById("watchPanel");
+    if (!host) return;
+    const tks = [...watchSet];
+    document.querySelectorAll("[data-watch-count]").forEach(e => {
+      e.textContent = tks.length ? String(tks.length) : "";
+      e.hidden = !tks.length;
+    });
+    if (!tks.length) {
+      host.innerHTML = `<div class="wl-empty">Star any ticker on the site to track it here. Your list stays in this browser — no account, nothing sent anywhere.</div>`;
+      return;
+    }
+    // keep whatever order the site ranks them in, most-signalled first
+    const scored = tks.map(tk => {
+      const sig = (DATA.stock_signals || []).find(x => x.ticker === tk);
+      const strt = ((DATA.street || {}).stocks || []).find(x => x.ticker === tk);
+      return { tk, n: ((sig && sig.member_count) || 0) + ((sig && sig.insider_buyers) || 0) + ((strt && strt.edge) || 0) / 20 };
+    }).sort((a, b) => b.n - a.n);
+    host.innerHTML = `<div class="wl-list">${scored.map(x => watchRow(x.tk)).join("")}</div>`;
+    host.querySelectorAll("[data-ticker]").forEach(el => el.addEventListener("click", e => {
+      if (e.target.closest("[data-watch]")) return;
+      setHash("stock/" + el.dataset.ticker);
+    }));
+    host.querySelectorAll("[data-watch]").forEach(b => b.addEventListener("click", e => {
+      e.stopPropagation(); toggleWatch(b.dataset.watch);
+    }));
+  }
+
+  // The drawer slides in on a transform transition. Set the end state INLINE as
+  // well as via the class: a transition that never gets stepped (throttled or
+  // non-compositing frame loop) would otherwise strand the panel off-screen with
+  // no way back. The inline value applies on the next paint regardless.
+  function openWatchlist() {
+    const d = document.getElementById("watchDrawer");
+    if (!d) return;
+    d.classList.add("open");
+    d.setAttribute("aria-hidden", "false");
+    renderWatchPanel();
+  }
+  function closeWatchlist() {
+    const d = document.getElementById("watchDrawer");
+    if (!d) return;
+    d.classList.remove("open");
+    d.setAttribute("aria-hidden", "true");
+  }
+
+  /* ---------- FLOW VIEW (new money, not old positions) ---------- */
+  function flowSpark(series) {
+    // member count over the last ~30 snapshots -- shape matters, scale does not
+    if (!series || series.length < 4) return `<span class="spark-na">\u2014</span>`;
+    const w = 62, h = 20, n = series.length;
+    const lo = Math.min(...series), hi = Math.max(...series), rng = (hi - lo) || 1;
+    const pts = series.map((v, i) => `${(i / (n - 1) * w).toFixed(1)},${(h - 1 - ((v - lo) / rng) * (h - 2)).toFixed(1)}`).join(" ");
+    const up = series[n - 1] >= series[0];
+    return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" preserveAspectRatio="none" aria-hidden="true">
+      <polyline points="${pts}" fill="none" stroke="${up ? "var(--good)" : "var(--bad)"}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  }
+
+  function flowCurve(curve) {
+    if (!curve || curve.length < 6) return "";
+    const W = 560, H = 150, pad = 8;
+    const vals = curve.map(c => c.net);
+    const hi = Math.max(...vals, 0), lo = Math.min(...vals, 0), rng = (hi - lo) || 1;
+    const bw = (W - pad * 2) / curve.length;
+    const y0 = pad + (hi / rng) * (H - pad * 2);
+    const bars = curve.map((c, i) => {
+      const x = pad + i * bw;
+      const y = pad + ((hi - c.net) / rng) * (H - pad * 2);
+      const hgt = Math.max(1, Math.abs(y - y0));
+      return `<rect x="${x.toFixed(1)}" y="${Math.min(y, y0).toFixed(1)}" width="${Math.max(1, bw - 1.4).toFixed(1)}" height="${hgt.toFixed(1)}"
+        fill="${c.net >= 0 ? "var(--good)" : "var(--bad)"}" opacity="0.8"><title>${esc(c.week)}: ${c.net > 0 ? "+" : ""}${fmtMoney(c.net)}</title></rect>`;
+    }).join("");
+    return `<div class="flow-curve">
+      <div class="fc-head">Net congressional dollars by filing week</div>
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Weekly net congressional buying and selling">
+        ${bars}<line x1="${pad}" y1="${y0.toFixed(1)}" x2="${W - pad}" y2="${y0.toFixed(1)}" stroke="var(--line)" stroke-width="1"/>
+      </svg>
+      <div class="fc-foot"><span>${esc(curve[0].week)}</span><span>buying above the line, selling below</span><span>${esc(curve[curve.length - 1].week)}</span></div>
+    </div>`;
+  }
+
+  function flowRow(r, kind) {
+    const sigs = [];
+    if (r.insiders) sigs.push(`<span class="fl-chip ins">${r.insiders} insider${r.insiders > 1 ? "s" : ""}</span>`);
+    if (r.above200 && (r.r6 || 0) > 0) sigs.push(`<span class="fl-chip up">Uptrend</span>`);
+    if (r.edge != null && r.edge >= 50) sigs.push(`<span class="fl-chip edge">Edge ${r.edge}</span>`);
+    const delta = kind === "exiting"
+      ? `<b class="down">${r.sellers} selling</b><i>${r.buyers} buying</i>`
+      : r.prev_buyers === 0
+        ? `<b class="up">${r.buyers} buying</b><i>none before</i>`
+        : `<b class="up">${r.buyers} buying</b><i>was ${r.prev_buyers}</i>`;
+    return `<div class="fl-row" data-ticker="${esc(r.ticker)}">
+      ${watchStar(r.ticker)}
+      <div class="fl-id">
+        <span class="fl-tk clickable-ticker" data-ticker="${esc(r.ticker)}">${esc(r.ticker)}</span>
+        <div class="fl-co">${esc(r.company || "")}</div>
+      </div>
+      <div class="fl-delta">${delta}</div>
+      <div class="fl-net ${r.net >= 0 ? "up" : "down"}">${r.net > 0 ? "+" : "\u2212"}${fmtMoney(Math.abs(r.net))}</div>
+      <div class="fl-spark">${flowSpark(r.spark)}</div>
+      <div class="fl-sigs">${sigs.join("") || `<span class="fl-none">\u2014</span>`}</div>
+    </div>`;
+  }
+
+  function flowBlock(title, sub, rows, kind) {
+    return `<div class="fl-block">
+      <div class="fl-block-head"><h3>${title}</h3><p>${sub}</p></div>
+      ${rows.length ? `<div class="fl-list">
+        <div class="fl-row fl-head"><span></span><span>Stock</span><span>Filers</span><span class="ta-r">Net</span><span>Holders</span><span>Signals</span></div>
+        ${rows.map(r => flowRow(r, kind)).join("")}</div>`
+        : `<div class="empty-note">Nothing in this window.</div>`}
+    </div>`;
+  }
+
+  function renderFlowView() {
+    const F = DATA.flow;
+    if (!F || !F.has_history)
+      return `<section class="data-section"><div class="lead-hero"><div class="lead-hero-copy">
+        <div class="lead-eyebrow">Capital flow</div><h1 class="lead-h1">Where the money<br>is moving</h1>
+        <p class="lead-tagline">New congressional positions, tracked by filing date.</p></div></div>
+        <div class="empty-note">Flow needs a longer run of filings than we have yet — it appears once enough history accumulates.</div></section>`;
+
+    const B = F[flowWindow] || F.w90 || {};
+    const tab = (k, l) => `<button class="rt-btn ${flowWindow === k ? "active" : ""}" data-flowwin="${k}">${l}</button>`;
+
+    const rot = (F.rotation || []).filter(b => Math.abs(b.net) > 0);
+    const rotMax = Math.max(1, ...rot.map(b => Math.abs(b.net)));
+    const rotBars = rot.map(b => {
+      const sc = sectorMeta(b.sector);
+      const w = Math.abs(b.net) / rotMax * 50;
+      const left = b.net >= 0 ? 50 : 50 - w;
+      return `<div class="rot-row">
+        <span class="rot-lab">${esc(sc.short)}</span>
+        <span class="rot-track"><i class="rot-zero"></i><span class="rot-fill ${b.net >= 0 ? "up" : "down"}" style="left:${left.toFixed(1)}%;width:${Math.max(0.8, w).toFixed(1)}%"></span></span>
+        <span class="rot-val ${b.net >= 0 ? "num-up" : "num-down"}">${b.net > 0 ? "+" : "\u2212"}${fmtMoney(Math.abs(b.net))}</span>
+      </div>`;
+    }).join("");
+
+    return `<section class="data-section">
+      <div class="lead-hero">
+        <div class="lead-hero-copy">
+          <div class="lead-eyebrow">Capital flow · by filing date</div>
+          <h1 class="lead-h1">Where the money<br>is moving</h1>
+          <p class="lead-tagline">The Stocks board shows where congressional money <b>sits</b>. This shows where it is <b>going</b>. Everything here counts distinct members who filed inside a window against the window immediately before it — so a name that eight members have held for a year does not look like a name eight members just bought.</p>
+          <div class="lead-stat-row">
+            <div class="lead-stat"><b>${(B.n_names || 0).toLocaleString()}</b><i>names filed in ${B.days} days</i></div>
+            <div class="lead-stat"><b>${B.n_buyers || 0}</b><i>members buying</i></div>
+            <div class="lead-stat"><b class="${(B.net_flow || 0) >= 0 ? "up" : "down"}">${(B.net_flow || 0) > 0 ? "+" : "\u2212"}${fmtMoney(Math.abs(B.net_flow || 0))}</b><i>net flow</i></div>
+          </div>
+        </div>
+        ${flowCurve(F.curve)}
+      </div>
+
+      <div class="lead-controls" style="margin-top:8px">
+        <div class="sort-wrap"><span class="sort-label">Lookback</span><div class="race-toggle" style="margin:0">${tab("w90", "90 days")}${tab("w180", "180 days")}</div></div>
+        <span class="section-count">filings land a median ${DATA.lag_study ? DATA.lag_study.lag_median : 27} days after the trade, so a shorter window mostly shows paperwork</span>
+      </div>
+
+      ${flowBlock("Consensus forming", `More members filed buys in the last ${B.days} days than in the ${B.days} before — a position being built, not held.`, B.building || [], "building")}
+      ${flowBlock("Newly on the radar", `Nobody in Congress filed a buy in these names in the previous ${B.days} days.`, B.fresh || [], "fresh")}
+      ${flowBlock("Being distributed", `More members selling than buying, with the dollars going the same way.`, B.exiting || [], "exiting")}
+
+      ${rot.length ? `<div class="fl-block">
+        <div class="fl-block-head"><h3>Sector rotation</h3><p>Net congressional dollars by sector over ${F.rotation_days} days.</p></div>
+        <div class="rot-wrap">${rotBars}</div>
+      </div>` : ""}
+
+      <div class="hero-note">Flow is measured on the filing date, not the trade date, so every window here is one a reader could have acted inside. "Filers" counts distinct members, not trades. Dollar figures are midpoints of the disclosed ranges. Not investment advice.</div>
     </section>`;
   }
 
@@ -4172,6 +4510,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const el = document.getElementById("content");
     if (activeView === "home") el.innerHTML = renderHomeView();
     else if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "flow") el.innerHTML = renderFlowView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "sentiment") el.innerHTML = renderStreetView();
     else if (activeView === "screener") el.innerHTML = renderScreenerView();
@@ -4266,6 +4605,14 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     el.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "auto" }); setHash(b.dataset.goto); }));
     // hero curve basis: as-disclosed (implementable) vs as-traded. Re-render in
     // place and hold the scroll position, so the two curves can be compared.
+    el.querySelectorAll("[data-watch]").forEach(b => b.addEventListener("click", e => {
+      e.stopPropagation(); toggleWatch(b.dataset.watch);
+    }));
+    el.querySelectorAll("[data-flowwin]").forEach(b => b.addEventListener("click", () => {
+      if (flowWindow === b.dataset.flowwin) return;
+      flowWindow = b.dataset.flowwin;
+      const y = window.scrollY; renderContent(); window.scrollTo({ top: y, behavior: "auto" });
+    }));
     el.querySelectorAll("[data-race]").forEach(b => b.addEventListener("click", () => {
       if (raceMode === b.dataset.race) return;
       raceMode = b.dataset.race;
@@ -4274,6 +4621,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
       window.scrollTo({ top: y, behavior: "auto" });
     }));
     fillTreemaps();
+    renderWatchPanel();
     revealSections();
     enhanceContent();
   }
@@ -4431,11 +4779,29 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     }
     if (e.key === "Escape") {
       if (document.getElementById("cmdk").classList.contains("open")) { closeCmdk(); return; }
+      const wd = document.getElementById("watchDrawer");
+      if (wd && wd.classList.contains("open")) { closeWatchlist(); return; }
       if (document.getElementById("stockModal").classList.contains("open")) setHash(activeView);
     }
   });
   const cmdkBtn = document.getElementById("cmdkBtn");
   if (cmdkBtn) cmdkBtn.addEventListener("click", openCmdk);
+
+  // watchlist: restore before first render so stars paint in the right state
+  loadWatch();
+  const watchBtn = document.getElementById("watchBtn");
+  if (watchBtn) watchBtn.addEventListener("click", () => {
+    const d = document.getElementById("watchDrawer");
+    if (d && d.classList.contains("open")) closeWatchlist(); else openWatchlist();
+  });
+  const watchClose = document.getElementById("watchClose");
+  if (watchClose) watchClose.addEventListener("click", closeWatchlist);
+  document.addEventListener("click", e => {
+    const d = document.getElementById("watchDrawer");
+    if (!d || !d.classList.contains("open")) return;
+    if (d.contains(e.target) || e.target.closest("#watchBtn") || e.target.closest("[data-watch]")) return;
+    closeWatchlist();
+  });
 
   loadData();
 </script>

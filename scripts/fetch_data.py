@@ -2889,6 +2889,139 @@ def _curve_risk(series):
     }
 
 
+def _snap_at(snaps, days_back):
+    """The snapshot closest to `days_back` days before the latest one."""
+    if not snaps:
+        return None
+    end = datetime.strptime(snaps[-1]["date"], "%Y-%m-%d")
+    target = end - timedelta(days=days_back)
+    return min(snaps, key=lambda s: abs((datetime.strptime(s["date"], "%Y-%m-%d") - target).days))
+
+
+def build_flow(trades, stock_signals, history=None, windows=(90, 180)):
+    """Where congressional money is moving, not where it already sits.
+
+    A stock eight members have held for a year and a stock eight members bought
+    last month look identical on the Stocks board. They are not the same signal.
+
+    Everything here is keyed on the FILING date, which is both the date a reader
+    could have acted on and -- unlike the rolling member counts in the daily
+    snapshots -- free of decay artefacts. Counting members who filed inside a
+    window against the window immediately before it isolates genuinely new
+    interest from trades simply ageing out of a lookback."""
+    if not trades:
+        return {"has_history": False}
+    meta = {s["ticker"]: s for s in stock_signals}
+    dated = []
+    for t in trades:
+        if not t.get("ticker"):
+            continue
+        fd = _parse_mdy(t.get("filed_date"))
+        if fd == datetime.min:
+            continue
+        dated.append((fd, t))
+    if len(dated) < 50:
+        return {"has_history": False}
+    asof = max(fd for fd, _ in dated)
+
+    def agg(lo, hi):
+        """Per-ticker aggregate of filings in [asof-hi, asof-lo)."""
+        out = {}
+        for fd, t in dated:
+            age = (asof - fd).days
+            if not (lo <= age < hi):
+                continue
+            tk = t["ticker"]
+            b = out.setdefault(tk, {"buyers": set(), "sellers": set(), "net": 0, "vol": 0, "n": 0})
+            val = t.get("est_amount") or 0
+            if _is_buy(t.get("type")):
+                b["buyers"].add(t["member"])
+                b["net"] += val
+            else:
+                b["sellers"].add(t["member"])
+                b["net"] -= val
+            b["vol"] += val
+            b["n"] += 1
+        return out
+
+    out = {"has_history": True, "as_of": asof.strftime("%Y-%m-%d"),
+           "windows": list(windows)}
+
+    for days in windows:
+        cur, prev = agg(0, days), agg(days, days * 2)
+        rows = []
+        for tk, c in cur.items():
+            m = meta.get(tk)
+            p_ = prev.get(tk) or {"buyers": set(), "sellers": set(), "net": 0, "vol": 0}
+            nb, pb = len(c["buyers"]), len(p_["buyers"])
+            rows.append({
+                "ticker": tk,
+                "company": (m or {}).get("company") or "",
+                "sector": (m or {}).get("sector") or "",
+                "buyers": nb, "sellers": len(c["sellers"]),
+                "prev_buyers": pb,
+                "d_buyers": nb - pb,
+                "net": c["net"], "vol": c["vol"], "trades": c["n"],
+                "fresh": pb == 0 and nb > 0,
+                "insiders": (m or {}).get("insider_buyers") or 0,
+                "edge": (m or {}).get("edge"),
+                "above200": (m or {}).get("above200"),
+                "r6": (m or {}).get("r6"),
+                "members_total": (m or {}).get("member_count") or 0,
+                "spark": ((history or {}).get("stock_series") or {}).get(tk),
+            })
+
+        # Building: more distinct buyers than the window before, net positive.
+        building = sorted([r for r in rows if r["d_buyers"] > 0 and r["net"] > 0],
+                          key=lambda r: (r["d_buyers"], r["net"]), reverse=True)[:15]
+        # Fresh: nobody filed a buy in the prior window at all.
+        fresh = sorted([r for r in rows if r["fresh"] and r["net"] > 0],
+                       key=lambda r: (r["buyers"], r["vol"]), reverse=True)[:15]
+        # Exiting: sellers outnumber buyers and the net is negative.
+        exiting = sorted([r for r in rows if r["sellers"] > r["buyers"] and r["net"] < 0],
+                         key=lambda r: r["net"])[:15]
+        out["w%d" % days] = {
+            "days": days,
+            "building": building, "fresh": fresh, "exiting": exiting,
+            "n_names": len(rows),
+            "n_buyers": len(set().union(*[r_["buyers"] for r_ in cur.values()]) if cur else set()),
+            "net_flow": sum(r["net"] for r in rows),
+            "gross_flow": sum(r["vol"] for r in rows),
+        }
+
+    # ---- sector rotation on the longer window
+    long_days = max(windows)
+    cur, prev = agg(0, long_days), agg(long_days, long_days * 2)
+    by_sec = {}
+    for tk, c in cur.items():
+        code = ((meta.get(tk) or {}).get("sector")) or "OTHER"
+        b = by_sec.setdefault(code, {"sector": code, "net": 0, "prev_net": 0, "buyers": 0, "n": 0})
+        b["net"] += c["net"]
+        b["buyers"] += len(c["buyers"])
+        b["n"] += 1
+    for tk, pv in prev.items():
+        code = ((meta.get(tk) or {}).get("sector")) or "OTHER"
+        by_sec.setdefault(code, {"sector": code, "net": 0, "prev_net": 0, "buyers": 0, "n": 0})
+        by_sec[code]["prev_net"] += pv["net"]
+    rotation = [b for b in by_sec.values() if abs(b["net"]) > 10000 or abs(b["prev_net"]) > 10000]
+    for b in rotation:
+        b["d_net"] = b["net"] - b["prev_net"]
+    rotation.sort(key=lambda b: b["net"], reverse=True)
+    out["rotation"] = rotation[:14]
+    out["rotation_days"] = long_days
+
+    # ---- weekly net flow curve, by filing week
+    weeks = {}
+    for fd, t in dated:
+        if (asof - fd).days > 365:
+            continue
+        wk = (fd - timedelta(days=fd.weekday())).strftime("%Y-%m-%d")
+        val = t.get("est_amount") or 0
+        weeks[wk] = weeks.get(wk, 0) + (val if _is_buy(t.get("type")) else -val)
+    out["curve"] = [{"week": k, "net": v} for k, v in sorted(weeks.items())][-52:]
+    return out
+
+
 def build_member_race(members, trades, prices, top_n=5, min_buys=3):
     """The Home hero chart: cumulative-return curves of the members who are
     OUTPACING the S&P 500, drawn over the index itself.
@@ -3391,6 +3524,12 @@ def update_history(overview, stock_signals):
     snaps.append(snapshot)
     snaps.sort(key=lambda s: s["date"])
     history["snapshots"] = snaps[-HISTORY_MAX_DAYS:]
+    # member-count series per ticker, so a flow row can show its own shape
+    series = {}
+    for snap in history["snapshots"][-30:]:
+        for tk, v in snap["stocks"].items():
+            series.setdefault(tk, []).append(v["n"])
+    history["stock_series"] = {tk: v for tk, v in series.items() if len(v) >= 8 and max(v) > 0}
     with open(HISTORY_PATH, "w", encoding="utf-8") as f:
         json.dump(history, f, separators=(",", ":"))  # compact -- this file grows
     return history
@@ -3624,6 +3763,13 @@ def main():
         s["spark"] = scr_spark.get(s["ticker"]) or _sparkline(prices.get(s["ticker"]))
 
     history = update_history(overview, stock_signals)
+    flow = build_flow(trades, stock_signals, history)
+    if flow.get("has_history"):
+        w = flow.get("w90") or {}
+        print(f"  flow: {w.get('n_names', 0)} names filed in the last {w.get('days', 0)}d, "
+              f"{len(w.get('building', []))} building / {len(w.get('fresh', []))} fresh / "
+              f"{len(w.get('exiting', []))} exiting, {len(flow.get('rotation', []))} sectors",
+              file=sys.stderr)
     trends = compute_trends(history, stock_signals)
     stock_history = build_stock_history(history, [s["ticker"] for s in stock_signals[:120]])
 
@@ -3646,6 +3792,7 @@ def main():
         "conviction": conviction,
         "street": street,
         "trends": trends,
+        "flow": flow,
         "stock_history": stock_history,
         "sectors": sector_summaries,
         "bills": bills,
