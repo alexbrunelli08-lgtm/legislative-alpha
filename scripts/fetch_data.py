@@ -1758,6 +1758,45 @@ def annotate_trade_parties(trades, index):
     return trades
 
 
+def _jackknife(by_ticker_dw):
+    """Drop the member's single most helpful ticker and recompute.
+
+    A dollar-weighted alpha built on thirty names is a record. The same number
+    built on one position that happened to 10x is a story about that position.
+    This reports the alpha with the best contributor removed, so a reader can see
+    which it is at a glance -- the standard leave-one-out robustness check, with
+    the unit being the TICKER rather than the trade."""
+    if len(by_ticker_dw) < 3:
+        return {"alpha_ex_best": None, "jk_dropped": None, "one_name": False}
+
+    def dw(dct):
+        num = sum(v * e / 100.0 for rows in dct.values() for v, e in rows)
+        den = sum(v for rows in dct.values() for v, _ in rows)
+        return (num / den * 100) if den else None
+
+    full = dw(by_ticker_dw)
+    if full is None:
+        return {"alpha_ex_best": None, "jk_dropped": None, "one_name": False}
+    worst, dropped = None, None
+    for tk in by_ticker_dw:
+        alt = dw({k: v for k, v in by_ticker_dw.items() if k != tk})
+        if alt is None:
+            continue
+        if worst is None or alt < worst:
+            worst, dropped = alt, tk
+    if worst is None:
+        return {"alpha_ex_best": None, "jk_dropped": None, "one_name": False}
+    return {
+        "alpha_ex_best": round(worst, 1),
+        "jk_dropped": dropped,
+        # Fragile = a positive record that does not survive losing one name,
+        # OR one where two thirds of the alpha walks out with that single name.
+        # The second clause matters: a record that falls 30pp to +1% is still
+        # "positive" but is plainly a story about one position.
+        "one_name": bool(full > 0 and (worst <= 0 or worst < full / 3.0)),
+    }
+
+
 def _cluster_tstat(by_ticker):
     """A one-sample t-stat on a member's implementable excess returns, with one
     observation per DISTINCT TICKER rather than per trade.
@@ -1807,7 +1846,8 @@ def build_member_profiles(trades):
             "best": None, "worst": None,
             # implementable leg: everything measured from the FILING date
             "filed_excess": 0, "filed_basis": 0, "filed_priced": 0, "filed_wins": 0,
-            "lags": [], "by_ticker": {},
+            "lags": [], "by_ticker": {}, "by_ticker_dw": {},
+            "sell_excess": [],
         })
         p["trade_count"] += 1
         val = t.get("est_amount", 0)
@@ -1842,10 +1882,14 @@ def build_member_profiles(trades):
                 # cluster by ticker for the t-test: ten buys of one stock are
                 # one bet repeated, not ten independent observations
                 p["by_ticker"].setdefault(t["ticker"], []).append(t["excess_filed_pct"])
+                # dollar terms too, so the jackknife can rebuild the weighted alpha
+                p["by_ticker_dw"].setdefault(t["ticker"], []).append((val, t["excess_filed_pct"]))
             if t.get("lag_days") is not None:
                 p["lags"].append(t["lag_days"])
         else:
             p["sell_count"] += 1
+            if t.get("excess_filed_pct") is not None:
+                p["sell_excess"].append(t["excess_filed_pct"])
             p["sell_value"] += val
         if t["ticker"]:
             p["tickers"][t["ticker"]] = p["tickers"].get(t["ticker"], 0) + 1
@@ -1892,6 +1936,11 @@ def build_member_profiles(trades):
             # skill vs noise, clustered by ticker (see _cluster_tstat)
             "tstat": _cluster_tstat(p["by_ticker"]),
             "n_tickers_scored": len(p["by_ticker"]),
+            # how much of the record is one lucky name (see _jackknife)
+            **_jackknife(p["by_ticker_dw"]),
+            # does this member's buying beat their own selling?
+            "sell_alpha": (round(sum(p["sell_excess"]) / len(p["sell_excess"]), 1)
+                           if len(p["sell_excess"]) >= 5 else None),
         })
 
     # Confidence-adjust the alpha so a lucky one- or two-trade streak can't top
@@ -2672,8 +2721,41 @@ def build_lag_study(trades, members):
     ts = [m["tstat"] for m in members if m.get("tstat") is not None]
     strong = sum(1 for t in ts if abs(t) > 2)
 
+    # Can they tell their own buys from their own sells? A stock-picker's buys
+    # should beat the things they chose to get rid of. This compares the two
+    # populations directly (Welch, unequal variances) and then repeats the test
+    # inside each member so it cannot be driven by whoever trades most.
+    sell_rows = [t["excess_filed_pct"] for t in trades
+                 if not _is_buy(t.get("type")) and t.get("excess_filed_pct") is not None]
+    buy_rows = [t["excess_filed_pct"] for t in rows]
+    disc = None
+    if len(sell_rows) >= 100 and len(buy_rows) >= 100:
+        def ms(v):
+            m = sum(v) / len(v)
+            return m, (sum((x - m) ** 2 for x in v) / max(1, len(v) - 1)) ** 0.5, len(v)
+        bm, bs, bn = ms(buy_rows)
+        sm, ss_, sn = ms(sell_rows)
+        se = (bs * bs / bn + ss_ * ss_ / sn) ** 0.5
+        per_member = [m["alpha_filed"] - m["sell_alpha"] for m in members
+                      if m.get("alpha_filed") is not None and m.get("sell_alpha") is not None]
+        pm = None
+        if len(per_member) >= 8:
+            mu = sum(per_member) / len(per_member)
+            sd = (sum((x - mu) ** 2 for x in per_member) / max(1, len(per_member) - 1)) ** 0.5
+            pm = {"n": len(per_member), "mean": round(mu, 2),
+                  "t": round(mu / (sd / len(per_member) ** 0.5), 2) if sd else None,
+                  "positive": sum(1 for x in per_member if x > 0)}
+        disc = {
+            "buy_mean": round(bm, 2), "buy_n": bn,
+            "sell_mean": round(sm, 2), "sell_n": sn,
+            "gap": round(bm - sm, 2),
+            "t": round((bm - sm) / se, 2) if se else None,
+            "per_member": pm,
+        }
+
     return {
         "n_trades": n,
+        "discrimination": disc,
         "lag_median": lags[n // 2],
         "lag_mean": round(sum(lags) / n),
         "lag_p90": lags[int(n * 0.9)],
@@ -2736,6 +2818,38 @@ def build_conviction_validation(insiders):
         # the honest verdict, stated in the data rather than in marketing copy
         "significant": bool(abs(t) > 2),
         "spread": round(quartiles[-1]["mean"] - quartiles[0]["mean"], 1) if len(quartiles) >= 2 else None,
+    }
+
+
+def _curve_risk(series):
+    """Max drawdown and annualised volatility for a cumulative-return series
+    (expressed in percent, starting at 0).
+
+    Two curves ending at the same place are not the same result: one may have
+    put you through a 30% hole to get there. `ret_vol` is return divided by
+    volatility -- a Sharpe-shaped number with no risk-free rate, so it is only
+    meaningful compared against the S&P line computed the same way."""
+    if not series or len(series) < 10:
+        return {}
+    peak, mdd = -1e18, 0.0
+    for v in series:
+        peak = max(peak, v)
+        dd = (1 + v / 100.0) / (1 + peak / 100.0) - 1
+        mdd = min(mdd, dd)
+    rets = []
+    for i in range(1, len(series)):
+        prev, cur = 1 + series[i - 1] / 100.0, 1 + series[i] / 100.0
+        if prev > 0:
+            rets.append(cur / prev - 1)
+    vol = 0.0
+    if len(rets) > 2:
+        mu = sum(rets) / len(rets)
+        vol = (sum((r - mu) ** 2 for r in rets) / (len(rets) - 1)) ** 0.5 * (252 ** 0.5) * 100
+    final = series[-1]
+    return {
+        "maxdd": round(mdd * 100, 1),
+        "vol": round(vol, 1),
+        "ret_vol": round(final / vol, 2) if vol > 1 else None,
     }
 
 
@@ -2827,7 +2941,8 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
         runs.append({"member": member, "final": series[-1], "series": series,
                      "coverage": coverage,
                      "filed_final": f_series[-1], "filed_series": f_series,
-                     "filed_coverage": f_coverage})
+                     "filed_coverage": f_coverage,
+                     "risk": _curve_risk(series), "filed_risk": _curve_risk(f_series)})
 
     party = {m["member"]: m.get("party", "?") for m in members}
     # A member who only starts holding late in the window draws a flat line that
@@ -2849,6 +2964,7 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
         "start_date": dates[0], "end_date": dates[-1],
         "dates": dates,
         "spy": spy_series, "spy_final": spy_final,
+        "spy_risk": _curve_risk(spy_series),
         "n_beating": sum(1 for r in runs if r["final"] > spy_final),
         "n_beating_filed": sum(1 for r in runs if r["filed_final"] > spy_final),
         "n_ranked": len(runs),
