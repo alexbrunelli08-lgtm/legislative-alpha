@@ -58,6 +58,8 @@ TRADES_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "trades_cache.json")  # per-f
 INSIDER_CACHE_PATH = os.path.join(SCRIPT_DIR, "..", "insider_cache.json")  # SEC Form 4 filings
 INSIDER_FILINGS_PER_RUN = 600     # recent Form 4 filings to scan per run (1 req each)
 INSIDER_MAX_DAYS = 120            # keep insider transactions from this window
+DISCLOSURE_MAX_LAG = 400          # filings later than this are stale amendments, not signal
+MIN_SCORED_BUYS_BACKEND = 3       # below this a member's record is noise, not a record
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
 SEC_HEADERS = {"User-Agent": "Legislative Alpha research tracker admin@legislative-alpha.example",
@@ -1419,18 +1421,42 @@ def _nearest_close(series, date_str, back=10):
     return None
 
 
+def _next_close(series, date_str, fwd=10):
+    """Close on or immediately AFTER date_str -- the first price a follower who
+    saw the filing that morning could actually have paid."""
+    if not series:
+        return None
+    d = datetime.strptime(date_str, "%Y-%m-%d")
+    for _ in range(fwd + 1):
+        c = series.get(d.strftime("%Y-%m-%d"))
+        if c:
+            return c
+        d += timedelta(days=1)
+    return None
+
+
 def annotate_trade_pnl(trades, prices):
-    """Attach paper gain/loss to each trade: the stock's return from the
-    transaction date to the latest close. For a PURCHASE this is the position's
-    unrealized P&L; for a SALE it's how the stock moved after the member exited
-    (a positive number means it kept rising after they sold). Only trades in
-    tickers we have prices for get values; the rest stay unpriced (null)."""
+    """Attach paper gain/loss to each trade, measured TWO ways.
+
+    `return_pct` / `excess_pct` run from the TRANSACTION date. That is the
+    member's own experience, but nobody else could trade on it: the STOCK Act
+    filing arrives a median ~28 days later (mean ~67; a fifth land past 90 days).
+    Measured from there it is a look-ahead number.
+
+    `return_filed_pct` / `excess_filed_pct` run from the FILING date -- the first
+    price a follower could actually have paid. That is the implementable figure,
+    and the gap between the two is the part of the move that happens inside the
+    disclosure blackout, where only the member can act.
+
+    For a PURCHASE these are the position's unrealized P&L; for a SALE they show
+    how the stock moved after the member exited."""
     last_close = {tk: s[max(s)] for tk, s in prices.items() if s}
     spy = prices.get("SPY")
     spy_last = last_close.get("SPY")
-    priced = 0
+    priced = filed_priced = 0
     for t in trades:
         t["entry_price"] = t["last_price"] = t["return_pct"] = t["gain_value"] = t["excess_pct"] = None
+        t["return_filed_pct"] = t["excess_filed_pct"] = t["lag_days"] = None
         tk = t.get("ticker")
         series = prices.get(tk) if tk else None
         if not series or not t.get("transaction_date"):
@@ -1460,7 +1486,31 @@ def annotate_trade_pnl(trades, prices):
         if _is_buy(t["type"]):
             t["gain_value"] = round(t.get("est_amount", 0) * ret)
         priced += 1
-    print(f"  trade P&L: priced {priced}/{len(trades)} trades", file=sys.stderr)
+
+        # ---- the implementable leg: entry at the first close after the filing
+        # NB _parse_mdy returns datetime.min (not None) on a bad date
+        fdt = _parse_mdy(t.get("filed_date"))
+        txdt = _parse_mdy(t.get("transaction_date"))
+        if fdt == datetime.min or txdt == datetime.min:
+            continue
+        lag = (fdt - txdt).days
+        # negative lag = a filing dated before the trade (data error); absurd
+        # lags are stale amendments rather than a tradeable signal
+        if lag < 0 or lag > DISCLOSURE_MAX_LAG:
+            continue
+        t["lag_days"] = lag
+        fentry = _next_close(series, fdt.strftime("%Y-%m-%d"))
+        if not fentry:
+            continue
+        fret = last / fentry - 1
+        t["return_filed_pct"] = round(fret * 100, 1)
+        if spy and spy_last:
+            spy_fentry = _next_close(spy, fdt.strftime("%Y-%m-%d"))
+            if spy_fentry:
+                t["excess_filed_pct"] = round((fret - (spy_last / spy_fentry - 1)) * 100, 1)
+                filed_priced += 1
+    print(f"  trade P&L: priced {priced}/{len(trades)} trades "
+          f"({filed_priced} also priced from the filing date)", file=sys.stderr)
     return trades
 
 
@@ -1708,6 +1758,28 @@ def annotate_trade_parties(trades, index):
     return trades
 
 
+def _cluster_tstat(by_ticker):
+    """A one-sample t-stat on a member's implementable excess returns, with one
+    observation per DISTINCT TICKER rather than per trade.
+
+    Buying NVDA ten times on the way up is one idea expressed ten times, not ten
+    independent bets; pooling raw trades inflates t by roughly sqrt(trades per
+    idea). Averaging within a ticker first is the cheap, defensible fix. Even
+    then the residuals are not truly independent -- names share sectors and
+    overlapping holding periods, all measured to one common end date -- so read
+    |t| > 2 as 'worth a look', not as a p-value. With ~40 scoreable members you
+    should expect about two to clear that bar on luck alone."""
+    vals = [sum(v) / len(v) for v in by_ticker.values() if v]
+    n = len(vals)
+    if n < 4:
+        return None
+    mean = sum(vals) / n
+    var = sum((x - mean) ** 2 for x in vals) / (n - 1)
+    if var <= 0:
+        return None
+    return round(mean / ((var / n) ** 0.5), 2)
+
+
 def build_member_profiles(trades):
     """Autopilot-style 'follow a politician': aggregate every disclosed trade
     by the member who filed it, so each politician becomes a trackable
@@ -1733,6 +1805,9 @@ def build_member_profiles(trades):
             "buy_basis": 0, "buy_gain": 0, "priced": 0, "wins": 0,
             "buy_excess": 0, "excess_basis": 0, "beat_market": 0,
             "best": None, "worst": None,
+            # implementable leg: everything measured from the FILING date
+            "filed_excess": 0, "filed_basis": 0, "filed_priced": 0, "filed_wins": 0,
+            "lags": [], "by_ticker": {},
         })
         p["trade_count"] += 1
         val = t.get("est_amount", 0)
@@ -1756,6 +1831,19 @@ def build_member_profiles(trades):
                     p["excess_basis"] += val
                     if t["excess_pct"] > 0:
                         p["beat_market"] += 1
+            # the implementable leg is tracked independently: a trade can be
+            # priced from the filing date even when the trade-date leg is not
+            if t.get("excess_filed_pct") is not None:
+                p["filed_excess"] += val * t["excess_filed_pct"] / 100.0
+                p["filed_basis"] += val
+                p["filed_priced"] += 1
+                if t["excess_filed_pct"] > 0:
+                    p["filed_wins"] += 1
+                # cluster by ticker for the t-test: ten buys of one stock are
+                # one bet repeated, not ten independent observations
+                p["by_ticker"].setdefault(t["ticker"], []).append(t["excess_filed_pct"])
+            if t.get("lag_days") is not None:
+                p["lags"].append(t["lag_days"])
         else:
             p["sell_count"] += 1
             p["sell_value"] += val
@@ -1796,6 +1884,14 @@ def build_member_profiles(trades):
             "priced_buys": p["priced"],
             "best_trade": p["best"],
             "worst_trade": p["worst"],
+            # --- implementable: measured from the day the filing went public ---
+            "alpha_filed": round(p["filed_excess"] / p["filed_basis"] * 100, 1) if p["filed_basis"] else None,
+            "filed_buys": p["filed_priced"],
+            "filed_win_rate": round(p["filed_wins"] / p["filed_priced"] * 100) if p["filed_priced"] else None,
+            "median_lag": (sorted(p["lags"])[len(p["lags"]) // 2] if p["lags"] else None),
+            # skill vs noise, clustered by ticker (see _cluster_tstat)
+            "tstat": _cluster_tstat(p["by_ticker"]),
+            "n_tickers_scored": len(p["by_ticker"]),
         })
 
     # Confidence-adjust the alpha so a lucky one- or two-trade streak can't top
@@ -1814,6 +1910,17 @@ def build_member_profiles(trades):
                           if p["alpha"] is not None and n > 0 else None)
         p["alpha_prior"] = alpha_prior
         p["alpha_k"] = ALPHA_SHRINK_K
+
+    # the implementable leg gets the same treatment, with its own prior -- the
+    # two distributions are not the same, so they must not share a mean
+    filed_sample = [p["alpha_filed"] for p in out
+                    if p["alpha_filed"] is not None and (p["filed_buys"] or 0) >= 3]
+    filed_prior = round(statistics.median(filed_sample), 1) if filed_sample else 0.0
+    for p in out:
+        n = p["filed_buys"] or 0
+        p["alpha_filed_adj"] = (round((n * p["alpha_filed"] + ALPHA_SHRINK_K * filed_prior) / (n + ALPHA_SHRINK_K), 1)
+                                if p["alpha_filed"] is not None and n > 0 else None)
+        p["alpha_filed_prior"] = filed_prior
 
     out.sort(key=lambda p: p["total_value"], reverse=True)
     return out
@@ -2505,6 +2612,133 @@ def build_performance(trades, prices):
     }
 
 
+def build_lag_study(trades, members):
+    """The question the whole site turns on: does following Congress work AFTER
+    you are allowed to see the trade?
+
+    The STOCK Act gives members up to 45 days to file, and in practice a fifth
+    of filings land well past that. Every headline return here -- and on every
+    other site like it -- is measured from the transaction date, which is a
+    price the public never had. This measures the same buys twice: once from the
+    trade date (the member's experience) and once from the first close after the
+    filing (a follower's), and reports the gap."""
+    rows = [t for t in trades
+            if _is_buy(t.get("type"))
+            and t.get("excess_pct") is not None
+            and t.get("excess_filed_pct") is not None
+            and t.get("lag_days") is not None]
+    if len(rows) < 100:
+        return None
+
+    lags = sorted(t["lag_days"] for t in rows)
+    n = len(lags)
+
+    def stats(key):
+        v = sorted(t[key] for t in rows)
+        mean = sum(v) / len(v)
+        sd = (sum((x - mean) ** 2 for x in v) / max(1, len(v) - 1)) ** 0.5
+        return {
+            "mean": round(mean, 2),
+            "median": round(v[len(v) // 2], 2),
+            "win": round(100 * sum(1 for x in v if x > 0) / len(v)),
+            "t": round(mean / (sd / len(v) ** 0.5), 2) if sd else None,
+        }
+
+    # dollar-weighted, matching how the leaderboard aggregates a member
+    def dw(key):
+        num = sum((t.get("est_amount") or 0) * t[key] for t in rows)
+        den = sum((t.get("est_amount") or 0) for t in rows)
+        return round(num / den, 2) if den else None
+
+    buckets = []
+    for lo, hi, lbl in [(0, 15, "Within 15 days"), (16, 30, "16-30 days"),
+                        (31, 45, "31-45 days"), (46, 90, "46-90 days"),
+                        (91, DISCLOSURE_MAX_LAG, "Over 90 days")]:
+        g = [t for t in rows if lo <= t["lag_days"] <= hi]
+        if len(g) < 25:
+            continue
+        buckets.append({
+            "label": lbl, "n": len(g),
+            "trade": round(sum(t["excess_pct"] for t in g) / len(g), 1),
+            "filed": round(sum(t["excess_filed_pct"] for t in g) / len(g), 1),
+        })
+
+    # how many members keep a positive edge once the lag is priced in
+    elig = [m for m in members if (m.get("filed_buys") or 0) >= MIN_SCORED_BUYS_BACKEND]
+    kept = sum(1 for m in elig if (m.get("alpha_filed") or 0) > 0)
+    trade_pos = sum(1 for m in members
+                    if (m.get("priced_buys") or 0) >= MIN_SCORED_BUYS_BACKEND and (m.get("alpha") or 0) > 0)
+    # cross-sectional skill test: more |t|>2 than luck would produce?
+    ts = [m["tstat"] for m in members if m.get("tstat") is not None]
+    strong = sum(1 for t in ts if abs(t) > 2)
+
+    return {
+        "n_trades": n,
+        "lag_median": lags[n // 2],
+        "lag_mean": round(sum(lags) / n),
+        "lag_p90": lags[int(n * 0.9)],
+        "pct_over_45": round(100 * sum(1 for l in lags if l > 45) / n),
+        "trade_date": stats("excess_pct"),
+        "filed_date": stats("excess_filed_pct"),
+        "dw_trade": dw("excess_pct"),
+        "dw_filed": dw("excess_filed_pct"),
+        "buckets": buckets,
+        "members_scored": len(elig),
+        "members_positive_filed": kept,
+        "members_positive_trade": trade_pos,
+        "tstat_tested": len(ts),
+        "tstat_strong": strong,
+        "tstat_expected_by_chance": round(0.05 * len(ts), 1),
+    }
+
+
+def build_conviction_validation(insiders):
+    """Does the 0-100 conviction score actually predict anything?
+
+    A score nobody checks is decoration. This sorts every scored buy that now
+    has a realised excess return into quartiles and reports what each earned,
+    plus the rank correlation between score and outcome and its t-stat. If the
+    number is noise, the site should say so rather than keep displaying it as
+    though it works."""
+    rows = [x for x in (insiders.get("recent_buys") or [])
+            if x.get("conviction") is not None and x.get("since_excess") is not None]
+    if len(rows) < 24:
+        return None
+    rows.sort(key=lambda x: x["conviction"])
+    n = len(rows)
+    q = n // 4
+    quartiles = []
+    for i, lbl in enumerate(["Lowest", "Low-mid", "High-mid", "Highest"]):
+        g = rows[i * q:(i + 1) * q] if i < 3 else rows[3 * q:]
+        if not g:
+            continue
+        ex = [x["since_excess"] for x in g]
+        quartiles.append({
+            "label": lbl, "n": len(g),
+            "lo": g[0]["conviction"], "hi": g[-1]["conviction"],
+            "mean": round(sum(ex) / len(ex), 1),
+            "median": round(sorted(ex)[len(ex) // 2], 1),
+            "win": round(100 * sum(1 for e in ex if e > 0) / len(ex)),
+        })
+
+    xs = [x["conviction"] for x in rows]
+    ys = [x["since_excess"] for x in rows]
+    mx, my = sum(xs) / n, sum(ys) / n
+    sx = sum((a - mx) ** 2 for a in xs) ** 0.5
+    sy = sum((b - my) ** 2 for b in ys) ** 0.5
+    r = (sum((a - mx) * (b - my) for a, b in zip(xs, ys)) / (sx * sy)) if sx and sy else 0.0
+    t = r * ((n - 2) / max(1e-9, 1 - r * r)) ** 0.5
+    return {
+        "n": n,
+        "quartiles": quartiles,
+        "r": round(r, 3),
+        "t": round(t, 2),
+        # the honest verdict, stated in the data rather than in marketing copy
+        "significant": bool(abs(t) > 2),
+        "spread": round(quartiles[-1]["mean"] - quartiles[0]["mean"], 1) if len(quartiles) >= 2 else None,
+    }
+
+
 def build_member_race(members, trades, prices, top_n=5, min_buys=3):
     """The Home hero chart: cumulative-return curves of the members who are
     OUTPACING the S&P 500, drawn over the index itself.
@@ -2548,26 +2782,35 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
 
     # eligible members: enough scored buys to be a real record
     eligible = {m["member"] for m in members if (m.get("priced_buys") or 0) >= min_buys}
-    by_member = {}
+    # Two event streams per member. `by_member` reacts on the day the member
+    # traded -- their own experience, and unobservable to anyone else.
+    # `by_member_filed` reacts on the day the filing went public, which is the
+    # only one a follower could have run. Same weighting, same holding rule.
+    by_member, by_member_filed = {}, {}
     for t in trades:
         if t["member"] not in eligible or t.get("ticker") not in rets:
             continue
+        sgn = 1 if _is_buy(t["type"]) else -1
         try:
             txd = datetime.strptime(t["transaction_date"], "%m/%d/%Y").strftime("%Y-%m-%d")
         except (ValueError, TypeError):
             continue
-        by_member.setdefault(t["member"], []).append((txd, t["ticker"], 1 if _is_buy(t["type"]) else -1))
+        by_member.setdefault(t["member"], []).append((txd, t["ticker"], sgn))
+        fdt = _parse_mdy(t.get("filed_date"))
+        if fdt != datetime.min:
+            by_member_filed.setdefault(t["member"], []).append(
+                (fdt.strftime("%Y-%m-%d"), t["ticker"], sgn))
 
-    runs = []
-    for member, tl in by_member.items():
-        tl.sort()
+    def follow(tl):
+        """Equal-weighted across whatever is currently held, rebalanced daily."""
+        tl = sorted(tl)
         net, ti, val, invested = {}, 0, 1.0, 0
         series = [0.0]
         for i in range(1, len(dates)):
             dprev, dcur = dates[i - 1], dates[i]
             while ti < len(tl) and tl[ti][0] <= dprev:
-                _, tk, sgn = tl[ti]
-                net[tk] = net.get(tk, 0) + sgn
+                _, tk, sg = tl[ti]
+                net[tk] = net.get(tk, 0) + sg
                 ti += 1
             held = [tk for tk, n in net.items() if n > 0]
             if held:
@@ -2575,8 +2818,16 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
             r = sum(rets[tk].get(dcur, 0) for tk in held) / len(held) if held else 0.0
             val *= (1 + r)
             series.append(round((val - 1) * 100, 2))
+        return series, round(invested / max(1, len(dates) - 1), 3)
+
+    runs = []
+    for member, tl in by_member.items():
+        series, coverage = follow(tl)
+        f_series, f_coverage = follow(by_member_filed.get(member, []))
         runs.append({"member": member, "final": series[-1], "series": series,
-                     "coverage": round(invested / max(1, len(dates) - 1), 3)})
+                     "coverage": coverage,
+                     "filed_final": f_series[-1], "filed_series": f_series,
+                     "filed_coverage": f_coverage})
 
     party = {m["member"]: m.get("party", "?") for m in members}
     # A member who only starts holding late in the window draws a flat line that
@@ -2599,6 +2850,7 @@ def build_member_race(members, trades, prices, top_n=5, min_buys=3):
         "dates": dates,
         "spy": spy_series, "spy_final": spy_final,
         "n_beating": sum(1 for r in runs if r["final"] > spy_final),
+        "n_beating_filed": sum(1 for r in runs if r["filed_final"] > spy_final),
         "n_ranked": len(runs),
         "members": beating,
     }
@@ -3154,6 +3406,16 @@ def main():
     performance = build_performance(trades, prices)
     # Home hero: cumulative-return curves of the members outpacing the S&P.
     member_race = build_member_race(members, trades, prices)
+    lag_study = build_lag_study(trades, members)
+    conviction_check = build_conviction_validation(insiders)
+    if lag_study:
+        print(f"  disclosure lag: median {lag_study['lag_median']}d, "
+              f"trade-date excess {lag_study['trade_date']['mean']}% vs "
+              f"filing-date {lag_study['filed_date']['mean']}%", file=sys.stderr)
+    if conviction_check:
+        print(f"  conviction score: r={conviction_check['r']} t={conviction_check['t']} "
+              f"({'significant' if conviction_check['significant'] else 'not significant'})",
+              file=sys.stderr)
 
     # Standalone whole-market technical screener (independent of congress).
     print("Building philosophy screener over the US stock universe...", file=sys.stderr)
@@ -3235,6 +3497,8 @@ def main():
         "bills": bills,
         "trades": trades,
         "members": members,
+        "lag_study": lag_study,
+        "conviction_check": conviction_check,
         "stock_signals": stock_signals,
     }
 

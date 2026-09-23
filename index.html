@@ -1377,6 +1377,65 @@
   .scr-empty { text-align: center; color: var(--text-dim); padding: 40px 20px; line-height: 1.6; font-family: var(--display); font-size: 14px; }
   @media (max-width: 560px) { .brd-row { grid-template-columns: 1fr 64px 42px; gap: 10px; } }
 
+  /* =====================================================================
+     REALITY CHECK -- the implementable-return section
+     ===================================================================== */
+  .race-toggle { display: inline-flex; gap: 2px; background: rgba(255,255,255,0.05); border-radius: var(--pill); padding: 3px; margin-top: 24px; flex-shrink: 0; }
+  .rt-btn { font-family: var(--display); font-size: 13px; font-weight: 500; letter-spacing: -0.012em; color: var(--text-dim);
+    background: none; border: none; border-radius: var(--pill); padding: 8px 16px; cursor: pointer; white-space: nowrap;
+    transition: color .3s var(--ease), background .3s var(--ease); }
+  .rt-btn:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.06); }
+  .rt-btn.active { background: rgba(255,255,255,0.14); color: var(--text); font-weight: 600; }
+
+  .rc-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
+  .rc-card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; padding: 26px 26px 22px; }
+  .rc-head { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.022em; color: var(--text); margin-bottom: 20px; }
+  .rc-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 10px 16px; padding: 14px 0; border-top: 1px solid var(--line-soft); }
+  .rc-row:first-of-type { border-top: none; padding-top: 0; }
+  .rc-lab { font-size: 14.5px; font-weight: 500; letter-spacing: -0.015em; color: var(--text); }
+  .rc-lab i { display: block; font-style: normal; font-size: 12.5px; font-weight: 400; color: var(--text-faint); margin-top: 4px; letter-spacing: -0.008em; }
+  .rc-num { font-family: var(--mono); font-weight: 600; font-size: 30px; letter-spacing: -0.04em; text-align: right; }
+  .rc-t { grid-column: 1 / -1; font-family: var(--display); font-size: 12px; color: var(--text-faint); letter-spacing: -0.008em; margin-top: -6px; }
+  .rc-stat { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-top: 1px solid var(--line-soft); }
+  .rc-stat:first-of-type { border-top: none; padding-top: 0; }
+  .rc-stat b { font-family: var(--display); font-weight: 700; font-size: 30px; letter-spacing: -0.04em; line-height: 1;
+    color: var(--accent); min-width: 52px; font-variant-numeric: tabular-nums; }
+  .rc-stat b.dim { color: var(--text-faint); }
+  .rc-stat i { font-style: normal; font-size: 13.5px; color: var(--text-dim); letter-spacing: -0.01em; line-height: 1.4; }
+  .rc-note { font-size: 12.5px; color: var(--text-faint); line-height: 1.55; letter-spacing: -0.008em; margin-top: 18px;
+    padding-top: 16px; border-top: 1px solid var(--line-soft); }
+  .rc-note b { color: var(--text-dim); font-weight: 500; }
+  .rc-table-wrap { margin-top: 16px; background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; padding: 26px; }
+  .rc-table-wrap .data-table-wrap { border: none; background: none; border-radius: 0; }
+  .rc-table-wrap .rc-note { margin-top: 0; border-top: none; padding-top: 14px; }
+  @media (max-width: 880px) { .rc-grid { grid-template-columns: 1fr; } }
+
+  /* significance marker on the leaderboard */
+  .sig-dot { display: inline-flex; align-items: center; gap: 5px; font-family: var(--display); font-size: 11px; font-weight: 500;
+    letter-spacing: -0.006em; padding: 3px 9px; border-radius: var(--pill); white-space: nowrap; }
+  .sig-dot.pos { color: var(--good); background: rgba(50,213,131,0.12); }
+  .sig-dot.neg { color: var(--bad); background: rgba(255,107,99,0.12); }
+  .lead-alt { font-family: var(--mono); font-size: 12.5px; letter-spacing: -0.02em; color: var(--text-faint); }
+  .lead-alt b { font-weight: 600; }
+  .lead-alt b.up { color: var(--good); } .lead-alt b.down { color: var(--bad); }
+
+  /* conviction score validation table */
+  .cv-wrap { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; padding: 26px; margin-bottom: 28px; }
+  .cv-verdict { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+  .cv-badge { font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: -0.008em; padding: 5px 12px;
+    border-radius: var(--pill); white-space: nowrap; flex-shrink: 0; }
+  .cv-badge.yes { color: var(--good); background: rgba(50,213,131,0.13); }
+  .cv-badge.no { color: var(--warn); background: rgba(217,164,65,0.13); }
+  .cv-verdict p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--text-dim); letter-spacing: -0.01em; }
+  .cv-verdict p b { color: var(--text); font-weight: 600; }
+  .cv-bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-soft); border-radius: 14px; overflow: hidden; }
+  .cv-cell { background: var(--panel-2); padding: 18px 16px; }
+  .cv-q { font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; }
+  .cv-v { font-family: var(--mono); font-weight: 600; font-size: 24px; letter-spacing: -0.04em; margin: 8px 0 4px; }
+  .cv-v.up { color: var(--good); } .cv-v.down { color: var(--bad); }
+  .cv-sub { font-size: 12px; color: var(--text-faint); letter-spacing: -0.008em; }
+  @media (max-width: 720px) { .cv-bars { grid-template-columns: repeat(2, 1fr); } }
+
 </style>
 </head>
 <body>
@@ -1461,7 +1520,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-22-signal-redesign";
+  const BUILD_ID = "2026-09-22-implementable-alpha";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -1488,6 +1547,7 @@
   let stockFilter = "all";     // all | buying | insider | analyst | winners | bipartisan
   let activeAgent = null;      // active agent key
   let streetSort = "edge";     // sentiment view sort
+  let raceMode = "filed";      // hero curve: "filed" (implementable) | "trade" (member's own dates)
   let streetFilter = "all";    // all | buy | buzzing | signal | divergent
   let tradesShown = 100;
   const TRADES_PAGE = 100;
@@ -2104,7 +2164,8 @@
   // member's excess return is statistical noise, so we don't rank them on it.
   const MIN_SCORED_BUYS = 3;
   const MEMBER_SORTS = {
-    alpha:   { label: "Alpha",    fn: m => m.alpha_adj,        floor: true, sub: "excess return vs the S&P over the same holding periods, confidence-adjusted — shrunk toward the group average so a lucky one- or two-trade streak can't top the board (needs ≥3 scored buys)" },
+    alpha:   { label: "Alpha",    fn: m => m.alpha_adj,        floor: true, sub: "excess return vs the S&P over the same holding periods, confidence-adjusted — shrunk toward the group average so a lucky one- or two-trade streak can't top the board (needs ≥3 scored buys). Measured from the member's own dealing date, which nobody else could trade at" },
+    filed:   { label: "Implementable", fn: m => m.alpha_filed_adj, floor: true, sub: "the same alpha, but every position opened at the first close AFTER the filing went public — the earliest a follower could act. This is the only number you could have earned" },
     return:  { label: "Return",   fn: m => m.portfolio_return, floor: true, sub: "raw paper return on disclosed buys, before benchmarking (needs ≥3 scored buys)" },
     winrate: { label: "Win rate", fn: m => m.win_rate,         floor: true, sub: "share of buys now in the green (needs ≥3 scored buys)" },
     volume:  { label: "Volume",   fn: m => m.total_value,      sub: "total disclosed dollar volume" },
@@ -2183,7 +2244,9 @@
     const sort = MEMBER_SORTS[memberSort] || MEMBER_SORTS.return;
     // For alpha, only members with enough scored buys are eligible — thin
     // samples are noise, not skill.
-    const pool = sort.floor ? members.filter(m => (m.priced_buys || 0) >= MIN_SCORED_BUYS) : members;
+    // the implementable ranking gates on filing-date-priced buys, not trade-date ones
+    const floorKey = memberSort === "filed" ? "filed_buys" : "priced_buys";
+    const pool = sort.floor ? members.filter(m => (m[floorKey] || 0) >= MIN_SCORED_BUYS) : members;
     // nulls (no scored trades) always sort to the bottom
     const ranked = pool.slice().sort((a, b) => {
       const av = sort.fn(a), bv = sort.fn(b);
@@ -2205,15 +2268,16 @@
     const sortedA = scored.map(m => m.alpha).sort((a, b) => a - b);
     const median = sortedA.length ? sortedA[Math.floor(sortedA.length / 2)] : null;
 
-    const maxAbs = Math.max(1, ...ranked.map(m => Math.abs(m.alpha_adj || 0)));
+    const maxAbs = Math.max(1, ...ranked.map(m =>
+      Math.abs((memberSort === "filed" ? m.alpha_filed_adj : m.alpha_adj) || 0)));
     return `<section class="data-section">
       <div class="lead-hero">
         <div class="lead-hero-copy">
           <div class="lead-eyebrow">Congress Trading · ${scored.length} tracked</div>
           <h1 class="lead-h1">Who's beating<br>the market</h1>
-          <p class="lead-tagline">Ranked by <b>alpha</b> — how far a member's disclosed buys have beaten the S&amp;P over the same holding period, confidence-adjusted so a lucky two-trade streak can't top the board. Raw return flatters everyone in a bull market. Alpha is the skill test.</p>
+          <p class="lead-tagline">Ranked by <b>alpha</b> — how far a member's buys beat the S&amp;P over the same holding period, confidence-adjusted so a lucky two-trade streak can't top the board. Switch the ranking to <b>Implementable</b> to price in the disclosure lag: the same positions opened only once the filing was public.</p>
           <div class="lead-stat-row">
-            <div class="lead-stat"><b>${beatPct}%</b><i>beating the market</i></div>
+            <div class="lead-stat"><b>${beatPct}%</b><i>beat the S&amp;P on their own dates</i></div>
             <div class="lead-stat"><b class="${median > 0 ? "up" : "down"}">${median != null ? (median > 0 ? "+" : "") + median.toFixed(1) + "%" : "—"}</b><i>median alpha</i></div>
             <div class="lead-stat"><b>${eligible.length}</b><i>scoreable records</i></div>
           </div>
@@ -2229,6 +2293,14 @@
         <div class="sort-wrap"><span class="sort-label">Rank by</span><div class="sort-tabs">${sortTabs}</div></div>
         ${partyChips(total)}
       </div>
+      ${(() => {
+        const L = DATA.lag_study;
+        if (!L) return "";
+        return `<div class="rc-note" style="margin:0 0 16px;padding:14px 18px;border:1px solid var(--line-soft);border-radius:14px;border-top:1px solid var(--line-soft)">
+          <b>Read this board with the sample size in mind.</b> Of ${L.tstat_tested} members with a testable record, ${L.tstat_strong}
+          clear |t|&nbsp;&gt;&nbsp;2 on their implementable returns — against roughly ${L.tstat_expected_by_chance} you would expect from luck alone.
+          Most of the names at the top of this list are <em>not</em> individually distinguishable from chance; the ranking is a starting point, not a verdict.</div>`;
+      })()}
       <div class="lead-list">${visible.map((m, i) => renderLeaderRow(m, i + 1, maxAbs)).join("")}</div>
       ${ranked.length > membersShown ? `<button class="show-more-btn" id="membersMore">Show ${Math.min(MEMBERS_PAGE, ranked.length - membersShown)} more</button>` : ""}
     </section>`;
@@ -2253,6 +2325,16 @@
   }
 
   function renderLeaderRow(m, rank, maxAbs) {
+    const showFiled = memberSort === "filed";
+    const primary = showFiled ? m.alpha_filed_adj : m.alpha_adj;
+    const other = showFiled ? m.alpha_adj : m.alpha_filed_adj;
+    // always show the other basis underneath -- the gap between them is the part
+    // of the move that happened before anyone could see the trade
+    const alt = other == null ? "" :
+      `<i class="lead-alt">${showFiled ? "as traded" : "implementable"} <b class="${other >= 0 ? "up" : "down"}">${other > 0 ? "+" : ""}${other}%</b></i>`;
+    // |t| > 2 on a per-ticker-clustered test: worth a look, not proof
+    const sig = m.tstat != null && Math.abs(m.tstat) > 2
+      ? `<span class="sig-dot ${m.tstat > 0 ? "pos" : "neg"}" title="t = ${m.tstat} on one observation per distinct ticker — distinguishable from noise, though holding periods overlap">t ${m.tstat > 0 ? "+" : ""}${m.tstat}</span>` : "";
     const best = m.best_trade ? `<span class="lead-best">Best ${esc(m.best_trade.ticker)} ${returnPill(m.best_trade.return_pct)}</span>` : "";
     const wins = m.win_rate == null
       ? `<div class="lead-metric"><b style="color:var(--text-faint)">—</b><i>win rate</i></div>`
@@ -2260,7 +2342,7 @@
     // diverging bar: the centre line is the index, so the fill shows at a glance
     // how far above or below it this member sits relative to the widest in view.
     const bar = (() => {
-      const span = maxAbs || 1, v = m.alpha_adj;
+      const span = maxAbs || 1, v = primary;
       if (v == null) return `<div class="lead-bar"><div class="lb-track"><i class="lb-zero"></i></div><div class="lb-cap">no scoreable buys</div></div>`;
       const w = Math.max(1.5, Math.min(50, Math.abs(v) / span * 50));
       const left = v >= 0 ? 50 : 50 - w;
@@ -2273,12 +2355,12 @@
       <div class="lead-rank">${String(rank).padStart(2, "0")}</div>
       ${memberPhoto(m)}
       <div class="lead-id">
-        <div class="lead-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)}</div>
+        <div class="lead-name">${esc(cleanMemberName(m.member))} ${partyBadge(m.party)} ${sig}</div>
         <div class="lead-meta">${esc(m.chamber)} · ${m.trade_count} trades · ${fmtMoney(m.total_value)} ${best}</div>
       </div>
       ${wins}
       ${bar}
-      <div class="lead-return">${returnPill(m.alpha_adj, true)}<i>adj. alpha</i></div>
+      <div class="lead-return">${returnPill(primary, true)}<i>${showFiled ? "implementable" : "adj. alpha"}</i>${alt}</div>
     </div>`;
   }
 
@@ -2511,6 +2593,28 @@
     const c = x.since_pct >= 0 ? "up" : "down";
     return `<span class="ic-since ${c}">${x.since_pct > 0 ? "+" : ""}${x.since_pct}%${lbl ? " since bought" : ""}${x.since_excess != null ? ` <span class="ic-vs">${x.since_excess > 0 ? "+" : ""}${x.since_excess}% vs S&P</span>` : ""}</span>`;
   }
+  /* A score nobody audits is decoration. This reports what the score has
+     actually delivered, including when the answer is "not enough evidence". */
+  function renderConvictionCheck() {
+    const C = DATA.conviction_check;
+    if (!C || !(C.quartiles || []).length) return "";
+    const cells = C.quartiles.map(q => `<div class="cv-cell">
+      <div class="cv-q">${esc(q.label)} · score ${q.lo}–${q.hi}</div>
+      <div class="cv-v ${q.mean >= 0 ? "up" : "down"}">${q.mean > 0 ? "+" : ""}${q.mean}%</div>
+      <div class="cv-sub">${q.win}% beat the S&amp;P · n=${q.n}</div>
+    </div>`).join("");
+    const good = C.significant;
+    return `<div class="cv-wrap">
+      <div class="cv-verdict">
+        <span class="cv-badge ${good ? "yes" : "no"}">${good ? "Holds up" : "Not proven yet"}</span>
+        <p>${good
+          ? `Higher-scoring buys have gone on to beat the S&amp;P by more, and with <b>${C.n}</b> scored buys the relationship is strong enough to be distinguishable from noise (r&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}).`
+          : `The top quartile has outperformed the bottom by <b>${C.spread > 0 ? "+" : ""}${C.spread} points</b>, which looks encouraging — but across only <b>${C.n}</b> scored buys the rank correlation (r&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}) is <b>not yet distinguishable from chance</b>. Treat the score as a way to sort the list, not as evidence it predicts returns. This panel updates as filings accumulate.`}</p>
+      </div>
+      <div class="cv-bars">${cells}</div>
+    </div>`;
+  }
+
   function insiderConvCard(x) {
     const col = convColor(x.conviction);
     // the payoff line: how the stock has actually done since this insider bought
@@ -2595,6 +2699,9 @@
 
       <div class="section-head" style="margin-top:30px;"><span class="section-title">How a buy gets scored</span><span class="section-count">0–100, weighted the way the research says actually predicts returns</span></div>
       ${convictionKey()}
+
+      <div class="section-head" style="margin-top:34px"><span class="section-title">Has the score worked?</span><span class="section-count">every scored buy that now has a realised return, sorted into quartiles</span></div>
+      ${renderConvictionCheck()}
 
       <div class="section-head"><span class="section-title">Highest-conviction buys</span><span class="section-count">${top.length} bets · one row per stock, so a cluster shows once</span></div>
       ${top.length ? `<div class="ic-grid">${top.map(insiderConvCard).join("")}</div>` : `<div class="empty-note">No quality insider buys in the window yet.</div>`}
@@ -3310,7 +3417,14 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     }
     const pick = a => keep ? keep.map(i => a[i]) : a;
     const dates = pick(R.dates), spy = pick(R.spy);
-    const mem = R.members.map(m => ({ ...m, series: pick(m.series) }));
+    // "filed" is the curve a follower could actually have run: positions open at
+    // the first close after the STOCK Act filing, not on the day the member traded
+    const useFiled = raceMode === "filed" && R.members.every(m => m.filed_series);
+    const mem = R.members.map(m => ({
+      ...m,
+      series: pick(useFiled ? m.filed_series : m.series),
+      final: useFiled ? m.filed_final : m.final,
+    }));
     const N = dates.length;
     const vals = spy.concat(...mem.map(m => m.series));
     let ymin = Math.min(...vals, 0), ymax = Math.max(...vals);
@@ -3379,9 +3493,15 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
 
     return `<div class="home-section reveal race-section">
       <div class="home-head"><div>
-        <h2 class="home-title">They are beating the market.</h2>
-        <p class="home-sub">Follow the disclosed trades of the top ${mem.length} members over the past year and this is the curve you get, drawn over the S&amp;P 500. ${R.n_beating} of ${R.n_ranked} scored members are ahead of the index.</p>
-      </div><button class="home-seeall" data-goto="politicians">Full leaderboard <span>›</span></button></div>
+        <h2 class="home-title">${useFiled ? "What you could have followed." : "What they actually traded."}</h2>
+        <p class="home-sub">${useFiled
+          ? `Buying each of these ${mem.length} members' positions at the first close <b>after their filing went public</b> — the earliest a follower could act. ${R.n_beating_filed != null ? R.n_beating_filed : R.n_beating} of ${R.n_ranked} scored members stay ahead of the S&amp;P on that basis.`
+          : `The same trades measured from the day each member dealt — a price <b>nobody outside Congress could get</b>. ${R.n_beating} of ${R.n_ranked} are ahead of the S&amp;P this way.`}</p>
+      </div>
+      <div class="race-toggle" role="group" aria-label="Chart basis">
+        <button class="rt-btn ${useFiled ? "active" : ""}" data-race="filed">As disclosed</button>
+        <button class="rt-btn ${!useFiled ? "active" : ""}" data-race="trade">As traded</button>
+      </div></div>
       <div class="race-frame">
         <div class="race-chart">
           <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Members of Congress cumulative return vs the S&P 500">
@@ -3392,7 +3512,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
         </div>
         ${legend}
       </div>
-      <div class="race-foot">Each line follows that member's disclosed buys equal-weighted, held while their net position stays positive — the same methodology across everyone. Disclosures lag trades by up to ~45 days. Not investment advice.</div>
+      <div class="race-foot">Each line follows that member's buys equal-weighted, held while their net position stays positive — the same method for everyone. <b>As&nbsp;disclosed</b> opens each position at the first close after the filing; <b>as&nbsp;traded</b> opens it on the member's own dealing date, which is not a price the public could get. Flip between them to see how much of the run happens inside the blackout. Not investment advice.</div>
     </div>`;
   }
   function niceStep(raw) {
@@ -3435,7 +3555,11 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
         </div>
         <div class="home-hero-stats">
           <div class="hh-stat"><b>${scored.length}</b><i>members scored</i></div>
-          <div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>
+          ${(() => { const L = DATA.lag_study;
+            if (!L || !L.members_scored) return `<div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>`;
+            const pct = Math.round(100 * L.members_positive_filed / L.members_scored);
+            return `<div class="hh-stat"><b class="${pct > 50 ? "up" : ""}">${pct}%</b><i>still ahead once the disclosure lag is priced in</i></div>`;
+          })()}
           <div class="hh-stat"><b style="color:var(--accent)">${(DATA.conviction || {}).multi_signal || 0}</b><i>conviction signals</i></div>
         </div>
         <div class="scroll-cue"><span>Scroll</span><i></i></div>
@@ -3443,8 +3567,10 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
 
       ${renderMemberRace()}
 
+      ${renderRealityCheck()}
+
       <div class="home-section reveal">
-        ${head("The people beating the market", "Ranked by alpha — return above the S&amp;P over the same holding period.", "politicians", "Full leaderboard")}
+        ${head("Who is actually ahead", "Ranked by alpha — return above the S&amp;P over the same holding period, with the implementable figure beside it.", "politicians", "Full leaderboard")}
         <div class="podium podium-3">${podium.map((m, i) => renderPodium(m, i)).join("")}</div>
         <div class="lead-list" style="margin-top:16px">${(mx => members.slice(3, 8).map((m, i) => renderLeaderRow(m, i + 4, mx)).join(""))(Math.max(1, ...members.map(m => Math.abs(m.alpha_adj || 0))))}</div>
       </div>
@@ -3479,6 +3605,66 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
         </div>
         ${sectorGroupsHTML()}
       </div>`;
+  }
+
+
+  /* The question the site exists to answer, stated plainly and without spin. */
+  function renderRealityCheck() {
+    const L = DATA.lag_study;
+    if (!L) return "";
+    const td = L.trade_date, fd = L.filed_date;
+    const sig = t => t != null && Math.abs(t) > 2;
+    const verdict = fd.mean > 0
+      ? `Across every scoreable buy, following Congress on disclosure would have <b style="color:var(--good)">beaten</b> the S&amp;P by ${fd.mean}% on average.`
+      : `Across every scoreable buy, following Congress on disclosure would have <b style="color:var(--bad)">trailed</b> the S&amp;P by ${Math.abs(fd.mean)}% on average${sig(fd.t) ? " — a gap too consistent to be chance" : ""}.`;
+    const bar = (label, v, t, note) => {
+      const col = v >= 0 ? "var(--good)" : "var(--bad)";
+      return `<div class="rc-row">
+        <div class="rc-lab">${label}<i>${note}</i></div>
+        <div class="rc-num" style="color:${col}">${v > 0 ? "+" : ""}${v}%</div>
+        <div class="rc-t">${t != null ? `t = ${t}${sig(t) ? " · significant" : " · within noise"}` : ""}</div>
+      </div>`;
+    };
+    const buckets = (L.buckets || []).map(b => {
+      const w = x => Math.max(2, Math.min(100, 50 + x * 2.2));
+      return `<tr>
+        <td>${esc(b.label)}</td><td class="num">${b.n.toLocaleString()}</td>
+        <td class="num ${b.trade >= 0 ? "num-up" : "num-down"}">${b.trade > 0 ? "+" : ""}${b.trade}%</td>
+        <td class="num ${b.filed >= 0 ? "num-up" : "num-down"}">${b.filed > 0 ? "+" : ""}${b.filed}%</td>
+      </tr>`;
+    }).join("");
+
+    return `<div class="home-section reveal band">
+      <div class="home-head"><div>
+        <h2 class="home-title">Could you actually have traded this?</h2>
+        <p class="home-sub">Every ranking on this site — and on every site like it — measures returns from the day a member dealt. The public does not see that filing for a median of <b>${L.lag_median} days</b>. So we measure it the other way too: from the first close after the filing became public.</p>
+      </div></div>
+
+      <div class="rc-grid">
+        <div class="rc-card">
+          <div class="rc-head">Average excess return vs the S&amp;P, per buy</div>
+          ${bar("As traded", td.mean, td.t, "from the member's own dealing date — unobservable")}
+          ${bar("As disclosed", fd.mean, fd.t, "from the first close after the filing — implementable")}
+          <div class="rc-note">${verdict} Dollar-weighted the figures are ${L.dw_trade > 0 ? "+" : ""}${L.dw_trade}% and ${L.dw_filed > 0 ? "+" : ""}${L.dw_filed}%. Based on ${L.n_trades.toLocaleString()} priced purchases.</div>
+        </div>
+
+        <div class="rc-card">
+          <div class="rc-head">How much skill is really there?</div>
+          <div class="rc-stat"><b>${L.tstat_strong}</b><i>of ${L.tstat_tested} members clear |t|&nbsp;&gt;&nbsp;2 on their implementable record</i></div>
+          <div class="rc-stat"><b class="dim">${L.tstat_expected_by_chance}</b><i>would clear it on luck alone, testing that many people</i></div>
+          <div class="rc-stat"><b>${L.members_positive_filed}</b><i>of ${L.members_scored} keep a positive edge once the lag is priced in (${L.members_positive_trade} before it)</i></div>
+          <div class="rc-note">Each member is tested on one observation per distinct ticker, not per trade — buying the same stock ten times is one idea, not ten. Holding periods still overlap and all end today, so treat |t|&nbsp;&gt;&nbsp;2 as worth a look, not as proof.</div>
+        </div>
+      </div>
+
+      ${buckets ? `<div class="rc-table-wrap"><div class="rc-head" style="margin-bottom:12px">Where the edge is earned, by how late the filing landed</div>
+        <div class="data-table-wrap"><table class="data-table">
+          <thead><tr><th>Filed within</th><th class="num">Buys</th><th class="num">As traded</th><th class="num">As disclosed</th></tr></thead>
+          <tbody>${buckets}</tbody>
+        </table></div>
+        <div class="rc-note" style="margin-top:12px">${L.pct_over_45}% of filings landed past the 45-day deadline the STOCK Act sets; the slowest tenth took over ${L.lag_p90} days.</div>
+      </div>` : ""}
+    </div>`;
   }
 
   const SIG_COL = { congress: "var(--accent)", insider: "var(--ind)", trend: "var(--good)", bipartisan: "var(--dem)" };
@@ -3994,6 +4180,15 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     wire("screenerMore", () => { screenerShown += SCREENER_PAGE; renderContent(); });
     // Home "See all →" drill-ins jump to the full deep-dive view
     el.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "auto" }); setHash(b.dataset.goto); }));
+    // hero curve basis: as-disclosed (implementable) vs as-traded. Re-render in
+    // place and hold the scroll position, so the two curves can be compared.
+    el.querySelectorAll("[data-race]").forEach(b => b.addEventListener("click", () => {
+      if (raceMode === b.dataset.race) return;
+      raceMode = b.dataset.race;
+      const y = window.scrollY;
+      renderContent();
+      window.scrollTo({ top: y, behavior: "auto" });
+    }));
     fillTreemaps();
     revealSections();
     enhanceContent();
