@@ -1478,20 +1478,20 @@
     <h2>How this works</h2>
     <div class="methodology-grid">
       <div class="methodology-item">
-        <div class="num">01 — Key bills, by sector</div>
-        <p>The most important bills moving through each sector — ranked by how far they've advanced, whether they appropriate funding, and momentum. Open any bill to see the stocks positioned to benefit and the congressional trades disclosed in exactly those tickers.</p>
+        <div class="num">01 — Returns are measured twice</div>
+        <p><b>As traded</b> runs from the day a member dealt — their own experience, and a price no one else could get. <b>As disclosed</b> runs from the first close after the STOCK Act filing became public, which is the earliest a reader could have acted. Every ranking here can be switched between the two; the gap between them is the part of the move that happens inside the disclosure blackout.</p>
       </div>
       <div class="methodology-item">
-        <div class="num">02 — Follow a politician</div>
-        <p>Every member's disclosed trades, aggregated into a portfolio you can open and inspect — top tickers, buy/sell split, sectors they're active in. The disclosure, reorganized around the person, the way copy-trading apps frame it.</p>
+        <div class="num">02 — Benchmarked, then shrunk</div>
+        <p>A raw return flatters everyone in a bull market, so each buy is measured against the S&amp;P over the <em>same</em> holding period. Members are then ranked on a confidence-adjusted alpha: thin records get pulled toward the group median, so a lucky two-trade streak cannot top the board. A record needs at least three priced buys to be ranked at all.</p>
       </div>
       <div class="methodology-item">
-        <div class="num">03 — What Congress is trading</div>
-        <p>A consensus signal per stock: how many distinct members traded each ticker and the net buy/sell direction across Congress — surfacing which names are drawing the most collective activity right now.</p>
+        <div class="num">03 — Tested against luck</div>
+        <p>Each member gets a t-statistic on one observation per <em>distinct ticker</em>, not per trade — buying the same stock ten times is one idea repeated, and pooling the trades would inflate the result. Names are flagged only at |t|&nbsp;&gt;&nbsp;2. Holding periods still overlap and all end on the same day, so read that as worth a look, not as a p-value: test forty people and roughly two clear the bar on luck alone.</p>
       </div>
     </div>
     <div class="data-note">
-      <b>About this data.</b> Bills from the Congress.gov API; trades from Senate and House STOCK Act disclosures (Senate candidates and House paper filings are excluded). Dollar figures are <b>estimates</b> — STOCK Act filings report a value <em>range</em> per trade, and we use the midpoint, so all "$" amounts are approximate. "Stocks that benefit" is a sector mapping, not a prediction, and nothing here estimates returns. Click any ticker to see every disclosed trade in it and the bills that would affect it. Sector and company lists live in <b>scripts/sectors.json</b>. Refreshes every 6 hours. Not investment advice.
+      <b>About this data.</b> Bills from the Congress.gov API; trades from Senate and House STOCK Act disclosures (Senate candidates and House paper filings are excluded). Dollar figures are <b>estimates</b> — filings report a value <em>range</em> per trade and we use the midpoint, so every "$" figure is approximate, and dollar-weighted returns inherit that error. Returns are paper returns on the disclosed side of a position: a purchase is marked to the latest close, and because filings rarely reveal exits, nothing here is a realised P&amp;L. Prices are daily closes, so an intraday fill is not modelled, and no transaction costs, taxes or slippage are deducted — a real follower would earn less than any figure shown. "Stocks that benefit" is a sector mapping, not a prediction. Click any ticker to see every disclosed trade in it and the bills that would affect it. Sector and company lists live in <b>scripts/sectors.json</b>. Refreshes every 6 hours. Not investment advice.
     </div>
   </section>
 
