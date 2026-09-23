@@ -1467,6 +1467,9 @@
 
   .sig-dot.warn { color: var(--warn); background: rgba(217,164,65,0.13); }
 
+  .cv-mean { opacity: 0.62; margin-top: 3px; }
+  .cv-caveat { display: block; margin-top: 10px; font-size: 12.5px; color: var(--text-faint); line-height: 1.5; }
+
 </style>
 </head>
 <body>
@@ -1551,7 +1554,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-23-skill-tests";
+  const BUILD_ID = "2026-09-23-robust-validation";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2635,18 +2638,23 @@
   function renderConvictionCheck() {
     const C = DATA.conviction_check;
     if (!C || !(C.quartiles || []).length) return "";
+    // lead each bucket with the MEDIAN: the top bucket's mean is carried by a
+    // couple of very large outcomes and overstates the typical result
     const cells = C.quartiles.map(q => `<div class="cv-cell">
       <div class="cv-q">${esc(q.label)} · score ${q.lo}–${q.hi}</div>
-      <div class="cv-v ${q.mean >= 0 ? "up" : "down"}">${q.mean > 0 ? "+" : ""}${q.mean}%</div>
-      <div class="cv-sub">${q.win}% beat the S&amp;P · n=${q.n}</div>
+      <div class="cv-v ${q.median >= 0 ? "up" : "down"}">${q.median > 0 ? "+" : ""}${q.median}%</div>
+      <div class="cv-sub">typical result · ${q.win}% beat the S&amp;P · n=${q.n}</div>
+      <div class="cv-sub cv-mean">mean ${q.mean > 0 ? "+" : ""}${q.mean}%</div>
     </div>`).join("");
     const good = C.significant;
+    const spread = C.spread_median != null ? C.spread_median : C.spread;
     return `<div class="cv-wrap">
       <div class="cv-verdict">
-        <span class="cv-badge ${good ? "yes" : "no"}">${good ? "Holds up" : "Not proven yet"}</span>
+        <span class="cv-badge ${good ? "yes" : "no"}">${good ? "Holds up so far" : "Not proven yet"}</span>
         <p>${good
-          ? `Higher-scoring buys have gone on to beat the S&amp;P by more, and with <b>${C.n}</b> scored buys the relationship is strong enough to be distinguishable from noise (r&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}).`
-          : `The top quartile has outperformed the bottom by <b>${C.spread > 0 ? "+" : ""}${C.spread} points</b>, which looks encouraging — but across only <b>${C.n}</b> scored buys the rank correlation (r&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}) is <b>not yet distinguishable from chance</b>. Treat the score as a way to sort the list, not as evidence it predicts returns. This panel updates as filings accumulate.`}</p>
+          ? `Higher-scoring buys have gone on to do better, by <b>${spread > 0 ? "+" : ""}${spread} points</b> between the top and bottom quartile on typical outcomes. The verdict runs on the <b>rank</b> correlation (ρ&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}), which only cares about ordering — the magnitude-based version is weaker at ${C.r_pearson}${C.r_trimmed != null ? `, and ${C.r_trimmed} once the three largest outcomes are removed` : ""}.`
+          : `The top quartile has outperformed the bottom by <b>${spread > 0 ? "+" : ""}${spread} points</b> on typical outcomes, which looks encouraging — but across only <b>${C.n}</b> scored buys the rank correlation (ρ&nbsp;=&nbsp;${C.r}, t&nbsp;=&nbsp;${C.t}) is <b>not yet distinguishable from chance</b>. Treat the score as a way to sort the list, not as evidence it predicts returns.`}
+        <br><span class="cv-caveat">Re-tested on every refresh against just ${C.n} scored buys${C.provisional ? " — below the sample this panel treats as a real verdict" : ""}, so expect this to move. A threshold checked repeatedly on a small sample will cross it eventually.</span></p>
       </div>
       <div class="cv-bars">${cells}</div>
     </div>`;

@@ -60,6 +60,7 @@ INSIDER_FILINGS_PER_RUN = 600     # recent Form 4 filings to scan per run (1 req
 INSIDER_MAX_DAYS = 120            # keep insider transactions from this window
 DISCLOSURE_MAX_LAG = 400          # filings later than this are stale amendments, not signal
 MIN_SCORED_BUYS_BACKEND = 3       # below this a member's record is noise, not a record
+MIN_VALIDATION_N = 40             # below this a score validation is provisional, not a verdict
 REQUEST_TIMEOUT = 20
 USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
 SEC_HEADERS = {"User-Agent": "Legislative Alpha research tracker admin@legislative-alpha.example",
@@ -2805,19 +2806,54 @@ def build_conviction_validation(insiders):
 
     xs = [x["conviction"] for x in rows]
     ys = [x["since_excess"] for x in rows]
-    mx, my = sum(xs) / n, sum(ys) / n
-    sx = sum((a - mx) ** 2 for a in xs) ** 0.5
-    sy = sum((b - my) ** 2 for b in ys) ** 0.5
-    r = (sum((a - mx) * (b - my) for a, b in zip(xs, ys)) / (sx * sy)) if sx and sy else 0.0
-    t = r * ((n - 2) / max(1e-9, 1 - r * r)) ** 0.5
+
+    def corr(a, b):
+        ma, mb = sum(a) / len(a), sum(b) / len(b)
+        sa = sum((v - ma) ** 2 for v in a) ** 0.5
+        sb = sum((v - mb) ** 2 for v in b) ** 0.5
+        return (sum((p_ - ma) * (q - mb) for p_, q in zip(a, b)) / (sa * sb)) if sa and sb else 0.0
+
+    def rank(v):
+        order = sorted(range(len(v)), key=lambda i: v[i])
+        out = [0.0] * len(v)
+        i = 0
+        while i < len(order):
+            j = i
+            while j + 1 < len(order) and v[order[j + 1]] == v[order[i]]:
+                j += 1
+            avg = (i + j) / 2.0 + 1
+            for k in range(i, j + 1):
+                out[order[k]] = avg
+            i = j + 1
+        return out
+
+    def tof(r_, m):
+        return r_ * ((m - 2) / max(1e-9, 1 - r_ * r_)) ** 0.5
+
+    r_p = corr(xs, ys)                      # magnitude-sensitive
+    r_s = corr(rank(xs), rank(ys))          # rank only -- robust to the skew
+    t_s = tof(r_s, n)
+    # outlier check: does the magnitude-based correlation survive losing the
+    # three largest outcomes? If not, that number was about those three.
+    keep = sorted(zip(xs, ys), key=lambda pr: -abs(pr[1]))[3:]
+    r_trim = corr([k[0] for k in keep], [k[1] for k in keep]) if len(keep) > 8 else None
+
     return {
         "n": n,
         "quartiles": quartiles,
-        "r": round(r, 3),
-        "t": round(t, 2),
-        # the honest verdict, stated in the data rather than in marketing copy
-        "significant": bool(abs(t) > 2),
+        "r": round(r_s, 3),                 # headline = Spearman
+        "t": round(t_s, 2),
+        "r_pearson": round(r_p, 3),
+        "r_trimmed": round(r_trim, 3) if r_trim is not None else None,
+        # The verdict is re-computed every refresh on a sample that grows slowly,
+        # so a bare |t| > 2 would flip on noise. Require a real sample and the
+        # ROBUST statistic to clear the bar.
+        "significant": bool(n >= MIN_VALIDATION_N and abs(t_s) > 2),
+        "provisional": bool(n < MIN_VALIDATION_N),
+        # medians, because the top-bucket mean is carried by a couple of outcomes
         "spread": round(quartiles[-1]["mean"] - quartiles[0]["mean"], 1) if len(quartiles) >= 2 else None,
+        "spread_median": (round(quartiles[-1]["median"] - quartiles[0]["median"], 1)
+                          if len(quartiles) >= 2 else None),
     }
 
 
@@ -3529,8 +3565,10 @@ def main():
               f"trade-date excess {lag_study['trade_date']['mean']}% vs "
               f"filing-date {lag_study['filed_date']['mean']}%", file=sys.stderr)
     if conviction_check:
-        print(f"  conviction score: r={conviction_check['r']} t={conviction_check['t']} "
-              f"({'significant' if conviction_check['significant'] else 'not significant'})",
+        print(f"  conviction score: spearman={conviction_check['r']} t={conviction_check['t']} "
+              f"(pearson={conviction_check['r_pearson']}, trimmed={conviction_check['r_trimmed']}) "
+              f"n={conviction_check['n']} "
+              f"({'holds' if conviction_check['significant'] else 'not proven'})",
               file=sys.stderr)
 
     # Standalone whole-market technical screener (independent of congress).
