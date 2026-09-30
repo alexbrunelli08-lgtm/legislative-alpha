@@ -7,9 +7,11 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Legislative Alpha — Where Congress Meets the Market</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts are served from this origin, not Google's CDN: loading them from a
+     third party transmits every visitor's IP before any consent is possible. -->
+<link rel="preload" href="fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/JetBrainsMono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link href="fonts/fonts.css" rel="stylesheet">
 <style>
   :root {
     /* True black canvas, soft elevated surfaces, near-white type. Colour is
@@ -1620,6 +1622,86 @@
     color: var(--text-faint); background: var(--panel-2); }
   .podium-3 .mp-fallback { font-size: 20px; }
 
+  /* =====================================================================
+     LEGAL PAGES + RISK NOTICE
+     ===================================================================== */
+  .legal { max-width: 820px; }
+  .legal-hero { padding: clamp(34px, 5vw, 70px) 0 clamp(24px, 3vw, 40px); }
+  .legal-hero .lead-h1 { font-size: clamp(34px, 4.6vw, 58px); }
+  .legal-hero .lead-tagline { max-width: 640px; }
+  .legal-updated { font-size: 12.5px; color: var(--text-faint); letter-spacing: -0.008em; margin: 18px 0 0; }
+  .legal-body { font-size: 15.5px; line-height: 1.68; color: var(--text-dim); letter-spacing: -0.008em; }
+  .legal-body h2 { font-family: var(--display); font-weight: 600; font-size: clamp(19px, 2.1vw, 24px);
+    letter-spacing: -0.026em; color: var(--text); margin: 42px 0 14px; }
+  .legal-body p { margin: 0 0 16px; }
+  .legal-body ul { margin: 0 0 18px; padding-left: 20px; }
+  .legal-body li { margin-bottom: 10px; }
+  .legal-body b { color: var(--text); font-weight: 600; }
+  .legal-body code { font-family: var(--mono); font-size: 13px; background: rgba(255,255,255,0.07);
+    padding: 2px 7px; border-radius: 5px; color: var(--text); }
+  .legal-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .legal-callout { background: var(--panel); border: 1px solid var(--line-soft); border-left: 3px solid var(--accent);
+    border-radius: 14px; padding: 22px 24px; margin: 0 0 30px; color: var(--text-dim); }
+  .legal-callout.good { border-left-color: var(--good); }
+  .legal-callout.warn { border-left-color: var(--warn); margin: 30px 0; }
+  /* three-column tables do not fit a phone; scroll them rather than letting
+     them push the whole page sideways */
+  .legal-table { margin: 0 0 22px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line-soft); border-radius: 14px; }
+  .legal-table .data-table { min-width: 460px; }
+  .legal-table .data-table { font-size: 14px; }
+  .legal-table .data-table td { font-family: var(--display); vertical-align: top; line-height: 1.55; }
+  .legal-table .data-table td b { font-family: var(--display); }
+  .src-sub { display: block; font-size: 12.5px; color: var(--text-faint); margin-top: 3px; }
+  .src-warn { color: var(--warn); }
+  .legal-todo { background: rgba(217,164,65,0.08); border-radius: 10px; padding: 14px 16px; }
+  .legal-nav { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 52px; padding-top: 26px;
+    border-top: 1px solid var(--line-soft); }
+  .legal-cleared { font-size: 13px; color: var(--good); margin-left: 12px; }
+  .inline-link { background: none; border: none; padding: 0; font: inherit; color: var(--accent);
+    cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .inline-link:hover { color: var(--text); }
+
+  /* footer */
+  footer { display: block; border-top: 1px solid var(--line-soft); padding: 40px 0 52px; }
+  .foot-main { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px;
+    flex-wrap: wrap; margin-bottom: 28px; }
+  .foot-title { display: block; font-family: var(--display); font-weight: 600; font-size: 16px;
+    letter-spacing: -0.024em; color: var(--text); }
+  .foot-by { display: block; font-size: 13px; color: var(--text-faint); margin-top: 5px; letter-spacing: -0.008em; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .foot-links button { background: none; border: none; padding: 0; cursor: pointer;
+    font-family: var(--display); font-size: 13.5px; letter-spacing: -0.012em; color: var(--text-dim);
+    transition: color .25s var(--ease); }
+  .foot-links button:hover { color: var(--text); }
+  .foot-legal { border-top: 1px solid var(--line-soft); padding-top: 22px; }
+  .foot-legal p { margin: 0 0 12px; font-size: 12.5px; line-height: 1.65; color: var(--text-faint);
+    letter-spacing: -0.008em; max-width: 900px; }
+  .foot-legal b { color: var(--text-dim); font-weight: 600; }
+  .foot-meta { font-size: 12px !important; color: var(--text-faint); }
+
+  /* risk notice */
+  .risk-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
+    background: rgba(12,12,14,0.96); backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px); border-top: 1px solid var(--line); }
+  .risk-inner { max-width: 1300px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center;
+    gap: 22px; }
+  .risk-inner p { margin: 0; flex: 1; font-size: 13px; line-height: 1.55; color: var(--text-dim);
+    letter-spacing: -0.008em; }
+  .risk-inner b { color: var(--text); font-weight: 600; }
+  .risk-ok { flex-shrink: 0; font-family: var(--display); font-size: 13.5px; font-weight: 500;
+    letter-spacing: -0.012em; background: var(--accent); color: #17130A; border: none;
+    border-radius: var(--pill); padding: 10px 22px; cursor: pointer; transition: filter .25s ease; }
+  .risk-ok:hover { filter: brightness(1.08); }
+  /* keep the bar off the last row of content while it is showing */
+  body.has-risk-bar footer { padding-bottom: 120px; }
+  @media (max-width: 720px) {
+    .risk-inner { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px 20px; }
+    .risk-ok { width: 100%; padding: 12px; }
+    body.has-risk-bar footer { padding-bottom: 190px; }
+    .foot-main { flex-direction: column; gap: 18px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1690,9 +1772,38 @@
   </section>
 
   <footer>
-    <span>Legislative Alpha — a project by Alessandro Brunelli</span>
-    <span id="footerUpdated">Not investment advice</span>
+    <div class="foot-main">
+      <div class="foot-brand">
+        <span class="foot-title">Legislative Alpha</span>
+        <span class="foot-by">An independent research project by Alessandro Brunelli</span>
+      </div>
+      <nav class="foot-links" aria-label="Legal and information">
+        <button data-goto="disclaimer">Disclaimer</button>
+        <button data-goto="privacy">Privacy</button>
+        <button data-goto="terms">Terms of use</button>
+        <button data-goto="sources">Data sources</button>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p><b>Not investment advice.</b> Legislative Alpha is an independent research project, not a
+      registered investment adviser or broker-dealer. Nothing here is a recommendation to buy or
+      sell any security. Figures are estimates derived from public filings, are unaudited, exclude
+      all costs and taxes, and may be delayed or incorrect. Past performance does not predict
+      future results. Investing risks your capital.
+      <button class="inline-link" data-goto="disclaimer">Read the full disclaimer</button>.</p>
+      <p class="foot-meta"><span id="footerUpdated">Data as of —</span> · No cookies, no analytics, no tracking · Market data is delayed</p>
+    </div>
   </footer>
+</div>
+
+<div class="risk-bar" id="riskBar" role="region" aria-label="Risk notice" hidden>
+  <div class="risk-inner">
+    <p><b>This is research, not advice.</b> Figures are estimates from public filings — unaudited,
+    delayed, and before any costs or taxes. Nothing here is a recommendation to buy or sell anything,
+    and investing risks your capital.
+    <button class="inline-link" data-goto="disclaimer">Read the disclaimer</button></p>
+    <button class="risk-ok" id="riskOk">Got it</button>
+  </div>
 </div>
 
 <nav class="section-rail" id="sectionRail" aria-label="Page sections" hidden></nav>
@@ -1724,7 +1835,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-30-usability-pass";
+  const BUILD_ID = "2026-09-30-legal";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -1760,7 +1871,9 @@
   let membersShown = 30;
   const MEMBERS_PAGE = 30;
 
-  const VIEWS = ["home", "overview", "flow", "insiders", "sentiment", "screener", "bills", "politicians", "stocks"];
+  const VIEWS = ["home", "overview", "flow", "insiders", "sentiment", "screener", "bills", "politicians", "stocks",
+                 "disclaimer", "privacy", "terms", "sources"];
+  const LEGAL_VIEWS = new Set(["disclaimer", "privacy", "terms", "sources"]);
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -1961,7 +2074,7 @@
     const ini = esc(memberInitials(m.member));
     if (!m.image_url) return `<div class="${cls} mp-fallback">${ini}</div>`;
     return `<span class="mp-wrap ${lg ? "lg" : ""}"><span class="${cls} mp-fallback">${ini}</span>` +
-      `<img class="${cls} mp-img" src="${esc(m.image_url)}" alt="" loading="lazy" onerror="this.remove()"></span>`;
+      `<img class="${cls} mp-img" src="${esc(m.image_url)}" alt="" loading="lazy" onerror="this.remove()" referrerpolicy="no-referrer"></span>`;
   }
   function cleanMemberName(name) { return name.replace(/^(Sen\.|Rep\.)\s/, "").replace(/\s*\([^)]*\)\s*$/, ""); }
 
@@ -2260,6 +2373,8 @@
 
   function renderViewTabs() {
     document.querySelectorAll(".view-tab").forEach(b => b.classList.toggle("active", b.dataset.view === activeView));
+    // legal pages sit outside the tab bar; hide the per-view filter chrome there
+    document.querySelectorAll(".filter-row, .methodology").forEach(e => { e.hidden = LEGAL_VIEWS.has(activeView); });
     document.getElementById("viewHint").textContent = VIEW_HINTS[activeView] || "";
   }
 
@@ -3234,6 +3349,340 @@
     d.classList.remove("open");
     d.setAttribute("aria-hidden", "true");
     exitOverlay();
+  }
+
+
+
+  /* ---------- RISK NOTICE ----------
+     A dismissible bar rather than a modal gate. This is public information about
+     public filings; blocking the page behind "I agree" would be theatre, and a
+     reader who clicks past a wall has not read it either. It states the one
+     thing that matters before acting, links to the detail, and stays dismissed. */
+  const ACK_KEY = "la.ack.v1";
+  function initRiskNotice() {
+    const bar = document.getElementById("riskBar");
+    if (!bar) return;
+    let acked = false;
+    try { acked = localStorage.getItem(ACK_KEY) === "1"; } catch (e) { /* storage blocked */ }
+    if (acked) return;
+    bar.hidden = false;
+    document.body.classList.add("has-risk-bar");
+    const ok = document.getElementById("riskOk");
+    if (ok) ok.addEventListener("click", () => {
+      bar.hidden = true;
+      document.body.classList.remove("has-risk-bar");
+      try { localStorage.setItem(ACK_KEY, "1"); } catch (e) { /* fine either way */ }
+    });
+    bar.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => setHash(b.dataset.goto)));
+  }
+
+  /* Privacy page: let people actually erase what the site stored. */
+  function wireStorageClear(root) {
+    const btn = root.querySelector("#clearStorage");
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      try {
+        localStorage.removeItem(WATCH_KEY);
+        localStorage.removeItem(ACK_KEY);
+      } catch (e) { /* nothing to clear */ }
+      watchSet = new Set();
+      renderWatchPanel();
+      const n = root.querySelector("#clearedNote");
+      if (n) n.hidden = false;
+    });
+  }
+
+  /* ---------- LEGAL PAGES ----------
+     Written against what the site actually does. Every factual claim in the
+     privacy page is checkable in the source of this file. */
+  const LEGAL_UPDATED = "30 September 2026";
+  const OWNER = "Alessandro Brunelli";
+
+  function legalShell(title, lede, body) {
+    return `<section class="data-section legal">
+      <div class="legal-hero">
+        <div class="lead-eyebrow">Legal</div>
+        <h1 class="lead-h1">${title}</h1>
+        <p class="lead-tagline">${lede}</p>
+        <p class="legal-updated">Last updated ${LEGAL_UPDATED}</p>
+      </div>
+      <div class="legal-body">${body}</div>
+      <nav class="legal-nav" aria-label="Legal pages">
+        <button class="ap-link" data-goto="disclaimer">Disclaimer</button>
+        <button class="ap-link" data-goto="privacy">Privacy</button>
+        <button class="ap-link" data-goto="terms">Terms</button>
+        <button class="ap-link" data-goto="sources">Data sources</button>
+      </nav>
+    </section>`;
+  }
+
+  function renderDisclaimerView() {
+    return legalShell("Important disclaimer",
+      "Read this before you act on anything you see here. It is the most important page on the site.",
+      `
+      <div class="legal-callout">
+        <b>This is not investment advice.</b> Legislative Alpha is an independent research and
+        journalism project. It is not a registered investment adviser, broker-dealer, or financial
+        planner, and nothing on it is a recommendation, solicitation, or offer to buy or sell any
+        security. No content here is tailored to your circumstances, and no adviser-client or
+        fiduciary relationship is created by using it.
+      </div>
+
+      <h2>What the numbers are, and are not</h2>
+      <p>Everything on this site is derived from public filings and public market data. Several
+      things follow from that, and they matter:</p>
+      <ul>
+        <li><b>Dollar figures are estimates.</b> STOCK Act filings disclose a value <em>range</em>
+        per trade, not an amount. We use the midpoint of the range. Every "$" figure on the site
+        inherits that error, and dollar-weighted returns inherit it twice.</li>
+        <li><b>Returns are paper returns.</b> A purchase is marked to the most recent close.
+        Filings rarely reveal exits, so nothing here is a realised profit or loss.</li>
+        <li><b>No costs are deducted.</b> No commissions, spreads, slippage, taxes or financing.
+        A real investor following any strategy shown here would have earned less than the figures
+        displayed, possibly much less.</li>
+        <li><b>Fills are modelled at daily closing prices.</b> Nobody trades at the close by
+        default; intraday execution is not modelled.</li>
+        <li><b>Disclosure is delayed.</b> Congressional filings arrive a median of roughly four
+        weeks after the trade, and later than the statutory deadline about a fifth of the time.
+        Figures labelled <em>as traded</em> are measured from a price no member of the public
+        could have obtained.</li>
+        <li><b>Data may be wrong.</b> Sources are scraped and parsed automatically. Filings
+        contain errors, tickers are mis-transcribed, names are ambiguous, and our parsing can
+        fail. Nothing here is audited.</li>
+      </ul>
+
+      <h2>Past performance says little about the future</h2>
+      <p>Historical returns, backtests, rankings and scores on this site describe what has already
+      happened to a particular set of positions over a particular window. They do not predict
+      future results. Backtested and hypothetical performance carries well-known biases, and a
+      figure computed today over a chosen period is not a forecast.</p>
+      <p>The site's own analysis makes this concrete: measured from the date a filing became
+      public, the average congressional purchase in our data has <em>trailed</em> the S&amp;P 500,
+      and only a small number of members show a record distinguishable from chance. We publish
+      that because it is what the data shows, not because it recommends any course of action.</p>
+
+      <h2>Scores are our opinions, not facts</h2>
+      <p>Conviction, Edge, confidence-adjusted alpha and similar figures are composite measures we
+      designed. They are judgements expressed as numbers, their weights are chosen by us, and
+      where we have been able to test whether they predict anything we publish that test and its
+      result on the page itself. Treat them as a way to sort a list, not as a verdict.</p>
+
+      <h2>No warranty, and your decisions are yours</h2>
+      <p>The site is provided "as is" and "as available", without warranty of any kind, express or
+      implied, including any warranty of accuracy, completeness, timeliness, merchantability or
+      fitness for a particular purpose. To the fullest extent permitted by law, ${OWNER} and any
+      contributors accept no liability for any loss or damage arising from use of, or reliance on,
+      this site.</p>
+      <p>Investing involves risk, including the possible loss of principal. Before making any
+      financial decision, do your own research and consider speaking to a licensed financial
+      adviser, broker or tax professional who knows your situation.</p>
+
+      <h2>Not an endorsement of any person</h2>
+      <p>Naming a member of Congress or a corporate insider is a description of filings they were
+      legally required to make. It is not an accusation of wrongdoing, insider trading, or any
+      other impropriety, and no such allegation is intended or should be inferred.</p>
+      `);
+  }
+
+  function renderPrivacyView() {
+    return legalShell("Privacy",
+      "Short version: we do not collect anything about you. There is no account, no cookie, no analytics and no tracker on this site.",
+      `
+      <div class="legal-callout good">
+        <b>No personal data is collected, stored or shared by this site.</b> There is no sign-up,
+        no login, no contact form, no advertising and no analytics. We have no server that receives
+        anything about you \u2014 the site is a set of static files and a data file your browser
+        downloads and processes locally.
+      </div>
+
+      <h2>Cookies</h2>
+      <p>This site sets <b>no cookies</b>. None, of any kind, first- or third-party. Because no
+      cookies or similar tracking technologies are used for analytics, advertising or profiling,
+      there is no consent banner to click through.</p>
+
+      <h2>Browser storage we do use</h2>
+      <p>Two values are saved in your browser's <code>localStorage</code>. Both exist only to make
+      a feature you asked for work, both stay on your device, and neither is ever transmitted
+      anywhere:</p>
+      <div class="legal-table"><table class="data-table">
+        <thead><tr><th>Key</th><th>Purpose</th><th>Written when</th></tr></thead>
+        <tbody>
+          <tr><td><code>la.watchlist.v1</code></td><td>The list of tickers you have starred</td><td>You star or unstar a ticker</td></tr>
+          <tr><td><code>la.ack.v1</code></td><td>Remembers that you dismissed the risk notice</td><td>You dismiss the notice</td></tr>
+        </tbody>
+      </table></div>
+      <p>You can erase both at any time \u2014 clear site data for this domain in your browser, or
+      use the button below. The site works exactly the same without them; if storage is
+      unavailable (a private window, or blocked site data) the features simply become inert.</p>
+      <p><button class="ap-btn ghost" id="clearStorage">Clear everything this site has stored</button>
+      <span class="legal-cleared" id="clearedNote" hidden>Cleared.</span></p>
+
+      <h2>Connections your browser makes</h2>
+      <p>Loading a page causes your browser to contact these hosts. Each one necessarily sees your
+      IP address, as with any web request:</p>
+      <ul>
+        <li><b>This site's host (GitHub Pages).</b> The site is served by GitHub. GitHub may log
+        request metadata including IP addresses under its own privacy practices; we do not receive,
+        control or have access to those logs. See GitHub's
+        <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy statement</a>.</li>
+        <li><b>www.congress.gov</b> \u2014 official member portraits are loaded directly from
+        Congress's own servers rather than copied here. If you would rather not contact congress.gov,
+        blocking images for this site leaves everything else working; initials are shown instead.</li>
+      </ul>
+      <p>Fonts are served from this site's own origin, not from a third-party font CDN, specifically
+      so that loading a page does not disclose your IP address to an advertising company. There are
+      no other third-party requests, no embedded widgets, no social buttons and no pixels.</p>
+      <p>Links to source filings point at senate.gov, house.gov and sec.gov. Those are only
+      contacted if you click them, and they have their own privacy practices.</p>
+
+      <h2>Your rights</h2>
+      <p>Rights under the GDPR, UK GDPR, CCPA/CPRA and similar laws \u2014 access, correction,
+      deletion, portability, objection, and opting out of sale or sharing \u2014 apply to personal
+      data a site holds about you. We hold none, so there is nothing to disclose, correct, delete,
+      export or opt out of. We do not sell or share personal information, because we do not have
+      any. If you believe that is inaccurate, contact us and we will investigate.</p>
+
+      <h2>Children</h2>
+      <p>This site is not directed at children and does not knowingly collect information from
+      anyone, including children.</p>
+
+      <h2>Changes and contact</h2>
+      <p>If this policy changes, the date at the top of this page changes with it. Questions about
+      privacy, or anything else on this site, can be sent to the contact address published on the
+      project's repository.</p>
+      `);
+  }
+
+  function renderTermsView() {
+    return legalShell("Terms of use",
+      "The rules for using this site. By using it you accept them.",
+      `
+      <h2>1. Acceptance</h2>
+      <p>By accessing or using Legislative Alpha (the "site") you agree to these terms and to the
+      <button class="inline-link" data-goto="disclaimer">Disclaimer</button> and
+      <button class="inline-link" data-goto="privacy">Privacy</button> pages, which form part of
+      them. If you do not agree, do not use the site.</p>
+
+      <h2>2. What the site is</h2>
+      <p>The site is an independent, non-commercial research and journalism project that
+      aggregates and analyses public records: congressional stock-trade disclosures made under the
+      STOCK Act, SEC Form 4 insider filings, legislative data, and public market data. It is
+      published for information and education.</p>
+      <p>It is <b>not</b> a financial product, financial advice, a recommendation, an invitation to
+      invest, or a service regulated as investment advice. ${OWNER} is not a registered investment
+      adviser or broker-dealer. See the <button class="inline-link" data-goto="disclaimer">Disclaimer</button>.</p>
+
+      <h2>3. Permitted use</h2>
+      <p>You may read, use and share the site for personal, educational, journalistic and research
+      purposes, including quoting figures with attribution and a link. You may not:</p>
+      <ul>
+        <li>present the site's output as your own work, or as financial advice from a licensed professional;</li>
+        <li>use it to make representations to third parties about the conduct of any named individual;</li>
+        <li>scrape it at a rate that degrades it for others, or attempt to disrupt or gain unauthorised access to it;</li>
+        <li>use it in any way that breaches applicable law or the terms of the upstream data sources listed on the
+            <button class="inline-link" data-goto="sources">Data sources</button> page.</li>
+      </ul>
+
+      <h2>4. Accuracy and availability</h2>
+      <p>The site is provided "as is" and "as available". Data is gathered and parsed automatically
+      from third-party sources and is not audited. It may be incomplete, delayed, misattributed or
+      simply wrong, and the site may be unavailable, changed or discontinued at any time without
+      notice. No warranty of any kind is given, to the fullest extent permitted by law.</p>
+
+      <h2>5. Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, ${OWNER} and any contributors shall not be liable
+      for any direct, indirect, incidental, consequential, special or exemplary loss or damage \u2014
+      including lost profits, trading losses, or loss of data \u2014 arising out of or in connection
+      with your use of, or inability to use, the site or its data, whether or not advised of the
+      possibility of such loss. Nothing in these terms excludes liability that cannot lawfully be
+      excluded, such as liability for fraud, fraudulent misrepresentation, or death or personal
+      injury caused by negligence.</p>
+
+      <h2>6. Third-party content and links</h2>
+      <p>Source data, member portraits and links to original filings originate from third parties
+      and remain subject to their own terms and rights. Links to external sites are provided for
+      verification and are not endorsements; we are not responsible for their content.</p>
+
+      <h2>7. Intellectual property</h2>
+      <p>Underlying public records \u2014 filings, legislative data and US government works \u2014
+      are not owned by this project. The analysis, scoring methods, written commentary, design and
+      source code are the work of ${OWNER} and are made available under the licence stated in the
+      project's repository. Typefaces are used under the SIL Open Font License 1.1; the licence text
+      ships with the site at <code>fonts/OFL.txt</code>.</p>
+
+      <h2>8. Individuals named on the site</h2>
+      <p>Members of Congress and corporate insiders appear here because the law requires them to
+      disclose the transactions shown. Their inclusion reports a public filing. It is not an
+      allegation of insider trading or any other wrongdoing. If you believe a record is factually
+      inaccurate, contact us with the filing reference and we will correct it.</p>
+
+      <h2>9. Changes and governing law</h2>
+      <p>These terms may be updated; the date at the top of this page will change when they are.
+      Continued use after a change constitutes acceptance.</p>
+      <p class="legal-todo"><b>Jurisdiction.</b> These terms are governed by the laws of the
+      jurisdiction in which the operator is established, with its courts having exclusive
+      jurisdiction. <em>The operator should replace this paragraph with the specific governing law
+      and venue before relying on it.</em></p>
+      `);
+  }
+
+  function renderSourcesView() {
+    return legalShell("Data sources",
+      "Where every figure on this site comes from, and the terms attached to it.",
+      `
+      <p>Nothing here is proprietary. Every number can be traced to a public record, and the table
+      below names the record and who publishes it.</p>
+
+      <div class="legal-table"><table class="data-table">
+        <thead><tr><th>Source</th><th>Used for</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><b>Congress.gov API</b><br><span class="src-sub">Library of Congress</span></td>
+              <td>Bills, amendments, sponsors, actions</td>
+              <td>Official API, used with a key under its terms of use</td></tr>
+          <tr><td><b>Senate eFD</b><br><span class="src-sub">efdsearch.senate.gov</span></td>
+              <td>Senate periodic transaction reports</td>
+              <td>Public disclosure, published under the STOCK Act</td></tr>
+          <tr><td><b>House Clerk</b><br><span class="src-sub">disclosures-clerk.house.gov</span></td>
+              <td>House periodic transaction reports</td>
+              <td>Public disclosure, published under the STOCK Act</td></tr>
+          <tr><td><b>SEC EDGAR</b><br><span class="src-sub">sec.gov</span></td>
+              <td>Form 4 corporate insider filings</td>
+              <td>Public record; accessed within EDGAR's published request limits</td></tr>
+          <tr><td><b>Nasdaq Trader</b><br><span class="src-sub">nasdaqtrader.com</span></td>
+              <td>Listed-symbol directory</td>
+              <td>Publicly published symbol files</td></tr>
+          <tr><td><b>Yahoo Finance</b><br><span class="src-sub">query1/query2.finance.yahoo.com</span></td>
+              <td>Daily closing prices, analyst ratings, market caps, sectors</td>
+              <td class="src-warn">Unofficial endpoints \u2014 see the note below</td></tr>
+          <tr><td><b>StockTwits</b><br><span class="src-sub">api.stocktwits.com</span></td>
+              <td>Retail sentiment (share of recent messages tagged bullish)</td>
+              <td class="src-warn">Public API \u2014 subject to its own terms</td></tr>
+          <tr><td><b>Congress.gov images</b><br><span class="src-sub">www.congress.gov</span></td>
+              <td>Official member portraits, hot-linked not copied</td>
+              <td>US government work</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="legal-callout warn">
+        <b>A note on market data.</b> Prices, ratings and fundamentals are read from Yahoo Finance
+        endpoints that are public but not an officially supported, licensed API, and social
+        sentiment comes from StockTwits' public API. Both carry terms that may restrict automated
+        access or redistribution. This is disclosed openly rather than buried: anyone operating
+        this site commercially, or at scale, should review those terms and move to a licensed market
+        data vendor. Market data on this site is delayed, is not real-time, and must not be relied
+        upon for trading.
+      </div>
+
+      <h2>US government works</h2>
+      <p>Congressional filings, legislative data, SEC filings and official portraits are works of
+      the United States Government and are generally not subject to copyright in the United States.
+      Their use here does not imply endorsement by any government body, agency or official.</p>
+
+      <h2>Corrections</h2>
+      <p>If a figure here disagrees with the underlying filing, the filing is right and we are
+      wrong. Every trade row links to its source document so you can check. Send us the filing
+      reference and we will fix it.</p>
+      `);
   }
 
   /* ---------- FLOW VIEW (new money, not old positions) ---------- */
@@ -4688,6 +5137,10 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const el = document.getElementById("content");
     if (activeView === "home") el.innerHTML = renderHomeView();
     else if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "disclaimer") el.innerHTML = renderDisclaimerView();
+    else if (activeView === "privacy") el.innerHTML = renderPrivacyView();
+    else if (activeView === "terms") el.innerHTML = renderTermsView();
+    else if (activeView === "sources") el.innerHTML = renderSourcesView();
     else if (activeView === "flow") el.innerHTML = renderFlowView();
     else if (activeView === "insiders") el.innerHTML = renderInsidersView();
     else if (activeView === "sentiment") el.innerHTML = renderStreetView();
@@ -4802,6 +5255,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     renderWatchPanel();
     makeActivatable(el);
     buildSectionRail();
+    wireStorageClear(el);
     revealSections();
     enhanceContent();
   }
@@ -4964,11 +5418,14 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
       if (document.getElementById("stockModal").classList.contains("open")) setHash(activeView);
     }
   });
+  document.querySelectorAll("footer [data-goto]").forEach(b =>
+    b.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "auto" }); setHash(b.dataset.goto); }));
   const cmdkBtn = document.getElementById("cmdkBtn");
   if (cmdkBtn) cmdkBtn.addEventListener("click", openCmdk);
 
   // watchlist: restore before first render so stars paint in the right state
   loadWatch();
+  initRiskNotice();
   const watchBtn = document.getElementById("watchBtn");
   if (watchBtn) watchBtn.addEventListener("click", () => {
     const d = document.getElementById("watchDrawer");
