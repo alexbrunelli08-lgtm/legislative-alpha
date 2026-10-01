@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One URL by design. The site routes on the hash (#overview, #insiders, ...)
+     and crawlers do not treat a fragment as a distinct page, so these are the
+     only addressable documents. Listing #views here would be inventing URLs
+     that no crawler will index. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://alexbrunelli08-lgtm.github.io/legislative-alpha/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

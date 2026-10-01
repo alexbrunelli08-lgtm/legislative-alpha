@@ -1,0 +1,25 @@
+# Crawlers only read /robots.txt at the ORIGIN root. On a project GitHub Pages
+# site this file serves at /legislative-alpha/robots.txt and is therefore
+# ignored. It is kept here so it takes effect unchanged the moment the site
+# moves to its own domain, where the repo root becomes the origin root.
+
+User-agent: *
+Allow: /
+
+# data.json must stay crawlable: the page renders its content from it, so
+# blocking it would leave search engines indexing an empty shell.
+Allow: /data.json
+
+# Pipeline caches. The site never requests these; they are build inputs.
+Disallow: /prices.json
+Disallow: /universe.json
+Disallow: /history.json
+Disallow: /screener_prices.json
+Disallow: /insider_cache.json
+Disallow: /mcap_cache.json
+Disallow: /ratings_cache.json
+Disallow: /sector_cache.json
+Disallow: /social_cache.json
+Disallow: /trades_cache.json
+
+Sitemap: https://alexbrunelli08-lgtm.github.io/legislative-alpha/sitemap.xml

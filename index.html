@@ -7,6 +7,46 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Legislative Alpha — Where Congress Meets the Market</title>
+<meta name="description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
+<link rel="canonical" href="https://alexbrunelli08-lgtm.github.io/legislative-alpha/">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="author" content="Alessandro Brunelli">
+
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Link previews. Absolute URLs: scrapers do not resolve relative ones. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Legislative Alpha">
+<meta property="og:title" content="Legislative Alpha - Where Congress meets the market">
+<meta property="og:description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
+<meta property="og:url" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/">
+<meta property="og:image" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Legislative Alpha - congressional trades, insider filings and a whole-market screener.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Legislative Alpha - Where Congress meets the market">
+<meta name="twitter:description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
+<meta name="twitter:image" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Legislative Alpha",
+  "url": "https://alexbrunelli08-lgtm.github.io/legislative-alpha/",
+  "description": "Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Alessandro Brunelli" },
+  "publisher": { "@type": "Person", "name": "Alessandro Brunelli" }
+}
+</script>
 <!-- Fonts are served from this origin, not Google's CDN: loading them from a
      third party transmits every visitor's IP before any consent is possible. -->
 <link rel="preload" href="fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -1835,7 +1875,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-30-legal";
+  const BUILD_ID = "2026-09-30-launch";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {

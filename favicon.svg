@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Legislative Alpha</title>
+  <rect width="64" height="64" rx="14" fill="#000000"/>
+  <rect x="15" y="40" width="9" height="8"  rx="2.5" fill="#6E6E73"/>
+  <rect x="28" y="30" width="9" height="18" rx="2.5" fill="#6E6E73"/>
+  <rect x="41" y="18" width="9" height="30" rx="2.5" fill="#E8C583"/>
+</svg>
