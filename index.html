@@ -796,6 +796,7 @@
 
   /* ---------- Conviction signals ---------- */
   .conv-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; margin-bottom: clamp(34px, 4vw, 54px); }
+  .conv-eyebrow { font-size: 13.5px; font-weight: 600; color: var(--accent); margin-bottom: 14px; }
   .conv-title { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.07; letter-spacing: -0.03em; margin: 0; color: var(--text); }
   .conv-sub { font-size: clamp(15.5px, 1.25vw, 19px); color: var(--text-dim); line-height: 1.47; letter-spacing: -0.012em; margin: 16px auto 0; max-width: 680px; }
   .conv-badge { text-align: center; background: rgba(255,255,255,0.05); border: none; border-radius: var(--pill); padding: 12px 26px; flex-shrink: 0; }
@@ -1135,7 +1136,11 @@
   @media (max-width: 640px) {
     .street-grid, .ic-grid, .dash-grid, .home-two, .cluster-grid, .conv-grid,
     .chart-grid-2, .lead-hero, .home-hero { grid-template-columns: 1fr !important; }
-    .bets-list { overflow-x: auto; }
+    /* .bets-list is re-declared later in this sheet with `overflow: hidden`.
+       At equal specificity the later rule won, so this scroll never applied and
+       189px of every insider row was clipped and unreachable on a phone.
+       Doubling the class outranks it regardless of source order. */
+    .bets-list.bets-list { overflow-x: auto; overflow-y: hidden; }
     .bets-list .ins-row { min-width: 520px; }
     .scr-controls { flex-direction: column; align-items: stretch; }
     .scr-chips { justify-content: flex-start; }
@@ -1759,6 +1764,7 @@
     </div>
     <nav class="view-tabs" id="viewTabs">
       <button class="view-tab active" data-view="home">Home</button>
+      <button class="view-tab" data-view="overview">Overview</button>
       <button class="view-tab" data-view="politicians">Leaderboard</button>
       <button class="view-tab" data-view="flow">Flow</button>
       <button class="view-tab" data-view="insiders">Insiders</button>
@@ -1875,7 +1881,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-30-launch";
+  const BUILD_ID = "2026-09-30-pass";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2416,6 +2422,20 @@
     // legal pages sit outside the tab bar; hide the per-view filter chrome there
     document.querySelectorAll(".filter-row, .methodology").forEach(e => { e.hidden = LEGAL_VIEWS.has(activeView); });
     document.getElementById("viewHint").textContent = VIEW_HINTS[activeView] || "";
+    scrollActiveTabIntoView();
+  }
+
+  /* The tab strip is 734px wide inside a 339px phone, so on every view past
+     about the fourth the selected tab sat off-screen and the bar showed only
+     unselected ones -- no indication of where you were. Centre it, clamped to
+     the ends. scrollLeft is set directly rather than via scrollIntoView, which
+     can also move the page itself. */
+  function scrollActiveTabIntoView() {
+    const bar = document.querySelector(".view-tabs");
+    const on = bar && bar.querySelector(".view-tab.active");
+    if (!bar || !on || bar.scrollWidth <= bar.clientWidth + 1) return;
+    const target = on.offsetLeft - (bar.clientWidth - on.offsetWidth) / 2;
+    bar.scrollLeft = Math.max(0, Math.min(target, bar.scrollWidth - bar.clientWidth));
   }
 
   function setSector(code) { activeSector = code; resetPaging(); renderAll(); }
@@ -4609,13 +4629,30 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const goto = (v, label) => `<button class="home-seeall" data-goto="${v}">${label} <span>›</span></button>`;
     const head = (title, sub, v, label) => `<div class="home-head"><div><h2 class="home-title">${title}</h2><p class="home-sub">${sub}</p></div>${v ? goto(v, label) : ""}</div>`;
 
+    // The headline is derived from the measurement rather than written next to
+    // it, so the front door cannot drift away from the finding again.
+    const LS = DATA.lag_study || {};
+    const fMean = LS.filed_date && LS.filed_date.mean != null ? LS.filed_date.mean : null;
+    const fLag = LS.lag_median != null ? LS.lag_median : null;
+    const trails = fMean != null && fMean < 0;
+    const heroH1 = trails
+      ? `The smart money<br><em>isn't that smart</em>.`
+      : `Follow the<br><em>smart money</em>.`;
+    const heroLede = trails
+      ? `Everyone says to follow congressional stock trades. Scored against the S&amp;P from the day each one
+         became public${fLag != null ? ` — a median of <b>${fLag} days</b> after the fact —` : ","} the average buy
+         <b>trails the index by ${Math.abs(fMean).toFixed(1)} points</b>. Here is the evidence, the handful who
+         genuinely beat it, and every other signal worth watching.`
+      : `Congressional trades, corporate insiders, Wall&nbsp;Street analysts and the retail crowd. Every signal
+         that moves ahead of the market — in one place.`;
+
     return `
       <section class="home-hero reveal">
         <div class="ap-eyebrow">Where Congress meets the market</div>
-        <h1 class="home-h1">Follow the<br><em>smart money</em>.</h1>
-        <p class="ap-lede">Congressional trades, corporate insiders, Wall&nbsp;Street analysts and the retail crowd. Every signal that moves ahead of the market — in one place.</p>
+        <h1 class="home-h1">${heroH1}</h1>
+        <p class="ap-lede">${heroLede}</p>
         <div class="ap-cta">
-          <button class="ap-btn" data-goto="politicians">See who's winning</button>
+          <button class="ap-btn" data-goto="politicians">See who actually beats it</button>
           <button class="ap-btn ghost" data-goto="stocks">Explore every signal</button>
         </div>
         <div class="home-hero-stats">
@@ -4623,7 +4660,10 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
           ${(() => { const L = DATA.lag_study;
             if (!L || !L.members_scored) return `<div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>`;
             const pct = Math.round(100 * L.members_positive_filed / L.members_scored);
-            return `<div class="hh-stat"><b class="${pct > 50 ? "up" : ""}">${pct}%</b><i>still ahead once the disclosure lag is priced in</i></div>`;
+            // Show the fraction, not the bare percentage. Sitting beside
+            // "62 members scored", a reader reads 37% OF 62 -- about 23 -- when
+            // it is 16 of the 43 that have a scoreable record.
+            return `<div class="hh-stat"><b class="${pct > 50 ? "up" : ""}">${L.members_positive_filed} of ${L.members_scored}</b><i>still ahead once the disclosure lag is priced in</i></div>`;
           })()}
           <div class="hh-stat"><b style="color:var(--accent)">${(DATA.conviction || {}).multi_signal || 0}</b><i>conviction signals</i></div>
         </div>
@@ -4752,7 +4792,9 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
   }
 
   const SIG_COL = { congress: "var(--accent)", insider: "var(--ind)", trend: "var(--good)", bipartisan: "var(--dem)" };
-  function renderConvictionSection() {
+  // `lead` = this section opens the page, so it carries the h1 and the
+  // page eyebrow. On Home it sits under the hero's h1 and stays an h2.
+  function renderConvictionSection(lead) {
     const cv = DATA.conviction;
     if (!cv || !(cv.stocks || []).length) return "";
     const card = r => {
@@ -4773,7 +4815,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
       </div>`;
     };
     return `<div class="conv-head">
-        <div><h2 class="conv-title">Conviction signals</h2><p class="conv-sub">Where independent smart money agrees — stocks that <b style="color:var(--accent)">Congress</b> is buying, <b style="color:var(--ind)">corporate insiders</b> are buying, and the <b style="color:var(--good)">trend</b> confirms. Two or more aligned is the strongest tell on the site.</p></div>
+        <div>${lead ? `<div class="conv-eyebrow">Overview${DATA.congress ? ` · ${DATA.congress}th Congress` : ""}</div>` : ""}<${lead ? "h1" : "h2"} class="conv-title">Conviction signals</${lead ? "h1" : "h2"}><p class="conv-sub">Where independent smart money agrees — stocks that <b style="color:var(--accent)">Congress</b> is buying, <b style="color:var(--ind)">corporate insiders</b> are buying, and the <b style="color:var(--good)">trend</b> confirms. Two or more aligned is the strongest tell on the site.</p></div>
         <div class="conv-badge"><b>${cv.multi_signal}</b><i>stocks · 2+ signals</i></div>
       </div>
       <div class="conv-grid">${cv.stocks.slice(0, 9).map(card).join("")}</div>`;
@@ -4822,7 +4864,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
       </div>`).join("")}</div>`;
 
     return `<section class="data-section">
-      ${renderConvictionSection()}
+      ${renderConvictionSection(true)}
       ${kpis}
       ${balance}
       ${movers}
@@ -5408,7 +5450,9 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
   let cmdkItems = [], cmdkFiltered = [], cmdkActive = 0;
   function buildCmdkIndex() {
     const items = [];
-    [["overview", "Overview"], ["politicians", "Leaderboard"], ["stocks", "Stocks"], ["bills", "Bills"]]
+    [["home", "Home"], ["overview", "Overview"], ["politicians", "Leaderboard"], ["flow", "Flow"],
+     ["insiders", "Insiders"], ["sentiment", "Sentiment"], ["screener", "Screener"],
+     ["bills", "Bills"], ["stocks", "Stocks"]]
       .forEach(([v, l]) => items.push({ type: "View", label: l, sub: "Go to " + l, act: () => { document.getElementById("searchBox").value = ""; setHash(v); } }));
     (DATA.members || []).forEach(m => items.push({ type: "Member", label: cleanMemberName(m.member), party: m.party,
       sub: `${m.chamber} · ${m.trade_count} trades${m.portfolio_return != null ? ` · ${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%` : ""}`, act: () => setHash("member/" + m.member) }));
