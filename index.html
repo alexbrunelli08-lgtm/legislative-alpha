@@ -1476,6 +1476,7 @@
   .rc-bn { text-align: center; }
   .rc-bn b { display: block; font-family: var(--mono); font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.045em; line-height: 1; }
   .rc-bn b.up { color: var(--good); } .rc-bn b.down { color: var(--bad); }
+  .rc-banner-verdict b.up { color: var(--good); } .rc-banner-verdict b.down { color: var(--bad); }
   .rc-bn i { display: block; font-style: normal; font-size: 13px; color: var(--text-dim); margin-top: 10px; letter-spacing: -0.01em; line-height: 1.4; }
   .rc-bn i span { color: var(--text-faint); font-size: 12px; }
   .rc-vs { font-size: 13px; color: var(--text-faint); letter-spacing: -0.008em; }
@@ -1883,7 +1884,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-10-resilience";
+  const BUILD_ID = "2026-11-10-verdict";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -4768,7 +4769,10 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
       ${(() => {
         const D = L.discrimination;
         if (!D) return "";
-        const clear = D.t != null && Math.abs(D.t) > 2;
+        const sig = D.t != null && Math.abs(D.t) > 2;
+        // A significant gap can point either way. Negative means what they sold
+        // went on to beat what they bought -- the opposite of stock-picking.
+        const backwards = sig && D.gap < 0;
         const pm = D.per_member;
         return `<div class="rc-banner">
           <div class="rc-banner-q">Can they tell their own buys from their own sells?</div>
@@ -4777,8 +4781,8 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
             <div class="rc-vs">vs</div>
             <div class="rc-bn"><b class="${D.sell_mean >= 0 ? "up" : "down"}">${D.sell_mean > 0 ? "+" : ""}${Number(D.sell_mean).toFixed(2)}%</b><i>what they sold<br><span>${D.sell_n.toLocaleString()} sales</span></i></div>
             <div class="rc-banner-verdict">
-              <b>${clear ? "A real difference" : "No measurable difference"}</b>
-              <p>Both measured the same way, from the filing date. A stock-picker's buys should beat the things they chose to get rid of; here the gap is ${D.gap > 0 ? "+" : ""}${D.gap} points, ${clear ? "which is a real edge" : `well inside noise (t&nbsp;=&nbsp;${D.t})`}.${pm ? ` Repeated inside each member, ${pm.positive} of ${pm.n} come out positive — a coin flip.` : ""}</p>
+              <b class="${backwards ? "down" : sig ? "up" : ""}">${!sig ? "No measurable difference" : backwards ? "Backwards" : "A real edge"}</b>
+              <p>Both measured the same way, from the filing date. A stock-picker's buys should beat the things they chose to get rid of; here the gap is ${D.gap > 0 ? "+" : ""}${D.gap} points${!sig ? `, well inside noise (t&nbsp;=&nbsp;${D.t})` : backwards ? `, and it points the wrong way: what they sold went on to beat what they bought, outside noise (t&nbsp;=&nbsp;${D.t})` : `, which is a real edge (t&nbsp;=&nbsp;${D.t})`}.${pm ? ` Repeated inside each member, ${pm.positive} of ${pm.n} come out positive${Math.abs(pm.positive / pm.n - 0.5) < 0.1 ? " — a coin flip" : ""}.` : ""}</p>
             </div>
           </div>
         </div>`;
