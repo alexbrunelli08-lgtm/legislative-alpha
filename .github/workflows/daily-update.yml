@@ -47,4 +47,17 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json history.json prices.json sector_cache.json trades_cache.json insider_cache.json universe.json mcap_cache.json ratings_cache.json social_cache.json
           git diff --cached --quiet && echo "No changes to commit" || git commit -m "Data refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          # Anything pushed to main between checkout and here makes this a
+          # non-fast-forward and killed the run. Only data files are touched,
+          # so rebasing our refresh on top is always safe -- retry a few times
+          # rather than losing a completed fetch to a race.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) -- rebasing onto origin/main"
+            git pull --rebase origin main || exit 1
+            sleep 3
+          done
+          echo "push still failing after 3 attempts"
+          exit 1
