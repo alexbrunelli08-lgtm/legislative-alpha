@@ -3641,6 +3641,32 @@ def build_overview(bills, trades, members, stock_signals):
     }
 
 
+def fetch_bills_or_last_good(sectors):
+    """Fetch bills, or fall back to the ones already published.
+
+    Returns (bills, stale). `stale` means these came from a previous run and
+    must NOT be sent through the enrichment chain again -- they already carry
+    it. Raises only when there is also nothing to fall back to, since a first
+    run with no congress.gov really has no bills to show.
+    """
+    try:
+        return enrich_bills(fetch_bills(sectors)), False
+    except Exception as e:
+        previous = []
+        if os.path.exists(OUTPUT_PATH):
+            try:
+                with open(OUTPUT_PATH, encoding="utf-8") as f:
+                    previous = json.load(f).get("bills") or []
+            except Exception:
+                previous = []
+        if not previous:
+            raise
+        print(f"WARNING: bills fetch failed ({type(e).__name__}: {e}); "
+              f"reusing {len(previous)} bills from the last good run",
+              file=sys.stderr)
+        return previous, True
+
+
 def main():
     sectors = load_sectors()
     ticker_index = build_ticker_index(sectors)
@@ -3648,8 +3674,11 @@ def main():
     roster = fetch_member_roster()
     member_index = build_member_index(roster)
 
-    bills = fetch_bills(sectors)
-    bills = enrich_bills(bills)
+    # congress.gov read-timeouts were killing the whole run -- 4 of the last 30.
+    # Bills are the 3rd step, so one slow API cost a full refresh of trades,
+    # insiders and prices that do not touch congress.gov at all. Fall back to
+    # the last published bills and carry on; the rest of the site still updates.
+    bills, bills_stale = fetch_bills_or_last_good(sectors)
     trades_cache = load_trades_cache()
     trade_start = datetime.now() - timedelta(days=TRADES_LOOKBACK_DAYS)
     scrape_senate_filings(trades_cache, trade_start, datetime.now())
@@ -3679,12 +3708,15 @@ def main():
     prices = fetch_prices([t["ticker"] for t in trades if t.get("ticker")] + insider_tks)
     trades = annotate_trade_pnl(trades, prices)
 
-    bills = [analyze_appropriation(b) for b in bills]
-    bills = attach_beneficiary_stocks(bills, sectors)
-    bills = attach_impact_analysis(bills)
-    bills = flag_pre_filing_trades(bills, trades)
-    bills = attach_bill_trades(bills, trades)
-    bills = mark_key_bills(bills)
+    if not bills_stale:
+        bills = [analyze_appropriation(b) for b in bills]
+        bills = attach_beneficiary_stocks(bills, sectors)
+        bills = attach_impact_analysis(bills)
+        bills = flag_pre_filing_trades(bills, trades)
+        bills = attach_bill_trades(bills, trades)
+        bills = mark_key_bills(bills)
+    # Reused bills arrive already enriched by the run that fetched them;
+    # putting them back through the chain would double-apply it.
     sector_summaries = build_sector_summaries(sectors, bills, trades)
     members = build_member_profiles(trades)
     stock_signals = build_stock_signals(trades)
@@ -3783,6 +3815,9 @@ def main():
     output = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "congress": CONGRESS,
+        # True when congress.gov was unreachable and the bills below were
+        # carried over. Everything else in this payload is still fresh.
+        "bills_stale": bills_stale,
         "overview": overview,
         "performance": performance,
         "member_race": member_race,

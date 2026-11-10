@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -28,7 +28,7 @@ jobs:
       # The whole-market screener price cache (~5.6k tickers) is too large to
       # commit to git, so it's persisted across runs via the Actions cache.
       - name: Restore screener price cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: screener_prices.json
           key: screener-prices-${{ github.run_id }}

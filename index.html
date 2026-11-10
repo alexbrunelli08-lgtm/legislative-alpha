@@ -796,6 +796,8 @@
 
   /* ---------- Conviction signals ---------- */
   .conv-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; margin-bottom: clamp(34px, 4vw, 54px); }
+  .stale-note { font-size: 13px; line-height: 1.5; color: var(--warn); background: rgba(217,164,65,0.09);
+    border: 1px solid rgba(217,164,65,0.26); border-radius: 10px; padding: 10px 14px; margin: 14px 0 0; max-width: 470px; }
   .conv-eyebrow { font-size: 13.5px; font-weight: 600; color: var(--accent); margin-bottom: 14px; }
   .conv-title { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.07; letter-spacing: -0.03em; margin: 0; color: var(--text); }
   .conv-sub { font-size: clamp(15.5px, 1.25vw, 19px); color: var(--text-dim); line-height: 1.47; letter-spacing: -0.012em; margin: 16px auto 0; max-width: 680px; }
@@ -1881,7 +1883,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-09-30-pass";
+  const BUILD_ID = "2026-11-10-resilience";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2455,6 +2457,7 @@
     const hero = `<section class="lead-hero bills-hero">
       <div>
         <div class="lead-eyebrow">Legislation in motion</div>
+        ${DATA.bills_stale ? `<div class="stale-note">Congress.gov could not be reached on the last run, so these bills are carried over from the previous one. Every other section is current.</div>` : ""}
         <h1 class="lead-h1">The bills<br>behind the trades</h1>
         <p class="lead-tagline">The measures moving through Congress that actually reach share prices — ranked by how far they have advanced. Open any bill to see the stocks positioned to benefit and the trades disclosed in exactly those tickers.</p>
         <div class="lead-stat-row">
