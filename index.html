@@ -1898,8 +1898,8 @@
   }
   /* Section headers were centred for the old billboard rhythm. Centred text
      inside a 660px flex child reads as right-aligned at desktop widths. */
-  .home-head { align-items: flex-end; padding-top: 16px; border-top: 1px solid var(--line);
-    text-align: left !important; justify-content: space-between; }
+  .home-head { align-items: flex-start; padding-top: 16px; border-top: 1px solid var(--line);
+    text-align: left !important; }
   .home-head > div, .home-head > div > * { text-align: left !important; }
   .section-head, .lead-head { text-align: left !important; }
   .home-sub, .conv-sub { font-size: 13px; line-height: 1.62; color: var(--text-dim); }
@@ -2166,7 +2166,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-11-terminal2";
+  const BUILD_ID = "2026-11-11-terminal3";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
