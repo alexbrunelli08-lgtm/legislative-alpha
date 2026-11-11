@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Legislative Alpha — Where Congress Meets the Market</title>
+<title>Vedetta Analytics — Congressional &amp; Insider Trading Research</title>
 <meta name="description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
 <link rel="canonical" href="https://alexbrunelli08-lgtm.github.io/legislative-alpha/">
 <meta name="theme-color" content="#000000">
@@ -20,17 +20,17 @@
 
 <!-- Link previews. Absolute URLs: scrapers do not resolve relative ones. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Legislative Alpha">
-<meta property="og:title" content="Legislative Alpha - Where Congress meets the market">
+<meta property="og:site_name" content="Vedetta Analytics">
+<meta property="og:title" content="Vedetta Analytics - the lookout on congressional trading">
 <meta property="og:description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
 <meta property="og:url" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/">
 <meta property="og:image" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Legislative Alpha - congressional trades, insider filings and a whole-market screener.">
+<meta property="og:image:alt" content="Vedetta Analytics - congressional trades, insider filings and a whole-market screener.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Legislative Alpha - Where Congress meets the market">
+<meta name="twitter:title" content="Vedetta Analytics - the lookout on congressional trading">
 <meta name="twitter:description" content="Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.">
 <meta name="twitter:image" content="https://alexbrunelli08-lgtm.github.io/legislative-alpha/og-image.png">
 
@@ -38,7 +38,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Legislative Alpha",
+  "name": "Vedetta Analytics",
+  "alternateName": "Vedetta",
   "url": "https://alexbrunelli08-lgtm.github.io/legislative-alpha/",
   "description": "Independent research on U.S. congressional stock trades, SEC insider filings, analyst ratings and market signals. Rebuilt every six hours. Not investment advice.",
   "inLanguage": "en",
@@ -157,8 +158,13 @@
   .topbar-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 0 9px; }
   .brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
   .brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .brand .wordmark { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: -0.022em; }
-  .brand-sub { font-size: 12px; letter-spacing: -0.01em; color: var(--text-faint); padding-left: 11px; margin-left: 3px; border-left: 1px solid var(--line); }
+  .brand-mark { width: 17px; height: 17px; flex-shrink: 0; display: block; }
+  .brand .wordmark { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: 0.055em; white-space: nowrap; }
+  .brand .wordmark i { font-style: normal; font-weight: 400; font-size: 12.5px;
+    letter-spacing: 0.125em; color: var(--text-faint); margin-left: 2px; }
+  .brand-sub { font-size: 12px; letter-spacing: -0.01em; color: var(--text-faint);
+    padding-left: 11px; margin-left: 3px; border-left: 1px solid var(--line);
+    white-space: nowrap; }
   .topbar-right { display: flex; align-items: center; gap: 9px; }
   /* segmented-control nav */
   .topbar .view-tabs { display: flex; gap: 2px; background: none; border: none; border-radius: 0; padding: 0 0 9px; overflow-x: auto; scrollbar-width: none; }
@@ -168,14 +174,19 @@
     transition: color .25s var(--ease), background .25s var(--ease); }
   .topbar .view-tab:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.06); }
   .topbar .view-tab.active { color: var(--text); background: rgba(255,255,255,0.11); box-shadow: none; font-weight: 600; }
+  /* The descriptor goes before it gets squeezed, not when it finally
+     collides: below this the tabs and the page itself say what the site is. */
+  @media (max-width: 1150px) { .brand-sub { display: none; } }
   @media (max-width: 900px) {
     /* the search box was running under the wordmark before the 680px rules hit */
-    .brand-sub, .cmdk-btn { display: none; }
+    /* .cmdk-btn doubled: its base rule is declared far below this one at
+       equal specificity and would otherwise win the cascade. */
+    .brand-sub, .cmdk-btn.cmdk-btn, .brand .wordmark i { display: none; }
     .topbar .search-box { width: 180px; }
     .watch-btn { padding: 8px 11px; }
   }
   @media (max-width: 680px) {
-    .brand-sub, .cmdk-btn { display: none; }
+    .brand-sub, .cmdk-btn.cmdk-btn { display: none; }
     .topbar-top { flex-wrap: wrap; gap: 9px; padding-bottom: 4px; }
     .topbar-right { width: 100%; gap: 8px; flex-wrap: nowrap; }
     .topbar .search-box { flex: 1 1 auto; width: auto; min-width: 120px; max-width: none; order: 1; }
@@ -1792,7 +1803,7 @@
   /* Status dots and legend swatches stay circular -- they read as indicator
      lamps, not as decoration. Portraits deliberately do NOT: a square frame
      reads as a record photo, which is what they are. */
-  .brand .dot, .trade-flag .dot, .party-dot, .live-dot, .boot-dot,
+  .trade-flag .dot, .party-dot, .live-dot, .boot-dot,
   .conv-conf i, .swarm-foot i, .dmap-legend i, .bp-parties .party-dot {
     border-radius: 50% !important;
   }
@@ -1948,6 +1959,20 @@
      About
      --------------------------------------------------------------------- */
   .about .th-h1 { max-width: 24ch; }
+  /* The name, glossed. A reader who does not speak Italian should not have to
+     guess what the site is called, and the gloss is the whole positioning. */
+  .about .th-lede { margin-bottom: 26px; }
+  .ab-etym { border-left: 2px solid var(--accent); padding: 2px 0 2px 18px;
+    margin: 0 0 20px; max-width: 70ch; }
+  .ab-etym-top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .ab-etym-w { font-size: 19px; font-weight: 700; letter-spacing: 0.02em; color: var(--text); }
+  .ab-etym-p { font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-faint);
+    text-transform: uppercase; }
+  .ab-etym-d { margin: 7px 0 0; font-size: 14px; line-height: 1.7; color: var(--text-dim); }
+  .ab-etym-note { max-width: 70ch; margin: 0 0 44px; font-size: 13px; line-height: 1.75;
+    color: var(--text-faint); }
+  .ab-etym-note em { font-style: normal; color: var(--text-dim); }
+
   .ab-grid { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 54px;
     margin-top: 46px; padding-top: 34px; border-top: 1px solid var(--line); align-items: start; }
   .ab-main { font-size: 14px; line-height: 1.75; color: var(--text-dim); max-width: 70ch; }
@@ -2099,7 +2124,7 @@
 <header class="topbar">
   <div class="wrap">
     <div class="topbar-top">
-      <div class="brand"><span class="dot"></span><span class="wordmark">Legislative&nbsp;Alpha</span><span class="brand-sub">smart-money terminal</span></div>
+      <div class="brand"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><polygon points="4,8 15,8 38,56 26,56" fill="#A1A1A6"/><polygon points="49,8 60,8 38,56 26,56" fill="#E8C583"/></svg><span class="wordmark">VEDETTA <i>ANALYTICS</i></span><span class="brand-sub">congressional &amp; insider flow</span></div>
       <div class="topbar-right">
         <input type="search" id="searchBox" class="search-box" placeholder="Search ticker, member, bill…" autocomplete="off">
         <button class="watch-btn" id="watchBtn" title="Watchlist" aria-label="Open watchlist">★<span class="watch-n" data-watch-count hidden></span></button>
@@ -2168,7 +2193,7 @@
   <footer>
     <div class="foot-main">
       <div class="foot-brand">
-        <span class="foot-title">Legislative Alpha</span>
+        <span class="foot-title">Vedetta Analytics</span>
         <span class="foot-by">An independent research project by Alessandro Brunelli</span>
       </div>
       <nav class="foot-links" aria-label="Legal and information">
@@ -2181,7 +2206,7 @@
       </nav>
     </div>
     <div class="foot-legal">
-      <p><b>Not investment advice.</b> Legislative Alpha is an independent research project, not a
+      <p><b>Not investment advice.</b> Vedetta Analytics is an independent research project, not a
       registered investment adviser or broker-dealer. Nothing here is a recommendation to buy or
       sell any security. Figures are estimates derived from public filings, are unaudited, exclude
       all costs and taxes, and may be delayed or incorrect. Past performance does not predict
@@ -2231,7 +2256,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-11-learn";
+  const BUILD_ID = "2026-11-11-vedetta";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2289,7 +2314,7 @@
 
   const VIEW_HINTS = {
     flow: "What Congress is buying NOW that it was not buying a window ago — new money, not old positions.",
-    home: "Every smart-money signal in one flow — scroll through, or dive into any section.",
+    home: "Every disclosed trade, filing and signal in one flow — scroll through, or dive into any section.",
     overview: "Everything happening right now — dollar-weighted from disclosed STOCK Act filings.",
     insiders: "Corporate officers, directors & 10% owners trading their own stock — SEC Form 4.",
     sentiment: "Wall Street vs the Crowd — analyst buy ratings and price targets next to retail social buzz.",
@@ -2789,7 +2814,7 @@
     if (!el) return;
     if (!DATA) { el.hidden = true; return; }
     el.hidden = false;
-    el.innerHTML = `<span class="th-slug-id">LEGISLATIVE&nbsp;ALPHA</span>` +
+    el.innerHTML = `<span class="th-slug-id">VEDETTA</span>` +
       `<span class="th-slug-kind">${SLUG_KIND[activeView] || ""}</span>` +
       `<span class="th-slug-fill"></span>` +
       `<span class="th-slug-date">${asOfStamp()}</span>`;
@@ -4262,12 +4287,33 @@
 
   function renderAboutView() {
     const L = DATA.lag_study || {}, fd = L.filed_date || {};
+    /* Why the name changed, stated with the number it was changed over. Read
+       from lag_study so the explanation cannot drift from the finding it cites. */
+    const gap = typeof fd.mean === "number" ? fd.mean : null;
+    const renameNote =
+      `This project was called <em>Legislative Alpha</em> until November 2026. The name was ` +
+      `changed because it promised something the data does not support: measured from the ` +
+      `filing date — the first price a follower could actually pay — the average ` +
+      `disclosed congressional purchase has ` +
+      (gap != null && gap < 0
+        ? `trailed the S&amp;P&nbsp;500 by ${Math.abs(gap).toFixed(2)} percentage points`
+        : `not reliably beaten the S&amp;P&nbsp;500`) +
+      `. A lookout promises nothing except that someone is watching.`;
     const row = (k, v) => `<div class="ab-row"><i>${k}</i><b>${v}</b></div>`;
     return `<section class="data-section about">
       <h1 class="th-h1">An independent record of what Congress trades.</h1>
-      <p class="th-lede">Legislative Alpha scores every disclosed congressional stock trade against the
+      <p class="th-lede">Vedetta Analytics scores every disclosed congressional stock trade against the
       S&amp;P&nbsp;500 and publishes the result, including when the result is unflattering. It takes no
       outside funding, sells nothing, and makes no recommendations.</p>
+
+      <div class="ab-etym">
+        <div class="ab-etym-top">
+          <span class="ab-etym-w">ve&middot;det&middot;ta</span>
+          <span class="ab-etym-p">Italian &middot; noun</span>
+        </div>
+        <p class="ab-etym-d">The lookout. The one posted to watch, and to report what they see.</p>
+      </div>
+      <p class="ab-etym-note">${renameNote}</p>
 
       <div class="ab-grid">
         <div class="ab-main">
@@ -4350,7 +4396,7 @@
       "Read this before you act on anything you see here. It is the most important page on the site.",
       `
       <div class="legal-callout">
-        <b>This is not investment advice.</b> Legislative Alpha is an independent research and
+        <b>This is not investment advice.</b> Vedetta Analytics is an independent research and
         journalism project. It is not a registered investment adviser, broker-dealer, or financial
         planner, and nothing on it is a recommendation, solicitation, or offer to buy or sell any
         security. No content here is tailored to your circumstances, and no adviser-client or
@@ -4487,7 +4533,7 @@
       "The rules for using this site. By using it you accept them.",
       `
       <h2>1. Acceptance</h2>
-      <p>By accessing or using Legislative Alpha (the "site") you agree to these terms and to the
+      <p>By accessing or using Vedetta Analytics (the "site") you agree to these terms and to the
       <button class="inline-link" data-goto="disclaimer">Disclaimer</button> and
       <button class="inline-link" data-goto="privacy">Privacy</button> pages, which form part of
       them. If you do not agree, do not use the site.</p>

@@ -1,6 +1,8 @@
-# Legislative Alpha
+# Vedetta Analytics
 
-A daily-updating site where Congress meets the market, organized by sector of the economy. Three views:
+*vedetta* (Italian) — the lookout: the one posted to watch, and to report what they see.
+
+A daily-updating site that scores disclosed congressional trading against the S&P 500 and publishes the result, including when the result is unflattering. Organized by sector of the economy. Core views:
 
 - **Bills** — the key bills moving through each sector, each linked to the stocks positioned to benefit and the congressional trades disclosed in those tickers.
 - **Politicians** — every member's disclosed trades aggregated into a portfolio you can open and inspect (Autopilot-style "follow a pilot").

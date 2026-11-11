@@ -1,7 +1,7 @@
 {
-  "name": "Legislative Alpha",
-  "short_name": "Leg Alpha",
-  "description": "Congressional stock trades, SEC insider filings, analyst ratings and a whole-market screener.",
+  "name": "Vedetta Analytics",
+  "short_name": "Vedetta",
+  "description": "The lookout on congressional trading: disclosed trades scored against the S&P 500, SEC insider filings, analyst ratings and a whole-market screener.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

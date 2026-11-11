@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Legislative Alpha daily data fetcher.
+Vedetta Analytics daily data fetcher.
 
 Pulls two live data sources and writes a single data.json for the site:
   1. Bills + amendments  -- Congress.gov API (requires CONGRESS_API_KEY).
@@ -62,8 +62,8 @@ DISCLOSURE_MAX_LAG = 400          # filings later than this are stale amendments
 MIN_SCORED_BUYS_BACKEND = 3       # below this a member's record is noise, not a record
 MIN_VALIDATION_N = 40             # below this a score validation is provisional, not a verdict
 REQUEST_TIMEOUT = 20
-USER_AGENT = "legislative-alpha-tracker/1.0 (personal project; contact via github repo)"
-SEC_HEADERS = {"User-Agent": "Legislative Alpha research tracker admin@legislative-alpha.example",
+USER_AGENT = "vedetta-analytics/1.0 (independent research project; contact via github.com/alexbrunelli08-lgtm/legislative-alpha)"
+SEC_HEADERS = {"User-Agent": "Vedetta Analytics research tracker (contact: github.com/alexbrunelli08-lgtm/legislative-alpha)",
                "Accept-Encoding": "gzip, deflate"}
 
 CONGRESS_API_KEY = os.environ.get("CONGRESS_API_KEY")

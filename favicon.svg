@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Legislative Alpha</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vedetta Analytics">
+  <title>Vedetta Analytics</title>
   <rect width="64" height="64" fill="#000000"/>
-  <rect x="15" y="40" width="9" height="8"  fill="#6E6E73"/>
-  <rect x="28" y="30" width="9" height="18" fill="#6E6E73"/>
-  <rect x="41" y="18" width="9" height="30" fill="#E8C583"/>
+  <polygon points="4,8 15,8 38,56 26,56" fill="#A1A1A6"/>
+  <polygon points="49,8 60,8 38,56 26,56" fill="#E8C583"/>
 </svg>
