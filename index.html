@@ -1750,6 +1750,285 @@
     .foot-main { flex-direction: column; gap: 18px; }
   }
 
+
+  /* =====================================================================
+     TERMINAL  --  research-desk redesign
+     ---------------------------------------------------------------------
+     The previous look (rounded cards floating on black, one gold accent on
+     everything, a centred hero with pill buttons) is the default house style
+     of generated sites. This strips it back to an instrument: square
+     corners, one monospace family, rules instead of panels, and colour only
+     where it encodes a value.
+
+     Appended last on purpose -- it outranks ~187 roundness declarations
+     spread through the sheet above without editing each one.
+     ===================================================================== */
+
+  :root {
+    --radius: 0px;
+    --radius-sm: 0px;
+    --pill: 0px;
+    /* One family. Terminals do not mix a display face with a data face. */
+    --display: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif: var(--display);
+    /* Slightly off-white: pure #FFF on #000 buzzes at mono weights. */
+    --text: #E6E6E8;
+    --text-dim: #9A9AA0;
+    --text-faint: #65656B;
+    --line: rgba(255,255,255,0.14);
+    --line-soft: rgba(255,255,255,0.07);
+    --bg: #000000;
+    --panel: transparent;
+    --panel-2: rgba(255,255,255,0.028);
+    --elev: rgba(255,255,255,0.055);
+    --shadow: none;
+    --shadow-lg: none;
+    --grad: none;
+    --grad-soft: none;
+  }
+
+  /* 1. Nothing is rounded. */
+  *, *::before, *::after { border-radius: 0 !important; }
+  /* Status dots and legend swatches stay circular -- they read as indicator
+     lamps, not as decoration. Portraits deliberately do NOT: a square frame
+     reads as a record photo, which is what they are. */
+  .brand .dot, .trade-flag .dot, .party-dot, .live-dot, .boot-dot,
+  .conv-conf i, .swarm-foot i, .dmap-legend i, .bp-parties .party-dot {
+    border-radius: 50% !important;
+  }
+
+  /* 2. No frosted glass. An instrument is opaque. */
+  .topbar, .modal-overlay, .cmdk-overlay, .risk-bar, .modal, .cmdk {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .topbar { background: #000 !important; border-bottom: 1px solid var(--line); }
+
+  /* 3. Monospace throughout, tightened. Mono sets wide, so the generous
+     letter-spacing the old sans used now works against it. */
+  body, .ap-h1, .ap-h2, .ap-lede, .lead-h1, .home-h1, .conv-title,
+  .home-title, .lead-tagline, .legal-body, .foot-title {
+    font-family: var(--display);
+    letter-spacing: 0;
+  }
+  .home-h1, .lead-h1, .conv-title, .ap-h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+  /* Gradient text is a generated-site tell; the accent carries it instead. */
+  .home-h1 em, .lead-h1 em, .ap-h1 em {
+    background: none !important;
+    -webkit-text-fill-color: var(--accent) !important;
+    color: var(--accent) !important;
+    font-style: normal;
+  }
+
+
+  /* ---------------------------------------------------------------------
+     Terminal masthead
+     A desk note opens with a slug line, a left-aligned claim, and the
+     numbers behind it above the fold -- not a centred billboard.
+     --------------------------------------------------------------------- */
+  .term-hero { padding: 34px 0 10px; }
+
+  .th-slug { display: flex; align-items: center; gap: 14px; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--text-faint); padding-bottom: 10px;
+    border-bottom: 1px solid var(--line); margin-bottom: 38px; }
+  .th-slug-id { color: var(--accent); font-weight: 700; }
+  .th-slug-kind { color: var(--text-dim); }
+  .th-slug-fill { flex: 1; height: 1px; background: var(--line-soft); }
+  .th-slug-date { white-space: nowrap; }
+
+  .th-h1 { font-family: var(--display); font-weight: 700;
+    font-size: clamp(30px, 4.6vw, 62px); line-height: 1.04; letter-spacing: -0.035em;
+    margin: 0 0 22px; max-width: 19ch; color: var(--text); }
+  .th-h1 br { display: none; }        /* the old two-line break fights this measure */
+  .th-h1 em { font-style: normal; color: var(--accent); }
+
+  .th-lede { font-size: 14.5px; line-height: 1.72; color: var(--text-dim);
+    margin: 0 0 40px; max-width: 72ch; }
+  .th-lede b { color: var(--text); font-weight: 700; }
+
+  /* The readout: the claim's evidence, before any scrolling happens. */
+  .th-readout { display: grid; grid-template-columns: repeat(6, 1fr);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .th-cell { padding: 16px 18px 15px; border-left: 1px solid var(--line-soft); }
+  .th-cell:first-child { border-left: none; padding-left: 0; }
+  .th-cell i { display: block; font-style: normal; font-size: 9.5px;
+    letter-spacing: 0.11em; color: var(--text-faint); margin-bottom: 9px; white-space: nowrap; }
+  .th-cell b { display: block; font-size: clamp(17px, 1.8vw, 23px); font-weight: 700;
+    letter-spacing: -0.03em; color: var(--text); line-height: 1; }
+  .th-cell b.up { color: var(--good); }
+  .th-cell b.down { color: var(--bad); }
+  .th-cell b.accent { color: var(--accent); }
+
+  .th-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 4px; }
+  .th-btn { font-family: var(--display); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; padding: 11px 18px; cursor: pointer;
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--line); transition: color .15s linear, border-color .15s linear, background .15s linear; }
+  .th-btn:hover { color: var(--text); border-color: var(--text-faint); background: rgba(255,255,255,0.04); }
+  .th-btn.primary { color: #0B0A07; background: var(--accent); border-color: var(--accent); font-weight: 700; }
+  .th-btn.primary:hover { background: #F2D7A2; border-color: #F2D7A2; color: #0B0A07; }
+
+  @media (max-width: 1040px) { .th-readout { grid-template-columns: repeat(3, 1fr); }
+    .th-cell:nth-child(4) { padding-left: 0; border-left: none; }
+    .th-cell:nth-child(n+4) { border-top: 1px solid var(--line-soft); } }
+  @media (max-width: 620px) { .th-readout { grid-template-columns: repeat(2, 1fr); }
+    .th-cell { padding: 13px 12px; }
+    .th-cell:nth-child(odd) { padding-left: 0; border-left: none; }
+    .th-cell:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+    .th-slug { gap: 8px; font-size: 10px; }
+    .th-slug-kind { display: none; }
+    .th-btn { flex: 1 1 100%; text-align: center; } }
+
+
+  /* ---------------------------------------------------------------------
+     Sections and panels
+     Cards floating on black are the other half of the generated look. A
+     terminal separates with rules and whitespace; a border earns its place
+     only when it encloses tabular data.
+     --------------------------------------------------------------------- */
+
+  /* Section headings: a slug, not a billboard. */
+  .home-title, .conv-title, .ap-h2 {
+    font-size: clamp(19px, 2.1vw, 27px) !important;
+    font-weight: 700; letter-spacing: -0.028em; line-height: 1.12; margin: 0;
+  }
+  /* Section headers were centred for the old billboard rhythm. Centred text
+     inside a 660px flex child reads as right-aligned at desktop widths. */
+  .home-head { align-items: flex-end; padding-top: 16px; border-top: 1px solid var(--line);
+    text-align: left !important; justify-content: space-between; }
+  .home-head > div, .home-head > div > * { text-align: left !important; }
+  .section-head, .lead-head { text-align: left !important; }
+  .home-sub, .conv-sub { font-size: 13px; line-height: 1.62; color: var(--text-dim); }
+  /* The conviction block was centred for the old hero rhythm. */
+  .conv-head { align-items: flex-start !important; text-align: left !important; gap: 14px !important; }
+  .conv-eyebrow { font-size: 10.5px; letter-spacing: 0.11em; }
+
+  /* Section "see all" links read as commands. */
+  .home-seeall { font-size: 10.5px !important; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-faint) !important; border: 1px solid var(--line) !important;
+    padding: 7px 12px !important; background: transparent !important; }
+  .home-seeall:hover { color: var(--text) !important; border-color: var(--text-faint) !important; }
+
+  /* Panels lose their fill and shadow; they keep a hairline when they hold
+     data that needs bounding. */
+  .conv-card, .sector-card, .bill-card, .dash-card, .street-card, .highlight-card,
+  .podium-card, .chart-panel, .stat-cell, .metric-cell, .lead-row, .unusual-card,
+  .mstat, .rc-stat, .search-results, .hsig-row, .scr-search, .ic-card, .mi-row {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: var(--line-soft) !important;
+  }
+  .data-table-wrap, .bets-list { background: transparent !important; box-shadow: none !important;
+    border: 1px solid var(--line) !important; }
+
+  /* Tables: the core instrument. Dense, ruled, monospaced figures. */
+  .data-table { font-size: 12.5px; }
+  .data-table th { font-size: 9.5px !important; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-faint) !important; font-weight: 500 !important;
+    border-bottom: 1px solid var(--line) !important; }
+  .data-table td { border-top: 1px solid var(--line-soft); }
+  .data-table tbody tr:hover { background: rgba(255,255,255,0.035); }
+
+  /* Chips, tabs and badges: square, letterspaced, no fill until active. */
+  .view-tab, .filter-tab, .scr-chip, .range-tab, .pill-toggle, .sort-tab {
+    font-size: 11px !important; letter-spacing: 0.07em; }
+  .topbar .view-tab.active { background: var(--accent) !important; color: #0B0A07 !important; font-weight: 700; }
+  .scr-chip.active, .filter-tab.active { background: var(--accent) !important; color: #0B0A07 !important; }
+
+  /* Big figures everywhere take tabular, tightened mono. */
+  .hh-stat b, .kpi-value, .rc-bn b, .th-cell b, .mstat b, .conv-score,
+  .data-table td.num, .lead-alpha, .scr-table td { font-variant-numeric: tabular-nums; }
+
+
+  /* ---------------------------------------------------------------------
+     About
+     --------------------------------------------------------------------- */
+  .about .th-h1 { max-width: 24ch; }
+  .ab-grid { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 54px;
+    margin-top: 46px; padding-top: 34px; border-top: 1px solid var(--line); align-items: start; }
+  .ab-main { font-size: 14px; line-height: 1.75; color: var(--text-dim); max-width: 70ch; }
+  .ab-main p { margin: 0 0 17px; }
+  .ab-main b { color: var(--text); font-weight: 700; }
+  .ab-main em { font-style: normal; color: var(--accent); }
+  .ab-main a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .ab-h2 { font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--text-faint); margin: 42px 0 16px; padding-bottom: 9px;
+    border-bottom: 1px solid var(--line-soft); }
+  .ab-h2:first-child { margin-top: 0; }
+  .ab-list { margin: 0 0 17px; padding-left: 18px; }
+  .ab-list li { margin-bottom: 9px; }
+  .ab-list li::marker { color: var(--text-faint); }
+
+  .ab-founder { display: flex; gap: 22px; align-items: flex-start; margin-bottom: 8px; }
+  /* Square frame, not a circle: a record photo, not an avatar. */
+  .ab-portrait { width: 96px; height: 96px; flex-shrink: 0; border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); }
+  .ab-portrait span { font-size: 24px; font-weight: 700; letter-spacing: 0.04em; color: var(--text-faint); }
+  .ab-founder-copy { min-width: 0; }
+  .ab-name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+  .ab-role { font-size: 11.5px; letter-spacing: 0.03em; color: var(--text-faint); margin-top: 5px; }
+  /* Marked clearly so it cannot be mistaken for a written biography. */
+  .ab-placeholder { margin-top: 16px; padding: 14px 16px; border: 1px dashed rgba(232,197,131,0.45);
+    background: rgba(232,197,131,0.05); }
+  .ab-placeholder b { display: block; font-size: 10.5px; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
+  .ab-placeholder p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--text-faint); }
+
+  .ab-side { border: 1px solid var(--line); padding: 0; position: sticky; top: 112px; }
+  .ab-side-h { font-size: 9.5px; letter-spacing: 0.13em; color: var(--text-faint);
+    padding: 12px 15px; border-bottom: 1px solid var(--line); }
+  .ab-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 9px 15px; border-bottom: 1px solid var(--line-soft); font-size: 11.5px; }
+  .ab-row i { font-style: normal; color: var(--text-faint); letter-spacing: 0.05em; white-space: nowrap; }
+  .ab-row b { color: var(--text); font-weight: 700; text-align: right; }
+  .ab-side-foot { display: flex; flex-direction: column; gap: 7px; padding: 13px 15px; }
+  .ab-side-foot .th-btn { width: 100%; text-align: center; }
+
+  @media (max-width: 900px) {
+    .ab-grid { grid-template-columns: 1fr; gap: 34px; }
+    .ab-side { position: static; }
+  }
+  @media (max-width: 520px) {
+    .ab-founder { flex-direction: column; gap: 16px; }
+  }
+
+
+  #viewSlug { max-width: 1300px; margin: 0 auto 30px; padding: 10px 32px 10px;
+    border-bottom: 1px solid var(--line); }
+  #viewSlug[hidden] { display: none; }
+  .term-hero { padding-top: 0; }
+  @media (max-width: 760px) { #viewSlug { padding-left: 20px; padding-right: 20px; margin-bottom: 22px; } }
+
+
+  /* Mono sets roughly 20% wider than the sans these sizes were tuned for, so
+     the view headings were overflowing their column and breaking at hyphens
+     ("The smart- / money / stock board"). Retuned for the wider face. */
+  .lead-h1 { font-size: clamp(25px, 3.3vw, 44px) !important; letter-spacing: -0.035em; line-height: 1.08; }
+  .lead-tagline { font-size: 13.5px !important; line-height: 1.7; max-width: 60ch; }
+  .lead-eyebrow { font-size: 10.5px !important; letter-spacing: 0.11em; text-transform: uppercase; }
+  .conv-title { font-size: clamp(22px, 2.6vw, 34px) !important; }
+  .legal-hero .lead-h1 { font-size: clamp(24px, 3vw, 38px) !important; }
+  /* Long-form legal/about prose stays readable: mono, but roomier. */
+  .legal-body { font-size: 13.5px; line-height: 1.78; }
+  .legal-body h2 { font-size: 12px !important; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-faint); border-bottom: 1px solid var(--line-soft); padding-bottom: 9px; }
+
+
+  /* The status badge is 124px of mono on a 375px phone, sitting flush against
+     the right edge with 25px of the row scrolled out of reach. The slug line
+     directly beneath it now carries the same timestamp on every view, so on
+     small screens the badge is redundant -- drop it and give the row back. */
+  @media (max-width: 620px) {
+    #statusBadge { display: none !important; }
+    .topbar-top { gap: 8px; }
+    #searchBox { flex: 1 1 auto; min-width: 0; }
+  }
+  /* Keep a gutter on the right at every width. */
+  .topbar-top { padding-right: 2px; }
+
 </style>
 </head>
 <body>
@@ -1786,6 +2065,8 @@
     <div class="filter-tabs" id="filterTabs"></div>
     <button class="pill-toggle" id="contextToggle" style="display:none;"></button>
   </section>
+
+  <div class="th-slug" id="viewSlug" hidden></div>
 
   <div id="content">
     <div class="boot" id="boot" role="status" aria-live="polite">
@@ -1827,6 +2108,7 @@
         <span class="foot-by">An independent research project by Alessandro Brunelli</span>
       </div>
       <nav class="foot-links" aria-label="Legal and information">
+        <button data-goto="about">About</button>
         <button data-goto="disclaimer">Disclaimer</button>
         <button data-goto="privacy">Privacy</button>
         <button data-goto="terms">Terms of use</button>
@@ -1884,7 +2166,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-10-verdict";
+  const BUILD_ID = "2026-11-11-terminal";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -1921,8 +2203,8 @@
   const MEMBERS_PAGE = 30;
 
   const VIEWS = ["home", "overview", "flow", "insiders", "sentiment", "screener", "bills", "politicians", "stocks",
-                 "disclaimer", "privacy", "terms", "sources"];
-  const LEGAL_VIEWS = new Set(["disclaimer", "privacy", "terms", "sources"]);
+                 "disclaimer", "privacy", "terms", "sources", "about"];
+  const LEGAL_VIEWS = new Set(["disclaimer", "privacy", "terms", "sources", "about"]);
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -2426,6 +2708,26 @@
     document.querySelectorAll(".filter-row, .methodology").forEach(e => { e.hidden = LEGAL_VIEWS.has(activeView); });
     document.getElementById("viewHint").textContent = VIEW_HINTS[activeView] || "";
     scrollActiveTabIntoView();
+    renderViewSlug();
+  }
+
+  // Every page is identified the same way: who, what section, when.
+  const SLUG_KIND = {
+    home: "RESEARCH NOTE", overview: "OVERVIEW", flow: "CAPITAL FLOW",
+    insiders: "INSIDER ALPHA", sentiment: "SENTIMENT", screener: "SCREENER",
+    bills: "LEGISLATION", politicians: "LEADERBOARD", stocks: "STOCK BOARD",
+    about: "ABOUT", disclaimer: "DISCLAIMER", privacy: "PRIVACY",
+    terms: "TERMS OF USE", sources: "DATA SOURCES",
+  };
+  function renderViewSlug() {
+    const el = document.getElementById("viewSlug");
+    if (!el) return;
+    if (!DATA) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = `<span class="th-slug-id">LEGISLATIVE&nbsp;ALPHA</span>` +
+      `<span class="th-slug-kind">${SLUG_KIND[activeView] || ""}</span>` +
+      `<span class="th-slug-fill"></span>` +
+      `<span class="th-slug-date">${asOfStamp()}</span>`;
   }
 
   /* The tab strip is 734px wide inside a 339px phone, so on every view past
@@ -3477,6 +3779,95 @@
         <button class="ap-link" data-goto="terms">Terms</button>
         <button class="ap-link" data-goto="sources">Data sources</button>
       </nav>
+    </section>`;
+  }
+
+  /* ---------- ABOUT ----------
+     Written from what the project demonstrates. The founder's biography is a
+     marked placeholder -- inventing a background for a real, named person and
+     publishing it is not a guess worth making. */
+  function renderAboutView() {
+    const L = DATA.lag_study || {}, fd = L.filed_date || {};
+    const row = (k, v) => `<div class="ab-row"><i>${k}</i><b>${v}</b></div>`;
+    return `<section class="data-section about">
+      <h1 class="th-h1">An independent record of what Congress trades.</h1>
+      <p class="th-lede">Legislative Alpha scores every disclosed congressional stock trade against the
+      S&amp;P&nbsp;500 and publishes the result, including when the result is unflattering. It takes no
+      outside funding, sells nothing, and makes no recommendations.</p>
+
+      <div class="ab-grid">
+        <div class="ab-main">
+
+          <h2 class="ab-h2">The founder</h2>
+          <div class="ab-founder">
+            <div class="ab-portrait" aria-hidden="true"><span>AB</span></div>
+            <div class="ab-founder-copy">
+              <div class="ab-name">${esc(OWNER)}</div>
+              <div class="ab-role">Founder &middot; builds and maintains the project</div>
+              <div class="ab-placeholder">
+                <b>[ BIOGRAPHY &mdash; PLACEHOLDER ]</b>
+                <p>This block is intentionally unwritten. Everything else on this page is drawn from
+                what the project verifiably does; a person's background is not something to infer.
+                ${esc(OWNER.split(" ")[0])}'s own words go here.</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="ab-h2">Why it exists</h2>
+          <p>Most of the public argument about congressional stock trading runs on anecdote: a
+          well-timed trade, a screenshot, an assumption. Almost none of it measures the thing a
+          reader could actually have done &mdash; buy after the trade was <em>disclosed</em>, which
+          is the only moment the information exists outside the member's own head.</p>
+          <p>That gap is the whole project. Scored from the filing date rather than the trade date,
+          across ${(L.n_trades || 0).toLocaleString()} priced purchases, the average congressional buy
+          ${fd.mean == null ? "is measured against the index" :
+            fd.mean < 0 ? `<b>trails the index by ${Math.abs(fd.mean).toFixed(2)} points</b>`
+                        : `<b>beats the index by ${fd.mean.toFixed(2)} points</b>`}. The site leads with
+          that number instead of burying it, because a tracker that only reports the flattering half
+          of its own evidence is advertising, not research.</p>
+
+          <h2 class="ab-h2">How it is built</h2>
+          <p>A single Python pipeline pulls Senate and House disclosures, SEC Form&nbsp;4 insider
+          filings, bill progress from congress.gov, prices, analyst ratings and retail sentiment,
+          scores everything, and writes one JSON file. A static page renders it. The whole thing
+          rebuilds itself every six hours and has no server, no database and no account system.</p>
+          <p>The method is deliberately conservative: returns are measured from the first close a
+          follower could have paid, members are ranked on confidence-adjusted alpha so a lucky
+          two-trade streak cannot top the board, and t&#8209;statistics are clustered by ticker so
+          that buying one name ten times counts as one idea, not ten.</p>
+
+          <h2 class="ab-h2">What it will not do</h2>
+          <ul class="ab-list">
+            <li>Recommend a security, or tell anyone what to buy or sell.</li>
+            <li>Claim a finding is significant when the arithmetic says otherwise.</li>
+            <li>Quietly drop a statistic because it stopped being favourable.</li>
+            <li>Track visitors. There are no cookies, no analytics and no third-party requests.</li>
+          </ul>
+
+          <h2 class="ab-h2">Contact</h2>
+          <p>Corrections are welcome and taken seriously &mdash; particularly on sourcing, method or
+          a figure that looks wrong. Raise an issue on
+          <a href="https://github.com/alexbrunelli08-lgtm/legislative-alpha" target="_blank" rel="noopener">GitHub</a>,
+          where the entire pipeline and this page are public.</p>
+        </div>
+
+        <aside class="ab-side">
+          <div class="ab-side-h">AT A GLANCE</div>
+          ${row("FOUNDED BY", esc(OWNER))}
+          ${row("FUNDING", "None")}
+          ${row("PRICE", "Free")}
+          ${row("ACCOUNTS", "None")}
+          ${row("TRACKING", "None")}
+          ${row("REBUILDS", "Every 6 hours")}
+          ${row("BUYS SCORED", (L.n_trades || 0).toLocaleString())}
+          ${row("MEMBERS RANKED", L.members_scored || "--")}
+          ${row("SOURCE", "Public")}
+          <div class="ab-side-foot">
+            <button class="th-btn" data-goto="sources">DATA SOURCES</button>
+            <button class="th-btn" data-goto="disclaimer">DISCLAIMER</button>
+          </div>
+        </aside>
+      </div>
     </section>`;
   }
 
@@ -4611,6 +5002,17 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
   }
 
   /* ---------- HOME (fluid landing that flows through every signal) ---------- */
+  // "10 NOV 2026 - 23:08 UTC" -- the stamp a desk puts on a note.
+  function asOfStamp() {
+    const g = DATA && DATA.generated_at;
+    if (!g) return "";
+    const d = new Date(g);
+    if (isNaN(d)) return "";
+    const M = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    const p = n => String(n).padStart(2, "0");
+    return `${p(d.getUTCDate())} ${M[d.getUTCMonth()]} ${d.getUTCFullYear()} &middot; ${p(d.getUTCHours())}:${p(d.getUTCMinutes())} UTC`;
+  }
+
   function renderHomeView() {
     const scored = (DATA.members || []).filter(m => m.alpha != null);
     const members = scored.filter(m => (m.priced_buys || 0) >= MIN_SCORED_BUYS).sort((a, b) => b.alpha_adj - a.alpha_adj);
@@ -4640,8 +5042,8 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const fLag = LS.lag_median != null ? LS.lag_median : null;
     const trails = fMean != null && fMean < 0;
     const heroH1 = trails
-      ? `The smart money<br><em>isn't that smart</em>.`
-      : `Follow the<br><em>smart money</em>.`;
+      ? `The smart money <em>isn't that smart</em>.`
+      : `Follow the <em>smart money</em>.`;
     const heroLede = trails
       ? `Everyone says to follow congressional stock trades. Scored against the S&amp;P from the day each one
          became public${fLag != null ? ` — a median of <b>${fLag} days</b> after the fact —` : ","} the average buy
@@ -4651,27 +5053,32 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
          that moves ahead of the market — in one place.`;
 
     return `
-      <section class="home-hero reveal">
-        <div class="ap-eyebrow">Where Congress meets the market</div>
-        <h1 class="home-h1">${heroH1}</h1>
-        <p class="ap-lede">${heroLede}</p>
-        <div class="ap-cta">
-          <button class="ap-btn" data-goto="politicians">See who actually beats it</button>
-          <button class="ap-btn ghost" data-goto="stocks">Explore every signal</button>
-        </div>
-        <div class="home-hero-stats">
-          <div class="hh-stat"><b>${scored.length}</b><i>members scored</i></div>
-          ${(() => { const L = DATA.lag_study;
-            if (!L || !L.members_scored) return `<div class="hh-stat"><b class="up">${beatPct}%</b><i>beating the market</i></div>`;
-            const pct = Math.round(100 * L.members_positive_filed / L.members_scored);
-            // Show the fraction, not the bare percentage. Sitting beside
-            // "62 members scored", a reader reads 37% OF 62 -- about 23 -- when
-            // it is 16 of the 43 that have a scoreable record.
-            return `<div class="hh-stat"><b class="${pct > 50 ? "up" : ""}">${L.members_positive_filed} of ${L.members_scored}</b><i>still ahead once the disclosure lag is priced in</i></div>`;
+      <section class="term-hero reveal">
+        <h1 class="th-h1">${heroH1}</h1>
+        <p class="th-lede">${heroLede}</p>
+
+        <div class="th-readout">
+          ${(() => {
+            const L = DATA.lag_study || {};
+            const fd = L.filed_date || {};
+            const cell = (k, v, cls) => `<div class="th-cell"><i>${k}</i><b class="${cls || ""}">${v}</b></div>`;
+            const n = x => x == null ? "--" : x;
+            return [
+              cell("MEMBERS SCORED", scored.length),
+              cell("STILL AHEAD", L.members_scored ? `${L.members_positive_filed}/${L.members_scored}` : "--"),
+              cell("CONVICTION SIGNALS", (DATA.conviction || {}).multi_signal || 0, "accent"),
+              cell("FILED MEAN", fd.mean == null ? "--" : `${fd.mean > 0 ? "+" : ""}${fd.mean}%`, (fd.mean || 0) >= 0 ? "up" : "down"),
+              cell("T&#8209;STAT", n(fd.t), Math.abs(fd.t || 0) > 2 ? "down" : ""),
+              cell("DISCLOSED TRADES", (DATA.trades || []).length.toLocaleString()),
+            ].join("");
           })()}
-          <div class="hh-stat"><b style="color:var(--accent)">${(DATA.conviction || {}).multi_signal || 0}</b><i>conviction signals</i></div>
         </div>
-        <div class="scroll-cue"><span>Scroll</span><i></i></div>
+
+        <div class="th-actions">
+          <button class="th-btn primary" data-goto="politicians">SEE WHO ACTUALLY BEATS IT</button>
+          <button class="th-btn" data-goto="stocks">EXPLORE EVERY SIGNAL</button>
+          <button class="th-btn" data-goto="about">ABOUT</button>
+        </div>
       </section>
 
       ${renderMemberRace()}
@@ -5226,6 +5633,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const el = document.getElementById("content");
     if (activeView === "home") el.innerHTML = renderHomeView();
     else if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "about") el.innerHTML = renderAboutView();
     else if (activeView === "disclaimer") el.innerHTML = renderDisclaimerView();
     else if (activeView === "privacy") el.innerHTML = renderPrivacyView();
     else if (activeView === "terms") el.innerHTML = renderTermsView();
