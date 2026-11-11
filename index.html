@@ -2166,7 +2166,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-11-terminal";
+  const BUILD_ID = "2026-11-11-terminal2";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -5867,7 +5867,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const items = [];
     [["home", "Home"], ["overview", "Overview"], ["politicians", "Leaderboard"], ["flow", "Flow"],
      ["insiders", "Insiders"], ["sentiment", "Sentiment"], ["screener", "Screener"],
-     ["bills", "Bills"], ["stocks", "Stocks"]]
+     ["bills", "Bills"], ["stocks", "Stocks"], ["about", "About"]]
       .forEach(([v, l]) => items.push({ type: "View", label: l, sub: "Go to " + l, act: () => { document.getElementById("searchBox").value = ""; setHash(v); } }));
     (DATA.members || []).forEach(m => items.push({ type: "Member", label: cleanMemberName(m.member), party: m.party,
       sub: `${m.chamber} · ${m.trade_count} trades${m.portfolio_return != null ? ` · ${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%` : ""}`, act: () => setHash("member/" + m.member) }));
