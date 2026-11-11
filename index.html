@@ -2029,6 +2029,69 @@
   /* Keep a gutter on the right at every width. */
   .topbar-top { padding-right: 2px; }
 
+
+  /* ---------------------------------------------------------------------
+     Learn
+     --------------------------------------------------------------------- */
+  .learn .th-h1 { max-width: 20ch; }
+  .ln-warn { border: 1px solid rgba(232,197,131,0.4); background: rgba(232,197,131,0.05);
+    padding: 14px 17px; font-size: 13px; line-height: 1.65; color: var(--text-dim);
+    margin: 10px 0 0; max-width: 72ch; }
+  .ln-warn b { color: var(--accent); font-weight: 700; }
+
+  .ln-grid { display: grid; grid-template-columns: 236px minmax(0,1fr); gap: 56px;
+    margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--line); align-items: start; }
+
+  .ln-toc { position: sticky; top: 112px; border: 1px solid var(--line); }
+  .ln-toc-h { font-size: 9.5px; letter-spacing: 0.13em; color: var(--text-faint);
+    padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .ln-toc-item { display: flex; gap: 10px; align-items: baseline; padding: 9px 14px;
+    border-bottom: 1px solid var(--line-soft); font-size: 11.5px; line-height: 1.4;
+    color: var(--text-dim); text-decoration: none; cursor: pointer;
+    transition: color .14s linear, background .14s linear; }
+  .ln-toc-item:last-child { border-bottom: none; }
+  .ln-toc-item i { font-style: normal; color: var(--text-faint); flex-shrink: 0; }
+  .ln-toc-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+  .ln-toc-item.on { color: var(--accent); }
+  .ln-toc-item.on i { color: var(--accent); }
+
+  .ln-main { min-width: 0; }
+  .ln-mod { display: grid; grid-template-columns: 58px minmax(0,1fr); gap: 18px;
+    padding: 34px 0; border-top: 1px solid var(--line-soft); }
+  .ln-mod:first-child { border-top: none; padding-top: 0; }
+  .ln-mod-n { font-size: 11px; letter-spacing: 0.1em; color: var(--text-faint); padding-top: 6px; }
+  .ln-mod-body { min-width: 0; font-size: 14px; line-height: 1.78; color: var(--text-dim);
+    max-width: 70ch; }
+  .ln-mod-h { font-family: var(--display); font-size: clamp(18px, 2vw, 23px); font-weight: 700;
+    letter-spacing: -0.03em; color: var(--text); margin: 0 0 10px; line-height: 1.14; }
+  .ln-mod-lede { font-size: 13px; color: var(--accent); margin: 0 0 20px; line-height: 1.6; }
+  .ln-mod-body p { margin: 0 0 15px; }
+  .ln-mod-body b { color: var(--text); font-weight: 700; }
+  .ln-mod-body em { font-style: normal; color: var(--text); }
+  .ln-mod-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .ln-bad { color: var(--bad) !important; }
+  .ln-good { color: var(--good) !important; }
+  .ln-list { margin: 0 0 15px; padding-left: 18px; }
+  .ln-list li { margin-bottom: 9px; }
+  .ln-list li::marker { color: var(--text-faint); }
+
+  .ln-key { border-left: 2px solid var(--accent); background: rgba(255,255,255,0.025);
+    padding: 13px 16px; margin: 20px 0 0; font-size: 13px; line-height: 1.65; color: var(--text); }
+  .ln-key b { display: block; font-size: 9.5px; letter-spacing: 0.13em; color: var(--accent);
+    margin-bottom: 7px; font-weight: 700; }
+  .ln-cite { margin-top: 14px; padding-top: 11px; border-top: 1px solid var(--line-soft);
+    font-size: 11.5px; line-height: 1.55; color: var(--text-faint); }
+  .ln-cite em { color: var(--text-dim); }
+
+  @media (max-width: 940px) {
+    .ln-grid { grid-template-columns: 1fr; gap: 30px; }
+    .ln-toc { position: static; }
+  }
+  @media (max-width: 560px) {
+    .ln-mod { grid-template-columns: 1fr; gap: 6px; }
+    .ln-mod-n { padding-top: 0; }
+  }
+
 </style>
 </head>
 <body>
@@ -2054,6 +2117,7 @@
       <button class="view-tab" data-view="screener">Screener</button>
       <button class="view-tab" data-view="bills">Bills</button>
       <button class="view-tab" data-view="stocks">Stocks</button>
+      <button class="view-tab" data-view="learn">Learn</button>
     </nav>
   </div>
 </header>
@@ -2108,6 +2172,7 @@
         <span class="foot-by">An independent research project by Alessandro Brunelli</span>
       </div>
       <nav class="foot-links" aria-label="Legal and information">
+        <button data-goto="learn">Learn</button>
         <button data-goto="about">About</button>
         <button data-goto="disclaimer">Disclaimer</button>
         <button data-goto="privacy">Privacy</button>
@@ -2166,7 +2231,7 @@
   // Build tag -- bump on every index.html change. GitHub Pages caches HTML for
   // 10 min, so returning visitors can get stuck on an old UI; this checks for a
   // newer build in the background and reloads once (cache-busted) when found.
-  const BUILD_ID = "2026-11-11-terminal3";
+  const BUILD_ID = "2026-11-11-learn";
   (function checkForUpdate() {
     if (/[?&]v=/.test(location.search)) return;  // this load is already cache-busted
     fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(html => {
@@ -2203,8 +2268,8 @@
   const MEMBERS_PAGE = 30;
 
   const VIEWS = ["home", "overview", "flow", "insiders", "sentiment", "screener", "bills", "politicians", "stocks",
-                 "disclaimer", "privacy", "terms", "sources", "about"];
-  const LEGAL_VIEWS = new Set(["disclaimer", "privacy", "terms", "sources", "about"]);
+                 "disclaimer", "privacy", "terms", "sources", "about", "learn"];
+  const LEGAL_VIEWS = new Set(["disclaimer", "privacy", "terms", "sources", "about", "learn"]);
   function currentHash() { try { return decodeURIComponent(location.hash.replace(/^#/, "")); } catch { return location.hash.replace(/^#/, ""); } }
   function setHash(h) { if (currentHash() !== h) location.hash = h; }
   function route() {
@@ -2716,7 +2781,7 @@
     home: "RESEARCH NOTE", overview: "OVERVIEW", flow: "CAPITAL FLOW",
     insiders: "INSIDER ALPHA", sentiment: "SENTIMENT", screener: "SCREENER",
     bills: "LEGISLATION", politicians: "LEADERBOARD", stocks: "STOCK BOARD",
-    about: "ABOUT", disclaimer: "DISCLAIMER", privacy: "PRIVACY",
+    about: "ABOUT", learn: "LEARN", disclaimer: "DISCLAIMER", privacy: "PRIVACY",
     terms: "TERMS OF USE", sources: "DATA SOURCES",
   };
   function renderViewSlug() {
@@ -3742,6 +3807,60 @@
     bar.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => setHash(b.dataset.goto)));
   }
 
+
+  /* The contents rail. Polls instead of listening for scroll: scroll events
+     are not reliably delivered in every context this page runs in, and a rail
+     that silently stops tracking is worse than a cheap interval. Cleared on
+     the next render so it cannot accumulate. */
+  /* html carries `scroll-behavior: smooth`, and passing `behavior: "auto"` to
+     scrollTo does NOT override it in every browser -- measured here, every
+     programmatic scroll was still mid-animation 350ms later, and a reader who
+     clicks a contents entry wants to be there, not watching. Same rule as the
+     rest of this file: never let an animation be the only thing that produces
+     the final state. Suspend the CSS property, jump, put it back. */
+  function jumpToY(y) {
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, Math.max(0, y));
+    root.style.scrollBehavior = prev;
+  }
+
+  let _learnOff = null;
+  function wireLearn(root) {
+    if (_learnOff) { _learnOff(); _learnOff = null; }
+    const toc = root.querySelector(".ln-toc");
+    if (!toc) return;
+
+    toc.querySelectorAll("[data-learn-jump]").forEach(a => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        const t = document.getElementById("ln-" + a.dataset.learnJump);
+        if (!t) return;
+        jumpToY(window.scrollY + t.getBoundingClientRect().top - 96);
+      });
+    });
+
+    const items = [...toc.querySelectorAll("[data-learn-jump]")];
+    const mods = items.map(a => document.getElementById("ln-" + a.dataset.learnJump));
+    function sweep() {
+      if (!document.body.contains(toc)) { stop(); return; }
+      let active = 0;
+      for (let i = 0; i < mods.length; i++) {
+        if (mods[i] && mods[i].getBoundingClientRect().top <= 160) active = i;
+      }
+      items.forEach((a, i) => a.classList.toggle("on", i === active));
+    }
+    const poll = setInterval(sweep, 250);
+    window.addEventListener("scroll", sweep, { passive: true });
+    function stop() {
+      clearInterval(poll);
+      window.removeEventListener("scroll", sweep);
+    }
+    _learnOff = stop;
+    sweep();
+  }
+
   /* Privacy page: let people actually erase what the site stored. */
   function wireStorageClear(root) {
     const btn = root.querySelector("#clearStorage");
@@ -3786,6 +3905,361 @@
      Written from what the project demonstrates. The founder's biography is a
      marked placeholder -- inventing a background for a real, named person and
      publishing it is not a guess worth making. */
+
+  /* ---------- LEARN ----------
+     Statistics here were read from the primary sources, not from summaries of
+     them; the secondary write-ups disagreed with each other. Each claim links
+     out so a reader can check it. */
+  // Built on demand, not at script load: the worked-example module interpolates
+  // DATA, and a template literal evaluates when the array is constructed. At
+  // load time DATA is still null, so defining this eagerly threw and left the
+  // page stuck on its boot screen.
+  function learnModules() { return [
+    {
+      id: "what-is-a-stock",
+      n: "01",
+      title: "What a share actually is",
+      lede: "Not a ticker. Not a number that moves. A legal slice of a business.",
+      body: `
+        <p>A share is part-ownership of a company. If a business has issued 100 million shares and
+        you hold one, you own one hundred-millionth of it: the factories, the brand, the contracts,
+        the debts, and whatever cash is left once everyone else has been paid.</p>
+        <p>That last clause matters more than anything else on this page. Shareholders are
+        <b>last in line</b>. Suppliers are paid, staff are paid, lenders are paid, and owners take
+        what remains. That is why a share can go to zero while the building is still standing.</p>
+        <p>So a share is a claim on <em>all the cash that business will ever return to its
+        owners</em>, from today until it ceases to exist. Nobody knows that number. Everybody is
+        estimating it. A price is the current consensus of those estimates.</p>
+        <div class="ln-key"><b>The one idea</b>A share is a claim on future cash, and nobody knows
+        what that cash will be. Every price is a guess about the future, not a fact about today.</div>`,
+    },
+    {
+      id: "what-sets-price",
+      n: "02",
+      title: "What actually sets the price",
+      lede: "Not value. Not earnings. The highest bid that meets the lowest offer.",
+      body: `
+        <p>No committee sets the price of a stock. At any instant there is a queue of people willing
+        to buy at various prices and a queue willing to sell. The price on the screen is simply
+        where the last trade happened: one buyer and one seller agreeing.</p>
+        <p>This explains something that confuses nearly everyone at the start: <b>good news can make
+        a price fall.</b> If a company reports rising profits and the stock drops, that is not
+        irrational. The price already contained an expectation of growth. What moves a price is not
+        whether news is good, but whether it is <em>better or worse than what was already
+        expected</em>.</p>
+        <p>Which leads somewhere uncomfortable. For information to make you money it is not enough
+        that it be true. It has to be true <b>and not already in the price</b>. By the time you read
+        something in a headline, several thousand professionals with faster data have read it too.</p>
+        <div class="ln-key"><b>The one idea</b>Prices move on surprise, not on news. If you know it,
+        it is probably already priced.</div>`,
+    },
+    {
+      id: "other-side",
+      n: "03",
+      title: "Who is on the other side",
+      lede: "Every trade has two people in it, and one of them is wrong.",
+      body: `
+        <p>When you buy a share, somebody sold it to you. You think it is going up. They think it is
+        going down, or they need the cash, or a model told them to rebalance. One of you would have
+        been better off not trading.</p>
+        <p>So the question to ask before any trade is: <b>who is selling to me, and why do I believe
+        I know more than they do?</b></p>
+        <p>Often the answer is a firm with a direct exchange connection, a team of quantitative
+        researchers and a latency advantage measured in microseconds. That is not an argument that
+        markets are rigged. It is an argument that your edge is unlikely to come from reacting to
+        public information faster than they do, because you cannot.</p>
+        <div class="ln-key"><b>The one idea</b>You are not trading against "the market". You are
+        trading against a specific person or machine that thinks you are the one making the
+        mistake.</div>`,
+    },
+    {
+      id: "arithmetic",
+      n: "04",
+      title: "The arithmetic nobody can argue with",
+      lede: "Before costs, the average active investor must earn exactly the market return. This is not a study. It is subtraction.",
+      body: `
+        <p>In 1991 William Sharpe wrote down an argument that needs no data at all. Divide every
+        dollar invested in a market into two buckets: passively held, tracking the index, and
+        actively managed, which is everything else.</p>
+        <p>Passive dollars earn the market return by construction. All dollars together <em>are</em>
+        the market, so together they earn the market return. Therefore the active dollars as a group
+        must also earn exactly the market return &mdash; <b>before costs</b>. After costs, the
+        average active dollar must earn <b>less</b> than the market, by precisely what it paid in
+        fees and trading.</p>
+        <p>This says nothing about whether markets are efficient or whether anyone is skilled. It is
+        accounting. It holds in a bubble, in a crash, in any market, in any country, forever.</p>
+        <p>Skill is still real. Some managers beat the index, which means others must lose by the
+        same amount. The arithmetic only tells you that the <em>average</em> is a loser after fees,
+        and that every winner is funded by a loser.</p>
+        <div class="ln-key"><b>The one idea</b>Beating the market is not hard because markets are
+        clever. It is hard because it is a zero-sum game with a fee attached.</div>
+        <div class="ln-cite">Sharpe, W. (1991), <em>The Arithmetic of Active Management</em>,
+        Financial Analysts Journal.
+        <a href="https://web.stanford.edu/~wfsharpe/art/active/active.htm" target="_blank" rel="noopener">Read it &mdash; it is two pages</a></div>`,
+    },
+    {
+      id: "stock-picking",
+      n: "05",
+      title: "Why picking stocks is harder than it looks",
+      lede: "Most shares are poor investments. A tiny handful carry the entire market.",
+      body: `
+        <p>This is the finding that should change how you think about owning individual companies.
+        Hendrik Bessembinder took every US common stock since 1926 and asked a simple question: over
+        its entire life, how did each one do?</p>
+        <p><b>58% returned less than one-month Treasury bills.</b> Not less than the stock market
+        &mdash; less than the single safest, dullest asset available. The most common single outcome,
+        the modal lifetime return, was <b>&minus;100%</b>. A total loss.</p>
+        <p>So where did the famous long-run returns come from? <b>Just over 4% of listed companies
+        account for the entire net gain of the US stock market since 1926.</b> The other 96%,
+        collectively, matched Treasury bills.</p>
+        <p>Consider what that does to a concentrated portfolio. If nearly all the gains come from a
+        small minority of names, then holding ten stocks is largely a bet that you have found one of
+        them. The mathematically likely outcome is that you miss them and end up holding the 96%.
+        Owning the whole market is not the timid choice &mdash; it is the only way to
+        <em>guarantee</em> holding the few that matter.</p>
+        <div class="ln-key"><b>The one idea</b>Stock returns are not a bell curve. They are a few
+        enormous winners and a long tail of losers, which is precisely the shape that punishes
+        picking.</div>
+        <div class="ln-cite">Bessembinder, H. (2018), <em>Do Stocks Outperform Treasury Bills?</em>,
+        Journal of Financial Economics.
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0304405X18301521" target="_blank" rel="noopener">Paper</a></div>`,
+    },
+    {
+      id: "active-funds",
+      n: "06",
+      title: "The professionals do not beat it either",
+      lede: "Full-time managers, research teams, direct access to company management. Most still lose to a plain index.",
+      body: `
+        <p>It would be fair to assume the problem is simply that amateurs are amateurs. So look at
+        the people who do this full-time, with research budgets, terminals and meetings with chief
+        executives.</p>
+        <p>S&amp;P publishes a scorecard comparing active funds with the index each is measured
+        against. Over a <b>15-year horizon, roughly 90% of US large-cap active funds underperform
+        the S&amp;P 500</b>, and in recent editions no major equity category has had a majority of
+        managers beat its benchmark over that period. The exact figure shifts between editions; the
+        direction does not.</p>
+        <p>There is a subtler trap inside that number. Funds that do worst are often closed or merged
+        away, so the surviving sample already flatters active management. The honest comparison is
+        worse than the published one.</p>
+        <div class="ln-key"><b>The one idea</b>If most full-time professionals cannot beat the index
+        over fifteen years, a confident feeling about a company is not an edge.</div>
+        <div class="ln-cite">S&amp;P Dow Jones Indices, <em>SPIVA U.S. Scorecard</em>. Figures vary
+        by edition &mdash; check the current one rather than quoting this page.
+        <a href="https://www.spglobal.com/spdji/en/research-insights/spiva/" target="_blank" rel="noopener">SPIVA</a></div>`,
+    },
+    {
+      id: "day-trading",
+      n: "07",
+      title: "Why day trading is worse",
+      lede: "13% make money in a given year. Fewer than 1% can do it consistently. That gap is the whole illusion.",
+      body: `
+        <p>Day trading looks viable from the outside for a measurable reason: in any single year a
+        decent minority of day traders genuinely do make money. That is enough to keep the story
+        alive, fill social feeds with winners, and make everyone else look like they just did not
+        try hard enough.</p>
+        <p>Barber, Lee, Liu and Odean tracked the <b>entire Taiwanese market from 1992 to 2006</b>
+        &mdash; every day trader, around 360,000 of them in an average year. Their finding:
+        <b>about 13% earn a profit net of fees in a typical year, but fewer than 1%, roughly 1,000
+        people out of 360,000, beat the market consistently.</b></p>
+        <p>The distance between 13% and 1% is the illusion in one line. A single profitable year is
+        mostly luck, and among 360,000 people a great many will have one and conclude they have
+        found a method.</p>
+        <p>The earlier Barber and Odean study of 66,465 US households from 1991 to 1996 shows the
+        mechanism. Households that traded most earned <b>11.4% a year</b> while the market returned
+        <b>17.9%</b>; those who traded least earned <b>18.5%</b>. The crucial detail is this:
+        <b>before costs there was very little difference between what the frequent and infrequent
+        traders picked.</b> The heavy traders were not worse at choosing stocks. The entire gap was
+        what it cost them to keep changing their minds.</p>
+        <div class="ln-key"><b>The one idea</b>Frequent traders do not lose because they pick badly.
+        They lose because trading costs money every single time, and they do it constantly.</div>
+        <div class="ln-cite">Barber, Lee, Liu &amp; Odean (2011), <em>The Cross-Section of Speculator
+        Skill: Evidence from Day Trading</em>
+        <a href="https://faculty.haas.berkeley.edu/odean/papers/day%20traders/Day%20Trading%20Skill%20110523.pdf" target="_blank" rel="noopener">PDF</a>
+        &middot; Barber &amp; Odean (2000), <em>Trading Is Hazardous to Your Wealth</em>, Journal of
+        Finance.</div>`,
+    },
+    {
+      id: "costs",
+      n: "08",
+      title: "The cost that quietly eats everything",
+      lede: "A 1% annual fee does not cost you 1%. Over a working life it costs about a third of your money.",
+      body: `
+        <p>Fees look trivial because they are quoted annually and in single digits. Their effect is
+        neither annual nor small, because money taken out also stops compounding for every year
+        that follows.</p>
+        <p>Take a single deposit left alone for 40 years at a 7% return. With no fee it multiplies
+        roughly 15-fold. At a 1% annual fee it multiplies roughly 10-fold &mdash; you keep about
+        <b>two thirds</b> of what you would have had. At 2%, roughly <b>half</b>.</p>
+        <p>Nothing went wrong in that example. No crash, no bad decision. That is the baseline
+        outcome of a fee most people would call reasonable.</p>
+        <p>The same logic applies to trading costs, which are simply a fee you charge yourself. Every
+        purchase crosses the spread between the bid and the offer, and frequent trading pays that
+        spread again and again. This is exactly the mechanism Barber and Odean measured.</p>
+        <div class="ln-key"><b>The one idea</b>Costs are the only part of your return you control
+        with certainty. Everything else is a forecast.</div>`,
+    },
+    {
+      id: "risk",
+      n: "09",
+      title: "Risk is not the same as losing money",
+      lede: "What ruins people is rarely volatility. It is being forced to sell during it.",
+      body: `
+        <p>In finance "risk" usually means volatility &mdash; how much a price swings about. But
+        volatility only becomes a loss if you sell while it is down. For someone who truly will not
+        touch the money for thirty years, a 40% drawdown is painful and temporary. For someone who
+        needs it next year, the identical drawdown is permanent.</p>
+        <p>The real risk, then, is the mismatch between <b>how long you can wait</b> and <b>how long
+        the asset needs</b>. Money you will need soon does not belong in anything that can halve.</p>
+        <p>Diversification is the one genuinely free improvement on offer. Holding many unrelated
+        things reduces how much any single disaster can hurt you, without reducing what you expect
+        to earn. It is the only move in investing that improves one side of the trade-off without
+        worsening the other, which is why it gets called the only free lunch.</p>
+        <p>What it does <em>not</em> do is save you in a crash where everything falls together.
+        Diversification reduces the risk specific to one company, not the risk of the whole market.</p>
+        <div class="ln-key"><b>The one idea</b>Match your time horizon to your assets. Most ruin
+        comes from needing the money at the worst possible moment, not from picking the wrong
+        stock.</div>`,
+    },
+    {
+      id: "behaviour",
+      n: "10",
+      title: "You are the hardest part",
+      lede: "The predictable ways people misread their own results.",
+      body: `
+        <p><b>Overconfidence.</b> Most people rate themselves above average at driving, and at
+        investing. Barber and Odean's explanation for excessive trading is precisely this: people
+        trade heavily because they believe they know something, and usually they do not.</p>
+        <p><b>Survivorship.</b> You hear from the person who made 400% on one position. You do not
+        hear from the many who took the same bet and lost, because they stop posting. Every feed of
+        trading results is filtered to show you winners.</p>
+        <p><b>Luck dressed as skill.</b> With enough participants, impressive streaks happen by
+        chance alone. If 360,000 people flip coins, hundreds get ten heads in a row, and some of
+        them write a book about their method.</p>
+        <p><b>Recency.</b> Whatever has risen lately feels safe and obvious. That is usually the
+        moment it is most expensive.</p>
+        <p><b>Loss aversion.</b> Losing hurts about twice as much as the same gain feels good, which
+        pushes people to sell winners early and hold losers while hoping to get back to even. The
+        market has no idea what price you paid, and no interest in it.</p>
+        <div class="ln-key"><b>The one idea</b>Your own track record is a small, biased sample.
+        Treat a win as weak evidence, because mostly that is what it is.</div>`,
+    },
+    {
+      id: "what-works",
+      n: "11",
+      title: "What the evidence actually supports",
+      lede: "Boring, and close to unanimous. This describes research findings, not a recommendation for you.",
+      body: `
+        <p>Everything above describes how markets behave. What follows is what the research
+        consistently finds works better than the alternatives &mdash; <b>not advice, and not
+        tailored to anybody.</b> What suits a particular person depends on their circumstances,
+        their timeline and their obligations, none of which a website can know.</p>
+        <p>With that said, the literature points one way with unusual agreement:</p>
+        <ul class="ln-list">
+          <li><b>Own broadly rather than narrowly.</b> If 4% of stocks produce the gains, owning
+          everything is how you guarantee owning them.</li>
+          <li><b>Keep costs low.</b> It is the only input you control with certainty.</li>
+          <li><b>Let time do the work.</b> Compounding is the whole mechanism and it needs decades,
+          not quarters.</li>
+          <li><b>Trade rarely.</b> Every documented study of trading frequency points the same
+          direction.</li>
+          <li><b>Automate the contributions.</b> It removes the moment where you have to be brave,
+          which is the moment people get wrong.</li>
+          <li><b>Do not invest money you will need soon.</b> Horizon mismatch does more damage than
+          poor selection.</li>
+        </ul>
+        <p>None of this is exciting, which is roughly the point. The approach with the best evidence
+        behind it is also the one nobody can sell you a subscription for.</p>
+        <div class="ln-key"><b>The one idea</b>The boring answer wins not because markets are safe,
+        but because costs and time are the only forces you can reliably control.</div>`,
+    },
+    {
+      id: "worked-example",
+      n: "12",
+      title: "A worked example: this website",
+      lede: "If anyone had an information edge, it should be the people writing the laws.",
+      body: `
+        <p>Everything above is other people's research. Here is a test you can watch run live on this
+        site.</p>
+        <p>Members of Congress vote on legislation that moves entire industries. If a real
+        information advantage exists anywhere, it ought to show up here. They are legally required to
+        disclose their trades, so it can be measured rather than argued about.</p>
+        <p>The catch is the disclosure lag. A member trades, and the filing appears a median of
+        <b>${(DATA.lag_study || {}).lag_median != null ? (DATA.lag_study || {}).lag_median + " days" : "several weeks"}</b>
+        later. A follower cannot buy at the member's price &mdash; only at the price on the day it
+        became public. So this site scores every trade from the <b>filing date</b>, the first moment
+        a reader could actually have acted.</p>
+        <p>Measured that way, across
+        <b>${((DATA.lag_study || {}).n_trades || 0).toLocaleString()} priced purchases</b>, the
+        average congressional buy ${(() => {
+          const m = ((DATA.lag_study || {}).filed_date || {}).mean;
+          if (m == null) return "is measured against the index";
+          return m < 0
+            ? `<b class="ln-bad">trails the S&amp;P by ${Math.abs(m).toFixed(2)} points</b>`
+            : `<b class="ln-good">beats the S&amp;P by ${m.toFixed(2)} points</b>`;
+        })()}.${(() => {
+          const L = DATA.lag_study || {};
+          return L.members_scored
+            ? ` Of ${L.members_scored} members with a scoreable record, <b>${L.members_positive_filed}</b> are ahead of the index.`
+            : "";
+        })()}</p>
+        <p>There is a sharper version of the same test. If somebody genuinely picks well, the things
+        they <em>buy</em> should beat the things they chose to <em>sell</em>. On this data that gap
+        is ${(() => {
+          const D = (DATA.lag_study || {}).discrimination;
+          if (!D) return "shown on the Home page";
+          const sig = Math.abs(D.t || 0) > 2;
+          if (!sig) return `<b>${D.gap > 0 ? "+" : ""}${D.gap} points</b>, well inside noise (t&nbsp;=&nbsp;${D.t})`;
+          return D.gap < 0
+            ? `<b class="ln-bad">${D.gap} points</b>, pointing the wrong way and outside noise (t&nbsp;=&nbsp;${D.t})`
+            : `<b class="ln-good">+${D.gap} points</b>, a real edge (t&nbsp;=&nbsp;${D.t})`;
+        })()}.</p>
+        <p>So the group with arguably the best information access in the country does not, on this
+        measurement, hand a follower an edge. That is not a claim that nobody can ever beat the
+        market. It is a demonstration of how high the bar sits, using the people most of us assume
+        clear it easily.</p>
+        <div class="ln-key"><b>The one idea</b>Before believing any edge exists, ask how it was
+        measured, from which date, and whether the person showing it to you would have published the
+        result had it come out the other way.</div>`,
+    },
+  ]; }
+
+  function renderLearnView() {
+    const LEARN = learnModules();
+    const toc = LEARN.map(m =>
+      `<a class="ln-toc-item" href="#learn" data-learn-jump="${m.id}"><i>${m.n}</i><span>${m.title}</span></a>`
+    ).join("");
+    const body = LEARN.map(m => `
+      <article class="ln-mod" id="ln-${m.id}">
+        <div class="ln-mod-n">${m.n}</div>
+        <div class="ln-mod-body">
+          <h2 class="ln-mod-h">${m.title}</h2>
+          <p class="ln-mod-lede">${m.lede}</p>
+          ${m.body}
+        </div>
+      </article>`).join("");
+
+    return `<section class="data-section learn">
+      <h1 class="th-h1">Start here.</h1>
+      <p class="th-lede">A short course in how markets actually work, and why most of what gets sold
+      to you about beating them is wrong. No jargon assumed, no product at the end of it. Twelve
+      modules, roughly twenty minutes.</p>
+
+      <div class="ln-warn">
+        <b>This is education, not advice.</b> Nothing here is a recommendation to buy or sell
+        anything, and none of it is tailored to your circumstances. Every figure is sourced and
+        linked &mdash; check them rather than trusting this page.
+      </div>
+
+      <div class="ln-grid">
+        <nav class="ln-toc" aria-label="Course contents">
+          <div class="ln-toc-h">CONTENTS</div>
+          ${toc}
+        </nav>
+        <div class="ln-main">${body}</div>
+      </div>
+    </section>`;
+  }
+
   function renderAboutView() {
     const L = DATA.lag_study || {}, fd = L.filed_date || {};
     const row = (k, v) => `<div class="ab-row"><i>${k}</i><b>${v}</b></div>`;
@@ -5077,6 +5551,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
         <div class="th-actions">
           <button class="th-btn primary" data-goto="politicians">SEE WHO ACTUALLY BEATS IT</button>
           <button class="th-btn" data-goto="stocks">EXPLORE EVERY SIGNAL</button>
+          <button class="th-btn" data-goto="learn">LEARN THE BASICS</button>
           <button class="th-btn" data-goto="about">ABOUT</button>
         </div>
       </section>
@@ -5633,6 +6108,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const el = document.getElementById("content");
     if (activeView === "home") el.innerHTML = renderHomeView();
     else if (activeView === "overview") el.innerHTML = renderOverviewView();
+    else if (activeView === "learn") el.innerHTML = renderLearnView();
     else if (activeView === "about") el.innerHTML = renderAboutView();
     else if (activeView === "disclaimer") el.innerHTML = renderDisclaimerView();
     else if (activeView === "privacy") el.innerHTML = renderPrivacyView();
@@ -5753,6 +6229,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     makeActivatable(el);
     buildSectionRail();
     wireStorageClear(el);
+    wireLearn(el);
     revealSections();
     enhanceContent();
   }
@@ -5867,7 +6344,7 @@ The crowd: ${s.bull_pct}% bullish across ${s.buzz} messages</title></circle>`;
     const items = [];
     [["home", "Home"], ["overview", "Overview"], ["politicians", "Leaderboard"], ["flow", "Flow"],
      ["insiders", "Insiders"], ["sentiment", "Sentiment"], ["screener", "Screener"],
-     ["bills", "Bills"], ["stocks", "Stocks"], ["about", "About"]]
+     ["bills", "Bills"], ["stocks", "Stocks"], ["learn", "Learn"], ["about", "About"]]
       .forEach(([v, l]) => items.push({ type: "View", label: l, sub: "Go to " + l, act: () => { document.getElementById("searchBox").value = ""; setHash(v); } }));
     (DATA.members || []).forEach(m => items.push({ type: "Member", label: cleanMemberName(m.member), party: m.party,
       sub: `${m.chamber} · ${m.trade_count} trades${m.portfolio_return != null ? ` · ${m.portfolio_return > 0 ? "+" : ""}${m.portfolio_return}%` : ""}`, act: () => setHash("member/" + m.member) }));
