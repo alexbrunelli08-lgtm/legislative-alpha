@@ -1,7 +1,7 @@
-# Crawlers only read /robots.txt at the ORIGIN root. On a project GitHub Pages
-# site this file serves at /legislative-alpha/robots.txt and is therefore
-# ignored. It is kept here so it takes effect unchanged the moment the site
-# moves to its own domain, where the repo root becomes the origin root.
+# Live and in effect. The site moved to its own apex domain on 2026-11-16,
+# so this file now serves at vedettaanalytics.com/robots.txt -- the origin
+# root, and the only place a crawler will look for it. On the old project
+# Pages path it sat at /legislative-alpha/robots.txt and was ignored.
 
 User-agent: *
 Allow: /
@@ -22,4 +22,4 @@ Disallow: /sector_cache.json
 Disallow: /social_cache.json
 Disallow: /trades_cache.json
 
-Sitemap: https://alexbrunelli08-lgtm.github.io/legislative-alpha/sitemap.xml
+Sitemap: https://vedettaanalytics.com/sitemap.xml

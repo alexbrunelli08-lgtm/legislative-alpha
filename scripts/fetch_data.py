@@ -62,8 +62,8 @@ DISCLOSURE_MAX_LAG = 400          # filings later than this are stale amendments
 MIN_SCORED_BUYS_BACKEND = 3       # below this a member's record is noise, not a record
 MIN_VALIDATION_N = 40             # below this a score validation is provisional, not a verdict
 REQUEST_TIMEOUT = 20
-USER_AGENT = "vedetta-analytics/1.0 (independent research project; contact via github.com/alexbrunelli08-lgtm/legislative-alpha)"
-SEC_HEADERS = {"User-Agent": "Vedetta Analytics research tracker (contact: github.com/alexbrunelli08-lgtm/legislative-alpha)",
+USER_AGENT = "vedetta-analytics/1.0 (independent research project; contact via vedettaanalytics.com)"
+SEC_HEADERS = {"User-Agent": "Vedetta Analytics research tracker (contact: vedettaanalytics.com)",
                "Accept-Encoding": "gzip, deflate"}
 
 CONGRESS_API_KEY = os.environ.get("CONGRESS_API_KEY")

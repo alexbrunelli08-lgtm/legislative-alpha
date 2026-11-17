@@ -1,21 +1,30 @@
 # Going live and getting found
 
-**The site is already online.** It has been since GitHub Pages was switched on.
+**Status: the site is live on its own domain.**
 
 ```
-https://alexbrunelli08-lgtm.github.io/legislative-alpha/
+https://vedettaanalytics.com
 ```
 
-Verified 16 Nov 2026: `HTTP 200`, HTTPS enforced, Pages status `built`, serving
-data generated the same day. Every `git push` to `main` republishes it within
-about a minute, and the Actions cron pushes fresh data four times a day.
+Done on 16 Nov 2026:
 
-What is *not* done is **being findable**. A search for the site's own address
-returns nothing — Google has never been told it exists. That is what the rest
-of this file is for.
+- [x] Domain registered (Cloudflare Registrar)
+- [x] DNS: 4 A + 4 AAAA records on the apex, all DNS-only (unproxied)
+- [x] Custom domain set on the repo; `CNAME` file committed
+- [x] TLS certificate issued, **Enforce HTTPS** on
+- [x] Every absolute URL repointed: canonical, `og:url`, both preview images,
+      JSON-LD, `sitemap.xml`, `robots.txt`, README, fetcher User-Agent
+- [x] `robots.txt` now actually takes effect -- it sits at the origin root
 
-Do Part A before Part B. If you register a domain after setting up Search
-Console, you have to set Search Console up again from scratch.
+Still to do:
+
+- [ ] `www` CNAME at Cloudflare (`www` -> `alexbrunelli08-lgtm.github.io`)
+- [ ] Google Search Console: add the **Domain** property, verify by TXT record
+- [ ] Submit `sitemap.xml`, then request indexing for the homepage
+- [ ] Bing Webmaster Tools (one-click import from Search Console)
+
+Part A below is kept as a record of what was done and why. **Part B is the
+live checklist.**
 
 ---
 

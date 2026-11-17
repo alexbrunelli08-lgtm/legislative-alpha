@@ -8,7 +8,7 @@ A daily-updating site that scores disclosed congressional trading against the S&
 - **Politicians** — every member's disclosed trades aggregated into a portfolio you can open and inspect (Autopilot-style "follow a pilot").
 - **Stocks** — a per-ticker consensus signal: how many members traded each stock and the net buy/sell direction across Congress (Quiver-style alternative data), plus the full disclosure feed.
 
-**Live site:** enable GitHub Pages in repo Settings → Pages → set source to the `main` branch, root folder. Your URL will be `https://<your-username>.github.io/legislative-alpha/`.
+**Live site:** <https://vedettaanalytics.com> — served by GitHub Pages from the `main` branch, root folder, on a custom apex domain. HTTPS is enforced; the old `alexbrunelli08-lgtm.github.io/legislative-alpha/` address redirects here.
 
 ## How it works
 
